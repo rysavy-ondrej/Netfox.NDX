@@ -26,7 +26,7 @@ namespace Ndx.Ingest.Trace
 
             m_cancellationTokenSource = new CancellationTokenSource();
             m_collector = new FlowCollector(opt.CollectorCapacity, m_cancellationTokenSource.Token);
-            m_extractor = new MetadataExtractor(opt.ExtractorCapacity, m_cancellationTokenSource.Token);            
+            m_extractor = new MetadataExtractor(opt.ExtractorCapacity,opt.FlowFilter,m_cancellationTokenSource.Token);            
             // setup dataflow pipeline
             //
             //            RawFrame                        PacketMetadata               PacketBlock

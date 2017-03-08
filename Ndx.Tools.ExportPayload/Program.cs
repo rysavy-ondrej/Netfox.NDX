@@ -8,6 +8,8 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Ndx.Tools.ExportPayload
 {
@@ -20,6 +22,10 @@ namespace Ndx.Tools.ExportPayload
         /// <remarks>
         /// Notes on the usage of Microsoft.Extensions.CommandLineUtils:
         /// http://jameschambers.com/2015/09/supporting-options-and-arguments-in-your-dnx-commands/
+        /// 
+        /// Example of the usage:
+        /// ndx.tools.exportpayload.exe -r "C:\Users\Ondrej\Documents\Network Monitor 3\Captures\bb7de71e185a2a7818fff92d3ec0dc05.cap" -w bb7de71e185a2a7818fff92d3ec0dc05.mcap -f "SourcePort == 80" index
+        /// ndx.tools.exportpayload.exe -r "C:\Users\Ondrej\Documents\Network Monitor 3\Captures\bb7de71e185a2a7818fff92d3ec0dc05.mcap" -w out.zip -f "SourcePort == 80" stream
         /// </remarks>
         enum VolumeType { Directory, Zip }
         static void Main(string[] args)
@@ -99,9 +105,19 @@ namespace Ndx.Tools.ExportPayload
             commandLineApplication.Execute(args);
         }
 
-        private static void IndexPcap(string v1, string v2, Func<FlowKey, bool> filterFun)
+        
+        private static void IndexPcap(string inputPath, string outputPath, Func<FlowKey, bool> filterFun)
         {
-            throw new NotImplementedException();
+            var consumer = new ZipFileConsumer(inputPath);
+            var cts = new CancellationTokenSource();
+            var reader = new PcapReaderProvider(32768, 1000, cts.Token);
+            var ingestOptions = new IngestOptions() { FlowFilter = filterFun };
+            var ingest = new PcapFileIngestor(reader.RawFrameSource, null, consumer.PacketBlockTarget, consumer.FlowRecordTarget, ingestOptions);
+            var fileInfo = new FileInfo(inputPath);
+            reader.ReadFrom(fileInfo);
+            reader.Complete();
+            Task.WaitAll(ingest.Completion);
+            consumer.Close();
         }
 
         /// <summary>

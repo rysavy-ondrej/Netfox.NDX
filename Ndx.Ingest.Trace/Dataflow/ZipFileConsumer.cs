@@ -18,7 +18,7 @@ namespace Ndx.Ingest.Trace
     /// * Fix - contains a collection of flow records.
     /// </remarks>
     /// <todo>Use ZIP64 to compress generated file and create a single zip file.</todo>
-    public partial class ZipFileConsumer : IDisposable
+    public class ZipFileConsumer : IDisposable
     {       
         ZipArchive m_archive;
         McapIndex.McapIndexEntry m_entry;

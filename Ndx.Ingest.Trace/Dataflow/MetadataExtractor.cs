@@ -7,7 +7,8 @@ namespace Ndx.Ingest.Trace
 {
     public sealed class MetadataExtractor 
     {
-        TransformBlock<RawFrame, PacketMetadata> m_transformBlock;
+        IPropagatorBlock<RawFrame, PacketMetadata> m_transformBlock;
+        private readonly Func<FlowKey, bool> m_filter;
 
         public MetadataExtractor(int boundedCapacity, CancellationToken cancellationToken)
         {
@@ -16,10 +17,29 @@ namespace Ndx.Ingest.Trace
                 BoundedCapacity = boundedCapacity,
                 CancellationToken = cancellationToken,
             };
-
+            m_filter = null;
             m_transformBlock = new TransformBlock<RawFrame, PacketMetadata>((Func<RawFrame, PacketMetadata>)Transform, opt);            
         }
-           
+
+        public MetadataExtractor(int boundedCapacity, Func<FlowKey,bool> filter, CancellationToken cancellationToken)
+        {
+            var opt = new ExecutionDataflowBlockOptions()
+            {
+                BoundedCapacity = boundedCapacity,
+                CancellationToken = cancellationToken,
+            };
+            m_filter = filter;
+
+            PacketMetadata transformAndFilter(RawFrame arg)
+            {
+                var val = Transform(arg);
+                if (val == null) return null;
+                if (m_filter != null && m_filter(val.Flow) == false) return null;                   
+                return val;
+            }
+
+            m_transformBlock = new TransformBlock<RawFrame, PacketMetadata>((Func<RawFrame, PacketMetadata>)transformAndFilter, opt);
+        }
         PacketMetadata Transform(RawFrame frame)
         {
             try
