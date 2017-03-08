@@ -1,13 +1,16 @@
-﻿
+﻿//  
+// Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
+// Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
+//
+// The Microsoft Network Monitor capture format is based on the implementation by Jiri Formacek: https://code.msdn.microsoft.com/How-to-parse-Network-f6162019
+//
+
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-    
-// The Microsoft Network Monitor capture format is based on the implementation by Jiri Formacek: https://code.msdn.microsoft.com/How-to-parse-Network-f6162019
-
-namespace Ndx.Network
+namespace Ndx.Ingest.Trace
 {
     public class PcapNetmon
     {

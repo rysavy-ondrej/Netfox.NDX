@@ -2,14 +2,12 @@
 // Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
 // Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
 //
-using Newtonsoft.Json;
-using Ndx.Network;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Ndx.Utils;
-using System.Runtime.InteropServices;
+using Newtonsoft.Json;
+using System;
 using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Ndx.Ingest.Trace
 {
@@ -130,7 +128,7 @@ namespace Ndx.Ingest.Trace
         }
 
         /// <summary>
-        /// Creates a new <see cref="FlowRecord"/> for the specified <see cref="Ndx.Ingest.Trace.FlowKey"/>.
+        /// Creates a new <see cref="FlowRecord"/> for the specified <see cref="Ndx.Ingest.Trace.Trace.FlowKey"/>.
         /// </summary>
         /// <param name="packetMetadata"><see cref="PacketMetadata"/> object representing a single frame of the flow.</param>
         public FlowRecord(FlowKey flowkey) : this()

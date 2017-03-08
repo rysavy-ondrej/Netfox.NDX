@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ndx.Ingest.Trace;
 using NUnit.Framework;
-using Ndx.Ingest.Trace;
-using System.Net;
 using PacketDotNet;
+using System.Net;
 
 namespace Ndx.Test
 {

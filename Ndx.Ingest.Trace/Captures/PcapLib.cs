@@ -1,4 +1,5 @@
-﻿// Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
+﻿//
+// Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
 // Forked from Microsoft.Tx project.
 
 
@@ -16,7 +17,7 @@ using System.IO;
 
 
 
-namespace Ndx.Network
+namespace Ndx.Ingest.Trace
 {
     public class Pcap
     {

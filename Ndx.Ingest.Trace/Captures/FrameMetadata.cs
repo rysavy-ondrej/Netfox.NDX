@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
-namespace Ndx.Network
+namespace Ndx.Ingest.Trace
 {
 
     /// <summary>

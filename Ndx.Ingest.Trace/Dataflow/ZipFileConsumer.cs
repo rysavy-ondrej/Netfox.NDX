@@ -1,5 +1,4 @@
-﻿using Ndx.Network;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +6,7 @@ using System.IO.Compression;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
-namespace Ndx.Ingest.Trace.DataConsumers
+namespace Ndx.Ingest.Trace
 {
     /// <summary>
     /// This consumer writes information in the index files.
@@ -147,8 +146,8 @@ namespace Ndx.Ingest.Trace.DataConsumers
             {
                 foreach (var item in m_flowDictionary)
                 {
-                    var keyTableEntry = new KeyTableEntry(item.Key, item.Value);
-                    KeyTableEntry.Converter.WriteObject(writer, keyTableEntry);
+                    var keyTableEntry = new FlowKeyTableEntry(item.Key, item.Value);
+                    FlowKeyTableEntry.Converter.WriteObject(writer, keyTableEntry);
                 }
             }
         }

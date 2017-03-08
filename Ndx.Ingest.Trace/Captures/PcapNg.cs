@@ -1,51 +1,29 @@
-﻿// Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
-
-
+﻿//
+// Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
+//            
 
 using System;
-
 using System.Collections.Generic;
-
 using System.IO;
-
 using System.Text;
 
-
-
 // The Pcap Next Generation format is: https://www.winpcap.org/ntar/draft/PCAP-DumpFileFormat.html
-
 // The C# implementation below reads files in .pcapng format
 
-
-
-namespace Ndx.Network
-
+namespace Ndx.Ingest.Trace
 {
-
     public class PcapNg
-
     {
-
         /// <summary>
-
         /// Reads network capture file and returns the raw blocks in the order they were written
-
         /// </summary>
-
         /// <param name="filename">Path to the file in pcap-next-generation (.pcapng) format</param>
-
         /// <returns></returns>
-
         public static IEnumerable<Block> ReadForward(string filename)
-
         {
-
             var stream = File.OpenRead(filename);
-
             return ReadForward(stream);
-
         }
-
 
 
         /// <summary>

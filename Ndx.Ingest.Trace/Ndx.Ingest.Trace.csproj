@@ -42,6 +42,9 @@
     <Reference Include="PacketDotNet, Version=0.13.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PacketDotNet.Netfox.0.13.0.3\lib\net35\PacketDotNet.dll</HintPath>
     </Reference>
+    <Reference Include="Sprache, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sprache.2.1.0\lib\net40\Sprache.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -61,22 +64,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Captures\FrameMetadata.cs" />
-    <Compile Include="DataConsumers\KeyTableEntry.cs" />
-    <Compile Include="DataSources\McapLib.cs" />
+    <Compile Include="Dataflow\FlowKeyTableEntry.cs" />
+    <Compile Include="McapFile.cs" />
     <Compile Include="Captures\PayloadHeader.cs" />
     <Compile Include="Captures\PcapLib.cs" />
     <Compile Include="Captures\PcapNetmon.cs" />
     <Compile Include="Captures\PcapNg.cs" />
     <Compile Include="Captures\PcapReader.cs" />
     <Compile Include="Captures\RawFrame.cs" />
-    <Compile Include="DataConsumers\CustomConsumer.cs" />
-    <Compile Include="DataConsumers\ZipFileConsumer.cs" />
-    <Compile Include="DataConsumers\FileConsumer.cs" />
-    <Compile Include="DataConsumers\NullConsumer.cs" />
-    <Compile Include="Dataflow\Collector.cs" />
-    <Compile Include="Dataflow\Extractor.cs" />
-    <Compile Include="DataSources\Reader.cs" />
-    <Compile Include="Ingest.cs" />
+    <Compile Include="Dataflow\CustomConsumer.cs" />
+    <Compile Include="Dataflow\ZipFileConsumer.cs" />
+    <Compile Include="Dataflow\FileConsumer.cs" />
+    <Compile Include="Dataflow\NullConsumer.cs" />
+    <Compile Include="Dataflow\FlowCollector.cs" />
+    <Compile Include="Dataflow\MetadataExtractor.cs" />
+    <Compile Include="Dataflow\Reader.cs" />
+    <Compile Include="Filters\FlowKeyFilterExpression.cs" />
+    <Compile Include="McapIndex.cs" />
+    <Compile Include="Model\TcpSegment.cs" />
+    <Compile Include="PcapFileIngestor.cs" />
     <Compile Include="IngestOptions.cs" />
     <Compile Include="Model\ApplicationProtocol.cs" />
     <Compile Include="Model\ByteRange.cs" />

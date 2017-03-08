@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filters\FlowKeyFilterTest.cs" />
     <Compile Include="Ingest\FlowKeyTest.cs" />
     <Compile Include="Ingest\FlowRecordTest.cs" />
     <Compile Include="Ingest\LoadFromTest.cs" />

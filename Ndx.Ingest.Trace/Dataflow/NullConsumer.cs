@@ -1,12 +1,7 @@
-﻿using Ndx.Network;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
-namespace Ndx.Ingest.Trace.DataConsumers
+namespace Ndx.Ingest.Trace
 {
     /// <summary>
     /// This class represents a consumer that drops any data consumed.

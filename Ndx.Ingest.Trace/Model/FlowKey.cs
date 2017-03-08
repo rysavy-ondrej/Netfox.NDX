@@ -96,16 +96,6 @@ namespace Ndx.Ingest.Trace
             m_data = data;
         }
 
-        public FlowKey(IPProtocolType proto, PhysicalAddress srcPhy, ushort srcId, PhysicalAddress dstPhy, ushort dstId) : this()
-        {
-            m_data.family = (ushort)AddressFamily.Eth802;
-            m_data.protocol = (byte)proto;
-            SetSourceAddress(srcPhy);
-            m_data.sourcePort = srcId;
-            SetDestinationAddress(dstPhy);
-            m_data.destinationPort = dstId;
-        }
-
         AddressFamily GetAddressFamily(System.Net.Sockets.AddressFamily af)
         {
             switch(af)
@@ -145,6 +135,9 @@ namespace Ndx.Ingest.Trace
             }
         }
 
+        /// <summary>
+        /// This represents IP protocol type. 
+        /// </summary>
         public IPProtocolType Protocol
         {
             get
@@ -167,19 +160,6 @@ namespace Ndx.Ingest.Trace
         {
             get { return m_data.destinationPort; }
             set { m_data.destinationPort = value; }
-        }
-
-
-        public unsafe void SetSourceAddress(PhysicalAddress sourceHwAddress)
-        {
-            var bytes = sourceHwAddress.GetAddressBytes();
-            m_data.SetSourceAddress(bytes, 0, bytes.Length);
-        }
-
-        public unsafe void SetDestinationAddress(PhysicalAddress destinationHwAddress)
-        {
-            var bytes = destinationHwAddress.GetAddressBytes();
-            m_data.SetDestinationAddress(bytes, 0, bytes.Length);
         }
 
         public unsafe void SetSourceAddress(IPAddress sourceAddress)
@@ -210,7 +190,7 @@ namespace Ndx.Ingest.Trace
         {
             switch (af)
             {
-                case AddressFamily.Eth802: return new byte[6];
+                case AddressFamily.Eth802: // return new byte[6];
                 case AddressFamily.IPv4: return new byte[4];
                 case AddressFamily.IPv6: return new byte[16];
                 default: throw new ArgumentException("Unknown or unsupported AddressFamily.", nameof(af));

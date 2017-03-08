@@ -1,20 +1,15 @@
-﻿using Ndx.Network;
-using PacketDotNet;
+﻿using PacketDotNet;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
-namespace Ndx.Ingest.Trace.Dataflow
+namespace Ndx.Ingest.Trace
 {
-    public sealed class Extractor 
+    public sealed class MetadataExtractor 
     {
         TransformBlock<RawFrame, PacketMetadata> m_transformBlock;
 
-        public Extractor(int boundedCapacity, CancellationToken cancellationToken)
+        public MetadataExtractor(int boundedCapacity, CancellationToken cancellationToken)
         {
             var opt = new ExecutionDataflowBlockOptions()
             {

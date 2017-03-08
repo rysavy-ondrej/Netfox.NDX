@@ -1,4 +1,7 @@
-﻿
+﻿//  
+// Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
+// Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
+//
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +12,14 @@ using System.Collections.Concurrent;
 using NLog;
 using System.Threading;
 
-namespace Ndx.Ingest.Trace.Dataflow
+namespace Ndx.Ingest.Trace
 {
-    public sealed class Collector 
+    /// <summary>
+    /// The class implements a flow collector.It consumes <see cref="PacketMetadata"/> by <see cref="FlowCollector.PacketMetadataTarget"/>
+    /// and generates <see cref="PacketBlock"/> objects available from <see cref="FlowCollector.PacketBlockSource"/>
+    /// and <see cref="FlowRecord"/> objects available from <see cref="FlowCollector.FlowRecordSource"/>.
+    /// </summary>
+    public sealed class FlowCollector 
     {
         private static readonly NLog.Logger m_logger = NLog.LogManager.GetCurrentClassLogger();
 
@@ -36,11 +44,11 @@ namespace Ndx.Ingest.Trace.Dataflow
         private BufferBlock<FlowRecord> m_flowRecordBuffer;
 
         /// <summary>
-        /// Creates a new instance of <see cref="Collector"/> block.
+        /// Creates a new instance of <see cref="FlowCollector"/> block.
         /// </summary>
         /// <param name="boundedCapacity">Maximum number of messages that can be buffered in the block.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> for monitoring cancellation request.</param>
-        public Collector(int boundedCapacity, CancellationToken cancellationToken)
+        public FlowCollector(int boundedCapacity, CancellationToken cancellationToken)
         {
             var opt = new ExecutionDataflowBlockOptions()
             {
@@ -100,7 +108,7 @@ namespace Ndx.Ingest.Trace.Dataflow
         }
 
         /// <summary>
-        /// Gets a <see cref="Task"/> object that represents an asynchronous operation and completition of the <see cref="Collector"/> block.
+        /// Gets a <see cref="Task"/> object that represents an asynchronous operation and completition of the <see cref="FlowCollector"/> block.
         /// </summary>
         public Task Completion => Task.WhenAll(m_actionBlock.Completion, m_flowRecordBuffer.Completion, m_packetBlockBuffer.Completion);
 

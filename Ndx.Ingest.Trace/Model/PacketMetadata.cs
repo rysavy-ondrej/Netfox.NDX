@@ -2,9 +2,6 @@
 // Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
 // Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
 //
-using System;
-using Newtonsoft.Json;
-using Ndx.Network;
 using PacketDotNet;
 using PacketDotNet.Ieee80211;
 using System.Runtime.InteropServices;
@@ -120,8 +117,12 @@ namespace Ndx.Ingest.Trace
             m_packetMetadata.pointers.link.count = eth.BytesHighPerformance.Length;
             m_flowKey.protocol = (ushort)IPProtocolType.NONE;
             m_flowKey.family = (ushort)AddressFamily.Eth802;
+            m_flowKey.SetSourceAddress(System.Net.IPAddress.None.GetAddressBytes(), 0, 4);
+            m_flowKey.SetDestinationAddress(System.Net.IPAddress.None.GetAddressBytes(), 0, 4);
+            /*
             m_flowKey.SetSourceAddress(eth.SourceHwAddress.GetAddressBytes(), 0, 6);
             m_flowKey.SetDestinationAddress(eth.DestinationHwAddress.GetAddressBytes(), 0, 6);
+            */
         }
 
         public override void VisitLLDPPacket(LLDPPacket packet)

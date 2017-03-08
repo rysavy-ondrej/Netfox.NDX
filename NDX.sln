@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26206.0
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Ingest.Trace", "Ndx.Ingest.Trace\Ndx.Ingest.Trace.csproj", "{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Shell.Console", "Ndx.Shell.Console\Ndx.Shell.Console.csproj", "{75454215-419C-4EC6-9776-06575F374D22}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Utils", "Ndx.Utils\Ndx.Utils.csproj", "{CAD4B73F-5BAB-479F-BE15-C7BDCC510FA3}"
@@ -14,6 +12,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{D88F88ED-6A2A-4EA8-9B67-725FBF2B4BC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Tools.ExportPayload", "Ndx.Tools.ExportPayload\Ndx.Tools.ExportPayload.csproj", "{DC4FFBB3-9612-4736-8896-088DAF2F419D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Ingest.Trace", "Ndx.Ingest.Trace\Ndx.Ingest.Trace.csproj", "{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,18 +25,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Debug|x64.Build.0 = Debug|Any CPU
-		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Debug|x86.Build.0 = Debug|Any CPU
-		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Release|x64.ActiveCfg = Release|Any CPU
-		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Release|x64.Build.0 = Release|Any CPU
-		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Release|x86.ActiveCfg = Release|Any CPU
-		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Release|x86.Build.0 = Release|Any CPU
 		{75454215-419C-4EC6-9776-06575F374D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{75454215-419C-4EC6-9776-06575F374D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75454215-419C-4EC6-9776-06575F374D22}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -85,6 +73,18 @@ Global
 		{DC4FFBB3-9612-4736-8896-088DAF2F419D}.Release|x64.Build.0 = Release|Any CPU
 		{DC4FFBB3-9612-4736-8896-088DAF2F419D}.Release|x86.ActiveCfg = Release|Any CPU
 		{DC4FFBB3-9612-4736-8896-088DAF2F419D}.Release|x86.Build.0 = Release|Any CPU
+		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Debug|x64.Build.0 = Debug|Any CPU
+		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Debug|x86.Build.0 = Debug|Any CPU
+		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Release|x64.ActiveCfg = Release|Any CPU
+		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Release|x64.Build.0 = Release|Any CPU
+		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Release|x86.ActiveCfg = Release|Any CPU
+		{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

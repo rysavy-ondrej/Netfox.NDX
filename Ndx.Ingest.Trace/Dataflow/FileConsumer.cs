@@ -1,11 +1,14 @@
-﻿using Ndx.Network;
+﻿//  
+// Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
+// Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
+//
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
-namespace Ndx.Ingest.Trace.DataConsumers
+namespace Ndx.Ingest.Trace
 {
     /// <summary>
     /// This consumer writes information in the index files.

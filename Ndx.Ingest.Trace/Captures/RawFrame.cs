@@ -4,7 +4,7 @@
 //
 using PacketDotNet;
 using System;
-namespace Ndx.Network
+namespace Ndx.Ingest.Trace
 {
     /// <summary>
     /// Represents a single captured packet and its metadata.

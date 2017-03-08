@@ -1,10 +1,6 @@
 ﻿using Ndx.Ingest.Trace;
-using Ndx.Ingest.Trace.DataConsumers;
-using Ndx.Ingest.Trace.Dataflow;
 using NUnit.Framework;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -99,8 +95,8 @@ namespace Ndx.Test
             var path = Path.Combine(TestContext.CurrentContext.TestDirectory, @"C:\Users\Ondrej\Documents\Network Monitor 3\Captures\2adc3aaa83b46ef8d86457e0209e0aa9.cap");
             var consumer = IngestFile(path);
             Assert.AreEqual(0, consumer.RawFrameCount);
-            Assert.AreEqual(20028, consumer.PacketBlockCount);
-            Assert.AreEqual(1795, consumer.FlowRecordCount);
+            Assert.AreEqual(19939, consumer.PacketBlockCount);
+            Assert.AreEqual(1689, consumer.FlowRecordCount);
         }
 
         FileConsumer IngestFile(string path)
@@ -148,8 +144,8 @@ namespace Ndx.Test
             var path = Path.Combine(TestContext.CurrentContext.TestDirectory, @"C:\Users\Ondrej\Documents\Network Monitor 3\Captures\2adc3aaa83b46ef8d86457e0209e0aa9.cap");
             var consumer = IngestFileZipConsumer(path);
             Assert.AreEqual(0, consumer.RawFrameCount);
-            Assert.AreEqual(20028, consumer.PacketBlockCount);
-            Assert.AreEqual(1795, consumer.FlowRecordCount);
+            Assert.AreEqual(19939, consumer.PacketBlockCount);
+            Assert.AreEqual(1689, consumer.FlowRecordCount);
         }
 
     }

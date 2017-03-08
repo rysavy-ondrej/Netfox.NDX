@@ -1,14 +1,8 @@
-﻿using Ndx.Network;
-using Ndx.Utils;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
-namespace Ndx.Ingest.Trace.Dataflow
+namespace Ndx.Ingest.Trace
 {
     public sealed class PcapReaderProvider
     {
@@ -46,7 +40,7 @@ namespace Ndx.Ingest.Trace.Dataflow
             {
                 if (fileInfo.Exists)
                 {
-                    foreach (var frame in Network.PcapReader.ReadFile(fileInfo.FullName, m_bufferSize))
+                    foreach (var frame in PcapReader.ReadFile(fileInfo.FullName, m_bufferSize))
                     {
                         if (frame != null)
                         {

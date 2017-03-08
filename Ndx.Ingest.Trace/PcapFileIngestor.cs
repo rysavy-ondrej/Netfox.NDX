@@ -2,8 +2,6 @@
 // Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
 // Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
 //
-using Ndx.Ingest.Trace.Dataflow;
-using Ndx.Network;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
@@ -16,8 +14,8 @@ namespace Ndx.Ingest.Trace
         private readonly ITargetBlock<PacketBlock> m_blockConsumer;
         private readonly ITargetBlock<FlowRecord> m_flowConsumer;
         private readonly ITargetBlock<RawFrame> m_frameConsumer;
-        private readonly Collector m_collector;
-        private readonly Extractor m_extractor;
+        private readonly FlowCollector m_collector;
+        private readonly MetadataExtractor m_extractor;
         private readonly ISourceBlock<RawFrame> m_frameProvider;
         public PcapFileIngestor(ISourceBlock<RawFrame> frameProvider, ITargetBlock<RawFrame> frameConsumer, ITargetBlock<PacketBlock> packetBlockConsumer, ITargetBlock<FlowRecord> flowConsumer, IngestOptions opt)
         {            
@@ -27,8 +25,8 @@ namespace Ndx.Ingest.Trace
             m_frameConsumer = frameConsumer;
 
             m_cancellationTokenSource = new CancellationTokenSource();
-            m_collector = new Dataflow.Collector(opt.CollectorCapacity, m_cancellationTokenSource.Token);
-            m_extractor = new Dataflow.Extractor(opt.ExtractorCapacity, m_cancellationTokenSource.Token);            
+            m_collector = new FlowCollector(opt.CollectorCapacity, m_cancellationTokenSource.Token);
+            m_extractor = new MetadataExtractor(opt.ExtractorCapacity, m_cancellationTokenSource.Token);            
             // setup dataflow pipeline
             //
             //            RawFrame                        PacketMetadata               PacketBlock
