@@ -8,6 +8,7 @@ using System.Threading.Tasks.Dataflow;
 
 namespace Ndx.Ingest.Trace
 {
+
     /// <summary>
     /// This consumer writes information in the index files.
     /// </summary>
@@ -20,27 +21,28 @@ namespace Ndx.Ingest.Trace
     /// <todo>Use ZIP64 to compress generated file and create a single zip file.</todo>
     public class ZipFileConsumer : IDisposable
     {       
-        ZipArchive m_archive;
-        McapIndex.McapIndexEntry m_entry;
+        private ZipArchive m_archive;
+        private string m_captureFile;
+        private int m_blockCount;
+        private int m_flowCount;
 
-        public ZipFileConsumer(string fileName) : this()
+        private object m_sync = new object();
+
+        public ZipFileConsumer(string pcapfile, string mcapfile) : this()
         {
 
-            var fullname = Path.GetFullPath(fileName);
-            var localname = Path.GetFileName(fileName);
-            var archName = Path.ChangeExtension(fullname, "mcap");
+            var pcapPath = Path.GetFullPath(pcapfile);
+            var capFilename = Path.GetFileName(pcapfile);
+            var mcapPath = Path.GetFullPath(mcapfile);
 
             // delete if exists:
-            if (File.Exists(archName)) File.Delete(archName);
-
-            m_archive = ZipFile.Open(archName, ZipArchiveMode.Update);
-            m_entry = new McapIndex.McapIndexEntry()
+            if (File.Exists(mcapPath))
             {
-                CaptureFile = localname,
-                PacketBlockFolder = Path.ChangeExtension(localname, "map"),
-                FlowRecordFolder = Path.ChangeExtension(localname, "fix"),
-                KeyFile = Path.ChangeExtension(localname, "key"),
-            };
+                File.Delete(mcapPath);
+            }
+
+            m_archive = ZipFile.Open(mcapPath, ZipArchiveMode.Update);
+            m_captureFile = capFilename;
             m_flowDictionary = new Dictionary<FlowKey, IndexRecord>(1024);
         }
 
@@ -53,52 +55,49 @@ namespace Ndx.Ingest.Trace
         int m_rawframeCount;
         ActionBlock<RawFrame> m_rawFrameTarget;
 
-        Dictionary<FlowKey, IndexRecord> m_flowDictionary;
+        private Dictionary<FlowKey, IndexRecord> m_flowDictionary;
 
-
-        object _sync = new object();
-
-        int blockCount;
-        PacketBlock.BinaryConverter PacketBlockConverter = new PacketBlock.BinaryConverter();
+        
+        private PacketBlock.BinaryConverter m_packetBlockConverter = new PacketBlock.BinaryConverter();
         void WritePacketBlock(PacketBlock block)
         {
             var index = 0;
-            lock (_sync)
+            lock (m_sync)
             {
-                index = blockCount++;
+                index = m_blockCount++;
                 if (!m_flowDictionary.TryGetValue(block.Key, out IndexRecord value))
                 {
                     m_flowDictionary[block.Key] = value = new IndexRecord();
                 }
                 value.PacketBlockList.Add(index);
             }
-            var path = Path.Combine(m_entry.PacketBlockFolder, index.ToString().PadLeft(6, '0'));
+            var path = MetacapFileInfo.GetPacketBlockPath(index);
             var blockEntry = m_archive.CreateEntry(path, CompressionLevel.Fastest);
             using (var writer = new BinaryWriter(blockEntry.Open()))
             {
-                PacketBlockConverter.WriteObject(writer, block);
+                m_packetBlockConverter.WriteObject(writer, block);
             }
         }
 
-        int flowCount;
-        FlowRecord.BinaryConverter FlowRecordConverter = new FlowRecord.BinaryConverter();
+        
+        FlowRecord.BinaryConverter m_flowRecordConverter = new FlowRecord.BinaryConverter();
         void WriteFlowRecord(FlowRecord flow)
         {
             var index = 0;
-            lock (_sync)
+            lock (m_sync)
             {
-                index = flowCount++;
+                index = m_flowCount++;
                 if (!m_flowDictionary.TryGetValue(flow.Key, out IndexRecord value))
                 {
                     m_flowDictionary[flow.Key] = value = new IndexRecord();
                 }
                 value.FlowRecordOffset = index;
             }
-            var path = Path.Combine(m_entry.FlowRecordFolder, index.ToString().PadLeft(6, '0'));
+            var path = MetacapFileInfo.GetFlowRecordPath(index);
             var entry = m_archive.CreateEntry(path, CompressionLevel.Fastest);
             using (var writer = new BinaryWriter(entry.Open()))
             {
-                FlowRecordConverter.WriteObject(writer, flow);
+                m_flowRecordConverter.WriteObject(writer, flow);
             }
                 
         }
@@ -122,26 +121,12 @@ namespace Ndx.Ingest.Trace
         public void Close()
         {
             WriteKeyTable();
-            WriteIndexFile();
             m_archive.Dispose();
-        }
-
-        private void WriteIndexFile()
-        {
-            var index = new McapIndex();
-            index.Add(m_entry);
-
-            var indexJson = JsonConvert.SerializeObject(index);
-            var entry = m_archive.CreateEntry("index.json", CompressionLevel.Fastest);
-            using (var writer = new StreamWriter(entry.Open()))
-            {
-                writer.Write(indexJson);
-            }
         }
 
         private void WriteKeyTable()
         {
-            var entry = m_archive.CreateEntry(m_entry.KeyFile, CompressionLevel.Fastest);
+            var entry = m_archive.CreateEntry(MetacapFileInfo.KeyFile, CompressionLevel.Fastest);
             using (var writer = new BinaryWriter(entry.Open()))
             {
                 foreach (var item in m_flowDictionary)

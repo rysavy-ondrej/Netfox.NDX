@@ -9,8 +9,6 @@ namespace Ndx.Ingest.Trace
 {
     public interface IBinaryConverter<T>
     {
-        bool CanRead { get; }
-        bool CanWrite { get; }
         /// <summary>
         /// Reads object using the provided reader. 
         /// </summary>

@@ -14,6 +14,10 @@ using System.Threading;
 
 namespace Ndx.Ingest.Trace
 {
+
+
+
+
     /// <summary>
     /// The class implements a flow collector.It consumes <see cref="PacketMetadata"/> by <see cref="FlowCollector.PacketMetadataTarget"/>
     /// and generates <see cref="PacketBlock"/> objects available from <see cref="FlowCollector.PacketBlockSource"/>
@@ -144,7 +148,7 @@ namespace Ndx.Ingest.Trace
         {
             static IPropagatorBlock<PacketMetadata, PacketBlock> CreateDataflowBlock(FlowKey flowKey, Func<int> getIndex)
             {
-                var target = new BatchBlock<PacketMetadata>(_PacketBlock.__count); ;
+                var target = new BatchBlock<PacketMetadata>(PacketBlock.Capacity); ;
                 var source = new TransformBlock<PacketMetadata[], PacketBlock>(metadata => new PacketBlock(flowKey, getIndex(), metadata)); ;
                 target.LinkTo(source);
                 target.Completion.ContinueWith(completion =>
@@ -163,7 +167,7 @@ namespace Ndx.Ingest.Trace
             FlowRecord m_flowRecord;
             /// <summary>
             /// This dataflow block groups <see cref="PacketMetadata"/> objects and produces <see cref="PacketBlock"/>. 
-            /// Each <see cref="PacketBlock"/> contains at most <see cref="_PacketBlock.__count"/> <see cref="PacketMetadata"/> objects.
+            /// Each <see cref="PacketBlock"/> contains at most <see cref="PacketBlock.Capacity"/> <see cref="PacketMetadata"/> objects.
             /// </summary>
             IPropagatorBlock<PacketMetadata, PacketBlock> m_dataflowBlock;
 
@@ -184,7 +188,7 @@ namespace Ndx.Ingest.Trace
             internal FlowTracker(FlowKey flowKey)
             {
                 m_flowRecord = new FlowRecord(flowKey);
-                m_dataflowBlock = CreateDataflowBlock(flowKey, () => m_flowRecord.PacketBlockCount++);
+                m_dataflowBlock = CreateDataflowBlock(flowKey, () => m_flowRecord.Packets / PacketBlock.Capacity);
             }
 
             public Task Completion => m_dataflowBlock.Completion;

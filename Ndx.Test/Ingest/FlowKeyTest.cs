@@ -18,10 +18,10 @@ namespace Ndx.Test
             var fk1 = new FlowKey(IPProtocolType.UDP, srcIp,53, dstIp, 53);
 
             var bytes = fk1.GetBytes();        
-            var fk2 = FlowKey.FromBytes(bytes);
+            var fk2 = new FlowKey(bytes);
             Assert.AreEqual(fk1, fk2);
             bytes[4] = 9;
-            var fk3 = FlowKey.FromBytes(bytes);            
+            var fk3 = new FlowKey(bytes);            
             Assert.AreNotEqual(fk2, fk3);
         }
     }

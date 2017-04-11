@@ -78,7 +78,10 @@ namespace Ndx.Ingest.Trace
         /// </summary>
         /// <param name="path">Path to the capture file.</param>
         /// <returns>Enumerable collection of <c>CapturedFrame</c> object.</returns>
-        /// <remarks>Three types of capture files are currently supported: i)PcapLib, ii)PcapNg and iii) NetMon 3 cap file.</remarks>
+        /// <remarks>
+        /// Three types of capture files are currently supported: i)PcapLib, ii)PcapNg and iii) NetMon 3 cap file.
+        /// As convenient for Wireshar and Network Monitor, frames are numbered from 1.
+        /// </remarks>
         public static IEnumerable<RawFrame> ReadFile(string path, int bufferSize = 4096)
         {
             FileInfo fileInfo = new FileInfo(path);
@@ -111,7 +114,7 @@ namespace Ndx.Ingest.Trace
                                         {
                                             Timestamp = frameRecord.Timestamp,
                                             LinkLayer = linkType,
-                                            FrameNumber = frameNumber,
+                                            FrameNumber = frameNumber + 1,     // Frames are numbered from 1!
                                             FrameLength = frameRecord.Data.Length,
                                             FrameOffset = frameRecord.DataOffset,
                                         },
@@ -134,7 +137,7 @@ namespace Ndx.Ingest.Trace
                                         {
                                             Timestamp = pcapRecord.Timestamp,
                                             LinkLayer = linkType,
-                                            FrameNumber = frameNumber,
+                                            FrameNumber = frameNumber + 1,
                                             FrameLength = pcapRecord.Data.Length,
                                             FrameOffset = pcapRecord.DataOffset,
                                         },

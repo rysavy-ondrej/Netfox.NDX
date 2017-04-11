@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//  
+// Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
+// Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
+//
 
 namespace Ndx.Ingest.Trace
 {
+    /// <summary>
+    /// Represents a category of application protocols. This list is due to Cisco NBAR.
+    /// </summary>
     public enum ProtocolCategory : ushort
     {
         None = 0,
@@ -30,7 +32,7 @@ namespace Ndx.Ingest.Trace
     }
 
     /// <summary>
-    /// Defines all known protocols. 
+    /// Defines all known protocols. This list is due to Cisco NBAR.
     /// </summary>
     /// <remarks>
     /// This enum is based on the list specified at:

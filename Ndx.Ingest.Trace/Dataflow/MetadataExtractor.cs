@@ -45,10 +45,12 @@ namespace Ndx.Ingest.Trace
             try
             {
                 var packet = Packet.ParsePacket(frame.Meta.LinkLayer, frame.RawFrameData);
-                var visitor = new PacketVisitorImpl(frame.Meta.Data);
-
+                var packetMetadata = new PacketMetadata(frame.Meta);
+                var visitor = new PacketVisitorImpl(packetMetadata);
+                
                 packet?.Accept(visitor);
-                return new PacketMetadata(visitor.FlowKey, visitor.Metadata);
+                
+                return packetMetadata;
 
             }
             catch (Exception)

@@ -11,6 +11,9 @@ using System.Runtime.InteropServices;
 
 namespace Ndx.Ingest.Trace
 {
+    /// <summary>
+    /// This strcuture is a compact representation of the Flow Record. 
+    /// </summary>
     [StructLayout(LayoutKind.Explicit, Size = __size)]
     public unsafe struct _FlowRecord
     {
@@ -23,14 +26,26 @@ namespace Ndx.Ingest.Trace
         [FieldOffset(32)] public uint application;
         [FieldOffset(36)] public uint reserved;
 
-        public _FlowRecord(byte[] bytes)
+        /// <summary>
+        /// Creates a new <see cref="_FlowRecord"/> from the specified bytes.
+        /// </summary>
+        /// <param name="bytes">Byte array used to initialize the flow record.</param>
+        public _FlowRecord(byte[] bytes, int offset = 0)
         {
+            if (bytes.Length + offset < __size)
+            {
+                throw new ArgumentException($"Not enough bytes for intialization of {nameof(_FlowRecord)} instance.");
+            }
+
             fixed (byte* pdata = bytes)
             {
-                this = *(_FlowRecord*)pdata;
+                this = *(_FlowRecord*)(pdata+offset);
             }
         }
-
+        /// <summary>
+        /// Gets bytes that represents the current instance.
+        /// </summary>
+        /// <returns>byte array representing data of the current object.</returns>
         public byte[] GetBytes()
         {
             return ExplicitStruct.GetBytes<_FlowRecord>(this);
@@ -42,7 +57,7 @@ namespace Ndx.Ingest.Trace
             {
                 fixed (_FlowRecord* x = &this)
                 {
-                    return equals(x, &other);
+                    return Equals(x, &other);
                 }
             }
             return false;
@@ -56,7 +71,7 @@ namespace Ndx.Ingest.Trace
             }
         }
 
-        private static bool equals(_FlowRecord* x, _FlowRecord* y)
+        public static bool Equals(_FlowRecord* x, _FlowRecord* y)
         {
             return ExplicitStruct.CmpInt((int*)x, (int*)y, __size / sizeof(int));
         }
@@ -70,79 +85,103 @@ namespace Ndx.Ingest.Trace
     [JsonConverter(typeof(FlowRecordSerializer))]
     public class FlowRecord 
     {
-        public static readonly string FlowKey = "key";
-        public static readonly string FlowOctets = "octets";
-        public static readonly string FlowPackets = "packets";
-        public static readonly string FlowFirst = "first";
-        public static readonly string FlowLast = "last";
-        public static readonly string FlowBlockCount = "block_count";
-        public static readonly string FlowRecognizedProtocol = "recog_proto";
-
         /// <summary>
         /// Stores the <see cref="_FlowRecord"/> for the current <see cref="FlowRecord"/>.
         /// </summary>
-        _FlowRecord m_data;
+        private _FlowRecord m_data;
         /// <summary>
         /// Stores <see cref="_FlowKey"/> for the current object.
         /// </summary>
-        FlowKey m_flowkey;
-
-        internal int PacketBlockCount;
+        private FlowKey m_flowkey;
+            
+        /// <summary>
+        /// Synchronization object.
+        /// </summary>
+        private Object m_sync = new Object();
 
         /// <summary>
-        /// Gets the underlying data (<see cref="_PacketBlock"/>) as byte array.
+        /// Gets the underlying data as byte array.
         /// </summary>
         public byte[] DataBytes => m_data.GetBytes();
 
         /// <summary>
-        /// Key of the flow.
+        /// Gets the Key of the flow.
         /// </summary>
         public FlowKey Key => m_flowkey;
         /// <summary>
-        /// Number of flow octets.
+        /// Gets or sets a number of flow octets.
         /// </summary>
-        public long Octets { get { return m_data.octets; } private set { m_data.octets = value; } }
+        public long Octets { get => m_data.octets; private set => m_data.octets = value; }
         /// <summary>
-        /// UNIX time represented as long of the first frame in the flow.
+        /// Gets or sets a UNIX time represented as long of the first frame in the flow.
         /// </summary>
-        public long FirstSeen { get { return m_data.first; } private set { m_data.first = value; } }
+        public long FirstSeen { get => m_data.first; private set => m_data.first = value; }
         /// <summary>
-        /// UNIX time represented as long of the last frame in the flow.
+        /// Gets or sets a UNIX time represented as long of the last frame in the flow.
         /// </summary>
-        public long LastSeen { get { return m_data.last; } private set { m_data.last = value; } }
+        public long LastSeen { get => m_data.last; private set => m_data.last = value; }
         /// <summary>
-        /// Number of flow packets.
+        /// Gets or sets a number of flow packets.
         /// </summary>
-        public int Packets { get { return m_data.packets; } private set { m_data.packets = value; } }
+        public int Packets { get => m_data.packets; private set => m_data.packets = value; }
 
         /// <summary>
         /// Recognized application protocol of the flow. 
         /// </summary>
-        public ApplicationProtocol RecognizedProtocol { get { return (ApplicationProtocol)m_data.application; } internal set { m_data.application = (uint)value; } }
+        public ApplicationProtocol RecognizedProtocol { get => (ApplicationProtocol)m_data.application; internal set => m_data.application = (uint)value; }
 
         /// <summary>
-        /// Creates a new <see cref="FlowRecord"/>.
+        /// Creates a new object that contains an empty <see cref="_FlowRecord"/> instance and null <see cref="FlowKey"/>.
         /// </summary>
-        private FlowRecord()
+        public FlowRecord()
         {
+            m_data = new _FlowRecord();
         }
 
         /// <summary>
         /// Creates a new <see cref="FlowRecord"/> for the specified <see cref="Ndx.Ingest.Trace.Trace.FlowKey"/>.
         /// </summary>
         /// <param name="packetMetadata"><see cref="PacketMetadata"/> object representing a single frame of the flow.</param>
-        public FlowRecord(FlowKey flowkey) : this()
+        public FlowRecord(FlowKey flowkey) 
         {
             m_flowkey = flowkey;
+            m_data = new _FlowRecord();
         }
 
-        public FlowRecord(FlowKey flowkey, _FlowRecord data) : this(flowkey)
+        /// <summary>
+        /// Creates a new <see cref="FlowRecord"/> and initializes it with the provided parameters.
+        /// </summary>
+        /// <param name="flowkey"></param>
+        /// <param name="data"></param>
+        public FlowRecord(FlowKey flowkey, _FlowRecord data) 
         {
+            m_flowkey = flowkey;
             m_data = data;
         }
 
-        private Object _sync = new Object();
-        private _FlowRecord data;
+        /// <summary>
+        /// Creates a new <see cref="FlowRecord"/> and initializes it by deserializing its <see cref="_FlowRecord"/>
+        /// data with the provided bytes.
+        /// </summary>
+        /// <param name="buf"></param>
+        /// <param name="offset"></param>
+        public FlowRecord(byte[] buf, int offset=0)
+        {
+            m_data = new _FlowRecord(buf, offset);
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="FlowRecord"/> for the passed <paramref name="flowkey"/> and initializes it by deserializing its <see cref="_FlowRecord"/>
+        /// data with the provided bytes. 
+        /// </summary>
+        /// <param name="flowkey"></param>
+        /// <param name="buf"></param>
+        /// <param name="offset"></param>
+        public FlowRecord(FlowKey flowkey, byte[] buf, int offset = 0)
+        {
+            m_flowkey = flowkey;
+            m_data = new _FlowRecord(buf, offset);
+        }
 
         /// <summary>
         /// Updates the current flow record with information from <see cref="PacketMetadata"/>.
@@ -151,17 +190,27 @@ namespace Ndx.Ingest.Trace
         /// a single frame of the flow.</param>
         public void UpdateWith(PacketMetadata packetMetadata)
         {
-            lock (_sync)
+            lock (m_sync)
             {
                 Packets++;
                 Octets += (long)(packetMetadata.Frame.FrameLength);
                 long ts = packetMetadata.Frame.Timestamp.ToUnixTimeMilliseconds();
-                if (FirstSeen == 0 || FirstSeen > ts) FirstSeen = ts;
-                if (LastSeen == 0 || LastSeen < ts) LastSeen = ts;
+
+                if (FirstSeen == 0 || FirstSeen > ts)
+                {
+                    FirstSeen = ts;
+                }
+
+                if (LastSeen == 0 || LastSeen < ts)
+                {
+                    LastSeen = ts;
+                }
             }
         }
 
-
+        /// <summary>
+        /// Implementation of <see cref="IBinaryConverter{T}"/> for <see cref="FlowRecord"/>.
+        /// </summary>
         public class BinaryConverter : IBinaryConverter<FlowRecord>
         {
             public bool CanRead => true;
@@ -172,9 +221,13 @@ namespace Ndx.Ingest.Trace
             {
                 var buf = reader.ReadBytes(_FlowRecord.__size);
                 if (buf.Length < _FlowRecord.__size)
+                {
                     return null;
+                }
                 else
-                    return FromBytes(buf);
+                {
+                    return new FlowRecord(buf);
+                }
             }
 
             public void WriteObject(BinaryWriter writer, FlowRecord value)
@@ -185,15 +238,15 @@ namespace Ndx.Ingest.Trace
 
         public static IBinaryConverter<FlowRecord> Converter => new BinaryConverter();
 
-
-        private static FlowRecord FromBytes(byte[] bytes)
-        {
-            var data = new _FlowRecord(bytes);
-            return new FlowRecord(null, data);
-        }
-
         public class FlowRecordSerializer : JsonConverter
         {
+            public static readonly string FlowKey = "key";
+            public static readonly string FlowOctets = "octets";
+            public static readonly string FlowPackets = "packets";
+            public static readonly string FlowFirst = "first";
+            public static readonly string FlowLast = "last";
+            public static readonly string FlowRecognizedProtocol = "recog_proto";
+
 
             T ParseEnum<T>(string value, T defaultResult) where T : struct
             {
@@ -209,7 +262,7 @@ namespace Ndx.Ingest.Trace
 
             public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
             {
-                Newtonsoft.Json.Linq.JObject jsonObject = Newtonsoft.Json.Linq.JObject.Load(reader);
+                var jsonObject = Newtonsoft.Json.Linq.JObject.Load(reader);
                 var properties = jsonObject.Properties().ToDictionary(x => x.Name);
 
                 var newObj = new FlowRecord()
@@ -224,7 +277,6 @@ namespace Ndx.Ingest.Trace
 
                     RecognizedProtocol = ParseEnum<ApplicationProtocol>(properties[FlowRecognizedProtocol].Value.ToString(), ApplicationProtocol.NULL),
 
-                    PacketBlockCount = (int)properties[FlowBlockCount].Value
                 };
                 return newObj;
             }
@@ -251,9 +303,6 @@ namespace Ndx.Ingest.Trace
 
                 writer.WritePropertyName(FlowRecognizedProtocol);
                 writer.WriteValue(data.RecognizedProtocol.ToString());
-
-                writer.WritePropertyName(FlowBlockCount);
-                writer.WriteValue(data.PacketBlockCount);
 
                 writer.WriteEndObject();
             }

@@ -2,20 +2,21 @@
 // Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
 // Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
 //
-using Ndx.Utils;
-using PacketDotNet;
-using PacketDotNet.LLDP;
 using System;
-using System.Collections;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
-using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
+using Ndx.Utils;
+using PacketDotNet;
+using PacketDotNet.LLDP;
 
 namespace Ndx.Ingest.Trace
 {
 
+    /// <summary>
+    /// This structure is a compact representation of a Flow Key.
+    /// </summary>
     [StructLayout(LayoutKind.Explicit, Size = __size)]
     unsafe public struct _FlowKey
     {
@@ -31,14 +32,27 @@ namespace Ndx.Ingest.Trace
         [FieldOffset(36)] public ushort destinationPort;
         [FieldOffset(38)] public ushort family;
 
-        public _FlowKey(byte[] bytes)
+        /// <summary>
+        /// Creates the flow key from the provided bytes.
+        /// </summary>
+        /// <param name="bytes"></param>
+        public _FlowKey(byte[] bytes, int offset=0)
         {
+            if (bytes.Length + offset < __size)
+            {
+                throw new ArgumentException($"Not enough bytes for intialization of {nameof(_FlowKey)} instance.");
+            }
+
             fixed (byte* pdata = bytes)
             {
-                this = *(_FlowKey*)pdata;
+                this = *(_FlowKey*)(pdata+offset);
             }
         }
 
+        /// <summary>
+        /// Gets bytes that represents the current instance.
+        /// </summary>
+        /// <returns>byte array representing data of the current object.</returns>
         public byte[] GetBytes()
         {
             return ExplicitStruct.GetBytes<_FlowKey>(this);
@@ -50,7 +64,7 @@ namespace Ndx.Ingest.Trace
             {
                 fixed (_FlowKey* x = &this)
                 {
-                    return equals(x, &other);
+                    return Equals(x, &other);
                 }
             }
             return false;
@@ -64,12 +78,12 @@ namespace Ndx.Ingest.Trace
             }
         }
 
-        private static bool equals(_FlowKey *x, _FlowKey *y)
+        public static bool Equals(_FlowKey *x, _FlowKey *y)
         {
             return ExplicitStruct.CmpInt((int*)x, (int*)y, __size / sizeof(int));
         }
 
-        internal void SetSourceAddress(byte[] bytes, int offset, int count)
+        public void SetSourceAddress(byte[] bytes, int offset, int count)
         {
             fixed (byte* ptr = sourceAddress)
             {
@@ -77,116 +91,36 @@ namespace Ndx.Ingest.Trace
             }
         }
 
-        internal void SetDestinationAddress(byte[] bytes, int offset, int count)
+        public void SetDestinationAddress(byte[] bytes, int offset, int count)
         {
             fixed (byte* ptr = destinationAddress)
             {
                 Marshal.Copy(bytes, offset, new IntPtr(ptr), count);
             }
         }
-    }
 
-    [DebuggerDisplay("[FlowKey: {Protocol}@{SourceAddress}:{SourcePort}->{DestinationAddress}:{DestinationPort}]")]
-    public class FlowKey : IEquatable<FlowKey>
-    {
-        private _FlowKey m_data;
-
-        internal FlowKey(_FlowKey data)
+        public byte[] GetDestinationAddressBytes()
         {
-            m_data = data;
-        }
-
-        AddressFamily GetAddressFamily(System.Net.Sockets.AddressFamily af)
-        {
-            switch(af)
-            {
-                case System.Net.Sockets.AddressFamily.InterNetwork: return AddressFamily.IPv4;
-                case System.Net.Sockets.AddressFamily.InterNetworkV6: return AddressFamily.IPv6;
-                default: throw new ArgumentException("Unknown or unsupported AddressFamily.", nameof(af));
-            }
-        }
-        public FlowKey(IPProtocolType proto, IPAddress srcIp, ushort srcPort, IPAddress dstIp, ushort dstPort): this()
-        {
-            if (srcIp.AddressFamily != dstIp.AddressFamily) throw new ArgumentException("AddressFamily mismatch.",nameof(srcIp));
-            m_data.family = (ushort)(GetAddressFamily(srcIp.AddressFamily));
-            m_data.protocol = (byte)proto;
-            SetSourceAddress(srcIp);
-            m_data.sourcePort = srcPort;
-            SetDestinationAddress(dstIp);
-            m_data.destinationPort = dstPort;
-        }
-
-        public FlowKey()
-        {
-            this.m_data = new _FlowKey();
-        }
-
-
-        public override string ToString()
-        {
-            return $"{Protocol}@{SourceAddress}{SourcePort}->{DestinationAddress}:{DestinationPort}";
-        }
-
-        public AddressFamily AddressFamily
-        {
-            get
-            {
-                return (AddressFamily)m_data.family;
-            }
-        }
-
-        /// <summary>
-        /// This represents IP protocol type. 
-        /// </summary>
-        public IPProtocolType Protocol
-        {
-            get
-            {
-                return (IPProtocolType)m_data.protocol;
-            }
-            set
-            {
-                m_data.protocol = (byte)value;
-            }
-        }
-
-        public ushort SourcePort
-        {
-            get { return m_data.sourcePort;  }
-            set { m_data.sourcePort = value; }
-        }
-
-        public ushort DestinationPort
-        {
-            get { return m_data.destinationPort; }
-            set { m_data.destinationPort = value; }
-        }
-
-        public unsafe void SetSourceAddress(IPAddress sourceAddress)
-        {
-            var bytes = sourceAddress.GetAddressBytes();
-            m_data.SetSourceAddress(bytes, 0, bytes.Length);
-        }
-
-        public unsafe void SetDestinationAddress(IPAddress destinationAddress)
-        {
-            var bytes = destinationAddress.GetAddressBytes();
-            m_data.SetDestinationAddress(bytes, 0, bytes.Length);
-        }
-
-
-        unsafe byte[] GetSourceAddressBytes()
-        {
-
-            var bytes = GetAddressByteBuffer((AddressFamily)(m_data.family));
-            fixed (byte* ptr = m_data.sourceAddress)
+            var bytes = GetAddressByteBuffer((AddressFamily)(this.family));
+            fixed (byte* ptr = this.destinationAddress)
             {
                 Marshal.Copy(new IntPtr(ptr), bytes, 0, bytes.Length);
             }
             return bytes;
         }
 
-        private byte[] GetAddressByteBuffer(AddressFamily af)
+        public byte[] GetSourceAddressBytes()
+        {
+
+            var bytes = GetAddressByteBuffer((AddressFamily)(this.family));
+            fixed (byte* ptr = this.sourceAddress)
+            {
+                Marshal.Copy(new IntPtr(ptr), bytes, 0, bytes.Length);
+            }
+            return bytes;
+        }
+
+        public byte[] GetAddressByteBuffer(AddressFamily af)
         {
             switch (af)
             {
@@ -196,50 +130,175 @@ namespace Ndx.Ingest.Trace
                 default: throw new ArgumentException("Unknown or unsupported AddressFamily.", nameof(af));
             }
         }
+    }
 
-        unsafe byte[] GetDestinationAddressBytes()
+    /// <summary>
+    /// Represents a wrapper around <see cref="_FlowKey"/> structure and provides convenient methods
+    /// for accessing the underlying data.
+    /// </summary>
+    [DebuggerDisplay("[FlowKey: {Protocol}@{SourceAddress}:{SourcePort}->{DestinationAddress}:{DestinationPort}]")]
+    public class FlowKey : IEquatable<FlowKey>
+    {
+        private _FlowKey m_data;
+
+        /// <summary>
+        /// Intializes a new instance with the data provided.
+        /// </summary>
+        /// <param name="data"></param>
+        internal FlowKey(_FlowKey data)
         {
-            var bytes = GetAddressByteBuffer((AddressFamily)(m_data.family));
-            fixed (byte* ptr = m_data.destinationAddress)
-            {
-                Marshal.Copy(new IntPtr(ptr), bytes, 0, bytes.Length);
-            }
-            return bytes;
+            m_data = data;
         }
 
+        /// <summary>
+        /// Gets <see cref="AddressFamily"/> value for <see cref="System.Net.Sockets.AddressFamily"/>.
+        /// </summary>
+        /// <param name="af"><see cref="System.Net.Sockets.AddressFamily"/> value.</param>
+        /// <returns><see cref="AddressFamily"/> value for <see cref="System.Net.Sockets.AddressFamily"/>.</returns>
+        /// <exception cref="ArgumentException">If unsupported or unknown address family value was used as an argument.</exception>
+        AddressFamily GetAddressFamily(System.Net.Sockets.AddressFamily af)
+        {
+            switch(af)
+            {
+                case System.Net.Sockets.AddressFamily.InterNetwork: return AddressFamily.IPv4;
+                case System.Net.Sockets.AddressFamily.InterNetworkV6: return AddressFamily.IPv6;
+                default: throw new ArgumentException("Unknown or unsupported AddressFamily.", nameof(af));
+            }
+        }
+
+        /// <summary>
+        /// Creates a new flow key for the specified values.
+        /// </summary>
+        /// <param name="proto">Protocol type.</param>
+        /// <param name="srcIp">Source IP address.</param>
+        /// <param name="srcPort">Source port number.</param>
+        /// <param name="dstIp">Destination IP address.</param>
+        /// <param name="dstPort">Destination port number.</param>
+        public FlowKey(IPProtocolType proto, IPAddress srcIp, ushort srcPort, IPAddress dstIp, ushort dstPort): this()
+        {
+            if (srcIp.AddressFamily != dstIp.AddressFamily)
+            {
+                throw new ArgumentException("AddressFamily mismatch.",nameof(srcIp));
+            }
+
+            m_data.family = (ushort)(GetAddressFamily(srcIp.AddressFamily));
+            Protocol = proto;
+            SourceAddress = srcIp;
+            SourcePort = srcPort;
+            DestinationAddress = dstIp;
+            DestinationPort = dstPort;
+        }
+
+        /// <summary>
+        /// Creates an empty flow key. All key fields will have thair default values. 
+        /// Default address family is IPv4.
+        /// </summary>
+        public FlowKey(AddressFamily af = AddressFamily.IPv4)
+        {
+            this.m_data = new _FlowKey();
+            m_data.family = (ushort)af;
+        }
+
+        /// <summary>
+        /// Creates a new instance from the byte array provided.
+        /// </summary>
+        /// <param name="bytes"></param>
+        public FlowKey(byte [] bytes, int offset=0)
+        {
+            this.m_data = new _FlowKey(bytes, offset);
+        }
+
+
+        public override string ToString()
+        {
+            return $"{Protocol}@{SourceAddress}{SourcePort}->{DestinationAddress}:{DestinationPort}";
+        }
+
+        /// <summary>
+        /// Gets or sets the address family of the current flow key.
+        /// </summary>
+        public AddressFamily AddressFamily
+        {
+            get => (AddressFamily)m_data.family;
+            set => m_data.family = (ushort)value;
+        }
+
+        /// <summary>
+        /// This represents IP protocol type. 
+        /// </summary>
+        public IPProtocolType Protocol
+        {
+            get => (IPProtocolType)m_data.protocol;
+            set => m_data.protocol = (byte)value;
+        }
+
+        /// <summary>
+        /// Gets or sets the source port.
+        /// </summary>
+        public ushort SourcePort
+        {
+            get => m_data.sourcePort; set => m_data.sourcePort = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the destination port.
+        /// </summary>
+        public ushort DestinationPort
+        {
+            get => m_data.destinationPort; set => m_data.destinationPort = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the source address.
+        /// </summary>
         public IPAddress SourceAddress
         {
             get
             {
-                var bytes = GetSourceAddressBytes();
+                var bytes = m_data.GetSourceAddressBytes();
                 return new IPAddress(bytes);                
             }
+            set
+            {
+                var bytes = value.GetAddressBytes();
+                m_data.SetSourceAddress(bytes, 0, bytes.Length);
+            }
         }
+
+        /// <summary>
+        /// Gets or sets the destination address.
+        /// </summary>
         public IPAddress DestinationAddress
         {
             get
             {
-                var bytes = GetDestinationAddressBytes();
+                var bytes = m_data.GetDestinationAddressBytes();
                 return new IPAddress(bytes);
+            }
+            set
+            {
+                var bytes = value.GetAddressBytes();
+                m_data.SetDestinationAddress(bytes, 0, bytes.Length);
             }
         }
 
-
+        /// <summary>
+        /// Gets bytes that represents the current object.
+        /// </summary>
+        /// <returns></returns>
         public byte[] GetBytes()
         {   
             return ExplicitStruct.GetBytes<_FlowKey>(this.m_data);
         }
 
-        public unsafe static FlowKey FromBytes(byte []bytes)
-        {
-            var data = new _FlowKey(bytes);
-            return new FlowKey(data);            
-        }
-
         public bool Equals(FlowKey other)
         {
-            if (other == null) return false;
-            return _FlowKey.Equals(m_data, other.m_data);            
+            if (other == null)
+            {
+                return false;
+            }
+
+            return Equals(m_data, other.m_data);            
         }
 
         public override int GetHashCode()
@@ -255,17 +314,17 @@ namespace Ndx.Ingest.Trace
 
         public class BinaryConverter : IBinaryConverter<FlowKey>
         {
-            public bool CanRead => true;
-
-            public bool CanWrite => true;
-
             public FlowKey ReadObject(BinaryReader reader)
             {
                 var buf = reader.ReadBytes(_FlowKey.__size);
                 if (buf.Length < _FlowKey.__size)
+                {
                     return null;
+                }
                 else
-                    return FlowKey.FromBytes(buf);
+                {
+                    return new FlowKey(buf);
+                }
             }
 
             public void WriteObject(BinaryWriter writer, FlowKey value)
@@ -273,6 +332,6 @@ namespace Ndx.Ingest.Trace
                 writer.Write(value.GetBytes());
             }
         }
-        public static BinaryConverter Converter = new BinaryConverter();
+        public static IBinaryConverter<FlowKey> Converter = new BinaryConverter();
     }
 }

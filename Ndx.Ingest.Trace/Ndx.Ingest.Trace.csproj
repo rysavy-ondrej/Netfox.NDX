@@ -64,8 +64,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Captures\FrameMetadata.cs" />
+    <Compile Include="Dataflow\FlowKeyTable.cs" />
     <Compile Include="Dataflow\FlowKeyTableEntry.cs" />
-    <Compile Include="McapFile.cs" />
+    <Compile Include="Dataflow\MetacapFileInfo.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Metacap\McapFile.cs" />
     <Compile Include="Captures\PayloadHeader.cs" />
     <Compile Include="Captures\PcapLib.cs" />
     <Compile Include="Captures\PcapNetmon.cs" />
@@ -80,7 +83,9 @@
     <Compile Include="Dataflow\MetadataExtractor.cs" />
     <Compile Include="Dataflow\Reader.cs" />
     <Compile Include="Filters\FlowKeyFilterExpression.cs" />
-    <Compile Include="McapIndex.cs" />
+    <Compile Include="Metacap\McapFilePacketProviderExtension.cs" />
+    <Compile Include="Metacap\McapIndex.cs" />
+    <Compile Include="Model\PacketVisitorImpl.cs" />
     <Compile Include="Model\TcpSegment.cs" />
     <Compile Include="PcapFileIngestor.cs" />
     <Compile Include="IngestOptions.cs" />
@@ -91,7 +96,6 @@
     <Compile Include="Model\BinaryConverter.cs" />
     <Compile Include="Model\PacketBlock.cs" />
     <Compile Include="Model\PacketMetadata.cs" />
-    <Compile Include="Model\PacketPointers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

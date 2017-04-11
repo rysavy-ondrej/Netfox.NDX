@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Ndx.Ingest.Trace
 {
@@ -31,10 +32,6 @@ namespace Ndx.Ingest.Trace
 
         class BinaryConverter : IBinaryConverter<FlowKeyTableEntry>
         {
-            public bool CanRead => true;
-
-            public bool CanWrite => true;
-
             public FlowKeyTableEntry ReadObject(BinaryReader reader)
             {
                 var key = FlowKey.Converter.ReadObject(reader);
@@ -43,6 +40,7 @@ namespace Ndx.Ingest.Trace
                 if (value == null) return null;
                 return new FlowKeyTableEntry(key, value);
             }
+
 
             public void WriteObject(BinaryWriter writer, FlowKeyTableEntry entry)
             {
@@ -57,7 +55,7 @@ namespace Ndx.Ingest.Trace
 
     /// <summary>
     /// <see cref="IndexRecord"/> contains index of <see cref="FlowRecord"/> and
-    /// a collection of <see cref="PacketBlock"/> items for a single <see cref="FlowKey"/>.
+    /// a collection of indexes for <see cref="PacketBlock"/> items.
     /// </summary>
     public unsafe class IndexRecord
     {

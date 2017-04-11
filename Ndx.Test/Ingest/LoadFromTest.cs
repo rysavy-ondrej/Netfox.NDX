@@ -95,7 +95,7 @@ namespace Ndx.Test
             var path = Path.Combine(TestContext.CurrentContext.TestDirectory, @"C:\Users\Ondrej\Documents\Network Monitor 3\Captures\2adc3aaa83b46ef8d86457e0209e0aa9.cap");
             var consumer = IngestFile(path);
             Assert.AreEqual(0, consumer.RawFrameCount);
-            Assert.AreEqual(19939, consumer.PacketBlockCount);
+            Assert.AreEqual(19938, consumer.PacketBlockCount);
             Assert.AreEqual(1689, consumer.FlowRecordCount);
         }
 
@@ -116,7 +116,7 @@ namespace Ndx.Test
 
         ZipFileConsumer IngestFileZipConsumer(string path)
         {
-            var consumer = new ZipFileConsumer(path);
+            var consumer = new ZipFileConsumer(path, Path.ChangeExtension(path, "mcap"));
             var cts = new CancellationTokenSource();
             var reader = new PcapReaderProvider(32768, 1000, cts.Token);
             var ingest = new PcapFileIngestor(reader.RawFrameSource, null, consumer.PacketBlockTarget, consumer.FlowRecordTarget, new IngestOptions());
@@ -144,7 +144,7 @@ namespace Ndx.Test
             var path = Path.Combine(TestContext.CurrentContext.TestDirectory, @"C:\Users\Ondrej\Documents\Network Monitor 3\Captures\2adc3aaa83b46ef8d86457e0209e0aa9.cap");
             var consumer = IngestFileZipConsumer(path);
             Assert.AreEqual(0, consumer.RawFrameCount);
-            Assert.AreEqual(19939, consumer.PacketBlockCount);
+            Assert.AreEqual(19938, consumer.PacketBlockCount);
             Assert.AreEqual(1689, consumer.FlowRecordCount);
         }
 
