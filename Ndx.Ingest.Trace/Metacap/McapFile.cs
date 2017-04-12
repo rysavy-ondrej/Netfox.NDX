@@ -21,7 +21,7 @@ namespace Ndx.Ingest.Trace
     /// </summary>
     public class McapFile
     {
-        private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+        private static NLog.Logger m_logger = NLog.LogManager.GetCurrentClassLogger();
         private ZipArchive m_mcapArchive;
         private Stream m_pcapStream;
 
@@ -55,13 +55,13 @@ namespace Ndx.Ingest.Trace
                 }
                 catch (Exception e)
                 {
-                    _logger.Error(e, $"Cannot open MCAP file {Path.GetFullPath(mcapFile)}.");
+                    m_logger.Error(e, $"Cannot open MCAP file {Path.GetFullPath(mcapFile)}.");
                     return null;
                 }
             }
             else
             {
-                _logger.Error($"MCAP file {Path.GetFullPath(mcapFile)} or PCAP file {Path.GetFullPath(pcapFile)} do not exist.");
+                m_logger.Error($"MCAP file {Path.GetFullPath(mcapFile)} or PCAP file {Path.GetFullPath(pcapFile)} do not exist.");
                 return null;
             }
         }
@@ -74,32 +74,69 @@ namespace Ndx.Ingest.Trace
         /// </summary>
         /// <param name="id"><see cref="Guid"/> of the capture.</param>
         /// <returns>A collection of <see cref="FlowKeyTableEntry"/> object for the specified capture.</returns>
-        public FlowKeyTable GetKeyTable()
+        public FlowKeyTable FlowKeyTable
         {
-            IEnumerable<FlowKeyTableEntry> GetEntries(Stream stream)
+            get
+
             {
-                using (var reader = new BinaryReader(stream))
+                IEnumerable<FlowKeyTableEntry> GetEntries(Stream stream)
                 {
-                    do
+                    using (var reader = new BinaryReader(stream))
                     {
-                        var obj = FlowKeyTableEntry.Converter.ReadObject(reader);
-                        if (obj == null)
+                        do
                         {
-                            break;
+                            var obj = FlowKeyTableEntry.Converter.ReadObject(reader);
+                            if (obj == null)
+                            {
+                                break;
+                            }
+
+                            yield return obj;
                         }
-
-                        yield return obj;
+                        while (true);
                     }
-                    while (true);
                 }
-            }
-            if (m_flowKeyTable == null)
-            {
-                var entry = m_mcapArchive.GetEntry(MetacapFileInfo.KeyFile);
+                if (m_flowKeyTable == null)
+                {
+                    var entry = m_mcapArchive.GetEntry(MetacapFileInfo.FlowKeyTableFile);
 
-                m_flowKeyTable = new FlowKeyTable(GetEntries(entry.Open()));
+                    m_flowKeyTable = new FlowKeyTable(GetEntries(entry.Open()));
+                }
+                return m_flowKeyTable;
             }
-            return m_flowKeyTable;
+        }
+
+        private ConversationTable m_conversationTable;
+        public ConversationTable ConversationTable
+        {
+            get
+            {
+                IEnumerable<ConversationTableEntry> GetEntries(Stream stream)
+                {
+                    using (var reader = new BinaryReader(stream))
+                    {
+                        do
+                        {
+                            var obj = ConversationTableEntry.Converter.ReadObject(reader);
+                            if (obj == null)
+                            {
+                                break;
+                            }
+
+                            yield return obj;
+                        }
+                        while (true);
+                    }
+                }
+
+                if (m_conversationTable == null)
+                {
+                    var entry = m_mcapArchive.GetEntry(MetacapFileInfo.ConversationTableFile);
+
+                    m_conversationTable = new ConversationTable(GetEntries(entry.Open()));
+                }
+                return m_conversationTable;
+            }
         }
 
         /// <summary>
@@ -111,6 +148,13 @@ namespace Ndx.Ingest.Trace
         {
             var path = MetacapFileInfo.GetPacketBlockPath(index);
             var entry = m_mcapArchive.GetEntry(path);
+
+            if (entry == null)
+            {
+                m_logger.Error($"PacketBlock[{path}] cannot be find. Corrupted file?");
+                return null;
+            }
+
             using (var reader = new BinaryReader(entry.Open()))
             {
                 return PacketBlock.Converter.ReadObject(reader);

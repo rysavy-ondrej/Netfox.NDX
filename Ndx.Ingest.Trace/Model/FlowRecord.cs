@@ -77,7 +77,7 @@ namespace Ndx.Ingest.Trace
         }
     }
 
-
+    enum FlowEndpointType { Originator, Responder };
 
     /// <summary>
     /// This class collects information about a single flow.
@@ -93,7 +93,12 @@ namespace Ndx.Ingest.Trace
         /// Stores <see cref="_FlowKey"/> for the current object.
         /// </summary>
         private FlowKey m_flowkey;
-            
+
+        /// <summary>
+        /// Specifies the flow's source endpoint type.
+        /// </summary>
+        private FlowEndpointType m_endpointType;
+
         /// <summary>
         /// Synchronization object.
         /// </summary>
@@ -237,6 +242,8 @@ namespace Ndx.Ingest.Trace
         }
 
         public static IBinaryConverter<FlowRecord> Converter => new BinaryConverter();
+
+        internal FlowEndpointType EndpointType { get => m_endpointType; set => m_endpointType = value; }
 
         public class FlowRecordSerializer : JsonConverter
         {

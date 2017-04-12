@@ -158,7 +158,7 @@ namespace Ndx.Ingest.Trace
         /// <exception cref="ArgumentException">If unsupported or unknown address family value was used as an argument.</exception>
         AddressFamily GetAddressFamily(System.Net.Sockets.AddressFamily af)
         {
-            switch(af)
+            switch (af)
             {
                 case System.Net.Sockets.AddressFamily.InterNetwork: return AddressFamily.IPv4;
                 case System.Net.Sockets.AddressFamily.InterNetworkV6: return AddressFamily.IPv6;
@@ -174,11 +174,11 @@ namespace Ndx.Ingest.Trace
         /// <param name="srcPort">Source port number.</param>
         /// <param name="dstIp">Destination IP address.</param>
         /// <param name="dstPort">Destination port number.</param>
-        public FlowKey(IPProtocolType proto, IPAddress srcIp, ushort srcPort, IPAddress dstIp, ushort dstPort): this()
+        public FlowKey(IPProtocolType proto, IPAddress srcIp, ushort srcPort, IPAddress dstIp, ushort dstPort) : this()
         {
             if (srcIp.AddressFamily != dstIp.AddressFamily)
             {
-                throw new ArgumentException("AddressFamily mismatch.",nameof(srcIp));
+                throw new ArgumentException("AddressFamily mismatch.", nameof(srcIp));
             }
 
             m_data.family = (ushort)(GetAddressFamily(srcIp.AddressFamily));
@@ -203,7 +203,7 @@ namespace Ndx.Ingest.Trace
         /// Creates a new instance from the byte array provided.
         /// </summary>
         /// <param name="bytes"></param>
-        public FlowKey(byte [] bytes, int offset=0)
+        public FlowKey(byte[] bytes, int offset = 0)
         {
             this.m_data = new _FlowKey(bytes, offset);
         }
@@ -256,7 +256,7 @@ namespace Ndx.Ingest.Trace
             get
             {
                 var bytes = m_data.GetSourceAddressBytes();
-                return new IPAddress(bytes);                
+                return new IPAddress(bytes);
             }
             set
             {
@@ -287,7 +287,7 @@ namespace Ndx.Ingest.Trace
         /// </summary>
         /// <returns></returns>
         public byte[] GetBytes()
-        {   
+        {
             return ExplicitStruct.GetBytes<_FlowKey>(this.m_data);
         }
 
@@ -298,7 +298,7 @@ namespace Ndx.Ingest.Trace
                 return false;
             }
 
-            return Equals(m_data, other.m_data);            
+            return Equals(m_data, other.m_data);
         }
 
         public override int GetHashCode()
@@ -310,6 +310,15 @@ namespace Ndx.Ingest.Trace
         {
             var flowKey = obj as FlowKey;
             return Equals(flowKey);
+        }
+
+        /// <summary>
+        /// Gets the <see cref="FlowKey"/> with swapped source and destination fields.
+        /// </summary>
+        /// <returns></returns>
+        public FlowKey Swap()
+        {
+            return new FlowKey(this.Protocol, this.DestinationAddress, this.DestinationPort, this.SourceAddress, this.SourcePort);
         }
 
         public class BinaryConverter : IBinaryConverter<FlowKey>

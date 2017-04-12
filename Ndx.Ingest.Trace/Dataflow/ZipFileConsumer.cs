@@ -5,6 +5,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using System.Linq;
 
 namespace Ndx.Ingest.Trace
 {
@@ -44,6 +45,7 @@ namespace Ndx.Ingest.Trace
             m_archive = ZipFile.Open(mcapPath, ZipArchiveMode.Update);
             m_captureFile = capFilename;
             m_flowDictionary = new Dictionary<FlowKey, IndexRecord>(1024);
+            m_conversationDictionary = new Dictionary<FlowKey, int>(1024);
         }
 
         int m_packetBlockCount;
@@ -56,8 +58,8 @@ namespace Ndx.Ingest.Trace
         ActionBlock<RawFrame> m_rawFrameTarget;
 
         private Dictionary<FlowKey, IndexRecord> m_flowDictionary;
+        private Dictionary<FlowKey, int> m_conversationDictionary;
 
-        
         private PacketBlock.BinaryConverter m_packetBlockConverter = new PacketBlock.BinaryConverter();
         void WritePacketBlock(PacketBlock block)
         {
@@ -84,22 +86,26 @@ namespace Ndx.Ingest.Trace
         void WriteFlowRecord(FlowRecord flow)
         {
             var index = 0;
+            var convid = 0;
             lock (m_sync)
             {
                 index = m_flowCount++;
-                if (!m_flowDictionary.TryGetValue(flow.Key, out IndexRecord value))
+                m_flowDictionary[flow.Key] = new IndexRecord()
                 {
-                    m_flowDictionary[flow.Key] = value = new IndexRecord();
-                }
-                value.FlowRecordOffset = index;
+                    FlowRecordOffset = index
+                };
+
+                if (flow.EndpointType == FlowEndpointType.Originator)
+                {
+                    m_conversationDictionary.Add(flow.Key, ++convid);
+                }                
             }
             var path = MetacapFileInfo.GetFlowRecordPath(index);
             var entry = m_archive.CreateEntry(path, CompressionLevel.Fastest);
             using (var writer = new BinaryWriter(entry.Open()))
             {
                 m_flowRecordConverter.WriteObject(writer, flow);
-            }
-                
+            }                
         }
 
         ZipFileConsumer()
@@ -109,30 +115,39 @@ namespace Ndx.Ingest.Trace
             m_rawFrameTarget = new ActionBlock<RawFrame>(x => m_rawframeCount++);
         }
 
-        public Task Completion
-        {
-            get
-            {
-                return Task.WhenAll(m_packetBlockTarget.Completion, m_flowRecordTarget.Completion);
-            }
-        }
+        public Task Completion => Task.WhenAll(m_packetBlockTarget.Completion, m_flowRecordTarget.Completion);
 
 
         public void Close()
         {
             WriteKeyTable();
+            WriteConversationTable();
             m_archive.Dispose();
         }
 
         private void WriteKeyTable()
         {
-            var entry = m_archive.CreateEntry(MetacapFileInfo.KeyFile, CompressionLevel.Fastest);
+            var entry = m_archive.CreateEntry(MetacapFileInfo.FlowKeyTableFile, CompressionLevel.Fastest);
             using (var writer = new BinaryWriter(entry.Open()))
             {
                 foreach (var item in m_flowDictionary)
                 {
                     var keyTableEntry = new FlowKeyTableEntry(item.Key, item.Value);
                     FlowKeyTableEntry.Converter.WriteObject(writer, keyTableEntry);
+                }
+            }
+        }
+
+
+        private void WriteConversationTable()
+        {
+            var entry = m_archive.CreateEntry(MetacapFileInfo.ConversationTableFile, CompressionLevel.Fastest);
+            using (var writer = new BinaryWriter(entry.Open()))
+            {
+                foreach (var item in m_conversationDictionary)
+                {
+                    var conversationTableEntry = new ConversationTableEntry(item.Value, item.Key, item.Key.Swap());
+                    ConversationTableEntry.Converter.WriteObject(writer, conversationTableEntry);
                 }
             }
         }

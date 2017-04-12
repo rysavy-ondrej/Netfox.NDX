@@ -1,17 +1,16 @@
-﻿using Microsoft.Extensions.CommandLineUtils;
-using Ndx.Ingest.Trace;
-using PacketDotNet;
-using PacketDotNet.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.CommandLineUtils;
+using Ndx.Ingest.Trace;
+using PacketDotNet;
+using PacketDotNet.Utils;
 
-namespace Ndx.Tools.ExportPayload
+namespace Ndx.Tools.Metacap
 {
     class Program
     {
@@ -27,7 +26,14 @@ namespace Ndx.Tools.ExportPayload
         /// ndx.tools.exportpayload.exe -r "C:\Users\Ondrej\Documents\Network Monitor 3\Captures\bb7de71e185a2a7818fff92d3ec0dc05.cap" -w bb7de71e185a2a7818fff92d3ec0dc05.mcap Create-Index
         /// ndx.tools.exportpayload.exe -r "C:\Users\Ondrej\Documents\Network Monitor 3\Captures\bb7de71e185a2a7818fff92d3ec0dc05.cap" -w out.zip -f "SourcePort == 80" Export-Stream
         /// ndx.tools.exportpayload.exe -r "C:\Users\Ondrej\Documents\Network Monitor 3\Captures\bb7de71e185a2a7818fff92d3ec0dc05.cap" -w out.zip -f "SourcePort == 80" Export-Packets
+        /// 
+        /// The implementation relies on LINQ:
+        /// https://code.msdn.microsoft.com/101-LINQ-Samples-3fb9811b
+        /// 
+        /// RX and TPL Dataflow
+        /// http://blogs.interknowlogy.com/2013/01/31/mixing-tpl-dataflow-with-reactive-extensions/
         /// </remarks>
+        /// 
         enum VolumeType { Directory, Zip }
         enum PduType { Frame, Network, Transport, Application }
         static void Main(string[] args)
@@ -58,11 +64,6 @@ namespace Ndx.Tools.ExportPayload
                 {
                     Enum.TryParse(pdu.Value, out PduType pdutype);
                     var filterFun = GetFilterFunction(filter.Value());
-                    if (filterFun == null)
-                    {
-                        return -1;
-                    }
-
                     ExportPackets(infile.Value(), outfile.Value(), pdutype, filterFun);
                     return 0;
                 });
@@ -73,8 +74,8 @@ namespace Ndx.Tools.ExportPayload
                 target.HelpOption("-?|-h|--help");
                 target.OnExecute(() =>
                 {
-                    Console.WriteLine($"export flow content, infile='{infile.Value()}', outfile='{outfile.Value()}', filter='{filter.Value()}'.");
-                    throw new NotImplementedException();
+                    var filterFun = GetFilterFunction(filter.Value());
+                    ExportFlow(infile.Value(), outfile.Value(), filterFun);
                     return 0;
                 });
             });
@@ -98,13 +99,20 @@ namespace Ndx.Tools.ExportPayload
                 target.OnExecute(() =>
                 {
                     var filterFun = GetFilterFunction(filter.Value());
-                    IndexPcap(infile.Value(), outfile.Value(), filterFun);
+                    if (String.IsNullOrEmpty(infile.Value()) || !File.Exists(infile.Value()))
+                    {
+                        Console.Error.WriteLine($"Unable to find input file '{infile.Value()}'");
+                        return -1;
+                    }
+                    var mcapfile = String.IsNullOrEmpty(outfile.Value()) ? Path.ChangeExtension(infile.Value(), "mcap") : outfile.Value();
+                    IndexPcap(infile.Value(), mcapfile, filterFun);
                     return 0;
                 });
             });
 
             commandLineApplication.HelpOption("-? | -h | --help");
-
+            commandLineApplication.FullName = Resources.ApplicationName;
+            commandLineApplication.Description = Resources.Description;
             commandLineApplication.OnExecute(() =>
             {
                 commandLineApplication.ShowHelp();
@@ -168,18 +176,18 @@ namespace Ndx.Tools.ExportPayload
             var mcap = McapFile.Open(mcapfile, pcapfile);
             if (File.Exists(outfile)) File.Delete(outfile);
 
-            var exportfun = McapFilePacketProviderExtension.FrameContent;
+            var exportfun = McapFileFlowExtension.FrameContent;
             switch (pdutype)
             {
-                case PduType.Network: exportfun = McapFilePacketProviderExtension.NetworkContent; break;
-                case PduType.Frame: exportfun = McapFilePacketProviderExtension.FrameContent; break;
-                case PduType.Transport: exportfun = McapFilePacketProviderExtension.TransportContent; break;
-                case PduType.Application: exportfun = McapFilePacketProviderExtension.PayloadContent; break;
+                case PduType.Network: exportfun = McapFileFlowExtension.NetworkContent; break;
+                case PduType.Frame: exportfun = McapFileFlowExtension.FrameContent; break;
+                case PduType.Transport: exportfun = McapFileFlowExtension.TransportContent; break;
+                case PduType.Application: exportfun = McapFileFlowExtension.PayloadContent; break;
             }
 
             using (var outArchive = ZipFile.Open(outfile, ZipArchiveMode.Update))
             {
-                foreach (var flow in mcap.GetKeyTable().Where(x => flowFilter(x.Key)))
+                foreach (var flow in mcap.FlowKeyTable.Where(x => flowFilter(x.Key)))
                 {
                     var path = $"{flow.Key.Protocol}@{flow.Key.SourceAddress}.{flow.Key.SourcePort}-{flow.Key.DestinationAddress}.{flow.Key.DestinationPort}";
                     var packets = mcap.GetPacketsBytes(flow.Value, exportfun);
@@ -196,13 +204,7 @@ namespace Ndx.Tools.ExportPayload
             }
         }
 
-        /// <summary>
-        /// This function exports complete TCP streams into a single file with an index file.
-        /// </summary>
-        /// <param name="infile"></param>
-        /// <param name="outfile"></param>
-        /// <param name="flowFilter"></param>
-        private static void StreamFollow(string pcapfile, string outfile, Func<FlowKey, bool> flowFilter)
+        public static void ExportFlow(string pcapfile, string outfile, Func<FlowKey, bool> flowFilter)
         {
             var mcapfile = Path.ChangeExtension(pcapfile, "mcap");
             var mcap = McapFile.Open(mcapfile, pcapfile);
@@ -213,15 +215,49 @@ namespace Ndx.Tools.ExportPayload
 
             using (var outArchive = ZipFile.Open(outfile, ZipArchiveMode.Create))
             {
-                throw new NotImplementedException();
-                /*
-                Console.WriteLine("Writing streams:");
-                var biflows = mcap.GetConversations().Where(entries => entries.Any(entry => entry.Key.Protocol == PacketDotNet.IPProtocolType.TCP && flowFilter(entry.Key)));
-                foreach (var biflow in biflows)
+                bool filter(FlowKey key)
                 {
-                    var conversationStream = mcap.GetConversationStream(biflow, out FlowKey flowKey);
+                    return key.Protocol == IPProtocolType.TCP && flowFilter(key);
+                }
+
+                var flowTable = mcap.FlowKeyTable.Where(x => filter(x.Key));
+
+                foreach(var flow in flowTable)
+                {
+                    var path = $"{flow.Key.Protocol}@{flow.Key.SourceAddress}.{flow.Key.SourcePort}-{flow.Key.DestinationAddress}.{flow.Key.DestinationPort}";
+                    var entry = outArchive.CreateEntry(path);
+                    using (var stream = entry.Open())
+                    {
+                        mcap.WriteTcpStream(flow.Value, stream);
+                    }
+                }
+            }
+        }
+
+        public static void StreamFollow(string pcapfile, string outfile, Func<FlowKey, bool> flowFilter)
+        { 
+            var mcapfile = Path.ChangeExtension(pcapfile, "mcap");
+            var mcap = McapFile.Open(mcapfile, pcapfile);
+            if (File.Exists(outfile))
+            {
+                File.Delete(outfile);
+            }
+
+            using (var outArchive = ZipFile.Open(outfile, ZipArchiveMode.Create))
+            {
+                bool filter(FlowKey key)
+                {
+                    return key.Protocol == PacketDotNet.IPProtocolType.TCP && flowFilter(key);
+                }
+
+                var convTable = mcap.ConversationTable;
+                /*
+                foreach (var conv in convTable.Entries)
+                {
+                    var conversationStream = mcap.GetConversationStream(conv.OriginatorKey, conv.ResponderKey);
                     if (conversationStream == null) continue;
                     // print to file
+
                     var path = $"{flowKey.Protocol}@{flowKey.SourceAddress}.{flowKey.SourcePort}-{flowKey.DestinationAddress}.{flowKey.DestinationPort}";
                     Console.WriteLine($"{flowKey.Protocol}@{flowKey.SourceAddress}.{flowKey.SourcePort}<->{flowKey.DestinationAddress}.{flowKey.DestinationPort}");
                     var entry = outArchive.CreateEntry(path);

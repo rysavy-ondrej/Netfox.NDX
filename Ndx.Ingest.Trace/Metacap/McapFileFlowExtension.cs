@@ -6,31 +6,21 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reactive.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
+using PacketDotNet;
+using PacketDotNet.Utils;
 
 namespace Ndx.Ingest.Trace
 {
     
-    public static class McapFilePacketProviderExtension
+    /// <summary>
+    /// Contains a collection of extension methods for accessing packets in <see cref="McapFile"/>.
+    /// </summary>
+    public static class McapFileFlowExtension
     {
-        /// <summary>
-        /// Gets all conversations for the specified capture.
-        /// </summary>
-        /// <param name="id">Capture Id.</param>
-        /// <returns>Collection of <see cref="FlowKeyTableEntry"/> pairs for all collections.</returns>
-        public static IEnumerable<FlowKeyTableEntry[]> GetConversations(this McapFile mcap)
-        {
-            string keySelector(FlowKeyTableEntry entry)
-            {
-                var k0 = $"{entry.Key.Protocol}";
-                var k1 = $"{entry.Key.SourceAddress}.{entry.Key.SourcePort}";
-                var k2 = $"{entry.Key.DestinationAddress}.{entry.Key.DestinationPort}";
-                return k0 + (String.Compare(k1, k2) < 0 ? k1 + k2 : k2 + k1);
-            }
-
-            var flows = mcap.GetKeyTable();
-            return flows.Entries.GroupBy(keySelector).Select(g => g.ToArray());
-        }
-
         /// <summary>
         /// Gets selector for retrieving frame bytes.
         /// </summary>
@@ -60,18 +50,40 @@ namespace Ndx.Ingest.Trace
             foreach (int index in flow.IndexRecord.PacketBlockList)
             {
                 var block = mcap.GetPacketBlock(index);
-                for (int i = 0; i < block.Count; i++)
+                if (block != null)      // if block is null we silently ignore this situation.
                 {
-                    var meta = block[i];
+                    for (int i = 0; i < block.Count; i++)
+                    {
+                        var meta = block[i];
 
-                    var access = selector(meta);
-                    var bytes = new byte[access.Item2];
-                    mcap.GetRawData(access.Item1, bytes, 0, access.Item2);
-                    yield return new Tuple<PacketMetadata, byte[]>(access.Item3, bytes);
+                        var access = selector(meta);
+                        var bytes = new byte[access.Item2];
+                        mcap.GetRawData(access.Item1, bytes, 0, access.Item2);
+                        yield return new Tuple<PacketMetadata, byte[]>(access.Item3, bytes);
+                    }
                 }
             }
         }
 
+
+        public static IEnumerable<TcpPacket> GetTcpPackets(this McapFile mcap, FlowKeyTableEntry entry)
+        {
+            return mcap.GetPacketsBytes(entry, McapFileFlowExtension.TransportContent).Select(x => new TcpPacket(new ByteArraySegment(x.Item2)));
+        }
+
+        /// <summary>
+        /// This method writes the content of a TcpFlow to the specified Stream.
+        /// </summary>
+        /// <param name="mcap"></param>
+        /// <param name="flow"></param>
+        /// <returns></returns>
+        public static void WriteTcpStream(this McapFile mcap, FlowKeyTableEntry flow, Stream stream)
+        {
+            var packets = mcap.GetTcpPackets(flow).ToObservable();
+            var tcpstream = new TcpStream(stream, 128, new CancellationToken());
+            packets.Subscribe(tcpstream.PacketsTarget.AsObserver());
+            Task.WaitAll(tcpstream.Completion);
+        }
     }
         
 /*

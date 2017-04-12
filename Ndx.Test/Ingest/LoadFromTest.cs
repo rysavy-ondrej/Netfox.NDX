@@ -96,7 +96,7 @@ namespace Ndx.Test
             var consumer = IngestFile(path);
             Assert.AreEqual(0, consumer.RawFrameCount);
             Assert.AreEqual(19938, consumer.PacketBlockCount);
-            Assert.AreEqual(1689, consumer.FlowRecordCount);
+            Assert.AreEqual(1688, consumer.FlowRecordCount);
         }
 
         FileConsumer IngestFile(string path)
@@ -145,7 +145,7 @@ namespace Ndx.Test
             var consumer = IngestFileZipConsumer(path);
             Assert.AreEqual(0, consumer.RawFrameCount);
             Assert.AreEqual(19938, consumer.PacketBlockCount);
-            Assert.AreEqual(1689, consumer.FlowRecordCount);
+            Assert.AreEqual(1688, consumer.FlowRecordCount);
         }
 
     }

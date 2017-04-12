@@ -82,7 +82,10 @@ namespace Ndx.Ingest.Trace
             });
 
             m_flowDictionary = new ConcurrentDictionary<FlowKey, FlowTracker>();
+
         }
+        private object m_sync = new object();
+
         //
         // 
         //     m_actionBlock  ----------> update flow record
@@ -90,18 +93,26 @@ namespace Ndx.Ingest.Trace
         //                    ----------> 
         //
         //
-
         async Task CollectAsync(PacketMetadata metadata)
         {
             try
             {
                 var flowKey = metadata.Flow;
                 if (!m_flowDictionary.TryGetValue(flowKey, out FlowTracker value))
-                {   // setup new tracker here
+                {   // we found a new flow: 
                     m_flowDictionary[flowKey] = value = new FlowTracker(flowKey);
+
+                    if (m_flowDictionary.TryGetValue(flowKey.Swap(), out FlowTracker complementaryFlow))
+                    {
+                        value.FlowRecord.EndpointType = FlowEndpointType.Responder;
+                    }
+                    else
+                    {
+                        value.FlowRecord.EndpointType = FlowEndpointType.Originator;
+                    }
+
                     value.PacketBlockSource.LinkTo(m_packetBlockBuffer);
                 }
-
                 value.FlowRecord.UpdateWith(metadata);
                 await value.PacketMetadataTarget.SendAsync(metadata);
             }
@@ -153,8 +164,14 @@ namespace Ndx.Ingest.Trace
                 target.LinkTo(source);
                 target.Completion.ContinueWith(completion =>
                 { 
-                    if (completion.IsFaulted) ((IDataflowBlock)source).Fault(completion.Exception);
-                    else source.Complete();
+                    if (completion.IsFaulted)
+                    {
+                        ((IDataflowBlock)source).Fault(completion.Exception);
+                    }
+                    else
+                    {
+                        source.Complete();
+                    }
                 });
 
                 // TransformBlock.Complete: After Complete has been called on a dataflow block, 
@@ -163,7 +180,9 @@ namespace Ndx.Ingest.Trace
                 return DataflowBlock.Encapsulate(target, source);
             }
 
-
+            /// <summary>
+            /// Flow record associated with the current object.
+            /// </summary>
             FlowRecord m_flowRecord;
             /// <summary>
             /// This dataflow block groups <see cref="PacketMetadata"/> objects and produces <see cref="PacketBlock"/>. 

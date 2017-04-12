@@ -9,7 +9,8 @@ namespace Ndx.Ingest.Trace
     {
         public const string PacketBlockFolder = "map";
         public const string FlowRecordFolder = "fix";
-        public const string KeyFile = "key";
+        public const string FlowKeyTableFile = "key";
+        public const string ConversationTableFile = "conversations";
 
         public static string GetPacketBlockPath(int index)
         {
