@@ -92,7 +92,7 @@ namespace Ndx.Ingest.Trace
                 index = m_flowCount++;
                 m_flowDictionary[flow.Key] = new IndexRecord()
                 {
-                    FlowRecordOffset = index
+                    FlowRecordIndex = index
                 };
 
                 if (flow.EndpointType == FlowEndpointType.Originator)

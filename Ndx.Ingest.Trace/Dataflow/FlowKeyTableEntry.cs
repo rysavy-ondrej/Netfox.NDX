@@ -59,11 +59,11 @@ namespace Ndx.Ingest.Trace
     /// </summary>
     public unsafe class IndexRecord
     {
-        public int FlowRecordOffset;
-        public List<int> PacketBlockList;
+        private int m_flowRecordIndex;
+        private List<int> m_packetBlockList;
         public IndexRecord()
         {
-            PacketBlockList = new List<int>();
+            m_packetBlockList = new List<int>();
         }
         public byte[] GetBytes()
         {
@@ -71,7 +71,7 @@ namespace Ndx.Ingest.Trace
             fixed (byte* ptr = buffer)
             {
                 int* intPtr = (int*)ptr;
-                intPtr[0] = FlowRecordOffset;
+                intPtr[0] = FlowRecordIndex;
                 for (int i = 0; i < PacketBlockList.Count; i++)
                 {
                     intPtr[i + 1] = PacketBlockList[i];
@@ -85,7 +85,7 @@ namespace Ndx.Ingest.Trace
             fixed (byte* ptr = bytes)
             {
                 int* intPtr = (int*)ptr;
-                obj.FlowRecordOffset = intPtr[0];
+                obj.FlowRecordIndex = intPtr[0];
                 for (int i = 1; i < bytes.Length / sizeof(int); i++)
                 {
                     obj.PacketBlockList.Add(intPtr[i]);
@@ -121,5 +121,15 @@ namespace Ndx.Ingest.Trace
 
 
         public static IBinaryConverter<IndexRecord> Converter = new BinaryConverter();
+
+        /// <summary>
+        /// Gets or sets the flow record index.
+        /// </summary>
+        public int FlowRecordIndex { get => m_flowRecordIndex; set => m_flowRecordIndex = value; }
+
+        /// <summary>
+        /// Gets the list of packet block indexes.
+        /// </summary>
+        public IList<int> PacketBlockList => m_packetBlockList; 
     }
 }

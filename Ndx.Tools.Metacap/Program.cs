@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.CommandLineUtils;
 using Ndx.Ingest.Trace;
 using PacketDotNet;
 using PacketDotNet.Utils;
+using System.Linq;
 
 namespace Ndx.Tools.Metacap
 {
@@ -109,6 +111,39 @@ namespace Ndx.Tools.Metacap
                     return 0;
                 });
             });
+
+            commandLineApplication.Command("Verify-Index", (target) =>
+            {
+                target.Description = "Verifies the integrity of the specified mcap.";
+                target.HelpOption("-?|-h|--help");
+                target.OnExecute(() =>
+                {
+                    // prepare command
+
+                    var cmd = new VerifyIndex()
+                    {
+                        Capfile = infile.Value()
+                    };
+                    // execute command
+                    var results = cmd.Invoke().Cast<string>();
+                    // print results
+                    if (results.Count()>0)
+                    {
+                        Console.WriteLine("Metacap integrity errors:");
+                        foreach (var item in results)
+                        {
+                            Console.WriteLine(item);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No integrity errors found.");
+                    }
+
+                    return 0;
+                });
+            });
+                    
 
             commandLineApplication.HelpOption("-? | -h | --help");
             commandLineApplication.FullName = Resources.ApplicationName;

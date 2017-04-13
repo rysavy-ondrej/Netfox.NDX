@@ -35,6 +35,9 @@
     <Reference Include="Microsoft.Extensions.CommandLineUtils, Version=1.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.CommandLineUtils.1.1.0\lib\net451\Microsoft.Extensions.CommandLineUtils.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.5\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="PacketDotNet, Version=0.13.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PacketDotNet.Netfox.0.13.0.3\lib\net35\PacketDotNet.dll</HintPath>
     </Reference>
@@ -55,6 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command.cs" />
+    <Compile Include="CommandVerbs.cs" />
+    <Compile Include="DefaultCommandRuntime.cs" />
+    <Compile Include="ICommandRuntime.cs" />
+    <Compile Include="ProgressRecord.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -62,6 +70,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VerifyIndex.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
