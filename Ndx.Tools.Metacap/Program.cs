@@ -160,19 +160,20 @@ namespace Ndx.Tools.Metacap
 
         private static void IndexPcap(string inputPath, string outputPath, Func<FlowKey, bool> filterFun)
         {
-            var consumer = new ZipFileConsumer(inputPath, outputPath);
-            var cts = new CancellationTokenSource();
-            var reader = new PcapReaderProvider(32768, 1000, cts.Token);
+            using (var consumer = new McapFileConsumer(outputPath))
+            {
+                var cts = new CancellationTokenSource();
+                var reader = new PcapReaderProvider(32768, 1000, cts.Token);
 
-            var ingestOptions = new IngestOptions() { FlowFilter = filterFun };
-            var ingest = new PcapFileIngestor(reader.RawFrameSource, null, consumer.PacketBlockTarget, consumer.FlowRecordTarget, ingestOptions);
+                var ingestOptions = new IngestOptions() { FlowFilter = filterFun };
+                var ingest = new PcapFileIngestor(reader.RawFrameSource, consumer.RawFrameTarget, consumer.PacketBlockTarget, consumer.FlowRecordTarget, ingestOptions);
 
-            var fileInfo = new FileInfo(inputPath);
-            reader.ReadFrom(fileInfo);
-            reader.Complete();
+                var fileInfo = new FileInfo(inputPath);
+                reader.ReadFrom(fileInfo);
+                reader.Complete();
 
-            Task.WaitAll(ingest.Completion);
-            consumer.Close();
+                Task.WaitAll(ingest.Completion, consumer.Completion);
+            }
         }
 
         /// <summary>

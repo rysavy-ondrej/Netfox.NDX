@@ -211,7 +211,7 @@ namespace Ndx.Ingest.Trace
 
         public override string ToString()
         {
-            return $"{Protocol}@{SourceAddress}{SourcePort}->{DestinationAddress}:{DestinationPort}";
+            return $"{Protocol}@{SourceAddress}:{SourcePort}->{DestinationAddress}:{DestinationPort}";
         }
 
         /// <summary>

@@ -63,7 +63,7 @@ namespace Ndx.Ingest.Trace
         private List<int> m_packetBlockList;
         public IndexRecord()
         {
-            m_packetBlockList = new List<int>();
+            m_packetBlockList = new List<int>(16);
         }
         public byte[] GetBytes()
         {

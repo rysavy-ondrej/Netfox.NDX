@@ -86,6 +86,7 @@
     <Compile Include="Dataflow\ConversationTableEntry.cs" />
     <Compile Include="Dataflow\FlowKeyTable.cs" />
     <Compile Include="Dataflow\FlowKeyTableEntry.cs" />
+    <Compile Include="Dataflow\XcapFileConsumer.cs" />
     <Compile Include="Dataflow\MetacapFileInfo.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Metacap\McapFile.cs" />
@@ -96,7 +97,7 @@
     <Compile Include="Captures\PcapReader.cs" />
     <Compile Include="Captures\RawFrame.cs" />
     <Compile Include="Dataflow\CustomConsumer.cs" />
-    <Compile Include="Dataflow\ZipFileConsumer.cs" />
+    <Compile Include="Dataflow\McapFileConsumer.cs" />
     <Compile Include="Dataflow\FileConsumer.cs" />
     <Compile Include="Dataflow\NullConsumer.cs" />
     <Compile Include="Dataflow\FlowCollector.cs" />

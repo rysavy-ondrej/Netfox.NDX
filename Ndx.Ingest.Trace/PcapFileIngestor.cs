@@ -17,6 +17,15 @@ namespace Ndx.Ingest.Trace
         private readonly FlowCollector m_collector;
         private readonly MetadataExtractor m_extractor;
         private readonly ISourceBlock<RawFrame> m_frameProvider;
+
+        /// <summary>
+        /// Creates a new instances of PcapIngestor based on the provided Dataflow blocks.
+        /// </summary>
+        /// <param name="frameProvider">Dataflow source block of <see cref="RawFrame"/> objects.</param>
+        /// <param name="frameConsumer">Dataflow target block of <see cref="RawFrame"/> objects.</param>
+        /// <param name="packetBlockConsumer">Dataflow target block of <see cref="PacketBlock"/> objects.</param>
+        /// <param name="flowConsumer">Dataflow target block of <see cref="FlowRecord"/> objects.</param>
+        /// <param name="opt">Ingest options.</param>
         public PcapFileIngestor(ISourceBlock<RawFrame> frameProvider, ITargetBlock<RawFrame> frameConsumer, ITargetBlock<PacketBlock> packetBlockConsumer, ITargetBlock<FlowRecord> flowConsumer, IngestOptions opt)
         {            
             m_frameProvider = frameProvider;            
