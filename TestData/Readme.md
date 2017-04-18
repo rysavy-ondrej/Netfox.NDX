@@ -1,9 +1,11 @@
 ﻿# RocksDB Export Format
+This folder contains a sample of RocksDb created for provided http.cap source file.
+
 Metacap file is exported to Rocks DB using two ColumnFamilies (see https://github.com/facebook/rocksdb/wiki/Column-Families):
 
 * *flows* - this family contains flow records
 		  
-* *packets* - this family contains packets pointers realted to each flow
+* *packets* - this family contains packets pointers related to each flow
 
 Both families use *key* that is represented by a flow key of the following structure:
 
@@ -18,7 +20,13 @@ _FlowKey struct
         uint16 family;
 }
 ```
-The ```_FlowKey``` has fixed length of 40 bytes.
+The ```_FlowKey``` has fixed length of 40 bytes. It contains the following fields:
+* *protocol* - the decoded protocol up to the transport layer (see https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
+* *sourceAddress* - the source IP address, either IPv4 (4 bytes) or IPv6 (16 bytes)
+* *destinationAddress* -the desctination IP address
+* *sourcePort* - the sourcve port or other relevant identifier
+* *destinationPort* -the destination port or other relevant identifier
+* *family* - address family identifier (see https://www.iana.org/assignments/address-family-numbers/address-family-numbers.xhtml)
 
 ## Flows Column Family
 Flows column family is denoted as ```flows``` and maps ```_FlowKey``` to ```_FlowRecord``` values. Each
@@ -37,7 +45,6 @@ _FlowRecord struct
 }
 ```
 
-
 ## Packets Column Family
 Packets column family contains for each flow the table of associated packet metadata called ```PacketBlock```. 
 Packet metadata consists of frame information and the four pointers to access the packet content
@@ -55,7 +62,7 @@ _FrameMetadata struct
 }
 ```
 
-Structure ```_ByteRange``` is a helper that is used to store pointers to frame content.
+Structure ```_ByteRange``` is a helper that is used to store pointers to the frame content.
 
 ```C
 _ByteRange struct
@@ -77,7 +84,9 @@ _PacketMetadata struct
     _ByteRange payload;
 }
 ```
+
 Finally, each key is assigned to value that is represented by the following structure. 
+
 ```C
 _PacketBlock struct
 {
@@ -85,12 +94,14 @@ _PacketBlock struct
 	_PacketMetadata items[count];
 }
 ```
-This structure is a serialized array of packet metadata.
+
+This structure is a serialized array of packet metadata. 
 
 ## Test Data
 This folder contains an example of pcap file (```http.pcap```), generated metacap file and exported RocksDB representation (folder ```http.rdb```). Finally, the content of RocksDB is exported to ```http.json``` file.
 
-To reproduce results apply the following steps:
+To reproduce results, please, apply the following steps:
+
 ```
 $ metacap.exe -r http.cap Create-Index
 
