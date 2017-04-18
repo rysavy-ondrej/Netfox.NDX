@@ -1,9 +1,9 @@
 ﻿# RocksDB Export Format
-Metacap file is exported to Rocks DB using two ColumnFamilies:
+Metacap file is exported to Rocks DB using two ColumnFamilies (see https://github.com/facebook/rocksdb/wiki/Column-Families):
 
-* *flows* this family contains flow records
+* *flows* - this family contains flow records
 		  
-* *packets* this family contains packets pointers realted to each flow
+* *packets* - this family contains packets pointers realted to each flow
 
 Both families use *key* that is represented by a flow key of the following structure:
 
@@ -88,8 +88,7 @@ _PacketBlock struct
 This structure is a serialized array of packet metadata.
 
 ## Test Data
-This folder contains an example of pcap file, generated metacap file and exported RocksDB representation. 
-Finally, the content of RocksDB is exported to http.json file.
+This folder contains an example of pcap file (```http.pcap```), generated metacap file and exported RocksDB representation (folder ```http.rdb```). Finally, the content of RocksDB is exported to ```http.json``` file.
 
 To reproduce results apply the following steps:
 ```
