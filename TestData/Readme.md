@@ -97,5 +97,5 @@ $ metacap.exe -r http.cap Create-Index
 
 $ metacap.export.exe -r http.cap -w http.rdb ConvertTo-Rocks
 
-$ metacap.export.exe -r http.rdb Show-Rocks > db.json
+$ metacap.export.exe -r http.rdb Show-Rocks > http.json
 ```
