@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConvertToJson.cs" />
     <Compile Include="ShowRocks.cs" />
     <Compile Include="ConvertToRocks.cs" />
     <Compile Include="Program.cs" />

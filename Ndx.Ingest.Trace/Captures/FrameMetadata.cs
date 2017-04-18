@@ -146,7 +146,6 @@ namespace Ndx.Ingest.Trace
     /// This class contains metadata associated with captured frames. 
     /// It implements a wrapper around <see cref="_FrameMetadata"/> structure.
     /// </summary>
-    [JsonConverter(typeof(FrameMetadataConvert))]
     public class FrameMetadata
     {
         /// <summary>
@@ -212,53 +211,6 @@ namespace Ndx.Ingest.Trace
         public override string ToString()
         {
             return $"FrameMetadata {{ Timestamp : {Timestamp}, LinkLayer : {LinkLayer}, FrameLength : {FrameLength}, FrameOffset : {FrameOffset} }}";
-        }
-
-        private class FrameMetadataConvert : JsonConverter
-        {
-
-            public static readonly string FrameNumber = "frame.no";
-            public static readonly string FrameOffset = "frame.offset";
-            public static readonly string FrameTimestamp = "frame.ts";
-            public static readonly string FrameLength = "frame.len";
-
-            public override bool CanConvert(Type objectType)
-            {
-                return objectType == typeof(FrameMetadata);
-            }
-
-            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-            {
-                var jsonObject = Newtonsoft.Json.Linq.JObject.Load(reader);
-                var properties = jsonObject.Properties().ToDictionary(x => x.Name);
-
-                return new FrameMetadata()
-                {
-                    FrameNumber = (int)properties[FrameNumber].Value,
-                    FrameOffset = (int)properties[FrameOffset].Value,
-                    Timestamp = DateTimeOffsetExt.FromUnixTimeMilliseconds((long)properties[FrameTimestamp].Value),
-                    FrameLength = (int)properties[FrameLength].Value
-                };
-            }
-
-            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-            {
-                var data = value as FrameMetadata;
-                writer.WriteStartObject();
-                writer.WritePropertyName(FrameNumber);
-                writer.WriteValue(data.FrameNumber);
-
-                writer.WritePropertyName(FrameOffset);
-                writer.WriteValue(data.FrameOffset);
-
-                writer.WritePropertyName(FrameTimestamp);
-                writer.WriteValue(data.Timestamp.ToUnixTimeMilliseconds());
-
-                writer.WritePropertyName(FrameLength);
-                writer.WriteValue(data.FrameLength);
-
-                writer.WriteEndObject();
-            }
         }
     }
 }

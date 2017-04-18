@@ -109,3 +109,7 @@ $ metacap.export.exe -r http.cap -w http.rdb ConvertTo-Rocks
 
 $ metacap.export.exe -r http.rdb Show-Rocks > http.json
 ```
+Note that json file presents the content of the RocksDb in more human readable form:
+
+* Key value is decoded and represented as a string
+* Time information is converted from Unix timestamp to usual UTC format

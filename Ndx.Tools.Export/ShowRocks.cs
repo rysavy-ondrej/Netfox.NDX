@@ -83,7 +83,7 @@ namespace Ndx.Tools.Export
                     var value = new FlowRecord(iter.Value());                                        
                     iter.Next();
                     var eol = iter.Valid() ? "," : "";
-                    WriteObject($"{{ \"key\":\"{flowKey}\", \"value\" : {JsonConvert.SerializeObject(value)} }} {eol}");
+                    WriteObject($"{{ \"key\":\"{flowKey}\", \"value\" : {JsonConvert.SerializeObject(value, FlowRecordSerializer.Instance)} }} {eol}");
                 }
             }
             WriteObject("],");
@@ -101,7 +101,7 @@ namespace Ndx.Tools.Export
                     for (int i=0; i<count; i++)
                     {
                         var pm = new PacketMetadata(value, sizeof(int) + i * PacketMetadata.MetadataSize);
-                        var valstr = JsonConvert.SerializeObject(pm);
+                        var valstr = JsonConvert.SerializeObject(pm, PacketMetadataSerializer.Instance, ByteRangeSerializer.Instance, FrameMetadataSerializer.Instance);
                         var eol1 = i<count-1 ? "," : "";
                         WriteObject($"{valstr}{eol1}");
 
@@ -115,4 +115,182 @@ namespace Ndx.Tools.Export
             WriteObject("}");
         }
     }
+
+    public class FlowRecordSerializer : JsonConverter
+    {
+        public static readonly string FlowOctets = "octets";
+        public static readonly string FlowPackets = "packets";
+        public static readonly string FlowFirst = "first";
+        public static readonly string FlowLast = "last";
+        public static readonly string FlowApplication = "application";
+
+
+
+        static Lazy<FlowRecordSerializer> m_instance = new Lazy<FlowRecordSerializer>(() => new FlowRecordSerializer());
+        public static JsonConverter Instance => m_instance.Value;
+
+
+        T ParseEnum<T>(string value, T defaultResult) where T : struct
+        {
+            var result = defaultResult;
+            Enum.TryParse<T>(value, out result);
+            return result;
+        }
+
+        public override bool CanConvert(Type objectType)
+        {
+            return (objectType == typeof(FlowRecord));
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            var jsonObject = Newtonsoft.Json.Linq.JObject.Load(reader);
+            var properties = jsonObject.Properties().ToDictionary(x => x.Name);
+
+            var newObj = new FlowRecord()
+            {
+                FirstSeen = (long)properties[FlowFirst].Value,
+
+                LastSeen = (long)properties[FlowLast].Value,
+
+                Octets = (long)properties[FlowOctets].Value,
+
+                Packets = (int)properties[FlowPackets].Value,
+
+                RecognizedProtocol = ParseEnum<ApplicationProtocol>(properties[FlowApplication].Value.ToString(), ApplicationProtocol.NULL),
+
+            };
+            return newObj;
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            var data = value as FlowRecord;
+            writer.WriteStartObject();
+
+            writer.WritePropertyName(FlowFirst);
+            writer.WriteValue(data.FirstSeen);
+
+            writer.WritePropertyName(FlowLast);
+            writer.WriteValue(data.LastSeen);
+
+            writer.WritePropertyName(FlowOctets);
+            writer.WriteValue(data.Octets);
+
+            writer.WritePropertyName(FlowPackets);
+            writer.WriteValue(data.Packets);
+
+            writer.WritePropertyName(FlowApplication);
+            writer.WriteValue(data.RecognizedProtocol.ToString());
+
+            writer.WriteEndObject();
+        }
+    }
+
+    public class PacketMetadataSerializer : JsonConverter
+    {
+        static Lazy<PacketMetadataSerializer> m_instance = new Lazy<PacketMetadataSerializer>(() => new PacketMetadataSerializer());
+        public static JsonConverter Instance => m_instance.Value;
+
+        public override bool CanConvert(Type objectType)
+        {
+            return typeof(PacketMetadata).Equals(objectType);
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            var data = value as PacketMetadata;
+            writer.WriteStartObject();
+
+            writer.WritePropertyName(nameof(data.Frame).ToLower());
+
+            serializer.Serialize(writer, data.Frame);
+
+            writer.WritePropertyName(nameof(data.Link).ToLower());
+            serializer.Serialize(writer, data.Link);
+
+            writer.WritePropertyName(nameof(data.Network).ToLower());
+            serializer.Serialize(writer, data.Network);
+
+            writer.WritePropertyName(nameof(data.Transport).ToLower());
+            serializer.Serialize(writer, data.Transport);
+
+            writer.WritePropertyName(nameof(data.Payload).ToLower());
+            serializer.Serialize(writer, data.Payload);
+
+            writer.WriteEndObject();
+        }
+    }
+
+    public class ByteRangeSerializer : JsonConverter
+    {
+        static Lazy<ByteRangeSerializer> m_instance = new Lazy<ByteRangeSerializer>(() => new ByteRangeSerializer());
+        public static JsonConverter Instance => m_instance.Value;
+
+        public override bool CanConvert(Type objectType)
+        {
+            return typeof(_ByteRange).Equals(objectType);
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            var data = (_ByteRange)value;
+            writer.WriteStartObject();
+
+            writer.WritePropertyName(nameof(data.Start).ToLower());
+            writer.WriteValue(data.Start);
+
+            writer.WritePropertyName(nameof(data.Count).ToLower());
+            writer.WriteValue(data.Count);
+
+            writer.WriteEndObject();
+        }
+    }
+
+    public class FrameMetadataSerializer : JsonConverter
+    {
+        static Lazy<FrameMetadataSerializer> m_instance = new Lazy<FrameMetadataSerializer>(() => new FrameMetadataSerializer());
+        public static JsonConverter Instance => m_instance.Value;
+
+        public override bool CanConvert(Type objectType)
+        {
+            return typeof(FrameMetadata).Equals(objectType);
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            var data = (FrameMetadata)value;
+            writer.WriteStartObject();
+
+            writer.WritePropertyName(nameof(data.FrameNumber).ToLower());
+            writer.WriteValue(data.FrameNumber);
+
+            writer.WritePropertyName(nameof(data.FrameLength).ToLower());
+            writer.WriteValue(data.FrameLength);
+
+            writer.WritePropertyName(nameof(data.FrameOffset).ToLower());
+            writer.WriteValue(data.FrameOffset);
+
+            writer.WritePropertyName(nameof(data.Timestamp).ToLower());
+            writer.WriteValue(data.Timestamp);
+
+            writer.WriteEndObject();
+        }
+    }
+
 }

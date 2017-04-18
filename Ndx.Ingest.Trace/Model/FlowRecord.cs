@@ -82,7 +82,6 @@ namespace Ndx.Ingest.Trace
     /// <summary>
     /// This class collects information about a single flow.
     /// </summary>
-    [JsonConverter(typeof(FlowRecordSerializer))]
     public class FlowRecord 
     {
         /// <summary>
@@ -116,24 +115,24 @@ namespace Ndx.Ingest.Trace
         /// <summary>
         /// Gets or sets a number of flow octets.
         /// </summary>
-        public long Octets { get => m_data.octets; private set => m_data.octets = value; }
+        public long Octets { get => m_data.octets; set => m_data.octets = value; }
         /// <summary>
         /// Gets or sets a UNIX time represented as long of the first frame in the flow.
         /// </summary>
-        public long FirstSeen { get => m_data.first; private set => m_data.first = value; }
+        public long FirstSeen { get => m_data.first; set => m_data.first = value; }
         /// <summary>
         /// Gets or sets a UNIX time represented as long of the last frame in the flow.
         /// </summary>
-        public long LastSeen { get => m_data.last; private set => m_data.last = value; }
+        public long LastSeen { get => m_data.last; set => m_data.last = value; }
         /// <summary>
         /// Gets or sets a number of flow packets.
         /// </summary>
-        public int Packets { get => m_data.packets; private set => m_data.packets = value; }
+        public int Packets { get => m_data.packets; set => m_data.packets = value; }
 
         /// <summary>
         /// Recognized application protocol of the flow. 
         /// </summary>
-        public ApplicationProtocol RecognizedProtocol { get => (ApplicationProtocol)m_data.application; internal set => m_data.application = (uint)value; }
+        public ApplicationProtocol RecognizedProtocol { get => (ApplicationProtocol)m_data.application; set => m_data.application = (uint)value; }
 
         /// <summary>
         /// Creates a new object that contains an empty <see cref="_FlowRecord"/> instance and null <see cref="FlowKey"/>.
@@ -244,75 +243,5 @@ namespace Ndx.Ingest.Trace
         public static IBinaryConverter<FlowRecord> Converter => new BinaryConverter();
 
         internal FlowEndpointType EndpointType { get => m_endpointType; set => m_endpointType = value; }
-
-        public class FlowRecordSerializer : JsonConverter
-        {
-            public static readonly string FlowKey = "key";
-            public static readonly string FlowOctets = "octets";
-            public static readonly string FlowPackets = "packets";
-            public static readonly string FlowFirst = "first";
-            public static readonly string FlowLast = "last";
-            public static readonly string FlowRecognizedProtocol = "recog_proto";
-
-
-            T ParseEnum<T>(string value, T defaultResult) where T : struct
-            {
-                var result = defaultResult;
-                Enum.TryParse<T>(value, out result);
-                return result;
-            }
-
-            public override bool CanConvert(Type objectType)
-            {
-                return (objectType == typeof(FlowRecord));
-            }
-
-            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-            {
-                var jsonObject = Newtonsoft.Json.Linq.JObject.Load(reader);
-                var properties = jsonObject.Properties().ToDictionary(x => x.Name);
-
-                var newObj = new FlowRecord()
-                {
-                    FirstSeen = (long)properties[FlowFirst].Value,
-
-                    LastSeen = (long)properties[FlowLast].Value,
-
-                    Octets = (long)properties[FlowOctets].Value,
-
-                    Packets = (int)properties[FlowPackets].Value,
-
-                    RecognizedProtocol = ParseEnum<ApplicationProtocol>(properties[FlowRecognizedProtocol].Value.ToString(), ApplicationProtocol.NULL),
-
-                };
-                return newObj;
-            }
-
-            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-            {
-                var data = value as FlowRecord;
-                writer.WriteStartObject();
-
-                writer.WritePropertyName(FlowKey);
-                serializer.Serialize(writer, data.Key);
-
-                writer.WritePropertyName(FlowFirst);
-                writer.WriteValue(data.FirstSeen);
-
-                writer.WritePropertyName(FlowLast);
-                writer.WriteValue(data.LastSeen);
-
-                writer.WritePropertyName(FlowOctets);
-                writer.WriteValue(data.Octets);
-
-                writer.WritePropertyName(FlowPackets);
-                writer.WriteValue(data.Packets);
-
-                writer.WritePropertyName(FlowRecognizedProtocol);
-                writer.WriteValue(data.RecognizedProtocol.ToString());
-
-                writer.WriteEndObject();
-            }
-        }
     }
 }

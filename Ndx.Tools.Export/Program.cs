@@ -78,6 +78,46 @@ namespace Ndx.Tools.Export
             });
 
 
+            commandLineApplication.Command("Show-Rocks", (target) =>
+            {
+                target.Description = "Prints the content of the RocksDB.";
+                target.HelpOption("-?|-h|--help");
+                target.OnExecute(() =>
+                {
+                    var cmd = new ShowRocks()
+                    {
+                        RocksDbFolder = infile.Value()
+                    };
+                    // execute command
+                    var results = cmd.Invoke().Cast<string>();
+                    foreach (var item in results)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    return 0;
+                });
+            });
+
+            commandLineApplication.Command("ConvertTo-Json", (target) =>
+            {
+                target.Description = "Prints the content of the metacap in JSON representation.";
+                target.HelpOption("-?|-h|--help");
+                target.OnExecute(() =>
+                {
+                    var cmd = new ConvertToJson()
+                    {
+                        Metacap = infile.Value()
+                    };
+                    // execute command
+                    var results = cmd.Invoke().Cast<string>();
+                    foreach (var item in results)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    return 0;
+                });
+            });
+
             commandLineApplication.HelpOption("-? | -h | --help");
             commandLineApplication.FullName = Resources.ApplicationName;
             commandLineApplication.Description = Resources.Description;
