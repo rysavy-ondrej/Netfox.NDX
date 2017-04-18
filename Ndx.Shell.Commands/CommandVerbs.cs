@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ndx.Tools.Metacap
+namespace Ndx.Shell.Commands
 {
     public static class VerbsCommon
     {

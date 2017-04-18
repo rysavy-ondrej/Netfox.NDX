@@ -1,4 +1,4 @@
-﻿namespace Ndx.Tools.Metacap
+﻿namespace Ndx.Shell.Commands
 {
     public enum ProgressRecordType { Processing, Completed }
 

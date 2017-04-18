@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace Ndx.Tools.Metacap
+namespace Ndx.Shell.Commands
 {
     internal class DefaultCommandRuntime : ICommandRuntime
     {

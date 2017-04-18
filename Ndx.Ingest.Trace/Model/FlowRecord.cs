@@ -107,7 +107,7 @@ namespace Ndx.Ingest.Trace
         /// <summary>
         /// Gets the underlying data as byte array.
         /// </summary>
-        public byte[] DataBytes => m_data.GetBytes();
+        public byte[] GetBytes() => m_data.GetBytes();
 
         /// <summary>
         /// Gets the Key of the flow.
@@ -237,7 +237,7 @@ namespace Ndx.Ingest.Trace
 
             public void WriteObject(BinaryWriter writer, FlowRecord value)
             {
-                writer.Write(value.DataBytes);                
+                writer.Write(value.GetBytes());                
             }
         }
 

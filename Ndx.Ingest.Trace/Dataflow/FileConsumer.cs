@@ -97,7 +97,7 @@ namespace Ndx.Ingest.Trace
                 var pos = m_blockWriter.BaseStream.Position;
                 value.PfixOffset = (int)pos;
             }
-            m_flowWriter.Write(flow.DataBytes);
+            m_flowWriter.Write(flow.GetBytes());
         }
 
         FileConsumer()

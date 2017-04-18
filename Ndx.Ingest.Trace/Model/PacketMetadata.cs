@@ -2,8 +2,9 @@
 // Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
 // Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
 //
+using System;
 using System.Runtime.InteropServices;
-
+using Ndx.Utils;
 
 namespace Ndx.Ingest.Trace
 {
@@ -11,9 +12,13 @@ namespace Ndx.Ingest.Trace
     /// Represents a collection of extracted fields of the parsed packet.
     /// </summary>
     public class PacketMetadata
-    {        
+    {
+        public const int MetadataSize = _PacketMetadata.__size;
+
         private FlowKey m_flowkey;
         private _PacketMetadata m_metadata;
+        private byte[] value;
+        private int v;
 
         /// <summary>
         /// Gets a flow key for the current <see cref="PacketMetadata"/>.
@@ -61,7 +66,15 @@ namespace Ndx.Ingest.Trace
             m_metadata = new _PacketMetadata() { frame = frameMeta.Data };
         }
 
+        public PacketMetadata(byte[] bytes, int start)
+        {
+            this.m_metadata = new _PacketMetadata(bytes, start);
+                
+        }
+
         internal _PacketMetadata Data => m_metadata;
+
+        public byte[] GetBytes() => m_metadata.GetBytes();
     }
     [StructLayout(LayoutKind.Explicit, Size = __size)]
     internal unsafe struct _PacketMetadata
@@ -72,5 +85,26 @@ namespace Ndx.Ingest.Trace
         [FieldOffset(_FrameMetadata.__size + _ByteRange.__size)] public _ByteRange network;
         [FieldOffset(_FrameMetadata.__size + _ByteRange.__size * 2)] public _ByteRange transport;
         [FieldOffset(_FrameMetadata.__size + _ByteRange.__size * 3)] public _ByteRange payload;
+
+        internal byte[] GetBytes()
+        {
+            return ExplicitStruct.GetBytes<_PacketMetadata>(this);
+        }
+        /// <summary>
+        /// Creates the flow key from the provided bytes.
+        /// </summary>
+        /// <param name="bytes"></param>
+        public _PacketMetadata(byte[] bytes, int offset = 0)
+        {
+            if (bytes.Length + offset < __size)
+            {
+                throw new ArgumentException($"Not enough bytes for intialization of {nameof(_PacketMetadata)} instance.");
+            }
+
+            fixed (byte* pdata = bytes)
+            {
+                this = *(_PacketMetadata*)(pdata + offset);
+            }
+        }
     }
 }

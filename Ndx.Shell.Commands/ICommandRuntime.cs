@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ndx.Tools.Metacap
+namespace Ndx.Shell.Commands
 {
     /// <summary>
     /// This interface is used when you are calling the Invoke to explicitly invoke a command.

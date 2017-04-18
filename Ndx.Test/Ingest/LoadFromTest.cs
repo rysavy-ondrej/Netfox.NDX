@@ -119,13 +119,11 @@ namespace Ndx.Test
             var consumer = new McapFileConsumer(Path.ChangeExtension(path, "mcap"));
             var cts = new CancellationTokenSource();
             var reader = new PcapReaderProvider(32768, 1000, cts.Token);
-            var ingest = new PcapFileIngestor(reader.RawFrameSource, null, consumer.PacketBlockTarget, consumer.FlowRecordTarget, new IngestOptions());
+            var ingest = new PcapFileIngestor(reader.RawFrameSource, consumer.RawFrameTarget, consumer.PacketBlockTarget, consumer.FlowRecordTarget, new IngestOptions());
 
             var fileInfo = new FileInfo(path);
             reader.ReadFrom(fileInfo);
             reader.Complete();
-            // Do not forget to call Complete() on disconnected targets of the consumer. 
-            consumer.RawFrameTarget.Complete();
             Task.WaitAll(ingest.Completion, consumer.Completion);
 
             return consumer;
@@ -153,7 +151,7 @@ namespace Ndx.Test
         {
             var path = Path.Combine(TestContext.CurrentContext.TestDirectory, @"C:\Users\Ondrej\Documents\Network Monitor 3\Captures\bb7de71e185a2a7818fff92d3ec0dc05.cap");
             var consumer = IngestMcap(path);
-            Assert.AreEqual(0, consumer.RawFrameCount);
+            Assert.AreEqual(214923, consumer.RawFrameCount);
             Assert.AreEqual(5351, consumer.PacketBlockCount);
             Assert.AreEqual(2350, consumer.FlowRecordCount);
         }
@@ -162,7 +160,7 @@ namespace Ndx.Test
         {
             var path = Path.Combine(TestContext.CurrentContext.TestDirectory, @"C:\Users\Ondrej\Documents\Network Monitor 3\Captures\2adc3aaa83b46ef8d86457e0209e0aa9.cap");
             var consumer = IngestMcap(path);
-            Assert.AreEqual(0, consumer.RawFrameCount);
+            Assert.AreEqual(1181433, consumer.RawFrameCount);
             Assert.AreEqual(19938, consumer.PacketBlockCount);
             Assert.AreEqual(1688, consumer.FlowRecordCount);
         }

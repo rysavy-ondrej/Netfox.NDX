@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -9,8 +7,6 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.CommandLineUtils;
 using Ndx.Ingest.Trace;
 using PacketDotNet;
-using PacketDotNet.Utils;
-using System.Linq;
 
 namespace Ndx.Tools.Metacap
 {
