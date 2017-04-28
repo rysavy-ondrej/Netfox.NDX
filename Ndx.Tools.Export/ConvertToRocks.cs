@@ -68,9 +68,11 @@ namespace Ndx.Tools.Export
                 m_mcap = McapFile.Open(mcapfile, m_capfile);
 
                 var options = new DbOptions().SetCreateIfMissing(true).SetCreateMissingColumnFamilies(true);
-                var columnFamilies = new ColumnFamilies();
-                columnFamilies.Add("flows", new ColumnFamilyOptions());
-                columnFamilies.Add("packets", new ColumnFamilyOptions());
+                var columnFamilies = new ColumnFamilies
+                {
+                    { "flows", new ColumnFamilyOptions() },
+                    { "packets", new ColumnFamilyOptions() }
+                };
                 m_rocksDb = RocksDb.Open(options, m_rocksDbFolder,columnFamilies);
                 m_flowsCollection = m_rocksDb.GetColumnFamily("flows");
                 m_packetsCollection = m_rocksDb.GetColumnFamily("packets");
@@ -110,26 +112,8 @@ namespace Ndx.Tools.Export
                 {
                     WriteWarning($"{entry.Key}: FlowRecord {flowRecordIdx} not found in the metacap file.");
                 }
-
-                IEnumerable<PacketMetadata> GetMetadata()
-                {
-                    foreach (var packetBlockIdx in entry.IndexRecord.PacketBlockList)
-                    {
-                        var packetBlock = m_mcap.GetPacketBlock(packetBlockIdx);
-                        if (packetBlock != null)
-                        {
-                            foreach (var packet in packetBlock.Packets)
-                            {
-                                yield return packet;                                
-                            }
-                        }
-                        else
-                        {
-                            WriteWarning($"{entry.Key}: PacketBlock {packetBlockIdx} not found in the metacap file.");
-                        }
-                    }
-                }
-                var metadata = GetMetadata().ToArray();
+                
+                var metadata = m_mcap.GetPacketMetadataCollection(entry).ToArray();
                 var value = new byte[sizeof(int) + PacketMetadata.MetadataSize * metadata.Length];
                 Array.Copy(BitConverter.GetBytes(metadata.Length), value, sizeof(int));
                 for(int i = 0; i < metadata.Length; i++)

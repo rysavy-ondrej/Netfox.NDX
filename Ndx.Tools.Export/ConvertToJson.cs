@@ -90,26 +90,7 @@ namespace Ndx.Tools.Export
                 {
                     WriteWarning($"{entry.Key}: FlowRecord {flowRecordIdx} not found in the metacap file.");
                 }
-
-                IEnumerable<PacketMetadata> GetMetadata()
-                {
-                    foreach (var packetBlockIdx in entry.IndexRecord.PacketBlockList)
-                    {
-                        var packetBlock = m_mcap.GetPacketBlock(packetBlockIdx);
-                        if (packetBlock != null)
-                        {
-                            foreach (var packet in packetBlock.Packets)
-                            {
-                                yield return packet;
-                            }
-                        }
-                        else
-                        {
-                            WriteWarning($"{entry.Key}: PacketBlock {packetBlockIdx} not found in the metacap file.");
-                        }
-                    }
-                }
-                var metadata = GetMetadata().ToArray();
+                var metadata = m_mcap.GetPacketMetadataCollection(entry).ToArray();
                 WriteObject("\"packets\": [");
                 for(int metadataIndex =0; metadataIndex< metadata.Length; metadataIndex++)
                 {

@@ -44,9 +44,11 @@ namespace Ndx.Tools.Export
             try
             {
                 var options = new DbOptions();
-                var columnFamilies = new ColumnFamilies();
-                columnFamilies.Add("flows", new ColumnFamilyOptions());
-                columnFamilies.Add("packets", new ColumnFamilyOptions());
+                var columnFamilies = new ColumnFamilies
+                {
+                    { "flows", new ColumnFamilyOptions() },
+                    { "packets", new ColumnFamilyOptions() }
+                };
                 m_rocksDb = RocksDb.Open(options, m_rocksDbFolder, columnFamilies);                
                 m_flowsCollection = m_rocksDb.GetColumnFamily("flows");
                 m_packetsCollection = m_rocksDb.GetColumnFamily("packets");

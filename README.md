@@ -66,6 +66,42 @@ the structure of the flow key. The Originator is defined as the sender of
 the first captured packet associated to a 5-tuple key. If the trace file is incomplete, 
 packets of originator may be missing and thus the roles specified in the key (originator vs responders) may not reflect reality.
 
+Conversation attributes are as follows:
+
+* Application protocol as reported by selected classification method
+* Total number of packets sent from first endpoint to second endpoint
+* Total number of bytes sent from first endpoint to second endpoint
+* Total number of packets sent from second endpoint to first endpoint
+* Total number of bytes sent from second endpoint to first endpoint
+* Minimum payload size sent from first endpoint to second endpoint
+* Mean payload size sent from first endpoint to second endpoint
+* Maximum payload size sent from first endpoint to second endpoint
+* Standard deviation of payload size sent from first endpoint to
+                second endpoint
+* Minimum payload size sent from second endpoint to first endpoint
+* Mean payload size sent from second endpoint to first endpoint
+* Maximum payload size sent from second endpoint to first endpoint
+* Standard deviation of payload size sent from second endpoint to
+                first endpoint
+* Minimum packet interarrival time for packets sent from first
+                endpoint to second endpoint
+* Mean packet interarrival time for packets sent from first
+                endpoint to second endpoint
+* Maximum packet interarrival time for packets sent from first
+                endpoint to second endpoint
+* Standard deviation of packet interarrival time for packets sent from
+                first endpoint to second endpoint
+* Minimum packet interarrival time for packets sent from second
+                endpoint to first endpoint
+* Mean packet interarrival time for packets sent from second
+                endpoint to first endpoint
+* Maximum packet interarrival time for packets sent from second
+                endpoint to first endpoint
+* Standard deviation of packet interarrival time for packets sent from
+                second endpoint to first endpoint
+* Flow duration (in microseconds)
+* Flow start time (as a Unix timestamp)
+
 
 
 

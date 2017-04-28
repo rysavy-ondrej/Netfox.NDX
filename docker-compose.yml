@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  loadtrace:
+    image: loadtrace
+    build:
+      context: .\Hadoop\LoadTrace
+      dockerfile: Dockerfile

@@ -177,7 +177,7 @@ namespace Ndx.Ingest.Trace
                 {
                     foreach (var item in m_conversationDictionary)
                     {
-                        var conversationTableEntry = new ConversationTableEntry(item.Value, item.Key, item.Key.Swap());
+                        var conversationTableEntry = new ConversationTableEntry(item.Value, item.Key, FlowCollector.SwapFlowKey(item.Key));
                         ConversationTableEntry.Converter.WriteObject(writer, conversationTableEntry);
                     }
                 }

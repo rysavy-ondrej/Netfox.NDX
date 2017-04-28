@@ -8,7 +8,7 @@ using PacketDotNet.Ieee80211;
 
 namespace Ndx.Ingest.Trace
 {
-    using AddressFamily = PacketDotNet.LLDP.AddressFamily;
+    using AddressFamily = System.Net.Sockets.AddressFamily;
     internal class PacketVisitorImpl: PacketVisitor
     {
         PacketMetadata m_packetMetadata;
@@ -60,7 +60,7 @@ namespace Ndx.Ingest.Trace
         {
             m_packetMetadata.SetLink(eth.BytesHighPerformance.Offset, eth.BytesHighPerformance.Length);
             m_packetMetadata.Flow.Protocol = IPProtocolType.NONE;
-            m_packetMetadata.Flow.AddressFamily = AddressFamily.Eth802;
+            m_packetMetadata.Flow.AddressFamily = AddressFamily.Unspecified;
             m_packetMetadata.Flow.SourceAddress = System.Net.IPAddress.None;
             m_packetMetadata.Flow.DestinationAddress = System.Net.IPAddress.None;
         }
@@ -96,7 +96,7 @@ namespace Ndx.Ingest.Trace
         public override void VisitIPv4Packet(IPv4Packet ipv4)
         {
             m_packetMetadata.SetNetwork(ipv4.BytesHighPerformance.Offset, ipv4.BytesHighPerformance.Length);
-            m_packetMetadata.Flow.AddressFamily = AddressFamily.IPv4;
+            m_packetMetadata.Flow.AddressFamily = AddressFamily.InterNetwork;
             m_packetMetadata.Flow.Protocol = ipv4.Protocol;
             m_packetMetadata.Flow.SourceAddress = ipv4.SourceAddress;
             m_packetMetadata.Flow.DestinationAddress = ipv4.DestinationAddress;
@@ -105,7 +105,7 @@ namespace Ndx.Ingest.Trace
         public override void VisitIPv6Packet(IPv6Packet ipv6)
         {
             m_packetMetadata.SetNetwork(ipv6.BytesHighPerformance.Offset, ipv6.BytesHighPerformance.Length);
-            m_packetMetadata.Flow.AddressFamily = AddressFamily.IPv6;
+            m_packetMetadata.Flow.AddressFamily = AddressFamily.InterNetworkV6;
             m_packetMetadata.Flow.Protocol = ipv6.Protocol;
             m_packetMetadata.Flow.SourceAddress = ipv6.SourceAddress;
             m_packetMetadata.Flow.DestinationAddress = ipv6.DestinationAddress;

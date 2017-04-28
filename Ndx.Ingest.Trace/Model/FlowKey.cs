@@ -6,13 +6,34 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using Ndx.Utils;
 using PacketDotNet;
-using PacketDotNet.LLDP;
 
 namespace Ndx.Ingest.Trace
 {
+
+    /// <summary>
+    /// This enumeration encodes address family and protocol type into a singe value.
+    /// </summary>
+    public enum FlowProtocol
+    {
+        IPV4 = IPProtocolType.IP,
+        IPV6 = IPProtocolType.IPV6,
+        TCP4 = AddressFamily.InterNetwork << 8 + IPProtocolType.TCP,
+        UDP4 = AddressFamily.InterNetwork << 8 + IPProtocolType.UDP,
+        OSPF4 = AddressFamily.InterNetwork << 8 + IPProtocolType.OSPF,
+        ICMP4 = AddressFamily.InterNetwork << 8 + IPProtocolType.ICMP,
+        IGMP4 = AddressFamily.InterNetwork << 8 + IPProtocolType.IGMP,
+
+        TCP6 = AddressFamily.InterNetworkV6 << 8 + IPProtocolType.TCP,
+        UDP6 = AddressFamily.InterNetworkV6 << 8 + IPProtocolType.UDP,
+        ICMV6 = AddressFamily.InterNetworkV6 << 8 + IPProtocolType.ICMPV6,
+        OSPF6 = AddressFamily.InterNetworkV6 << 8 + IPProtocolType.OSPF,
+
+    }
+
 
     /// <summary>
     /// This structure is a compact representation of a Flow Key.
@@ -23,14 +44,14 @@ namespace Ndx.Ingest.Trace
         /// <summary>
         /// The size of this structure in 32-bit words.
         /// </summary>
-        public const int __size = 40;
+        public const int __size = 42;
 
         [FieldOffset(0)] public ushort protocol;
         [FieldOffset(2)] public fixed byte sourceAddress[16];
         [FieldOffset(18)] public fixed byte destinationAddress[16];
         [FieldOffset(34)] public ushort sourcePort;
         [FieldOffset(36)] public ushort destinationPort;
-        [FieldOffset(38)] public ushort family;
+        [FieldOffset(38)] public uint flowId;
 
         /// <summary>
         /// Creates the flow key from the provided bytes.
@@ -101,7 +122,7 @@ namespace Ndx.Ingest.Trace
 
         public byte[] GetDestinationAddressBytes()
         {
-            var bytes = GetAddressByteBuffer((AddressFamily)(this.family));
+            var bytes = GetAddressByteBuffer((AddressFamily)(this.protocol));
             fixed (byte* ptr = this.destinationAddress)
             {
                 Marshal.Copy(new IntPtr(ptr), bytes, 0, bytes.Length);
@@ -112,7 +133,7 @@ namespace Ndx.Ingest.Trace
         public byte[] GetSourceAddressBytes()
         {
 
-            var bytes = GetAddressByteBuffer((AddressFamily)(this.family));
+            var bytes = GetAddressByteBuffer(GetAddressFamily());
             fixed (byte* ptr = this.sourceAddress)
             {
                 Marshal.Copy(new IntPtr(ptr), bytes, 0, bytes.Length);
@@ -120,15 +141,40 @@ namespace Ndx.Ingest.Trace
             return bytes;
         }
 
+        public AddressFamily GetAddressFamily()
+        {
+            return (AddressFamily)((protocol >> 8) & 0xff);
+        }
+
+        public IPProtocolType GetProtocolType()
+        {
+            return (IPProtocolType)(protocol & 0xff);
+        }
+
         public byte[] GetAddressByteBuffer(AddressFamily af)
         {
             switch (af)
             {
-                case AddressFamily.Eth802: // return new byte[6];
-                case AddressFamily.IPv4: return new byte[4];
-                case AddressFamily.IPv6: return new byte[16];
+                case AddressFamily.InterNetwork: return new byte[4];
+                case AddressFamily.InterNetworkV6: return new byte[16];
                 default: throw new ArgumentException("Unknown or unsupported AddressFamily.", nameof(af));
             }
+        }
+
+        internal void SetFlowProtocol(AddressFamily family, IPProtocolType proto)
+        {
+            var x = (int)family << 8;
+            var y = (int)proto;
+            this.protocol = (ushort)(x|y);
+        }
+
+        internal void SetProtocolType(IPProtocolType value)
+        {
+            this.protocol = (ushort)(this.protocol & 0xff00 | ((int)value));
+        }
+        internal void SetAddressFamily(AddressFamily family)
+        {
+            this.protocol = (ushort)(this.protocol & 0x00ff | ((int)family)<<8);
         }
     }
 
@@ -151,22 +197,6 @@ namespace Ndx.Ingest.Trace
         }
 
         /// <summary>
-        /// Gets <see cref="AddressFamily"/> value for <see cref="System.Net.Sockets.AddressFamily"/>.
-        /// </summary>
-        /// <param name="af"><see cref="System.Net.Sockets.AddressFamily"/> value.</param>
-        /// <returns><see cref="AddressFamily"/> value for <see cref="System.Net.Sockets.AddressFamily"/>.</returns>
-        /// <exception cref="ArgumentException">If unsupported or unknown address family value was used as an argument.</exception>
-        AddressFamily GetAddressFamily(System.Net.Sockets.AddressFamily af)
-        {
-            switch (af)
-            {
-                case System.Net.Sockets.AddressFamily.InterNetwork: return AddressFamily.IPv4;
-                case System.Net.Sockets.AddressFamily.InterNetworkV6: return AddressFamily.IPv6;
-                default: throw new ArgumentException("Unknown or unsupported AddressFamily.", nameof(af));
-            }
-        }
-
-        /// <summary>
         /// Creates a new flow key for the specified values.
         /// </summary>
         /// <param name="proto">Protocol type.</param>
@@ -174,15 +204,15 @@ namespace Ndx.Ingest.Trace
         /// <param name="srcPort">Source port number.</param>
         /// <param name="dstIp">Destination IP address.</param>
         /// <param name="dstPort">Destination port number.</param>
-        public FlowKey(IPProtocolType proto, IPAddress srcIp, ushort srcPort, IPAddress dstIp, ushort dstPort) : this()
+        public FlowKey(AddressFamily family, IPProtocolType proto, IPAddress srcIp, ushort srcPort, IPAddress dstIp, ushort dstPort, uint flowId) : this()
         {
             if (srcIp.AddressFamily != dstIp.AddressFamily)
             {
                 throw new ArgumentException("AddressFamily mismatch.", nameof(srcIp));
             }
 
-            m_data.family = (ushort)(GetAddressFamily(srcIp.AddressFamily));
-            Protocol = proto;
+            m_data.flowId = flowId;
+            m_data.SetFlowProtocol(family, proto);
             SourceAddress = srcIp;
             SourcePort = srcPort;
             DestinationAddress = dstIp;
@@ -193,10 +223,10 @@ namespace Ndx.Ingest.Trace
         /// Creates an empty flow key. All key fields will have thair default values. 
         /// Default address family is IPv4.
         /// </summary>
-        public FlowKey(AddressFamily af = AddressFamily.IPv4)
+        public FlowKey(AddressFamily af = AddressFamily.InterNetwork)
         {
             this.m_data = new _FlowKey();
-            m_data.family = (ushort)af;
+            m_data.SetFlowProtocol(af, IPProtocolType.NONE);
         }
 
         /// <summary>
@@ -217,10 +247,10 @@ namespace Ndx.Ingest.Trace
         /// <summary>
         /// Gets or sets the address family of the current flow key.
         /// </summary>
-        public AddressFamily AddressFamily
+        public System.Net.Sockets.AddressFamily AddressFamily
         {
-            get => (AddressFamily)m_data.family;
-            set => m_data.family = (ushort)value;
+            get => m_data.GetAddressFamily();
+            set => m_data.SetAddressFamily(value);
         }
 
         /// <summary>
@@ -228,8 +258,14 @@ namespace Ndx.Ingest.Trace
         /// </summary>
         public IPProtocolType Protocol
         {
-            get => (IPProtocolType)m_data.protocol;
-            set => m_data.protocol = (byte)value;
+            get => m_data.GetProtocolType();
+            set => m_data.SetProtocolType(value);
+        }
+
+        public uint FlowId
+        {
+            get => m_data.flowId;
+            set => m_data.flowId = FlowId;
         }
 
         /// <summary>
@@ -310,15 +346,6 @@ namespace Ndx.Ingest.Trace
         {
             var flowKey = obj as FlowKey;
             return Equals(flowKey);
-        }
-
-        /// <summary>
-        /// Gets the <see cref="FlowKey"/> with swapped source and destination fields.
-        /// </summary>
-        /// <returns></returns>
-        public FlowKey Swap()
-        {
-            return new FlowKey(this.Protocol, this.DestinationAddress, this.DestinationPort, this.SourceAddress, this.SourcePort);
         }
 
         public class BinaryConverter : IBinaryConverter<FlowKey>

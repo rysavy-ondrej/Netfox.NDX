@@ -102,7 +102,7 @@ namespace Ndx.Ingest.Trace
                 {   // we found a new flow: 
                     m_flowDictionary[flowKey] = value = new FlowTracker(flowKey);
 
-                    if (m_flowDictionary.TryGetValue(flowKey.Swap(), out FlowTracker complementaryFlow))
+                    if (m_flowDictionary.TryGetValue(SwapFlowKey(flowKey), out FlowTracker complementaryFlow))
                     {
                         value.FlowRecord.EndpointType = FlowEndpointType.Responder;
                     }
@@ -120,6 +120,11 @@ namespace Ndx.Ingest.Trace
             {
                 m_logger.Error(e, "Collect Async cannot process input packet metadata.");
             }
+        }
+
+        internal static FlowKey SwapFlowKey(FlowKey flowKey)
+        {
+            return new FlowKey(flowKey.AddressFamily, flowKey.Protocol, flowKey.SourceAddress, flowKey.SourcePort, flowKey.DestinationAddress, flowKey.DestinationPort, flowKey.FlowId);
         }
 
         /// <summary>

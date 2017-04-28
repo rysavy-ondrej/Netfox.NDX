@@ -103,7 +103,27 @@ namespace Ndx.Ingest.Trace
                     m_flowKeyTable = new FlowKeyTable(GetEntries(entry.Open()));
                 }
                 return m_flowKeyTable;
+            }                                                                                                                           
+        }
+
+        public IEnumerable<PacketMetadata> GetPacketMetadataCollection(FlowKeyTableEntry entry)
+        {
+            foreach (var packetBlockIdx in entry.IndexRecord.PacketBlockList)
+            {
+                var packetBlock = GetPacketBlock(packetBlockIdx);
+                if (packetBlock != null)
+                {
+                    foreach (var packet in packetBlock.Packets)
+                    {
+                        yield return packet;
+                    }
+                }
+                else
+                {
+                    m_logger.Warn($"PacketBlock={packetBlockIdx} is not found in metacap.");
+                }
             }
+
         }
 
         private ConversationTable m_conversationTable;
