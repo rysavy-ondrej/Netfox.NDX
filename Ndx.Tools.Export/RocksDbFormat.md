@@ -2,20 +2,41 @@
 This document specifies structures and format of data types for storing index and metainformation 
 for the PCAP file content in RocksDB.
 
-Metacap file is exported to Rocks DB using the following column families:
+The metainformation on PCAP file is represented in Rocks DB using the following column families (tables):
 
 * *pcaps* - this family contains a collection of ingested PCAP files.
-* *flows* - this family contains flow records		  
-* *packets* - this family contains packets pointers related to each flow
+* *flows* - this is a group of families that contains flow related information.
+* *packets* - this family contains packets pointers related to each flow.
+
+
+In the following text the simple notation is used for represeting structures:
+```
+struct NAME
+{
+    type1 field1;
+    ...
+    typeN fieldN;
+}
+```
+and definitions for column families:
+```
+family<KEY, VALUE> NAME;
+```
+Where: 
+* *KEY* is a data type that represents a key part of the collection.
+* *VALUE* is a data type that represents a value part of the collection.
+* *NAME* is a name of the column family. Rocks db allows to use any string as a name. We stick to use only 
+   qualified identifier.
+
 
 ## PCAP Column Family
 The PCAP column family is a collection of items that describe PCAP files. Each PCAP file
 has a unique id within this collection. For each PCAP, its URI and other information is stored 
 in this table. The key of PCAP table rows is represented by structure:
 ```C
-_PcapId struct
+struct pcapId
 {
-    uint16 pcapId;
+    uint16 uid;
 }
 ```
 Where:
@@ -23,13 +44,14 @@ Where:
 
 The value part of PCAP table row is represented by the following strcuture:
 ```C
-_PcapFile struct
+struct pcapFile
 {
     uint16 pcapType;
     uint16 uriLength;
     char uri[uriLength];
     byte md5signature[16];
     byte shasignature[20];
+    datetime ingesteOn;
 }
 ```
 Where:
@@ -38,27 +60,28 @@ Where:
 * *uri* - null terminated string containing URI of the PCAP. Usually, relative URI is used.
 * *md5signature* - hash value of the PCAP computed using MD5 algorithm.
 * *shasignature* - hash value of the PCAP computed using SHA algorithm.
+* *ingestedOn* - date and time when the PCAP file was processed and stored in DB.
 
 
 PCAP column family is mapping from pcap id to pcap data:
 ```C
-ColumnFamily<_PcapKey, _PcapValue> flows;
+family<pcapId, pcapFile> flows;
 ```
 
-## Flows Column Family
-Flows column family is a collection of flows. As flow key 5-tuple is not a unique representation 
+## Flows Column Families
+Flows column families store information on flows. As flow key 5-tuple is not a unique representation 
 in all situations, e.g. reuse of the same port pairs, analysis of tunneled communication 
 between private networks, it cannot be used as a table key. Thus for each new flow, the unique flow id 
 is created (possibly in sequential manner). 
 
 ```C
-_FlowId struct
+struct flowId
 {
-    uint32 flowId;
+    uint32 uid;
 }
 ```
 
-```_FlowId``` is a key that is used in several collections, namely:
+```flowId``` is a key that is used in several collections, namely:
 * *flows.key* - a collection of flow keys.
 * *flows.record* - a collection of flow records.
 * *flows.features* - a collection of extended flow features.
@@ -68,10 +91,9 @@ without changing the basic data model.
 
 
 ### Flows.Key
-
-Each flow value consists of flow key and flow record. 
+This collection stores Flow Keys. A flow key is a usual 5-tuple represented the following structure:
 ```C
-_FlowKey struct
+struct flowKey
 {
         uint16 protocol;
         uint8 sourceAddress[16];
@@ -80,7 +102,7 @@ _FlowKey struct
         uint16 destinationPort;       
 }
 ```
-The ```_FlowKey``` has fixed length of 42 bytes. The meaning of the fields is as follows:
+Where:
 * protocol - identification of the protocol (ip, ipv6, icmp, igmp, tcp, udp, etc.)
 * sourceAddress - the source address of the flow
 * destinationAddress - the destination address of the flow
@@ -92,14 +114,14 @@ The ```_FlowKey``` has fixed length of 42 bytes. The meaning of the fields is as
 
 Flows.Key column family is mapping from flow id to flow key data:
 ```C
-ColumnFamily<_FlowId, _FlowKey> flows.key;
+family<flowId, flowKey> flows.key;
 ```
 
 ### Flows.Record
-This collection contains flow records, that is basic information on each flow. 
-The fields in this collection is similar to netflow records.
+This collection contains flow records that provide basic information on each flow. 
+The fields in this collection are similar to netflow records.
 ```C
-_FlowRecord struct 
+flowRecord struct 
 {
     uint64 octets;
     uint32 packets;
@@ -109,7 +131,7 @@ _FlowRecord struct
     uint32 application;
 }
 ```
-The meaning of individual fields is following:
+Where:
 
 * *octets* - number of bytes of the flow.
 * *packets* - number of packets of the flow.
@@ -121,14 +143,27 @@ The meaning of individual fields is following:
 
 Flows.Record column family is mapping from flow id to flow record data:
 ```C
-ColumnFamily<_FlowId, _FlowRecord> flows.record;
+family<flowId, flowRecord> flows.record;
 ```
 
 ### Flows.Features
 It is possible to extract additional features that may be useful for 
 further flow-based (statistical) analysis.
 
+Possible features are:
+* Minimum payload size sent 
+* Mean payload size sent 
+* Maximum payload size sent 
+* Standard deviation of payload size sent 
+* Minimum packet interarrival time for packets sent 
+* Mean packet interarrival time for packets sent 
+* Maximum packet interarrival time for packets sent 
+* Standard deviation of packet interarrival time for packets sent
 
+Flows.Features column family is mapping from flow id to flow features data:
+```C
+family<flowId, flowFeatures> flows.features;
+```
 
 
 ## Packets Column Family
@@ -136,11 +171,11 @@ Packets column family contains for each flow the table of associated packet meta
 Packet metadata consists of frame information and some pointers to access the packet content
 at the different layer, e.g., link, network, transport or application.
 
-Packet block family uses a comopsed key, that consits of flow identification and 
+Packet block family uses a composed key, that consits of flow identification and 
 the block sequence number.
 
 ```C
-_PacketBlockId
+struct packetBlockId
 {
     uint32 flowId;
     uint32 blockId;
@@ -148,13 +183,12 @@ _PacketBlockId
 ```
 Where:
 * *flowId* is a flow identifier.
-* *blockId* is a sequence number of the block. This number is unique int the flow scope.
-
+* *blockId* is a sequence number of the block with the flow.
 
 Frame metadata provides basic description of each captured frame, such as its number in the pcap file, 
 raw length, absolute offset in the pcap file and the frame timestamp.
 ```C
-_FrameMetadata struct
+struct frameMetadata 
 {
     uint32 frameNumber;
     uint32 frameLength;
@@ -163,10 +197,10 @@ _FrameMetadata struct
 }
 ```
 
-Structure ```_ByteRange``` is a helper that is used to store pointers to frame content.
+Structure ```byteRange``` is a helper that is used to store pointers to frame content.
 
 ```C
-_ByteRange struct
+struct byteRange
 {
     int32 start;
     int32 count;
@@ -176,34 +210,34 @@ Packet metadata strcuture comprise of frame description and four pointers. If th
 transport data, for example, then ```transport``` value equals to ```{ start=0, count=0 }```.
 
 ```C
-_PacketMetadata struct
+struct packetMetadata
 {
-    _FrameMetadata frame;
-    _ByteRange link;
-    _ByteRange network;
-    _ByteRange transport;
-    _ByteRange payload;
+    frameMetadata frame;
+    byteRange link;
+    byteRange network;
+    byteRange transport;
+    byteRange payload;
 }
 ```
 
 Packets column family consists of values represented by ```_PacketBlock``` stucture: 
 ```C
-_PacketBlock struct
+struct packetBlock
 {
-    _PcapId pcapRef;
+    pcapId pcapRef;
     int32 count;
-    _PacketMetadata items[count];
+    packetMetadata items[count];
 }
 ```
 where:
 * *pcapRef* - reference to pcap file. 
-* *count* - number of ```_PacketMetadata``` items in the packet block.
-* *items* - an array of ```_PacketMetadata``` values.
+* *count* - number of ```packetMetadata``` items in the packet block.
+* *items* - an array of ```packetMetadata``` values.
 
 Packets column family has defined as follows:
 
 ```C
-ColumnFamily<_PacketBlockId, _PacketBlock> packets;
+family<packetBlockId, packetBlock> packets;
 ```
 
 
@@ -219,7 +253,7 @@ reasonable large packet blocks.
 
 
 ### How do I access packet for the flow?
-Field ```_FlowRecord.blocks``` denotes a number of blocks of packets associated with the flow.
+Field ```flowRecord.blocks``` denotes a number of blocks of packets associated with the flow.
 For instance, ```flowId=2345``` and ```blocks=3``` means that there are 3 blocks in the packet column family 
 associated with the flow 2345. To get these blocks use the following keys:
 ```{ flowId = 2345, blockId = 0 }```, 

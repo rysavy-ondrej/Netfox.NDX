@@ -110,8 +110,7 @@ CREATE TABLE basicFlowFeatures (
     PRIMARY KEY (flowId)
 )
 ```
-
-Conversation attributes are as follows:
+Flow attributes are as follows:
 
 * Application protocol as reported by selected classification method
 * Total number of packets sent 
