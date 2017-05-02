@@ -65,7 +65,7 @@ Where:
 
 PCAP column family is mapping from pcap id to pcap data:
 ```C
-family<pcapId, pcapFile> flows;
+family<pcapId, pcapFile> pcaps;
 ```
 
 ## Flows Column Families
@@ -108,15 +108,12 @@ Where:
 * destinationAddress - the destination address of the flow
 * sourcePort - the source port or 0 for flows without this information 
 * destinationPort - the destination port or 0 for flows that do not have this field
-* flowId - a flow identifier that mainly serves to distinguish between flows 
-   that shares the same key 5-tuple. Because flowId is also used to reference
-   flow records it should be unique in the database.
 
 Flows.Key column family is mapping from flow id to flow key data:
 ```C
 family<flowId, flowKey> flows.key;
 ```
-
+   
 ### Flows.Record
 This collection contains flow records that provide basic information on each flow. 
 The fields in this collection are similar to netflow records.
