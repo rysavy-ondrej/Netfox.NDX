@@ -51,7 +51,7 @@ struct pcapFile
     char uri[uriLength];
     byte md5signature[16];
     byte shasignature[20];
-    datetime ingesteOn;
+    ulong ingesteOn;
 }
 ```
 Where:

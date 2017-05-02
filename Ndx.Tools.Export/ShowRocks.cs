@@ -75,20 +75,37 @@ namespace Ndx.Tools.Export
             }
 
             WriteObject("{");
-            WriteObject("\"flows\": [");
+            WriteObject("\"flows.key\": [");
             using (var iter = m_rocksDb.NewIterator(m_flowsCollection))
             {
                 iter.SeekToFirst();
                 while (iter.Valid())
                 {
-                    var flowKey = new FlowKey(iter.Key());
-                    var value = new FlowRecord(iter.Value());                                        
+                    var flowKey = BitConverter.ToInt32(iter.Key(),0);
+                    var value = new FlowKey(iter.Value());                                        
                     iter.Next();
                     var eol = iter.Valid() ? "," : "";
                     WriteObject($"{{ \"key\":\"{flowKey}\", \"value\" : {JsonConvert.SerializeObject(value, FlowRecordSerializer.Instance)} }} {eol}");
                 }
             }
             WriteObject("],");
+
+            WriteObject("{");
+            WriteObject("\"flows.record\": [");
+            using (var iter = m_rocksDb.NewIterator(m_flowsCollection))
+            {
+                iter.SeekToFirst();
+                while (iter.Valid())
+                {
+                    var flowKey = BitConverter.ToInt32(iter.Key(),0);
+                    var value = new FlowRecord(iter.Value());
+                    iter.Next();
+                    var eol = iter.Valid() ? "," : "";
+                    WriteObject($"{{ \"key\":\"{flowKey}\", \"value\" : {JsonConvert.SerializeObject(value, FlowRecordSerializer.Instance)} }} {eol}");
+                }
+            }
+            WriteObject("],");
+
             WriteObject("\"packets\": [");
             using (var iter = m_rocksDb.NewIterator(m_packetsCollection))
             {

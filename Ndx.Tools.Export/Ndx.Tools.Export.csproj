@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConvertToJson.cs" />
+    <Compile Include="RocksDbDto.cs" />
     <Compile Include="ShowRocks.cs" />
     <Compile Include="ConvertToRocks.cs" />
     <Compile Include="Program.cs" />
@@ -94,6 +95,14 @@
     <ProjectReference Include="..\Ndx.Shell.Commands\Ndx.Shell.Commands.csproj">
       <Project>{96565d54-4eab-455a-85fe-ae5ea02b4efe}</Project>
       <Name>Ndx.Shell.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ndx.Tools.Metacap\Ndx.Tools.Metacap.csproj">
+      <Project>{dc4ffbb3-9612-4736-8896-088daf2f419d}</Project>
+      <Name>Ndx.Tools.Metacap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ndx.Utils\Ndx.Utils.csproj">
+      <Project>{cad4b73f-5bab-479f-be15-c7bdcc510fa3}</Project>
+      <Name>Ndx.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -122,7 +122,7 @@ namespace Ndx.Ingest.Trace
 
         public byte[] GetDestinationAddressBytes()
         {
-            var bytes = GetAddressByteBuffer((AddressFamily)(this.protocol));
+            var bytes = AllocateAddressByteBuffer();
             fixed (byte* ptr = this.destinationAddress)
             {
                 Marshal.Copy(new IntPtr(ptr), bytes, 0, bytes.Length);
@@ -133,7 +133,7 @@ namespace Ndx.Ingest.Trace
         public byte[] GetSourceAddressBytes()
         {
 
-            var bytes = GetAddressByteBuffer(GetAddressFamily());
+            var bytes = AllocateAddressByteBuffer();
             fixed (byte* ptr = this.sourceAddress)
             {
                 Marshal.Copy(new IntPtr(ptr), bytes, 0, bytes.Length);
@@ -151,13 +151,13 @@ namespace Ndx.Ingest.Trace
             return (IPProtocolType)(protocol & 0xff);
         }
 
-        public byte[] GetAddressByteBuffer(AddressFamily af)
+        private byte[] AllocateAddressByteBuffer()
         {
-            switch (af)
+            switch (GetAddressFamily())
             {
                 case AddressFamily.InterNetwork: return new byte[4];
                 case AddressFamily.InterNetworkV6: return new byte[16];
-                default: throw new ArgumentException("Unknown or unsupported AddressFamily.", nameof(af));
+                default: throw new ArgumentException($"Unknown or unsupported AddressFamily={GetAddressFamily()}");
             }
         }
 
