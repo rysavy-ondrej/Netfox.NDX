@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Ndx.Ingest.Trace;
 using Ndx.Shell.Commands;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RocksDbSharp;
 
 namespace Ndx.Tools.Export
@@ -30,8 +32,6 @@ namespace Ndx.Tools.Export
         /// An instance of <see cref="RocksDb"/> class that is to be used for writing exported data.
         /// </summary>
         RocksDb m_rocksDb;
-        private ColumnFamilyHandle m_flowsCollection;
-        private ColumnFamilyHandle m_packetsCollection;
 
         /// <summary>
         /// Gets or sets the path to the output RocksDB root folder.
@@ -46,12 +46,13 @@ namespace Ndx.Tools.Export
                 var options = new DbOptions();
                 var columnFamilies = new ColumnFamilies
                 {
-                    { "flows", new ColumnFamilyOptions() },
+                    { "pcaps", new ColumnFamilyOptions() },
+                    { "flows.key", new ColumnFamilyOptions() },
+                    { "flows.record", new ColumnFamilyOptions() },
+                    { "flows.features", new ColumnFamilyOptions() },
                     { "packets", new ColumnFamilyOptions() }
                 };
-                m_rocksDb = RocksDb.Open(options, m_rocksDbFolder, columnFamilies);                
-                m_flowsCollection = m_rocksDb.GetColumnFamily("flows");
-                m_packetsCollection = m_rocksDb.GetColumnFamily("packets");
+                m_rocksDb = RocksDb.Open(options, m_rocksDbFolder, columnFamilies);
             }
             catch (Exception e)
             {
@@ -74,64 +75,81 @@ namespace Ndx.Tools.Export
                 return;
             }
 
+            var pcapsCollection = m_rocksDb.GetColumnFamily("pcaps");
+            var flowsKeyCollection = m_rocksDb.GetColumnFamily("flows.key");
+            var flowsRecordCollection = m_rocksDb.GetColumnFamily("flows.record");
+            var packetsCollection = m_rocksDb.GetColumnFamily("packets");
+
             WriteObject("{");
             WriteObject("\"flows.key\": [");
-            using (var iter = m_rocksDb.NewIterator(m_flowsCollection))
+            using (var iter = m_rocksDb.NewIterator(flowsKeyCollection))
             {
                 iter.SeekToFirst();
                 while (iter.Valid())
                 {
-                    var flowKey = BitConverter.ToInt32(iter.Key(),0);
-                    var value = new FlowKey(iter.Value());                                        
+                    var flowId = RocksSerializer.ToFlowId(iter.Key(),0);
+                    var flowKey = RocksSerializer.ToFlowKey(iter.Value(),0);                                        
                     iter.Next();
                     var eol = iter.Valid() ? "," : "";
-                    WriteObject($"{{ \"key\":\"{flowKey}\", \"value\" : {JsonConvert.SerializeObject(value, FlowRecordSerializer.Instance)} }} {eol}");
+                    var keyValue = new KeyValuePair<RocksFlowId, RocksFlowKey>(flowId, flowKey);
+                    WriteObject($"{JsonConvert.SerializeObject(keyValue, IPAddressConverter.Instance)}{eol}");
                 }
             }
             WriteObject("],");
-
-            WriteObject("{");
             WriteObject("\"flows.record\": [");
-            using (var iter = m_rocksDb.NewIterator(m_flowsCollection))
+            using (var iter = m_rocksDb.NewIterator(flowsRecordCollection))
             {
                 iter.SeekToFirst();
                 while (iter.Valid())
                 {
-                    var flowKey = BitConverter.ToInt32(iter.Key(),0);
-                    var value = new FlowRecord(iter.Value());
+                    var flowId = RocksSerializer.ToFlowId(iter.Key(),0);
+                    var flowRecord = RocksSerializer.ToFlowRecord(iter.Value(),0);
                     iter.Next();
                     var eol = iter.Valid() ? "," : "";
-                    WriteObject($"{{ \"key\":\"{flowKey}\", \"value\" : {JsonConvert.SerializeObject(value, FlowRecordSerializer.Instance)} }} {eol}");
+                    var keyValue = new KeyValuePair<RocksFlowId, RocksFlowRecord>(flowId, flowRecord);
+                    WriteObject($"{JsonConvert.SerializeObject(keyValue)}{eol}");
                 }
             }
             WriteObject("],");
 
             WriteObject("\"packets\": [");
-            using (var iter = m_rocksDb.NewIterator(m_packetsCollection))
+            using (var iter = m_rocksDb.NewIterator(packetsCollection))
             {
                 iter.SeekToFirst();
                 while (iter.Valid())
                 {
-                    var flowKey = new FlowKey(iter.Key());
-                    var value = iter.Value();
-
-                    WriteObject($"{{ \"key\":\"{flowKey}\" , \"items\" : [");
-                    var count = BitConverter.ToInt32(value, 0);
-                    for (int i=0; i<count; i++)
-                    {
-                        var pm = new PacketMetadata(value, sizeof(int) + i * PacketMetadata.MetadataSize);
-                        var valstr = JsonConvert.SerializeObject(pm, PacketMetadataSerializer.Instance, ByteRangeSerializer.Instance, FrameMetadataSerializer.Instance);
-                        var eol1 = i<count-1 ? "," : "";
-                        WriteObject($"{valstr}{eol1}");
-
-                    }
+                    var packetBlockId = RocksSerializer.ToPacketBlockId(iter.Key(),0);
+                    var packetBlock = RocksSerializer.ToPacketBlock(iter.Value(), 0);
                     iter.Next();
                     var eol = iter.Valid() ? "," : "";
-                    WriteObject($"] }} {eol}");                                         
+                    var keyValue = new KeyValuePair<RocksPacketBlockId, RocksPacketBlock>(packetBlockId, packetBlock);
+                    WriteObject($"{JsonConvert.SerializeObject(keyValue)}{eol}");
                 }
             }
             WriteObject("]");
             WriteObject("}");
+        }
+    }
+
+    class IPAddressConverter : JsonConverter
+    {
+        internal static IPAddressConverter Instance = new IPAddressConverter();
+
+        public override bool CanConvert(Type objectType)
+        {
+            return (objectType == typeof(IPAddress));
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            IPAddress ip = (IPAddress)value;
+            writer.WriteValue(ip.ToString());
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            JToken token = JToken.Load(reader);
+            return IPAddress.Parse(token.Value<string>());
         }
     }
 

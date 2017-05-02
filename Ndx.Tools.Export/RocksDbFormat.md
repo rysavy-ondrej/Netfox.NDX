@@ -51,7 +51,7 @@ struct pcapFile
     char uri[uriLength];
     byte md5signature[16];
     byte shasignature[20];
-    ulong ingesteOn;
+    uint64 ingesteOn;
 }
 ```
 Where:
@@ -60,7 +60,7 @@ Where:
 * *uri* - null terminated string containing URI of the PCAP. Usually, relative URI is used.
 * *md5signature* - (optional) hash value of the PCAP computed using MD5 algorithm.
 * *shasignature* - (optional) hash value of the PCAP computed using SHA algorithm.
-* *ingestedOn* - date and time when the PCAP file was processed and stored in DB.
+* *ingestedOn* - UNIX timestamp when the PCAP file was processed and stored in DB.
 
 
 PCAP column family is mapping from pcap id to pcap data:

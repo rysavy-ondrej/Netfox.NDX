@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using Ndx.Utils;
+using Newtonsoft.Json;
+
 namespace Ndx.Tools.Export
 {
 
@@ -15,10 +18,12 @@ namespace Ndx.Tools.Export
     }
 
 
+    [JsonObject(MemberSerialization = MemberSerialization.Fields)]
     public class RocksPcapId
     {
-        ushort m_uid;
-        public ushort Uid { get => m_uid; set => m_uid = value; }
+        internal static readonly int __size = sizeof(ushort);
+        ushort uid;
+        public ushort Uid { get => uid; set => uid = value; }
 
 
         public class BinarySerializer : RocksBinarySerializer<RocksPcapId>
@@ -27,54 +32,69 @@ namespace Ndx.Tools.Export
             {
                 return new RocksPcapId()
                 {
-                    m_uid = BitConverter.ToUInt16(bytes, startIndex)
+                    uid = BitConverter.ToUInt16(bytes, startIndex)
                 };
             }
 
             public override byte[] GetBytes(RocksPcapId obj)
             {
-                return BitConverter.GetBytes(obj.m_uid);
+                return BitConverter.GetBytes(obj.uid);
             }
         }
     }
 
+    [JsonObject(MemberSerialization = MemberSerialization.Fields)]
     public class RocksPcapFile
     {
-        ushort m_pcapType;
-        Uri m_uri;
-        byte[] m_md5signature;
-        byte[] m_shasignature;
-        DateTimeOffset m_ingestedOn;
+        ushort pcapType;
+        Uri uri;
+        byte[] md5signature = new byte[16];
+        byte[] shasignature = new byte[20];
+        DateTimeOffset ingestedOn;
 
-        public ushort PcapType { get => m_pcapType; set => m_pcapType = value; }
-        public Uri Uri { get => m_uri; set => m_uri = value; }
-        public byte[] Md5signature { get => m_md5signature; set => m_md5signature = value; }
-        public byte[] Shasignature { get => m_shasignature; set => m_shasignature = value; }
-        public DateTimeOffset IngestedOn { get => m_ingestedOn; set => m_ingestedOn = value; }
+        public ushort PcapType { get => pcapType; set => pcapType = value; }
+        public Uri Uri { get => uri; set => uri = value; }
+        public byte[] Md5signature { get => md5signature; set => md5signature = value; }
+        public byte[] Shasignature { get => shasignature; set => shasignature = value; }
+        public DateTimeOffset IngestedOn { get => ingestedOn; set => ingestedOn = value; }
 
         public class BinarySerializer : RocksBinarySerializer<RocksPcapFile>
         {
             public override RocksPcapFile FromBytes(byte[] bytes, int startIndex)
             {
-                throw new NotImplementedException();
+                var uriLen = BitConverter.ToUInt16(bytes, startIndex + 2);
+                var uriBytes = new byte[uriLen];
+                Array.Copy(bytes, startIndex + 4, uriBytes, 0, uriLen);
+                var md5Bytes = new byte[16];
+                Array.Copy(bytes, startIndex + 4 + uriLen, md5Bytes, 0, 16);
+                var shaBytes = new byte[20];
+                Array.Copy(bytes, startIndex + 4 + uriLen+16, shaBytes, 0, 20);
+                var ingestedOnBytes = BitConverter.ToUInt64(bytes, startIndex + 2 + 2 + uriLen + 16 + 20);
+                return new RocksPcapFile()
+                {
+                    pcapType = BitConverter.ToUInt16(bytes, startIndex),
+                    uri = new Uri(Encoding.ASCII.GetString(uriBytes)),
+                    ingestedOn = DateTimeOffsetExt.FromUnixTimeMilliseconds((long)ingestedOnBytes)
+                };
             }
 
             public override byte[] GetBytes(RocksPcapFile obj)
             {
-                var pcapTypeBytes = BitConverter.GetBytes(obj.m_pcapType);
-                var uriBytes = Encoding.ASCII.GetBytes(obj.m_uri.ToString());
-                var uriLength = BitConverter.GetBytes(uriBytes.Length);
-                var ingestOnBytes = BitConverter.GetBytes(obj.m_ingestedOn.ToUnixTimeMilliseconds());
-                return pcapTypeBytes.Concat(uriLength).Concat(uriBytes).Concat(obj.m_md5signature).Concat(obj.m_shasignature).Concat(ingestOnBytes).ToArray();
+                var pcapTypeBytes = BitConverter.GetBytes(obj.pcapType);
+                var uriBytes = Encoding.ASCII.GetBytes(obj.uri.ToString());
+                var uriLength = BitConverter.GetBytes((ushort)uriBytes.Length);
+                var ingestOnBytes = BitConverter.GetBytes(obj.ingestedOn.ToUnixTimeMilliseconds());
+                return pcapTypeBytes.Concat(uriLength).Concat(uriBytes).Concat(obj.md5signature).Concat(obj.shasignature).Concat(ingestOnBytes).ToArray();
             }
         }
     }
 
+    [JsonObject(MemberSerialization = MemberSerialization.Fields)]
     public class RocksFlowId
     {
-        uint m_uid;
+        uint uid;
 
-        public uint Uid { get => m_uid; set => m_uid = value; }
+        public uint Uid { get => uid; set => uid = value; }
 
         public class BinarySerializer : RocksBinarySerializer<RocksFlowId>
         {
@@ -82,29 +102,30 @@ namespace Ndx.Tools.Export
             {
                 return new RocksFlowId()
                 {
-                    m_uid = BitConverter.ToUInt32(bytes, startIndex)
+                    uid = BitConverter.ToUInt32(bytes, startIndex)
                 };
             }
 
             public override byte[] GetBytes(RocksFlowId obj)
             {
-                return BitConverter.GetBytes(obj.m_uid);
+                return BitConverter.GetBytes(obj.uid);
             }
         }
 
     }
 
+    [JsonObject(MemberSerialization = MemberSerialization.Fields)]
     public class RocksFlowKey
     {
-        ushort m_protocol;
-        byte[] sourceAddress;
-        byte[] destinationAddress;
+        ushort protocol;
+        IPAddress sourceAddress;
+        IPAddress destinationAddress;
         ushort sourcePort;
         ushort destinationPort;
 
-        public ushort Protocol { get => m_protocol; set => m_protocol = value; }
-        public IPAddress SourceAddress { get => new IPAddress(sourceAddress); set => sourceAddress = value.GetAddressBytes(); }
-        public IPAddress DestinationAddress { get => new IPAddress(destinationAddress); set => destinationAddress = value.GetAddressBytes(); }
+        public ushort Protocol { get => protocol; set => protocol = value; }
+        public IPAddress SourceAddress { get => sourceAddress; set => sourceAddress = value; }
+        public IPAddress DestinationAddress { get => destinationAddress; set => destinationAddress = value; }
         public ushort SourcePort { get => sourcePort; set => sourcePort = value; }
         public ushort DestinationPort { get => destinationPort; set => destinationPort = value; }
 
@@ -112,26 +133,45 @@ namespace Ndx.Tools.Export
         {
             public override RocksFlowKey FromBytes(byte[] bytes, int startIndex)
             {
-                throw new NotImplementedException();
+                var protocol = BitConverter.ToUInt16(bytes, startIndex);
+                var srcAddressBytes = new byte[16];
+                Array.Copy(bytes, startIndex + 2, srcAddressBytes, 0, 16);
+                var dstAddressBytes = new byte[16];
+                Array.Copy(bytes, startIndex + 2+16, dstAddressBytes, 0, 16);
+                
+                if (protocol >> 8 == (int)AddressFamily.InterNetwork)
+                {
+                    Array.Resize(ref srcAddressBytes, 4);
+                    Array.Resize(ref dstAddressBytes, 4);
+                }
+
+                return new RocksFlowKey()
+                {
+                    protocol = protocol,
+                    sourceAddress = new IPAddress(srcAddressBytes),
+                    destinationAddress = new IPAddress(dstAddressBytes),
+                    sourcePort = BitConverter.ToUInt16(bytes, startIndex + 2 + 16 + 16),
+                    destinationPort = BitConverter.ToUInt16(bytes, startIndex + 2 + 16 + 16 + 2),
+                };
             }
 
             public override byte[] GetBytes(RocksFlowKey obj)
             {
-                var protocolBytes = BitConverter.GetBytes(obj.m_protocol);
-                var sourcePortBytes = BitConverter.GetBytes(obj.sourcePort);
+                var protocolBytes = BitConverter.GetBytes(obj.protocol);
+                var sourceAddressBytes = obj.sourceAddress.GetAddressBytes();
+                var destinAddressBytes = obj.destinationAddress.GetAddressBytes();
+                Array.Resize(ref sourceAddressBytes, 16);
+                Array.Resize(ref destinAddressBytes, 16);
+                var sourcePortBytes = BitConverter.GetBytes(obj.sourcePort);                
                 var destinationPortBytes = BitConverter.GetBytes(obj.destinationPort);
-                return protocolBytes.Concat(obj.sourceAddress).Concat(GetIpAddressBytes(obj.destinationAddress)).Concat(sourcePortBytes).Concat(destinationPortBytes).ToArray();
-
+                
+                return protocolBytes.Concat(sourceAddressBytes).Concat(destinAddressBytes).Concat(sourcePortBytes).Concat(destinationPortBytes).ToArray();
             }
-
-            private IEnumerable<byte> GetIpAddressBytes(byte[] address)
-            {
-                Array.Resize(ref address, 16);
-                return address;
-            }
+   
         }
     }
 
+    [JsonObject(MemberSerialization=MemberSerialization.Fields)]
     public class RocksFlowRecord
     {
         ulong octets;
@@ -152,7 +192,15 @@ namespace Ndx.Tools.Export
         {
             public override RocksFlowRecord FromBytes(byte[] bytes, int startIndex)
             {
-                throw new NotImplementedException();
+                return new RocksFlowRecord()
+                {
+                    octets = BitConverter.ToUInt64(bytes, startIndex),
+                    packets = BitConverter.ToUInt32(bytes, startIndex + sizeof(ulong)),
+                    first = BitConverter.ToUInt64(bytes, startIndex + sizeof(ulong) + sizeof(uint)),
+                    last = BitConverter.ToUInt64(bytes, startIndex + sizeof(ulong) + sizeof(uint) + sizeof(ulong)),
+                    blocks = BitConverter.ToUInt32(bytes, startIndex + sizeof(ulong) + sizeof(uint) + sizeof(ulong) + sizeof(ulong)),
+                    application = BitConverter.ToUInt32(bytes, startIndex + sizeof(ulong) + sizeof(uint) + sizeof(ulong) + sizeof(ulong) + sizeof(uint))
+                };
             }
 
             public override byte[] GetBytes(RocksFlowRecord obj)
@@ -169,6 +217,7 @@ namespace Ndx.Tools.Export
 
     }
 
+    [JsonObject(MemberSerialization = MemberSerialization.Fields)]
     public class RocksPacketBlockId
     {
         uint flowId;
@@ -181,7 +230,11 @@ namespace Ndx.Tools.Export
         {
             public override RocksPacketBlockId FromBytes(byte[] bytes, int startIndex)
             {
-                throw new NotImplementedException();
+                return new RocksPacketBlockId()
+                {
+                    flowId = BitConverter.ToUInt32(bytes, startIndex),
+                    blockId = BitConverter.ToUInt32(bytes, startIndex + 4),
+                };
             }
 
             public override byte[] GetBytes(RocksPacketBlockId obj)
@@ -193,8 +246,10 @@ namespace Ndx.Tools.Export
         }
     }
 
+    [JsonObject(MemberSerialization = MemberSerialization.Fields)]
     public class RocksFrameData
     {
+        internal const int __size = sizeof(uint) + sizeof(uint) + sizeof(ulong) + sizeof(ulong);
         uint frameNumber;
         uint frameLength;
         ulong frameOffset;
@@ -209,7 +264,13 @@ namespace Ndx.Tools.Export
         {
             public override RocksFrameData FromBytes(byte[] bytes, int startIndex)
             {
-                throw new NotImplementedException();
+                return new RocksFrameData()
+                {
+                    frameNumber = BitConverter.ToUInt32(bytes, startIndex),
+                    frameLength = BitConverter.ToUInt32(bytes, startIndex + 4),
+                    frameOffset = BitConverter.ToUInt32(bytes, startIndex + 4 + 4),
+                    timestamp = BitConverter.ToUInt64(bytes, startIndex + 4 + 4 + 8),
+                };
             }
 
             public override byte[] GetBytes(RocksFrameData obj)
@@ -223,8 +284,10 @@ namespace Ndx.Tools.Export
         }
     }
 
+    [JsonObject(MemberSerialization = MemberSerialization.Fields)]
     public class RocksByteRange
     {
+        internal static readonly int __size = sizeof(int) + sizeof(int);
         int start;
         int count;
 
@@ -235,7 +298,11 @@ namespace Ndx.Tools.Export
         {
             public override RocksByteRange FromBytes(byte[] bytes, int startIndex)
             {
-                throw new NotImplementedException();
+                return new RocksByteRange()
+                {
+                    start = BitConverter.ToInt32(bytes, startIndex),
+                    count = BitConverter.ToInt32(bytes, startIndex + 4),
+                };
             }
 
             public override byte[] GetBytes(RocksByteRange obj)
@@ -247,8 +314,10 @@ namespace Ndx.Tools.Export
         }
     }
 
+    [JsonObject(MemberSerialization = MemberSerialization.Fields)]
     public class RocksPacketMetadata
     {
+        internal static int __size = RocksFrameData.__size + 4 * RocksByteRange.__size;
         RocksFrameData frameMetadata;
         RocksByteRange link;
         RocksByteRange network;
@@ -265,8 +334,15 @@ namespace Ndx.Tools.Export
         {
             public override RocksPacketMetadata FromBytes(byte[] bytes, int startIndex)
             {
-                throw new NotImplementedException();
-            }
+                return new RocksPacketMetadata()
+                {
+                    frameMetadata = RocksSerializer.ToFrameData(bytes, startIndex),
+                    link = RocksSerializer.ToByteRange(bytes, startIndex + RocksFrameData.__size),
+                    network = RocksSerializer.ToByteRange(bytes, startIndex + RocksFrameData.__size + RocksByteRange.__size),
+                    transport = RocksSerializer.ToByteRange(bytes, startIndex + RocksFrameData.__size + RocksByteRange.__size + RocksByteRange.__size),
+                    payload = RocksSerializer.ToByteRange(bytes, startIndex + RocksFrameData.__size + RocksByteRange.__size + RocksByteRange.__size + RocksByteRange.__size)
+                };
+            }        
 
             public override byte[] GetBytes(RocksPacketMetadata obj)
             {
@@ -283,59 +359,107 @@ namespace Ndx.Tools.Export
     public class RocksSerializer
     {
         static RocksByteRange.BinarySerializer byteRangeSerializer = new RocksByteRange.BinarySerializer();
-        static RocksFrameData.BinarySerializer framedataSerializer = new RocksFrameData.BinarySerializer();
-        static RocksPcapId.BinarySerializer pcapidSerializer = new RocksPcapId.BinarySerializer();
-        static RocksPacketMetadata.BinarySerializer packetSerializer = new RocksPacketMetadata.BinarySerializer();
+        static RocksFrameData.BinarySerializer frameDataSerializer = new RocksFrameData.BinarySerializer();
+        static RocksPcapId.BinarySerializer pcapIdSerializer = new RocksPcapId.BinarySerializer();
+        static RocksPacketMetadata.BinarySerializer packetMetadataSerializer = new RocksPacketMetadata.BinarySerializer();
         static RocksFlowId.BinarySerializer flowIdSerializer = new RocksFlowId.BinarySerializer();
         static RocksFlowKey.BinarySerializer flowKeySerializer = new RocksFlowKey.BinarySerializer();
         static RocksFlowRecord.BinarySerializer flowRecordSerializer = new RocksFlowRecord.BinarySerializer();
         static RocksPacketBlock.BinarySerializer packetBlockSerializer = new RocksPacketBlock.BinarySerializer();
-        static RocksPacketBlockId.BinarySerializer blockIdSerializer = new RocksPacketBlockId.BinarySerializer();
-        public static byte[] GetBytes(RocksFrameData frameMetadata)
+        static RocksPacketBlockId.BinarySerializer packetBlockIdSerializer = new RocksPacketBlockId.BinarySerializer();
+
+        public static byte[] GetBytes(RocksFlowKey flowKey)
         {
-            return framedataSerializer.GetBytes(frameMetadata);
+            return flowKeySerializer.GetBytes(flowKey);
         }
 
-        internal static byte[] GetBytes(RocksByteRange link)
+        public static byte[] GetBytes(RocksFrameData frameMetadata)
+        {
+            return frameDataSerializer.GetBytes(frameMetadata);
+        }
+
+        public static byte[] GetBytes(RocksByteRange link)
         {
             return byteRangeSerializer.GetBytes(link);
         }
 
-        internal static byte[] GetBytes(RocksPcapId pcapRef)
+        public static byte[] GetBytes(RocksPcapId pcapRef)
         {
-            return pcapidSerializer.GetBytes(pcapRef);
+            return pcapIdSerializer.GetBytes(pcapRef);
         }
 
-        internal static byte[] GetBytes(RocksPacketMetadata item)
+        public static byte[] GetBytes(RocksPacketMetadata item)
         {
-            return packetSerializer.GetBytes(item);
+            return packetMetadataSerializer.GetBytes(item);
         }
 
-        internal static byte[] GetBytes(RocksFlowId flowId)
+        public static byte[] GetBytes(RocksFlowId flowId)
         {
             return flowIdSerializer.GetBytes(flowId);
         }
 
-        internal static byte[] GetBytes(RocksFlowKey flowKey)
-        {
-            return flowKeySerializer.GetBytes(flowKey);
-        }
-        internal static byte[] GetBytes(RocksFlowRecord flowKey)
+        public static byte[] GetBytes(RocksFlowRecord flowKey)
         {
             return flowRecordSerializer.GetBytes(flowKey);
         }
 
-        internal static byte[] GetBytes(RocksPacketBlockId pbId)
+        public static byte[] GetBytes(RocksPacketBlockId pbId)
         {
-            return blockIdSerializer.GetBytes(pbId);
+            return packetBlockIdSerializer.GetBytes(pbId);
         }
 
-        internal static byte[] GetBytes(RocksPacketBlock packetBlock)
+        public static byte[] GetBytes(RocksPacketBlock packetBlock)
         {
             return packetBlockSerializer.GetBytes(packetBlock);
         }
+
+        public static RocksByteRange ToByteRange(byte[] bytes, int startIndex)
+        {
+            return byteRangeSerializer.FromBytes(bytes, startIndex);
+        }
+
+        public static RocksFrameData ToFrameData(byte[] bytes, int startIndex)
+        {
+            return frameDataSerializer.FromBytes(bytes, startIndex);
+        }
+
+        public static RocksPcapId ToPcapId(byte[] bytes, int startIndex)
+        {
+            return pcapIdSerializer.FromBytes(bytes, startIndex);
+        }
+
+        public static RocksPacketMetadata ToPacketMetadata(byte[] bytes, int startIndex)
+        {
+            return packetMetadataSerializer.FromBytes(bytes, startIndex);
+        }
+
+        public static RocksFlowRecord ToFlowRecord(byte[] bytes, int startIndex)
+        {
+            return flowRecordSerializer.FromBytes(bytes, startIndex);
+        }
+
+        public static RocksFlowKey ToFlowKey(byte[] bytes, int startIndex)
+        {
+            return flowKeySerializer.FromBytes(bytes, startIndex);
+        }
+
+        public static RocksFlowId ToFlowId(byte[] bytes, int startIndex)
+        {
+            return flowIdSerializer.FromBytes(bytes, startIndex);
+        }
+
+        public static RocksPacketBlockId ToPacketBlockId(byte[] bytes, int startIndex)
+        {
+            return packetBlockIdSerializer.FromBytes(bytes, startIndex);
+        }
+
+        public static RocksPacketBlock ToPacketBlock(byte[] bytes, int startIndex)
+        {
+            return packetBlockSerializer.FromBytes(bytes, startIndex);
+        }
     }
 
+    [JsonObject(MemberSerialization = MemberSerialization.Fields)]
     public class RocksPacketBlock
     {
         RocksPcapId pcapRef;
@@ -349,7 +473,18 @@ namespace Ndx.Tools.Export
         {
             public override RocksPacketBlock FromBytes(byte[] bytes, int startIndex)
             {
-                throw new NotImplementedException();
+                var pcapref = RocksSerializer.ToPcapId(bytes, startIndex);
+                var count = BitConverter.ToInt32(bytes, startIndex + RocksPcapId.__size);
+                var items = new RocksPacketMetadata[count];
+                for(int i=0; i < count; i++)
+                {
+                    items[i] = RocksSerializer.ToPacketMetadata(bytes, startIndex + RocksPcapId.__size + 4 + (i * RocksPacketMetadata.__size));
+                }
+                return new RocksPacketBlock()
+                {
+                    PcapRef = pcapref,
+                    Items = items
+                };
             }
 
             public override byte[] GetBytes(RocksPacketBlock obj)

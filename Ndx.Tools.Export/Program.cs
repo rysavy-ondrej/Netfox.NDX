@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.CommandLineUtils;
+using Ndx.Tools.Export.Test;
 
 namespace Ndx.Tools.Export
 {
@@ -116,6 +117,21 @@ namespace Ndx.Tools.Export
                     }
                     return 0;
                 });
+            });
+
+
+
+            commandLineApplication.Command("Test", (target) =>
+            {
+                target.OnExecute(() =>
+                {
+                    var test = new RockDbDtoTest();
+                    test.RocksFlowKeySerializationTest();
+                    test.RocksFlowRecordSerializationTest();
+                    test.RocksPacketMetadataSerializationTest();
+                    test.RocksPacketBlockSerializationTest();
+                    return 0;
+                });                               
             });
 
             commandLineApplication.HelpOption("-? | -h | --help");

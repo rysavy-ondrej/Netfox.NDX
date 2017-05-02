@@ -122,7 +122,7 @@ namespace Ndx.Tools.Export
 
                     var flowKeyItem = new RocksFlowKey()
                     {
-                        Protocol = (ushort) entry.Key.Protocol,
+                        Protocol = (ushort) ((int)entry.Key.AddressFamily << 8 | (int)entry.Key.Protocol),
                         SourceAddress = entry.Key.SourceAddress,
                         DestinationAddress = entry.Key.DestinationAddress,
                         SourcePort = entry.Key.SourcePort,
