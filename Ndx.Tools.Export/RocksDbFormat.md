@@ -58,8 +58,8 @@ Where:
 * *pcapType* - the format of PCAP file. It can be one of these: LIBPCAP, PCAPNG, WINCAP.
 * *uriLength* - the total length of the URI field including terminating byte.
 * *uri* - null terminated string containing URI of the PCAP. Usually, relative URI is used.
-* *md5signature* - hash value of the PCAP computed using MD5 algorithm.
-* *shasignature* - hash value of the PCAP computed using SHA algorithm.
+* *md5signature* - (optional) hash value of the PCAP computed using MD5 algorithm.
+* *shasignature* - (optional) hash value of the PCAP computed using SHA algorithm.
 * *ingestedOn* - date and time when the PCAP file was processed and stored in DB.
 
 
