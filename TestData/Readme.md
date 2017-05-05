@@ -126,6 +126,7 @@ flowRecord struct
     uint64 last;
     uint32 blocks;
     uint32 application;
+    uint32 parentFlowId;
 }
 ```
 Where:
@@ -136,7 +137,7 @@ Where:
 * *last* - timestampt of the last packet of the flow.
 * *blocks* - number of packet blocks of the flow. Block are sequentially numbered starting from 0. 
 * *application* -identification of recognized application/service of the flow.
-
+* *parentFlowId* - reference to parent flow id, if any. This enables to link embedded flow to its parent flow, e.g., for GRE tunnels.
 
 Flows.Record column family is mapping from flow id to flow record data:
 ```C
