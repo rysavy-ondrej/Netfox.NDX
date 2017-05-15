@@ -9,6 +9,7 @@ using System.IO.Compression;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using System.Linq;
 
 namespace Ndx.Ingest.Trace
 {
@@ -144,7 +145,7 @@ namespace Ndx.Ingest.Trace
                 var entry = m_archive.CreateEntry(MetacapFileInfo.FlowKeyTableFile, CompressionLevel.Fastest);
                 using (var writer = new BinaryWriter(entry.Open()))
                 {
-                    foreach (var item in m_flowDictionary)
+                    foreach (var item in m_flowDictionary.OrderBy(x=>x.Value.FlowRecordIndex))
                     {
                         var keyTableEntry = new FlowKeyTableEntry(item.Key, item.Value);
                         FlowKeyTableEntry.Converter.WriteObject(writer, keyTableEntry);
@@ -160,12 +161,16 @@ namespace Ndx.Ingest.Trace
                 var entry = m_archive.CreateEntry(MetacapFileInfo.ConversationTableFile, CompressionLevel.Fastest);
                 using (var writer = new BinaryWriter(entry.Open()))
                 {
-                    foreach (var item in m_conversationDictionary)
+                    foreach (var item in m_conversationDictionary.OrderBy(x=>x.Value))
                     {
-                        var conversationTableEntry = new ConversationTableEntry(item.Value, item.Key, FlowCollector.SwapFlowKey(item.Key));
+                        var originatorFlow = item.Key;
+                        var responderFlow = FlowCollector.SwapFlowKey(item.Key);
+                        var originatorId = m_flowDictionary[originatorFlow].FlowRecordIndex;
+                        var responderId = m_flowDictionary[responderFlow].FlowRecordIndex;
+                        var conversationTableEntry = new ConversationTableEntry(item.Value, originatorId, responderId, originatorFlow, responderFlow );
                         ConversationTableEntry.Converter.WriteObject(writer, conversationTableEntry);
                     }
-                }
+                }                             
             }
         }
 

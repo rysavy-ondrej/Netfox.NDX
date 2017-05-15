@@ -81,19 +81,15 @@ namespace Ndx.Ingest.Trace
             {
                 IEnumerable<FlowKeyTableEntry> GetEntries(Stream stream)
                 {
+
+                    var buffer = new byte[FlowKeyTableEntry.__size];
                     using (var reader = new BinaryReader(stream))
                     {
-                        do
+                        while (reader.Read(buffer, 0, FlowKeyTableEntry.__size) == FlowKeyTableEntry.__size)
                         {
-                            var obj = FlowKeyTableEntry.Converter.ReadObject(reader);
-                            if (obj == null)
-                            {
-                                break;
-                            }
-
+                            var obj = new FlowKeyTableEntry(buffer);
                             yield return obj;
                         }
-                        while (true);
                     }
                 }
                 if (m_flowKeyTable == null)
@@ -133,19 +129,14 @@ namespace Ndx.Ingest.Trace
             {
                 IEnumerable<ConversationTableEntry> GetEntries(Stream stream)
                 {
+                    var buffer = new byte[ConversationTableEntry.__size];
                     using (var reader = new BinaryReader(stream))
                     {
-                        do
+                        while(reader.Read(buffer, 0, ConversationTableEntry.__size) == ConversationTableEntry.__size)
                         {
-                            var obj = ConversationTableEntry.Converter.ReadObject(reader);
-                            if (obj == null)
-                            {
-                                break;
-                            }
-
+                            var obj = new ConversationTableEntry(buffer);
                             yield return obj;
                         }
-                        while (true);
                     }
                 }
 

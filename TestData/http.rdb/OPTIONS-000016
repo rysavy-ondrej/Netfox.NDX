@@ -24,9 +24,9 @@
   allow_concurrent_memtable_write=true
   delayed_write_rate=2097152
   error_if_exists=false
-  create_if_missing=false
+  create_if_missing=true
   compaction_readahead_size=0
-  create_missing_column_families=false
+  create_missing_column_families=true
   new_table_reader_for_compaction_inputs=false
   disableDataSync=false
   disable_data_sync=false

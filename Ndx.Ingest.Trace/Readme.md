@@ -70,3 +70,18 @@ using (var outArchive = ZipFile.Open(outfile, ZipArchiveMode.Update))
     }
 }
 ```
+
+
+## Metacap file format
+Metacap is ZIP archive that contains meta information and index for PCAP files.
+The structure of Metacap is as follows:
+
+* flows.key - a folder that contains flow key files.
+* flows.record - a folder that contains flow record files.
+* flows.features - a folder that contains flow feature files.
+* blocks - a folder that contains subfolders. There is a subfolder for each flow.
+* conversations - a file that contains a list of conversations. 
+
+TODO: describe the content of all files....
+
+TODO: reimplement the mcap file writer and reader for reflect this documentation.

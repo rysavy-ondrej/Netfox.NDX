@@ -17,15 +17,20 @@ namespace Ndx.Ingest.Trace
     /// </summary>
     public class FlowKeyTableEntry
     {
+        internal static readonly int __size = _FlowKey.__size + IndexRecord;
+
         private FlowKey m_key;
         private IndexRecord m_indexRecord;
-
         public FlowKeyTableEntry(FlowKey key, IndexRecord value)
         {
             this.m_key = key;
             this.m_indexRecord = value;
         }
 
+        public FlowKeyTableEntry(byte[] buffer, int offset = 0)
+        {
+            
+        }
 
         public FlowKey Key => m_key;
         public IndexRecord IndexRecord => m_indexRecord;
@@ -50,11 +55,11 @@ namespace Ndx.Ingest.Trace
         }
 
         public static IBinaryConverter<FlowKeyTableEntry> Converter = new BinaryConverter();
-
+        
     }
 
     /// <summary>
-    /// <see cref="IndexRecord"/> contains index of <see cref="FlowRecord"/> and
+    /// <see cref="IndexRecord"/> contains an index of <see cref="FlowRecord"/> and
     /// a collection of indexes for <see cref="PacketBlock"/> items.
     /// </summary>
     public unsafe class IndexRecord

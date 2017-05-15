@@ -124,7 +124,7 @@ namespace Ndx.Ingest.Trace
 
         internal static FlowKey SwapFlowKey(FlowKey flowKey)
         {
-            return new FlowKey(flowKey.AddressFamily, flowKey.Protocol, flowKey.SourceAddress, flowKey.SourcePort, flowKey.DestinationAddress, flowKey.DestinationPort, flowKey.FlowId);
+            return new FlowKey(flowKey.AddressFamily, flowKey.Protocol, flowKey.DestinationAddress, flowKey.DestinationPort, flowKey.SourceAddress, flowKey.SourcePort, flowKey.FlowId);
         }
 
         /// <summary>
