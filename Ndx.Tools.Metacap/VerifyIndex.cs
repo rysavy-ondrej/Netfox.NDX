@@ -46,6 +46,7 @@ namespace Ndx.Tools.Metacap
                 WriteDebug("Empty file!");
                 return;
             }
+            /*
             var flowTable = m_mcap.FlowKeyTable.Entries.ToArray();
             WriteDebug($"Start processing flow table, {flowTable.Count()} entries.");
             foreach (var entry in flowTable)
@@ -76,6 +77,7 @@ namespace Ndx.Tools.Metacap
                     WriteObject($"{entry.Key}: flow packets number ({flowRecord?.Packets}) and block packets number ({packetCount}) differ.");
                 }
             }
+            */
         }
     }
 }

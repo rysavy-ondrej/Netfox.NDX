@@ -219,6 +219,7 @@ namespace Ndx.Tools.Metacap
 
             using (var outArchive = ZipFile.Open(outfile, ZipArchiveMode.Update))
             {
+            /*
                 foreach (var flow in mcap.FlowKeyTable.Where(x => flowFilter(x.Key)))
                 {
                     var path = $"{flow.Key.Protocol}@{flow.Key.SourceAddress}.{flow.Key.SourcePort}-{flow.Key.DestinationAddress}.{flow.Key.DestinationPort}";
@@ -232,7 +233,7 @@ namespace Ndx.Tools.Metacap
                         }
                     }
                 }
-
+*/
             }
         }
 
@@ -251,7 +252,7 @@ namespace Ndx.Tools.Metacap
                 {
                     return key.Protocol == IPProtocolType.TCP && flowFilter(key);
                 }
-
+/*
                 var flowTable = mcap.FlowKeyTable.Where(x => filter(x.Key));
 
                 foreach(var flow in flowTable)
@@ -263,6 +264,7 @@ namespace Ndx.Tools.Metacap
                         mcap.WriteTcpStream(flow.Value, stream);
                     }
                 }
+                */
             }
         }
 
@@ -282,8 +284,9 @@ namespace Ndx.Tools.Metacap
                     return key.Protocol == PacketDotNet.IPProtocolType.TCP && flowFilter(key);
                 }
 
-                var convTable = mcap.ConversationTable;
                 /*
+                var convTable = mcap.ConversationTable;
+                
                 foreach (var conv in convTable.Entries)
                 {
                     var conversationStream = mcap.GetConversationStream(conv.OriginatorKey, conv.ResponderKey);

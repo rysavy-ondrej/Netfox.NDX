@@ -27,26 +27,20 @@ namespace Ndx.Ingest.Trace
         private object m_sync = new object();
 
         private ZipArchive m_archive;
-        
-        Task m_completitionTask;
+        public Task m_completitionTask;
 
         int m_packetBlockCount;
-        ActionBlock<PacketBlock> m_packetBlockTarget;
+        ActionBlock<Tuple<Guid, PacketBlock>> m_packetBlockTarget;
 
         int m_flowRecordCount;
-        ActionBlock<FlowRecord> m_flowRecordTarget;
+        ActionBlock<Tuple<Guid, FlowRecord>> m_flowRecordTarget;
 
         int m_rawframeCount;
         ActionBlock<RawFrame> m_rawFrameTarget;
 
-        int m_conversationId;
-
-        private Dictionary<FlowKey, IndexRecord> m_flowDictionary;
-        private Dictionary<FlowKey, int> m_conversationDictionary;
-
         private PacketBlock.BinaryConverter m_packetBlockConverter = new PacketBlock.BinaryConverter();
         FlowRecord.BinaryConverter m_flowRecordConverter = new FlowRecord.BinaryConverter();
-
+        FlowKey.BinaryConverter m_flowKeyConverter = new FlowKey.BinaryConverter();
         /// <summary>
         /// Creates new Consumer that produced metacap file as its output.
         /// </summary>
@@ -62,21 +56,13 @@ namespace Ndx.Ingest.Trace
             }
 
             m_archive = ZipFile.Open(mcapPath, ZipArchiveMode.Create);
-            m_flowDictionary = new Dictionary<FlowKey, IndexRecord>(1024);
-            m_conversationDictionary = new Dictionary<FlowKey, int>(1024);
         }
 
-        void WritePacketBlock(PacketBlock block, int index)
+        void WritePacketBlock(Guid convId, PacketBlock block)
         {
             lock (m_sync)
             {
-                if (!m_flowDictionary.TryGetValue(block.Key, out IndexRecord value))
-                {
-                    m_flowDictionary[block.Key] = value = new IndexRecord();
-                }
-                value.PacketBlockList.Add(index);
-
-                var path = MetacapFileInfo.GetPacketBlockPath(index);
+                var path = MetacapFileInfo.GetPacketBlockPath(convId, block.BlockIndex);
                 var blockEntry = m_archive.CreateEntry(path, CompressionLevel.Fastest);
                 using (var writer = new BinaryWriter(blockEntry.Open()))
                 {
@@ -85,35 +71,30 @@ namespace Ndx.Ingest.Trace
             }
         }
 
-        void WriteFlowRecord(FlowRecord flow, int index)
+        void WriteFlowRecord(Guid convId, FlowRecord flow)
         {
             lock (m_sync)
             {
-                if (!m_flowDictionary.TryGetValue(flow.Key, out IndexRecord value))
-                {
-                    m_flowDictionary[flow.Key] = value = new IndexRecord();
-
-                };
-                value.FlowRecordIndex = index;
-
-                if (flow.EndpointType == FlowEndpointType.Originator)
-                {
-                    m_conversationDictionary.Add(flow.Key, ++m_conversationId);
-                }
-
-                var path = MetacapFileInfo.GetFlowRecordPath(index);
-                var entry = m_archive.CreateEntry(path, CompressionLevel.Fastest);
-                using (var writer = new BinaryWriter(entry.Open()))
+                var pathRecord = MetacapFileInfo.GetFlowRecordPath(convId, flow.EndpointType) + ".record";
+                var entryRecord = m_archive.CreateEntry(pathRecord, CompressionLevel.Fastest);
+                using (var writer = new BinaryWriter(entryRecord.Open()))
                 {
                     m_flowRecordConverter.WriteObject(writer, flow);
+                }
+
+                var pathKey = MetacapFileInfo.GetFlowRecordPath(convId, flow.EndpointType) + ".key";
+                var entryKey = m_archive.CreateEntry(pathKey, CompressionLevel.Fastest);
+                using (var writer = new BinaryWriter(entryKey.Open()))
+                {
+                    m_flowKeyConverter.WriteObject(writer, flow.Key);
                 }
             }
         }
 
         McapFileConsumer()
         {
-            m_packetBlockTarget = new ActionBlock<PacketBlock>(x => { WritePacketBlock(x, Interlocked.Increment(ref m_packetBlockCount)); });
-            m_flowRecordTarget = new ActionBlock<FlowRecord>(x => { WriteFlowRecord(x, Interlocked.Increment(ref m_flowRecordCount)); });
+            m_packetBlockTarget = new ActionBlock<Tuple<Guid, PacketBlock>>(x => WritePacketBlock(x.Item1, x.Item2));
+            m_flowRecordTarget = new ActionBlock<Tuple<Guid, FlowRecord>>(x => WriteFlowRecord(x.Item1, x.Item2));
             m_rawFrameTarget = new ActionBlock<RawFrame>(x => m_rawframeCount++);
             m_completitionTask = Task.WhenAll(m_packetBlockTarget.Completion, m_flowRecordTarget.Completion, m_rawFrameTarget.Completion).ContinueWith((t) => FinishWriting());
         }
@@ -131,47 +112,8 @@ namespace Ndx.Ingest.Trace
         /// <returns></returns>
         private Task FinishWriting()
         {
-            WriteKeyTable();
-            WriteConversationTable();
-            // to write all entries, we need to call this explicitly here:
             m_archive.Dispose();
             return Task.FromResult(0);
-        }
-
-        private void WriteKeyTable()
-        {
-            lock (m_sync)
-            {
-                var entry = m_archive.CreateEntry(MetacapFileInfo.FlowKeyTableFile, CompressionLevel.Fastest);
-                using (var writer = new BinaryWriter(entry.Open()))
-                {
-                    foreach (var item in m_flowDictionary.OrderBy(x=>x.Value.FlowRecordIndex))
-                    {
-                        var keyTableEntry = new FlowKeyTableEntry(item.Key, item.Value);
-                        FlowKeyTableEntry.Converter.WriteObject(writer, keyTableEntry);
-                    }
-                }
-            }
-        }
-
-        private void WriteConversationTable()
-        {
-            lock (m_sync)
-            {
-                var entry = m_archive.CreateEntry(MetacapFileInfo.ConversationTableFile, CompressionLevel.Fastest);
-                using (var writer = new BinaryWriter(entry.Open()))
-                {
-                    foreach (var item in m_conversationDictionary.OrderBy(x=>x.Value))
-                    {
-                        var originatorFlow = item.Key;
-                        var responderFlow = FlowCollector.SwapFlowKey(item.Key);
-                        var originatorId = m_flowDictionary[originatorFlow].FlowRecordIndex;
-                        var responderId = m_flowDictionary[responderFlow].FlowRecordIndex;
-                        var conversationTableEntry = new ConversationTableEntry(item.Value, originatorId, responderId, originatorFlow, responderFlow );
-                        ConversationTableEntry.Converter.WriteObject(writer, conversationTableEntry);
-                    }
-                }                             
-            }
         }
 
         /// <summary>
@@ -185,17 +127,17 @@ namespace Ndx.Ingest.Trace
 
         /// <summary>
         /// Gets target dataflow block that represents a consumer of <see cref="PacketBlock"/> objects.
-        /// If this dataflow block is not connected then you must call <see cref="IDataflowBlock.Complete()"/> method 
+        /// If this dataflow block is not csee cref="IDataflowBlock.Complete()"/> method 
         /// otherwise completion task never finishes.
         /// </summary>
-        public ITargetBlock<PacketBlock> PacketBlockTarget => m_packetBlockTarget;
+        public ITargetBlock<Tuple<Guid, PacketBlock>> PacketBlockTarget => m_packetBlockTarget;
 
         /// <summary>
         /// Gets target dataflow block that represents a consumer of <see cref="FlowRecord"/> objects.
-        /// If this dataflow block is not connected then you must call <see cref="IDataflowBlock.Complete()"/> method 
+        /// If this dataflow block is not connected then you must call <see cref=" => ataf => wBlock.Complete()"/> method 
         /// otherwise completion task never finishes.
         /// </summary>
-        public ITargetBlock<FlowRecord> FlowRecordTarget => m_flowRecordTarget;
+        public ITargetBlock<Tuple<Guid, FlowRecord>> FlowRecordTarget => m_flowRecordTarget;
 
         /// <summary>
         /// Gets target dataflow block that represents a consumer of <see cref="RawFrame"/> objects.
@@ -205,7 +147,7 @@ namespace Ndx.Ingest.Trace
         public ITargetBlock<RawFrame> RawFrameTarget => m_rawFrameTarget;
 
         /// <summary>
-        /// Gets the number of <see cref="PacketBlock"/> objects processed by the current dataflow blocks.
+        /// Gets the number of <see cref="PacketBlock" =>  o => ects processed by the current dataflow blocks.
         /// </summary>
         public int PacketBlockCount => m_packetBlockCount;
 
@@ -217,6 +159,6 @@ namespace Ndx.Ingest.Trace
         /// <summary>
         /// Gets the number of <see cref="RawFrame"/> objects processed by the current dataflow blocks.
         /// </summary>
-        public int RawFrameCount => m_rawframeCount;      
+        public int RawFrameCount => m_rawframeCount;
     }
 }

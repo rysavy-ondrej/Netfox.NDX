@@ -17,7 +17,7 @@ namespace Ndx.Ingest.Trace
     /// </summary>
     public class FlowKeyTableEntry
     {
-        internal static readonly int __size = _FlowKey.__size + IndexRecord;
+        internal static readonly int __size = _FlowKey.__size;
 
         private FlowKey m_key;
         private IndexRecord m_indexRecord;

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace Ndx.Ingest.Trace
 {
@@ -10,17 +11,17 @@ namespace Ndx.Ingest.Trace
         public const string PacketBlockFolder = "blocks";
         public const string FlowRecordFolder = "flows";
         public const string FlowKeyTableFile = "keytable";
-        public const string ConversationTableFile = "conversations";
+        public const string Conversations = "conversations";
         public const string FrameFolder = "frames";
 
-        public static string GetPacketBlockPath(int index)
+        public static string GetPacketBlockPath(Guid convId, int index)
         {
-            return Path.Combine(PacketBlockFolder, index.ToString().PadLeft(8, '0'));
+            return Path.Combine(Conversations, convId.ToString(), index.ToString().PadLeft(8, '0'));
         }
 
-        public static string GetFlowRecordPath(int index)
+        public static string GetFlowRecordPath(Guid convId, FlowEndpointType enpointType)
         {
-            return Path.Combine(FlowRecordFolder, index.ToString().PadLeft(8, '0'));
+            return Path.Combine(Conversations, convId.ToString(), enpointType.ToString());
         }
 
         public static string GetFramePath(int index)

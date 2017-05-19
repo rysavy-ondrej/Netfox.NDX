@@ -1,4 +1,4 @@
-# NDX
+﻿# NDX
 The network diagnostic framework (NDX) implements environment for analysis of pcap files,
 netflow records and log files in order to provide diagnostic information on network device
 and network services behavior.
@@ -59,7 +59,7 @@ They can be values from the fields in headers of packets, counters (total bytes,
 | flag | Normal or error status of the connection |
 
 
-### Conversation Table
+### Conversations
 A network conversation is the traffic between two specific application endpoints, 
 denoted as the originator and the responder. The structure of conversation key is the same as
 the structure of the flow key. The Originator is defined as the sender of 
@@ -103,7 +103,52 @@ Conversation attributes are as follows:
 * Flow start time (as a Unix timestamp)
 
 
+# Data Model
+Metacap file implements the NDX data model. The NDX model consider key-value
+data organization. Metacap file is a zip file of the following
+structure:
 
+```
+conversations
+  |- 00000001
+       |- ipfix
+       |- 00000001
+       |- 00000002
+       |- 00000003
+  |- 00000002
+  |- 00000003
+```
+
+Conversation folder collects all identified conversations. Each conversation 
+has the unique id represented as a subfolder. This subfolder contains files for
+various metadata:
+
+* ipfix - represents an ipfix record generated for the flow.
+* 00000000 - group of metapacket items associated with the conversation
+
+Except conversations there are also index files:
+```
+indexes
+  |- address
+  |- service
+```
 
 # References
 * https://centauri.stat.purdue.edu:98/netsecure/Papers/flowattributes_ademontigny.pdf
+
+
+# IPFIX 
+IPFIX is used to represents flows. C# IPFIX library was implemented to handle IPFIX 
+templates and records.
+
+The library has the following features:
+- Creating IPFIX template
+- Creating IPFIX record
+- Write IPFIX template to stream
+- Write IPFIX record to stream
+- Read IPFIX template from stream
+- Read IPFIX record from stream
+- Collect templates and records to IPFIX message
+- Read and write IPFIX message
+- Support for a subset of the defined information elements (https://www.iana.org/assignments/ipfix/ipfix.xhtml)
+

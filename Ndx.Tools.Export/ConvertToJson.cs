@@ -72,7 +72,7 @@ namespace Ndx.Tools.Export
 
             WriteObject("{");
             WriteObject("\"flows\": [");
-
+/*
             var flowTable = m_mcap.FlowKeyTable.Entries.ToArray();
             for(int flowTableIndex=0; flowTableIndex< flowTable.Length; flowTableIndex++)
             {
@@ -101,7 +101,7 @@ namespace Ndx.Tools.Export
                 WriteObject("]");
                 WriteObject($"}}{GetEol(flowTableIndex, flowTable.Length)}");
             }
-
+*/
             WriteObject("]");
             WriteObject("}");
         }

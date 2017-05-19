@@ -39,7 +39,7 @@ namespace Ndx.Ingest.Trace
 
             fixed (byte* pdata = bytes)
             {
-                this = *(_FlowRecord*)(pdata+offset);
+                this = *(_FlowRecord*)(pdata + offset);
             }
         }
         /// <summary>
@@ -77,12 +77,12 @@ namespace Ndx.Ingest.Trace
         }
     }
 
-    enum FlowEndpointType { Originator, Responder };
+    public enum FlowEndpointType { Originator, Responder };
 
     /// <summary>
     /// This class collects information about a single flow.
     /// </summary>
-    public class FlowRecord 
+    public class FlowRecord
     {
         /// <summary>
         /// Stores the <see cref="_FlowRecord"/> for the current <see cref="FlowRecord"/>.
@@ -146,7 +146,7 @@ namespace Ndx.Ingest.Trace
         /// Creates a new <see cref="FlowRecord"/> for the specified <see cref="Ndx.Ingest.Trace.Trace.FlowKey"/>.
         /// </summary>
         /// <param name="packetMetadata"><see cref="PacketMetadata"/> object representing a single frame of the flow.</param>
-        public FlowRecord(FlowKey flowkey) 
+        public FlowRecord(FlowKey flowkey)
         {
             m_flowkey = flowkey;
             m_data = new _FlowRecord();
@@ -157,7 +157,7 @@ namespace Ndx.Ingest.Trace
         /// </summary>
         /// <param name="flowkey"></param>
         /// <param name="data"></param>
-        public FlowRecord(FlowKey flowkey, _FlowRecord data) 
+        public FlowRecord(FlowKey flowkey, _FlowRecord data)
         {
             m_flowkey = flowkey;
             m_data = data;
@@ -169,7 +169,7 @@ namespace Ndx.Ingest.Trace
         /// </summary>
         /// <param name="buf"></param>
         /// <param name="offset"></param>
-        public FlowRecord(byte[] buf, int offset=0)
+        public FlowRecord(byte[] buf, int offset = 0)
         {
             m_data = new _FlowRecord(buf, offset);
         }
@@ -236,7 +236,7 @@ namespace Ndx.Ingest.Trace
 
             public void WriteObject(BinaryWriter writer, FlowRecord value)
             {
-                writer.Write(value.GetBytes());                
+                writer.Write(value.GetBytes());
             }
         }
 

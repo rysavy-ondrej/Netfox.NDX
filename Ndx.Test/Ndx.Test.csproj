@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -57,17 +57,9 @@
     <Compile Include="Ingest\FlowRecordTest.cs" />
     <Compile Include="Ingest\LoadFromTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ipfix\IpfixTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Captures\03d1d7f3e7bc76aa22271f67463d8c3d.cap">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Captures\22797e5151de8ccc0ee7106707c53bdd.pcap">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Captures\86e86eb18670bdae1f7b038f0fed80c5.pcap">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +77,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Export\" />
+    <Folder Include="Captures\" />
+    <Folder Include="Ipfix\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

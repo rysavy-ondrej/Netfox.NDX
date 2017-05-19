@@ -35,8 +35,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTrace", "Hadoop\LoadTra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessTrace", "Hadoop\ProcessTrace\ProcessTrace.csproj", "{72D875AD-CF3F-4C45-88D1-2F26FA00217E}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{038D46B3-C03A-4C9E-9476-7EFF869AD203}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -155,18 +153,6 @@ Global
 		{72D875AD-CF3F-4C45-88D1-2F26FA00217E}.Release|x64.Build.0 = Release|Any CPU
 		{72D875AD-CF3F-4C45-88D1-2F26FA00217E}.Release|x86.ActiveCfg = Release|Any CPU
 		{72D875AD-CF3F-4C45-88D1-2F26FA00217E}.Release|x86.Build.0 = Release|Any CPU
-		{038D46B3-C03A-4C9E-9476-7EFF869AD203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{038D46B3-C03A-4C9E-9476-7EFF869AD203}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{038D46B3-C03A-4C9E-9476-7EFF869AD203}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{038D46B3-C03A-4C9E-9476-7EFF869AD203}.Debug|x64.Build.0 = Debug|Any CPU
-		{038D46B3-C03A-4C9E-9476-7EFF869AD203}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{038D46B3-C03A-4C9E-9476-7EFF869AD203}.Debug|x86.Build.0 = Debug|Any CPU
-		{038D46B3-C03A-4C9E-9476-7EFF869AD203}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{038D46B3-C03A-4C9E-9476-7EFF869AD203}.Release|Any CPU.Build.0 = Release|Any CPU
-		{038D46B3-C03A-4C9E-9476-7EFF869AD203}.Release|x64.ActiveCfg = Release|Any CPU
-		{038D46B3-C03A-4C9E-9476-7EFF869AD203}.Release|x64.Build.0 = Release|Any CPU
-		{038D46B3-C03A-4C9E-9476-7EFF869AD203}.Release|x86.ActiveCfg = Release|Any CPU
-		{038D46B3-C03A-4C9E-9476-7EFF869AD203}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

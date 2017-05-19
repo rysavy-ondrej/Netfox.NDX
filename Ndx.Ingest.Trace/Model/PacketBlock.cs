@@ -22,6 +22,7 @@ namespace Ndx.Ingest.Trace
         /// <see cref="FlowKey"/> associated with this <see cref="PacketBlock"/>.
         /// </summary>
         private FlowKey m_flowKey;
+
         /// <summary>
         /// Index in the array of <see cref="PacketBlock"/> of the flow.
         /// </summary>
@@ -163,7 +164,7 @@ namespace Ndx.Ingest.Trace
                 writer.Write(value.DataBytes);
             }
         }
-       
+
         /// <summary>
         /// This strcuture is a compact representation of packet block.
         /// Packet block is a collection of packet references.

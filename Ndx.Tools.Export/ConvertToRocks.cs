@@ -107,7 +107,7 @@ namespace Ndx.Tools.Export
             {
                 Uid = 0
             };
-
+/*
             var convTable = m_mcap.ConversationTable.Entries.ToArray();
             var flowTable = m_mcap.FlowKeyTable.Entries.ToArray();
             WriteDebug($"Start processing conversation table, {convTable.Count()} entries.");
@@ -193,6 +193,7 @@ namespace Ndx.Tools.Export
                 m_rocksDb.Put(RocksSerializer.GetBytes(pbId), RocksSerializer.GetBytes(rdbPacketBlock), packetsCollection);
 
             }
+            */
         }
     }
 }

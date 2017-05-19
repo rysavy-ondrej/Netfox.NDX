@@ -26,7 +26,7 @@ namespace Ndx.Ingest.Trace
         /// | 0 1 2 3 | 4 5 6 7  |
         /// | P M A P | reserved |
         /// </summary>
-        public byte[] BlockHeader = new byte[] { 0x50 , 0x4d , 0x41, 0x50, 0x0, 0x0, 0x0, 0x0 };
+        public byte[] BlockHeader = new byte[] { 0x50, 0x4d, 0x41, 0x50, 0x0, 0x0, 0x0, 0x0 };
 
         /// <summary>
         /// | 0 1 2 3 | 4 5 6 7  |
@@ -43,7 +43,7 @@ namespace Ndx.Ingest.Trace
         BinaryWriter m_blockWriter;
         BinaryWriter m_flowWriter;
         BinaryWriter m_keyWriter;
-        public FileConsumer(string fileName) : this ()
+        public FileConsumer(string fileName) : this()
         {
             var fullname = Path.GetFullPath(fileName);
             var blockName = Path.ChangeExtension(fullname, "pmap");
@@ -62,10 +62,10 @@ namespace Ndx.Ingest.Trace
         }
 
         int m_packetBlockCount;
-        ActionBlock<PacketBlock> m_packetBlockTarget;
+        ActionBlock<Tuple<Guid, PacketBlock>> m_packetBlockTarget;
 
         int m_flowRecordCount;
-        ActionBlock<FlowRecord> m_flowRecordTarget;
+        ActionBlock<Tuple<Guid,>FlowRecord> m_flowRecordTarget;
 
         int m_rawframeCount;
         ActionBlock<RawFrame> m_rawFrameTarget;
@@ -166,12 +166,12 @@ namespace Ndx.Ingest.Trace
             }
             public byte[] GetBytes()
             {
-                var buffer = new byte[sizeof(int)*(PmapOffsetList.Count + 1)];
-                fixed(byte *ptr = buffer)
+                var buffer = new byte[sizeof(int) * (PmapOffsetList.Count + 1)];
+                fixed (byte* ptr = buffer)
                 {
                     int* intPtr = (int*)ptr;
-                    intPtr[0] = PfixOffset;                    
-                    for(int i=0; i<PmapOffsetList.Count; i++)
+                    intPtr[0] = PfixOffset;
+                    for (int i = 0; i < PmapOffsetList.Count; i++)
                     {
                         intPtr[i + 1] = PmapOffsetList[i];
                     }
