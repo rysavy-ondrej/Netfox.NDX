@@ -107,93 +107,106 @@ namespace Ndx.Tools.Export
             {
                 Uid = 0
             };
-/*
-            var convTable = m_mcap.ConversationTable.Entries.ToArray();
-            var flowTable = m_mcap.FlowKeyTable.Entries.ToArray();
-            WriteDebug($"Start processing conversation table, {convTable.Count()} entries.");
-            foreach (var entry in convTable)
+
+
+            foreach (var conversation in m_mcap.Conversations)
             {
-                var originatorId = entry.OriginatorFlowId;
-                var responderId = entry.ResponderFlowId;
+                var originatorKey = m_mcap.GetFlowKey(conversation, FlowOrientation.Upflow);
+                var responderKey = m_mcap.GetFlowKey(conversation, FlowOrientation.Downflow);
 
-                var originatorFlow = flowTable[originatorId];
-                var responderFlow = flowTable[responderId];
+                var originatorRecord = m_mcap.GetFlowRecord(conversation, FlowOrientation.Upflow);
+                var responderRecord = m_mcap.GetFlowRecord(conversation, FlowOrientation.Downflow);
 
-
-                // this id will be also id of the conversation
-                var originatorFlowRecordIdx = new RocksFlowId() { Uid = (uint)originatorFlow.IndexRecord.FlowRecordIndex };
-
-                var originatorFlowRecord = m_mcap.GetFlowRecord(originatorFlow.IndexRecord.FlowRecordIndex);
-                var responderFlowRecord = m_mcap.GetFlowRecord(responderFlow.IndexRecord.FlowRecordIndex);
-
-                var originatorBlocks = originatorFlow.IndexRecord.PacketBlockList.Select(pbIdx => m_mcap.GetPacketBlock(pbIdx));
-                var responderBlocks = responderFlow.IndexRecord.PacketBlockList.Select(pbIdx => m_mcap.GetPacketBlock(pbIdx));
-                // list of all packets
-                var packets = originatorBlocks.SelectMany(x => x.Packets).Concat(responderBlocks.SelectMany(x => x.Packets)).OrderBy(x => x.Frame.Timestamp);
-
-
-                if (originatorFlowRecord != null && responderFlowRecord != null)
-                {
-
-                    var flowKeyItem = new RocksFlowKey()
-                    {
-                        Protocol = (ushort)((int)originatorFlow.Key.AddressFamily << 8 | (int)originatorFlow.Key.Protocol),
-                        SourceAddress = originatorFlow.Key.SourceAddress,
-                        DestinationAddress = originatorFlow.Key.DestinationAddress,
-                        SourcePort = originatorFlow.Key.SourcePort,
-                        DestinationPort = originatorFlow.Key.DestinationPort
-                    };
-
-                    m_rocksDb.Put(RocksSerializer.GetBytes(originatorFlowRecordIdx), RocksSerializer.GetBytes(flowKeyItem), flowsKeyCollection);
-
-                    var flowRecordItem = new RocksFlowRecord()
-                    {
-                        Octets = (ulong)originatorFlowRecord.Octets + (ulong)responderFlowRecord.Octets,
-                        Packets = (uint)originatorFlowRecord.Packets + (uint)responderFlowRecord.Packets,
-                        First = Math.Min((ulong)originatorFlowRecord.FirstSeen, (ulong)responderFlowRecord.FirstSeen),
-                        Last = Math.Max((ulong)originatorFlowRecord.LastSeen, (ulong)responderFlowRecord.LastSeen),
-                        Blocks = (uint)1,   // we always create only one block
-                        Application = (uint)originatorFlowRecord.RecognizedProtocol
-                    };
-
-                    m_rocksDb.Put(RocksSerializer.GetBytes(originatorFlowRecordIdx), RocksSerializer.GetBytes(flowRecordItem), flowsRecordCollection);
-                }
-                else
-                {
-                    WriteWarning($"{originatorFlow.Key}: FlowRecord {originatorFlowRecordIdx} not found in the metacap file.");
-                }
-
-
-                var pbId = new RocksPacketBlockId()
-                {
-                    FlowId = originatorFlowRecordIdx.Uid,
-                    BlockId = 0
-                };
-
-                var rdbPacketBlock = new RocksPacketBlock()
-                {
-                    PcapRef = pcapId,
-                    Items = packets.Select(x =>
-                        new RocksPacketMetadata()
-                        {
-                            FrameMetadata = new RocksFrameData()
-                            {
-                                FrameLength = (uint)x.Frame.FrameLength,
-                                FrameNumber = (uint)x.Frame.FrameNumber,
-                                FrameOffset = (ulong)x.Frame.FrameOffset,
-                                Timestamp = (ulong)x.Frame.Timestamp.ToUnixTimeMilliseconds()
-                            },
-                            Link = new RocksByteRange() { Start = x.Link.Start, Count = x.Link.Count },
-                            Network = new RocksByteRange() { Start = x.Network.Start, Count = x.Network.Count },
-                            Transport = new RocksByteRange() { Start = x.Transport.Start, Count = x.Transport.Count },
-                            Payload = new RocksByteRange() { Start = x.Payload.Start, Count = x.Payload.Count },
-                        }
-                    ).ToArray()
-                };
-                m_rocksDb.Put(RocksSerializer.GetBytes(pbId), RocksSerializer.GetBytes(rdbPacketBlock), packetsCollection);
-
+                var originatorBlocks = m_mcap.GetPacketBlocks(conversation, FlowOrientation.Upflow);
+                var responderBlocks = m_mcap.GetPacketBlocks(conversation, FlowOrientation.Downflow);
             }
-            */
+            /*
+                        var convTable = m_mcap.ConversationTable.Entries.ToArray();
+                        var flowTable = m_mcap.FlowKeyTable.Entries.ToArray();
+                        WriteDebug($"Start processing conversation table, {convTable.Count()} entries.");
+                        foreach (var entry in convTable)
+                        {
+                            var originatorId = entry.OriginatorFlowId;
+                            var responderId = entry.ResponderFlowId;
+
+                            var originatorFlow = flowTable[originatorId];
+                            var responderFlow = flowTable[responderId];
+
+
+                            // this id will be also id of the conversation
+                            var originatorFlowRecordIdx = new RocksFlowId() { Uid = (uint)originatorFlow.IndexRecord.FlowRecordIndex };
+
+                            var originatorFlowRecord = m_mcap.GetFlowRecord(originatorFlow.IndexRecord.FlowRecordIndex);
+                            var responderFlowRecord = m_mcap.GetFlowRecord(responderFlow.IndexRecord.FlowRecordIndex);
+
+                            var originatorBlocks = originatorFlow.IndexRecord.PacketBlockList.Select(pbIdx => m_mcap.GetPacketBlock(pbIdx));
+                            var responderBlocks = responderFlow.IndexRecord.PacketBlockList.Select(pbIdx => m_mcap.GetPacketBlock(pbIdx));
+                            // list of all packets
+                            var packets = originatorBlocks.SelectMany(x => x.Packets).Concat(responderBlocks.SelectMany(x => x.Packets)).OrderBy(x => x.Frame.Timestamp);
+
+
+                            if (originatorFlowRecord != null && responderFlowRecord != null)
+                            {
+
+                                var flowKeyItem = new RocksFlowKey()
+                                {
+                                    Protocol = (ushort)((int)originatorFlow.Key.AddressFamily << 8 | (int)originatorFlow.Key.Protocol),
+                                    SourceAddress = originatorFlow.Key.SourceAddress,
+                                    DestinationAddress = originatorFlow.Key.DestinationAddress,
+                                    SourcePort = originatorFlow.Key.SourcePort,
+                                    DestinationPort = originatorFlow.Key.DestinationPort
+                                };
+
+                                m_rocksDb.Put(RocksSerializer.GetBytes(originatorFlowRecordIdx), RocksSerializer.GetBytes(flowKeyItem), flowsKeyCollection);
+
+                                var flowRecordItem = new RocksFlowRecord()
+                                {
+                                    Octets = (ulong)originatorFlowRecord.Octets + (ulong)responderFlowRecord.Octets,
+                                    Packets = (uint)originatorFlowRecord.Packets + (uint)responderFlowRecord.Packets,
+                                    First = Math.Min((ulong)originatorFlowRecord.FirstSeen, (ulong)responderFlowRecord.FirstSeen),
+                                    Last = Math.Max((ulong)originatorFlowRecord.LastSeen, (ulong)responderFlowRecord.LastSeen),
+                                    Blocks = (uint)1,   // we always create only one block
+                                    Application = (uint)originatorFlowRecord.RecognizedProtocol
+                                };
+
+                                m_rocksDb.Put(RocksSerializer.GetBytes(originatorFlowRecordIdx), RocksSerializer.GetBytes(flowRecordItem), flowsRecordCollection);
+                            }
+                            else
+                            {
+                                WriteWarning($"{originatorFlow.Key}: FlowRecord {originatorFlowRecordIdx} not found in the metacap file.");
+                            }
+
+
+                            var pbId = new RocksPacketBlockId()
+                            {
+                                FlowId = originatorFlowRecordIdx.Uid,
+                                BlockId = 0
+                            };
+
+                            var rdbPacketBlock = new RocksPacketBlock()
+                            {
+                                PcapRef = pcapId,
+                                Items = packets.Select(x =>
+                                    new RocksPacketMetadata()
+                                    {
+                                        FrameMetadata = new RocksFrameData()
+                                        {
+                                            FrameLength = (uint)x.Frame.FrameLength,
+                                            FrameNumber = (uint)x.Frame.FrameNumber,
+                                            FrameOffset = (ulong)x.Frame.FrameOffset,
+                                            Timestamp = (ulong)x.Frame.Timestamp.ToUnixTimeMilliseconds()
+                                        },
+                                        Link = new RocksByteRange() { Start = x.Link.Start, Count = x.Link.Count },
+                                        Network = new RocksByteRange() { Start = x.Network.Start, Count = x.Network.Count },
+                                        Transport = new RocksByteRange() { Start = x.Transport.Start, Count = x.Transport.Count },
+                                        Payload = new RocksByteRange() { Start = x.Payload.Start, Count = x.Payload.Count },
+                                    }
+                                ).ToArray()
+                            };
+                            m_rocksDb.Put(RocksSerializer.GetBytes(pbId), RocksSerializer.GetBytes(rdbPacketBlock), packetsCollection);
+
+                        }
+                        */
         }
     }
 }

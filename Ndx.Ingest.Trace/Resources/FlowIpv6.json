@@ -1,0 +1,54 @@
+﻿{
+  "description": "This templates specifies a flow of IPV6 family.",
+  "templateId": 311,
+  "fields": [
+    {
+      "id": "ProtocolIdentifier",
+      "len": "Unsigned8"
+    },
+    {
+      "id": "SourceIPv6Address",
+      "len": "Ipv6address"
+    },
+    {
+      "id": "Sourcetransportport",
+      "len": "Unsigned16"
+    },
+    {
+      "id": "DestinationIpv6Address",
+      "len": "Ipv6address"
+    },
+    {
+      "id": "Destinationtransportport",
+      "len": "Unsigned16"
+    },
+    {
+      "id": "Flowdirection",
+      "len": "Unsigned8"
+    },
+    {
+      "id": "OctetTotalCount",
+      "len": "Unsigned64"
+    },
+    {
+      "id": "PacketTotalCount",
+      "len": "Unsigned64"
+    },
+    {
+      "id": "Flowstartseconds",
+      "len": "Datetimeseconds"
+    },
+    {
+      "id": "Flowstartmilliseconds",
+      "len": "Datetimemilliseconds"
+    },
+    {
+      "id": "Flowendseconds",
+      "len": "Datetimeseconds"
+    },
+    {
+      "id": "Flowendmilliseconds",
+      "len": "Datetimemilliseconds"
+    }
+  ]
+}

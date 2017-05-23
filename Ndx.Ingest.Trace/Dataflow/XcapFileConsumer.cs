@@ -30,10 +30,10 @@ namespace Ndx.Ingest.Trace
         Task m_completitionTask;
 
         int m_packetBlockCount;
-        ActionBlock<Tuple<Guid, PacketBlock>> m_packetBlockTarget;
+        ActionBlock<ConversationElement<PacketBlock>> m_packetBlockTarget;
 
         int m_flowRecordCount;
-        ActionBlock<Tuple<Guid, FlowRecord>> m_flowRecordTarget;
+        ActionBlock<ConversationElement<FlowRecord>> m_flowRecordTarget;
 
         int m_rawframeCount;
         ActionBlock<RawFrame> m_rawFrameTarget;
@@ -61,8 +61,8 @@ namespace Ndx.Ingest.Trace
 
         XcapFileConsumer()
         {
-            m_packetBlockTarget = new ActionBlock<Tuple<Guid, PacketBlock>>(value => { WritePacketBlock(value.Item2, value.Item1, value.Item2.BlockIndex); });
-            m_flowRecordTarget = new ActionBlock<Tuple<Guid, FlowRecord>>(value => { WriteFlowRecord(value.Item2, value.Item1); });
+            m_packetBlockTarget = new ActionBlock<ConversationElement<PacketBlock>>(value => WritePacketBlock(value));
+            m_flowRecordTarget = new ActionBlock<ConversationElement<FlowRecord>>(value => WriteFlowRecord(value));
             m_rawFrameTarget = new ActionBlock<RawFrame>(x => { WriteFrame(x, Interlocked.Increment(ref m_rawframeCount)); });
             m_completitionTask = Task.WhenAll(m_packetBlockTarget.Completion, m_flowRecordTarget.Completion, m_rawFrameTarget.Completion).ContinueWith((t) => FinishWriting());
         }
@@ -80,28 +80,28 @@ namespace Ndx.Ingest.Trace
             }
         }
 
-        void WritePacketBlock(PacketBlock block, Guid convId, int index)
+        void WritePacketBlock(ConversationElement<PacketBlock> value)
         {
             lock (m_sync)
             {
-                var path = MetacapFileInfo.GetPacketBlockPath(convId, index);
+                var path = MetacapFileInfo.GetPacketBlockPath(value.ConversationId, value.Orientation, value.Data.BlockIndex);
                 var blockEntry = m_archive.CreateEntry(path, CompressionLevel.Fastest);
                 using (var writer = new BinaryWriter(blockEntry.Open()))
                 {
-                    m_packetBlockConverter.WriteObject(writer, block);
+                    m_packetBlockConverter.WriteObject(writer, value.Data);
                 }
             }
         }
 
-        void WriteFlowRecord(FlowRecord flow, Guid convId)
+        void WriteFlowRecord(ConversationElement<FlowRecord> value)
         {
             lock (m_sync)
             {
-                var path = MetacapFileInfo.GetFlowRecordPath(convId, flow.EndpointType);
+                var path = MetacapFileInfo.GetFlowRecordPath(value.ConversationId, value.Orientation);
                 var entry = m_archive.CreateEntry(path, CompressionLevel.Fastest);
                 using (var writer = new BinaryWriter(entry.Open()))
                 {
-                    m_flowRecordConverter.WriteObject(writer, flow);
+                    m_flowRecordConverter.WriteObject(writer, value.Data);
                 }
             }
         }
@@ -138,14 +138,14 @@ namespace Ndx.Ingest.Trace
         /// If this dataflow block is not connected then you must call <see cref="IDataflowBlock.Complete()"/> method 
         /// otherwise completion task never finishes.
         /// </summary>
-        public ITargetBlock<Tuple<Guid, PacketBlock>> PacketBlockTarget => m_packetBlockTarget;
+        public ITargetBlock<ConversationElement<PacketBlock>> PacketBlockTarget => m_packetBlockTarget;
 
         /// <summary>
         /// Gets target dataflow block that represents a consumer of <see cref="FlowRecord"/> objects.
         /// If this dataflow block is not connected then you must call <see cref="IDataflowBlock.Complete()"/> method 
         /// otherwise completion task never finishes.
         /// </summary>
-        public ITargetBlock<Tuple<Guid, FlowRecord>> FlowRecordTarget => m_flowRecordTarget;
+        public ITargetBlock<ConversationElement<FlowRecord>> FlowRecordTarget => m_flowRecordTarget;
 
         /// <summary>
         /// Gets target dataflow block that represents a consumer of <see cref="RawFrame"/> objects.

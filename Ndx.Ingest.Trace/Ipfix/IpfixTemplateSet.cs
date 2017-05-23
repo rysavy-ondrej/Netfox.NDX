@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
+using Newtonsoft.Json;
 using PacketDotNet.Utils;
 
 namespace Ndx.Ipfix
@@ -52,12 +55,12 @@ namespace Ndx.Ipfix
         /// <summary>
         /// The field identifier. It corresponds to information elemtn id as defined by IANA for IPFIX.
         /// </summary>
-        public ushort FieldId { get => m_fieldId; set => m_fieldId = value; }
+        public ushort Id { get => m_fieldId; set => m_fieldId = value; }
 
         /// <summary>
         /// Gets or sets the length of the field.
         /// </summary>
-        public ushort FieldLength { get => m_fieldLength; set => m_fieldLength = value; }
+        public ushort Length { get => m_fieldLength; set => m_fieldLength = value; }
     }
     /// <summary>
     /// IPFIX Template Record  
@@ -92,6 +95,19 @@ namespace Ndx.Ipfix
                 m_fields[i] = new IpfixFieldSpecifier();
             }
         }
+
+        public IpfixTemplateRecord(uint templateId, IpfixFieldSpecifier[] fields)
+        {
+            m_templateId = templateId;
+            m_fieldCount = (uint)fields.Length;
+            m_fields = new IpfixFieldSpecifier[m_fieldCount];
+
+            for (int i = 0; i < m_fields.Length; i++)
+            {
+                m_fields[i] = fields[i];
+            }
+        }
+
         /// <summary>
         /// Provides access to field specifiers of the current template record.
         /// </summary>
@@ -111,6 +127,11 @@ namespace Ndx.Ipfix
         public uint Id { get => m_templateId; }
 
         /// <summary>
+        /// The number of fields defined by this template.
+        /// </summary>
+        public int Count => m_fields.Length;
+
+        /// <summary>
         /// Compiles the current template into an object that 
         /// provides a fast access to individual fields of data records.
         /// </summary>
@@ -118,6 +139,111 @@ namespace Ndx.Ipfix
         public CompiledTemplate Compile()
         {
             return new CompiledTemplate(this);
+        }
+
+
+        /// <summary>
+        /// Loads the template from JSON.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        static public IpfixTemplateRecord Load(Stream stream)
+        {
+            using (var reader = new StreamReader(stream)) 
+            using (var jreader = new JsonTextReader(reader))
+            {
+                var fieldsList = new List<IpfixFieldSpecifier>();
+                var jsonObject = Newtonsoft.Json.Linq.JObject.Load(jreader);
+                var properties = jsonObject.Properties().ToDictionary(x => x.Name);
+                var templateId = (uint)properties["templateId"].Value;
+                var fields = properties["fields"].Value;
+                foreach(var field in fields)
+                {
+                    var fieldSpec = new IpfixFieldSpecifier();
+                    var fieldIdToken = field.SelectToken("id");
+                    if (fieldIdToken.Type == Newtonsoft.Json.Linq.JTokenType.Integer)
+                    {                                                 
+                        fieldSpec.Id = (ushort)fieldIdToken;
+                    }
+                    else
+                    {
+                        fieldSpec.Id = IpfixInfoElements.GetFieldId((string)fieldIdToken);
+                    }
+                    var fieldLenToken = field.SelectToken("len");
+                    if(fieldLenToken.Type == Newtonsoft.Json.Linq.JTokenType.Integer)
+                    {
+                        fieldSpec.Length = (ushort)fieldLenToken;
+                    }
+                    else
+                    {
+                        fieldSpec.Length = IpfixInfoElements.GetFieldLength((string)fieldLenToken);
+                    }
+                    fieldsList.Add(fieldSpec);
+                }
+                return new IpfixTemplateRecord(templateId, fieldsList.ToArray());
+            }
+        }
+
+        static public IpfixTemplateRecord Parse(string content)
+        {
+            byte[] byteArray = Encoding.UTF8.GetBytes(content);
+            using (var stream = new MemoryStream(byteArray))
+            {
+                return Load(stream);
+            }
+        }
+
+
+        public static IpfixTemplateRecord ConversationIpv4
+        {
+            get
+            {
+                using(var stream = new MemoryStream(Ndx.Ingest.Trace.Resource.ConversationIpv4))
+                {
+                    return Load(stream);
+                }
+            }
+        }
+
+        public static IpfixTemplateRecord FlowIpv4
+        {
+            get
+            {
+                using (var stream = new MemoryStream(Ndx.Ingest.Trace.Resource.FlowIpv4))
+                {
+                    return Load(stream);
+                }
+            }
+        }
+        public static IpfixTemplateRecord ConversationIpv6
+        {
+            get
+            {
+                using (var stream = new MemoryStream(Ndx.Ingest.Trace.Resource.ConversationIpv6))
+                {
+                    return Load(stream);
+                }
+            }
+        }
+        public static IpfixTemplateRecord FlowIpv6
+        {
+            get
+            {
+                using (var stream = new MemoryStream(Ndx.Ingest.Trace.Resource.FlowIpv6))
+                {
+                    return Load(stream);
+                }
+            }
+        }
+        public static IpfixTemplateRecord PacketMeta
+        {
+            get
+            {
+                using (var stream = new MemoryStream(Ndx.Ingest.Trace.Resource.PacketMeta))
+                {
+                    return Load(stream);
+                }
+            }
         }
 
         /// <summary>
@@ -186,8 +312,18 @@ namespace Ndx.Ipfix
 
             public CompiledTemplate(IpfixTemplateRecord template)
             {
-                m_recordLength = template.m_fields.Sum(x => x.FieldLength);
+                m_recordLength = template.m_fields.Sum(x => x.Length);
                 CreateAccessDelegate(template);
+            }
+
+
+            /// <summary>
+            /// Creates an empty array that can accomodate the new record for this template.
+            /// </summary>
+            /// <returns></returns>
+            public byte[] NewRecord()
+            {
+                return new byte[m_recordLength];
             }
 
             public static ByteArraySegment GetByteRange(ByteArraySegment bas, int offset, int length)
@@ -214,8 +350,8 @@ namespace Ndx.Ipfix
                     var fieldOffset = 0;
                     for (var i = 0; i < template.m_fields.Length; i++)
                     {
-                        var fieldId = template.m_fields[i].FieldId;
-                        var fieldLen = (int)template.m_fields[i].FieldLength;
+                        var fieldId = template.m_fields[i].Id;
+                        var fieldLen = (int)template.m_fields[i].Length;
                         var caseBodyExpr = Expression.Call(instance: null,
                                                            method: typeof(CompiledTemplate).GetMethod("GetByteRange"),
                                                            arg0: byteArrayParameter,

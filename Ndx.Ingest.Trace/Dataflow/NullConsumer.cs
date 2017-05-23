@@ -11,24 +11,24 @@ namespace Ndx.Ingest.Trace
     public class NullConsumer
     {
         int m_packetBlockCount;
-        ActionBlock<Tuple<Guid, PacketBlock>> m_packetBlockTarget;
+        ActionBlock<ConversationElement<PacketBlock>> m_packetBlockTarget;
 
         int m_flowRecordCount;
-        ActionBlock<Tuple<Guid, FlowRecord>> m_flowRecordTarget;
+        ActionBlock<ConversationElement<FlowRecord>> m_flowRecordTarget;
 
         int m_rawframeCount;
         ActionBlock<RawFrame> m_rawFrameTarget;
 
         public NullConsumer()
         {
-            m_packetBlockTarget = new ActionBlock<Tuple<Guid, PacketBlock>>(x => m_packetBlockCount++);
-            m_flowRecordTarget = new ActionBlock<Tuple<Guid, FlowRecord>>(x => m_flowRecordCount++);
+            m_packetBlockTarget = new ActionBlock<ConversationElement<PacketBlock>>(x => m_packetBlockCount++);
+            m_flowRecordTarget = new ActionBlock<ConversationElement<FlowRecord>>(x => m_flowRecordCount++);
             m_rawFrameTarget = new ActionBlock<RawFrame>(x => m_rawframeCount++);
         }
 
-        public ITargetBlock<Tuple<Guid, PacketBlock>> PacketBlockTarget => m_packetBlockTarget;
+        public ITargetBlock<ConversationElement<PacketBlock>> PacketBlockTarget => m_packetBlockTarget;
 
-        public ITargetBlock<Tuple<Guid, FlowRecord>> FlowRecordTarget => m_flowRecordTarget;
+        public ITargetBlock<ConversationElement<FlowRecord>> FlowRecordTarget => m_flowRecordTarget;
 
         public ITargetBlock<RawFrame> RawFrameTarget => m_rawFrameTarget;
 

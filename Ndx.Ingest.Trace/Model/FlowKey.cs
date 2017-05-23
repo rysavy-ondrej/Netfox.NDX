@@ -44,14 +44,13 @@ namespace Ndx.Ingest.Trace
         /// <summary>
         /// The size of this structure in 32-bit words.
         /// </summary>
-        public const int __size = 42;
+        public const int __size = 40;
 
         [FieldOffset(0)] public ushort protocol;
         [FieldOffset(2)] public fixed byte sourceAddress[16];
         [FieldOffset(18)] public fixed byte destinationAddress[16];
         [FieldOffset(34)] public ushort sourcePort;
         [FieldOffset(36)] public ushort destinationPort;
-        [FieldOffset(38)] public uint flowId;
 
         /// <summary>
         /// Creates the flow key from the provided bytes.
@@ -204,14 +203,13 @@ namespace Ndx.Ingest.Trace
         /// <param name="srcPort">Source port number.</param>
         /// <param name="dstIp">Destination IP address.</param>
         /// <param name="dstPort">Destination port number.</param>
-        public FlowKey(AddressFamily family, IPProtocolType proto, IPAddress srcIp, ushort srcPort, IPAddress dstIp, ushort dstPort, uint flowId) : this()
+        public FlowKey(AddressFamily family, IPProtocolType proto, IPAddress srcIp, ushort srcPort, IPAddress dstIp, ushort dstPort) : this()
         {
             if (srcIp.AddressFamily != dstIp.AddressFamily)
             {
                 throw new ArgumentException("AddressFamily mismatch.", nameof(srcIp));
             }
 
-            m_data.flowId = flowId;
             m_data.SetFlowProtocol(family, proto);
             SourceAddress = srcIp;
             SourcePort = srcPort;
@@ -260,12 +258,6 @@ namespace Ndx.Ingest.Trace
         {
             get => m_data.GetProtocolType();
             set => m_data.SetProtocolType(value);
-        }
-
-        public uint FlowId
-        {
-            get => m_data.flowId;
-            set => m_data.flowId = FlowId;
         }
 
         /// <summary>

@@ -1,0 +1,54 @@
+﻿{
+  "description": "This templates specifies a flow of InternetAddress family.",
+  "templateId": 310,
+  "fields": [
+    {
+      "id": "ProtocolIdentifier",
+      "len": "Unsigned8"
+    },
+    {
+      "id": "SourceIPv4Address",
+      "len": "Ipv4address"
+    },
+    {
+      "id": "Sourcetransportport",
+      "len": "Unsigned16"
+    },
+    {
+      "id": "DestinationIpv4Address",
+      "len": "Ipv4address"
+    },
+    {
+      "id": "Destinationtransportport",
+      "len": "Unsigned16"
+    },
+    {
+      "id": "Flowdirection",
+      "len": "Unsigned8"
+    },
+    {
+      "id": "OctetTotalCount",
+      "len": "Unsigned64"
+    },
+    {
+      "id": "PacketTotalCount",
+      "len": "Unsigned64"
+    },
+    {
+      "id": "Flowstartseconds",
+      "len": "Datetimeseconds"
+    },
+    {
+      "id": "Flowstartmilliseconds",
+      "len": "Datetimemilliseconds"
+    },
+    {
+      "id": "Flowendseconds",
+      "len": "Datetimeseconds"
+    },
+    {
+      "id": "Flowendmilliseconds",
+      "len": "Datetimemilliseconds"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+﻿{
+  "description": "This templates specifies metainformation of a single packet .",
+  "templateId": 320,
+  "fields": [
+    {
+      "id": "Datalinkframenumber",
+      "len": "Unsigned32"
+    },
+    {
+      "id": "Datalinkframesize",
+      "len": "Unsigned16"
+    },
+    {
+      "id": "Datalinkframeoffset",
+      "len": "Unsigned64"
+    },
+    {
+      "id": "Datalinkframetimestamp",
+      "len": "Datetimemilliseconds"
+    },
+
+    {
+      "id": "Datalinksectionoffset",
+      "len": "Unsigned16"
+    },
+    {
+      "id": "Datalinksectionsize",
+      "len": "Unsigned16"
+    },
+
+    {
+      "id": "Datalinksectionoffset",
+      "len": "Unsigned16"
+    },
+    {
+      "id": "Datalinksectionsize",
+      "len": "Unsigned16"
+    },
+
+    {
+      "id": "Networksectionoffset",
+      "len": "Unsigned16"
+    },
+    {
+      "id": "Networksectionsize",
+      "len": "Unsigned16"
+    },
+
+    {
+      "id": "Transportsectionoffset",
+      "len": "Unsigned16"
+    },
+    {
+      "id": "Transportsectionsize",
+      "len": "Unsigned16"
+    },
+
+    {
+      "id": "Payloadsectionoffset",
+      "len": "Unsigned16"
+    },
+    {
+      "id": "Payloadsectionsize",
+      "len": "Unsigned16"
+    }
+  ]
+}

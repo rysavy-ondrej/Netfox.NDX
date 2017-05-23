@@ -14,14 +14,19 @@ namespace Ndx.Ingest.Trace
         public const string Conversations = "conversations";
         public const string FrameFolder = "frames";
 
-        public static string GetPacketBlockPath(Guid convId, int index)
+        public static string GetPacketBlockPath(Guid convId, FlowOrientation orientation, int index)
         {
-            return Path.Combine(Conversations, convId.ToString(), index.ToString().PadLeft(8, '0'));
+            return Path.Combine(Conversations, convId.ToString(), orientation.ToString().ToLowerInvariant(), index.ToString().PadLeft(8, '0'));
         }
 
-        public static string GetFlowRecordPath(Guid convId, FlowEndpointType enpointType)
+        public static string GetFlowRecordPath(Guid convId, FlowOrientation orientation)
         {
-            return Path.Combine(Conversations, convId.ToString(), enpointType.ToString());
+            return Path.Combine(Conversations, convId.ToString(), orientation.ToString().ToLower(), "record");
+        }
+
+        public static string GetFlowKeyPath(Guid convId, FlowOrientation orientation)
+        {
+            return Path.Combine(Conversations, convId.ToString(), orientation.ToString().ToLower(), "key");
         }
 
         public static string GetFramePath(int index)

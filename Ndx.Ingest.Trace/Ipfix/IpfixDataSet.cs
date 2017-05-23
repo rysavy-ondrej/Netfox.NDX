@@ -3,8 +3,6 @@ using PacketDotNet.Utils;
 
 namespace Ndx.Ipfix
 {
-
-
     /// <summary>
     /// IPFIX Data Set is a collection of data records. 
     /// </summary>

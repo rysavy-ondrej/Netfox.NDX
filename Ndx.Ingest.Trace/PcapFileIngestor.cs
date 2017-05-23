@@ -12,8 +12,8 @@ namespace Ndx.Ingest.Trace
     public class PcapFileIngestor
     {
         private readonly CancellationTokenSource m_cancellationTokenSource;
-        private readonly ITargetBlock<Tuple<Guid, PacketBlock>> m_blockConsumer;
-        private readonly ITargetBlock<Tuple<Guid, FlowRecord>> m_flowConsumer;
+        private readonly ITargetBlock<ConversationElement<PacketBlock>> m_blockConsumer;
+        private readonly ITargetBlock<ConversationElement<FlowRecord>> m_flowConsumer;
         private readonly ITargetBlock<RawFrame> m_frameConsumer;
         private readonly ConversationCollector m_collector;
         private readonly MetadataExtractor m_extractor;
@@ -27,7 +27,7 @@ namespace Ndx.Ingest.Trace
         /// <param name="packetBlockConsumer">Dataflow target block of <see cref="PacketBlock"/> objects.</param>
         /// <param name="flowConsumer">Dataflow target block of <see cref="FlowRecord"/> objects.</param>
         /// <param name="opt">Ingest options.</param>
-        public PcapFileIngestor(ISourceBlock<RawFrame> frameProvider, ITargetBlock<RawFrame> frameConsumer, ITargetBlock<Tuple<Guid, PacketBlock>> packetBlockConsumer, ITargetBlock<Tuple<Guid, FlowRecord>> flowConsumer, IngestOptions opt)
+        public PcapFileIngestor(ISourceBlock<RawFrame> frameProvider, ITargetBlock<RawFrame> frameConsumer, ITargetBlock<ConversationElement<PacketBlock>> packetBlockConsumer, ITargetBlock<ConversationElement<FlowRecord>> flowConsumer, IngestOptions opt)
         {
             m_frameProvider = frameProvider;
             m_blockConsumer = packetBlockConsumer;

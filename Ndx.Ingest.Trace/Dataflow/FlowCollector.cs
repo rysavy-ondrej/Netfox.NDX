@@ -104,11 +104,11 @@ namespace Ndx.Ingest.Trace
 
                     if (m_flowDictionary.TryGetValue(SwapFlowKey(flowKey), out FlowTracker complementaryFlow))
                     {
-                        value.FlowRecord.EndpointType = FlowEndpointType.Responder;
+                        value.FlowRecord.Orientation = FlowOrientation.Downflow;
                     }
                     else
                     {
-                        value.FlowRecord.EndpointType = FlowEndpointType.Originator;
+                        value.FlowRecord.Orientation = FlowOrientation.Upflow;
                     }
 
                     value.PacketBlockSource.LinkTo(m_packetBlockBuffer);
@@ -124,7 +124,7 @@ namespace Ndx.Ingest.Trace
 
         internal static FlowKey SwapFlowKey(FlowKey flowKey)
         {
-            return new FlowKey(flowKey.AddressFamily, flowKey.Protocol, flowKey.DestinationAddress, flowKey.DestinationPort, flowKey.SourceAddress, flowKey.SourcePort, flowKey.FlowId);
+            return new FlowKey(flowKey.AddressFamily, flowKey.Protocol, flowKey.DestinationAddress, flowKey.DestinationPort, flowKey.SourceAddress, flowKey.SourcePort);
         }
 
         /// <summary>

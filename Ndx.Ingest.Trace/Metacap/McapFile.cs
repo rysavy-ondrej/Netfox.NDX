@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 
 namespace Ndx.Ingest.Trace
 {
@@ -61,6 +62,7 @@ namespace Ndx.Ingest.Trace
             }
         }
 
+        IEnumerable<Guid> m_conversations;
         /// <summary>
         /// Gets the collection of all conversation identifiers.
         /// </summary>
@@ -68,7 +70,13 @@ namespace Ndx.Ingest.Trace
         {
             get
             {
-                throw new NotImplementedException();
+                if (m_conversations == null)
+                {
+                    m_conversations = from entry in m_mcapArchive.Entries
+                                        where entry.FullName.StartsWith("conversations")
+                                        select Guid.Parse(Path.GetFileName(entry.Name));
+                }
+                    return m_conversations;
             }
         }
 
@@ -77,14 +85,20 @@ namespace Ndx.Ingest.Trace
         /// </summary>
         /// <returns>The enumerable collection of packet blocks.</returns>
         /// <param name="convId">Conversation identifier.</param>
-        public IEnumerable<PacketBlock> GetPacketBlocks(Guid convId)
+        public IEnumerable<PacketBlock> GetPacketBlocks(Guid convId, FlowOrientation orientation)
         {
             int index = 0;
             PacketBlock packetBlock = null;
-            while ((packetBlock = GetPacketBlock(convId, index)) != null)
-            {
-                yield return packetBlock;
+            while ((packetBlock = GetPacketBlock(convId, orientation, index)) != null)
+            { 
+                    yield return packetBlock;
             }
+        }
+
+
+        public object GetFlowKey(Guid conversation, FlowOrientation orientation)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -92,9 +106,9 @@ namespace Ndx.Ingest.Trace
         /// </summary>
         /// <returns>The packet metadata collection.</returns>
         /// <param name="convId">Conversation identifier.</param>
-        public IEnumerable<PacketMetadata> GetPacketMetadataCollection(Guid convId)
+        public IEnumerable<PacketMetadata> GetPacketMetadataCollection(Guid convId, FlowOrientation orientation)
         {
-            foreach (var packetBlock in GetPacketBlocks(convId))
+            foreach (var packetBlock in GetPacketBlocks(convId, orientation))
             {
                 if (packetBlock != null)
                 {
@@ -115,9 +129,9 @@ namespace Ndx.Ingest.Trace
         /// </summary>
         /// <param name="index">Index of the <see cref="PacketBlock"/> object to retrieve.</param>
         /// <returns>The <see cref="PacketBlock"/> for the conversation.</returns>
-        public PacketBlock GetPacketBlock(Guid convId, int index)
+        private PacketBlock GetPacketBlock(Guid convId, FlowOrientation orientation, int index)
         {
-            var path = MetacapFileInfo.GetPacketBlockPath(convId, index);
+            var path = MetacapFileInfo.GetPacketBlockPath(convId, orientation, index);
             var entry = m_mcapArchive.GetEntry(path);
 
             if (entry == null)
@@ -137,7 +151,7 @@ namespace Ndx.Ingest.Trace
         /// </summary>
         /// <param name="convId">Identifier of the <see cref="FlowRecord"/> object to retrieve.</param>
         /// <returns><see cref="FlowRecord"/> for the specified conversation endpoint.</returns>
-        public FlowRecord GetFlowRecord(Guid convId, FlowEndpointType endpoint)
+        public FlowRecord GetFlowRecord(Guid convId, FlowOrientation endpoint)
         {
             var path = MetacapFileInfo.GetFlowRecordPath(convId, endpoint);
             var entry = m_mcapArchive.GetEntry(path);

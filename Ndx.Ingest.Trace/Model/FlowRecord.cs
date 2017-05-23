@@ -77,7 +77,7 @@ namespace Ndx.Ingest.Trace
         }
     }
 
-    public enum FlowEndpointType { Originator, Responder };
+    public enum FlowOrientation { Upflow, Downflow };
 
     /// <summary>
     /// This class collects information about a single flow.
@@ -96,7 +96,7 @@ namespace Ndx.Ingest.Trace
         /// <summary>
         /// Specifies the flow's source endpoint type.
         /// </summary>
-        private FlowEndpointType m_endpointType;
+        private FlowOrientation m_flowOrientation;
 
         /// <summary>
         /// Synchronization object.
@@ -242,6 +242,6 @@ namespace Ndx.Ingest.Trace
 
         public static IBinaryConverter<FlowRecord> Converter => new BinaryConverter();
 
-        internal FlowEndpointType EndpointType { get => m_endpointType; set => m_endpointType = value; }
+        internal FlowOrientation Orientation { get => m_flowOrientation; set => m_flowOrientation = value; }
     }
 }

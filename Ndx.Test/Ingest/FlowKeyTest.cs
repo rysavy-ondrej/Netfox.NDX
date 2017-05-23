@@ -16,7 +16,7 @@ namespace Ndx.Test
             var srcIp = IPAddress.Parse("8.8.8.8");
             var dstIp = IPAddress.Parse("124.42.52.238");
 
-            var fk1 = new FlowKey(AddressFamily.InterNetwork,IPProtocolType.UDP, srcIp,53, dstIp, 53,0);
+            var fk1 = new FlowKey(AddressFamily.InterNetwork,IPProtocolType.UDP, srcIp,53, dstIp, 53);
 
             var bytes = fk1.GetBytes();        
             var fk2 = new FlowKey(bytes);

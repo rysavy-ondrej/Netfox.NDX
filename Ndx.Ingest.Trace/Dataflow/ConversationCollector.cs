@@ -37,11 +37,11 @@ namespace Ndx.Ingest.Trace
         /// <summary>
         /// Output buffer that stores <see cref="PacketBlock"/> objects.
         /// </summary>
-        private BufferBlock<Tuple<Guid, PacketBlock>> m_packetBlockBuffer;
+        private BufferBlock<ConversationElement<PacketBlock>> m_packetBlockBuffer;
         /// <summary>
         /// Output buffer that stores <see cref="FlowRecord"/> objects.
         /// </summary>
-        private BufferBlock<Tuple<Guid, FlowRecord>> m_flowRecordBuffer;
+        private BufferBlock<ConversationElement<FlowRecord>> m_flowRecordBuffer;
 
         /// <summary>
         /// Creates a new instance of <see cref="FlowCollector"/> block.
@@ -56,9 +56,9 @@ namespace Ndx.Ingest.Trace
                 CancellationToken = cancellationToken
             };
 
-            m_packetBlockBuffer = new BufferBlock<Tuple<Guid, PacketBlock>>(opt);
+            m_packetBlockBuffer = new BufferBlock<ConversationElement<PacketBlock>>(opt);
 
-            m_flowRecordBuffer = new BufferBlock<Tuple<Guid, FlowRecord>>(opt);
+            m_flowRecordBuffer = new BufferBlock<ConversationElement<FlowRecord>>(opt);
 
             m_actionBlock = new ActionBlock<PacketMetadata>(CollectAsync, opt);
 
@@ -66,7 +66,7 @@ namespace Ndx.Ingest.Trace
             {
                 foreach (var item in m_flowDictionary)
                 {
-                    await m_flowRecordBuffer.SendAsync(Tuple.Create(item.Value.ConversationId, item.Value.FlowRecord));
+                    await m_flowRecordBuffer.SendAsync(new ConversationElement<FlowRecord>(item.Value.ConversationId, item.Value.FlowRecord.Orientation, item.Value.FlowRecord));
 
                     item.Value.PacketMetadataTarget.Complete();
 
@@ -99,13 +99,13 @@ namespace Ndx.Ingest.Trace
                     // This is a very simple way of composing conversations...
                     if (m_flowDictionary.TryGetValue(SwapFlowKey(flowKey), out FlowTracker complementaryFlow))
                     {
-                        m_flowDictionary[flowKey] = value = new FlowTracker(flowKey, complementaryFlow.ConversationId);
-                        value.FlowRecord.EndpointType = FlowEndpointType.Responder;
+                        m_flowDictionary[flowKey] = value = new FlowTracker(flowKey, complementaryFlow.ConversationId, FlowOrientation.Downflow);
+                        value.FlowRecord.Orientation = FlowOrientation.Downflow;
                     }
                     else
                     {
-                        m_flowDictionary[flowKey] = value = new FlowTracker(flowKey, Guid.NewGuid());
-                        value.FlowRecord.EndpointType = FlowEndpointType.Originator;
+                        m_flowDictionary[flowKey] = value = new FlowTracker(flowKey, Guid.NewGuid(), FlowOrientation.Upflow);
+                        value.FlowRecord.Orientation = FlowOrientation.Upflow;
                     }
 
                     value.PacketBlockSource.LinkTo(m_packetBlockBuffer);
@@ -121,7 +121,7 @@ namespace Ndx.Ingest.Trace
 
         internal static FlowKey SwapFlowKey(FlowKey flowKey)
         {
-            return new FlowKey(flowKey.AddressFamily, flowKey.Protocol, flowKey.DestinationAddress, flowKey.DestinationPort, flowKey.SourceAddress, flowKey.SourcePort, flowKey.FlowId);
+            return new FlowKey(flowKey.AddressFamily, flowKey.Protocol, flowKey.DestinationAddress, flowKey.DestinationPort, flowKey.SourceAddress, flowKey.SourcePort);
         }
 
         /// <summary>
@@ -139,13 +139,13 @@ namespace Ndx.Ingest.Trace
         /// Use this source dataflow block to acquire <see cref="PacketBlock"/> objects
         /// produced by the collector.
         /// </summary>
-        public ISourceBlock<Tuple<Guid, PacketBlock>> PacketBlockSource => m_packetBlockBuffer;
+        public ISourceBlock<ConversationElement<PacketBlock>> PacketBlockSource => m_packetBlockBuffer;
 
         /// <summary>
         /// Use this source dataflow block to acquire <see cref="FlowRecord"/> objects
         /// produced by the collector.
         /// </summary>
-        public ISourceBlock<Tuple<Guid, FlowRecord>> FlowRecordSource => m_flowRecordBuffer;
+        public ISourceBlock<ConversationElement<FlowRecord>> FlowRecordSource => m_flowRecordBuffer;
 
         /// <summary>
         /// Gets an enumerable collection of all <see cref="FlowKey"/> items
@@ -159,10 +159,10 @@ namespace Ndx.Ingest.Trace
         /// </summary>
         class FlowTracker
         {
-            static IPropagatorBlock<PacketMetadata, Tuple<Guid, PacketBlock>> CreateDataflowBlock(FlowKey flowKey, Guid conversationId, Func<int> getIndex)
+            static IPropagatorBlock<PacketMetadata, ConversationElement<PacketBlock>> CreateDataflowBlock(FlowKey flowKey, Guid conversationId, FlowOrientation orientation, Func<int> getIndex)
             {
                 var target = new BatchBlock<PacketMetadata>(PacketBlock.Capacity); ;
-                var source = new TransformBlock<PacketMetadata[], Tuple<Guid, PacketBlock>>(metadata => Tuple.Create(conversationId, new PacketBlock(flowKey, getIndex(), metadata)));
+                var source = new TransformBlock<PacketMetadata[], ConversationElement<PacketBlock>>(metadata => new ConversationElement<PacketBlock>(conversationId, orientation, new PacketBlock(flowKey, getIndex(), metadata)));
                 target.LinkTo(source);
                 target.Completion.ContinueWith(completion =>
                 {
@@ -195,7 +195,7 @@ namespace Ndx.Ingest.Trace
             /// This dataflow block groups <see cref="PacketMetadata"/> objects and produces <see cref="PacketBlock"/>. 
             /// Each <see cref="PacketBlock"/> contains at most <see cref="PacketBlock.Capacity"/> <see cref="PacketMetadata"/> objects.
             /// </summary>
-            IPropagatorBlock<PacketMetadata, Tuple<Guid, PacketBlock>> m_dataflowBlock;
+            IPropagatorBlock<PacketMetadata, ConversationElement<PacketBlock>> m_dataflowBlock;
 
             /// <summary>
             /// Gets the <see cref="Trace.FlowRecord"/> object.
@@ -209,13 +209,13 @@ namespace Ndx.Ingest.Trace
             /// Gets the source dataflow block that produces <see cref="PacketBlock"/>. Link this source to
             /// process generated <see cref="PacketBlock"/> objects.
             /// </summary>
-            internal ISourceBlock<Tuple<Guid, PacketBlock>> PacketBlockSource => m_dataflowBlock;
+            internal ISourceBlock<ConversationElement<PacketBlock>> PacketBlockSource => m_dataflowBlock;
 
-            internal FlowTracker(FlowKey flowKey, Guid conversationId)
+            internal FlowTracker(FlowKey flowKey, Guid conversationId, FlowOrientation orientation)
             {
                 m_conversationId = conversationId;
                 m_flowRecord = new FlowRecord(flowKey);
-                m_dataflowBlock = CreateDataflowBlock(flowKey, m_conversationId, () => m_flowRecord.Packets / PacketBlock.Capacity);
+                m_dataflowBlock = CreateDataflowBlock(flowKey, m_conversationId, orientation, () => m_flowRecord.Packets / PacketBlock.Capacity);
             }
 
             internal Task Completion => m_dataflowBlock.Completion;

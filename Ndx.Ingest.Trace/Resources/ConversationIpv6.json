@@ -1,0 +1,34 @@
+{
+	"description" :  "This templates describes the format of an element in the conversation index.",
+	"templateId": 301,
+	"fields": [
+		{
+			"id": "ProtocolIdentifier",
+			"len": "Unsigned8"
+		},
+    {
+      "id": "SourceIPv4Address",
+      "len": "Ipv4address"
+    },
+		{
+			"id": "Sourcetransportport",
+			"len": "Unsigned16"
+		},
+		{
+			"id": "DestinationIpv4Address",
+			"len": "Ipv4address"
+		},
+    {
+      "id": "Destinationtransportport",
+      "len": "Unsigned16"
+    },
+    {
+      "id": "ApplicationId",
+      "len": "Unsigned64"
+    },
+		{
+			"id": "ConversationLabel",
+			"len": "Guid"
+		}
+	]
+}
