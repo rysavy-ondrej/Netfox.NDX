@@ -81,7 +81,7 @@ namespace Ndx.Ingest.Trace
         {
             lock (m_sync)
             {
-                
+                m_packetBlockCount++;
                 var path = MetacapFileInfo.GetPacketBlockPath(block.ConversationId, block.Orientation, block.Data.BlockIndex);
                 var blockEntry = m_archive.CreateEntry(path, CompressionLevel.Fastest);
                 using (var writer = new BinaryWriter(blockEntry.Open()))
@@ -95,6 +95,7 @@ namespace Ndx.Ingest.Trace
         {
             lock (m_sync)
             {
+                m_flowRecordCount++;
                 var pathRecord = MetacapFileInfo.GetFlowRecordPath(flow.ConversationId, flow.Orientation);
                 var entryRecord = m_archive.CreateEntry(pathRecord, CompressionLevel.Fastest);
                 using (var writer = new BinaryWriter(entryRecord.Open()))

@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -34,10 +34,18 @@ namespace Ndx.Tools.Export
         RocksDb m_rocksDb;
 
         /// <summary>
+        /// Output JSON file.
+        /// </summary>
+        string m_outputFile;
+
+        /// <summary>
         /// Gets or sets the path to the output RocksDB root folder.
         /// </summary>
         [Parameter(Mandatory = true)]
         public string RocksDbFolder { get => m_rocksDbFolder; set => m_rocksDbFolder = value; }
+
+        [Parameter(Mandatory = true)]
+        public string OutputFile { get => m_outputFile; set => m_outputFile = value; }
 
         protected override void BeginProcessing()
         {
@@ -47,9 +55,7 @@ namespace Ndx.Tools.Export
                 var columnFamilies = new ColumnFamilies
                 {
                     { "pcaps", new ColumnFamilyOptions() },
-                    { "flows.key", new ColumnFamilyOptions() },
-                    { "flows.record", new ColumnFamilyOptions() },
-                    { "flows.features", new ColumnFamilyOptions() },
+                    { "flows", new ColumnFamilyOptions() },
                     { "packets", new ColumnFamilyOptions() }
                 };
                 m_rocksDb = RocksDb.Open(options, m_rocksDbFolder, columnFamilies);
@@ -76,43 +82,74 @@ namespace Ndx.Tools.Export
             }
 
             var pcapsCollection = m_rocksDb.GetColumnFamily("pcaps");
-            var flowsKeyCollection = m_rocksDb.GetColumnFamily("flows.key");
-            var flowsRecordCollection = m_rocksDb.GetColumnFamily("flows.record");
+            var flowsCollection = m_rocksDb.GetColumnFamily("flows");
             var packetsCollection = m_rocksDb.GetColumnFamily("packets");
 
-            WriteObject("{");
-            WriteObject("\"flows.key\": [");
-            using (var iter = m_rocksDb.NewIterator(flowsKeyCollection))
+            var pcaps = new JArray();
+            using (var iter = m_rocksDb.NewIterator(pcapsCollection))
             {
                 iter.SeekToFirst();
                 while (iter.Valid())
                 {
-                    var flowId = RocksSerializer.ToFlowId(iter.Key(),0);
-                    var flowKey = RocksSerializer.ToFlowKey(iter.Value(),0);                                        
-                    iter.Next();
-                    var eol = iter.Valid() ? "," : "";
-                    var keyValue = new KeyValuePair<RocksFlowId, RocksFlowKey>(flowId, flowKey);
-                    WriteObject($"{JsonConvert.SerializeObject(keyValue, IPAddressConverter.Instance)}{eol}");
-                }
-            }
-            WriteObject("],");
-            WriteObject("\"flows.record\": [");
-            using (var iter = m_rocksDb.NewIterator(flowsRecordCollection))
-            {
-                iter.SeekToFirst();
-                while (iter.Valid())
-                {
-                    var flowId = RocksSerializer.ToFlowId(iter.Key(),0);
-                    var flowRecord = RocksSerializer.ToFlowRecord(iter.Value(),0);
-                    iter.Next();
-                    var eol = iter.Valid() ? "," : "";
-                    var keyValue = new KeyValuePair<RocksFlowId, RocksFlowRecord>(flowId, flowRecord);
-                    WriteObject($"{JsonConvert.SerializeObject(keyValue)}{eol}");
-                }
-            }
-            WriteObject("],");
+                    var pcapId = RocksSerializer.ToPcapId(iter.Key(), 0);
+                    var pcapFile = RocksSerializer.ToPcapFile(iter.Value(), 0);
 
-            WriteObject("\"packets\": [");
+                    var item = new JObject()
+                    {
+                        ["key"] = new JObject()
+                        {
+                            ["uid"] = pcapId.Uid
+                        },
+                        ["value"] = new JObject()
+                        {
+                            ["pcapType"] = pcapFile.PcapType,
+                            ["uriLength"] = pcapFile.UriLength,
+                            ["uri"] = pcapFile.Uri.ToString(),
+                            ["md5signature"] = pcapFile.Md5signature,
+                            ["shasignature"] = pcapFile.Shasignature,
+                        }
+                    };
+                    pcaps.Add(item);
+                    iter.Next();
+                }
+            }
+
+
+            var flows = new JArray();
+            using (var iter = m_rocksDb.NewIterator(flowsCollection))
+            {
+                iter.SeekToFirst();
+                while (iter.Valid())
+                {
+                    var flowKey = RocksSerializer.ToFlowKey(iter.Key(),0);
+                    var flowRecord = RocksSerializer.ToFlowRecord(iter.Value(),0);
+                    var item = new JObject
+                    {
+                        ["key"] = new JObject
+                        {
+                            ["protocol"] = flowKey.Protocol,
+                            ["sourceAddress"] = flowKey.SourceAddress.ToString(),
+                            ["destinationAddress"] = flowKey.DestinationAddress.ToString(),
+                            ["sourcePort"] = flowKey.SourcePort,
+                            ["destinationPort"] = flowKey.DestinationPort,
+                            ["flowCounter"] = flowKey.FlowCounter
+                        },
+                        ["value"] = new JObject
+                        {
+                            ["octets"] = flowRecord.Octets,
+                            ["packets"] = flowRecord.Packets,
+                            ["first"] = flowRecord.First,
+                            ["last"] = flowRecord.Last,
+                            ["blocks"] = flowRecord.Blocks,
+                            ["application"] = flowRecord.Application
+                        }
+                    };
+                    flows.Add(item);                
+                    iter.Next();
+                }
+            }
+
+            var packets = new JArray();
             using (var iter = m_rocksDb.NewIterator(packetsCollection))
             {
                 iter.SeekToFirst();
@@ -120,214 +157,57 @@ namespace Ndx.Tools.Export
                 {
                     var packetBlockId = RocksSerializer.ToPacketBlockId(iter.Key(),0);
                     var packetBlock = RocksSerializer.ToPacketBlock(iter.Value(), 0);
+
+                    var item = new JObject
+                    {
+                        ["key"] = new JObject
+                        {
+                            ["fkey"] = new JObject
+                            {
+                                ["protocol"] = packetBlockId.FlowKey.Protocol,
+                                ["sourceAddress"] = packetBlockId.FlowKey.SourceAddress.ToString(),
+                                ["destinationAddress"] = packetBlockId.FlowKey.DestinationAddress.ToString(),
+                                ["sourcePort"] = packetBlockId.FlowKey.SourcePort,
+                                ["destinationPort"] = packetBlockId.FlowKey.DestinationPort,
+                                ["flowCounter"] = packetBlockId.FlowKey.FlowCounter
+                            },
+                            ["blockId"] = packetBlockId.BlockId
+                        },
+                        ["value"] = new JObject
+                        {
+                                ["pcapRef"] = packetBlock.PcapRef.Uid,
+                                ["count"] = packetBlock.Items.Count(),
+                                ["items"] = new JArray(packetBlock.Items.Select(x=>
+                                    new JObject()
+                                    {
+                                        ["frame"] = new JObject()
+                                        {
+                                            ["frameNumber"] = x.FrameMetadata.FrameNumber,
+                                            ["frameLength"] = x.FrameMetadata.FrameLength,
+                                            ["frameOffset"] = x.FrameMetadata.FrameOffset,
+                                            ["timestamp"] = x.FrameMetadata.Timestamp
+                                        },
+                                        ["link"] = x.Link.ToJObject(),
+                                        ["network"] = x.Network.ToJObject(),
+                                        ["transport"] = x.Transport.ToJObject(),
+                                        ["payload"] = x.Payload.ToJObject(),
+                                    }                                                                        
+                                    ).ToArray()),
+                        }
+                    };
+                    packets.Add(item);
+
+
                     iter.Next();
-                    var eol = iter.Valid() ? "," : "";
-                    var keyValue = new KeyValuePair<RocksPacketBlockId, RocksPacketBlock>(packetBlockId, packetBlock);
-                    WriteObject($"{JsonConvert.SerializeObject(keyValue)}{eol}");
                 }
             }
-            WriteObject("]");
-            WriteObject("}");
-        }
-    }
-
-    class IPAddressConverter : JsonConverter
-    {
-        internal static IPAddressConverter Instance = new IPAddressConverter();
-
-        public override bool CanConvert(Type objectType)
-        {
-            return (objectType == typeof(IPAddress));
-        }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            IPAddress ip = (IPAddress)value;
-            writer.WriteValue(ip.ToString());
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            JToken token = JToken.Load(reader);
-            return IPAddress.Parse(token.Value<string>());
-        }
-    }
-
-    public class FlowRecordSerializer : JsonConverter
-    {
-        public static readonly string FlowOctets = "octets";
-        public static readonly string FlowPackets = "packets";
-        public static readonly string FlowFirst = "first";
-        public static readonly string FlowLast = "last";
-        public static readonly string FlowApplication = "application";
-
-
-
-        static Lazy<FlowRecordSerializer> m_instance = new Lazy<FlowRecordSerializer>(() => new FlowRecordSerializer());
-        public static JsonConverter Instance => m_instance.Value;
-
-
-        T ParseEnum<T>(string value, T defaultResult) where T : struct
-        {
-            var result = defaultResult;
-            Enum.TryParse<T>(value, out result);
-            return result;
-        }
-
-        public override bool CanConvert(Type objectType)
-        {
-            return (objectType == typeof(FlowRecord));
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            var jsonObject = Newtonsoft.Json.Linq.JObject.Load(reader);
-            var properties = jsonObject.Properties().ToDictionary(x => x.Name);
-
-            var newObj = new FlowRecord()
+            var root = new JObject()
             {
-                FirstSeen = (long)properties[FlowFirst].Value,
-
-                LastSeen = (long)properties[FlowLast].Value,
-
-                Octets = (long)properties[FlowOctets].Value,
-
-                Packets = (int)properties[FlowPackets].Value,
-
-                RecognizedProtocol = ParseEnum<ApplicationProtocol>(properties[FlowApplication].Value.ToString(), ApplicationProtocol.NULL),
-
+                ["pcaps"] = pcaps,
+                ["flows"] = flows,
+                ["packets"] = packets
             };
-            return newObj;
+            WriteObject(root);
         }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            var data = value as FlowRecord;
-            writer.WriteStartObject();
-
-            writer.WritePropertyName(FlowFirst);
-            writer.WriteValue(data.FirstSeen);
-
-            writer.WritePropertyName(FlowLast);
-            writer.WriteValue(data.LastSeen);
-
-            writer.WritePropertyName(FlowOctets);
-            writer.WriteValue(data.Octets);
-
-            writer.WritePropertyName(FlowPackets);
-            writer.WriteValue(data.Packets);
-
-            writer.WritePropertyName(FlowApplication);
-            writer.WriteValue(data.RecognizedProtocol.ToString());
-
-            writer.WriteEndObject();
-        }
-    }
-
-    public class PacketMetadataSerializer : JsonConverter
-    {
-        static Lazy<PacketMetadataSerializer> m_instance = new Lazy<PacketMetadataSerializer>(() => new PacketMetadataSerializer());
-        public static JsonConverter Instance => m_instance.Value;
-
-        public override bool CanConvert(Type objectType)
-        {
-            return typeof(PacketMetadata).Equals(objectType);
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            var data = value as PacketMetadata;
-            writer.WriteStartObject();
-
-            writer.WritePropertyName(nameof(data.Frame).ToLower());
-
-            serializer.Serialize(writer, data.Frame);
-
-            writer.WritePropertyName(nameof(data.Link).ToLower());
-            serializer.Serialize(writer, data.Link);
-
-            writer.WritePropertyName(nameof(data.Network).ToLower());
-            serializer.Serialize(writer, data.Network);
-
-            writer.WritePropertyName(nameof(data.Transport).ToLower());
-            serializer.Serialize(writer, data.Transport);
-
-            writer.WritePropertyName(nameof(data.Payload).ToLower());
-            serializer.Serialize(writer, data.Payload);
-
-            writer.WriteEndObject();
-        }
-    }
-
-    public class ByteRangeSerializer : JsonConverter
-    {
-        static Lazy<ByteRangeSerializer> m_instance = new Lazy<ByteRangeSerializer>(() => new ByteRangeSerializer());
-        public static JsonConverter Instance => m_instance.Value;
-
-        public override bool CanConvert(Type objectType)
-        {
-            return typeof(_ByteRange).Equals(objectType);
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            var data = (_ByteRange)value;
-            writer.WriteStartObject();
-
-            writer.WritePropertyName(nameof(data.Start).ToLower());
-            writer.WriteValue(data.Start);
-
-            writer.WritePropertyName(nameof(data.Count).ToLower());
-            writer.WriteValue(data.Count);
-
-            writer.WriteEndObject();
-        }
-    }
-
-    public class FrameMetadataSerializer : JsonConverter
-    {
-        static Lazy<FrameMetadataSerializer> m_instance = new Lazy<FrameMetadataSerializer>(() => new FrameMetadataSerializer());
-        public static JsonConverter Instance => m_instance.Value;
-
-        public override bool CanConvert(Type objectType)
-        {
-            return typeof(FrameMetadata).Equals(objectType);
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            var data = (FrameMetadata)value;
-            writer.WriteStartObject();
-
-            writer.WritePropertyName(nameof(data.FrameNumber).ToLower());
-            writer.WriteValue(data.FrameNumber);
-
-            writer.WritePropertyName(nameof(data.FrameLength).ToLower());
-            writer.WriteValue(data.FrameLength);
-
-            writer.WritePropertyName(nameof(data.FrameOffset).ToLower());
-            writer.WriteValue(data.FrameOffset);
-
-            writer.WritePropertyName(nameof(data.Timestamp).ToLower());
-            writer.WriteValue(data.Timestamp);
-
-            writer.WriteEndObject();
-        }
-    }
-
+    }       
 }

@@ -69,9 +69,7 @@ namespace Ndx.Tools.Export
                 var columnFamilies = new ColumnFamilies
                 {
                     { "pcaps", new ColumnFamilyOptions() },
-                    { "flows.key", new ColumnFamilyOptions() },
-                    { "flows.record", new ColumnFamilyOptions() },
-                    { "flows.features", new ColumnFamilyOptions() },
+                    { "flows", new ColumnFamilyOptions() },
                     { "packets", new ColumnFamilyOptions() }
                 };
                 m_rocksDb = RocksDb.Open(options, m_rocksDbFolder,columnFamilies);
@@ -99,114 +97,105 @@ namespace Ndx.Tools.Export
 
             // insert information about pcap file:
             var pcapsCollection = m_rocksDb.GetColumnFamily("pcaps");
-            var flowsKeyCollection = m_rocksDb.GetColumnFamily("flows.key");
-            var flowsRecordCollection = m_rocksDb.GetColumnFamily("flows.record");
+            var flowsCollection = m_rocksDb.GetColumnFamily("flows");
             var packetsCollection = m_rocksDb.GetColumnFamily("packets");
 
             var pcapId = new RocksPcapId()
             {
                 Uid = 0
             };
-
+            var rdbPcapFile = new RocksPcapFile()
+            {
+                PcapType = (ushort)PcapType.Libpcap,
+                IngestedOn = DateTimeOffset.Now,
+                Uri = new Uri(Path.GetFullPath(m_capfile))
+            };
+            m_rocksDb.Put(RocksSerializer.GetBytes(pcapId), RocksSerializer.GetBytes(rdbPcapFile), pcapsCollection);
 
             foreach (var conversation in m_mcap.Conversations)
             {
-                var originatorKey = m_mcap.GetFlowKey(conversation, FlowOrientation.Upflow);
-                var responderKey = m_mcap.GetFlowKey(conversation, FlowOrientation.Downflow);
+                var upflowKey = m_mcap.GetFlowKey(conversation, FlowOrientation.Upflow);
+                var downflowKey = m_mcap.GetFlowKey(conversation, FlowOrientation.Downflow);
 
-                var originatorRecord = m_mcap.GetFlowRecord(conversation, FlowOrientation.Upflow);
-                var responderRecord = m_mcap.GetFlowRecord(conversation, FlowOrientation.Downflow);
+                var upflowRecord = m_mcap.GetFlowRecord(conversation, FlowOrientation.Upflow);
+                var downflowRecord = m_mcap.GetFlowRecord(conversation, FlowOrientation.Downflow);
+                
+                // Note that conversation may consists only of a single flow:
+                if (upflowKey != null && upflowRecord != null)
+                {
+                    var upflowBlocks = m_mcap.GetPacketBlocks(conversation, FlowOrientation.Upflow);
+                    var upflowPackets = upflowBlocks.SelectMany(x => x.Packets);
+                    WriteFlowRecord(upflowKey, upflowRecord);
+                    WritePacketBlock(upflowKey, upflowPackets);
 
-                var originatorBlocks = m_mcap.GetPacketBlocks(conversation, FlowOrientation.Upflow);
-                var responderBlocks = m_mcap.GetPacketBlocks(conversation, FlowOrientation.Downflow);
+                }
+                // Note that conversation may consists only of a single flow, it should be upflow, but for regularity...
+                if (downflowKey != null && downflowRecord != null)
+                {
+                    var downflowBlocks = m_mcap.GetPacketBlocks(conversation, FlowOrientation.Downflow);
+                    var downflowPackets = downflowBlocks.SelectMany(x => x.Packets);
+                    WriteFlowRecord(downflowKey, downflowRecord);
+                    WritePacketBlock(downflowKey, downflowPackets);
+                }
             }
-            /*
-                        var convTable = m_mcap.ConversationTable.Entries.ToArray();
-                        var flowTable = m_mcap.FlowKeyTable.Entries.ToArray();
-                        WriteDebug($"Start processing conversation table, {convTable.Count()} entries.");
-                        foreach (var entry in convTable)
+
+            void WriteFlowRecord(FlowKey flowKey, FlowRecord flowRecord)
+            {
+                var flowKeyValue = new RocksFlowKey()
+                {
+                    Protocol = (ushort)((int)flowKey.AddressFamily << 8 | (int)flowKey.Protocol),
+                    SourceAddress = flowKey.SourceAddress,
+                    DestinationAddress = flowKey.DestinationAddress,
+                    SourcePort = flowKey.SourcePort,
+                    DestinationPort = flowKey.DestinationPort
+                };
+                var flowRecordValue = new RocksFlowRecord()
+                {
+                    Octets = (ulong)flowRecord.Octets + (ulong)flowRecord.Octets,
+                    Packets = (uint)flowRecord.Packets + (uint)flowRecord.Packets,
+                    First = Math.Min((ulong)flowRecord.FirstSeen, (ulong)flowRecord.FirstSeen),
+                    Last = Math.Max((ulong)flowRecord.LastSeen, (ulong)flowRecord.LastSeen),
+                    Blocks = (uint)1,   // we always create only one block here
+                    Application = (uint)flowRecord.RecognizedProtocol
+                };
+                m_rocksDb.Put(RocksSerializer.GetBytes(flowKeyValue), RocksSerializer.GetBytes(flowRecordValue), flowsCollection);
+            }
+            void WritePacketBlock(FlowKey flowKey, IEnumerable<PacketMetadata> packets)
+            {
+                var rdbPacketBlockId = new RocksPacketBlockId()
+                {
+                    FlowKey = new RocksFlowKey()
+                    {
+                        Protocol = (ushort)((int)flowKey.AddressFamily << 8 | (int)flowKey.Protocol),
+                        SourceAddress = flowKey.SourceAddress,
+                        DestinationAddress = flowKey.DestinationAddress,
+                        SourcePort = flowKey.SourcePort,
+                        DestinationPort = flowKey.DestinationPort
+                    },
+                    BlockId = 0
+                };
+                var rdbPacketBlock = new RocksPacketBlock()
+                {
+                    PcapRef = pcapId,
+                    Items = packets.Select(x =>
+                        new RocksPacketMetadata()
                         {
-                            var originatorId = entry.OriginatorFlowId;
-                            var responderId = entry.ResponderFlowId;
-
-                            var originatorFlow = flowTable[originatorId];
-                            var responderFlow = flowTable[responderId];
-
-
-                            // this id will be also id of the conversation
-                            var originatorFlowRecordIdx = new RocksFlowId() { Uid = (uint)originatorFlow.IndexRecord.FlowRecordIndex };
-
-                            var originatorFlowRecord = m_mcap.GetFlowRecord(originatorFlow.IndexRecord.FlowRecordIndex);
-                            var responderFlowRecord = m_mcap.GetFlowRecord(responderFlow.IndexRecord.FlowRecordIndex);
-
-                            var originatorBlocks = originatorFlow.IndexRecord.PacketBlockList.Select(pbIdx => m_mcap.GetPacketBlock(pbIdx));
-                            var responderBlocks = responderFlow.IndexRecord.PacketBlockList.Select(pbIdx => m_mcap.GetPacketBlock(pbIdx));
-                            // list of all packets
-                            var packets = originatorBlocks.SelectMany(x => x.Packets).Concat(responderBlocks.SelectMany(x => x.Packets)).OrderBy(x => x.Frame.Timestamp);
-
-
-                            if (originatorFlowRecord != null && responderFlowRecord != null)
+                            FrameMetadata = new RocksFrameData()
                             {
-
-                                var flowKeyItem = new RocksFlowKey()
-                                {
-                                    Protocol = (ushort)((int)originatorFlow.Key.AddressFamily << 8 | (int)originatorFlow.Key.Protocol),
-                                    SourceAddress = originatorFlow.Key.SourceAddress,
-                                    DestinationAddress = originatorFlow.Key.DestinationAddress,
-                                    SourcePort = originatorFlow.Key.SourcePort,
-                                    DestinationPort = originatorFlow.Key.DestinationPort
-                                };
-
-                                m_rocksDb.Put(RocksSerializer.GetBytes(originatorFlowRecordIdx), RocksSerializer.GetBytes(flowKeyItem), flowsKeyCollection);
-
-                                var flowRecordItem = new RocksFlowRecord()
-                                {
-                                    Octets = (ulong)originatorFlowRecord.Octets + (ulong)responderFlowRecord.Octets,
-                                    Packets = (uint)originatorFlowRecord.Packets + (uint)responderFlowRecord.Packets,
-                                    First = Math.Min((ulong)originatorFlowRecord.FirstSeen, (ulong)responderFlowRecord.FirstSeen),
-                                    Last = Math.Max((ulong)originatorFlowRecord.LastSeen, (ulong)responderFlowRecord.LastSeen),
-                                    Blocks = (uint)1,   // we always create only one block
-                                    Application = (uint)originatorFlowRecord.RecognizedProtocol
-                                };
-
-                                m_rocksDb.Put(RocksSerializer.GetBytes(originatorFlowRecordIdx), RocksSerializer.GetBytes(flowRecordItem), flowsRecordCollection);
-                            }
-                            else
-                            {
-                                WriteWarning($"{originatorFlow.Key}: FlowRecord {originatorFlowRecordIdx} not found in the metacap file.");
-                            }
-
-
-                            var pbId = new RocksPacketBlockId()
-                            {
-                                FlowId = originatorFlowRecordIdx.Uid,
-                                BlockId = 0
-                            };
-
-                            var rdbPacketBlock = new RocksPacketBlock()
-                            {
-                                PcapRef = pcapId,
-                                Items = packets.Select(x =>
-                                    new RocksPacketMetadata()
-                                    {
-                                        FrameMetadata = new RocksFrameData()
-                                        {
-                                            FrameLength = (uint)x.Frame.FrameLength,
-                                            FrameNumber = (uint)x.Frame.FrameNumber,
-                                            FrameOffset = (ulong)x.Frame.FrameOffset,
-                                            Timestamp = (ulong)x.Frame.Timestamp.ToUnixTimeMilliseconds()
-                                        },
-                                        Link = new RocksByteRange() { Start = x.Link.Start, Count = x.Link.Count },
-                                        Network = new RocksByteRange() { Start = x.Network.Start, Count = x.Network.Count },
-                                        Transport = new RocksByteRange() { Start = x.Transport.Start, Count = x.Transport.Count },
-                                        Payload = new RocksByteRange() { Start = x.Payload.Start, Count = x.Payload.Count },
-                                    }
-                                ).ToArray()
-                            };
-                            m_rocksDb.Put(RocksSerializer.GetBytes(pbId), RocksSerializer.GetBytes(rdbPacketBlock), packetsCollection);
-
+                                FrameLength = (uint)x.Frame.FrameLength,
+                                FrameNumber = (uint)x.Frame.FrameNumber,
+                                FrameOffset = (ulong)x.Frame.FrameOffset,
+                                Timestamp = (ulong)x.Frame.Timestamp.ToUnixTimeMilliseconds()
+                            },
+                            Link = new RocksByteRange() { Start = x.Link.Start, Count = x.Link.Count },
+                            Network = new RocksByteRange() { Start = x.Network.Start, Count = x.Network.Count },
+                            Transport = new RocksByteRange() { Start = x.Transport.Start, Count = x.Transport.Count },
+                            Payload = new RocksByteRange() { Start = x.Payload.Start, Count = x.Payload.Count },
                         }
-                        */
+                    ).ToArray()
+                };
+                m_rocksDb.Put(RocksSerializer.GetBytes(rdbPacketBlockId), RocksSerializer.GetBytes(rdbPacketBlock), packetsCollection);
+            }
         }
     }
 }

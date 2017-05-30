@@ -70,13 +70,21 @@ namespace Ndx.Ingest.Trace
         {
             get
             {
+                /// gets the id of conversation from the conversation path
+                /// conversation path is: conversations/GUID/...
+                string getConversationDirectory(string path)
+                {
+                    var components = path.Split(Path.DirectorySeparatorChar);
+                    return components[1];
+                }
+
                 if (m_conversations == null)
                 {
                     m_conversations = from entry in m_mcapArchive.Entries
-                                        where entry.FullName.StartsWith("conversations")
-                                        select Guid.Parse(Path.GetFileName(entry.Name));
+                                        where entry.FullName.EndsWith(@"upflow\key")
+                                        select Guid.Parse(getConversationDirectory(entry.FullName));
                 }
-                    return m_conversations;
+                return m_conversations;
             }
         }
 
@@ -90,15 +98,28 @@ namespace Ndx.Ingest.Trace
             int index = 0;
             PacketBlock packetBlock = null;
             while ((packetBlock = GetPacketBlock(convId, orientation, index)) != null)
-            { 
-                    yield return packetBlock;
+            {
+                index++;
+                yield return packetBlock;
             }
         }
 
 
-        public object GetFlowKey(Guid conversation, FlowOrientation orientation)
+        public FlowKey GetFlowKey(Guid conversation, FlowOrientation orientation)
         {
-            throw new NotImplementedException();
+            var path = MetacapFileInfo.GetFlowKeyPath(conversation, orientation);
+            var entry = m_mcapArchive.GetEntry(path);
+
+            if (entry == null)
+            {
+                m_logger.Error($"Flow key[{path}] cannot be find. Corrupted file?");
+                return null;
+            }
+
+            using (var reader = new BinaryReader(entry.Open()))
+            {
+                return FlowKey.Converter.ReadObject(reader);
+            }
         }
 
         /// <summary>
@@ -155,6 +176,7 @@ namespace Ndx.Ingest.Trace
         {
             var path = MetacapFileInfo.GetFlowRecordPath(convId, endpoint);
             var entry = m_mcapArchive.GetEntry(path);
+            if (entry == null) return null;
             using (var reader = new BinaryReader(entry.Open()))
             {
                 return FlowRecord.Converter.ReadObject(reader);

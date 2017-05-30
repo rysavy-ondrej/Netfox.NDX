@@ -61,7 +61,7 @@ namespace Ndx.Tools.Metacap
                 target.OnExecute(() =>
                 {
                     Enum.TryParse(pdu.Value, out PduType pdutype);
-                    var filterFun = GetFilterFunction(filter.Value());
+                    var filterFun = FilterHelper.GetFilterFunction(filter.Value());
                     ExportPackets(infile.Value(), outfile.Value(), pdutype, filterFun);
                     return 0;
                 });
@@ -72,7 +72,7 @@ namespace Ndx.Tools.Metacap
                 target.HelpOption("-?|-h|--help");
                 target.OnExecute(() =>
                 {
-                    var filterFun = GetFilterFunction(filter.Value());
+                    var filterFun = FilterHelper.GetFilterFunction(filter.Value());
                     ExportFlow(infile.Value(), outfile.Value(), filterFun);
                     return 0;
                 });
@@ -84,7 +84,7 @@ namespace Ndx.Tools.Metacap
                 target.HelpOption("-?|-h|--help");
                 target.OnExecute(() =>
                 {
-                    var filterFun = GetFilterFunction(filter.Value());
+                    var filterFun = FilterHelper.GetFilterFunction(filter.Value());
                     StreamFollow(infile.Value(), outfile.Value(), filterFun);
                     return 0;
                 });
@@ -96,15 +96,15 @@ namespace Ndx.Tools.Metacap
                 target.HelpOption("-?|-h|--help");
                 target.OnExecute(() =>
                 {
-                    var filterFun = GetFilterFunction(filter.Value());
-                    if (String.IsNullOrEmpty(infile.Value()) || !File.Exists(infile.Value()))
+                    var cmd = new CreateIndexCommand()
                     {
-                        Console.Error.WriteLine($"Unable to find input file '{infile.Value()}'");
-                        return -1;
-                    }
-                    var mcapfile = String.IsNullOrEmpty(outfile.Value()) ? Path.ChangeExtension(infile.Value(), "mcap") : outfile.Value();
-                    IndexPcap(infile.Value(), mcapfile, filterFun);
-                    return 0;
+                        Filter = filter.Value(),
+                        InputPath = infile.Value(),
+                        OutputPath = outfile.Value(),
+                    };
+                    // execute command
+                    var results = cmd.Invoke().Cast<string>();
+                    return results.Count();
                 });
             });
 
@@ -152,48 +152,6 @@ namespace Ndx.Tools.Metacap
             commandLineApplication.Execute(args);
 
         }
-
-
-        private static void IndexPcap(string inputPath, string outputPath, Func<FlowKey, bool> filterFun)
-        {
-            using (var consumer = new McapFileConsumer(outputPath))
-            {
-                var cts = new CancellationTokenSource();
-                var reader = new PcapReaderProvider(32768, 1000, cts.Token);
-
-                var ingestOptions = new IngestOptions() { FlowFilter = filterFun };
-                var ingest = new PcapFileIngestor(reader.RawFrameSource, consumer.RawFrameTarget, consumer.PacketBlockTarget, consumer.FlowRecordTarget, ingestOptions);
-
-                var fileInfo = new FileInfo(inputPath);
-                reader.ReadFrom(fileInfo);
-                reader.Complete();
-
-                Task.WaitAll(ingest.Completion, consumer.Completion);
-            }
-        }
-
-        /// <summary>
-        /// Gets a filter function for the given filter expression.
-        /// </summary>
-        /// <param name="v"></param>
-        /// <returns></returns>
-        private static Func<FlowKey, bool> GetFilterFunction(string filterString)
-        {
-            if (String.IsNullOrEmpty(filterString))
-            {
-                return (x) => true;
-            }
-
-            var expr = FlowKeyFilterExpression.TryParse(filterString, out string errorMessage);
-            if (expr == null)
-            {
-                Console.Error.WriteLine($"Filter error: {errorMessage}. No filter will be applied.");
-                return (x) => true;
-            }
-            
-            return expr.FlowFilter;
-        }
-
 
         /// <summary>
         /// Exports packets from the specified source file to the given output folder or Zip file.

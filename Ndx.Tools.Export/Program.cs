@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.CommandLineUtils;
 using Ndx.Tools.Export.Test;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Ndx.Tools.Export
 {
@@ -42,7 +44,6 @@ namespace Ndx.Tools.Export
                     {
                         Console.Error.WriteLine("Output database already exists, it will be replaced.");
                         Directory.Delete(outputFile, true);
-
                     }
 
 
@@ -51,9 +52,13 @@ namespace Ndx.Tools.Export
                         Metacap = inputFile,
                         RocksDbFolder = outputFile
                     };
-                    // execute command
+
                     var results = cmd.Invoke().Cast<string>();
-                    return results.Count();
+                    foreach(var line in results)
+                    {
+                        Console.WriteLine(line);
+                    }
+                    return 0;
                 });
             });
 
@@ -68,11 +73,14 @@ namespace Ndx.Tools.Export
                     {
                         RocksDbFolder = infile.Value()
                     };
-                    // execute command
-                    var results = cmd.Invoke().Cast<string>();
+
+                    var results = cmd.Invoke().Cast<JObject>();
                     foreach (var item in results)
                     {
-                        Console.WriteLine(item);
+                        using (var writer = new JsonTextWriter(Console.Out))
+                        {
+                            item.WriteTo(writer);
+                        }
                     }
                     return 0;
                 });
