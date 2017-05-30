@@ -3,7 +3,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks.Dataflow;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     public sealed class MetadataExtractor 
     {

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using Sprache;
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     /// <summary>
     /// This class represents filter expression. 

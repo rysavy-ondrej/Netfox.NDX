@@ -1,5 +1,5 @@
 ﻿
-using Ndx.Ingest.Trace;
+using Ndx.Metacap;
 using NUnit.Framework;
 using System;
 using Ndx.Ipfix;

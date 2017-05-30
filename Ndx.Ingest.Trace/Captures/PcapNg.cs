@@ -10,7 +10,7 @@ using System.Text;
 // The Pcap Next Generation format is: https://www.winpcap.org/ntar/draft/PCAP-DumpFileFormat.html
 // The C# implementation below reads files in .pcapng format
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     public class PcapNg
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     /// <summary>
     /// Represents configuration of Metacap file.

@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 using Ndx.Utils;
 using PacketDotNet;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
 
     /// <summary>

@@ -8,7 +8,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
 
     /// <summary>

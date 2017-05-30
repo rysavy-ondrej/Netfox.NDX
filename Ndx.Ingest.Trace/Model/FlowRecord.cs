@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     /// <summary>
     /// This strcuture is a compact representation of the Flow Record. 
@@ -143,7 +143,7 @@ namespace Ndx.Ingest.Trace
         }
 
         /// <summary>
-        /// Creates a new <see cref="FlowRecord"/> for the specified <see cref="Ndx.Ingest.Trace.Trace.FlowKey"/>.
+        /// Creates a new <see cref="FlowRecord"/> for the specified <see cref="Ndx.Metacap.Trace.FlowKey"/>.
         /// </summary>
         /// <param name="packetMetadata"><see cref="PacketMetadata"/> object representing a single frame of the flow.</param>
         public FlowRecord(FlowKey flowkey)

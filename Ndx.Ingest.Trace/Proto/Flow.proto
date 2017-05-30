@@ -1,0 +1,27 @@
+﻿syntax = "proto3"
+package ndx.model;
+
+
+message TcpFlow {
+	uint16 SourcePort = 1;
+	uint16 DestinationPort = 2;
+}
+
+message UdpFlow {		
+	uint16 SourcePort = 1;
+	uint16 DestinationPort = 2;
+}
+
+enum IpProtocolType {
+		
+}			
+				
+message Ipv4Flow {
+	uint32 SourceAddress;	
+	uint32 DestinationAdress;
+}
+
+message Ipv6Flow {
+	byte SourceAddress;	
+	byte DestinationAdress;	
+}

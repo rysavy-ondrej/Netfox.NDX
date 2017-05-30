@@ -12,7 +12,7 @@ using System.Collections.Concurrent;
 using NLog;
 using System.Threading;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
 
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks.Dataflow;
 using PacketDotNet;
 using PacketDotNet.Utils;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     public class TcpStream
     {

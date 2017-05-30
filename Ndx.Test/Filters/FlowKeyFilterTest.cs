@@ -1,4 +1,4 @@
-﻿using Ndx.Ingest.Trace;
+﻿using Ndx.Metacap;
 using NUnit.Framework;
 using PacketDotNet;
 using System.Net;

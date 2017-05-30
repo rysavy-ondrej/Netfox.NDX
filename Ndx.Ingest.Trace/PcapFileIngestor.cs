@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     public class PcapFileIngestor
     {

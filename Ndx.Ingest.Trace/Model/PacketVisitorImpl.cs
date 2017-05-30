@@ -6,7 +6,7 @@ using PacketDotNet;
 using PacketDotNet.Ieee80211;
 
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     using AddressFamily = System.Net.Sockets.AddressFamily;
     internal class PacketVisitorImpl: PacketVisitor

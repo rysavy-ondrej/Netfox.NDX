@@ -81,7 +81,7 @@ namespace Ndx.Ipfix
         /// </summary>
         protected IpfixFieldSpecifier[] m_fields;
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:Ndx.Ingest.Trace.IpfixTemplateRecord"/> class.
+        /// Initializes a new instance of the <see cref="T:Ndx.Metacap.IpfixTemplateRecord"/> class.
         /// This also initializes a field array.
         /// </summary>
         public IpfixTemplateRecord(uint templateId, uint fieldCount)
@@ -198,7 +198,7 @@ namespace Ndx.Ipfix
         {
             get
             {
-                using(var stream = new MemoryStream(Ndx.Ingest.Trace.Resource.ConversationIpv4))
+                using(var stream = new MemoryStream(Resource.ConversationIpv4))
                 {
                     return Load(stream);
                 }
@@ -209,7 +209,7 @@ namespace Ndx.Ipfix
         {
             get
             {
-                using (var stream = new MemoryStream(Ndx.Ingest.Trace.Resource.FlowIpv4))
+                using (var stream = new MemoryStream(Resource.FlowIpv4))
                 {
                     return Load(stream);
                 }
@@ -219,7 +219,7 @@ namespace Ndx.Ipfix
         {
             get
             {
-                using (var stream = new MemoryStream(Ndx.Ingest.Trace.Resource.ConversationIpv6))
+                using (var stream = new MemoryStream(Resource.ConversationIpv6))
                 {
                     return Load(stream);
                 }
@@ -229,7 +229,7 @@ namespace Ndx.Ipfix
         {
             get
             {
-                using (var stream = new MemoryStream(Ndx.Ingest.Trace.Resource.FlowIpv6))
+                using (var stream = new MemoryStream(Resource.FlowIpv6))
                 {
                     return Load(stream);
                 }
@@ -239,7 +239,7 @@ namespace Ndx.Ipfix
         {
             get
             {
-                using (var stream = new MemoryStream(Ndx.Ingest.Trace.Resource.PacketMeta))
+                using (var stream = new MemoryStream(Resource.PacketMeta))
                 {
                     return Load(stream);
                 }

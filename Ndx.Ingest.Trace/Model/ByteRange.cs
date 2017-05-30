@@ -7,7 +7,7 @@ using PacketDotNet.Utils;
 using System;
 using System.Runtime.InteropServices;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
 
     /// <summary>

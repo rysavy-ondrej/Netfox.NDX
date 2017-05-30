@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     /// <summary>
     /// An item of the Flow Key Table. Each <see cref="FlowKeyTableEntry"/> 

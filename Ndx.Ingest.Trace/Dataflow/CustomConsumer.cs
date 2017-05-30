@@ -5,7 +5,7 @@
 using System;
 using System.Threading.Tasks.Dataflow;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     /// <summary>
     /// This class implements a template for custom consumers.

@@ -5,7 +5,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     /// <summary>
     /// Specifies a single entry in the Mcap file. The entry is created for the capture file.

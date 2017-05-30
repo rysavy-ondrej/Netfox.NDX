@@ -4,7 +4,7 @@
 //
 using System;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     public class IngestOptions
     {

@@ -10,7 +10,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using Ndx.Utils;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     /// <summary>
     /// This class implements a wrapper around <see cref="_PacketBlock"/> data structure.

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cassandra;
-using Ndx.Ingest.Trace;
+using Ndx.Metacap;
 using Ndx.Shell.Commands;
 
 namespace Ndx.Hadoop.LoadTrace

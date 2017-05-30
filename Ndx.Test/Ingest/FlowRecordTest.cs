@@ -1,4 +1,4 @@
-﻿using Ndx.Ingest.Trace;
+﻿using Ndx.Metacap;
 using Ndx.Utils;
 using NUnit.Framework;
 using System;

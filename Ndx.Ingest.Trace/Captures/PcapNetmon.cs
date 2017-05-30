@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     public class PcapNetmon
     {

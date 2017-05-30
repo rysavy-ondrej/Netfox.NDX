@@ -1,4 +1,4 @@
-﻿using Ndx.Ingest.Trace;
+﻿using Ndx.Metacap;
 using PacketDotNet;
 using System.Net;
 using System.Net.Sockets;

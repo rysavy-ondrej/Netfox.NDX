@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.CommandLineUtils;
-using Ndx.Ingest.Trace;
+using Ndx.Metacap;
 using PacketDotNet;
 
 namespace Ndx.Tools.Metacap

@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ndx.Ingest.Trace;
+using Ndx.Metacap;
 using Ndx.Shell.Commands;
 using Newtonsoft.Json;
 using RocksDbSharp;

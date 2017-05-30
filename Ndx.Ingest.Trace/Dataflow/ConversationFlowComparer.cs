@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Ndx.Utils;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     internal class ConversationFlowComparer : IEqualityComparer<FlowKey>
     {

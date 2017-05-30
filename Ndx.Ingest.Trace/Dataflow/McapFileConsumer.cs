@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using System.Linq;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
 
     public class ConversationElement<T>

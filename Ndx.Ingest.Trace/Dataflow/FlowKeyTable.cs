@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     /// <summary>
     /// Represents flow key table. This table is read from the file and 
@@ -17,7 +17,7 @@ namespace Ndx.Ingest.Trace
 
         public FlowKeyTable()
         {
-            m_entries = new Dictionary<FlowKey, Trace.FlowKeyTableEntry>();
+            m_entries = new Dictionary<FlowKey, FlowKeyTableEntry>();
         }
 
         public FlowKeyTable(IEnumerable<FlowKeyTableEntry> entries)

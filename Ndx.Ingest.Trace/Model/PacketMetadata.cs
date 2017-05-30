@@ -6,7 +6,7 @@ using System;
 using System.Runtime.InteropServices;
 using Ndx.Utils;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     /// <summary>
     /// Represents a collection of extracted fields of the parsed packet.

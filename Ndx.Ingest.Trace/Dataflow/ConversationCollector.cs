@@ -12,7 +12,7 @@ using System.Collections.Concurrent;
 using NLog;
 using System.Threading;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     /// <summary>
     /// The class implements a conversation collector.It consumes <see cref="PacketMetadata"/> by <see cref="ConversationCollector.PacketMetadataTarget"/>

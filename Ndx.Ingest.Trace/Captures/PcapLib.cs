@@ -17,7 +17,7 @@ using System.IO;
 
 
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     public class Pcap
     {

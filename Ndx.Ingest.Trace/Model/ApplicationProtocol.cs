@@ -3,7 +3,7 @@
 // Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
 //
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     /// <summary>
     /// Represents a category of application protocols. This list is due to Cisco NBAR.

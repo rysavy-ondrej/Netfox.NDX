@@ -3,7 +3,7 @@
 // Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
 //
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     /// <summary>
     ///  This class represents a PayloadHeader frame. Network Monitor prepends the metadata to reassembled frames.

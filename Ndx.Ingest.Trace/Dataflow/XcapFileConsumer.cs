@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using System.Linq;
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
 
     /// <summary>

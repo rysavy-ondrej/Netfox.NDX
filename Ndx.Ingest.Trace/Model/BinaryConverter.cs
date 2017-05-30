@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ndx.Ingest.Trace
+namespace Ndx.Metacap
 {
     public interface IBinaryConverter<T>
     {

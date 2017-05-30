@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using Ndx.Ingest.Trace;
+using Ndx.Metacap;
 using Ndx.Shell.Commands;
 
 namespace Ndx.Tools.Metacap
