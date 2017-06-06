@@ -1,0 +1,194 @@
+﻿syntax = "proto3";
+package ndx.model;
+
+
+/// <summary> Dummy protocol for TCP. </summary>
+enum IpProtocolType {
+        /// <summary> IPv6 Hop-by-Hop options. </summary>
+        HOPOPTS = 0;
+        /// <summary> Internet Control Message Protocol. </summary>
+        ICMP = 1;
+        /// <summary> Internet Group Management Protocol.</summary>
+        IGMP = 2;
+        /// <summary> IPIP tunnels (older KA9Q tunnels use 94). </summary>
+        IPIP = 4;
+        /// <summary> Transmission Control Protocol. </summary>
+        TCP = 6;
+        /// <summary> Exterior Gateway Protocol. </summary>
+        EGP = 8;
+        /// <summary> PUP protocol. </summary>
+        PUP = 12;
+        /// <summary> User Datagram Protocol. </summary>
+        UDP = 17;
+        /// <summary> XNS IDP protocol. </summary>
+        IDP = 22;
+        /// <summary> SO Transport Protocol Class 4. </summary>
+        TP = 29;
+        /// <summary> IPv6 header. </summary>
+        IPV6 = 41;
+        /// <summary> IPv6 routing header. </summary>
+        ROUTING = 43;
+        /// <summary> IPv6 fragmentation header. </summary>
+        FRAGMENT = 44;
+        /// <summary> Reservation Protocol. </summary>
+        RSVP = 46;
+        /// <summary> General Routing Encapsulation. </summary>
+        GRE = 47;
+        /// <summary> Encapsulating security payload. </summary>
+        ESP = 50;
+        /// <summary> Authentication header. </summary>
+        AH = 51;
+        /// <summary> ICMPv6. </summary>
+        ICMPV6 = 58;
+        /// <summary> IPv6 no next header. </summary>
+        NONE = 59;
+        /// <summary> IPv6 destination options. </summary>
+        DSTOPTS = 60;
+        /// <summary> Multicast Transport Protocol. </summary>
+        MTP = 92;
+        /// <summary> Encapsulation Header. </summary>
+        ENCAP = 98;
+        /// <summary> Protocol Independent Multicast. </summary>
+        PIM = 103;
+        /// <summary> Compression Header Protocol. </summary>
+        COMP = 108;
+        /// <summary> Raw IP packets. </summary>
+        RAW = 255;
+}		
+
+enum AddressFamily
+{
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Unspecified         = 0;    // unspecified
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Unix                = 1;    // local to host (pipes; portals)
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        InterNetwork        = 2;    // internetwork: UDP; TCP; etc.
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        ImpLink             = 3;    // arpanet imp addresses
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Pup                 = 4;    // pup protocols: e.g. BSP
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Chaos               = 5;    // mit CHAOS protocols
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Ipx                 = 6;   // IPX and SPX
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Iso                 = 7;    // ISO protocols
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Ecma                = 8;    // european computer manufacturers
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        DataKit             = 9;    // datakit protocols
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Ccitt               = 10;   // CCITT protocols; X.25 etc
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Sna                 = 11;   // IBM SNA
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        DecNet              = 12;   // DECnet
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        DataLink            = 13;   // Direct data link interface
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Lat                 = 14;   // LAT
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        HyperChannel        = 15;   // NSC Hyperchannel
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        AppleTalk           = 16;   // AppleTalk
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        NetBios             = 17;   // NetBios-style addresses
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        VoiceView           = 18;   // VoiceView
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        FireFox             = 19;   // FireFox
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Banyan              = 21;   // Banyan
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Atm                 = 22;   // Native ATM Services
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        InterNetworkV6      = 23;   // Internetwork Version 6
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Cluster             = 24;   // Microsoft Wolfpack
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Ieee12844           = 25;   // IEEE 1284.4 WG AF
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Irda                = 26;   // IrDA
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        NetworkDesigners    = 28;   // Network Designers OSI & gateway enabled protocols
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
+        Max                 = 29;   // Max
+}
+
+enum FlowOrientation { Upflow; Downflow };
+				
+message FlowKey {    	
+	required AddressFamily AddressFamily = 1;
+	required IpProtocolType Protocol = 2;
+	required bytes SourceAddress = 3;	
+	required bytes DestinationAdress = 4;
+	optional int32 SourcePort = 5;
+	optional int32 DestinationPort = 6;
+}
+
+message FlowRecord {
+	int64 Octets =1;
+	int32 Packets = 2;
+	int64 FirstSeen = 3;
+	int64 LastSeen = 4;
+	int32 ApplicationId = 5;
+	int32 BlocksCount = 6;			// ???
+	FlowOrientation Orientation = 7;
+}

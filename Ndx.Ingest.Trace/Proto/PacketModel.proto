@@ -1,0 +1,26 @@
+﻿syntax = "proto3";
+package ndx.model;
+
+
+enum LinkTypeCode {
+	LinkTypeEthernet = 1;
+}
+
+message FrameMetadata {
+	int32 FrameNumber;
+	int32 FrameLength;
+	int64 FrameOffset;
+	int64 TimeStamp;
+}
+
+message PacketMetadata {
+	FrameMetadata Frame;
+
+}
+
+
+
+message PacketBlock {
+	LinkTypeCode LinkType;	
+	repeated PacketMetadata Packets;
+}
