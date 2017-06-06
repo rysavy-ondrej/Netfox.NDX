@@ -27,3 +27,27 @@ in Node.js employing Angular framework. The programming language is Typescript.
 * For communication Kafka is used.
 Though native language for the technology used is Java, some parts of the system is developed in Python and C#.	User Interface 
 is developed using Node.js and Angular framework.
+
+
+# Installation
+The following services are required to run:
+* HDFS - distributed data storage, the core service for other components 
+* HIVE - distributed data storage that offers SQL access.
+* KAFKA - distributed high performance messaging platform.
+* SPARK -  is a fast and general engine for big data processing, with built-in modules for streaming, SQL, machine learning and graph processing.
+* YARN -  allows different data processing engines to run in a single platform.
+* Zookeeper - is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services.
+* Cassandra DB - is scalable database ...
+
+Different roles are defined and required by these services:
+* NN - Name Node
+* DN - Data Node
+* JN - Journal Node
+* RM - Resource Manager
+* JHS - Job History Server
+* SHS - Spark Histroy Server 
+
+The experimental cluster consists of several nodes with different roles:
+* Master Server - runs Name Node, Resource Manager, Zookeeper, HBase Master
+* Worker Server - runs Data Node, Node Manager, HBase Record Server
+* Edge Server - runs Gateway and Ingest
