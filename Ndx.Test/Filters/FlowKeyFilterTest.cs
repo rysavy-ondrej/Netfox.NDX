@@ -3,20 +3,25 @@ using NUnit.Framework;
 using PacketDotNet;
 using System.Net;
 using System.Net.Sockets;
+using Ndx.Model;
 
 namespace Ndx.Test.Filters
 {
-
-
-
     [TestFixture]
     public class FlowKeyFilterTest
     {
-
         [Test]
         public void FlowKeyFilter_SimpleExpressions()
         {
-            var flowKey = new FlowKey(AddressFamily.InterNetwork, IPProtocolType.TCP, IPAddress.Parse("192.168.1.1"), 12345, IPAddress.Parse("192.168.200.100"), 80);
+            var flowKey = new FlowKey()
+            {
+                AddressFamily = Model.AddressFamily.InterNetwork,
+                Protocol = IpProtocolType.Tcp,
+                SourceIpAddress = IPAddress.Parse("192.168.1.1"),
+                SourcePort = 12345,
+                DestinationIpAddress = IPAddress.Parse("192.168.200.100"),
+                DestinationPort = 80
+            };
 
             var proto = FlowKeyFilterExpression.Parse("Protocol == TCP");
             var sourcePort = FlowKeyFilterExpression.Parse("SourcePort == 12345");
@@ -35,7 +40,15 @@ namespace Ndx.Test.Filters
         [Test]
         public void FlowKeyFilter_CoumpoundExpressions()
         {
-            var flowKey = new FlowKey(AddressFamily.InterNetwork, IPProtocolType.TCP, IPAddress.Parse("192.168.1.1"), 12345, IPAddress.Parse("192.168.200.100"), 80);
+            var flowKey = new FlowKey()
+            {
+                AddressFamily = Model.AddressFamily.InterNetwork,
+                Protocol = IpProtocolType.Tcp,
+                SourceIpAddress = IPAddress.Parse("192.168.1.1"),
+                SourcePort = 12345,
+                DestinationIpAddress = IPAddress.Parse("192.168.200.100"),
+                DestinationPort = 80
+            };
 
             var expr1 = FlowKeyFilterExpression.Parse("SourcePOrt == 12345 && DEstinationPOrt == 80");
             Assert.IsTrue(expr1.FlowFilter(flowKey));

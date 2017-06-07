@@ -2,18 +2,19 @@
 // Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
 // Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
 //
+using System;
+using System.Collections.Generic;
+using Ndx.Model;
 using PacketDotNet;
 using PacketDotNet.Ieee80211;
-
-
 namespace Ndx.Metacap
 {
     using AddressFamily = System.Net.Sockets.AddressFamily;
     internal class PacketVisitorImpl: PacketVisitor
     {
-        PacketMetadata m_packetMetadata;
+        KeyValuePair<FlowKey, PacketUnit> m_packetMetadata;
 
-        public PacketVisitorImpl(PacketMetadata packetMetadata)
+        public PacketVisitorImpl(KeyValuePair<FlowKey, PacketUnit> packetMetadata)
         {
             m_packetMetadata = packetMetadata;
 
@@ -25,18 +26,20 @@ namespace Ndx.Metacap
 
         public override void VisitUdpPacket(UdpPacket udp)
         {
-            m_packetMetadata.SetTransport(udp.BytesHighPerformance.Offset, udp.BytesHighPerformance.Length);
-            m_packetMetadata.Flow.Protocol = IPProtocolType.UDP;
-            m_packetMetadata.Flow.DestinationPort = udp.DestinationPort;
-            m_packetMetadata.Flow.SourcePort = udp.SourcePort;
+            m_packetMetadata.Value.Transport.Bytes.Offset = udp.BytesHighPerformance.Offset;
+            m_packetMetadata.Value.Transport.Bytes.Length = udp.BytesHighPerformance.Length;
+            m_packetMetadata.Key.Protocol = Ndx.Model.IpProtocolType.Udp;
+            m_packetMetadata.Key.DestinationPort = udp.DestinationPort;
+            m_packetMetadata.Key.SourcePort = udp.SourcePort;
         }
 
         public override void VisitTcpPacket(TcpPacket tcp)
         {
-            m_packetMetadata.SetTransport(tcp.BytesHighPerformance.Offset,tcp.BytesHighPerformance.Length);
-            m_packetMetadata.Flow.Protocol = IPProtocolType.TCP;
-            m_packetMetadata.Flow.DestinationPort = tcp.DestinationPort;
-            m_packetMetadata.Flow.SourcePort = tcp.SourcePort;
+            m_packetMetadata.Value.Transport.Bytes.Offset = tcp.BytesHighPerformance.Offset;
+            m_packetMetadata.Value.Transport.Bytes.Length = tcp.BytesHighPerformance.Length;
+            m_packetMetadata.Key.Protocol = Ndx.Model.IpProtocolType.Tcp;
+            m_packetMetadata.Key.DestinationPort = tcp.DestinationPort;
+            m_packetMetadata.Key.SourcePort = tcp.SourcePort;
         }
 
         public override void VisitPPPPacket(PPPPacket packet)
@@ -58,11 +61,12 @@ namespace Ndx.Metacap
 
         public override void VisitEthernetPacket(EthernetPacket eth)
         {
-            m_packetMetadata.SetLink(eth.BytesHighPerformance.Offset, eth.BytesHighPerformance.Length);
-            m_packetMetadata.Flow.Protocol = IPProtocolType.NONE;
-            m_packetMetadata.Flow.AddressFamily = AddressFamily.Unspecified;
-            m_packetMetadata.Flow.SourceAddress = System.Net.IPAddress.None;
-            m_packetMetadata.Flow.DestinationAddress = System.Net.IPAddress.None;
+            m_packetMetadata.Value.Datalink.Bytes.Offset = eth.BytesHighPerformance.Offset;
+            m_packetMetadata.Value.Datalink.Bytes.Length = eth.BytesHighPerformance.Length;
+            m_packetMetadata.Key.Protocol = Ndx.Model.IpProtocolType.None;
+            m_packetMetadata.Key.AddressFamily = Ndx.Model.AddressFamily.Unspecified;
+            m_packetMetadata.Key.SourceIpAddress = System.Net.IPAddress.None;
+            m_packetMetadata.Key.DestinationIpAddress = System.Net.IPAddress.None;
         }
 
         public override void VisitLLDPPacket(LLDPPacket packet)
@@ -95,20 +99,22 @@ namespace Ndx.Metacap
 
         public override void VisitIPv4Packet(IPv4Packet ipv4)
         {
-            m_packetMetadata.SetNetwork(ipv4.BytesHighPerformance.Offset, ipv4.BytesHighPerformance.Length);
-            m_packetMetadata.Flow.AddressFamily = AddressFamily.InterNetwork;
-            m_packetMetadata.Flow.Protocol = ipv4.Protocol;
-            m_packetMetadata.Flow.SourceAddress = ipv4.SourceAddress;
-            m_packetMetadata.Flow.DestinationAddress = ipv4.DestinationAddress;
+            m_packetMetadata.Value.Network.Bytes.Offset = ipv4.BytesHighPerformance.Offset;
+            m_packetMetadata.Value.Network.Bytes.Length = ipv4.BytesHighPerformance.Length;
+            m_packetMetadata.Key.AddressFamily = Ndx.Model.AddressFamily.InterNetwork;
+            m_packetMetadata.Key.Protocol = (Ndx.Model.IpProtocolType)ipv4.Protocol;
+            m_packetMetadata.Key.SourceIpAddress = ipv4.SourceAddress;
+            m_packetMetadata.Key.DestinationIpAddress = ipv4.DestinationAddress;
         }
 
         public override void VisitIPv6Packet(IPv6Packet ipv6)
         {
-            m_packetMetadata.SetNetwork(ipv6.BytesHighPerformance.Offset, ipv6.BytesHighPerformance.Length);
-            m_packetMetadata.Flow.AddressFamily = AddressFamily.InterNetworkV6;
-            m_packetMetadata.Flow.Protocol = ipv6.Protocol;
-            m_packetMetadata.Flow.SourceAddress = ipv6.SourceAddress;
-            m_packetMetadata.Flow.DestinationAddress = ipv6.DestinationAddress;
+            m_packetMetadata.Value.Network.Bytes.Offset = ipv6.BytesHighPerformance.Offset;
+            m_packetMetadata.Value.Network.Bytes.Length = ipv6.BytesHighPerformance.Length;
+            m_packetMetadata.Key.AddressFamily = Ndx.Model.AddressFamily.InterNetworkV6;
+            m_packetMetadata.Key.Protocol = (Ndx.Model.IpProtocolType)ipv6.Protocol;
+            m_packetMetadata.Key.SourceIpAddress = ipv6.SourceAddress;
+            m_packetMetadata.Key.DestinationIpAddress = ipv6.DestinationAddress;
         }
 
         public override void VisitIeee8021QPacket(Ieee8021QPacket packet)
@@ -129,7 +135,8 @@ namespace Ndx.Metacap
 
         public override void VisitApplicationPacket(ApplicationPayloadPacket packet)
         {
-            m_packetMetadata.SetPayload(packet.BytesHighPerformance.Offset, packet.BytesHighPerformance.Length);
+            m_packetMetadata.Value.Application.Bytes.Offset = packet.BytesHighPerformance.Offset;
+            m_packetMetadata.Value.Application.Bytes.Length = packet.BytesHighPerformance.Length;
         }
     }
 }

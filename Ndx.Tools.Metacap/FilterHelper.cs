@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ndx.Metacap;
+using Ndx.Model;
 
 namespace Ndx.Tools.Metacap
 {

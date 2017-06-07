@@ -3,6 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using Sprache;
+using Ndx.Model;
 namespace Ndx.Metacap
 {
     /// <summary>
@@ -163,9 +164,9 @@ namespace Ndx.Metacap
                     case "destinationport":
                         return Expression.Convert(Expression.PropertyOrField(flowKey, nameof(FlowKey.DestinationPort)), typeof(object));
                     case "sourceaddress":
-                        return Expression.Convert(Expression.PropertyOrField(flowKey, nameof(FlowKey.SourceAddress)), typeof(object));
+                        return Expression.Convert(Expression.PropertyOrField(flowKey, nameof(FlowKey.SourceIpAddress)), typeof(object));
                     case "destinationaddress":
-                        return Expression.Convert(Expression.PropertyOrField(flowKey, nameof(FlowKey.DestinationAddress)), typeof(object));
+                        return Expression.Convert(Expression.PropertyOrField(flowKey, nameof(FlowKey.DestinationIpAddress)), typeof(object));
                     case "protocol":
                         return Expression.Convert(Expression.PropertyOrField(flowKey, nameof(FlowKey.Protocol)), typeof(object));
                     default:

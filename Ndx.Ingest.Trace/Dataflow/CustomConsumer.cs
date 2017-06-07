@@ -4,6 +4,7 @@
 //
 using System;
 using System.Threading.Tasks.Dataflow;
+using Ndx.Model;
 
 namespace Ndx.Metacap
 {

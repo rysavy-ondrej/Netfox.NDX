@@ -18,7 +18,10 @@ namespace Ndx.Test
             var consumer = new NullConsumer();
             var cts = new CancellationTokenSource();
             var reader = new PcapReaderProvider(32768, 1000, cts.Token);
-            var ingest = new PcapFileIngestor(reader.RawFrameSource, consumer.RawFrameTarget, consumer.PacketBlockTarget, consumer.FlowRecordTarget, new IngestOptions());
+            var ingest = new PcapFileIngestor(reader.RawFrameSource, 
+                consumer.RawFrameTarget, 
+                consumer.PacketBlockTarget, 
+                consumer.FlowRecordTarget, new IngestOptions());
 
             var path = Path.Combine(TestContext.CurrentContext.TestDirectory, @"Captures\03d1d7f3e7bc76aa22271f67463d8c3d.cap");
             var fileInfo = new FileInfo(path);

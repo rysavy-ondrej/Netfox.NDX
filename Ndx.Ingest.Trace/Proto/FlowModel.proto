@@ -1,4 +1,8 @@
-﻿syntax = "proto3";
+﻿//  
+// Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
+// Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
+//
+syntax = "proto3";
 package ndx.model;
 
 
@@ -172,15 +176,15 @@ enum AddressFamily
         Max                 = 29;   // Max
 }
 
-enum FlowOrientation { Upflow; Downflow };
+enum FlowOrientation { Upflow = 0; Downflow = 1; }
 				
 message FlowKey {    	
-	required AddressFamily AddressFamily = 1;
-	required IpProtocolType Protocol = 2;
-	required bytes SourceAddress = 3;	
-	required bytes DestinationAdress = 4;
-	optional int32 SourcePort = 5;
-	optional int32 DestinationPort = 6;
+	AddressFamily AddressFamily = 1;
+	IpProtocolType Protocol = 2;
+	bytes SourceAddress = 3;	
+	bytes DestinationAddress = 4;
+	int32 SourcePort = 5;
+	int32 DestinationPort = 6;
 }
 
 message FlowRecord {
@@ -189,6 +193,31 @@ message FlowRecord {
 	int64 FirstSeen = 3;
 	int64 LastSeen = 4;
 	int32 ApplicationId = 5;
-	int32 BlocksCount = 6;			// ???
+	int32 BlocksCount = 6;		
 	FlowOrientation Orientation = 7;
+}
+
+/// <summary>
+/// <see cref="IndexRecord"/> contains an index of <see cref="FlowRecord"/> and
+/// a collection of indexes for <see cref="PacketBlock"/> items.
+/// This object is used to link <see cref="FlowKey"/> to record and packets.
+/// </summary>
+message IndexRecord {
+    /// <summary>
+    /// Gets or sets the flow record index
+	/// </summary>
+	int32 FlowRecordIndex = 1;
+	
+    /// <summary>
+    /// Gets the list of packet block indexes.
+    /// </summary>
+	repeated int32 PacketBlockList = 2;
+}
+
+message ConversationTableEntry {
+	int32 ConversationId = 1;
+	int32 UpflowId = 2;
+	int32 DownflowId = 3;
+	FlowKey UpflowKey = 4;
+	FlowKey DownflowKey = 5;
 }

@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
-
+using Ndx.Model;
 namespace Ndx.Metacap
 {
     /// <summary>
@@ -11,24 +12,24 @@ namespace Ndx.Metacap
     public class NullConsumer
     {
         int m_packetBlockCount;
-        ActionBlock<ConversationElement<PacketBlock>> m_packetBlockTarget;
+        ActionBlock<ConversationElement<KeyValuePair<FlowKey,PacketBlock>>> m_packetBlockTarget;
 
         int m_flowRecordCount;
-        ActionBlock<ConversationElement<FlowRecord>> m_flowRecordTarget;
+        ActionBlock<ConversationElement<KeyValuePair<FlowKey,FlowRecord>>> m_flowRecordTarget;
 
         int m_rawframeCount;
         ActionBlock<RawFrame> m_rawFrameTarget;
 
         public NullConsumer()
         {
-            m_packetBlockTarget = new ActionBlock<ConversationElement<PacketBlock>>(x => m_packetBlockCount++);
-            m_flowRecordTarget = new ActionBlock<ConversationElement<FlowRecord>>(x => m_flowRecordCount++);
+            m_packetBlockTarget = new ActionBlock<ConversationElement<KeyValuePair<FlowKey,PacketBlock>>>(x => m_packetBlockCount++);
+            m_flowRecordTarget = new ActionBlock<ConversationElement<KeyValuePair<FlowKey,FlowRecord>>>(x => m_flowRecordCount++);
             m_rawFrameTarget = new ActionBlock<RawFrame>(x => m_rawframeCount++);
         }
 
-        public ITargetBlock<ConversationElement<PacketBlock>> PacketBlockTarget => m_packetBlockTarget;
+        public ITargetBlock<ConversationElement<KeyValuePair<FlowKey,PacketBlock>>> PacketBlockTarget => m_packetBlockTarget;
 
-        public ITargetBlock<ConversationElement<FlowRecord>> FlowRecordTarget => m_flowRecordTarget;
+        public ITargetBlock<ConversationElement<KeyValuePair<FlowKey, FlowRecord>>> FlowRecordTarget => m_flowRecordTarget;
 
         public ITargetBlock<RawFrame> RawFrameTarget => m_rawFrameTarget;
 

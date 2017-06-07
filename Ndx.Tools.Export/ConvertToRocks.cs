@@ -8,6 +8,8 @@ using Ndx.Metacap;
 using Ndx.Shell.Commands;
 using RocksDbSharp;
 using Ndx.Utils;
+using Ndx.Model;
+
 namespace Ndx.Tools.Export
 {
     /// <summary>
@@ -144,10 +146,10 @@ namespace Ndx.Tools.Export
                 var flowKeyValue = new RocksFlowKey()
                 {
                     Protocol = (ushort)((int)flowKey.AddressFamily << 8 | (int)flowKey.Protocol),
-                    SourceAddress = flowKey.SourceAddress,
-                    DestinationAddress = flowKey.DestinationAddress,
-                    SourcePort = flowKey.SourcePort,
-                    DestinationPort = flowKey.DestinationPort
+                    SourceAddress = flowKey.SourceIpAddress,
+                    DestinationAddress = flowKey.DestinationIpAddress,
+                    SourcePort = (ushort)flowKey.SourcePort,
+                    DestinationPort = (ushort)flowKey.DestinationPort
                 };
                 var flowRecordValue = new RocksFlowRecord()
                 {
@@ -156,21 +158,21 @@ namespace Ndx.Tools.Export
                     First = Math.Min((ulong)flowRecord.FirstSeen, (ulong)flowRecord.FirstSeen),
                     Last = Math.Max((ulong)flowRecord.LastSeen, (ulong)flowRecord.LastSeen),
                     Blocks = (uint)1,   // we always create only one block here
-                    Application = (uint)flowRecord.RecognizedProtocol
+                    Application = (uint)flowRecord.ApplicationId
                 };
                 m_rocksDb.Put(RocksSerializer.GetBytes(flowKeyValue), RocksSerializer.GetBytes(flowRecordValue), flowsCollection);
             }
-            void WritePacketBlock(FlowKey flowKey, IEnumerable<PacketMetadata> packets)
+            void WritePacketBlock(FlowKey flowKey, IEnumerable<PacketUnit> packets)
             {
                 var rdbPacketBlockId = new RocksPacketBlockId()
                 {
                     FlowKey = new RocksFlowKey()
                     {
                         Protocol = (ushort)((int)flowKey.AddressFamily << 8 | (int)flowKey.Protocol),
-                        SourceAddress = flowKey.SourceAddress,
-                        DestinationAddress = flowKey.DestinationAddress,
-                        SourcePort = flowKey.SourcePort,
-                        DestinationPort = flowKey.DestinationPort
+                        SourceAddress = flowKey.SourceIpAddress,
+                        DestinationAddress = flowKey.DestinationIpAddress,
+                        SourcePort = (ushort)flowKey.SourcePort,
+                        DestinationPort = (ushort)flowKey.DestinationPort
                     },
                     BlockId = 0
                 };
@@ -185,12 +187,12 @@ namespace Ndx.Tools.Export
                                 FrameLength = (uint)x.Frame.FrameLength,
                                 FrameNumber = (uint)x.Frame.FrameNumber,
                                 FrameOffset = (ulong)x.Frame.FrameOffset,
-                                Timestamp = (ulong)x.Frame.Timestamp.ToUnixTimeMilliseconds()
+                                Timestamp = (ulong)x.Frame.TimeStamp
                             },
-                            Link = new RocksByteRange() { Start = x.Link.Start, Count = x.Link.Count },
-                            Network = new RocksByteRange() { Start = x.Network.Start, Count = x.Network.Count },
-                            Transport = new RocksByteRange() { Start = x.Transport.Start, Count = x.Transport.Count },
-                            Payload = new RocksByteRange() { Start = x.Payload.Start, Count = x.Payload.Count },
+                            Link = new RocksByteRange() { Start = x.Datalink.Bytes.Offset, Count = x.Datalink.Bytes.Length },
+                            Network = new RocksByteRange() { Start = x.Network.Bytes.Offset, Count = x.Network.Bytes.Length },
+                            Transport = new RocksByteRange() { Start = x.Transport.Bytes.Offset, Count = x.Transport.Bytes.Length },
+                            Payload = new RocksByteRange() { Start = x.Application.Bytes.Offset, Count = x.Application.Bytes.Length },
                         }
                     ).ToArray()
                 };

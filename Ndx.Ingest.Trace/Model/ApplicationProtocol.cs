@@ -8,7 +8,7 @@ namespace Ndx.Metacap
     /// <summary>
     /// Represents a category of application protocols. This list is due to Cisco NBAR.
     /// </summary>
-    public enum ProtocolCategory : ushort
+    public enum ProtocolCategory : short
     {
         None = 0,
         Browsing = 1,
@@ -38,7 +38,7 @@ namespace Ndx.Metacap
     /// This enum is based on the list specified at:
     /// http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/network-based-application-recognition-nbar/product_bulletin_c25-627831.html
     /// </remarks>
-    public enum ApplicationProtocol : uint
+    public enum ApplicationProtocol : int
     {
         /// <summary>
         /// Used when applciation protocol is not specified.

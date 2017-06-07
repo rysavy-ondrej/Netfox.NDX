@@ -11,11 +11,11 @@ using System.Threading.Tasks.Dataflow;
 using System.Collections.Concurrent;
 using NLog;
 using System.Threading;
-
+using Ndx.Model;
 namespace Ndx.Metacap
 {
     /// <summary>
-    /// The class implements a conversation collector.It consumes <see cref="PacketMetadata"/> by <see cref="ConversationCollector.PacketMetadataTarget"/>
+    /// The class implements a conversation collector.It consumes <see cref="PacketMetadata"/> by <see cref="ConversationCollector.PacketUnitTarget"/>
     /// and generates <see cref="PacketBlock"/> objects available from <see cref="ConversationCollector.PacketBlockSource"/>
     /// and <see cref="FlowRecord"/> objects each for both conversation directions available from <see cref="ConversationCollector.FlowRecordSource"/>.
     /// </summary>
@@ -26,7 +26,7 @@ namespace Ndx.Metacap
         /// <summary>
         /// This <see cref="ActionBlock{TInput}"/> performs Collect action.
         /// </summary>
-        private ActionBlock<PacketMetadata> m_actionBlock;
+        private ActionBlock<KeyValuePair<FlowKey,PacketUnit>> m_actionBlock;
 
         /// <summary>
         /// Manages a collection of <see cref="FlowTracker"/> objects. Each tracker 
@@ -37,11 +37,11 @@ namespace Ndx.Metacap
         /// <summary>
         /// Output buffer that stores <see cref="PacketBlock"/> objects.
         /// </summary>
-        private BufferBlock<ConversationElement<PacketBlock>> m_packetBlockBuffer;
+        private BufferBlock<ConversationElement<KeyValuePair<FlowKey,PacketBlock>>> m_packetBlockBuffer;
         /// <summary>
         /// Output buffer that stores <see cref="FlowRecord"/> objects.
         /// </summary>
-        private BufferBlock<ConversationElement<FlowRecord>> m_flowRecordBuffer;
+        private BufferBlock<ConversationElement<KeyValuePair<FlowKey, FlowRecord>>> m_flowRecordBuffer;
 
         /// <summary>
         /// Creates a new instance of <see cref="FlowCollector"/> block.
@@ -56,17 +56,17 @@ namespace Ndx.Metacap
                 CancellationToken = cancellationToken
             };
 
-            m_packetBlockBuffer = new BufferBlock<ConversationElement<PacketBlock>>(opt);
+            m_packetBlockBuffer = new BufferBlock<ConversationElement<KeyValuePair<FlowKey,PacketBlock>>>(opt);
 
-            m_flowRecordBuffer = new BufferBlock<ConversationElement<FlowRecord>>(opt);
+            m_flowRecordBuffer = new BufferBlock<ConversationElement<KeyValuePair<FlowKey,FlowRecord>>>(opt);
 
-            m_actionBlock = new ActionBlock<PacketMetadata>(CollectAsync, opt);
+            m_actionBlock = new ActionBlock<KeyValuePair<FlowKey, PacketUnit>>(CollectAsync, opt);
 
             m_actionBlock.Completion.ContinueWith(async delegate
             {
                 foreach (var item in m_flowDictionary)
                 {
-                    await m_flowRecordBuffer.SendAsync(new ConversationElement<FlowRecord>(item.Value.ConversationId, item.Value.FlowRecord.Orientation, item.Value.FlowRecord));
+                    await m_flowRecordBuffer.SendAsync(new ConversationElement<KeyValuePair<FlowKey, FlowRecord>>(item.Value.ConversationId, item.Value.FlowRecord.Orientation, new KeyValuePair<FlowKey, FlowRecord>(item.Key, item.Value.FlowRecord)));
 
                     item.Value.PacketMetadataTarget.Complete();
 
@@ -89,15 +89,15 @@ namespace Ndx.Metacap
         //                    ----------> 
         //
         //
-        async Task CollectAsync(PacketMetadata metadata)
+        async Task CollectAsync(KeyValuePair<FlowKey, PacketUnit> metadata)
         {
             try
             {
-                var flowKey = metadata.Flow;
+                var flowKey = metadata.Key;
                 if (!m_flowDictionary.TryGetValue(flowKey, out FlowTracker value))
                 {
                     // This is a very simple way of composing conversations...
-                    if (m_flowDictionary.TryGetValue(SwapFlowKey(flowKey), out FlowTracker complementaryFlow))
+                    if (m_flowDictionary.TryGetValue(FlowCollector.SwapFlowKey(flowKey), out FlowTracker complementaryFlow))
                     {
                         m_flowDictionary[flowKey] = value = new FlowTracker(flowKey, complementaryFlow.ConversationId, FlowOrientation.Downflow);
                         value.FlowRecord.Orientation = FlowOrientation.Downflow;
@@ -110,18 +110,13 @@ namespace Ndx.Metacap
 
                     value.PacketBlockSource.LinkTo(m_packetBlockBuffer);
                 }
-                value.FlowRecord.UpdateWith(metadata);
-                await value.PacketMetadataTarget.SendAsync(metadata);
+                value.FlowRecord.UpdateWith(metadata.Value);
+                await value.PacketMetadataTarget.SendAsync(metadata.Value);
             }
             catch (Exception e)
             {
                 m_logger.Error(e, "Collect Async cannot process input packet metadata.");
             }
-        }
-
-        internal static FlowKey SwapFlowKey(FlowKey flowKey)
-        {
-            return new FlowKey(flowKey.AddressFamily, flowKey.Protocol, flowKey.DestinationAddress, flowKey.DestinationPort, flowKey.SourceAddress, flowKey.SourcePort);
         }
 
         /// <summary>
@@ -133,94 +128,24 @@ namespace Ndx.Metacap
         /// Use this target dataflow block to send <see cref="PacketMetadata"/> objects 
         /// for their processing in the collector.
         /// </summary>
-        public ITargetBlock<PacketMetadata> PacketMetadataTarget => m_actionBlock;
+        public ITargetBlock<KeyValuePair<FlowKey, PacketUnit>> PacketUnitTarget => m_actionBlock;
 
         /// <summary>
         /// Use this source dataflow block to acquire <see cref="PacketBlock"/> objects
         /// produced by the collector.
         /// </summary>
-        public ISourceBlock<ConversationElement<PacketBlock>> PacketBlockSource => m_packetBlockBuffer;
+        public ISourceBlock<ConversationElement<KeyValuePair<FlowKey,PacketBlock>>> PacketBlockSource => m_packetBlockBuffer;
 
         /// <summary>
         /// Use this source dataflow block to acquire <see cref="FlowRecord"/> objects
         /// produced by the collector.
         /// </summary>
-        public ISourceBlock<ConversationElement<FlowRecord>> FlowRecordSource => m_flowRecordBuffer;
+        public ISourceBlock<ConversationElement<KeyValuePair<FlowKey, FlowRecord>>> FlowRecordSource => m_flowRecordBuffer;
 
         /// <summary>
         /// Gets an enumerable collection of all <see cref="FlowKey"/> items
         /// stored with the current collector.
         /// </summary>
-        public IEnumerable<FlowKey> FlowKeys => m_flowDictionary.Keys;
-
-        /// <summary>
-        /// An instance of this class tracks a single flow object. It collects flow metadata 
-        /// as well as Packet blocks. 
-        /// </summary>
-        class FlowTracker
-        {
-            static IPropagatorBlock<PacketMetadata, ConversationElement<PacketBlock>> CreateDataflowBlock(FlowKey flowKey, Guid conversationId, FlowOrientation orientation, Func<int> getIndex)
-            {
-                var target = new BatchBlock<PacketMetadata>(PacketBlock.Capacity); ;
-                var source = new TransformBlock<PacketMetadata[], ConversationElement<PacketBlock>>(metadata => new ConversationElement<PacketBlock>(conversationId, orientation, new PacketBlock(flowKey, getIndex(), metadata)));
-                target.LinkTo(source);
-                target.Completion.ContinueWith(completion =>
-                {
-                    if (completion.IsFaulted)
-                    {
-                        ((IDataflowBlock)source).Fault(completion.Exception);
-                    }
-                    else
-                    {
-                        source.Complete();
-                    }
-                });
-
-                // TransformBlock.Complete: After Complete has been called on a dataflow block, 
-                // that block will complete, and its Completion task will enter a final state after 
-                // it has processed all previously available data. 
-                return DataflowBlock.Encapsulate(target, source);
-            }
-
-            /// <summary>
-            /// The unique conversation identifier.
-            /// </summary>
-            Guid m_conversationId;
-
-            /// <summary>
-            /// Flow record associated with the current object.
-            /// </summary>
-            FlowRecord m_flowRecord;
-            /// <summary>
-            /// This dataflow block groups <see cref="PacketMetadata"/> objects and produces <see cref="PacketBlock"/>. 
-            /// Each <see cref="PacketBlock"/> contains at most <see cref="PacketBlock.Capacity"/> <see cref="PacketMetadata"/> objects.
-            /// </summary>
-            IPropagatorBlock<PacketMetadata, ConversationElement<PacketBlock>> m_dataflowBlock;
-
-            /// <summary>
-            /// Gets the <see cref="Trace.FlowRecord"/> object.
-            /// </summary>
-            internal FlowRecord FlowRecord => m_flowRecord;
-            /// <summary>
-            /// Gets the target dataflow block that consumes <see cref="PacketMetadata"/>.
-            /// </summary>
-            internal ITargetBlock<PacketMetadata> PacketMetadataTarget => m_dataflowBlock;
-            /// <summary>
-            /// Gets the source dataflow block that produces <see cref="PacketBlock"/>. Link this source to
-            /// process generated <see cref="PacketBlock"/> objects.
-            /// </summary>
-            internal ISourceBlock<ConversationElement<PacketBlock>> PacketBlockSource => m_dataflowBlock;
-
-            internal FlowTracker(FlowKey flowKey, Guid conversationId, FlowOrientation orientation)
-            {
-                m_conversationId = conversationId;
-                m_flowRecord = new FlowRecord(flowKey);
-                m_dataflowBlock = CreateDataflowBlock(flowKey, m_conversationId, orientation, () => m_flowRecord.Packets / PacketBlock.Capacity);
-            }
-
-            internal Task Completion => m_dataflowBlock.Completion;
-
-            internal Guid ConversationId { get => m_conversationId; set => m_conversationId = value; }
-        }
+        public IEnumerable<FlowKey> FlowKeys => m_flowDictionary.Keys;    
     }
 }

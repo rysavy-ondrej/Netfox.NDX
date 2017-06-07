@@ -94,9 +94,9 @@
     <Compile Include="Captures\FrameMetadata.cs" />
     <Compile Include="Dataflow\ConversationFlowComparer.cs" />
     <Compile Include="Dataflow\ConversationTable.cs" />
-    <Compile Include="Dataflow\ConversationTableEntry.cs" />
     <Compile Include="Dataflow\FlowKeyTable.cs" />
     <Compile Include="Dataflow\FlowKeyTableEntry.cs" />
+    <Compile Include="Dataflow\FlowTracker.cs" />
     <Compile Include="Dataflow\XcapFileConsumer.cs" />
     <Compile Include="Dataflow\MetacapFileInfo.cs" />
     <Compile Include="GlobalSuppressions.cs" />
@@ -119,16 +119,15 @@
     <Compile Include="Metacap\McapIndex.cs" />
     <Compile Include="Metacap\TcpStream.cs" />
     <Compile Include="Model\FlowModel.cs" />
+    <Compile Include="Model\PacketModel.cs" />
     <Compile Include="Model\PacketVisitorImpl.cs" />
+    <Compile Include="Model\ProtobufHelper.cs" />
     <Compile Include="PcapFileIngestor.cs" />
     <Compile Include="IngestOptions.cs" />
     <Compile Include="Model\ApplicationProtocol.cs" />
-    <Compile Include="Model\ByteRange.cs" />
     <Compile Include="Model\FlowKey.cs" />
     <Compile Include="Model\FlowRecord.cs" />
-    <Compile Include="Model\BinaryConverter.cs" />
     <Compile Include="Model\PacketBlock.cs" />
-    <Compile Include="Model\PacketMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dataflow\ConversationCollector.cs" />
   </ItemGroup>
@@ -140,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Proto\compile.cmd" />
     <None Include="Proto\FlowModel.proto" />
     <None Include="Proto\PacketModel.proto" />
     <None Include="Readme.md" />
@@ -149,7 +149,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>$(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools\windows_x86\protoc -I=$(ProjectDir)\Proto --csharp_out=$(ProjectDir)Model $(ProjectDir)Proto\FlowModel.proto</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\RocksDbNative.5.3.4.1\build\RocksDbNative.targets" Condition="Exists('..\packages\RocksDbNative.5.3.4.1\build\RocksDbNative.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

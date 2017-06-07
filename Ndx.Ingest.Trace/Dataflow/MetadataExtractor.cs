@@ -2,12 +2,14 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks.Dataflow;
+using Ndx.Model;
+using System.Collections.Generic;
 
 namespace Ndx.Metacap
 {
     public sealed class MetadataExtractor 
     {
-        IPropagatorBlock<RawFrame, PacketMetadata> m_transformBlock;
+        IPropagatorBlock<RawFrame, KeyValuePair<FlowKey,PacketUnit>> m_transformBlock;
         private readonly Func<FlowKey, bool> m_filter;
 
         public MetadataExtractor(int boundedCapacity, CancellationToken cancellationToken)
@@ -18,7 +20,7 @@ namespace Ndx.Metacap
                 CancellationToken = cancellationToken,
             };
             m_filter = null;
-            m_transformBlock = new TransformBlock<RawFrame, PacketMetadata>((Func<RawFrame, PacketMetadata>)Transform, opt);            
+            m_transformBlock = new TransformBlock<RawFrame, KeyValuePair<FlowKey,PacketUnit>>((Func<RawFrame, KeyValuePair<FlowKey,PacketUnit>>)Transform, opt);            
         }
 
         public MetadataExtractor(int boundedCapacity, Func<FlowKey,bool> filter, CancellationToken cancellationToken)
@@ -30,36 +32,36 @@ namespace Ndx.Metacap
             };
             m_filter = filter;
 
-            PacketMetadata transformAndFilter(RawFrame arg)
+            KeyValuePair<FlowKey,PacketUnit> transformAndFilter(RawFrame arg)
             {
                 var val = Transform(arg);
-                if (val == null) return null;
-                if (m_filter != null && m_filter(val.Flow) == false) return null;                   
+                if (val.Key == null || val.Value == null) return new KeyValuePair<FlowKey, PacketUnit>(null, null);
+                if (m_filter != null && m_filter(val.Key) == false) return new KeyValuePair<FlowKey,PacketUnit>(null,null);                   
                 return val;
             }
 
-            m_transformBlock = new TransformBlock<RawFrame, PacketMetadata>((Func<RawFrame, PacketMetadata>)transformAndFilter, opt);
+            m_transformBlock = new TransformBlock<RawFrame, KeyValuePair<FlowKey,PacketUnit>>((Func<RawFrame, KeyValuePair<FlowKey,PacketUnit>>)transformAndFilter, opt);
         }
-        PacketMetadata Transform(RawFrame frame)
+        KeyValuePair<FlowKey,PacketUnit> Transform(RawFrame frame)
         {
             try
             {
                 var packet = Packet.ParsePacket(frame.Meta.LinkLayer, frame.RawFrameData);
-                var packetMetadata = new PacketMetadata(frame.Meta);
-                var visitor = new PacketVisitorImpl(packetMetadata);
+                var unit = new KeyValuePair<FlowKey,PacketUnit>(new FlowKey(), new PacketUnit());
+                var visitor = new PacketVisitorImpl(unit);
                 
                 packet?.Accept(visitor);
                 
-                return packetMetadata;
+                return unit;
 
             }
             catch (Exception)
             {
-                return null;
+                return new KeyValuePair<FlowKey, PacketUnit>(null, null);
             }                        
         }
 
         public ITargetBlock<RawFrame> RawFrameTarget => m_transformBlock;
-        public ISourceBlock<PacketMetadata> PacketMetadataSource => m_transformBlock;
+        public ISourceBlock<KeyValuePair<FlowKey,PacketUnit>> PacketSource => m_transformBlock;
     }
 }

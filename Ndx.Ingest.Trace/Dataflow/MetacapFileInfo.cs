@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-
+using Ndx.Model;
 namespace Ndx.Metacap
 {
     /// <summary>

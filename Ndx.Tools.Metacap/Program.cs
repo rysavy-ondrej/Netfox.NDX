@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.CommandLineUtils;
 using Ndx.Metacap;
+using Ndx.Model;
 using PacketDotNet;
 
 namespace Ndx.Tools.Metacap
@@ -208,7 +209,7 @@ namespace Ndx.Tools.Metacap
             {
                 bool filter(FlowKey key)
                 {
-                    return key.Protocol == IPProtocolType.TCP && flowFilter(key);
+                    return key.Protocol == IpProtocolType.Tcp && flowFilter(key);
                 }
 /*
                 var flowTable = mcap.FlowKeyTable.Where(x => filter(x.Key));
@@ -239,7 +240,7 @@ namespace Ndx.Tools.Metacap
             {
                 bool filter(FlowKey key)
                 {
-                    return key.Protocol == PacketDotNet.IPProtocolType.TCP && flowFilter(key);
+                    return key.Protocol == Model.IpProtocolType.Tcp && flowFilter(key);
                 }
 
                 /*

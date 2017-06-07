@@ -7,7 +7,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-
+using Google.Protobuf;
+using Ndx.Model;
 namespace Ndx.Metacap
 {
 
@@ -116,9 +117,9 @@ namespace Ndx.Metacap
                 return null;
             }
 
-            using (var reader = new BinaryReader(entry.Open()))
+            using (var cis = new Google.Protobuf.CodedInputStream(entry.Open()))
             {
-                return FlowKey.Converter.ReadObject(reader);
+                return FlowKey.Parser.ParseFrom(cis);
             }
         }
 
@@ -127,7 +128,7 @@ namespace Ndx.Metacap
         /// </summary>
         /// <returns>The packet metadata collection.</returns>
         /// <param name="convId">Conversation identifier.</param>
-        public IEnumerable<PacketMetadata> GetPacketMetadataCollection(Guid convId, FlowOrientation orientation)
+        public IEnumerable<PacketUnit> GetPacketMetadataCollection(Guid convId, FlowOrientation orientation)
         {
             foreach (var packetBlock in GetPacketBlocks(convId, orientation))
             {
@@ -161,11 +162,12 @@ namespace Ndx.Metacap
                 return null;
             }
 
-            using (var reader = new BinaryReader(entry.Open()))
+            using (var cis = new Google.Protobuf.CodedInputStream(entry.Open()))
             {
-                return PacketBlock.Converter.ReadObject(reader);
+                return PacketBlock.Parser.ParseFrom(cis);
             }
         }
+                                    
 
         /// <summary>
         /// Gets the i-th <see cref="FlowRecord"/> for the specified capture.
@@ -177,9 +179,9 @@ namespace Ndx.Metacap
             var path = MetacapFileInfo.GetFlowRecordPath(convId, endpoint);
             var entry = m_mcapArchive.GetEntry(path);
             if (entry == null) return null;
-            using (var reader = new BinaryReader(entry.Open()))
+            using (var cis = new CodedInputStream(entry.Open()))
             {
-                return FlowRecord.Converter.ReadObject(reader);
+                return FlowRecord.Parser.ParseFrom(cis);
             }
         }
 

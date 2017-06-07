@@ -10,10 +10,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using System.Linq;
+using Ndx.Model;
+using Google.Protobuf;
 
 namespace Ndx.Metacap
 {
-
+    /// <summary>
+    /// Wraps user specified type with conversation id and orientation.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class ConversationElement<T>
     {
         Guid m_conversationId;
@@ -47,16 +52,12 @@ namespace Ndx.Metacap
         private ZipArchive m_archive;
         public Task m_completitionTask;
 
-        ActionBlock<ConversationElement<PacketBlock>> m_packetBlockTarget;
+        ActionBlock<ConversationElement<KeyValuePair<FlowKey,PacketBlock>>> m_packetBlockTarget;
 
-        ActionBlock<ConversationElement<FlowRecord>> m_flowRecordTarget;
+        ActionBlock<ConversationElement<KeyValuePair<FlowKey, FlowRecord>>> m_flowRecordTarget;
 
         int m_rawframeCount;
         ActionBlock<RawFrame> m_rawFrameTarget;
-
-        private PacketBlock.BinaryConverter m_packetBlockConverter = new PacketBlock.BinaryConverter();
-        FlowRecord.BinaryConverter m_flowRecordConverter = new FlowRecord.BinaryConverter();
-        FlowKey.BinaryConverter m_flowKeyConverter = new FlowKey.BinaryConverter();
         private int m_packetBlockCount;
         private int m_flowRecordCount;
 
@@ -77,45 +78,45 @@ namespace Ndx.Metacap
             m_archive = ZipFile.Open(mcapPath, ZipArchiveMode.Create);
         }
 
-        void WritePacketBlock(ConversationElement<PacketBlock> block)
+        void WritePacketBlock(ConversationElement<KeyValuePair<FlowKey,PacketBlock>> block)
         {
             lock (m_sync)
             {
                 m_packetBlockCount++;
-                var path = MetacapFileInfo.GetPacketBlockPath(block.ConversationId, block.Orientation, block.Data.BlockIndex);
+                var path = MetacapFileInfo.GetPacketBlockPath(block.ConversationId, block.Orientation, block.Data.Value.BlockIndex);
                 var blockEntry = m_archive.CreateEntry(path, CompressionLevel.Fastest);
-                using (var writer = new BinaryWriter(blockEntry.Open()))
+                using (var cos = new CodedOutputStream(blockEntry.Open()))
                 {
-                    m_packetBlockConverter.WriteObject(writer, block.Data);
+                    block.Data.Value.WriteTo(cos);
                 }
             }
         }
 
-        void WriteFlowRecord(ConversationElement<FlowRecord> flow)
+        void WriteFlowRecord(ConversationElement<KeyValuePair<FlowKey,FlowRecord>> flow)
         {
             lock (m_sync)
             {
                 m_flowRecordCount++;
                 var pathRecord = MetacapFileInfo.GetFlowRecordPath(flow.ConversationId, flow.Orientation);
                 var entryRecord = m_archive.CreateEntry(pathRecord, CompressionLevel.Fastest);
-                using (var writer = new BinaryWriter(entryRecord.Open()))
+                using (var cos = new CodedOutputStream(entryRecord.Open()))
                 {
-                    m_flowRecordConverter.WriteObject(writer, flow.Data);
+                    flow.Data.Value.WriteTo(cos);
                 }
 
                 var pathKey = MetacapFileInfo.GetFlowKeyPath(flow.ConversationId, flow.Orientation);
                 var entryKey = m_archive.CreateEntry(pathKey, CompressionLevel.Fastest);
-                using (var writer = new BinaryWriter(entryKey.Open()))
+                using (var cos = new CodedOutputStream(entryRecord.Open()))
                 {
-                    m_flowKeyConverter.WriteObject(writer, flow.Data.Key);
+                    flow.Data.Key.WriteTo(cos);
                 }
             }
         }
 
         McapFileConsumer()
         {
-            m_packetBlockTarget = new ActionBlock<ConversationElement<PacketBlock>>(x=>WritePacketBlock(x));
-            m_flowRecordTarget = new ActionBlock<ConversationElement<FlowRecord>>(x=>WriteFlowRecord(x));
+            m_packetBlockTarget = new ActionBlock<ConversationElement<KeyValuePair<FlowKey,PacketBlock>>>(x=>WritePacketBlock(x));
+            m_flowRecordTarget = new ActionBlock<ConversationElement<KeyValuePair<FlowKey, FlowRecord>>>(x=>WriteFlowRecord(x));
             m_rawFrameTarget = new ActionBlock<RawFrame>(x => m_rawframeCount++);
             m_completitionTask = Task.WhenAll(m_packetBlockTarget.Completion, m_flowRecordTarget.Completion, m_rawFrameTarget.Completion).ContinueWith((t) => FinishWriting());
         }
@@ -151,14 +152,14 @@ namespace Ndx.Metacap
         /// If this dataflow block is not csee cref="IDataflowBlock.Complete()"/> method 
         /// otherwise completion task never finishes.
         /// </summary>
-        public ITargetBlock<ConversationElement<PacketBlock>> PacketBlockTarget => m_packetBlockTarget;
+        public ITargetBlock<ConversationElement<KeyValuePair<FlowKey, PacketBlock>>> PacketBlockTarget => m_packetBlockTarget;
 
         /// <summary>
         /// Gets target dataflow block that represents a consumer of <see cref="FlowRecord"/> objects.
         /// If this dataflow block is not connected then you must call <see cref=" => ataf => wBlock.Complete()"/> method 
         /// otherwise completion task never finishes.
         /// </summary>
-        public ITargetBlock<ConversationElement<FlowRecord>> FlowRecordTarget => m_flowRecordTarget;
+        public ITargetBlock<ConversationElement<KeyValuePair<FlowKey, FlowRecord>>> FlowRecordTarget => m_flowRecordTarget;
 
         /// <summary>
         /// Gets target dataflow block that represents a consumer of <see cref="RawFrame"/> objects.

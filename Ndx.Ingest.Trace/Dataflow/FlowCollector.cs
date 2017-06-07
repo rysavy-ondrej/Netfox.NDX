@@ -11,6 +11,7 @@ using System.Threading.Tasks.Dataflow;
 using System.Collections.Concurrent;
 using NLog;
 using System.Threading;
+using Ndx.Model;
 
 namespace Ndx.Metacap
 {
@@ -19,7 +20,7 @@ namespace Ndx.Metacap
 
 
     /// <summary>
-    /// The class implements a flow collector.It consumes <see cref="PacketMetadata"/> by <see cref="FlowCollector.PacketMetadataTarget"/>
+    /// The class implements a flow collector.It consumes <see cref="PacketUnit"/> by <see cref="FlowCollector.PacketUnitTarget"/>
     /// and generates <see cref="PacketBlock"/> objects available from <see cref="FlowCollector.PacketBlockSource"/>
     /// and <see cref="FlowRecord"/> objects available from <see cref="FlowCollector.FlowRecordSource"/>.
     /// </summary>
@@ -30,7 +31,7 @@ namespace Ndx.Metacap
         /// <summary>
         /// This <see cref="ActionBlock{TInput}"/> performs Collect action.
         /// </summary>
-        private ActionBlock<PacketMetadata> m_actionBlock;      
+        private ActionBlock<KeyValuePair<FlowKey,PacketUnit>> m_actionBlock;      
         
         /// <summary>
         /// Manages a collection of <see cref="FlowTracker"/> objects. Each tracker 
@@ -41,7 +42,7 @@ namespace Ndx.Metacap
         /// <summary>
         /// Output buffer that stores <see cref="PacketBlock"/> objects.
         /// </summary>
-        private BufferBlock<PacketBlock> m_packetBlockBuffer;
+        private BufferBlock<ConversationElement<KeyValuePair<FlowKey,PacketBlock>>> m_packetBlockBuffer;
         /// <summary>
         /// Output buffer that stores <see cref="FlowRecord"/> objects.
         /// </summary>
@@ -60,11 +61,11 @@ namespace Ndx.Metacap
                 CancellationToken = cancellationToken
             };
 
-            m_packetBlockBuffer = new BufferBlock<PacketBlock>(opt);
+            m_packetBlockBuffer = new BufferBlock<ConversationElement<KeyValuePair<FlowKey, PacketBlock>>>(opt);
 
             m_flowRecordBuffer = new BufferBlock<FlowRecord>(opt);            
          
-            m_actionBlock = new ActionBlock<PacketMetadata>(CollectAsync, opt);
+            m_actionBlock = new ActionBlock<KeyValuePair<FlowKey,PacketUnit>>(CollectAsync, opt);
 
             m_actionBlock.Completion.ContinueWith(async delegate
             {
@@ -93,11 +94,11 @@ namespace Ndx.Metacap
         //                    ----------> 
         //
         //
-        async Task CollectAsync(PacketMetadata metadata)
+        async Task CollectAsync(KeyValuePair<FlowKey,PacketUnit> packet)
         {
             try
             {
-                var flowKey = metadata.Flow;
+                var flowKey = packet.Key;
                 if (!m_flowDictionary.TryGetValue(flowKey, out FlowTracker value))
                 {   // we found a new flow: 
                     m_flowDictionary[flowKey] = value = new FlowTracker(flowKey);
@@ -113,8 +114,8 @@ namespace Ndx.Metacap
 
                     value.PacketBlockSource.LinkTo(m_packetBlockBuffer);
                 }
-                value.FlowRecord.UpdateWith(metadata);
-                await value.PacketMetadataTarget.SendAsync(metadata);
+                value.FlowRecord.UpdateWith(packet.Value);
+                await value.PacketMetadataTarget.SendAsync(packet.Value);
             }
             catch (Exception e)
             {
@@ -124,7 +125,15 @@ namespace Ndx.Metacap
 
         internal static FlowKey SwapFlowKey(FlowKey flowKey)
         {
-            return new FlowKey(flowKey.AddressFamily, flowKey.Protocol, flowKey.DestinationAddress, flowKey.DestinationPort, flowKey.SourceAddress, flowKey.SourcePort);
+            return new FlowKey()
+            {
+                AddressFamily = flowKey.AddressFamily,
+                Protocol = flowKey.Protocol,
+                SourceAddress = flowKey.DestinationAddress,
+                SourcePort = flowKey.DestinationPort,
+                DestinationAddress = flowKey.SourceAddress,
+                DestinationPort = flowKey.SourcePort
+            };
         }
 
         /// <summary>
@@ -133,16 +142,16 @@ namespace Ndx.Metacap
         public Task Completion => Task.WhenAll(m_actionBlock.Completion, m_flowRecordBuffer.Completion, m_packetBlockBuffer.Completion);
 
         /// <summary>
-        /// Use this target dataflow block to send <see cref="PacketMetadata"/> objects 
+        /// Use this target dataflow block to send <see cref="PacketUnit"/> objects 
         /// for their processing in the collector.
         /// </summary>
-        public ITargetBlock<PacketMetadata> PacketMetadataTarget => m_actionBlock;
+        public ITargetBlock<KeyValuePair<FlowKey,PacketUnit>> PacketUnitTarget => m_actionBlock;
 
         /// <summary>
         /// Use this source dataflow block to acquire <see cref="PacketBlock"/> objects
         /// produced by the collector.
         /// </summary>
-        public ISourceBlock<PacketBlock> PacketBlockSource => m_packetBlockBuffer;
+        public ISourceBlock<ConversationElement<KeyValuePair<FlowKey, PacketBlock>>> PacketBlockSource => m_packetBlockBuffer;
 
         /// <summary>
         /// Use this source dataflow block to acquire <see cref="FlowRecord"/> objects
@@ -155,67 +164,5 @@ namespace Ndx.Metacap
         /// stored with the current collector.
         /// </summary>
         public IEnumerable<FlowKey> FlowKeys => m_flowDictionary.Keys;
-
-        /// <summary>
-        /// An instance of this class tracks a single flow object. It collects flow metadata 
-        /// as well as Packet blocks. 
-        /// </summary>
-        class FlowTracker
-        {
-            static IPropagatorBlock<PacketMetadata, PacketBlock> CreateDataflowBlock(FlowKey flowKey, Func<int> getIndex)
-            {
-                var target = new BatchBlock<PacketMetadata>(PacketBlock.Capacity); ;
-                var source = new TransformBlock<PacketMetadata[], PacketBlock>(metadata => new PacketBlock(flowKey, getIndex(), metadata)); ;
-                target.LinkTo(source);
-                target.Completion.ContinueWith(completion =>
-                { 
-                    if (completion.IsFaulted)
-                    {
-                        ((IDataflowBlock)source).Fault(completion.Exception);
-                    }
-                    else
-                    {
-                        source.Complete();
-                    }
-                });
-
-                // TransformBlock.Complete: After Complete has been called on a dataflow block, 
-                // that block will complete, and its Completion task will enter a final state after 
-                // it has processed all previously available data. 
-                return DataflowBlock.Encapsulate(target, source);
-            }
-
-            /// <summary>
-            /// Flow record associated with the current object.
-            /// </summary>
-            FlowRecord m_flowRecord;
-            /// <summary>
-            /// This dataflow block groups <see cref="PacketMetadata"/> objects and produces <see cref="PacketBlock"/>. 
-            /// Each <see cref="PacketBlock"/> contains at most <see cref="PacketBlock.Capacity"/> <see cref="PacketMetadata"/> objects.
-            /// </summary>
-            IPropagatorBlock<PacketMetadata, PacketBlock> m_dataflowBlock;
-
-            /// <summary>
-            /// Gets the <see cref="Trace.FlowRecord"/> object.
-            /// </summary>
-            internal FlowRecord FlowRecord => m_flowRecord;
-            /// <summary>
-            /// Gets the target dataflow block that consumes <see cref="PacketMetadata"/>.
-            /// </summary>
-            internal ITargetBlock<PacketMetadata> PacketMetadataTarget => m_dataflowBlock;
-            /// <summary>
-            /// Gets the source dataflow block that produces <see cref="PacketBlock"/>. Link this source to
-            /// process generated <see cref="PacketBlock"/> objects.
-            /// </summary>
-            internal ISourceBlock<PacketBlock> PacketBlockSource => m_dataflowBlock; 
-
-            internal FlowTracker(FlowKey flowKey)
-            {
-                m_flowRecord = new FlowRecord(flowKey);
-                m_dataflowBlock = CreateDataflowBlock(flowKey, () => m_flowRecord.Packets / PacketBlock.Capacity);
-            }
-
-            public Task Completion => m_dataflowBlock.Completion;
-        }
     }
 }

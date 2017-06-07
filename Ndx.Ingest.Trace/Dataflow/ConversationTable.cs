@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Ndx.Model;
 
 namespace Ndx.Metacap
 {
@@ -18,7 +16,7 @@ namespace Ndx.Metacap
 
         public ConversationTable(IEnumerable<ConversationTableEntry> entries)
         {
-            m_entries = entries.ToDictionary(x => x.Id);
+            m_entries = entries.ToDictionary(x => x.ConversationId);
         }
 
         public IEnumerable<ConversationTableEntry> Entries => m_entries.Values;

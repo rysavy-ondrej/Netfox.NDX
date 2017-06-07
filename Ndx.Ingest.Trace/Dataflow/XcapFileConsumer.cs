@@ -10,6 +10,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using System.Linq;
+using Ndx.Model;
+using Google.Protobuf;
+
 namespace Ndx.Metacap
 {
 
@@ -30,16 +33,13 @@ namespace Ndx.Metacap
         Task m_completitionTask;
 
         int m_packetBlockCount;
-        ActionBlock<ConversationElement<PacketBlock>> m_packetBlockTarget;
+        ActionBlock<ConversationElement<KeyValuePair<FlowKey,PacketBlock>>> m_packetBlockTarget;
 
         int m_flowRecordCount;
-        ActionBlock<ConversationElement<FlowRecord>> m_flowRecordTarget;
+        ActionBlock<ConversationElement<KeyValuePair<FlowKey, FlowRecord>>> m_flowRecordTarget;
 
         int m_rawframeCount;
         ActionBlock<RawFrame> m_rawFrameTarget;
-
-        private PacketBlock.BinaryConverter m_packetBlockConverter = new PacketBlock.BinaryConverter();
-        FlowRecord.BinaryConverter m_flowRecordConverter = new FlowRecord.BinaryConverter();
 
         /// <summary>
         /// Creates new Consumer that produced xcap file as its output.
@@ -61,8 +61,8 @@ namespace Ndx.Metacap
 
         XcapFileConsumer()
         {
-            m_packetBlockTarget = new ActionBlock<ConversationElement<PacketBlock>>(value => WritePacketBlock(value));
-            m_flowRecordTarget = new ActionBlock<ConversationElement<FlowRecord>>(value => WriteFlowRecord(value));
+            m_packetBlockTarget = new ActionBlock<ConversationElement<KeyValuePair<FlowKey, PacketBlock>>>(value => WritePacketBlock(value));
+            m_flowRecordTarget = new ActionBlock<ConversationElement<KeyValuePair<FlowKey, FlowRecord>>>(value => WriteFlowRecord(value));
             m_rawFrameTarget = new ActionBlock<RawFrame>(x => { WriteFrame(x, Interlocked.Increment(ref m_rawframeCount)); });
             m_completitionTask = Task.WhenAll(m_packetBlockTarget.Completion, m_flowRecordTarget.Completion, m_rawFrameTarget.Completion).ContinueWith((t) => FinishWriting());
         }
@@ -80,28 +80,28 @@ namespace Ndx.Metacap
             }
         }
 
-        void WritePacketBlock(ConversationElement<PacketBlock> value)
+        void WritePacketBlock(ConversationElement<KeyValuePair<FlowKey, PacketBlock>> value)
         {
             lock (m_sync)
             {
-                var path = MetacapFileInfo.GetPacketBlockPath(value.ConversationId, value.Orientation, value.Data.BlockIndex);
-                var blockEntry = m_archive.CreateEntry(path, CompressionLevel.Fastest);
-                using (var writer = new BinaryWriter(blockEntry.Open()))
+                var path = MetacapFileInfo.GetPacketBlockPath(value.ConversationId, value.Orientation, value.Data.Value.BlockIndex);
+                var entry = m_archive.CreateEntry(path, CompressionLevel.Fastest);
+                using (var cos = new CodedOutputStream(entry.Open()))
                 {
-                    m_packetBlockConverter.WriteObject(writer, value.Data);
+                    value.Data.Value.WriteTo(cos);
                 }
             }
         }
 
-        void WriteFlowRecord(ConversationElement<FlowRecord> value)
+        void WriteFlowRecord(ConversationElement<KeyValuePair<FlowKey, FlowRecord>> value)
         {
             lock (m_sync)
             {
                 var path = MetacapFileInfo.GetFlowRecordPath(value.ConversationId, value.Orientation);
                 var entry = m_archive.CreateEntry(path, CompressionLevel.Fastest);
-                using (var writer = new BinaryWriter(entry.Open()))
+                using (var cos = new CodedOutputStream(entry.Open()))
                 {
-                    m_flowRecordConverter.WriteObject(writer, value.Data);
+                    value.Data.Value.WriteTo(cos);
                 }
             }
         }
@@ -138,14 +138,14 @@ namespace Ndx.Metacap
         /// If this dataflow block is not connected then you must call <see cref="IDataflowBlock.Complete()"/> method 
         /// otherwise completion task never finishes.
         /// </summary>
-        public ITargetBlock<ConversationElement<PacketBlock>> PacketBlockTarget => m_packetBlockTarget;
+        public ITargetBlock<ConversationElement<KeyValuePair<FlowKey,PacketBlock>>> PacketBlockTarget => m_packetBlockTarget;
 
         /// <summary>
         /// Gets target dataflow block that represents a consumer of <see cref="FlowRecord"/> objects.
         /// If this dataflow block is not connected then you must call <see cref="IDataflowBlock.Complete()"/> method 
         /// otherwise completion task never finishes.
         /// </summary>
-        public ITargetBlock<ConversationElement<FlowRecord>> FlowRecordTarget => m_flowRecordTarget;
+        public ITargetBlock<ConversationElement<KeyValuePair<FlowKey, FlowRecord>>> FlowRecordTarget => m_flowRecordTarget;
 
         /// <summary>
         /// Gets target dataflow block that represents a consumer of <see cref="RawFrame"/> objects.

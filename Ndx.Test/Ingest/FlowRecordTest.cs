@@ -2,6 +2,7 @@
 using Ndx.Utils;
 using NUnit.Framework;
 using System;
+using Ndx.Model;
 
 namespace Ndx.Test.Ingest
 {
@@ -11,19 +12,18 @@ namespace Ndx.Test.Ingest
         [Test]
         public void FlowRecord_StoreLoad()
         {
-            var x = new _FlowRecord()
+            var x = new FlowRecord()
             {
-                application = (uint)ApplicationProtocol.HTTP,
-                blocks = 10,
-                first = DateTimeOffset.Now.ToUnixTimeMilliseconds(),
-                last = DateTimeOffset.Now.ToUnixTimeMilliseconds() + 1000,
-                octets = 30000,
-                packets = 150
+                ApplicationId = (int)ApplicationProtocol.HTTP,
+                FirstSeen = DateTimeOffset.Now.ToUnixTimeMilliseconds(),
+                LastSeen = DateTimeOffset.Now.ToUnixTimeMilliseconds() + 1000,
+                Octets = 30000,
+                Packets = 150
             };
 
             var buffer = x.GetBytes();
 
-            var y = new _FlowRecord(buffer);
+            var y = new FlowRecord(buffer);
 
             Assert.AreEqual(x, y);
         }

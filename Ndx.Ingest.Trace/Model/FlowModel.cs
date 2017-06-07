@@ -22,36 +22,43 @@ namespace Ndx.Model {
     static FlowModelReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9GbG93TW9kZWwucHJvdG8SCW5keC5tb2RlbCKdAQoLTmV0d29ya0Zsb3cS",
-            "LwoNQWRkcmVzc0ZhbWlseRgBIAEoDjIYLm5keC5tb2RlbC5BZGRyZXNzRmFt",
-            "aWx5EisKCFByb3RvY29sGAIgASgOMhkubmR4Lm1vZGVsLklwUHJvdG9jb2xU",
-            "eXBlEhUKDVNvdXJjZUFkZHJlc3MYAyABKAwSGQoRRGVzdGluYXRpb25BZHJl",
-            "c3MYBCABKAwiYwoHVGNwRmxvdxIrCgtOZXR3b3JrRmxvdxgBIAEoCzIWLm5k",
-            "eC5tb2RlbC5OZXR3b3JrRmxvdxISCgpTb3VyY2VQb3J0GAIgASgFEhcKD0Rl",
-            "c3RpbmF0aW9uUG9ydBgDIAEoBSJjCgdVZHBGbG93EisKC05ldHdvcmtGbG93",
-            "GAEgASgLMhYubmR4Lm1vZGVsLk5ldHdvcmtGbG93EhIKClNvdXJjZVBvcnQY",
-            "AiABKAUSFwoPRGVzdGluYXRpb25Qb3J0GAMgASgFKo0CCg5JcFByb3RvY29s",
-            "VHlwZRILCgdIT1BPUFRTEAASCAoESUNNUBABEggKBElHTVAQAhIICgRJUElQ",
-            "EAQSBwoDVENQEAYSBwoDRUdQEAgSBwoDUFVQEAwSBwoDVURQEBESBwoDSURQ",
-            "EBYSBgoCVFAQHRIICgRJUFY2ECkSCwoHUk9VVElORxArEgwKCEZSQUdNRU5U",
-            "ECwSCAoEUlNWUBAuEgcKA0dSRRAvEgcKA0VTUBAyEgYKAkFIEDMSCgoGSUNN",
-            "UFY2EDoSCAoETk9ORRA7EgsKB0RTVE9QVFMQPBIHCgNNVFAQXBIJCgVFTkNB",
-            "UBBiEgcKA1BJTRBnEggKBENPTVAQbBIICgNSQVcQ/wEq9QIKDUFkZHJlc3NG",
-            "YW1pbHkSDwoLVW5zcGVjaWZpZWQQABIICgRVbml4EAESEAoMSW50ZXJOZXR3",
-            "b3JrEAISCwoHSW1wTGluaxADEgcKA1B1cBAEEgkKBUNoYW9zEAUSBwoDSXB4",
-            "EAYSBwoDSXNvEAcSCAoERWNtYRAIEgsKB0RhdGFLaXQQCRIJCgVDY2l0dBAK",
-            "EgcKA1NuYRALEgoKBkRlY05ldBAMEgwKCERhdGFMaW5rEA0SBwoDTGF0EA4S",
-            "EAoMSHlwZXJDaGFubmVsEA8SDQoJQXBwbGVUYWxrEBASCwoHTmV0QmlvcxAR",
-            "Eg0KCVZvaWNlVmlldxASEgsKB0ZpcmVGb3gQExIKCgZCYW55YW4QFRIHCgNB",
-            "dG0QFhISCg5JbnRlck5ldHdvcmtWNhAXEgsKB0NsdXN0ZXIQGBINCglJZWVl",
-            "MTI4NDQQGRIICgRJcmRhEBoSFAoQTmV0d29ya0Rlc2lnbmVycxAcEgcKA01h",
-            "eBAdYgZwcm90bzM="));
+            "Cg9GbG93TW9kZWwucHJvdG8SCW5keC5tb2RlbCLHAQoHRmxvd0tleRIvCg1B",
+            "ZGRyZXNzRmFtaWx5GAEgASgOMhgubmR4Lm1vZGVsLkFkZHJlc3NGYW1pbHkS",
+            "KwoIUHJvdG9jb2wYAiABKA4yGS5uZHgubW9kZWwuSXBQcm90b2NvbFR5cGUS",
+            "FQoNU291cmNlQWRkcmVzcxgDIAEoDBIaChJEZXN0aW5hdGlvbkFkZHJlc3MY",
+            "BCABKAwSEgoKU291cmNlUG9ydBgFIAEoBRIXCg9EZXN0aW5hdGlvblBvcnQY",
+            "BiABKAUirwEKCkZsb3dSZWNvcmQSDgoGT2N0ZXRzGAEgASgDEg8KB1BhY2tl",
+            "dHMYAiABKAUSEQoJRmlyc3RTZWVuGAMgASgDEhAKCExhc3RTZWVuGAQgASgD",
+            "EhUKDUFwcGxpY2F0aW9uSWQYBSABKAUSEwoLQmxvY2tzQ291bnQYBiABKAUS",
+            "LwoLT3JpZW50YXRpb24YByABKA4yGi5uZHgubW9kZWwuRmxvd09yaWVudGF0",
+            "aW9uIj8KC0luZGV4UmVjb3JkEhcKD0Zsb3dSZWNvcmRJbmRleBgBIAEoBRIX",
+            "Cg9QYWNrZXRCbG9ja0xpc3QYAiADKAUipgEKFkNvbnZlcnNhdGlvblRhYmxl",
+            "RW50cnkSFgoOQ29udmVyc2F0aW9uSWQYASABKAUSEAoIVXBmbG93SWQYAiAB",
+            "KAUSEgoKRG93bmZsb3dJZBgDIAEoBRIlCglVcGZsb3dLZXkYBCABKAsyEi5u",
+            "ZHgubW9kZWwuRmxvd0tleRInCgtEb3duZmxvd0tleRgFIAEoCzISLm5keC5t",
+            "b2RlbC5GbG93S2V5Ko0CCg5JcFByb3RvY29sVHlwZRILCgdIT1BPUFRTEAAS",
+            "CAoESUNNUBABEggKBElHTVAQAhIICgRJUElQEAQSBwoDVENQEAYSBwoDRUdQ",
+            "EAgSBwoDUFVQEAwSBwoDVURQEBESBwoDSURQEBYSBgoCVFAQHRIICgRJUFY2",
+            "ECkSCwoHUk9VVElORxArEgwKCEZSQUdNRU5UECwSCAoEUlNWUBAuEgcKA0dS",
+            "RRAvEgcKA0VTUBAyEgYKAkFIEDMSCgoGSUNNUFY2EDoSCAoETk9ORRA7EgsK",
+            "B0RTVE9QVFMQPBIHCgNNVFAQXBIJCgVFTkNBUBBiEgcKA1BJTRBnEggKBENP",
+            "TVAQbBIICgNSQVcQ/wEq9QIKDUFkZHJlc3NGYW1pbHkSDwoLVW5zcGVjaWZp",
+            "ZWQQABIICgRVbml4EAESEAoMSW50ZXJOZXR3b3JrEAISCwoHSW1wTGluaxAD",
+            "EgcKA1B1cBAEEgkKBUNoYW9zEAUSBwoDSXB4EAYSBwoDSXNvEAcSCAoERWNt",
+            "YRAIEgsKB0RhdGFLaXQQCRIJCgVDY2l0dBAKEgcKA1NuYRALEgoKBkRlY05l",
+            "dBAMEgwKCERhdGFMaW5rEA0SBwoDTGF0EA4SEAoMSHlwZXJDaGFubmVsEA8S",
+            "DQoJQXBwbGVUYWxrEBASCwoHTmV0QmlvcxAREg0KCVZvaWNlVmlldxASEgsK",
+            "B0ZpcmVGb3gQExIKCgZCYW55YW4QFRIHCgNBdG0QFhISCg5JbnRlck5ldHdv",
+            "cmtWNhAXEgsKB0NsdXN0ZXIQGBINCglJZWVlMTI4NDQQGRIICgRJcmRhEBoS",
+            "FAoQTmV0d29ya0Rlc2lnbmVycxAcEgcKA01heBAdKisKD0Zsb3dPcmllbnRh",
+            "dGlvbhIKCgZVcGZsb3cQABIMCghEb3duZmxvdxABYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Ndx.Model.IpProtocolType), typeof(global::Ndx.Model.AddressFamily), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.NetworkFlow), global::Ndx.Model.NetworkFlow.Parser, new[]{ "AddressFamily", "Protocol", "SourceAddress", "DestinationAdress" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.TcpFlow), global::Ndx.Model.TcpFlow.Parser, new[]{ "NetworkFlow", "SourcePort", "DestinationPort" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.UdpFlow), global::Ndx.Model.UdpFlow.Parser, new[]{ "NetworkFlow", "SourcePort", "DestinationPort" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Ndx.Model.IpProtocolType), typeof(global::Ndx.Model.AddressFamily), typeof(global::Ndx.Model.FlowOrientation), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.FlowKey), global::Ndx.Model.FlowKey.Parser, new[]{ "AddressFamily", "Protocol", "SourceAddress", "DestinationAddress", "SourcePort", "DestinationPort" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.FlowRecord), global::Ndx.Model.FlowRecord.Parser, new[]{ "Octets", "Packets", "FirstSeen", "LastSeen", "ApplicationId", "BlocksCount", "Orientation" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.IndexRecord), global::Ndx.Model.IndexRecord.Parser, new[]{ "FlowRecordIndex", "PacketBlockList" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.ConversationTableEntry), global::Ndx.Model.ConversationTableEntry.Parser, new[]{ "ConversationId", "UpflowId", "DownflowId", "UpflowKey", "DownflowKey" }, null, null, null)
           }));
     }
     #endregion
@@ -335,13 +342,18 @@ namespace Ndx.Model {
     [pbr::OriginalName("Max")] Max = 29,
   }
 
+  public enum FlowOrientation {
+    [pbr::OriginalName("Upflow")] Upflow = 0,
+    [pbr::OriginalName("Downflow")] Downflow = 1,
+  }
+
   #endregion
 
   #region Messages
-  public sealed partial class NetworkFlow : pb::IMessage<NetworkFlow> {
-    private static readonly pb::MessageParser<NetworkFlow> _parser = new pb::MessageParser<NetworkFlow>(() => new NetworkFlow());
+  public sealed partial class FlowKey : pb::IMessage<FlowKey> {
+    private static readonly pb::MessageParser<FlowKey> _parser = new pb::MessageParser<FlowKey>(() => new FlowKey());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<NetworkFlow> Parser { get { return _parser; } }
+    public static pb::MessageParser<FlowKey> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -354,23 +366,25 @@ namespace Ndx.Model {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public NetworkFlow() {
+    public FlowKey() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public NetworkFlow(NetworkFlow other) : this() {
+    public FlowKey(FlowKey other) : this() {
       addressFamily_ = other.addressFamily_;
       protocol_ = other.protocol_;
       sourceAddress_ = other.sourceAddress_;
-      destinationAdress_ = other.destinationAdress_;
+      destinationAddress_ = other.destinationAddress_;
+      sourcePort_ = other.sourcePort_;
+      destinationPort_ = other.destinationPort_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public NetworkFlow Clone() {
-      return new NetworkFlow(this);
+    public FlowKey Clone() {
+      return new FlowKey(this);
     }
 
     /// <summary>Field number for the "AddressFamily" field.</summary>
@@ -406,24 +420,46 @@ namespace Ndx.Model {
       }
     }
 
-    /// <summary>Field number for the "DestinationAdress" field.</summary>
-    public const int DestinationAdressFieldNumber = 4;
-    private pb::ByteString destinationAdress_ = pb::ByteString.Empty;
+    /// <summary>Field number for the "DestinationAddress" field.</summary>
+    public const int DestinationAddressFieldNumber = 4;
+    private pb::ByteString destinationAddress_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DestinationAdress {
-      get { return destinationAdress_; }
+    public pb::ByteString DestinationAddress {
+      get { return destinationAddress_; }
       set {
-        destinationAdress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        destinationAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "SourcePort" field.</summary>
+    public const int SourcePortFieldNumber = 5;
+    private int sourcePort_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int SourcePort {
+      get { return sourcePort_; }
+      set {
+        sourcePort_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DestinationPort" field.</summary>
+    public const int DestinationPortFieldNumber = 6;
+    private int destinationPort_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int DestinationPort {
+      get { return destinationPort_; }
+      set {
+        destinationPort_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as NetworkFlow);
+      return Equals(other as FlowKey);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(NetworkFlow other) {
+    public bool Equals(FlowKey other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -433,7 +469,9 @@ namespace Ndx.Model {
       if (AddressFamily != other.AddressFamily) return false;
       if (Protocol != other.Protocol) return false;
       if (SourceAddress != other.SourceAddress) return false;
-      if (DestinationAdress != other.DestinationAdress) return false;
+      if (DestinationAddress != other.DestinationAddress) return false;
+      if (SourcePort != other.SourcePort) return false;
+      if (DestinationPort != other.DestinationPort) return false;
       return true;
     }
 
@@ -443,7 +481,9 @@ namespace Ndx.Model {
       if (AddressFamily != 0) hash ^= AddressFamily.GetHashCode();
       if (Protocol != 0) hash ^= Protocol.GetHashCode();
       if (SourceAddress.Length != 0) hash ^= SourceAddress.GetHashCode();
-      if (DestinationAdress.Length != 0) hash ^= DestinationAdress.GetHashCode();
+      if (DestinationAddress.Length != 0) hash ^= DestinationAddress.GetHashCode();
+      if (SourcePort != 0) hash ^= SourcePort.GetHashCode();
+      if (DestinationPort != 0) hash ^= DestinationPort.GetHashCode();
       return hash;
     }
 
@@ -466,9 +506,17 @@ namespace Ndx.Model {
         output.WriteRawTag(26);
         output.WriteBytes(SourceAddress);
       }
-      if (DestinationAdress.Length != 0) {
+      if (DestinationAddress.Length != 0) {
         output.WriteRawTag(34);
-        output.WriteBytes(DestinationAdress);
+        output.WriteBytes(DestinationAddress);
+      }
+      if (SourcePort != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(SourcePort);
+      }
+      if (DestinationPort != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(DestinationPort);
       }
     }
 
@@ -484,14 +532,20 @@ namespace Ndx.Model {
       if (SourceAddress.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(SourceAddress);
       }
-      if (DestinationAdress.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(DestinationAdress);
+      if (DestinationAddress.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(DestinationAddress);
+      }
+      if (SourcePort != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SourcePort);
+      }
+      if (DestinationPort != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(DestinationPort);
       }
       return size;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(NetworkFlow other) {
+    public void MergeFrom(FlowKey other) {
       if (other == null) {
         return;
       }
@@ -504,8 +558,14 @@ namespace Ndx.Model {
       if (other.SourceAddress.Length != 0) {
         SourceAddress = other.SourceAddress;
       }
-      if (other.DestinationAdress.Length != 0) {
-        DestinationAdress = other.DestinationAdress;
+      if (other.DestinationAddress.Length != 0) {
+        DestinationAddress = other.DestinationAddress;
+      }
+      if (other.SourcePort != 0) {
+        SourcePort = other.SourcePort;
+      }
+      if (other.DestinationPort != 0) {
+        DestinationPort = other.DestinationPort;
       }
     }
 
@@ -530,7 +590,15 @@ namespace Ndx.Model {
             break;
           }
           case 34: {
-            DestinationAdress = input.ReadBytes();
+            DestinationAddress = input.ReadBytes();
+            break;
+          }
+          case 40: {
+            SourcePort = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            DestinationPort = input.ReadInt32();
             break;
           }
         }
@@ -539,10 +607,10 @@ namespace Ndx.Model {
 
   }
 
-  public sealed partial class TcpFlow : pb::IMessage<TcpFlow> {
-    private static readonly pb::MessageParser<TcpFlow> _parser = new pb::MessageParser<TcpFlow>(() => new TcpFlow());
+  public sealed partial class FlowRecord : pb::IMessage<FlowRecord> {
+    private static readonly pb::MessageParser<FlowRecord> _parser = new pb::MessageParser<FlowRecord>(() => new FlowRecord());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<TcpFlow> Parser { get { return _parser; } }
+    public static pb::MessageParser<FlowRecord> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -555,82 +623,138 @@ namespace Ndx.Model {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TcpFlow() {
+    public FlowRecord() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TcpFlow(TcpFlow other) : this() {
-      NetworkFlow = other.networkFlow_ != null ? other.NetworkFlow.Clone() : null;
-      sourcePort_ = other.sourcePort_;
-      destinationPort_ = other.destinationPort_;
+    public FlowRecord(FlowRecord other) : this() {
+      octets_ = other.octets_;
+      packets_ = other.packets_;
+      firstSeen_ = other.firstSeen_;
+      lastSeen_ = other.lastSeen_;
+      applicationId_ = other.applicationId_;
+      blocksCount_ = other.blocksCount_;
+      orientation_ = other.orientation_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TcpFlow Clone() {
-      return new TcpFlow(this);
+    public FlowRecord Clone() {
+      return new FlowRecord(this);
     }
 
-    /// <summary>Field number for the "NetworkFlow" field.</summary>
-    public const int NetworkFlowFieldNumber = 1;
-    private global::Ndx.Model.NetworkFlow networkFlow_;
+    /// <summary>Field number for the "Octets" field.</summary>
+    public const int OctetsFieldNumber = 1;
+    private long octets_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Model.NetworkFlow NetworkFlow {
-      get { return networkFlow_; }
+    public long Octets {
+      get { return octets_; }
       set {
-        networkFlow_ = value;
+        octets_ = value;
       }
     }
 
-    /// <summary>Field number for the "SourcePort" field.</summary>
-    public const int SourcePortFieldNumber = 2;
-    private int sourcePort_;
+    /// <summary>Field number for the "Packets" field.</summary>
+    public const int PacketsFieldNumber = 2;
+    private int packets_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int SourcePort {
-      get { return sourcePort_; }
+    public int Packets {
+      get { return packets_; }
       set {
-        sourcePort_ = value;
+        packets_ = value;
       }
     }
 
-    /// <summary>Field number for the "DestinationPort" field.</summary>
-    public const int DestinationPortFieldNumber = 3;
-    private int destinationPort_;
+    /// <summary>Field number for the "FirstSeen" field.</summary>
+    public const int FirstSeenFieldNumber = 3;
+    private long firstSeen_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int DestinationPort {
-      get { return destinationPort_; }
+    public long FirstSeen {
+      get { return firstSeen_; }
       set {
-        destinationPort_ = value;
+        firstSeen_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "LastSeen" field.</summary>
+    public const int LastSeenFieldNumber = 4;
+    private long lastSeen_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long LastSeen {
+      get { return lastSeen_; }
+      set {
+        lastSeen_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ApplicationId" field.</summary>
+    public const int ApplicationIdFieldNumber = 5;
+    private int applicationId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int ApplicationId {
+      get { return applicationId_; }
+      set {
+        applicationId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "BlocksCount" field.</summary>
+    public const int BlocksCountFieldNumber = 6;
+    private int blocksCount_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int BlocksCount {
+      get { return blocksCount_; }
+      set {
+        blocksCount_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Orientation" field.</summary>
+    public const int OrientationFieldNumber = 7;
+    private global::Ndx.Model.FlowOrientation orientation_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Ndx.Model.FlowOrientation Orientation {
+      get { return orientation_; }
+      set {
+        orientation_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as TcpFlow);
+      return Equals(other as FlowRecord);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(TcpFlow other) {
+    public bool Equals(FlowRecord other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(NetworkFlow, other.NetworkFlow)) return false;
-      if (SourcePort != other.SourcePort) return false;
-      if (DestinationPort != other.DestinationPort) return false;
+      if (Octets != other.Octets) return false;
+      if (Packets != other.Packets) return false;
+      if (FirstSeen != other.FirstSeen) return false;
+      if (LastSeen != other.LastSeen) return false;
+      if (ApplicationId != other.ApplicationId) return false;
+      if (BlocksCount != other.BlocksCount) return false;
+      if (Orientation != other.Orientation) return false;
       return true;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (networkFlow_ != null) hash ^= NetworkFlow.GetHashCode();
-      if (SourcePort != 0) hash ^= SourcePort.GetHashCode();
-      if (DestinationPort != 0) hash ^= DestinationPort.GetHashCode();
+      if (Octets != 0L) hash ^= Octets.GetHashCode();
+      if (Packets != 0) hash ^= Packets.GetHashCode();
+      if (FirstSeen != 0L) hash ^= FirstSeen.GetHashCode();
+      if (LastSeen != 0L) hash ^= LastSeen.GetHashCode();
+      if (ApplicationId != 0) hash ^= ApplicationId.GetHashCode();
+      if (BlocksCount != 0) hash ^= BlocksCount.GetHashCode();
+      if (Orientation != 0) hash ^= Orientation.GetHashCode();
       return hash;
     }
 
@@ -641,51 +765,88 @@ namespace Ndx.Model {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (networkFlow_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(NetworkFlow);
+      if (Octets != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(Octets);
       }
-      if (SourcePort != 0) {
+      if (Packets != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(SourcePort);
+        output.WriteInt32(Packets);
       }
-      if (DestinationPort != 0) {
+      if (FirstSeen != 0L) {
         output.WriteRawTag(24);
-        output.WriteInt32(DestinationPort);
+        output.WriteInt64(FirstSeen);
+      }
+      if (LastSeen != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(LastSeen);
+      }
+      if (ApplicationId != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(ApplicationId);
+      }
+      if (BlocksCount != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(BlocksCount);
+      }
+      if (Orientation != 0) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) Orientation);
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (networkFlow_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(NetworkFlow);
+      if (Octets != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Octets);
       }
-      if (SourcePort != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SourcePort);
+      if (Packets != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Packets);
       }
-      if (DestinationPort != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(DestinationPort);
+      if (FirstSeen != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(FirstSeen);
+      }
+      if (LastSeen != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(LastSeen);
+      }
+      if (ApplicationId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ApplicationId);
+      }
+      if (BlocksCount != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BlocksCount);
+      }
+      if (Orientation != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Orientation);
       }
       return size;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(TcpFlow other) {
+    public void MergeFrom(FlowRecord other) {
       if (other == null) {
         return;
       }
-      if (other.networkFlow_ != null) {
-        if (networkFlow_ == null) {
-          networkFlow_ = new global::Ndx.Model.NetworkFlow();
-        }
-        NetworkFlow.MergeFrom(other.NetworkFlow);
+      if (other.Octets != 0L) {
+        Octets = other.Octets;
       }
-      if (other.SourcePort != 0) {
-        SourcePort = other.SourcePort;
+      if (other.Packets != 0) {
+        Packets = other.Packets;
       }
-      if (other.DestinationPort != 0) {
-        DestinationPort = other.DestinationPort;
+      if (other.FirstSeen != 0L) {
+        FirstSeen = other.FirstSeen;
+      }
+      if (other.LastSeen != 0L) {
+        LastSeen = other.LastSeen;
+      }
+      if (other.ApplicationId != 0) {
+        ApplicationId = other.ApplicationId;
+      }
+      if (other.BlocksCount != 0) {
+        BlocksCount = other.BlocksCount;
+      }
+      if (other.Orientation != 0) {
+        Orientation = other.Orientation;
       }
     }
 
@@ -697,19 +858,32 @@ namespace Ndx.Model {
           default:
             input.SkipLastField();
             break;
-          case 10: {
-            if (networkFlow_ == null) {
-              networkFlow_ = new global::Ndx.Model.NetworkFlow();
-            }
-            input.ReadMessage(networkFlow_);
+          case 8: {
+            Octets = input.ReadInt64();
             break;
           }
           case 16: {
-            SourcePort = input.ReadInt32();
+            Packets = input.ReadInt32();
             break;
           }
           case 24: {
-            DestinationPort = input.ReadInt32();
+            FirstSeen = input.ReadInt64();
+            break;
+          }
+          case 32: {
+            LastSeen = input.ReadInt64();
+            break;
+          }
+          case 40: {
+            ApplicationId = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            BlocksCount = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            orientation_ = (global::Ndx.Model.FlowOrientation) input.ReadEnum();
             break;
           }
         }
@@ -718,10 +892,17 @@ namespace Ndx.Model {
 
   }
 
-  public sealed partial class UdpFlow : pb::IMessage<UdpFlow> {
-    private static readonly pb::MessageParser<UdpFlow> _parser = new pb::MessageParser<UdpFlow>(() => new UdpFlow());
+  /// <summary>
+  //// &lt;summary>
+  //// &lt;see cref="IndexRecord"/> contains an index of &lt;see cref="FlowRecord"/> and
+  //// a collection of indexes for &lt;see cref="PacketBlock"/> items.
+  //// This object is used to link &lt;see cref="FlowKey"/> to record and packets.
+  //// &lt;/summary>
+  /// </summary>
+  public sealed partial class IndexRecord : pb::IMessage<IndexRecord> {
+    private static readonly pb::MessageParser<IndexRecord> _parser = new pb::MessageParser<IndexRecord>(() => new IndexRecord());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<UdpFlow> Parser { get { return _parser; } }
+    public static pb::MessageParser<IndexRecord> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -734,82 +915,77 @@ namespace Ndx.Model {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UdpFlow() {
+    public IndexRecord() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UdpFlow(UdpFlow other) : this() {
-      NetworkFlow = other.networkFlow_ != null ? other.NetworkFlow.Clone() : null;
-      sourcePort_ = other.sourcePort_;
-      destinationPort_ = other.destinationPort_;
+    public IndexRecord(IndexRecord other) : this() {
+      flowRecordIndex_ = other.flowRecordIndex_;
+      packetBlockList_ = other.packetBlockList_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UdpFlow Clone() {
-      return new UdpFlow(this);
+    public IndexRecord Clone() {
+      return new IndexRecord(this);
     }
 
-    /// <summary>Field number for the "NetworkFlow" field.</summary>
-    public const int NetworkFlowFieldNumber = 1;
-    private global::Ndx.Model.NetworkFlow networkFlow_;
+    /// <summary>Field number for the "FlowRecordIndex" field.</summary>
+    public const int FlowRecordIndexFieldNumber = 1;
+    private int flowRecordIndex_;
+    /// <summary>
+    //// &lt;summary>
+    //// Gets or sets the flow record index
+    //// &lt;/summary>
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Model.NetworkFlow NetworkFlow {
-      get { return networkFlow_; }
+    public int FlowRecordIndex {
+      get { return flowRecordIndex_; }
       set {
-        networkFlow_ = value;
+        flowRecordIndex_ = value;
       }
     }
 
-    /// <summary>Field number for the "SourcePort" field.</summary>
-    public const int SourcePortFieldNumber = 2;
-    private int sourcePort_;
+    /// <summary>Field number for the "PacketBlockList" field.</summary>
+    public const int PacketBlockListFieldNumber = 2;
+    private static readonly pb::FieldCodec<int> _repeated_packetBlockList_codec
+        = pb::FieldCodec.ForInt32(18);
+    private readonly pbc::RepeatedField<int> packetBlockList_ = new pbc::RepeatedField<int>();
+    /// <summary>
+    //// &lt;summary>
+    //// Gets the list of packet block indexes.
+    //// &lt;/summary>
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int SourcePort {
-      get { return sourcePort_; }
-      set {
-        sourcePort_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DestinationPort" field.</summary>
-    public const int DestinationPortFieldNumber = 3;
-    private int destinationPort_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int DestinationPort {
-      get { return destinationPort_; }
-      set {
-        destinationPort_ = value;
-      }
+    public pbc::RepeatedField<int> PacketBlockList {
+      get { return packetBlockList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as UdpFlow);
+      return Equals(other as IndexRecord);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(UdpFlow other) {
+    public bool Equals(IndexRecord other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(NetworkFlow, other.NetworkFlow)) return false;
-      if (SourcePort != other.SourcePort) return false;
-      if (DestinationPort != other.DestinationPort) return false;
+      if (FlowRecordIndex != other.FlowRecordIndex) return false;
+      if(!packetBlockList_.Equals(other.packetBlockList_)) return false;
       return true;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (networkFlow_ != null) hash ^= NetworkFlow.GetHashCode();
-      if (SourcePort != 0) hash ^= SourcePort.GetHashCode();
-      if (DestinationPort != 0) hash ^= DestinationPort.GetHashCode();
+      if (FlowRecordIndex != 0) hash ^= FlowRecordIndex.GetHashCode();
+      hash ^= packetBlockList_.GetHashCode();
       return hash;
     }
 
@@ -820,51 +996,255 @@ namespace Ndx.Model {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (networkFlow_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(NetworkFlow);
+      if (FlowRecordIndex != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(FlowRecordIndex);
       }
-      if (SourcePort != 0) {
+      packetBlockList_.WriteTo(output, _repeated_packetBlockList_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (FlowRecordIndex != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FlowRecordIndex);
+      }
+      size += packetBlockList_.CalculateSize(_repeated_packetBlockList_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(IndexRecord other) {
+      if (other == null) {
+        return;
+      }
+      if (other.FlowRecordIndex != 0) {
+        FlowRecordIndex = other.FlowRecordIndex;
+      }
+      packetBlockList_.Add(other.packetBlockList_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            FlowRecordIndex = input.ReadInt32();
+            break;
+          }
+          case 18:
+          case 16: {
+            packetBlockList_.AddEntriesFrom(input, _repeated_packetBlockList_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ConversationTableEntry : pb::IMessage<ConversationTableEntry> {
+    private static readonly pb::MessageParser<ConversationTableEntry> _parser = new pb::MessageParser<ConversationTableEntry>(() => new ConversationTableEntry());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ConversationTableEntry> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Ndx.Model.FlowModelReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ConversationTableEntry() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ConversationTableEntry(ConversationTableEntry other) : this() {
+      conversationId_ = other.conversationId_;
+      upflowId_ = other.upflowId_;
+      downflowId_ = other.downflowId_;
+      UpflowKey = other.upflowKey_ != null ? other.UpflowKey.Clone() : null;
+      DownflowKey = other.downflowKey_ != null ? other.DownflowKey.Clone() : null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ConversationTableEntry Clone() {
+      return new ConversationTableEntry(this);
+    }
+
+    /// <summary>Field number for the "ConversationId" field.</summary>
+    public const int ConversationIdFieldNumber = 1;
+    private int conversationId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int ConversationId {
+      get { return conversationId_; }
+      set {
+        conversationId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "UpflowId" field.</summary>
+    public const int UpflowIdFieldNumber = 2;
+    private int upflowId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int UpflowId {
+      get { return upflowId_; }
+      set {
+        upflowId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DownflowId" field.</summary>
+    public const int DownflowIdFieldNumber = 3;
+    private int downflowId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int DownflowId {
+      get { return downflowId_; }
+      set {
+        downflowId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "UpflowKey" field.</summary>
+    public const int UpflowKeyFieldNumber = 4;
+    private global::Ndx.Model.FlowKey upflowKey_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Ndx.Model.FlowKey UpflowKey {
+      get { return upflowKey_; }
+      set {
+        upflowKey_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DownflowKey" field.</summary>
+    public const int DownflowKeyFieldNumber = 5;
+    private global::Ndx.Model.FlowKey downflowKey_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Ndx.Model.FlowKey DownflowKey {
+      get { return downflowKey_; }
+      set {
+        downflowKey_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ConversationTableEntry);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ConversationTableEntry other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ConversationId != other.ConversationId) return false;
+      if (UpflowId != other.UpflowId) return false;
+      if (DownflowId != other.DownflowId) return false;
+      if (!object.Equals(UpflowKey, other.UpflowKey)) return false;
+      if (!object.Equals(DownflowKey, other.DownflowKey)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ConversationId != 0) hash ^= ConversationId.GetHashCode();
+      if (UpflowId != 0) hash ^= UpflowId.GetHashCode();
+      if (DownflowId != 0) hash ^= DownflowId.GetHashCode();
+      if (upflowKey_ != null) hash ^= UpflowKey.GetHashCode();
+      if (downflowKey_ != null) hash ^= DownflowKey.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (ConversationId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(ConversationId);
+      }
+      if (UpflowId != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(SourcePort);
+        output.WriteInt32(UpflowId);
       }
-      if (DestinationPort != 0) {
+      if (DownflowId != 0) {
         output.WriteRawTag(24);
-        output.WriteInt32(DestinationPort);
+        output.WriteInt32(DownflowId);
+      }
+      if (upflowKey_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(UpflowKey);
+      }
+      if (downflowKey_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(DownflowKey);
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (networkFlow_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(NetworkFlow);
+      if (ConversationId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ConversationId);
       }
-      if (SourcePort != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SourcePort);
+      if (UpflowId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UpflowId);
       }
-      if (DestinationPort != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(DestinationPort);
+      if (DownflowId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(DownflowId);
+      }
+      if (upflowKey_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(UpflowKey);
+      }
+      if (downflowKey_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DownflowKey);
       }
       return size;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(UdpFlow other) {
+    public void MergeFrom(ConversationTableEntry other) {
       if (other == null) {
         return;
       }
-      if (other.networkFlow_ != null) {
-        if (networkFlow_ == null) {
-          networkFlow_ = new global::Ndx.Model.NetworkFlow();
+      if (other.ConversationId != 0) {
+        ConversationId = other.ConversationId;
+      }
+      if (other.UpflowId != 0) {
+        UpflowId = other.UpflowId;
+      }
+      if (other.DownflowId != 0) {
+        DownflowId = other.DownflowId;
+      }
+      if (other.upflowKey_ != null) {
+        if (upflowKey_ == null) {
+          upflowKey_ = new global::Ndx.Model.FlowKey();
         }
-        NetworkFlow.MergeFrom(other.NetworkFlow);
+        UpflowKey.MergeFrom(other.UpflowKey);
       }
-      if (other.SourcePort != 0) {
-        SourcePort = other.SourcePort;
-      }
-      if (other.DestinationPort != 0) {
-        DestinationPort = other.DestinationPort;
+      if (other.downflowKey_ != null) {
+        if (downflowKey_ == null) {
+          downflowKey_ = new global::Ndx.Model.FlowKey();
+        }
+        DownflowKey.MergeFrom(other.DownflowKey);
       }
     }
 
@@ -876,19 +1256,30 @@ namespace Ndx.Model {
           default:
             input.SkipLastField();
             break;
-          case 10: {
-            if (networkFlow_ == null) {
-              networkFlow_ = new global::Ndx.Model.NetworkFlow();
-            }
-            input.ReadMessage(networkFlow_);
+          case 8: {
+            ConversationId = input.ReadInt32();
             break;
           }
           case 16: {
-            SourcePort = input.ReadInt32();
+            UpflowId = input.ReadInt32();
             break;
           }
           case 24: {
-            DestinationPort = input.ReadInt32();
+            DownflowId = input.ReadInt32();
+            break;
+          }
+          case 34: {
+            if (upflowKey_ == null) {
+              upflowKey_ = new global::Ndx.Model.FlowKey();
+            }
+            input.ReadMessage(upflowKey_);
+            break;
+          }
+          case 42: {
+            if (downflowKey_ == null) {
+              downflowKey_ = new global::Ndx.Model.FlowKey();
+            }
+            input.ReadMessage(downflowKey_);
             break;
           }
         }

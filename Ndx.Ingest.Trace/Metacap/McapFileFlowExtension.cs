@@ -10,6 +10,7 @@ using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using Ndx.Model;
 using PacketDotNet;
 using PacketDotNet.Utils;
 
@@ -24,19 +25,19 @@ namespace Ndx.Metacap
         /// <summary>
         /// Gets selector for retrieving frame bytes.
         /// </summary>
-        public static Func<PacketMetadata, Tuple<long, int, PacketMetadata>> FrameContent = (x) => Tuple.Create(x.Frame.FrameOffset, x.Frame.FrameLength, x);
+        public static Func<PacketUnit, Tuple<long, int, PacketUnit>> FrameContent = (x) => Tuple.Create(x.Frame.FrameOffset, x.Frame.FrameLength, x);
         /// <summary>
         /// Gets selector for retrieving network packet bytes.
         /// </summary>
-        public static Func<PacketMetadata, Tuple<long, int, PacketMetadata>> NetworkContent = (x) => Tuple.Create(x.Frame.FrameOffset + x.Network.Start, x.Network.Count, x);
+        public static Func<PacketUnit, Tuple<long, int, PacketUnit>> NetworkContent = (x) => Tuple.Create(x.Frame.FrameOffset + x.Network.Bytes.Offset, x.Network.Bytes.Length, x);
         /// <summary>
         /// Gets selector for retrieving transport pdu bytes.
         /// </summary>
-        public static Func<PacketMetadata, Tuple<long, int, PacketMetadata>> TransportContent = (x) => Tuple.Create(x.Frame.FrameOffset + x.Transport.Start, x.Transport.Count, x);
+        public static Func<PacketUnit, Tuple<long, int, PacketUnit>> TransportContent = (x) => Tuple.Create(x.Frame.FrameOffset + x.Transport.Bytes.Offset, x.Transport.Bytes.Length, x);
         /// <summary>
         /// Gets selector for retrieving payload bytes.
         /// </summary>
-        public static Func<PacketMetadata, Tuple<long, int, PacketMetadata>> PayloadContent = (x) => Tuple.Create(x.Frame.FrameOffset + x.Payload.Start, x.Payload.Count, x);
+        public static Func<PacketUnit, Tuple<long, int, PacketUnit>> PayloadContent = (x) => Tuple.Create(x.Frame.FrameOffset + x.Application.Bytes.Offset, x.Application.Bytes.Length, x);
 
         /// <summary>
         /// Gets the collection of packets and their content for the specified Flow.
@@ -45,7 +46,7 @@ namespace Ndx.Metacap
         /// <param name="flow"></param>
         /// <param name="selector"></param>
         /// <returns></returns>
-        public static IEnumerable<Tuple<PacketMetadata, byte[]>> GetPacketsBytes(this McapFile mcap, FlowKeyTableEntry flow, Func<PacketMetadata, Tuple<long, int, PacketMetadata>> selector)
+        public static IEnumerable<Tuple<PacketUnit, byte[]>> GetPacketsBytes(this McapFile mcap, FlowKeyTableEntry flow, Func<PacketUnit, Tuple<long, int, PacketUnit>> selector)
         {
             throw new NotImplementedException();
             /*
