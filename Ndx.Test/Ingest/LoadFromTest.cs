@@ -17,7 +17,7 @@ namespace Ndx.Test
         {
             var consumer = new NullConsumer();
             var cts = new CancellationTokenSource();
-            var reader = new PcapReaderProvider(32768, 1000, cts.Token);
+            var reader = new CaptureReader(32768, 1000, cts.Token);
             var ingest = new PcapFileIngestor(reader.RawFrameSource, 
                 consumer.RawFrameTarget, 
                 consumer.PacketBlockTarget, 
@@ -38,7 +38,7 @@ namespace Ndx.Test
         {
             var consumer = new NullConsumer();
             var cts = new CancellationTokenSource();
-            var reader = new PcapReaderProvider(32768, 1000, cts.Token);
+            var reader = new CaptureReader(32768, 1000, cts.Token);
             var ingest = new PcapFileIngestor(reader.RawFrameSource, consumer.RawFrameTarget, consumer.PacketBlockTarget, consumer.FlowRecordTarget, new IngestOptions());
 
             var path = Path.Combine(TestContext.CurrentContext.TestDirectory, @"Captures\22797e5151de8ccc0ee7106707c53bdd.pcap");
@@ -56,7 +56,7 @@ namespace Ndx.Test
         {
             var consumer = new NullConsumer();
             var cts = new CancellationTokenSource();
-            var reader = new PcapReaderProvider(32768, 1000, cts.Token);
+            var reader = new CaptureReader(32768, 1000, cts.Token);
             var ingest = new PcapFileIngestor(reader.RawFrameSource, null, consumer.PacketBlockTarget, consumer.FlowRecordTarget, new IngestOptions());
 
             var path = Path.Combine(TestContext.CurrentContext.TestDirectory, @"Captures\22797e5151de8ccc0ee7106707c53bdd.pcap");
@@ -74,7 +74,7 @@ namespace Ndx.Test
         {
             var consumer = new McapFileConsumer(Path.ChangeExtension(path, "mcap"));
             var cts = new CancellationTokenSource();
-            var reader = new PcapReaderProvider(32768, 1000, cts.Token);
+            var reader = new CaptureReader(32768, 1000, cts.Token);
             var ingest = new PcapFileIngestor(reader.RawFrameSource, consumer.RawFrameTarget, consumer.PacketBlockTarget, consumer.FlowRecordTarget, new IngestOptions());
 
             var fileInfo = new FileInfo(path);
@@ -89,7 +89,7 @@ namespace Ndx.Test
         {
             var consumer = new XcapFileConsumer(Path.ChangeExtension(path, "xcap"));
             var cts = new CancellationTokenSource();
-            var reader = new PcapReaderProvider(32768, 1000, cts.Token);
+            var reader = new CaptureReader(32768, 1000, cts.Token);
             var ingest = new PcapFileIngestor(reader.RawFrameSource, consumer.RawFrameTarget, consumer.PacketBlockTarget, consumer.FlowRecordTarget, new IngestOptions());
 
             var fileInfo = new FileInfo(path);

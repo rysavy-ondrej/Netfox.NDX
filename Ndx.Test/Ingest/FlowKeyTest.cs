@@ -4,6 +4,7 @@ using PacketDotNet;
 using System.Net;
 using System.Net.Sockets;
 using Ndx.Model;
+using System.Net.NetworkInformation;
 
 namespace Ndx.Test
 {
@@ -19,16 +20,45 @@ namespace Ndx.Test
 
             var fk1 = new FlowKey()
             {
-                AddressFamily = Model.AddressFamily.InterNetwork,
+                LinkType = Model.DataLinkType.Ethernet,
+                EtherType = Model.EthernetPacketType.IpV4,
                 Protocol = Model.IpProtocolType.Udp,
                 SourceIpAddress = srcIp,
                 SourcePort = 53,
                 DestinationIpAddress = dstIp,
                 DestinationPort = 53
             };
-            var bytes = fk1.GetBytes();        
+            var bytes = fk1.GetBytes();
             var fk2 = new FlowKey(bytes);
             Assert.AreEqual(fk1, fk2);
+        }
+        [Test]
+        public void FlowKey_Various()
+        { 
+            var icmp = new FlowKey()
+            {
+                LinkType = Model.DataLinkType.Ethernet,
+                EtherType = Model.EthernetPacketType.IpV4,
+                Protocol = IpProtocolType.Icmp,
+                SourceIpAddress = IPAddress.Parse("147.229.13.130"),
+                DestinationIpAddress = IPAddress.Parse("8.8.8.8")
+            };
+            var icmpBytes = icmp.GetBytes();
+
+            var arp = new FlowKey()
+            {
+                LinkType = Model.DataLinkType.Ethernet,
+                EtherType = Model.EthernetPacketType.Arp,
+                SourceMacAddress = PhysicalAddress.Parse("60-57-18-3E-2E-75"),
+                DestinationMacAddress = PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF")
+            };
+            var arpBytes = arp.GetBytes();
+
+            var ppp = new FlowKey()
+            {
+                LinkType = Model.DataLinkType.Ppp,
+            };
+            var pppBytes = arp.GetBytes();
         }
     }
 }

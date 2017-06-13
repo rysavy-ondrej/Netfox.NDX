@@ -3,14 +3,11 @@
 // Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
 //
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
-using System.Collections.Concurrent;
-using NLog;
-using System.Threading;
 using Ndx.Model;
 namespace Ndx.Metacap
 {
@@ -21,27 +18,25 @@ namespace Ndx.Metacap
     /// </summary>
     public sealed class ConversationCollector
     {
-        private static readonly NLog.Logger m_logger = NLog.LogManager.GetCurrentClassLogger();
-
         /// <summary>
-        /// This <see cref="ActionBlock{TInput}"/> performs Collect action.
+        /// This <see cref="ActionBlock{RawFrame}"/> performs Collect action.
         /// </summary>
-        private ActionBlock<KeyValuePair<FlowKey,PacketUnit>> m_actionBlock;
+        private ActionBlock<RawFrame> m_actionBlock;
 
         /// <summary>
         /// Manages a collection of <see cref="FlowTracker"/> objects. Each tracker 
         /// collects information about a single flow.
         /// </summary>
-        private ConcurrentDictionary<FlowKey, FlowTracker> m_flowDictionary;
+        private ConcurrentDictionary<FlowKey, FlowTracker> m_conversationDictionary;
 
         /// <summary>
         /// Output buffer that stores <see cref="PacketBlock"/> objects.
         /// </summary>
-        private BufferBlock<ConversationElement<KeyValuePair<FlowKey,PacketBlock>>> m_packetBlockBuffer;
+        private BufferBlock<KeyValuePair<int,PacketBlock>> m_packetBlockBuffer;
         /// <summary>
         /// Output buffer that stores <see cref="FlowRecord"/> objects.
         /// </summary>
-        private BufferBlock<ConversationElement<KeyValuePair<FlowKey, FlowRecord>>> m_flowRecordBuffer;
+        private BufferBlock<KeyValuePair<int, Conversation>> m_conversationBuffer;
 
         /// <summary>
         /// Creates a new instance of <see cref="FlowCollector"/> block.
@@ -56,17 +51,17 @@ namespace Ndx.Metacap
                 CancellationToken = cancellationToken
             };
 
-            m_packetBlockBuffer = new BufferBlock<ConversationElement<KeyValuePair<FlowKey,PacketBlock>>>(opt);
+            m_packetBlockBuffer = new BufferBlock<KeyValuePair<int,PacketBlock>>(opt);
 
-            m_flowRecordBuffer = new BufferBlock<ConversationElement<KeyValuePair<FlowKey,FlowRecord>>>(opt);
+            m_conversationBuffer = new BufferBlock<KeyValuePair<int,Conversation>>(opt);
 
-            m_actionBlock = new ActionBlock<KeyValuePair<FlowKey, PacketUnit>>(CollectAsync, opt);
+            m_actionBlock = new ActionBlock<RawFrame>(CollectAsync, opt);
 
             m_actionBlock.Completion.ContinueWith(async delegate
             {
-                foreach (var item in m_flowDictionary)
+                foreach (var item in m_conversationDictionary)
                 {
-                    await m_flowRecordBuffer.SendAsync(new ConversationElement<KeyValuePair<FlowKey, FlowRecord>>(item.Value.ConversationId, item.Value.FlowRecord.Orientation, new KeyValuePair<FlowKey, FlowRecord>(item.Key, item.Value.FlowRecord)));
+                    await m_conversationBuffer.SendAsync(item);
 
                     item.Value.PacketMetadataTarget.Complete();
 
@@ -77,7 +72,7 @@ namespace Ndx.Metacap
                 m_packetBlockBuffer.Complete();
             });
 
-            m_flowDictionary = new ConcurrentDictionary<FlowKey, FlowTracker>();
+            m_conversationDictionary = new ConcurrentDictionary<FlowKey, FlowTracker>();
 
         }
         private object m_sync = new object();
@@ -89,22 +84,23 @@ namespace Ndx.Metacap
         //                    ----------> 
         //
         //
-        async Task CollectAsync(KeyValuePair<FlowKey, PacketUnit> metadata)
+        async Task CollectAsync(RawFrame frame)
         {
+            /*
             try
             {
                 var flowKey = metadata.Key;
-                if (!m_flowDictionary.TryGetValue(flowKey, out FlowTracker value))
+                if (!m_conversationDictionary.TryGetValue(flowKey, out FlowTracker value))
                 {
                     // This is a very simple way of composing conversations...
-                    if (m_flowDictionary.TryGetValue(FlowCollector.SwapFlowKey(flowKey), out FlowTracker complementaryFlow))
+                    if (m_conversationDictionary.TryGetValue(FlowCollector.SwapFlowKey(flowKey), out FlowTracker complementaryFlow))
                     {
-                        m_flowDictionary[flowKey] = value = new FlowTracker(flowKey, complementaryFlow.ConversationId, FlowOrientation.Downflow);
+                        m_conversationDictionary[flowKey] = value = new FlowTracker(flowKey, complementaryFlow.ConversationId, FlowOrientation.Downflow);
                         value.FlowRecord.Orientation = FlowOrientation.Downflow;
                     }
                     else
                     {
-                        m_flowDictionary[flowKey] = value = new FlowTracker(flowKey, Guid.NewGuid(), FlowOrientation.Upflow);
+                        m_conversationDictionary[flowKey] = value = new FlowTracker(flowKey, Guid.NewGuid(), FlowOrientation.Upflow);
                         value.FlowRecord.Orientation = FlowOrientation.Upflow;
                     }
 
@@ -117,6 +113,7 @@ namespace Ndx.Metacap
             {
                 m_logger.Error(e, "Collect Async cannot process input packet metadata.");
             }
+            */
         }
 
         /// <summary>
@@ -146,6 +143,6 @@ namespace Ndx.Metacap
         /// Gets an enumerable collection of all <see cref="FlowKey"/> items
         /// stored with the current collector.
         /// </summary>
-        public IEnumerable<FlowKey> FlowKeys => m_flowDictionary.Keys;    
+        public IEnumerable<FlowKey> FlowKeys => m_conversationDictionary.Keys;    
     }
 }

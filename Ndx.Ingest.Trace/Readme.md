@@ -1,14 +1,32 @@
-﻿# Ndx.Ingest.Trace
+﻿# Ndx.Metacap
 
-Library for manipulation of packet trace files. The main idea behind is to 
-compute flow key index on source PCAP and use this index to access packet in PCAP files.
+Library for manipulation of packet trace files. In comparison to other similar libraries the main idea here is to 
+create a list of conversations first and then apply additional processing to selected conversation only.
 
 In particular, this library provides the following features:
 
 * Computation of PCAP index to improve efficiency of PCAP manipulation
 * Sequential access to PCAP files
-* Access to packets which are part of a specific flow
+* Access to packets which are part of a specific conversation
 * Stream export (similar to Follow Stream function of Wireshark)
+* Efficient access to packet related to conversations.
+
+## Data Model
+
+## Processing
+
+* RawFrames are parsed by PacketDotNet parsers. 
+* FrameAttributes are extracted.
+* Each frame is assigned a sequence number which is unique within its data source.
+* For each packet its conversations are identified.
+  There may be different conversations for a single packet as
+  we recognize conversations at different level.
+* All related conversations are updated with packet attributes.
+* Frame content is sent along its key to packet content writer
+* Frame attributes are sent along its key to packet attribute writer
+* 
+
+
 
 
 ## Indexing PCAP
@@ -75,13 +93,21 @@ using (var outArchive = ZipFile.Open(outfile, ZipArchiveMode.Update))
 ## Metacap file format
 Metacap is ZIP archive that contains meta information and index for PCAP files.
 The structure of Metacap is as follows:
-
-* flows.key - a folder that contains flow key files.
-* flows.record - a folder that contains flow record files.
-* flows.features - a folder that contains flow feature files.
-* blocks - a folder that contains subfolders. There is a subfolder for each flow.
-* conversations - a file that contains a list of conversations. 
-
-TODO: describe the content of all files....
-
-TODO: reimplement the mcap file writer and reader for reflect this documentation.
+```
+foo.mcap
+  |--- index
+  |--- files
+  |         |--- 00000001 : PcapFile
+  |         |--- 00000002	: PcapFile
+  |
+  |--- conversations
+  |		  |--- 00000001	: Conversation
+  |		  |--- 00000002	: Conversation
+  |
+  |
+  |--- packets
+  |		  |--- 00000001	: PacketBlock
+  |		  |--- 00000002	: PacketBlock
+  |
+  |--- 
+```

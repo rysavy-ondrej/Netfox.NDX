@@ -184,10 +184,10 @@ namespace Ndx.Tools.Export
                         {
                             FrameMetadata = new RocksFrameData()
                             {
-                                FrameLength = (uint)x.Frame.FrameLength,
-                                FrameNumber = (uint)x.Frame.FrameNumber,
-                                FrameOffset = (ulong)x.Frame.FrameOffset,
-                                Timestamp = (ulong)x.Frame.TimeStamp
+                                FrameLength = (uint)x.FrameLength,
+                                FrameNumber = (uint)x.FrameNumber,
+                                FrameOffset = (ulong)x.FrameOffset,
+                                Timestamp = (ulong)x.TimeStamp
                             },
                             Link = new RocksByteRange() { Start = x.Datalink.Bytes.Offset, Count = x.Datalink.Bytes.Length },
                             Network = new RocksByteRange() { Start = x.Network.Bytes.Offset, Count = x.Network.Bytes.Length },

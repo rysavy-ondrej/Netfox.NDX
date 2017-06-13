@@ -1,0 +1,74 @@
+﻿//  
+// Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
+// Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
+//
+syntax = "proto3";
+package ndx.model;
+import "Constants.proto";
+import "PacketModel.proto";
+
+
+/// <summary>
+///	Specifies the flow orientation if known.
+/// </summary>
+enum FlowOrientation { Undefined = 0; Upflow = 1; Downflow = 2;  }
+	
+enum FlowType { UndefinedFlow = 0; NetworkFlow = 1; EtherFlow = 2; IpFlow = 4; ApplicationFlow = 8; }	
+
+/// <summary>
+///	FlowKey is a 5-tuple that identifies the data traffic flow.
+/// This class supports classical IP flows as well as non-ip flows.
+///	</summary>
+/// <remarks>
+/// According to ISO/OSI model, the general addressing scheme is defined as follows:
+/// N-address = ((N-1)-Address, N-selector)
+/// 
+/// This means that for identification of communication between two parties it would be sufficient 
+/// to consider a 5 tuple:
+///
+/// (N-protocol, (N-1)-SourceAddress, N-SourceSelector, (N-1)-DestinationAddress, N-DestinationSelector)
+///
+/// The reason for adding protocol is that the single protocol is used and thus it 
+/// does not have to be encoded in both source and destination selectors.
+///
+/// NetworkFlow:
+/// The case for TCP flow:
+/// (TCP, IP-Address, TCP-port, IP-Address, TCP-Port)
+/// 
+/// The case for ICMP flow:
+/// (ICMP, IP-Address, ICMP-Type . ICMP-Code, IP-Address, ICMP-Type . ICMP-Code)
+///
+/// EtherFlow:
+/// The case of ARP flow:
+///	(ARP, MAC-Address, [], MAC-Address, [])
+///	
+/// The case of BPDU:
+///	(BPDU, MAC-Address, [], MAC-Address, [])
+/// Because both parites needs to communicate using the same protocol it is possible to define
+/// the N-address pair as the 5-tuple.
+///
+/// But there may be other flow types that aggreagate several flows or are more specific because of application selectors:
+/// 
+///	IpFlow:
+/// (IP, IP-Addrees, [], IP-Address, [])
+/// 
+/// ApplicationFlow uses Endpoint as the address and selector which is application specific:
+///
+/// (SMB, IP-Address:Port, (TID, PID, MID), IP-Address:Port, (TID, PID, MID))
+///
+/// What about VLANs? and tunnels?
+/// </remarks>
+message FlowKey {    	
+	FlowType Type = 1;
+	bytes Protocol = 2;
+	bytes SourceAddress = 32;	
+	bytes DestinationAddress = 33;
+	bytes SourceSelector = 64;
+	bytes DestinationSelector = 65;
+}
+
+// REFERENCES:
+// https://www.wireshark.org/docs/wsug_html_chunked/ChStatConversations.html
+// https://blog.packet-foo.com/2015/03/tcp-analysis-and-the-five-tuple/
+// An especially: 
+// https://blogs.technet.microsoft.com/netmon/2006/11/15/conversations-in-network-monitor-3-0-cable-talk/

@@ -1,0 +1,67 @@
+﻿//  
+// Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
+// Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
+//
+syntax = "proto3";
+package ndx.model;
+import "FlowModel.proto";
+
+message SmbConversation {
+	int64 Tid = 4;
+	int64 Pid = 5;
+	int64 Mid = 6;
+}
+
+message HttpConversation {
+	string Uri = 4;
+}
+
+message ApplicationConversation {
+
+	oneof Application {
+		SmbConversation Smb = 8;
+		HttpConversation Http = 9;
+	}	
+}
+
+message FlowAttributes {
+	int64 FirstSeen = 1;
+	int64 LastSeen = 2;
+	int32 Packets = 3;
+	int64 Octets = 4;
+	int32 MinimumPayloadSize =8;
+	int32 MeanPayloadSize = 9;
+	int32 MaximumPayloadSize = 10;
+	int32 StdevPayloadSize = 11;
+	int64 MinimumInterarrivalTime = 16;
+	int64 MeanInterarrivalTime = 17;
+	int64 MaximumInterarrivalTime = 18;
+	int64 StdevInterarrivalTime = 19;
+}
+
+/// <summary>
+///	This class is used to reference packets within conversations.
+///	</summary>
+message PacketReference {
+	/// <summary>
+	///	The id of block in which the packet is located.
+	///	<summary>
+	int32 BlockId = 1;
+	/// <summary>
+	///	The index within the block of packets.
+	///	<summary>
+	int32 Index = 2;
+}
+
+/// <summary>
+///	Stores the properties of a single conversation.
+/// </summary>
+message Conversation {
+	int32 ConversationId = 1;
+	int32 ParentId = 2;
+	FlowKey ConversationKey = 4;
+	FlowAttributes Upflow = 16;
+	FlowAttributes Downflow = 17;
+	repeated int32 UpflowPackets = 32;
+	repeated int32 DownflowPackets = 33;
+} 

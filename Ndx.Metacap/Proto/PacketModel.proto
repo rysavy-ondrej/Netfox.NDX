@@ -1,0 +1,88 @@
+﻿//  
+// Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
+// Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
+//
+syntax = "proto3";
+package ndx.model;
+import "Constants.proto";
+
+/// <summary>
+/// Represents a single captured packet and its metadata
+/// </summary>
+message RawFrame {
+    DataLinkType LinkType = 1;
+	/// <summary>
+    /// Gets or sets frame number.
+    /// </summary>	
+	int32 FrameNumber = 2;
+    /// <summary>
+    /// Gets or sets the total lenght of the frame.
+    /// </summary>	
+	int32 FrameLength = 3;
+    /// <summary>
+    /// Gets or sets the offset of the frame in the source file/stream.
+    /// </summary>	
+	int64 FrameOffset = 4;
+    /// <summary>
+    /// Gets or sets the timestamp when the packet was captured.
+    /// </summary>		
+	int64 TimeStamp = 5;	
+	/// <summary>
+	///	Gets or sets process id.
+	/// </summary>
+	int64 ProcessId = 6;
+	/// <summary>
+	///	Gets or sets process name.
+	///	</summary>
+	string ProcessName = 7;
+	/// <summary>
+    /// Gets or sets the raw frame content.
+    /// </summary>	
+	bytes Data = 10;
+}
+/// <summary>
+/// Represents a byte range as the pair of offset and length values.
+/// </summary>
+message ByteRange {
+	int32 Offset = 1;
+	int32 Length = 2;
+} 
+
+message DatalinkPacketUnit {	
+	ByteRange Bytes = 1;		
+}
+
+message NetworkPacketUnit {
+	ByteRange Bytes = 1;
+}
+
+message TransportPacketUnit {
+	ByteRange Bytes = 1;
+}
+
+message ApplicationPacketUnit {
+	ByteRange Bytes = 1;
+}
+
+/// <summary>
+///	Stores the metadata of a single captured frame.
+///	</summary>
+message Frame {
+	int32 FrameNumber = 1;
+	int32 FrameLength = 2;
+	int64 FrameOffset = 3;
+	int64 TimeStamp = 4;
+	DatalinkPacketUnit Datalink = 10; 
+	NetworkPacketUnit Network = 20;
+	TransportPacketUnit Transport = 30;
+	ApplicationPacketUnit Application = 40;
+}
+
+/// <summary>
+///	Represents a block of packets.
+/// </summary>
+message PacketBlock {
+	int32 BlockId = 1;
+	int32 FileId = 2;
+	DataLinkType LinkType = 4;
+}

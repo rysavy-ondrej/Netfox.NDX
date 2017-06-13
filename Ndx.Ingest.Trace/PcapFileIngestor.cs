@@ -45,16 +45,16 @@ namespace Ndx.Metacap
             
             // DATAFLOW PIPELINE SCHEMA:
             //
-            //                     RawFrame            (FlowKey,PacketUnit)            PacketBlock
-            //  frameProvider >======[ ]=====> extractor ==============> collector =|==============> packetBlockConsumer
-            //                  (1)   |  (2)                   (4)                  |      (5)     
-            //                        |                                             |
-            //                        |                                             |   FlowRecord
-            //                        |                                             |==============> flowConsumer
-            //                        |                                                    (6)
+            //                     RawFrame               (int,PacketBlock)
+            //  frameProvider >======[ ]=====> collector =|==============> packetBlockConsumer
+            //                  (1)   |  (2)              |      (5)     
+            //                        |                   |
+            //                        |                   |  (int,Conversation)
+            //                        |                   |==============> conversationConsumer
+            //                        |                           (6)
             //                        |
-            //                        |                                                RawFrame
-            //                        |===========================================================> frameConsumer
+            //                        |                        RawFrame
+            //                        |==================================> frameConsumer
             //                                (3)
             var propagationOption = new DataflowLinkOptions { PropagateCompletion = true };
 

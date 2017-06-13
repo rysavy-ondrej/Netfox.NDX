@@ -1,0 +1,235 @@
+﻿//  
+// Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
+// Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
+//
+syntax = "proto3";
+package ndx.model;
+
+/// <summary>
+///	This is a list of link-layer header types used in pcap and pcap-ng capture files. See
+/// See http://www.tcpdump.org/linktypes.html
+/// </summary>
+enum DataLinkType {
+       Null = 0;
+        Ethernet = 1;
+        ExperimentalEthernet3MB = 2;
+        AmateurRadioAX25 = 3;
+        ProteonProNetTokenRing = 4;
+        Chaos = 5;
+        Ieee802 = 6;
+        ArcNet = 7;
+        Slip = 8;
+        Ppp = 9;
+        Fddi = 10;
+        AtmRfc1483 = 11;
+        Raw = 12;
+        SlipBSD = 15;
+        PppBSD = 16;
+        AtmClip = 19;
+        PppSerial = 50;
+        CiscoHDLC = 104;
+        Ieee80211 = 105;
+        Loop = 108;
+        LinuxSLL = 113;
+        Ieee80211_Radio = 127;
+        PerPacketInformation = 192;
+ }
+
+enum EthernetPacketType   {
+        /// <summary>
+        /// No Ethernet type
+        /// </summary>
+        None = 0x0000;
+        /// <summary>
+        /// Internet Protocol; Version 4 (IPv4)
+        /// </summary>
+        IpV4 = 0x0800;
+        /// <summary>
+        /// Address Resolution Protocol (ARP)
+        /// </summary>
+        Arp = 0x0806;
+        /// <summary>
+        /// Reverse Address Resolution Protocol (RARP)
+        /// </summary>
+        ReverseArp = 0x8035;
+        /// <summary>
+        /// Wake-On-Lan (WOL)
+        /// </summary>
+        WakeOnLan = 0x0842;
+        /// <summary>
+        /// AppleTalk (Ethertalk)
+        /// </summary>
+        AppleTalk = 0x809B;
+        /// <summary>
+        /// AppleTalk Address Resolution Protocol (AARP)
+        /// </summary>
+        AppleTalkArp = 0x80F3;
+        /// <summary>
+        /// VLAN-tagged frame (IEEE 802.1Q)
+        /// </summary>
+        VLanTaggedFrame = 0x8100;
+        /// <summary>
+        /// Novell IPX (alt)
+        /// </summary>
+        NovellInternetworkPacketExchange = 0x8137;
+        /// <summary>
+        /// Novell
+        /// </summary>
+        Novell = 0x8138;
+        /// <summary>
+        /// Internet Protocol; Version 6 (IPv6)
+        /// </summary>
+        IpV6 = 0x86DD;
+        /// <summary>
+        /// MAC Control
+        /// </summary>
+        MacControl = 0x8808;
+        /// <summary>
+        /// CobraNet
+        /// </summary>
+        CobraNet = 0x8819;
+        /// <summary>
+        /// MPLS unicast
+        /// </summary>
+        MultiprotocolLabelSwitchingUnicast = 0x8847;
+        /// <summary>
+        /// MPLS multicast
+        /// </summary>
+        MultiprotocolLabelSwitchingMulticast = 0x8848;
+        /// <summary>
+        /// PPPoE Discovery Stage
+        /// </summary>
+        PointToPointProtocolOverEthernetDiscoveryStage = 0x8863;
+        /// <summary>
+        /// PPPoE Session Stage
+        /// </summary>
+        PointToPointProtocolOverEthernetSessionStage = 0x8864;
+        /// <summary>
+        /// EAP over LAN (IEEE 802.1X)
+        /// </summary>
+        ExtensibleAuthenticationProtocolOverLan = 0x888E;
+        /// <summary>
+        /// HyperSCSI (SCSI over Ethernet)
+        /// </summary>
+        HyperScsi = 0x889A;
+        /// <summary>
+        /// ATA over Ethernet
+        /// </summary>
+        AtaOverEthernet = 0x88A2;
+        /// <summary>
+        /// EtherCAT Protocol
+        /// </summary>
+        EtherCatProtocol = 0x88A4;
+        /// <summary>
+        /// Provider Bridging (IEEE 802.1ad)
+        /// </summary>
+        ProviderBridging = 0x88A8;
+        /// <summary>
+        /// AVB Transport Protocol (AVBTP)
+        /// </summary>
+        AvbTransportProtocol = 0x88B5;
+        /// <summary>
+        /// Link Layer Discovery Protocol (LLDP)
+        /// </summary>
+        LLDP = 0x88CC;
+        /// <summary>
+        /// SERCOS III
+        /// </summary>
+        SerialRealTimeCommunicationSystemIii = 0x88CD;
+        /// <summary>
+        /// Circuit Emulation Services over Ethernet (MEF-8)
+        /// </summary>
+        CircuitEmulationServicesOverEthernet = 0x88D8;
+        /// <summary>
+        /// HomePlug
+        /// </summary>
+        HomePlug = 0x88E1;
+        /// <summary>
+        /// MAC security (IEEE 802.1AE)
+        /// </summary>
+        MacSecurity = 0x88E5;
+        /// <summary>
+        /// Precision Time Protocol (IEEE 1588)
+        /// </summary>
+        PrecisionTimeProtocol = 0x88f7;
+        /// <summary>
+        /// IEEE 802.1ag Connectivity Fault Management (CFM) Protocol / ITU-T Recommendation Y.1731 (OAM)
+        /// </summary>
+        ConnectivityFaultManagementOrOperationsAdministrationManagement = 0x8902;
+        /// <summary>
+        /// Fibre Channel over Ethernet
+        /// </summary>
+        FibreChannelOverEthernet = 0x8906;
+        /// <summary>
+        /// FCoE Initialization Protocol
+        /// </summary>
+        FibreChannelOverEthernetInitializationProtocol = 0x8914;
+        /// <summary>
+        /// Q-in-Q
+        /// </summary>
+        QInQ = 0x9100;
+        /// <summary>
+        /// Veritas Low Latency Transport (LLT)
+        /// </summary>
+        VeritasLowLatencyTransport = 0xCAFE;
+        /// <summary>
+        /// Ethernet loopback packet
+        /// </summary>
+        Loopback = 0x0060;
+        /// <summary>
+        /// Ethernet echo packet
+        /// </summary>
+        Echo = 0x0200;
+    }
+
+	/// <summary> Dummy protocol for TCP. </summary>
+enum IpProtocolType {
+        /// <summary> IPv6 Hop-by-Hop options. </summary>
+        HOPOPTS = 0;
+        /// <summary> Internet Control Message Protocol. </summary>
+        ICMP = 1;
+        /// <summary> Internet Group Management Protocol.</summary>
+        IGMP = 2;
+        /// <summary> IPIP tunnels (older KA9Q tunnels use 94). </summary>
+        IPIP = 4;
+        /// <summary> Transmission Control Protocol. </summary>
+        TCP = 6;
+        /// <summary> Exterior Gateway Protocol. </summary>
+        EGP = 8;
+        /// <summary> PUP protocol. </summary>
+        PUP = 12;
+        /// <summary> User Datagram Protocol. </summary>
+        UDP = 17;
+        /// <summary> XNS IDP protocol. </summary>
+        IDP = 22;
+        /// <summary> SO Transport Protocol Class 4. </summary>
+        TP = 29;
+        /// <summary> IPv6 header. </summary>
+        IPv6 = 41;
+        /// <summary> IPv6 routing header. </summary>
+        ROUTING = 43;
+        /// <summary> IPv6 fragmentation header. </summary>
+        FRAGMENT = 44;
+        /// <summary> Reservation Protocol. </summary>
+        RSVP = 46;
+        /// <summary> General Routing Encapsulation. </summary>
+        GRE = 47;
+        /// <summary> Encapsulating security payload. </summary>
+        ESP = 50;
+        /// <summary> Authentication header. </summary>
+        AH = 51;
+        /// <summary> ICMPv6. </summary>
+        ICMPV6 = 58;
+        /// <summary> IPv6 no next header. </summary>
+        NONE = 59;
+        /// <summary> IPv6 destination options. </summary>
+        DSTOPTS = 60;
+        /// <summary> Multicast Transport Protocol. </summary>
+        MTP = 92;
+        /// <summary> Encapsulation Header. </summary>
+        ENCAP = 98;
+        /// <summary> Protocol Independent Multicast. </summary>
+        PIM = 103;
+        /// <summary> Compression Header Protocol. </summary>
+        COMP = 108;
+}		

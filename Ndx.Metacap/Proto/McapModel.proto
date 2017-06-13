@@ -1,0 +1,30 @@
+﻿//  
+// Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
+// Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
+//
+syntax = "proto3";
+package ndx.model;
+import "FlowModel.proto";
+import "ConversationModel.proto";
+import "PacketModel.proto";
+
+/// <summary>
+///	Enumerates all supported packet capture file format.
+///	</summary>
+enum PcapFileFormat { RawFormat = 0; Libpcap =1; Pcapng = 2; Netmon = 3; UnknownFormat = 255; } 
+message PcapFile {
+	PcapFileFormat FileFormat = 1;
+	string Uri = 2;
+	bytes Md5hash = 3;
+	int64 IngestedOn = 4;
+}
+
+/// <summary>
+///	Index file is the main entry point to each metacap file.
+///	<summary>
+message MetacapIndex {
+	message ConversationList {
+		repeated int32 Conversations = 1;
+	}
+	map<string, ConversationList> Conversations = 1; 
+}

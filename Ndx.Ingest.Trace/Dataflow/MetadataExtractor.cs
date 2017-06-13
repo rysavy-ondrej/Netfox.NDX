@@ -46,13 +46,13 @@ namespace Ndx.Metacap
         {
             try
             {
-                var packet = Packet.ParsePacket(frame.Meta.LinkLayer, frame.RawFrameData);
-                var unit = new KeyValuePair<FlowKey,PacketUnit>(new FlowKey(), new PacketUnit());
-                var visitor = new PacketVisitorImpl(unit);
+                var packet = Packet.ParsePacket((LinkLayers)frame.LinkType, frame.Data.ToByteArray());
+                
+                var visitor = new PacketVisitorImpl();
                 
                 packet?.Accept(visitor);
                 
-                return unit;
+                return visitor.Data;
 
             }
             catch (Exception)

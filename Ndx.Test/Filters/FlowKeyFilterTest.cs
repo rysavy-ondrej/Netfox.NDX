@@ -15,7 +15,8 @@ namespace Ndx.Test.Filters
         {
             var flowKey = new FlowKey()
             {
-                AddressFamily = Model.AddressFamily.InterNetwork,
+                LinkType = Model.DataLinkType.Ethernet,
+                EtherType = Model.EthernetPacketType.IpV4,
                 Protocol = IpProtocolType.Tcp,
                 SourceIpAddress = IPAddress.Parse("192.168.1.1"),
                 SourcePort = 12345,
@@ -42,7 +43,8 @@ namespace Ndx.Test.Filters
         {
             var flowKey = new FlowKey()
             {
-                AddressFamily = Model.AddressFamily.InterNetwork,
+                LinkType = Model.DataLinkType.Ethernet,
+                EtherType = Model.EthernetPacketType.IpV4,
                 Protocol = IpProtocolType.Tcp,
                 SourceIpAddress = IPAddress.Parse("192.168.1.1"),
                 SourcePort = 12345,

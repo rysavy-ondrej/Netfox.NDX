@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Shell.Console", "Ndx.Shell.Console\Ndx.Shell.Console.csproj", "{75454215-419C-4EC6-9776-06575F374D22}"
 EndProject
@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{D88F88ED
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Tools.Metacap", "Ndx.Tools.Metacap\Ndx.Tools.Metacap.csproj", "{DC4FFBB3-9612-4736-8896-088DAF2F419D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Metacap", "Ndx.Ingest.Trace\Ndx.Metacap.csproj", "{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Ingest.Trace", "Ndx.Ingest.Trace\Ndx.Ingest.Trace.csproj", "{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8729B1AA-76E6-4A28-9379-A53EB95CBB93}"
 	ProjectSection(SolutionItems) = preProject
@@ -35,6 +35,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Ipfix", "Ndx.Ipfix\Ndx.Ipfix.csproj", "{4A62DEF0-2792-4380-B6C8-EC5B53784746}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IngestPcap", "Hadoop\IngestPcap\IngestPcap.csproj", "{74D03D2C-C56E-4572-8F6D-3CC505B8448E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Metacap", "Ndx.Metacap\Ndx.Metacap.csproj", "{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Captures", "Ndx.Captures\Ndx.Captures.csproj", "{F7893DF7-5638-43BC-91E5-E612E4D0AD53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -154,6 +158,30 @@ Global
 		{74D03D2C-C56E-4572-8F6D-3CC505B8448E}.Release|x64.Build.0 = Release|Any CPU
 		{74D03D2C-C56E-4572-8F6D-3CC505B8448E}.Release|x86.ActiveCfg = Release|Any CPU
 		{74D03D2C-C56E-4572-8F6D-3CC505B8448E}.Release|x86.Build.0 = Release|Any CPU
+		{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}.Debug|x64.Build.0 = Debug|Any CPU
+		{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}.Debug|x86.Build.0 = Debug|Any CPU
+		{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}.Release|x64.ActiveCfg = Release|Any CPU
+		{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}.Release|x64.Build.0 = Release|Any CPU
+		{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}.Release|x86.ActiveCfg = Release|Any CPU
+		{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}.Release|x86.Build.0 = Release|Any CPU
+		{F7893DF7-5638-43BC-91E5-E612E4D0AD53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7893DF7-5638-43BC-91E5-E612E4D0AD53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7893DF7-5638-43BC-91E5-E612E4D0AD53}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F7893DF7-5638-43BC-91E5-E612E4D0AD53}.Debug|x64.Build.0 = Debug|Any CPU
+		{F7893DF7-5638-43BC-91E5-E612E4D0AD53}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F7893DF7-5638-43BC-91E5-E612E4D0AD53}.Debug|x86.Build.0 = Debug|Any CPU
+		{F7893DF7-5638-43BC-91E5-E612E4D0AD53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7893DF7-5638-43BC-91E5-E612E4D0AD53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7893DF7-5638-43BC-91E5-E612E4D0AD53}.Release|x64.ActiveCfg = Release|Any CPU
+		{F7893DF7-5638-43BC-91E5-E612E4D0AD53}.Release|x64.Build.0 = Release|Any CPU
+		{F7893DF7-5638-43BC-91E5-E612E4D0AD53}.Release|x86.ActiveCfg = Release|Any CPU
+		{F7893DF7-5638-43BC-91E5-E612E4D0AD53}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
