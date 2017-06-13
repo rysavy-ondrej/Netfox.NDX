@@ -2,13 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ndx.Metacap;
+using Ndx.Model;
 using Ndx.Shell.Commands;
 using RocksDbSharp;
-using Ndx.Utils;
-using Ndx.Model;
 
 namespace Ndx.Tools.Export
 {
@@ -108,7 +104,7 @@ namespace Ndx.Tools.Export
             };
             var rdbPcapFile = new RocksPcapFile()
             {
-                PcapType = (ushort)PcapType.Libpcap,
+                PcapType = (ushort)PcapFileFormat.Libpcap,
                 IngestedOn = DateTimeOffset.Now,
                 Uri = new Uri(Path.GetFullPath(m_capfile))
             };

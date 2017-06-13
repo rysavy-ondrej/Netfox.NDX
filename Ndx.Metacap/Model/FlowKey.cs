@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
@@ -48,10 +49,48 @@ namespace Ndx.Model
         }
         public IPEndPoint SourceEndpoint
         {
-            get => this.sourceAddress_.IsEmpty ? new IPEndPoint(IPAddress.None, 0) : new PhysicalAddress(destinationAddress_.ToByteArray());
-            set => this.destinationAddress_ = Google.Protobuf.ByteString.CopyFrom(value.GetAddressBytes());
+            get
+            {
+                if (sourceAddress_.IsEmpty)
+                {
+                    return new IPEndPoint(IPAddress.None, 0);
+                }
+                else
+                {
+                    var bytes = sourceAddress_.ToByteArray();
+                    var address = new IPAddress(bytes);
+                    var port = BitConverter.ToInt32(bytes, address.AddressFamily == AddressFamily.InterNetwork ? 4 : 16);
+                    return new IPEndPoint(address, port);
+                }
+            }
+            set
+            {                
+                var bytes = value.Address.GetAddressBytes().Concat(BitConverter.GetBytes(value.Port)).ToArray();
+                this.sourceAddress_ = Google.Protobuf.ByteString.CopyFrom(bytes);
+            }
         }
-
+        public IPEndPoint DestinationEndpoint
+        {
+            get
+            {
+                if (destinationAddress_.IsEmpty)
+                {
+                    return new IPEndPoint(IPAddress.None, 0);
+                }
+                else
+                {
+                    var bytes = destinationAddress_.ToByteArray();
+                    var address = new IPAddress(bytes);
+                    var port = BitConverter.ToInt32(bytes, address.AddressFamily == AddressFamily.InterNetwork ? 4 : 16);
+                    return new IPEndPoint(address, port);
+                }
+            }
+            set
+            {
+                var bytes = value.Address.GetAddressBytes().Concat(BitConverter.GetBytes(value.Port)).ToArray();
+                this.destinationAddress_ = Google.Protobuf.ByteString.CopyFrom(bytes);
+            }
+        }
 
         public IpProtocolType IpProtocol
         {

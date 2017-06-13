@@ -165,7 +165,10 @@ namespace Ndx.Tools.Metacap
         {
             var mcapfile = Path.ChangeExtension(pcapfile, "mcap");
             var mcap = McapFile.Open(mcapfile, pcapfile);
-            if (File.Exists(outfile)) File.Delete(outfile);
+            if (File.Exists(outfile))
+            {
+                File.Delete(outfile);
+            }
 
             var exportfun = McapFileFlowExtension.FrameContent;
             switch (pdutype)

@@ -8,7 +8,7 @@ using Ndx.Model;
 namespace Ndx.Metacap
 {
     /// <summary>
-    /// This is the main class of the infrastructure.
+    /// This is the main class of the Metacap Infrastructure.
     /// </summary>
     public class Metacap
     {

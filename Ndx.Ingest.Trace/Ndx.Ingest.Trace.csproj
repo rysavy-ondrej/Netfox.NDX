@@ -94,7 +94,6 @@
     <Compile Include="Dataflow\ConversationTracker.cs" />
     <Compile Include="Dataflow\PacketAnalyzer.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Dataflow\MetadataExtractor.cs" />
     <Compile Include="Dataflow\CaptureReader.cs" />
     <Compile Include="Filters\FlowKeyFilterExpression.cs" />
     <Compile Include="PcapFileIngestor.cs" />

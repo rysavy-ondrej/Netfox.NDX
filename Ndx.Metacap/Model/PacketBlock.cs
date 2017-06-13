@@ -23,18 +23,6 @@ namespace Ndx.Model
         /// Sync object for the following method: <see cref="PacketBlock.Add(PacketMetadata)"/>.
         /// </summary>
         private object m_sync = new object();
-        internal static readonly int Capacity = 64;
-
-        /// <summary>
-        /// Creates a new <see cref="PacketBlock"/> for the parameters provided.
-        /// </summary>
-        /// <param name="flowKey">Flow key.</param>
-        /// <param name="blockIndex">Packet block index within the flow.</param>
-        /// <param name="metadata">An array of metadata.</param>
-        public PacketBlock(params PacketUnit[] packets)
-        {
-            packets_.AddRange(packets);
-        }
 
         public PacketBlock(byte[] bytes, int offset = 0)
         {

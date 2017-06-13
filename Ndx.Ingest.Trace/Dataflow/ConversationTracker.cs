@@ -8,9 +8,14 @@ using Ndx.Metacap;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks.Dataflow;
+using System.Threading;
+using PacketDotNet;
 
 namespace Ndx.Metacap.Dataflow
 {
+    /// <summary>
+    /// This class tracks the conversations at all supported levels.
+    /// </summary>
     class ConversationTracker
     {
         Metacap m_metacap;
@@ -20,6 +25,14 @@ namespace Ndx.Metacap.Dataflow
         public ConversationTracker(Metacap metacap)
         {
             m_metacap = metacap;
+            m_frameAnalyzer = new ActionBlock<RawFrame>((Action<RawFrame>)AcceptFrame);
+        }
+
+        void AcceptFrame(RawFrame rawframe)
+        {
+                var analyzer = new PacketAnalyzer(this, rawframe);
+                var packet = Packet.ParsePacket((LinkLayers)rawframe.LinkType, rawframe.Data.ToByteArray());
+                packet.Accept(analyzer);
         }
 
         /// <summary>
@@ -78,9 +91,14 @@ namespace Ndx.Metacap.Dataflow
             return conversation;
         }
 
-        private int GetNewConversationId()
+        private int m_lastConversationId;
+        /// <summary>
+        /// Gets the next available conversation ID value.
+        /// </summary>
+        /// <returns></returns>
+        internal int GetNewConversationId()
         {
-            throw new NotImplementedException();
+            return Interlocked.Increment(ref m_lastConversationId);
         }
     }
 }

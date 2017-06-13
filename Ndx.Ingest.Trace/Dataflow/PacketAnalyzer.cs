@@ -40,102 +40,111 @@ namespace Ndx.Metacap.Dataflow
 
         public override void VisitICMPv4Packet(ICMPv4Packet packet)
         {
-            var flowKey = new FlowKey()
-            {
-                IpProtocol = IpProtocolType.Icmp,
-                
-            }
         }
 
         public override void VisitICMPv6Packet(ICMPv6Packet packet)
         {
-            throw new NotImplementedException();
         }
 
         public override void VisitIeee80211ControlFrame(ControlFrame frame)
         {
-            throw new NotImplementedException();
         }
 
         public override void VisitIeee80211DataFrame(DataFrame frame)
         {
-            throw new NotImplementedException();
         }
 
         public override void VisitIeee80211ManagementFrame(ManagementFrame frame)
         {
-            throw new NotImplementedException();
         }
 
         public override void VisitIeee8021QPacket(Ieee8021QPacket packet)
         {
-            throw new NotImplementedException();
         }
 
         public override void VisitIGMPv2Packet(IGMPv2Packet packet)
         {
-            throw new NotImplementedException();
         }
 
         public override void VisitIPv4Packet(IPv4Packet packet)
-        {
-            var conversation = m_tracker.GetNetworkConversation(parentConvId, packet.SourceAddress, packet.DestinationAddress);
-            
+        {                        
         }
 
         public override void VisitIPv6Packet(IPv6Packet packet)
         {
-            throw new NotImplementedException();
         }
 
         public override void VisitLinuxSLLPacket(LinuxSLLPacket packet)
         {
-            throw new NotImplementedException();
         }
 
         public override void VisitLLDPPacket(LLDPPacket packet)
         {
-            throw new NotImplementedException();
         }
 
         public override void VisitOSPFv2Packet(OSPFv2Packet packet)
         {
-            throw new NotImplementedException();
         }
 
         public override void VisitPpiPacket(PpiPacket packet)
         {
-            throw new NotImplementedException();
         }
 
         public override void VisitPPPoEPacket(PPPoEPacket packet)
         {
-            throw new NotImplementedException();
         }
 
         public override void VisitPPPPacket(PPPPacket packet)
         {
-            throw new NotImplementedException();
         }
 
         public override void VisitRadioPacket(RadioPacket packet)
         {
-            throw new NotImplementedException();
         }
 
         public override void VisitTcpPacket(TcpPacket packet)
         {
-            throw new NotImplementedException();
+            var flowKey = new FlowKey()
+            {
+                Type = FlowType.NetworkFlow,
+                IpProtocol = IpProtocolType.Tcp,
+                SourceIpAddress = (packet.ParentPacket as IpPacket).DestinationAddress,
+                DestinationIpAddress = (packet.ParentPacket as IpPacket).DestinationAddress,
+                SourcePort = packet.SourcePort,
+                DestinationPort = packet.DestinationPort
+            };
+
+            UpdateConversation(packet, flowKey);
+        }
+
+        private void UpdateConversation(Packet packet, FlowKey flowKey)
+        {
+            var conversation = m_tracker.GetNetworkConversation(flowKey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
+            flowAttributes.Octets += packet.PayloadPacket.BytesHighPerformance.Length;
+            flowAttributes.Packets += 1;
+            flowAttributes.FirstSeen = Math.Min(flowAttributes.FirstSeen, m_rawFrame.TimeStamp);
+            flowAttributes.LastSeen = Math.Max(flowAttributes.FirstSeen, m_rawFrame.TimeStamp);
+            // TODO: Compute other attributes
+            flowPackets.Add(m_rawFrame.FrameNumber);
         }
 
         public override void VisitUdpPacket(UdpPacket packet)
         {
-            throw new NotImplementedException();
+            var flowKey = new FlowKey()
+            {
+                Type = FlowType.NetworkFlow,
+                IpProtocol = IpProtocolType.Udp,
+                SourceIpAddress = (packet.ParentPacket as IpPacket).DestinationAddress,
+                DestinationIpAddress = (packet.ParentPacket as IpPacket).DestinationAddress,
+                SourcePort = packet.SourcePort,
+                DestinationPort = packet.DestinationPort
+            };
+
+            UpdateConversation(packet, flowKey);
         }
 
         public override void VisitWakeOnLanPacket(WakeOnLanPacket packet)
         {
-            throw new NotImplementedException();
         }
     }
 }

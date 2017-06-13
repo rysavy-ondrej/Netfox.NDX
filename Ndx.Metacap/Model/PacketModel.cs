@@ -33,16 +33,16 @@ namespace Ndx.Model {
             "VW5pdBIjCgVCeXRlcxgBIAEoCzIULm5keC5tb2RlbC5CeXRlUmFuZ2UiOgoT",
             "VHJhbnNwb3J0UGFja2V0VW5pdBIjCgVCeXRlcxgBIAEoCzIULm5keC5tb2Rl",
             "bC5CeXRlUmFuZ2UiPAoVQXBwbGljYXRpb25QYWNrZXRVbml0EiMKBUJ5dGVz",
-            "GAEgASgLMhQubmR4Lm1vZGVsLkJ5dGVSYW5nZSKjAgoFRnJhbWUSEwoLRnJh",
-            "bWVOdW1iZXIYASABKAUSEwoLRnJhbWVMZW5ndGgYAiABKAUSEwoLRnJhbWVP",
-            "ZmZzZXQYAyABKAMSEQoJVGltZVN0YW1wGAQgASgDEi8KCERhdGFsaW5rGAog",
-            "ASgLMh0ubmR4Lm1vZGVsLkRhdGFsaW5rUGFja2V0VW5pdBItCgdOZXR3b3Jr",
-            "GBQgASgLMhwubmR4Lm1vZGVsLk5ldHdvcmtQYWNrZXRVbml0EjEKCVRyYW5z",
-            "cG9ydBgeIAEoCzIeLm5keC5tb2RlbC5UcmFuc3BvcnRQYWNrZXRVbml0EjUK",
-            "C0FwcGxpY2F0aW9uGCggASgLMiAubmR4Lm1vZGVsLkFwcGxpY2F0aW9uUGFj",
-            "a2V0VW5pdCJZCgtQYWNrZXRCbG9jaxIPCgdCbG9ja0lkGAEgASgFEg4KBkZp",
-            "bGVJZBgCIAEoBRIpCghMaW5rVHlwZRgEIAEoDjIXLm5keC5tb2RlbC5EYXRh",
-            "TGlua1R5cGViBnByb3RvMw=="));
+            "GAEgASgLMhQubmR4Lm1vZGVsLkJ5dGVSYW5nZSKnAgoJTWV0YUZyYW1lEhMK",
+            "C0ZyYW1lTnVtYmVyGAEgASgFEhMKC0ZyYW1lTGVuZ3RoGAIgASgFEhMKC0Zy",
+            "YW1lT2Zmc2V0GAMgASgDEhEKCVRpbWVTdGFtcBgEIAEoAxIvCghEYXRhbGlu",
+            "axgKIAEoCzIdLm5keC5tb2RlbC5EYXRhbGlua1BhY2tldFVuaXQSLQoHTmV0",
+            "d29yaxgUIAEoCzIcLm5keC5tb2RlbC5OZXR3b3JrUGFja2V0VW5pdBIxCglU",
+            "cmFuc3BvcnQYHiABKAsyHi5uZHgubW9kZWwuVHJhbnNwb3J0UGFja2V0VW5p",
+            "dBI1CgtBcHBsaWNhdGlvbhgoIAEoCzIgLm5keC5tb2RlbC5BcHBsaWNhdGlv",
+            "blBhY2tldFVuaXQiWQoLUGFja2V0QmxvY2sSDwoHQmxvY2tJZBgBIAEoBRIO",
+            "CgZGaWxlSWQYAiABKAUSKQoITGlua1R5cGUYBCABKA4yFy5uZHgubW9kZWwu",
+            "RGF0YUxpbmtUeXBlYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Model.ConstantsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -52,7 +52,7 @@ namespace Ndx.Model {
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.NetworkPacketUnit), global::Ndx.Model.NetworkPacketUnit.Parser, new[]{ "Bytes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.TransportPacketUnit), global::Ndx.Model.TransportPacketUnit.Parser, new[]{ "Bytes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.ApplicationPacketUnit), global::Ndx.Model.ApplicationPacketUnit.Parser, new[]{ "Bytes" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Frame), global::Ndx.Model.Frame.Parser, new[]{ "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "Datalink", "Network", "Transport", "Application" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.MetaFrame), global::Ndx.Model.MetaFrame.Parser, new[]{ "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "Datalink", "Network", "Transport", "Application" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PacketBlock), global::Ndx.Model.PacketBlock.Parser, new[]{ "BlockId", "FileId", "LinkType" }, null, null, null)
           }));
     }
@@ -1060,10 +1060,10 @@ namespace Ndx.Model {
   ////	Stores the metadata of a single captured frame.
   ////	&lt;/summary>
   /// </summary>
-  public sealed partial class Frame : pb::IMessage<Frame> {
-    private static readonly pb::MessageParser<Frame> _parser = new pb::MessageParser<Frame>(() => new Frame());
+  public sealed partial class MetaFrame : pb::IMessage<MetaFrame> {
+    private static readonly pb::MessageParser<MetaFrame> _parser = new pb::MessageParser<MetaFrame>(() => new MetaFrame());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Frame> Parser { get { return _parser; } }
+    public static pb::MessageParser<MetaFrame> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -1076,14 +1076,14 @@ namespace Ndx.Model {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Frame() {
+    public MetaFrame() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Frame(Frame other) : this() {
+    public MetaFrame(MetaFrame other) : this() {
       frameNumber_ = other.frameNumber_;
       frameLength_ = other.frameLength_;
       frameOffset_ = other.frameOffset_;
@@ -1095,8 +1095,8 @@ namespace Ndx.Model {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Frame Clone() {
-      return new Frame(this);
+    public MetaFrame Clone() {
+      return new MetaFrame(this);
     }
 
     /// <summary>Field number for the "FrameNumber" field.</summary>
@@ -1189,11 +1189,11 @@ namespace Ndx.Model {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as Frame);
+      return Equals(other as MetaFrame);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Frame other) {
+    public bool Equals(MetaFrame other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -1297,7 +1297,7 @@ namespace Ndx.Model {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Frame other) {
+    public void MergeFrom(MetaFrame other) {
       if (other == null) {
         return;
       }
