@@ -7,7 +7,7 @@ using Ndx.Model;
 using PacketDotNet;
 using PacketDotNet.Ieee80211;
 
-namespace Ndx.Metacap.Dataflow
+namespace Ndx.Ingest
 {
     /// <summary>
     /// <see cref="PacketAnalyzer"/> implements <see cref="PacketDotNet.PacketVisitor"/>
@@ -17,11 +17,20 @@ namespace Ndx.Metacap.Dataflow
     class PacketAnalyzer : PacketDotNet.PacketVisitor
     {
         ConversationTracker m_tracker;
-        RawFrame m_rawFrame;
-        public PacketAnalyzer(ConversationTracker tracker, RawFrame frame)
+        MetaFrame m_metaFrame;
+        public MetaFrame MetaFrame => m_metaFrame; 
+
+        public PacketAnalyzer(ConversationTracker tracker, RawFrame rawframe)
         {
             m_tracker = tracker;
-            m_rawFrame = frame;
+            m_metaFrame = new MetaFrame()
+            {
+                FrameLength = rawframe.FrameLength,
+                FrameNumber = rawframe.FrameNumber,
+                FrameOffset = rawframe.FrameOffset,
+                TimeStamp = rawframe.TimeStamp,
+
+            };
         }
 
 
@@ -108,7 +117,7 @@ namespace Ndx.Metacap.Dataflow
             {
                 Type = FlowType.NetworkFlow,
                 IpProtocol = IpProtocolType.Tcp,
-                SourceIpAddress = (packet.ParentPacket as IpPacket).DestinationAddress,
+                SourceIpAddress = (packet.ParentPacket as IpPacket).SourceAddress,
                 DestinationIpAddress = (packet.ParentPacket as IpPacket).DestinationAddress,
                 SourcePort = packet.SourcePort,
                 DestinationPort = packet.DestinationPort
@@ -117,15 +126,19 @@ namespace Ndx.Metacap.Dataflow
             UpdateConversation(packet, flowKey);
         }
 
-        private void UpdateConversation(Packet packet, FlowKey flowKey)
+        private void UpdateConversation(TransportPacket packet, FlowKey flowKey)
         {
             var conversation = m_tracker.GetNetworkConversation(flowKey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
             flowAttributes.Octets += packet.PayloadPacket.BytesHighPerformance.Length;
             flowAttributes.Packets += 1;
-            flowAttributes.FirstSeen = Math.Min(flowAttributes.FirstSeen, m_rawFrame.TimeStamp);
-            flowAttributes.LastSeen = Math.Max(flowAttributes.FirstSeen, m_rawFrame.TimeStamp);
+            flowAttributes.FirstSeen = Math.Min(flowAttributes.FirstSeen, m_metaFrame.TimeStamp);
+            flowAttributes.LastSeen = Math.Max(flowAttributes.FirstSeen, m_metaFrame.TimeStamp);
             // TODO: Compute other attributes
-            flowPackets.Add(m_rawFrame.FrameNumber);
+            flowPackets.Add(m_metaFrame.FrameNumber);
+
+            m_metaFrame.Network = new NetworkPacketUnit() { Bytes = new ByteRange() { Offset = packet.ParentPacket.BytesHighPerformance.Offset, Length = packet.ParentPacket.BytesHighPerformance.Length } };
+            m_metaFrame.Transport = new TransportPacketUnit() { Bytes = new ByteRange() { Offset = packet.BytesHighPerformance.Offset, Length = packet.BytesHighPerformance.Length } };
+            m_metaFrame.Application = new ApplicationPacketUnit() { Bytes = new ByteRange() { Offset = packet.PayloadPacket.BytesHighPerformance.Offset, Length = packet.PayloadPacket.BytesHighPerformance.Length } };
         }
 
         public override void VisitUdpPacket(UdpPacket packet)
@@ -134,7 +147,7 @@ namespace Ndx.Metacap.Dataflow
             {
                 Type = FlowType.NetworkFlow,
                 IpProtocol = IpProtocolType.Udp,
-                SourceIpAddress = (packet.ParentPacket as IpPacket).DestinationAddress,
+                SourceIpAddress = (packet.ParentPacket as IpPacket).SourceAddress,
                 DestinationIpAddress = (packet.ParentPacket as IpPacket).DestinationAddress,
                 SourcePort = packet.SourcePort,
                 DestinationPort = packet.DestinationPort

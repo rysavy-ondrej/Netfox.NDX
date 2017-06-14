@@ -20,9 +20,7 @@ namespace Ndx.Test
 
             var fk1 = new FlowKey()
             {
-                LinkType = Model.DataLinkType.Ethernet,
-                EtherType = Model.EthernetPacketType.IpV4,
-                Protocol = Model.IpProtocolType.Udp,
+                IpProtocol = Model.IpProtocolType.Udp,
                 SourceIpAddress = srcIp,
                 SourcePort = 53,
                 DestinationIpAddress = dstIp,
@@ -37,9 +35,7 @@ namespace Ndx.Test
         { 
             var icmp = new FlowKey()
             {
-                LinkType = Model.DataLinkType.Ethernet,
-                EtherType = Model.EthernetPacketType.IpV4,
-                Protocol = IpProtocolType.Icmp,
+                IpProtocol = IpProtocolType.Icmp,
                 SourceIpAddress = IPAddress.Parse("147.229.13.130"),
                 DestinationIpAddress = IPAddress.Parse("8.8.8.8")
             };
@@ -47,18 +43,11 @@ namespace Ndx.Test
 
             var arp = new FlowKey()
             {
-                LinkType = Model.DataLinkType.Ethernet,
-                EtherType = Model.EthernetPacketType.Arp,
+                EthernetType = Model.EthernetPacketType.Arp,
                 SourceMacAddress = PhysicalAddress.Parse("60-57-18-3E-2E-75"),
                 DestinationMacAddress = PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF")
             };
             var arpBytes = arp.GetBytes();
-
-            var ppp = new FlowKey()
-            {
-                LinkType = Model.DataLinkType.Ppp,
-            };
-            var pppBytes = arp.GetBytes();
         }
     }
 }

@@ -5,7 +5,7 @@
 using System;
 using Ndx.Model;
 
-namespace Ndx.Metacap
+namespace Ndx.Ingest
 {
     public class IngestOptions
     {

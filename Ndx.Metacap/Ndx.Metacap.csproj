@@ -68,6 +68,7 @@
     <None Include="Proto\FlowModel.proto" />
     <None Include="Proto\McapModel.proto" />
     <None Include="Proto\PacketModel.proto" />
+    <None Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ndx.Utils\Ndx.Utils.csproj">

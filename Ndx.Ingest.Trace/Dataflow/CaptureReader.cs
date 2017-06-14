@@ -1,11 +1,12 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using Ndx.Captures;
 using Ndx.Model;
 
-namespace Ndx.Metacap
+namespace Ndx.Ingest
 {
     /// <summary>
     /// This is a provider of raw frames to be pumped to dataflow pipeline.
@@ -32,6 +33,7 @@ namespace Ndx.Metacap
         /// The source of <see cref="RawFrame"/> data.
         /// </summary>
         public ISourceBlock<RawFrame> RawFrameSource => m_dataflowblock;
+
 
         public CaptureReader(int inputBufferSize, int bufferCapacity, CancellationToken ct)
         {
@@ -66,6 +68,10 @@ namespace Ndx.Metacap
                         }
                     }
                 }
+                else
+                {
+                    Console.Error.WriteLine($"File {fileInfo} not found!");
+                }
             }
 
             var target = new ActionBlock<FileInfo>(ReadFramesAsync);
@@ -94,9 +100,11 @@ namespace Ndx.Metacap
         /// Adding a new source of the frames.
         /// </summary>
         /// <param name="fileInfo"></param>
-        public void ReadFrom(FileInfo fileInfo)
+        public void ReadFrom(params FileInfo[] items)
         {
-            m_dataflowblock.SendAsync(fileInfo);
+            foreach(var item in items)
+                m_dataflowblock.Post(item);
+            m_dataflowblock.Complete();
         }
     }
 }
