@@ -158,11 +158,13 @@ namespace Ndx.Captures
 
         internal static FrameLayout Read(BinaryReader reader)
         {
-            var fs = new FrameLayout();
-            fs.TimeOffsetLocal = reader.ReadUInt64();
-            fs.FrameLengthWire = reader.ReadUInt32();
-            fs.FrameLength = reader.ReadUInt32();
-            fs.FrameDataOffset = reader.BaseStream.Position;
+            var fs = new FrameLayout()
+            {
+                TimeOffsetLocal = reader.ReadUInt64(),
+                FrameLengthWire = reader.ReadUInt32(),
+                FrameLength = reader.ReadUInt32(),
+                FrameDataOffset = reader.BaseStream.Position
+            };
             fs.FrameData = reader.ReadBytes((int)fs.FrameLength);
             fs.MediaType = reader.ReadUInt16();
             fs.ProcessInfoIndex = reader.ReadUInt32();

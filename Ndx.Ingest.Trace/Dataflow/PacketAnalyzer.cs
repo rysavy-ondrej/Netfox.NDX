@@ -18,8 +18,9 @@ namespace Ndx.Ingest
     {
         ConversationTracker m_tracker;
         MetaFrame m_metaFrame;
-        public MetaFrame MetaFrame => m_metaFrame; 
-
+        Conversation m_conversation;
+        public MetaFrame MetaFrame => m_metaFrame;
+        public Conversation Conversation => m_conversation;
         public PacketAnalyzer(ConversationTracker tracker, RawFrame rawframe)
         {
             m_tracker = tracker;
@@ -128,7 +129,7 @@ namespace Ndx.Ingest
 
         private void UpdateConversation(TransportPacket packet, FlowKey flowKey)
         {
-            var conversation = m_tracker.GetNetworkConversation(flowKey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
+            m_conversation = m_tracker.GetNetworkConversation(flowKey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
             flowAttributes.Octets += packet.PayloadPacket.BytesHighPerformance.Length;
             flowAttributes.Packets += 1;
             flowAttributes.FirstSeen = Math.Min(flowAttributes.FirstSeen, m_metaFrame.TimeStamp);

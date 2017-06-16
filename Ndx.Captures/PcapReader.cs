@@ -11,6 +11,7 @@ using System.Linq;
 using Ndx.Model;
 using Ndx.Utils;
 using Google.Protobuf;
+using System.Threading.Tasks.Dataflow;
 
 namespace Ndx.Captures
 {
@@ -26,7 +27,7 @@ namespace Ndx.Captures
         /// <param name="buf">Al least first four bytes of the file.</param>
         /// <returns><see cref="PcapType"/> detected from the provided bytes.</returns>
         /// <remarks>
-        /// The magic numbers for three recognized andf supported file formats are:
+        /// The magic numbers for three recognized and supported file formats are:
         /// pcap:   0xa1b2c3d4 or 0xd4c3b2a1 (swapped) 
         /// pcapng: 0x0A0D0D0A 
         /// netmon: 47 4D 42 55 
@@ -65,7 +66,6 @@ namespace Ndx.Captures
                     return LinkLayers.Null;
             }            
         }
-                                    
         /// <summary>
         /// Reads the capture file at the specified path. It automatically analyzes type of capture file and applies to corresponding reader. 
         /// This method is implemented by using deferred execution.
@@ -76,13 +76,13 @@ namespace Ndx.Captures
         /// Three types of capture files are currently supported: i)PcapLib, ii)PcapNg and iii) NetMon 3 cap file.
         /// As convenient for Wireshar and Network Monitor, frames are numbered from 1.
         /// </remarks>
-        public static IEnumerable<RawFrame> ReadFile(string path, int bufferSize = 4096)
+        public static IEnumerable<RawFrame> ReadFile(string path)
         {
             FileInfo fileInfo = new FileInfo(path);
             if (!fileInfo.Exists) throw new ArgumentException($"Specified file '{path}' cannot be found.");
 
             var magicNumber = new byte[4];
-            using (var fileStream = new FileStream(fileInfo.FullName, FileMode.Open, FileAccess.Read, FileShare.None, bufferSize, FileOptions.SequentialScan))
+            using (var fileStream = new FileStream(fileInfo.FullName, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, FileOptions.SequentialScan))
             {
                 var len = fileStream.Read(magicNumber, 0, 4);
                 if (len < 4) throw new ArgumentException($"Specified file '{path}' is corrupted, cannot identify its type.");
@@ -108,11 +108,9 @@ namespace Ndx.Captures
                                         FrameLength = frameRecord.Data.Length,
                                         FrameOffset = frameRecord.DataOffset,
                                         ProcessId = frameRecord.Pid,
-                                        ProcessName = frameRecord.ProcessName,
+                                        ProcessName = frameRecord.ProcessName
                                     };
-
-                                }
-                                );
+                                });
                             }
                         case PcapFileFormat.Libpcap:
                             {
@@ -134,7 +132,6 @@ namespace Ndx.Captures
                             }
                         case PcapFileFormat.Pcapng:
                             {
-                                var blocks = PcapNg.ReadForward(fileStream);
                                 throw new NotImplementedException();
                             }
                         default:
@@ -145,7 +142,9 @@ namespace Ndx.Captures
                 // this iteration is needed because we have "yield return" inside "using" so 
                 // we have to avoid disposing the stream before we read all frames.
                 foreach (var frame in ReadForward(fileStream))
+                {
                     yield return frame;
+                }
             }
         }
     }

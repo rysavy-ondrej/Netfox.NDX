@@ -10,6 +10,7 @@ using System.Net.NetworkInformation;
 using System.Threading.Tasks.Dataflow;
 using System.Threading;
 using PacketDotNet;
+using NLog;
 
 namespace Ndx.Ingest
 {
@@ -18,33 +19,52 @@ namespace Ndx.Ingest
     /// </summary>
     public class ConversationTracker
     {
+        private static Logger m_logger = LogManager.GetCurrentClassLogger();
+
         private int m_lastConversationId;
         private int m_initialConversationDictionaryCapacity = 1024;
         ActionBlock<RawFrame> m_frameAnalyzer;
-        BufferBlock<Conversation> m_conversationBuffer;
-        BufferBlock<MetaFrame> m_metaframeBuffer;
+        BufferBlock<KeyValuePair<Conversation, MetaFrame>> m_metaframeOutput;
 
         int m_totalConversationCounter;
 
         /// <summary>
         /// Creates a new instance of conversation tracker. 
         /// </summary>
-        /// <param name="metacap"></param>
-        public ConversationTracker()
+        public ConversationTracker(int maxDegreeOfParallelism = 1)
         {
-            m_frameAnalyzer = new ActionBlock<RawFrame>((Action<RawFrame>)AcceptFrame);
-            m_conversationBuffer = new BufferBlock<Conversation>();
-            m_metaframeBuffer = new BufferBlock<MetaFrame>();
+            m_frameAnalyzer = new ActionBlock<RawFrame>(AcceptFrame, new ExecutionDataflowBlockOptions() { MaxDegreeOfParallelism = maxDegreeOfParallelism });
+            m_metaframeOutput = new BufferBlock<KeyValuePair<Conversation, MetaFrame>>();
             m_conversations = new Dictionary<FlowKey, Conversation>(m_initialConversationDictionaryCapacity);
-            m_frameAnalyzer.Completion.ContinueWith(async t => await CompleteAsync());
+            m_frameAnalyzer.Completion.ContinueWith(t => m_metaframeOutput.Complete());
         }
 
-        void AcceptFrame(RawFrame rawframe)
+        async Task AcceptFrame(RawFrame rawframe)
         {
-            var analyzer = new PacketAnalyzer(this, rawframe);
-            var packet = Packet.ParsePacket((LinkLayers)rawframe.LinkType, rawframe.Data.ToByteArray());
-            packet.Accept(analyzer);
-            m_metaframeBuffer.Post(analyzer.MetaFrame);    
+            if (rawframe == null)
+            {
+                return;
+            }
+
+            if (rawframe.LinkType == DataLinkType.Ethernet)
+            {   
+                var analyzer = new PacketAnalyzer(this, rawframe);
+                try
+                {
+                    var packet = Packet.ParsePacket(LinkLayers.Ethernet, rawframe.Data.ToByteArray());
+                    packet.Accept(analyzer);
+                    ;
+                    await m_metaframeOutput.SendAsync(new KeyValuePair<Conversation, MetaFrame>(analyzer.Conversation, analyzer.MetaFrame));
+                }
+                catch(Exception e)
+                {
+                    m_logger.Error($"AcceptMessage: Error when processing frame {rawframe.FrameNumber}: {e}. Frame is ignored.");
+                }
+            }
+            else
+            {
+                m_logger.Warn($"AcceptMessage: {rawframe.LinkType} is not supported. Frame is ignored.");
+            }
         }
 
         /// <summary>
@@ -62,51 +82,51 @@ namespace Ndx.Ingest
             return GetConversation(m_conversations, flowKey, parentConversationId, out flowAttributes, out flowPackets, out flowOrientation);
         }
 
+        private object m_lockObject = new object();
         private Conversation GetConversation(Dictionary<FlowKey, Conversation> dictionary, FlowKey flowKey, int parentConversationId, out FlowAttributes flowAttributes, out IList<int> flowPackets, out FlowOrientation flowOrientation)
         {
-            if (!dictionary.TryGetValue(flowKey, out var conversation))
+            lock (m_lockObject)
             {
-                if (!dictionary.TryGetValue(flowKey.Swap(), out conversation))
+                if (!dictionary.TryGetValue(flowKey, out var conversation))
                 {
-                    // create new conversation object
-                    conversation = new Conversation()
+                    if (!dictionary.TryGetValue(flowKey.Swap(), out conversation))
                     {
-                        ParentId = parentConversationId,
-                        ConversationId = GetNewConversationId(),
-                        ConversationKey = flowKey,
-                        Upflow = new FlowAttributes(),
-                        Downflow = new FlowAttributes()
-                    };
-                    dictionary.Add(flowKey, conversation);
-                    m_totalConversationCounter++;
+                        // create new conversation object
+                        conversation = new Conversation()
+                        {
+                            ParentId = parentConversationId,
+                            ConversationId = GetNewConversationId(),
+                            ConversationKey = flowKey,
+                            Upflow = new FlowAttributes() { FirstSeen = Int64.MaxValue, LastSeen = Int64.MinValue },
+                            Downflow = new FlowAttributes() { FirstSeen = Int64.MaxValue, LastSeen = Int64.MinValue },
+                        };
+                        dictionary.Add(flowKey, conversation);
+                        m_totalConversationCounter++;
+                    }
+                    else
+                    {
+                        flowOrientation = FlowOrientation.Downflow;
+                        flowAttributes = conversation.Downflow;
+                        flowPackets = conversation.DownflowPackets;
+                        return conversation;
+                    }
                 }
-                else
-                {
-                    flowOrientation = FlowOrientation.Downflow;
-                    flowAttributes = conversation.Downflow;
-                    flowPackets = conversation.DownflowPackets;
-                    return conversation;
-                }
+                flowOrientation = FlowOrientation.Upflow;
+                flowAttributes = conversation.Upflow;
+                flowPackets = conversation.UpflowPackets;
+
+                return conversation;
             }
-            flowOrientation = FlowOrientation.Upflow;
-            flowAttributes = conversation.Upflow;
-            flowPackets = conversation.UpflowPackets;
-            
-            return conversation;
         }
 
         /// <summary>
         /// Gets the data flow target block that accepts <see cref="RawFrame"/>.
         /// </summary>
-        public ActionBlock<RawFrame> FrameAnalyzer { get => m_frameAnalyzer; }
-        /// <summary>
-        /// Gets the data flow source block that provides <see cref="Conversation"/> objects.
-        /// </summary>
-        public BufferBlock<Conversation> ConversationBuffer { get => m_conversationBuffer; }
+        public ActionBlock<RawFrame> Input { get => m_frameAnalyzer; }
         /// <summary>
         /// Gets the data flow source block that provides <see cref="MetaFrame"/> objects.
         /// </summary>
-        public BufferBlock<MetaFrame> MetaframeBuffer { get => m_metaframeBuffer; }
+        public ISourceBlock<KeyValuePair<Conversation,MetaFrame>> Output { get => m_metaframeOutput; }
         /// <summary>
         /// Gets the next available conversation ID value.
         /// </summary>
@@ -117,35 +137,9 @@ namespace Ndx.Ingest
         }
 
         /// <summary>
-        /// Causes that the conversation tracker completes as soon as possible. 
-        /// It flushes the content of the conversation dictionary to output and 
-        /// mark both outputs as completed.
-        /// </summary>
-        /// <returns></returns>
-        public async Task CompleteAsync()
-        {
-            foreach(var c in m_conversations)
-            {
-                await m_conversationBuffer.SendAsync(c.Value);    
-            }
-            m_metaframeBuffer.Complete();
-            m_conversationBuffer.Complete();
-        }
-
-        /// <summary>
-        /// Causes that the conversation tracker complete. It returns when all 
-        /// activities complete.
-        /// </summary>
-        public void Complete()
-        {
-            var t = CompleteAsync();
-            Task.WaitAll(t, Completion);
-        }
-
-        /// <summary>
         /// Gets the <see cref="Taks"/> that complete when all data were processed. 
         /// </summary>
-        public Task Completion => Task.WhenAll(m_metaframeBuffer.Completion, m_conversationBuffer.Completion);
+        public Task Completion => Task.WhenAll(m_metaframeOutput.Completion);
 
         public int TotalConversations => m_totalConversationCounter;
         public int ActiveConversations => m_conversations.Count;

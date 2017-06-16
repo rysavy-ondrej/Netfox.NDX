@@ -10,7 +10,7 @@ using System.Threading.Tasks.Dataflow;
 
 var sink = new ActionBlock<Conversation>(c => Console.WriteLine($"{c.ConversationId} # {c.ConversationKey.IpProtocol}@{c.ConversationKey.SourceIpAddress}:{c.ConversationKey.SourcePort}<->{c.ConversationKey.DestinationIpAddress}:{c.ConversationKey.DestinationPort}"));
 var frameSink = new ActionBlock<MetaFrame>(x => Console.Write("."));
-var ct = new ConversationTracker();
+var ct = new ConversationTracker(4);
 var cf = new CaptureReader(1024, 512, new System.Threading.CancellationToken());
 cf.RawFrameSource.LinkTo(ct.FrameAnalyzer, new DataflowLinkOptions() { PropagateCompletion = true });
 ct.ConversationBuffer.LinkTo(sink, new DataflowLinkOptions() { PropagateCompletion = true });
