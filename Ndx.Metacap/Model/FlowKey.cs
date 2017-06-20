@@ -3,12 +3,14 @@
 // Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
 //
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 
 namespace Ndx.Model
 {
@@ -146,6 +148,32 @@ namespace Ndx.Model
                 DestinationAddress = this.SourceAddress,
                 DestinationSelector = this.SourceSelector
             };
+        }
+
+        public class ReferenceComparer : IEqualityComparer<FlowKey>
+        {
+            public bool Equals(FlowKey x, FlowKey y)
+            {
+                return Object.ReferenceEquals(x, y);
+            }
+
+            public int GetHashCode(FlowKey obj)
+            {
+                return RuntimeHelpers.GetHashCode(obj);
+            }
+        }
+
+        public class ValueComparer : IEqualityComparer<FlowKey>
+        {
+            public bool Equals(FlowKey x, FlowKey y)
+            {
+                return x?.Equals(y) ?? false;
+            }
+
+            public int GetHashCode(FlowKey obj)
+            {
+                return obj?.GetHashCode() ?? 0;
+            }
         }
     }
 }

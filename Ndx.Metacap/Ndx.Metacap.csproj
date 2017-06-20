@@ -55,6 +55,7 @@
     <Compile Include="Metacap\Metacap.cs" />
     <Compile Include="Model\ApplicationProtocol.cs" />
     <Compile Include="Model\Constants.cs" />
+    <Compile Include="Model\Conversation.cs" />
     <Compile Include="Model\ConversationModel.cs" />
     <Compile Include="Model\FlowKey.cs" />
     <Compile Include="Model\FlowModel.cs" />

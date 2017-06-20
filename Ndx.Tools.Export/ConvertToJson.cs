@@ -25,10 +25,6 @@ namespace Ndx.Tools.Export
         /// Path to the source pcap file.
         /// </summary>
         string m_capfile;
-        /// <summary>
-        /// An instance of Metacap file for the <see cref="m_capfile"/> file.
-        /// </summary>
-        McapFile m_mcap;
 
         /// <summary>
         /// Gets or sets the path to the input PCAP file.

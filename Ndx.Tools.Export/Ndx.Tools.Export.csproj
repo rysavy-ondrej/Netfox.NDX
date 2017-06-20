@@ -92,6 +92,9 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.6.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Dataflow.4.7.0\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -100,7 +103,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConvertToJson.cs" />
     <Compile Include="RocksDbDto.cs" />
     <Compile Include="ShowRocks.cs" />
     <Compile Include="ConvertToRocks.cs" />
@@ -127,6 +129,10 @@
       <Project>{f7893df7-5638-43bc-91e5-e612e4d0ad53}</Project>
       <Name>Ndx.Captures</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ndx.Ingest.Trace\Ndx.Ingest.Trace.csproj">
+      <Project>{94d924a3-8ac1-4db2-bddc-862d8a978e31}</Project>
+      <Name>Ndx.Ingest.Trace</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ndx.Metacap\Ndx.Metacap.csproj">
       <Project>{6c85ca82-04e3-4600-80ab-12b53f6ae4b3}</Project>
       <Name>Ndx.Metacap</Name>
@@ -134,10 +140,6 @@
     <ProjectReference Include="..\Ndx.Shell.Commands\Ndx.Shell.Commands.csproj">
       <Project>{96565d54-4eab-455a-85fe-ae5ea02b4efe}</Project>
       <Name>Ndx.Shell.Commands</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ndx.Tools.Metacap\Ndx.Tools.Metacap.csproj">
-      <Project>{dc4ffbb3-9612-4736-8896-088daf2f419d}</Project>
-      <Name>Ndx.Tools.Metacap</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ndx.Utils\Ndx.Utils.csproj">
       <Project>{cad4b73f-5bab-479f-be15-c7bdcc510fa3}</Project>

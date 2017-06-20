@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 using Ndx.Model;
 using Ndx.Shell.Commands;
 using RocksDbSharp;
@@ -22,10 +24,6 @@ namespace Ndx.Tools.Export
         /// Path to the source pcap file.
         /// </summary>
         string m_capfile;
-        /// <summary>
-        /// An instance of Metacap file for the <see cref="m_capfile"/> file.
-        /// </summary>
-        McapFile m_mcap;
 
         /// <summary>
         /// Path to the folder with RocksDB generated for the input Metacap file.
@@ -36,12 +34,15 @@ namespace Ndx.Tools.Export
         /// An instance of <see cref="RocksDb"/> class that is to be used for writing exported data.
         /// </summary>
         RocksDb m_rocksDb;
+        private IDictionary<int, Conversation> m_conversations;
+
+        private IDictionary<int, MetaFrame> m_frames;
 
         /// <summary>
         /// Gets or sets the path to the input PCAP file.
         /// </summary>
         [Parameter(Mandatory = true)]
-        public string Metacap { get => m_capfile; set => m_capfile = value; }
+        public string PcapFile { get => m_capfile; set => m_capfile = value; }
 
         /// <summary>
         /// Gets or sets the path to the output RocksDB root folder.
@@ -50,19 +51,24 @@ namespace Ndx.Tools.Export
         public string RocksDbFolder { get => m_rocksDbFolder; set => m_rocksDbFolder = value; }
 
 
+        
+
 
         protected override void BeginProcessing()
         {
             try
             {
-                var mcapfile = Path.ChangeExtension(m_capfile, "mcap");
-                if (m_capfile == null)
-                {
-                    throw new FileNotFoundException($"File '{mcapfile}' cannot be found.");
-                }
+                var fullpath = Path.GetFullPath(m_capfile);
+                // open pcap file and process it with metacap
+                if (!File.Exists(fullpath)) { throw new FileNotFoundException("${fullpath}"); }
 
-                m_mcap = McapFile.Open(mcapfile, m_capfile);
+                m_conversations = new Dictionary<int, Conversation>();
+                m_frames = new Dictionary<int, MetaFrame>();
+               
 
+               
+
+                // create DB
                 var options = new DbOptions().SetCreateIfMissing(true).SetCreateMissingColumnFamilies(true);
                 var columnFamilies = new ColumnFamilies
                 {
@@ -87,7 +93,7 @@ namespace Ndx.Tools.Export
 
         protected override void ProcessRecord()
         {
-            if (m_mcap == null || m_rocksDb==null)
+            if (m_capfile == null || m_rocksDb==null)
             {
                 WriteDebug("Non-existing input file or uninitialized database!");
                 return;
@@ -110,42 +116,55 @@ namespace Ndx.Tools.Export
             };
             m_rocksDb.Put(RocksSerializer.GetBytes(pcapId), RocksSerializer.GetBytes(rdbPcapFile), pcapsCollection);
 
-            foreach (var conversation in m_mcap.Conversations)
-            {
-                var upflowKey = m_mcap.GetFlowKey(conversation, FlowOrientation.Upflow);
-                var downflowKey = m_mcap.GetFlowKey(conversation, FlowOrientation.Downflow);
 
-                var upflowRecord = m_mcap.GetFlowRecord(conversation, FlowOrientation.Upflow);
-                var downflowRecord = m_mcap.GetFlowRecord(conversation, FlowOrientation.Downflow);
-                
+            var frames = Captures.PcapReader.ReadFile(m_capfile);
+
+            var tracker = new Ingest.ConversationTracker();
+            tracker.Output.LinkTo(new ActionBlock<KeyValuePair<Conversation, MetaFrame>>((Action<KeyValuePair<Conversation, MetaFrame>>)ConsumeLabeledFrames));
+
+            foreach (var frame in frames)
+            {
+                tracker.Input.Post(frame);
+            }
+
+            Task.WaitAll(tracker.Completion);
+
+            foreach (var conversation in m_conversations.Values)
+            {
+                var upflowKey = conversation.ConversationKey;
+                var downflowKey = conversation.ConversationKey.Swap();
+
+                var upflowRecord = conversation.Upflow;
+                var downflowRecord = conversation.Downflow;
+
+                var upflowPackets = conversation.UpflowPackets;
+                var downflowPackets = conversation.DownflowPackets;
+
                 // Note that conversation may consists only of a single flow:
                 if (upflowKey != null && upflowRecord != null)
                 {
-                    var upflowBlocks = m_mcap.GetPacketBlocks(conversation, FlowOrientation.Upflow);
-                    var upflowPackets = upflowBlocks.SelectMany(x => x.Packets);
                     WriteFlowRecord(upflowKey, upflowRecord);
-                    WritePacketBlock(upflowKey, upflowPackets);
+                    WritePacketBlock(upflowKey, upflowPackets.Select(x => m_frames[x]));
 
                 }
                 // Note that conversation may consists only of a single flow, it should be upflow, but for regularity...
                 if (downflowKey != null && downflowRecord != null)
                 {
-                    var downflowBlocks = m_mcap.GetPacketBlocks(conversation, FlowOrientation.Downflow);
-                    var downflowPackets = downflowBlocks.SelectMany(x => x.Packets);
                     WriteFlowRecord(downflowKey, downflowRecord);
-                    WritePacketBlock(downflowKey, downflowPackets);
+                    WritePacketBlock(downflowKey, downflowPackets.Select(x => m_frames[x]));
                 }
             }
 
-            void WriteFlowRecord(FlowKey flowKey, FlowRecord flowRecord)
+            void WriteFlowRecord(FlowKey flowKey, FlowAttributes flowRecord)
             {
                 var flowKeyValue = new RocksFlowKey()
                 {
-                    Protocol = (ushort)((int)flowKey.AddressFamily << 8 | (int)flowKey.Protocol),
+                    Protocol = (ushort)((int)flowKey.SourceIpAddress.AddressFamily << 8 | (int)flowKey.IpProtocol),
                     SourceAddress = flowKey.SourceIpAddress,
                     DestinationAddress = flowKey.DestinationIpAddress,
                     SourcePort = (ushort)flowKey.SourcePort,
-                    DestinationPort = (ushort)flowKey.DestinationPort
+                    DestinationPort = (ushort)flowKey.DestinationPort,
+                    FlowCounter = 1
                 };
                 var flowRecordValue = new RocksFlowRecord()
                 {
@@ -154,21 +173,22 @@ namespace Ndx.Tools.Export
                     First = Math.Min((ulong)flowRecord.FirstSeen, (ulong)flowRecord.FirstSeen),
                     Last = Math.Max((ulong)flowRecord.LastSeen, (ulong)flowRecord.LastSeen),
                     Blocks = (uint)1,   // we always create only one block here
-                    Application = (uint)flowRecord.ApplicationId
+                    Application = (uint)0,
                 };
                 m_rocksDb.Put(RocksSerializer.GetBytes(flowKeyValue), RocksSerializer.GetBytes(flowRecordValue), flowsCollection);
             }
-            void WritePacketBlock(FlowKey flowKey, IEnumerable<PacketUnit> packets)
+            void WritePacketBlock(FlowKey flowKey, IEnumerable<MetaFrame> packets)
             {
                 var rdbPacketBlockId = new RocksPacketBlockId()
                 {
                     FlowKey = new RocksFlowKey()
                     {
-                        Protocol = (ushort)((int)flowKey.AddressFamily << 8 | (int)flowKey.Protocol),
+                        Protocol = (ushort)((int)flowKey.SourceIpAddress.AddressFamily << 8 | (int)flowKey.IpProtocol),
                         SourceAddress = flowKey.SourceIpAddress,
                         DestinationAddress = flowKey.DestinationIpAddress,
                         SourcePort = (ushort)flowKey.SourcePort,
-                        DestinationPort = (ushort)flowKey.DestinationPort
+                        DestinationPort = (ushort)flowKey.DestinationPort,
+                        FlowCounter = 1
                     },
                     BlockId = 0
                 };
@@ -194,6 +214,15 @@ namespace Ndx.Tools.Export
                 };
                 m_rocksDb.Put(RocksSerializer.GetBytes(rdbPacketBlockId), RocksSerializer.GetBytes(rdbPacketBlock), packetsCollection);
             }
+        }
+
+        private void ConsumeLabeledFrames(KeyValuePair<Conversation, MetaFrame> obj)
+        {
+            if (!m_conversations.TryGetValue(obj.Key.ConversationId, out var value))
+            {
+                m_conversations.Add(obj.Key.ConversationId, obj.Key);
+            }
+            m_frames.Add(obj.Value.FrameNumber, obj.Value);
         }
     }
 }

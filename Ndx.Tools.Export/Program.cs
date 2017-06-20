@@ -49,7 +49,7 @@ namespace Ndx.Tools.Export
 
                     var cmd = new ConvertToRocks()
                     {
-                        Metacap = inputFile,
+                        PcapFile = inputFile,
                         RocksDbFolder = outputFile
                     };
 
@@ -106,7 +106,7 @@ namespace Ndx.Tools.Export
                     return 0;
                 });
             });
-
+            /*
             commandLineApplication.Command("ConvertTo-Json", (target) =>
             {
                 target.Description = "Prints the content of the metacap in JSON representation.";
@@ -126,7 +126,7 @@ namespace Ndx.Tools.Export
                     return 0;
                 });
             });
-
+            */
 
 
             commandLineApplication.Command("Test", (target) =>

@@ -20,7 +20,7 @@ namespace Ndx.Test
         [Test]
         public void LoadTestFile()
         {
-            var conversations = new HashSet<Conversation>();
+            var conversations = new HashSet<Conversation>(new Conversation.ReferenceComparer());
             var frameCount = 0;
             var input = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap");
             var sink = new ActionBlock<KeyValuePair<Conversation, MetaFrame>>(x => { frameCount++; conversations.Add(x.Key); });
