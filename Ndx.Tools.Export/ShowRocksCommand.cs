@@ -20,7 +20,7 @@ namespace Ndx.Tools.Export
     /// Usage: -r bb7de71e185a2a7818fff92d3ec0dc05.rdb Show-Rocks
     /// </remarks>
     [Command(VerbsCommon.Show, "Rocks")]
-    class ShowRocks : Command
+    class ShowRocksCommand : Command
     {
 
         /// <summary>

@@ -17,7 +17,7 @@ namespace Ndx.Tools.Export
     /// Usage: -r bb7de71e185a2a7818fff92d3ec0dc05.mcap -w bb7de71e185a2a7818fff92d3ec0dc05.rdb ConvertTo-Rocks
     /// </remarks>
     [Command(VerbsData.Export, "Rocks")]
-    class ConvertToRocks : Command
+    class ExportRocksCommand : Command
     {
 
         /// <summary>
@@ -120,12 +120,14 @@ namespace Ndx.Tools.Export
             var frames = Captures.PcapReader.ReadFile(m_capfile);
 
             var tracker = new Ingest.ConversationTracker();
-            tracker.Output.LinkTo(new ActionBlock<KeyValuePair<Conversation, MetaFrame>>((Action<KeyValuePair<Conversation, MetaFrame>>)ConsumeLabeledFrames));
+            tracker.Output.LinkTo(new ActionBlock<KeyValuePair<Conversation, MetaFrame>>((Action<KeyValuePair<Conversation, MetaFrame>>)FramesAction));
 
             foreach (var frame in frames)
             {
                 tracker.Input.Post(frame);
             }
+
+            tracker.Input.Complete();
 
             Task.WaitAll(tracker.Completion);
 
@@ -216,7 +218,12 @@ namespace Ndx.Tools.Export
             }
         }
 
-        private void ConsumeLabeledFrames(KeyValuePair<Conversation, MetaFrame> obj)
+        /// <summary>
+        /// Collects <see cref="MetaFrame"/> labelled with <see cref="Conversation"/> and 
+        /// stores them in the dictionaries for further processing.
+        /// </summary>
+        /// <param name="obj">Conversation and frame pair to be processed.</param>
+        private void FramesAction(KeyValuePair<Conversation, MetaFrame> obj)
         {
             if (!m_conversations.TryGetValue(obj.Key.ConversationId, out var value))
             {

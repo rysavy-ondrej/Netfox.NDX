@@ -30,7 +30,6 @@ namespace Ndx.Ingest
                 FrameNumber = rawframe.FrameNumber,
                 FrameOffset = rawframe.FrameOffset,
                 TimeStamp = rawframe.TimeStamp,
-
             };
         }
 
@@ -127,19 +126,24 @@ namespace Ndx.Ingest
             UpdateConversation(packet, flowKey);
         }
 
-        private void UpdateConversation(TransportPacket packet, FlowKey flowKey)
+        private void UpdateConversation(TransportPacket transportPacket, FlowKey flowKey)
         {
             m_conversation = m_tracker.GetNetworkConversation(flowKey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
-            flowAttributes.Octets += packet.PayloadPacket.BytesHighPerformance.Length;
+            flowAttributes.Octets += transportPacket.PayloadPacket.BytesHighPerformance.Length;
             flowAttributes.Packets += 1;
             flowAttributes.FirstSeen = Math.Min(flowAttributes.FirstSeen, m_metaFrame.TimeStamp);
             flowAttributes.LastSeen = Math.Max(flowAttributes.FirstSeen, m_metaFrame.TimeStamp);
             // TODO: Compute other attributes
-            flowPackets.Add(m_metaFrame.FrameNumber);
 
-            m_metaFrame.Network = new NetworkPacketUnit() { Bytes = new ByteRange() { Offset = packet.ParentPacket.BytesHighPerformance.Offset, Length = packet.ParentPacket.BytesHighPerformance.Length } };
-            m_metaFrame.Transport = new TransportPacketUnit() { Bytes = new ByteRange() { Offset = packet.BytesHighPerformance.Offset, Length = packet.BytesHighPerformance.Length } };
-            m_metaFrame.Application = new ApplicationPacketUnit() { Bytes = new ByteRange() { Offset = packet.PayloadPacket.BytesHighPerformance.Offset, Length = packet.PayloadPacket.BytesHighPerformance.Length } };
+            var networkPacket = transportPacket.ParentPacket;
+            var datalinkPacket = networkPacket.ParentPacket;
+            var applicationPacket = transportPacket.PayloadPacket;
+
+            flowPackets.Add(m_metaFrame.FrameNumber);
+            m_metaFrame.Datalink = new DatalinkPacketUnit() { Bytes = new ByteRange() { Offset = datalinkPacket.BytesHighPerformance.Offset, Length = datalinkPacket.BytesHighPerformance.Length } };
+            m_metaFrame.Network = new NetworkPacketUnit() { Bytes = new ByteRange() { Offset = networkPacket.BytesHighPerformance.Offset, Length = networkPacket.BytesHighPerformance.Length } };
+            m_metaFrame.Transport = new TransportPacketUnit() { Bytes = new ByteRange() { Offset = transportPacket.BytesHighPerformance.Offset, Length = transportPacket.BytesHighPerformance.Length } };
+            m_metaFrame.Application = new ApplicationPacketUnit() { Bytes = new ByteRange() { Offset = applicationPacket.BytesHighPerformance.Offset, Length = applicationPacket.BytesHighPerformance.Length } };
         }
 
         public override void VisitUdpPacket(UdpPacket packet)

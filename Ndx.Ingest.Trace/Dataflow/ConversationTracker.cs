@@ -15,7 +15,7 @@ using NLog;
 namespace Ndx.Ingest
 {
     /// <summary>
-    /// This class tracks the conversations at all supported levels.
+    /// This class tracks the conversation at the transport layer. Communication that has not transport layer is ignored. 
     /// </summary>
     /// <remarks>          
     /// Conversation trancker uses the following rules for expiring records from the cache entries:
@@ -89,8 +89,12 @@ namespace Ndx.Ingest
                 try
                 {
                     var packet = Packet.ParsePacket(LinkLayers.Ethernet, rawframe.Data.ToByteArray());
+
+                    // Workaround the BUG in PacketDotNET:
+                    if (packet.PayloadPacket != null) packet.PayloadPacket.ParentPacket = packet;
+
                     packet.Accept(analyzer);
-                    ;
+                    
                     await m_metaframeOutput.SendAsync(new KeyValuePair<Conversation, MetaFrame>(analyzer.Conversation, analyzer.MetaFrame));
                 }
                 catch(Exception e)

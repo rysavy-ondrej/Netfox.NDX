@@ -27,7 +27,7 @@ namespace Ndx.Tools.Export
                 "Write the exported items to the specified file/folder.",
                 CommandOptionType.SingleValue);
 
-            commandLineApplication.Command("ConvertTo-Rocks", (target) =>
+            commandLineApplication.Command("Export-Rocks", (target) =>
             {
                 target.Description = "Exports metacap file to RocksDB.";
                 target.HelpOption("-?|-h|--help");
@@ -47,7 +47,7 @@ namespace Ndx.Tools.Export
                     }
 
 
-                    var cmd = new ConvertToRocks()
+                    var cmd = new ExportRocksCommand()
                     {
                         PcapFile = inputFile,
                         RocksDbFolder = outputFile
@@ -69,7 +69,7 @@ namespace Ndx.Tools.Export
                 target.HelpOption("-?|-h|--help");
                 target.OnExecute(() =>
                 {
-                    var cmd = new ShowRocks()
+                    var cmd = new ShowRocksCommand()
                     {
                         RocksDbFolder = infile.Value()
                     };
@@ -85,49 +85,6 @@ namespace Ndx.Tools.Export
                     return 0;
                 });
             });
-
-
-            commandLineApplication.Command("Show-Rocks", (target) =>
-            {
-                target.Description = "Prints the content of the RocksDB.";
-                target.HelpOption("-?|-h|--help");
-                target.OnExecute(() =>
-                {
-                    var cmd = new ShowRocks()
-                    {
-                        RocksDbFolder = infile.Value()
-                    };
-                    // execute command
-                    var results = cmd.Invoke().Cast<string>();
-                    foreach (var item in results)
-                    {
-                        Console.WriteLine(item);
-                    }
-                    return 0;
-                });
-            });
-            /*
-            commandLineApplication.Command("ConvertTo-Json", (target) =>
-            {
-                target.Description = "Prints the content of the metacap in JSON representation.";
-                target.HelpOption("-?|-h|--help");
-                target.OnExecute(() =>
-                {
-                    var cmd = new ConvertToJson()
-                    {
-                        Metacap = infile.Value()
-                    };
-                    // execute command
-                    var results = cmd.Invoke().Cast<string>();
-                    foreach (var item in results)
-                    {
-                        Console.WriteLine(item);
-                    }
-                    return 0;
-                });
-            });
-            */
-
 
             commandLineApplication.Command("Test", (target) =>
             {

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CShell>
+  <Workspace xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <AssemblyFileReferences />
+    <AssemblyNameReferences />
+    <RootFolder>C:\Users\Ondrej\Documents\GitHub\Netfox.NDX\Ndx.Shell.Console</RootFolder>
+    <Filter>*.xml *.dll *.cshell</Filter>
+  </Workspace>
+  <LayoutRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <RootPanel Orientation="Vertical">
+      <LayoutDocumentPane>
+        <LayoutDocument Title="ndx.cshell" IsSelected="True" IsLastFocusedDocument="True" ContentId="file:///C:/Users/Ondrej/Documents/GitHub/Netfox.NDX/Ndx.Shell.Console/ndx.cshell" LastActivationTimeStamp="06/23/2017 14:09:25" />
+      </LayoutDocumentPane>
+      <LayoutAnchorablePane DockHeight="300">
+        <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="C# Interactive" IsSelected="True" ContentId="tool://cshell/repl" />
+      </LayoutAnchorablePane>
+    </RootPanel>
+    <TopSide />
+    <RightSide />
+    <LeftSide>
+      <LayoutAnchorGroup>
+        <LayoutAnchorable AutoHideWidth="200" AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Workspace Explorer" ContentId="tool://cshell/workspace" LastActivationTimeStamp="06/23/2017 14:09:23" />
+      </LayoutAnchorGroup>
+    </LeftSide>
+    <BottomSide />
+    <FloatingWindows />
+    <Hidden />
+  </LayoutRoot>
+</CShell>

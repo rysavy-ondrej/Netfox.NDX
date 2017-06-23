@@ -35,12 +35,16 @@
     <Reference Include="Microsoft.Extensions.CommandLineUtils, Version=1.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.CommandLineUtils.1.1.0\lib\net451\Microsoft.Extensions.CommandLineUtils.dll</HintPath>
     </Reference>
+    <Reference Include="PacketDotNet, Version=0.13.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PacketDotNet.Netfox.0.13.0.3\lib\net35\PacketDotNet.dll</HintPath>
+    </Reference>
     <Reference Include="StackExchange.Redis, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\StackExchange.Redis.1.2.1\lib\net45\StackExchange.Redis.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,10 +55,41 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Scripts\Using.csx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ndx.cshell" />
     <None Include="packages.config" />
+    <None Include="Scripts\LoadFile.csx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hadoop\IngestPcap\IngestPcap.csproj">
+      <Project>{74d03d2c-c56e-4572-8f6d-3cc505b8448e}</Project>
+      <Name>IngestPcap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ndx.Captures\Ndx.Captures.csproj">
+      <Project>{f7893df7-5638-43bc-91e5-e612e4d0ad53}</Project>
+      <Name>Ndx.Captures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ndx.Ingest.Trace\Ndx.Ingest.Trace.csproj">
+      <Project>{94d924a3-8ac1-4db2-bddc-862d8a978e31}</Project>
+      <Name>Ndx.Ingest.Trace</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ndx.Metacap\Ndx.Metacap.csproj">
+      <Project>{6c85ca82-04e3-4600-80ab-12b53f6ae4b3}</Project>
+      <Name>Ndx.Metacap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ndx.Utils\Ndx.Utils.csproj">
+      <Project>{cad4b73f-5bab-479f-be15-c7bdcc510fa3}</Project>
+      <Name>Ndx.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(ProjectDir)$(OutDir)*.dll" "$(ProjectDir)References\"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
