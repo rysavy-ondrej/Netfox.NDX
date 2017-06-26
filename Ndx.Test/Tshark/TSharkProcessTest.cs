@@ -8,6 +8,7 @@ using System.Net.NetworkInformation;
 using Ndx.TShark;
 using System.IO;
 using System;
+using System.Threading.Tasks;
 
 namespace Ndx.Test
 {
@@ -20,10 +21,10 @@ namespace Ndx.Test
         [Test]
         public void ProcessCaptureByTShark()
         {
+            // Use random pipe name to avoid clashes with other processes
             var rand = new Random();
             var id = rand.Next(UInt16.MaxValue);
-            var ws = new WiresharkSender($"tshark{id}", DataLinkType.Ethernet);
-            var frames = Ndx.Captures.PcapReader.ReadFile(m_inputPcap);
+            var wsender = new WiresharkSender($"tshark{id}", DataLinkType.Ethernet);
             var tshark = new TSharkProcess()
             {
                 PipeName = $"tshark{id}"
@@ -41,13 +42,30 @@ namespace Ndx.Test
             tshark.Fields.Add("http.request.full_uri");
             tshark.Start();
 
-            foreach(var frame in frames)
+            // wait till the sender is connected to tshark
+            // otherwise we lost data...
+            Task.WaitAll(wsender.Connected);
+
+            var frameCount = 0;
+            var frames = Ndx.Captures.PcapReader.ReadFile(m_inputPcap);
+            foreach (var frame in frames)
             {
-                ws.Send(frame);
+                var res = wsender.Send(frame);
+                frameCount++;
             }
-            ws.Close();
+            // close sender first
+            wsender.Close();
+            // then close, the control is returned when tshark finishes
             tshark.Close();
-           
+
+            var outputCount = 0;
+            // results can be read when tshark finishes:s
+            foreach (var r in tshark.Result)
+            {
+                Console.WriteLine($"{r.FrameNumber} {r.FrameProtocols}");
+                outputCount++;
+            }
+            Assert.AreEqual(frameCount, outputCount);
         }
         
     }

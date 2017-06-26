@@ -30,6 +30,7 @@ using System.Diagnostics;
 using System.IO.Pipes;
 using System.Threading;
 using Ndx.Model;
+using System.Threading.Tasks;
 //
 // object creation could be done with 
 //      var ws=new Wireshark.WiresharkSender("bacnet",DatalinkType.Ethernet);  // pipe name is \\.\pipe\bacnet
@@ -132,7 +133,7 @@ namespace Ndx.TShark
         NamedPipeServerStream WiresharkPipe;
 
         bool m_isConnected = false;
-
+        Task m_connectionCompleted;
         string m_pipeName;
         DataLinkType m_linkType;
         public WiresharkSender(string pipeName, Ndx.Model.DataLinkType linkType)
@@ -140,13 +141,10 @@ namespace Ndx.TShark
             this.m_pipeName = pipeName;
             this.m_linkType = linkType;
 
-            // Open the pipe and wait to Wireshark on a background thread
-            var th = new Thread(PipeCreate)
-            {
-                IsBackground = true
-            };
-            th.Start();
+            m_connectionCompleted = Task.Factory.StartNew(PipeCreate);
         }
+
+        public Task Connected => m_connectionCompleted;
 
         private void PipeCreate()
         {
@@ -251,8 +249,10 @@ namespace Ndx.TShark
                 m_isConnected = false;
                 WiresharkPipe.Close();
                 WiresharkPipe.Dispose();
-                Thread th = new Thread(PipeCreate);
-                th.IsBackground = true;
+                var th = new Thread(PipeCreate)
+                {
+                    IsBackground = true
+                };
                 th.Start();
                 return false;
             }
