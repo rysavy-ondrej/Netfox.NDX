@@ -7,7 +7,7 @@ using Ndx.Ingest;
 using Ndx.Model;
 using Ndx.Captures;
 
-static class LoadFile
+public static class Capture
 {
     public static IEnumerable<Conversation> GetConversations(string path)
     {
@@ -17,7 +17,7 @@ static class LoadFile
         tracker.Output.LinkTo(new ActionBlock<KeyValuePair<Conversation, MetaFrame>>(x => { frameCount++; conversations.Add(x.Key); }), new DataflowLinkOptions());
 
         foreach (var f in PcapReader.ReadFile(path))
-        {
+        {       
             tracker.Input.Post(f);
         }
         tracker.Input.Complete();

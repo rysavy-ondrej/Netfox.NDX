@@ -5,13 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ndx.Model;
 
 namespace Ndx.TShark
 {
-    class TSharkProcess
+    public class TSharkProcess
     {
-
-
         public TSharkProcess()
         {
             m_fields = new List<string>();
@@ -25,37 +24,66 @@ namespace Ndx.TShark
         public IList<string> Fields { get => m_fields; }
         public string PipeName { get => m_pipeName; set => m_pipeName = value; }
 
-        Process Start()
+        public bool Start()
         {
             try
             {
-                m_tsharkProcess = new Process();
-                m_tsharkProcess.StartInfo.FileName = @"C:\Program Files\Wireshark\tshark.exe";
+                var process = new Process();
+                process.StartInfo.FileName = @"C:\Program Files\Wireshark\tshark.exe";
                 var pipeName = $@"\\.\pipe\{m_pipeName}";
-                m_tsharkProcess.StartInfo.Arguments = $"-i {pipeName} -T json {m_fields.Select(x=>$"-e {x}")}";
-                m_tsharkProcess.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
-                m_tsharkProcess.StartInfo.RedirectStandardOutput = true;
-                m_tsharkProcess.StartInfo.UseShellExecute = false;
-                m_tsharkProcess.Start();
-                var myStreamReader = m_tsharkProcess.StandardOutput;
-                string myString = myStreamReader.ReadLine(); //read the standard output of the spawned process. 
-                Console.WriteLine(myString);
-                return m_tsharkProcess;
+                var fields = String.Join(" ",m_fields.Select(x => $"-e {x}"));
+                process.StartInfo.Arguments = $"-i {pipeName} -T json -e frame.number -e frame.protocols {fields}";
+                process.OutputDataReceived += new DataReceivedEventHandler(OnOutputDataReceived);
+                process.StartInfo.RedirectStandardOutput = true;
+                //process.StartInfo.RedirectStandardInput = true;
+                //process.StartInfo.RedirectStandardError = true;
+                process.StartInfo.UseShellExecute = false;
+                process.Start();
+                process.BeginOutputReadLine();
+                m_tsharkProcess = process;
+                return true;
             }
             catch (Exception)
             {
-                return null;
+                return false;
             }
         }
 
-        void Stop()
+        public bool IsRunning => !(m_tsharkProcess?.HasExited ?? true);
+
+        public Task<int> GetCompletionTask(int samplingMs=1000) => new Task<int>(() =>
+                                                     {
+                                                         while (!m_tsharkProcess.WaitForExit(samplingMs)) ;
+                                                         return m_tsharkProcess.ExitCode;
+                                                     });
+
+        public void Close()
         {
-            m_tsharkProcess?.StandardInput.Close();
+            if (m_tsharkProcess != null)
+            {
+                m_tsharkProcess.WaitForExit();
+                m_tsharkProcess.Close();
+            }
         }
 
-        private void process_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        public void Kill()
         {
-            Console.WriteLine(e.Data);
+            m_tsharkProcess.Kill();
         }
+
+        private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            var packetFields = new PacketFields();
+            // Data are provided line by line, thus we need to initialize JSON parser first, than convert JSON 
+            // result to packetFields collection.
+           e.Data
+        }
+
+        MemoryStream m_jsonStream = new MemoryStream();
+
+        /// <summary>
+        /// This list contains the result of TShark processing.
+        /// </summary>
+        List<PacketFields> m_packetFieldsCollection;
     }
 }

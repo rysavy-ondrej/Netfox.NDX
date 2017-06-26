@@ -7,8 +7,8 @@
     <ProjectGuid>{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ndx.Metacap</RootNamespace>
-    <AssemblyName>Ndx.Metacap</AssemblyName>
+    <RootNamespace>Ndx.Model</RootNamespace>
+    <AssemblyName>Ndx.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -62,6 +62,7 @@
     <Compile Include="Model\McapModel.cs" />
     <Compile Include="Model\PacketBlock.cs" />
     <Compile Include="Model\PacketModel.cs" />
+    <Compile Include="Model\RawFrame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

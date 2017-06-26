@@ -102,7 +102,7 @@ namespace Ndx.Captures
                                     return new RawFrame()
                                     {
                                         Data = ByteString.CopyFrom(frameRecord.Data),
-                                        TimeStamp = frameRecord.Timestamp.ToUnixTimeMilliseconds(),
+                                        TimeStamp = frameRecord.Timestamp.Ticks,
                                         LinkType = (DataLinkType)linkType,
                                         FrameNumber = frameNumber + 1,     // Frames are numbered from 1!
                                         FrameLength = frameRecord.Data.Length,
@@ -120,7 +120,7 @@ namespace Ndx.Captures
                                     return new RawFrame()
                                     {
                                         Data = ByteString.CopyFrom(pcapRecord.Data),
-                                        TimeStamp = pcapRecord.Timestamp.ToUnixTimeMilliseconds(),
+                                        TimeStamp = pcapRecord.Timestamp.Ticks,
                                         LinkType = (Model.DataLinkType)linkType,
                                         FrameNumber = frameNumber + 1,
                                         FrameLength = pcapRecord.Data.Length,

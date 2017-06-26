@@ -76,9 +76,13 @@
       <Project>{94d924a3-8ac1-4db2-bddc-862d8a978e31}</Project>
       <Name>Ndx.Ingest.Trace</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ndx.Metacap\Ndx.Metacap.csproj">
+    <ProjectReference Include="..\Ndx.Metacap\Ndx.Model.csproj">
       <Project>{6c85ca82-04e3-4600-80ab-12b53f6ae4b3}</Project>
-      <Name>Ndx.Metacap</Name>
+      <Name>Ndx.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ndx.TShark\Ndx.TShark.csproj">
+      <Project>{95f5f22b-8e43-4342-b3b3-86ee57a803a8}</Project>
+      <Name>Ndx.TShark</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ndx.Utils\Ndx.Utils.csproj">
       <Project>{cad4b73f-5bab-479f-be15-c7bdcc510fa3}</Project>

@@ -9,9 +9,12 @@ public class CShellFile : ICShellFile
     public void OnOpened(Workspace workspace)
     {
         workspace.Load(workspace.CShellFileName + CShell.Constants.WorkspaceFileExtension, true);
-        Shell.TryOpen(@"Scripts\LoadFile.csx");
+
         workspace.Assemblies.AddReferences(@"References");
         Shell.TryEvaluateFile(@"Scripts\Using.csx");
+        
+        Shell.TryOpen(@"Scripts\Capture.csx");
+        Shell.TryOpen(@"Scripts\Decoder.csx");
     }
 
     public void OnClosing(Workspace workspace)

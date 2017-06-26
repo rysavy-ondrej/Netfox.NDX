@@ -29,9 +29,10 @@ using System.IO;
 using System.Diagnostics;
 using System.IO.Pipes;
 using System.Threading;
+using Ndx.Model;
 //
 // object creation could be done with 
-//      var ws=new Wireshark.WiresharkSender("bacnet",165);  // pipe name is \\.\pipe\bacnet
+//      var ws=new Wireshark.WiresharkSender("bacnet",DatalinkType.Ethernet);  // pipe name is \\.\pipe\bacnet
 //
 // data to wireshark could be sent with something like that
 //      if (ws.isConnected)
@@ -112,12 +113,12 @@ namespace Ndx.TShark
     }
 
     /// <summary>
-    /// The main class to communicate with TShark/Wireshark.
+    /// The class implements method for sending packets to TShark/Wireshark through named pipe.
     /// </summary>
     /// <remarks>
     /// Object creation could be done with:
     ///      
-    /// var ws=new Wireshark.WiresharkSender("bacnet",165);  // pipe name is \\.\pipe\bacnet
+    /// var ws=new Wireshark.WiresharkSender("bacnet",DataLinkType.Ethernet);  // pipe name is \\.\pipe\bacnet
     ///
     ///  Data to wireshark could be sent with something like that
     ///      if (ws.isConnected)
@@ -126,25 +127,24 @@ namespace Ndx.TShark
     /// Wireshark can be launched with: Wireshark -ni \\.\pipe\bacnet
     /// TShark can be launced with: tshark -i \\.\pipe\bacnet
     ///</remarks>
-    public class WiresharkSender
+    public class WiresharkSender : IDisposable
     {
         NamedPipeServerStream WiresharkPipe;
 
-        bool IsConnected = false;
+        bool m_isConnected = false;
 
-        string pipe_name;
-        UInt32 pcap_netid;
-
-        object verrou = new object();
-
-        public WiresharkSender(string pipe_name, UInt32 pcap_netid)
+        string m_pipeName;
+        DataLinkType m_linkType;
+        public WiresharkSender(string pipeName, Ndx.Model.DataLinkType linkType)
         {
-            this.pipe_name = pipe_name;
-            this.pcap_netid = pcap_netid;
+            this.m_pipeName = pipeName;
+            this.m_linkType = linkType;
 
             // Open the pipe and wait to Wireshark on a background thread
-            Thread th = new Thread(PipeCreate);
-            th.IsBackground = true;
+            var th = new Thread(PipeCreate)
+            {
+                IsBackground = true
+            };
             th.Start();
         }
 
@@ -153,54 +153,84 @@ namespace Ndx.TShark
 
             try
             {
-                WiresharkPipe = new NamedPipeServerStream(pipe_name, PipeDirection.Out, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous);
+                WiresharkPipe = new NamedPipeServerStream(m_pipeName, PipeDirection.Out, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous);
                 // Wait
                 WiresharkPipe.WaitForConnection();
 
                 // Wireshark Global Header
-                pcap_hdr_g p = new pcap_hdr_g(65535, pcap_netid);
-                byte[] bh = p.ToByteArray();
+                pcap_hdr_g p = new pcap_hdr_g(65535, (uint)m_linkType);
+                var bh = p.ToByteArray();
                 WiresharkPipe.Write(bh, 0, bh.Length);
 
-                IsConnected = true;
+                m_isConnected = true;
 
             }
             catch { }
 
         }
 
-        public bool isConnected
-        {
-            get { return IsConnected; }
-        }
+        public bool IsConnected { get => m_isConnected; }
 
         private UInt32 DateTimeToUnixTimestamp(DateTime dateTime)
         {
             return (UInt32)(dateTime - new DateTime(1970, 1, 1).ToLocalTime()).TotalSeconds;
         }
 
-        public bool SendToWireshark(byte[] buffer, int offset, int lenght)
+        public bool Send(byte[] buffer, int offset, int lenght)
         {
-            return SendToWireshark(buffer, offset, lenght, DateTime.Now);
+            return Send(buffer, offset, lenght, DateTime.Now);
         }
 
-        public bool SendToWireshark(byte[] buffer, int offset, int lenght, DateTime date)
+        public bool Send(byte[] buffer, int offset, int lenght, DateTime date)
         {
             UInt32 date_sec, date_usec;
 
             // Suppress all values for ms, us and ns
-            DateTime d2 = new DateTime((date.Ticks / (long)10000000) * (long)10000000);
+            var d2 = new DateTime((date.Ticks / (long)10000000) * (long)10000000);
 
             date_sec = DateTimeToUnixTimestamp(date);
             date_usec = (UInt32)((date.Ticks - d2.Ticks) / 10);
 
-            return SendToWireshark(buffer, offset, lenght, date_sec, date_usec);
+            return Send(buffer, offset, lenght, date_sec, date_usec);
         }
 
-        public bool SendToWireshark(byte[] buffer, int offset, int lenght, UInt32 date_sec, UInt32 date_usec)
+        public bool Send(RawFrame frame)
         {
-            if (IsConnected == false)
+            return Send(frame.Bytes, 0, frame.FrameLength, frame.DateTime);
+        }
+
+        public bool SendRaw(byte[] buffer, int offset, int lenght)
+        {
+            try
+            {
+                WiresharkPipe.Write(buffer, offset, lenght);
+            }
+            catch (IOException)
+            {
+                // broken pipe, try to restart
+                m_isConnected = false;
+                WiresharkPipe.Close();
+                WiresharkPipe.Dispose();
+                var th = new Thread(PipeCreate)
+                {
+                    IsBackground = true
+                };
+                th.Start();
                 return false;
+            }
+            catch (Exception)
+            {
+                // Unknow error, not due to the pipe
+                // No need to restart it
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool Send(byte[] buffer, int offset, int lenght, UInt32 date_sec, UInt32 date_usec)
+        {
+            if (m_isConnected == false) return false;
 
             if (buffer == null) return false;
             if (buffer.Length < (offset + lenght)) return false;
@@ -215,10 +245,10 @@ namespace Ndx.TShark
                 // Bacnet packet
                 WiresharkPipe.Write(buffer, offset, lenght);
             }
-            catch (System.IO.IOException)
+            catch (IOException)
             {
                 // broken pipe, try to restart
-                IsConnected = false;
+                m_isConnected = false;
                 WiresharkPipe.Close();
                 WiresharkPipe.Dispose();
                 Thread th = new Thread(PipeCreate);
@@ -232,9 +262,17 @@ namespace Ndx.TShark
                 // No need to restart it
                 return false;
             }
-
             return true;
         }
 
+        public void Dispose()
+        {
+            WiresharkPipe.Dispose();
+        }
+
+        public void Close()
+        {
+            WiresharkPipe.Close();
+        }
     }
 }

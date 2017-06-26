@@ -42,7 +42,11 @@ namespace Ndx.Model {
             "dBI1CgtBcHBsaWNhdGlvbhgoIAEoCzIgLm5keC5tb2RlbC5BcHBsaWNhdGlv",
             "blBhY2tldFVuaXQiWQoLUGFja2V0QmxvY2sSDwoHQmxvY2tJZBgBIAEoBRIO",
             "CgZGaWxlSWQYAiABKAUSKQoITGlua1R5cGUYBCABKA4yFy5uZHgubW9kZWwu",
-            "RGF0YUxpbmtUeXBlYgZwcm90bzM="));
+            "RGF0YUxpbmtUeXBlIp8BCgxQYWNrZXRGaWVsZHMSEwoLRnJhbWVOdW1iZXIY",
+            "ASABKAUSFgoORnJhbWVQcm90b2NvbHMYAiABKAkSMwoGRmllbGRzGAogAygL",
+            "MiMubmR4Lm1vZGVsLlBhY2tldEZpZWxkcy5GaWVsZHNFbnRyeRotCgtGaWVs",
+            "ZHNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Model.ConstantsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -53,7 +57,8 @@ namespace Ndx.Model {
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.TransportPacketUnit), global::Ndx.Model.TransportPacketUnit.Parser, new[]{ "Bytes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.ApplicationPacketUnit), global::Ndx.Model.ApplicationPacketUnit.Parser, new[]{ "Bytes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.MetaFrame), global::Ndx.Model.MetaFrame.Parser, new[]{ "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "Datalink", "Network", "Transport", "Application" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PacketBlock), global::Ndx.Model.PacketBlock.Parser, new[]{ "BlockId", "FileId", "LinkType" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PacketBlock), global::Ndx.Model.PacketBlock.Parser, new[]{ "BlockId", "FileId", "LinkType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PacketFields), global::Ndx.Model.PacketFields.Parser, new[]{ "FrameNumber", "FrameProtocols", "Fields" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -1567,6 +1572,171 @@ namespace Ndx.Model {
           }
           case 32: {
             linkType_ = (global::Ndx.Model.DataLinkType) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class PacketFields : pb::IMessage<PacketFields> {
+    private static readonly pb::MessageParser<PacketFields> _parser = new pb::MessageParser<PacketFields>(() => new PacketFields());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<PacketFields> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PacketFields() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PacketFields(PacketFields other) : this() {
+      frameNumber_ = other.frameNumber_;
+      frameProtocols_ = other.frameProtocols_;
+      fields_ = other.fields_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PacketFields Clone() {
+      return new PacketFields(this);
+    }
+
+    /// <summary>Field number for the "FrameNumber" field.</summary>
+    public const int FrameNumberFieldNumber = 1;
+    private int frameNumber_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int FrameNumber {
+      get { return frameNumber_; }
+      set {
+        frameNumber_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "FrameProtocols" field.</summary>
+    public const int FrameProtocolsFieldNumber = 2;
+    private string frameProtocols_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string FrameProtocols {
+      get { return frameProtocols_; }
+      set {
+        frameProtocols_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Fields" field.</summary>
+    public const int FieldsFieldNumber = 10;
+    private static readonly pbc::MapField<string, string>.Codec _map_fields_codec
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 82);
+    private readonly pbc::MapField<string, string> fields_ = new pbc::MapField<string, string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<string, string> Fields {
+      get { return fields_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as PacketFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(PacketFields other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (FrameNumber != other.FrameNumber) return false;
+      if (FrameProtocols != other.FrameProtocols) return false;
+      if (!Fields.Equals(other.Fields)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (FrameNumber != 0) hash ^= FrameNumber.GetHashCode();
+      if (FrameProtocols.Length != 0) hash ^= FrameProtocols.GetHashCode();
+      hash ^= Fields.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (FrameNumber != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(FrameNumber);
+      }
+      if (FrameProtocols.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(FrameProtocols);
+      }
+      fields_.WriteTo(output, _map_fields_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (FrameNumber != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FrameNumber);
+      }
+      if (FrameProtocols.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(FrameProtocols);
+      }
+      size += fields_.CalculateSize(_map_fields_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(PacketFields other) {
+      if (other == null) {
+        return;
+      }
+      if (other.FrameNumber != 0) {
+        FrameNumber = other.FrameNumber;
+      }
+      if (other.FrameProtocols.Length != 0) {
+        FrameProtocols = other.FrameProtocols;
+      }
+      fields_.Add(other.fields_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            FrameNumber = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            FrameProtocols = input.ReadString();
+            break;
+          }
+          case 82: {
+            fields_.AddEntriesFrom(input, _map_fields_codec);
             break;
           }
         }

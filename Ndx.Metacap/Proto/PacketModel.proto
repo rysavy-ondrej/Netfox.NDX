@@ -87,3 +87,10 @@ message PacketBlock {
 	int32 FileId = 2;
 	DataLinkType LinkType = 4;
 }
+
+
+message PacketFields {
+	int32 FrameNumber = 1;
+	string FrameProtocols = 2;
+	map<string, string> Fields = 10;
+}
