@@ -1,0 +1,1276 @@
+1 eth:ethertype:ip:tcp:
+
+2 eth:ethertype:ip:tcp:
+
+3 eth:ethertype:ip:tcp:
+
+4 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/
+  http_request_version=HTTP/1.1
+  http_host=10.1.1.1
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive
+  http_request_full_uri=http://10.1.1.1/
+  http_request_number=1
+
+5 eth:ethertype:ip:tcp:
+
+6 eth:ethertype:ip:tcp:http:data-text-lines:
+  http_request_version=HTTP/1.1
+  http_connection=close
+  http_response_code=200
+  http_response_code_desc=OK
+  http_content_type=text/html; charset=ISO-8859-1
+  http_server=Apache/2.0.40 (Red Hat Linux)
+  http_content_length=160
+  http_date=Sat, 20 Nov 2004 10:21:06 GMT
+  http_response_number=1
+
+7 eth:ethertype:ip:tcp:
+
+8 eth:ethertype:ip:tcp:
+
+9 eth:ethertype:ip:tcp:
+
+10 eth:ethertype:ip:tcp:
+
+11 eth:ethertype:ip:tcp:
+
+12 eth:ethertype:ip:tcp:
+
+13 eth:ethertype:ip:tcp:
+
+14 eth:ethertype:ip:tcp:http:
+
+15 eth:ethertype:ip:tcp:
+
+16 eth:ethertype:ip:tcp:http:media:
+  http_request_method=POST
+  http_request_uri=/scripts/cms/xcms.asp
+  http_request_version=HTTP/1.1
+  http_host=ins1.opera.com
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive
+  http_request_full_uri=http://ins1.opera.com/scripts/cms/xcms.asp
+  http_request_number=1
+  http_content_type=application/vnd.xacp
+  http_content_length=433
+
+17 eth:ethertype:ip:tcp:
+
+18 eth:ethertype:ip:data:
+
+19 eth:ethertype:ip:tcp:http:data:
+
+20 eth:ethertype:ip:tcp:
+
+21 eth:ethertype:ip:tcp:
+
+22 eth:ethertype:ip:tcp:
+
+23 eth:ethertype:ip:tcp:
+
+24 eth:ethertype:ip:tcp:
+
+25 eth:ethertype:ip:tcp:
+
+26 eth:ethertype:ip:tcp:
+
+27 eth:ethertype:ip:tcp:
+
+28 eth:ethertype:ip:tcp:
+
+29 eth:ethertype:ip:tcp:
+
+30 eth:ethertype:ip:tcp:
+
+31 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/Websidan/index.html
+  http_request_version=HTTP/1.1
+  http_host=10.1.1.1
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive, TE
+  http_referer=http://10.1.1.1/
+  http_request_full_uri=http://10.1.1.1/Websidan/index.html
+  http_request_number=1
+
+32 eth:ethertype:ip:tcp:
+
+33 eth:ethertype:ip:tcp:http:
+
+34 eth:ethertype:ip:tcp:
+
+35 eth:ethertype:ip:tcp:
+
+36 eth:ethertype:ip:tcp:
+
+37 eth:ethertype:ip:tcp:
+
+38 eth:ethertype:ip:tcp:http:data-text-lines:
+  http_request_version=HTTP/1.1
+  http_connection=close
+  http_response_code=200
+  http_response_code_desc=OK
+  http_content_type=text/html; charset=ISO-8859-1
+  http_server=Apache/2.0.40 (Red Hat Linux)
+  http_content_length=4323
+  http_date=Sat, 20 Nov 2004 10:21:07 GMT
+  http_response_number=1
+
+39 eth:ethertype:ip:tcp:
+
+40 eth:ethertype:ip:tcp:
+
+41 eth:ethertype:ip:tcp:
+
+42 eth:ethertype:ip:tcp:
+
+43 eth:ethertype:ip:tcp:
+
+44 eth:ethertype:ip:tcp:
+
+45 eth:ethertype:ip:tcp:
+
+46 eth:ethertype:ip:tcp:
+
+47 eth:ethertype:ip:tcp:
+
+48 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/Websidan/images/bg2.jpg
+  http_request_version=HTTP/1.1
+  http_host=10.1.1.1
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive, TE
+  http_referer=http://10.1.1.1/Websidan/index.html
+  http_request_full_uri=http://10.1.1.1/Websidan/images/bg2.jpg
+  http_request_number=1
+
+49 eth:ethertype:ip:tcp:
+
+50 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/Websidan/images/sydney.jpg
+  http_request_version=HTTP/1.1
+  http_host=10.1.1.1
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive, TE
+  http_referer=http://10.1.1.1/Websidan/index.html
+  http_request_full_uri=http://10.1.1.1/Websidan/images/sydney.jpg
+  http_request_number=1
+
+51 eth:ethertype:ip:tcp:
+
+52 eth:ethertype:ip:tcp:http:
+
+53 eth:ethertype:ip:tcp:
+
+54 eth:ethertype:ip:tcp:
+
+55 eth:ethertype:ip:tcp:http:
+
+56 eth:ethertype:ip:tcp:
+
+57 eth:ethertype:ip:tcp:
+
+58 eth:ethertype:ip:tcp:
+
+59 eth:ethertype:ip:tcp:
+
+60 eth:ethertype:ip:tcp:
+
+61 eth:ethertype:ip:tcp:http:image-jfif:
+  http_request_version=HTTP/1.1
+  http_connection=close
+  http_response_code=200
+  http_response_code_desc=OK
+  http_content_type=image/jpeg
+  http_server=Apache/2.0.40 (Red Hat Linux)
+  http_content_length=8281
+  http_date=Sat, 20 Nov 2004 10:21:07 GMT
+  http_response_number=1
+
+62 eth:ethertype:ip:tcp:
+
+63 eth:ethertype:ip:tcp:
+
+64 eth:ethertype:ip:tcp:
+
+65 eth:ethertype:ip:tcp:
+
+66 eth:ethertype:ip:tcp:
+
+67 eth:ethertype:ip:tcp:
+
+68 eth:ethertype:ip:tcp:
+
+69 eth:ethertype:ip:tcp:
+
+70 eth:ethertype:ip:tcp:
+
+71 eth:ethertype:ip:tcp:
+
+72 eth:ethertype:ip:tcp:http:image-jfif:
+  http_request_version=HTTP/1.1
+  http_connection=close
+  http_response_code=200
+  http_response_code_desc=OK
+  http_content_type=image/jpeg
+  http_server=Apache/2.0.40 (Red Hat Linux)
+  http_content_length=9045
+  http_date=Sat, 20 Nov 2004 10:21:07 GMT
+  http_response_number=1
+
+73 eth:ethertype:ip:tcp:
+
+74 eth:ethertype:ip:tcp:
+
+75 eth:ethertype:ip:tcp:
+
+76 eth:ethertype:ip:tcp:
+
+77 eth:ethertype:ip:tcp:
+
+78 eth:ethertype:ip:tcp:
+
+79 eth:ethertype:ip:tcp:
+
+80 eth:ethertype:ip:tcp:
+
+81 eth:ethertype:ip:tcp:http:
+
+82 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/site=126885/bnum=opera1/bins=1/opid=10030285/ver=711/dst=Win_700
+  http_request_version=HTTP/1.1
+  http_host=opera1-servedby.advertising.com
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive
+  http_request_full_uri=http://opera1-servedby.advertising.com/site=126885/bnum=opera1/bins=1/opid=10030285/ver=711/dst=Win_700
+  http_request_number=1
+
+83 eth:ethertype:ip:tcp:http:
+
+84 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/site=126885/bnum=opera2/bins=1/opid=10030867/ver=711/dst=Win_700
+  http_request_version=HTTP/1.1
+  http_host=opera2-servedby.advertising.com
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive
+  http_request_full_uri=http://opera2-servedby.advertising.com/site=126885/bnum=opera2/bins=1/opid=10030867/ver=711/dst=Win_700
+  http_request_number=1
+
+85 eth:ethertype:ip:tcp:http:
+
+86 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/site=126885/bnum=opera3/bins=1/opid=10032112/ver=711/dst=Win_700
+  http_request_version=HTTP/1.1
+  http_host=opera3-servedby.advertising.com
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive
+  http_request_full_uri=http://opera3-servedby.advertising.com/site=126885/bnum=opera3/bins=1/opid=10032112/ver=711/dst=Win_700
+  http_request_number=1
+
+87 eth:ethertype:ip:tcp:
+
+88 eth:ethertype:ip:tcp:
+
+89 eth:ethertype:ip:tcp:http:
+
+90 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/site=126885/bnum=opera4/bins=1/opid=10003005/ver=711/dst=Win_700
+  http_request_version=HTTP/1.1
+  http_host=opera4-servedby.advertising.com
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive
+  http_request_full_uri=http://opera4-servedby.advertising.com/site=126885/bnum=opera4/bins=1/opid=10003005/ver=711/dst=Win_700
+  http_request_number=1
+
+91 eth:ethertype:ip:tcp:
+
+92 eth:ethertype:ip:tcp:
+
+93 eth:ethertype:ip:tcp:
+
+94 eth:ethertype:ip:tcp:
+
+95 eth:ethertype:ip:tcp:
+
+96 eth:ethertype:ip:tcp:
+
+97 eth:ethertype:ip:tcp:http:
+
+98 eth:ethertype:ip:data:
+
+99 eth:ethertype:ip:tcp:
+
+100 eth:ethertype:ip:tcp:http:data:
+
+101 eth:ethertype:ip:tcp:
+
+102 eth:ethertype:ip:tcp:
+
+103 eth:ethertype:ip:tcp:
+
+104 eth:ethertype:ip:tcp:
+
+105 eth:ethertype:ip:tcp:
+
+106 eth:ethertype:ip:tcp:http:
+
+107 eth:ethertype:ip:data:
+
+108 eth:ethertype:ip:tcp:
+
+109 eth:ethertype:ip:tcp:http:data:
+
+110 eth:ethertype:ip:tcp:
+
+111 eth:ethertype:ip:tcp:
+
+112 eth:ethertype:ip:tcp:
+
+113 eth:ethertype:ip:tcp:
+
+114 eth:ethertype:ip:tcp:
+
+115 eth:ethertype:ip:tcp:
+
+116 eth:ethertype:ip:tcp:
+
+117 eth:ethertype:ip:tcp:http:
+
+118 eth:ethertype:ip:data:
+
+119 eth:ethertype:ip:tcp:
+
+120 eth:ethertype:ip:tcp:http:data:
+
+121 eth:ethertype:ip:tcp:
+
+122 eth:ethertype:ip:tcp:
+
+123 eth:ethertype:ip:tcp:
+
+124 eth:ethertype:ip:tcp:
+
+125 eth:ethertype:ip:tcp:
+
+126 eth:ethertype:ip:tcp:
+
+127 eth:ethertype:ip:tcp:http:
+
+128 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/site=0000127709/mnum=0000162763/genr=1/logs=0/mdtm=1077726643/bins=1
+  http_request_version=HTTP/1.1
+  http_host=opera1-servedby.advertising.com
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive, TE
+  http_request_full_uri=http://opera1-servedby.advertising.com/site=0000127709/mnum=0000162763/genr=1/logs=0/mdtm=1077726643/bins=1
+  http_request_number=1
+
+129 eth:ethertype:ip:tcp:
+
+130 eth:ethertype:ip:tcp:
+
+131 eth:ethertype:ip:tcp:
+
+132 eth:ethertype:ip:tcp:http:
+
+133 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/site=0000127709/mnum=0000162763/genr=1/logs=0/mdtm=1077726643/bins=1
+  http_request_version=HTTP/1.1
+  http_host=opera2-servedby.advertising.com
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive, TE
+  http_request_full_uri=http://opera2-servedby.advertising.com/site=0000127709/mnum=0000162763/genr=1/logs=0/mdtm=1077726643/bins=1
+  http_request_number=1
+
+134 eth:ethertype:ip:tcp:http:
+
+135 eth:ethertype:ip:data:
+
+136 eth:ethertype:ip:tcp:
+
+137 eth:ethertype:ip:tcp:http:data:
+
+138 eth:ethertype:ip:tcp:
+
+139 eth:ethertype:ip:tcp:
+
+140 eth:ethertype:ip:tcp:
+
+141 eth:ethertype:ip:tcp:
+
+142 eth:ethertype:ip:tcp:
+
+143 eth:ethertype:ip:tcp:
+
+144 eth:ethertype:ip:tcp:http:
+
+145 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/site=0000127709/mnum=0000162766/genr=1/logs=0/mdtm=1077726645/bins=1
+  http_request_version=HTTP/1.1
+  http_host=opera4-servedby.advertising.com
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive, TE
+  http_request_full_uri=http://opera4-servedby.advertising.com/site=0000127709/mnum=0000162766/genr=1/logs=0/mdtm=1077726645/bins=1
+  http_request_number=1
+
+146 eth:ethertype:ip:tcp:
+
+147 eth:ethertype:ip:tcp:
+
+148 eth:ethertype:ip:tcp:http:
+
+149 eth:ethertype:ip:data:
+
+150 eth:ethertype:ip:tcp:
+
+151 eth:ethertype:ip:tcp:
+
+152 eth:ethertype:ip:tcp:
+
+153 eth:ethertype:ip:tcp:http:
+
+154 eth:ethertype:ip:tcp:
+
+155 eth:ethertype:ip:tcp:
+
+156 eth:ethertype:ip:tcp:
+
+157 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/Websidan/dagbok/dagbok.html
+  http_request_version=HTTP/1.1
+  http_host=10.1.1.1
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive, TE
+  http_referer=http://10.1.1.1/Websidan/index.html
+  http_request_full_uri=http://10.1.1.1/Websidan/dagbok/dagbok.html
+  http_request_number=1
+
+158 eth:ethertype:ip:tcp:
+
+159 eth:ethertype:ip:tcp:http:data-text-lines:
+  http_request_version=HTTP/1.1
+  http_connection=close
+  http_response_code=200
+  http_response_code_desc=OK
+  http_content_type=text/html; charset=ISO-8859-1
+  http_server=Apache/2.0.40 (Red Hat Linux)
+  http_content_length=416
+  http_date=Sat, 20 Nov 2004 10:21:09 GMT
+  http_response_number=1
+
+160 eth:ethertype:ip:tcp:
+
+161 eth:ethertype:ip:tcp:
+
+162 eth:ethertype:ip:data:
+
+163 eth:ethertype:ip:tcp:
+
+164 eth:ethertype:ip:tcp:
+
+165 eth:ethertype:ip:tcp:
+
+166 eth:ethertype:ip:tcp:
+
+167 eth:ethertype:ip:tcp:
+
+168 eth:ethertype:ip:tcp:http:
+
+169 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/site=0000127709/mnum=0000162763/genr=1/logs=0/mdtm=1077726643/bins=1
+  http_request_version=HTTP/1.1
+  http_host=opera3-servedby.advertising.com
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive, TE
+  http_request_full_uri=http://opera3-servedby.advertising.com/site=0000127709/mnum=0000162763/genr=1/logs=0/mdtm=1077726643/bins=1
+  http_request_number=1
+
+170 eth:ethertype:ip:tcp:
+
+171 eth:ethertype:ip:tcp:http:
+
+172 eth:ethertype:ip:tcp:
+
+173 eth:ethertype:ip:tcp:
+
+174 eth:ethertype:ip:data:
+
+175 eth:ethertype:ip:tcp:
+
+176 eth:ethertype:ip:data:
+
+177 eth:ethertype:ip:data:
+
+178 eth:ethertype:ip:tcp:
+
+179 eth:ethertype:ip:tcp:http:data:
+
+180 eth:ethertype:ip:tcp:
+
+181 eth:ethertype:ip:tcp:
+
+182 eth:ethertype:ip:data:
+
+183 eth:ethertype:ip:data:
+
+184 eth:ethertype:ip:tcp:
+
+185 eth:ethertype:ip:tcp:http:data:
+
+186 eth:ethertype:ip:tcp:
+
+187 eth:ethertype:ip:tcp:
+
+188 eth:ethertype:ip:tcp:
+
+189 eth:ethertype:ip:tcp:
+
+190 eth:ethertype:ip:tcp:http:
+
+191 eth:ethertype:ip:data:
+
+192 eth:ethertype:ip:tcp:
+
+193 eth:ethertype:ip:data:
+
+194 eth:ethertype:ip:data:
+
+195 eth:ethertype:ip:tcp:
+
+196 eth:ethertype:ip:data:
+
+197 eth:ethertype:ip:tcp:
+
+198 eth:ethertype:ip:tcp:
+
+199 eth:ethertype:ip:tcp:
+
+200 eth:ethertype:ip:data:
+
+201 eth:ethertype:ip:data:
+
+202 eth:ethertype:ip:tcp:
+
+203 eth:ethertype:ip:tcp:http:data:
+
+204 eth:ethertype:ip:tcp:
+
+205 eth:ethertype:ip:tcp:
+
+206 eth:ethertype:ip:data:
+
+207 eth:ethertype:ip:tcp:http:data:
+
+208 eth:ethertype:ip:tcp:
+
+209 eth:ethertype:ip:tcp:
+
+210 eth:ethertype:ip:tcp:
+
+211 eth:ethertype:ip:tcp:
+
+212 eth:ethertype:ip:tcp:
+
+213 eth:ethertype:ip:tcp:
+
+214 eth:ethertype:ip:tcp:
+
+215 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/Websidan/dagbok/2004/dagbok.html
+  http_request_version=HTTP/1.1
+  http_host=10.1.1.1
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive, TE
+  http_referer=http://10.1.1.1/Websidan/dagbok/dagbok.html
+  http_request_full_uri=http://10.1.1.1/Websidan/dagbok/2004/dagbok.html
+  http_request_number=1
+
+216 eth:ethertype:ip:tcp:
+
+217 eth:ethertype:ip:tcp:http:
+
+218 eth:ethertype:ip:tcp:http:data-text-lines:
+  http_request_version=HTTP/1.1
+  http_connection=close
+  http_response_code=200
+  http_response_code_desc=OK
+  http_content_type=text/html; charset=ISO-8859-1
+  http_server=Apache/2.0.40 (Red Hat Linux)
+  http_content_length=1263
+  http_date=Sat, 20 Nov 2004 10:21:11 GMT
+  http_response_number=1
+
+219 eth:ethertype:ip:tcp:
+
+220 eth:ethertype:ip:tcp:
+
+221 eth:ethertype:ip:tcp:
+
+222 eth:ethertype:ip:tcp:
+
+223 eth:ethertype:ip:tcp:
+
+224 eth:ethertype:ip:tcp:
+
+225 eth:ethertype:ip:tcp:
+
+226 eth:ethertype:ip:tcp:
+
+227 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/Websidan/dagbok/2004/28/dagbok.html
+  http_request_version=HTTP/1.1
+  http_host=10.1.1.1
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive, TE
+  http_referer=http://10.1.1.1/Websidan/dagbok/2004/dagbok.html
+  http_request_full_uri=http://10.1.1.1/Websidan/dagbok/2004/28/dagbok.html
+  http_request_number=1
+
+228 eth:ethertype:ip:tcp:
+
+229 eth:ethertype:ip:tcp:http:
+
+230 eth:ethertype:ip:tcp:http:data-text-lines:
+  http_request_version=HTTP/1.1
+  http_connection=close
+  http_response_code=200
+  http_response_code_desc=OK
+  http_content_type=text/html; charset=ISO-8859-1
+  http_server=Apache/2.0.40 (Red Hat Linux)
+  http_content_length=2232
+  http_date=Sat, 20 Nov 2004 10:21:12 GMT
+  http_response_number=1
+
+231 eth:ethertype:ip:tcp:
+
+232 eth:ethertype:ip:tcp:
+
+233 eth:ethertype:ip:tcp:
+
+234 eth:ethertype:ip:tcp:
+
+235 eth:ethertype:ip:tcp:
+
+236 eth:ethertype:ip:tcp:
+
+237 eth:ethertype:ip:tcp:
+
+238 eth:ethertype:ip:tcp:
+
+239 eth:ethertype:ip:tcp:
+
+240 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/Websidan/2004-07-SeaWorld/320/DSC07858.JPG
+  http_request_version=HTTP/1.1
+  http_host=10.1.1.1
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive, TE
+  http_referer=http://10.1.1.1/Websidan/dagbok/2004/28/dagbok.html
+  http_request_full_uri=http://10.1.1.1/Websidan/2004-07-SeaWorld/320/DSC07858.JPG
+  http_request_number=1
+
+241 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/Websidan/2004-07-SeaWorld/320/DSC07859.JPG
+  http_request_version=HTTP/1.1
+  http_host=10.1.1.1
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive, TE
+  http_referer=http://10.1.1.1/Websidan/dagbok/2004/28/dagbok.html
+  http_request_full_uri=http://10.1.1.1/Websidan/2004-07-SeaWorld/320/DSC07859.JPG
+  http_request_number=1
+
+242 eth:ethertype:ip:tcp:
+
+243 eth:ethertype:ip:tcp:
+
+244 eth:ethertype:ip:tcp:
+
+245 eth:ethertype:ip:tcp:
+
+246 eth:ethertype:ip:tcp:http:
+
+247 eth:ethertype:ip:tcp:
+
+248 eth:ethertype:ip:tcp:
+
+249 eth:ethertype:ip:tcp:http:
+
+250 eth:ethertype:ip:tcp:
+
+251 eth:ethertype:ip:tcp:
+
+252 eth:ethertype:ip:tcp:
+
+253 eth:ethertype:ip:tcp:
+
+254 eth:ethertype:ip:tcp:
+
+255 eth:ethertype:ip:tcp:
+
+256 eth:ethertype:ip:tcp:
+
+257 eth:ethertype:ip:tcp:
+
+258 eth:ethertype:ip:tcp:
+
+259 eth:ethertype:ip:tcp:http:image-jfif:
+  http_request_version=HTTP/1.1
+  http_connection=close
+  http_response_code=200
+  http_response_code_desc=OK
+  http_content_type=image/jpeg
+  http_server=Apache/2.0.40 (Red Hat Linux)
+  http_content_length=8963
+  http_date=Sat, 20 Nov 2004 10:21:13 GMT
+  http_response_number=1
+
+260 eth:ethertype:ip:tcp:
+
+261 eth:ethertype:ip:tcp:
+
+262 eth:ethertype:ip:tcp:
+
+263 eth:ethertype:ip:tcp:
+
+264 eth:ethertype:ip:tcp:
+
+265 eth:ethertype:ip:tcp:
+
+266 eth:ethertype:ip:tcp:
+
+267 eth:ethertype:ip:tcp:
+
+268 eth:ethertype:ip:tcp:
+
+269 eth:ethertype:ip:tcp:http:image-jfif:
+  http_request_version=HTTP/1.1
+  http_connection=close
+  http_response_code=200
+  http_response_code_desc=OK
+  http_content_type=image/jpeg
+  http_server=Apache/2.0.40 (Red Hat Linux)
+  http_content_length=10730
+  http_date=Sat, 20 Nov 2004 10:21:13 GMT
+  http_response_number=1
+
+270 eth:ethertype:ip:tcp:
+
+271 eth:ethertype:ip:tcp:
+
+272 eth:ethertype:ip:tcp:
+
+273 eth:ethertype:ip:tcp:
+
+274 eth:ethertype:ip:tcp:
+
+275 eth:ethertype:ip:tcp:
+
+276 eth:ethertype:ip:tcp:
+
+277 eth:ethertype:ip:tcp:
+
+278 eth:ethertype:ip:tcp:http:
+  http_request_method=GET
+  http_request_uri=/Websidan/2004-07-SeaWorld/fullsize/DSC07858.JPG
+  http_request_version=HTTP/1.1
+  http_host=10.1.1.1
+  http_user_agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]
+  http_accept=application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+  http_accept_language=en
+  http_accept_encoding=deflate, gzip, x-gzip, identity, *;q=0
+  http_connection=Keep-Alive, TE
+  http_referer=http://10.1.1.1/Websidan/dagbok/2004/28/dagbok.html
+  http_request_full_uri=http://10.1.1.1/Websidan/2004-07-SeaWorld/fullsize/DSC07858.JPG
+  http_request_number=1
+
+279 eth:ethertype:ip:tcp:
+
+280 eth:ethertype:ip:tcp:http:
+
+281 eth:ethertype:ip:tcp:
+
+282 eth:ethertype:ip:tcp:
+
+283 eth:ethertype:ip:tcp:
+
+284 eth:ethertype:ip:tcp:
+
+285 eth:ethertype:ip:tcp:
+
+286 eth:ethertype:ip:tcp:
+
+287 eth:ethertype:ip:tcp:
+
+288 eth:ethertype:ip:tcp:
+
+289 eth:ethertype:ip:tcp:
+
+290 eth:ethertype:ip:tcp:
+
+291 eth:ethertype:ip:tcp:
+
+292 eth:ethertype:ip:tcp:
+
+293 eth:ethertype:ip:tcp:
+
+294 eth:ethertype:ip:tcp:
+
+295 eth:ethertype:ip:tcp:
+
+296 eth:ethertype:ip:tcp:
+
+297 eth:ethertype:ip:tcp:
+
+298 eth:ethertype:ip:tcp:
+
+299 eth:ethertype:ip:tcp:
+
+300 eth:ethertype:ip:tcp:
+
+301 eth:ethertype:ip:tcp:
+
+302 eth:ethertype:ip:tcp:
+
+303 eth:ethertype:ip:tcp:
+
+304 eth:ethertype:ip:tcp:
+
+305 eth:ethertype:ip:tcp:
+
+306 eth:ethertype:ip:tcp:
+
+307 eth:ethertype:ip:tcp:
+
+308 eth:ethertype:ip:tcp:
+
+309 eth:ethertype:ip:tcp:
+
+310 eth:ethertype:ip:tcp:
+
+311 eth:ethertype:ip:tcp:
+
+312 eth:ethertype:ip:tcp:
+
+313 eth:ethertype:ip:tcp:
+
+314 eth:ethertype:ip:tcp:
+
+315 eth:ethertype:ip:tcp:
+
+316 eth:ethertype:ip:tcp:
+
+317 eth:ethertype:ip:tcp:
+
+318 eth:ethertype:ip:tcp:
+
+319 eth:ethertype:ip:tcp:
+
+320 eth:ethertype:ip:tcp:
+
+321 eth:ethertype:ip:tcp:
+
+322 eth:ethertype:ip:tcp:
+
+323 eth:ethertype:ip:tcp:
+
+324 eth:ethertype:ip:tcp:
+
+325 eth:ethertype:ip:tcp:
+
+326 eth:ethertype:ip:tcp:
+
+327 eth:ethertype:ip:tcp:
+
+328 eth:ethertype:ip:tcp:
+
+329 eth:ethertype:ip:tcp:
+
+330 eth:ethertype:ip:tcp:
+
+331 eth:ethertype:ip:tcp:
+
+332 eth:ethertype:ip:tcp:
+
+333 eth:ethertype:ip:tcp:
+
+334 eth:ethertype:ip:tcp:
+
+335 eth:ethertype:ip:tcp:
+
+336 eth:ethertype:ip:tcp:
+
+337 eth:ethertype:ip:tcp:
+
+338 eth:ethertype:ip:tcp:
+
+339 eth:ethertype:ip:tcp:
+
+340 eth:ethertype:ip:tcp:
+
+341 eth:ethertype:ip:tcp:
+
+342 eth:ethertype:ip:tcp:
+
+343 eth:ethertype:ip:tcp:
+
+344 eth:ethertype:ip:tcp:
+
+345 eth:ethertype:ip:tcp:
+
+346 eth:ethertype:ip:tcp:
+
+347 eth:ethertype:ip:tcp:
+
+348 eth:ethertype:ip:tcp:
+
+349 eth:ethertype:ip:tcp:
+
+350 eth:ethertype:ip:tcp:
+
+351 eth:ethertype:ip:tcp:
+
+352 eth:ethertype:ip:tcp:
+
+353 eth:ethertype:ip:tcp:
+
+354 eth:ethertype:ip:tcp:
+
+355 eth:ethertype:ip:tcp:
+
+356 eth:ethertype:ip:tcp:
+
+357 eth:ethertype:ip:tcp:
+
+358 eth:ethertype:ip:tcp:
+
+359 eth:ethertype:ip:tcp:
+
+360 eth:ethertype:ip:tcp:
+
+361 eth:ethertype:ip:tcp:
+
+362 eth:ethertype:ip:tcp:
+
+363 eth:ethertype:ip:tcp:
+
+364 eth:ethertype:ip:tcp:
+
+365 eth:ethertype:ip:tcp:
+
+366 eth:ethertype:ip:tcp:
+
+367 eth:ethertype:ip:tcp:
+
+368 eth:ethertype:ip:tcp:
+
+369 eth:ethertype:ip:tcp:
+
+370 eth:ethertype:ip:tcp:
+
+371 eth:ethertype:ip:tcp:
+
+372 eth:ethertype:ip:tcp:
+
+373 eth:ethertype:ip:tcp:
+
+374 eth:ethertype:ip:tcp:
+
+375 eth:ethertype:ip:tcp:
+
+376 eth:ethertype:ip:tcp:
+
+377 eth:ethertype:ip:tcp:
+
+378 eth:ethertype:ip:tcp:
+
+379 eth:ethertype:ip:tcp:
+
+380 eth:ethertype:ip:tcp:
+
+381 eth:ethertype:ip:tcp:
+
+382 eth:ethertype:ip:tcp:
+
+383 eth:ethertype:ip:tcp:
+
+384 eth:ethertype:ip:tcp:
+
+385 eth:ethertype:ip:tcp:
+
+386 eth:ethertype:ip:tcp:
+
+387 eth:ethertype:ip:tcp:
+
+388 eth:ethertype:ip:tcp:
+
+389 eth:ethertype:ip:tcp:
+
+390 eth:ethertype:ip:tcp:
+
+391 eth:ethertype:ip:tcp:
+
+392 eth:ethertype:ip:tcp:
+
+393 eth:ethertype:ip:tcp:
+
+394 eth:ethertype:ip:tcp:
+
+395 eth:ethertype:ip:tcp:
+
+396 eth:ethertype:ip:tcp:
+
+397 eth:ethertype:ip:tcp:
+
+398 eth:ethertype:ip:tcp:
+
+399 eth:ethertype:ip:tcp:
+
+400 eth:ethertype:ip:tcp:
+
+401 eth:ethertype:ip:tcp:
+
+402 eth:ethertype:ip:tcp:
+
+403 eth:ethertype:ip:tcp:
+
+404 eth:ethertype:ip:tcp:
+
+405 eth:ethertype:ip:tcp:
+
+406 eth:ethertype:ip:tcp:
+
+407 eth:ethertype:ip:tcp:
+
+408 eth:ethertype:ip:tcp:
+
+409 eth:ethertype:ip:tcp:
+
+410 eth:ethertype:ip:tcp:
+
+411 eth:ethertype:ip:tcp:
+
+412 eth:ethertype:ip:tcp:
+
+413 eth:ethertype:ip:tcp:
+
+414 eth:ethertype:ip:tcp:
+
+415 eth:ethertype:ip:tcp:
+
+416 eth:ethertype:ip:tcp:
+
+417 eth:ethertype:ip:tcp:
+
+418 eth:ethertype:ip:tcp:
+
+419 eth:ethertype:ip:tcp:
+
+420 eth:ethertype:ip:tcp:
+
+421 eth:ethertype:ip:tcp:
+
+422 eth:ethertype:ip:tcp:
+
+423 eth:ethertype:ip:tcp:
+
+424 eth:ethertype:ip:tcp:
+
+425 eth:ethertype:ip:tcp:
+
+426 eth:ethertype:ip:tcp:
+
+427 eth:ethertype:ip:tcp:
+
+428 eth:ethertype:ip:tcp:
+
+429 eth:ethertype:ip:tcp:
+
+430 eth:ethertype:ip:tcp:
+
+431 eth:ethertype:ip:tcp:
+
+432 eth:ethertype:ip:tcp:
+
+433 eth:ethertype:ip:tcp:
+
+434 eth:ethertype:ip:tcp:
+
+435 eth:ethertype:ip:tcp:
+
+436 eth:ethertype:ip:tcp:
+
+437 eth:ethertype:ip:tcp:
+
+438 eth:ethertype:ip:tcp:
+
+439 eth:ethertype:ip:tcp:
+
+440 eth:ethertype:ip:tcp:
+
+441 eth:ethertype:ip:tcp:
+
+442 eth:ethertype:ip:tcp:
+
+443 eth:ethertype:ip:tcp:
+
+444 eth:ethertype:ip:tcp:
+
+445 eth:ethertype:ip:tcp:
+
+446 eth:ethertype:ip:tcp:
+
+447 eth:ethertype:ip:tcp:
+
+448 eth:ethertype:ip:tcp:
+
+449 eth:ethertype:ip:tcp:
+
+450 eth:ethertype:ip:tcp:
+
+451 eth:ethertype:ip:tcp:
+
+452 eth:ethertype:ip:tcp:
+
+453 eth:ethertype:ip:tcp:
+
+454 eth:ethertype:ip:tcp:
+
+455 eth:ethertype:ip:tcp:
+
+456 eth:ethertype:ip:tcp:
+
+457 eth:ethertype:ip:tcp:
+
+458 eth:ethertype:ip:tcp:
+
+459 eth:ethertype:ip:tcp:
+
+460 eth:ethertype:ip:tcp:
+
+461 eth:ethertype:ip:tcp:
+
+462 eth:ethertype:ip:tcp:
+
+463 eth:ethertype:ip:tcp:
+
+464 eth:ethertype:ip:tcp:
+
+465 eth:ethertype:ip:tcp:
+
+466 eth:ethertype:ip:tcp:
+
+467 eth:ethertype:ip:tcp:
+
+468 eth:ethertype:ip:tcp:
+
+469 eth:ethertype:ip:tcp:
+
+470 eth:ethertype:ip:tcp:
+
+471 eth:ethertype:ip:tcp:
+
+472 eth:ethertype:ip:tcp:
+
+473 eth:ethertype:ip:tcp:
+
+474 eth:ethertype:ip:tcp:
+
+475 eth:ethertype:ip:tcp:
+
+476 eth:ethertype:ip:tcp:
+
+477 eth:ethertype:ip:tcp:
+
+478 eth:ethertype:ip:tcp:
+
+479 eth:ethertype:ip:tcp:http:image-jfif:
+  http_request_version=HTTP/1.1
+  http_connection=close
+  http_response_code=200
+  http_response_code_desc=OK
+  http_content_type=image/jpeg
+  http_server=Apache/2.0.40 (Red Hat Linux)
+  http_content_length=191515
+  http_date=Sat, 20 Nov 2004 10:21:17 GMT
+  http_response_number=1
+
+480 eth:ethertype:ip:tcp:
+
+481 eth:ethertype:ip:tcp:
+
+482 eth:ethertype:ip:tcp:
+
+483 eth:ethertype:ip:tcp:
+

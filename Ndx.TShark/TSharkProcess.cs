@@ -23,6 +23,9 @@ namespace Ndx.TShark
 
     public class TSharkProcess
     {
+        
+        bool m_exportObjects;
+        string m_exportedObjectsPath;
         MemoryStream m_jsonStream;
         TextWriter m_writer;
         public TSharkProcess()
@@ -48,10 +51,12 @@ namespace Ndx.TShark
                 process.StartInfo.FileName = @"C:\Program Files\Wireshark\tshark.exe";
                 var pipeName = $@"\\.\pipe\{m_pipeName}";
                 var fields = String.Join(" ", m_fields.Select(x => $"-e {x}"));
-                process.StartInfo.Arguments = $"-i {pipeName} -T json -e {Field.Frame.Number} -e {Field.Frame.Protocols} {fields}";
+                var exportArgs = m_exportObjects ? $"--export-objects \"http,{m_exportedObjectsPath}\"" : "";
+                process.StartInfo.Arguments = $"-i {pipeName} -T ek -e {Field.Frame.Number} -e {Field.Frame.Protocols} {fields} {exportArgs}";
                 process.OutputDataReceived += new DataReceivedEventHandler(OnOutputDataReceived);
                 process.StartInfo.RedirectStandardOutput = true;
                 process.StartInfo.UseShellExecute = false;
+                var cmdline = $"{process.StartInfo.FileName} {process.StartInfo.Arguments}";
                 process.Start();
                 process.BeginOutputReadLine();
                 m_tsharkProcess = process;
@@ -64,6 +69,9 @@ namespace Ndx.TShark
         }
 
         public bool IsRunning => !(m_tsharkProcess?.HasExited ?? true);
+
+        public bool ExportObjects { get => m_exportObjects; set => m_exportObjects = value; }
+        public string ExportedObjectsPath { get => m_exportedObjectsPath; set => m_exportedObjectsPath = value; }
 
         public void Close()
         {
@@ -96,57 +104,34 @@ namespace Ndx.TShark
 
         private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            // [
-            //   {
-            //      "_index": "packets-2017-06-23",
-            //      "_type": "pcap_file",
-            //      "_score": null,
-            //      "_source": {
-            //          "layers": {
-            //
-            //          }
-            //      }
-            //   }
-            //
-            //  ,
-            //   {
-            //     LAST OBJECTS  
-            //   }
-            //
-            //  ]
+            // -T ek is newline delimited JSON format.
+            // {"index" : {"_index": "packets-2017-06-27", "_type": "pcap_file", "_score": null}}
+            // { "timestamp" : "1452112930292", "layers" : { "frame_number": ["28"],"frame_protocols": ["eth:ethertype:ip:tcp"]
             if (e.Data != null)
             {
-                var data = e.Data.Trim();
-                if (data.Equals(",") || data.Equals("]"))
+                if (e.Data.StartsWith("{\"timestamp\""))
                 {
                     m_writer.Flush();
-                    var result = GetResult();
+                    var result = GetResult(e.Data);
                     OnPacketDecoded(result);
                     m_jsonStream.Position = 0;
-                }
-                else if (!(data.Equals("[") || String.IsNullOrEmpty(data)))
-                {
-                    m_writer.WriteLine(data);
                 }
             }
         }
 
-        PacketFields GetResult()
+        PacketFields GetResult(string line)
         {
-            m_jsonStream.Position = 0;
-            var testReader = new StreamReader(m_jsonStream);
-            var jsonReader = new JsonTextReader(testReader);
-            var jsonObject = JToken.ReadFrom(jsonReader);
-            var fields = jsonObject["_source"]["layers"].ToDictionary(y => ((JProperty)y).Name, y => ((JProperty)y).Value);
+            var jsonObject = JToken.Parse(line);
+            var fields = jsonObject["layers"].ToDictionary(y => ((JProperty)y).Name, y => ((JProperty)y).Value);
             var result = new PacketFields();
             foreach (var field in fields)
             {
                 switch(field.Key)
                 {
-                    case Field.Frame.Number:
+                    case "frame_number":
                         result.FrameNumber = (int)field.Value.First;
                         break;
-                    case Field.Frame.Protocols:
+                    case "frame_protocols":
                         result.FrameProtocols = (string)field.Value.First;
                         break;
                     default:

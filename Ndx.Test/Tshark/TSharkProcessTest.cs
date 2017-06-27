@@ -9,6 +9,8 @@ using Ndx.TShark;
 using System.IO;
 using System;
 using System.Threading.Tasks;
+using System.Net.Mime;
+using System.Linq;
 
 namespace Ndx.Test
 {
@@ -17,29 +19,45 @@ namespace Ndx.Test
     public class TSharkProcessTest
     {
         static TestContext m_testContext = TestContext.CurrentContext;
-        string m_inputPcap = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap");
         [Test]
-        public void ProcessCaptureByTShark()
+        public void ProcessHttpCaptureByTShark()
+        {
+            ProcessCapture(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap"));
+            ProcessCapture(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http_gzip.cap"));
+            ProcessCapture(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http_with_jpegs.cap"));
+            //ProcessCapture(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http_chunked_gzip.pcap"));
+        }
+
+
+        void ProcessCapture(string path)
         {
             // Use random pipe name to avoid clashes with other processes
             var rand = new Random();
-            var id = rand.Next(UInt16.MaxValue);
-            var wsender = new WiresharkSender($"tshark{id}", DataLinkType.Ethernet);
+            var pipename = $"ndx.tshark_{rand.Next(UInt16.MaxValue)}";
+            var wsender = new WiresharkSender(pipename, DataLinkType.Ethernet);
             var tshark = new TSharkProcess()
             {
-                PipeName = $"tshark{id}"
+                PipeName = pipename
             };
 
+            var outdir = Path.ChangeExtension(path, "out");
+            var outfilename = Path.ChangeExtension(path, "txt");
+            if(!Directory.Exists(outdir)) Directory.CreateDirectory(outdir);
+            var outputfile = File.CreateText(Path.Combine(outfilename));
             var outputCount = 0;
-            // results can be read when tshark finishes:s
             void Tshark_PacketDecoded(object sender, PacketFields e)
             {
-                Console.WriteLine($"{e.FrameNumber} {e.FrameProtocols}");
+                outputfile.WriteLine($"{e.FrameNumber} {e.FrameProtocols}:");
+                foreach (var f in e.Fields)
+                {
+                        outputfile.WriteLine($"  {f.Key}={f.Value}");
+                }
                 outputCount++;
+                outputfile.WriteLine();
             }
-
+            
             tshark.PacketDecoded += Tshark_PacketDecoded;
-
+            // fields for http request
             tshark.Fields.Add("http.request.method");
             tshark.Fields.Add("http.request.uri");
             tshark.Fields.Add("http.request.version");
@@ -51,6 +69,19 @@ namespace Ndx.Test
             tshark.Fields.Add("http.connection");
             tshark.Fields.Add("http.referer");
             tshark.Fields.Add("http.request.full_uri");
+            tshark.Fields.Add("http.request_number");
+            // fields for http response
+            tshark.Fields.Add("http.response.code");
+            tshark.Fields.Add("http.response.code.desc");
+            tshark.Fields.Add("http.content_type");
+            tshark.Fields.Add("http.content_encoding");
+            tshark.Fields.Add("http.server");
+            tshark.Fields.Add("http.content_length");
+            tshark.Fields.Add("http.date");
+            //tshark.Fields.Add("http.file_data");
+            tshark.Fields.Add("http.response_number");
+            tshark.ExportedObjectsPath = outdir;
+            tshark.ExportObjects = true;
             tshark.Start();
 
             // wait till the sender is connected to tshark
@@ -58,7 +89,7 @@ namespace Ndx.Test
             Task.WaitAll(wsender.Connected);
 
             var frameCount = 0;
-            var frames = Ndx.Captures.PcapReader.ReadFile(m_inputPcap);
+            var frames = Ndx.Captures.PcapReader.ReadFile(path);
             foreach (var frame in frames)
             {
                 var res = wsender.Send(frame);
@@ -68,11 +99,8 @@ namespace Ndx.Test
             wsender.Close();
             // then close, the control is returned when tshark finishes
             tshark.Close();
-
+            outputfile.Flush();
             Assert.AreEqual(frameCount, outputCount);
         }
-
-
-
     }
 }
