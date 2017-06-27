@@ -1,10 +1,10 @@
-1 eth:ethertype:ip:tcp:
+1 [1084439827311] eth:ethertype:ip:tcp:
 
-2 eth:ethertype:ip:tcp:
+2 [1084439828222] eth:ethertype:ip:tcp:
 
-3 eth:ethertype:ip:tcp:
+3 [1084439828222] eth:ethertype:ip:tcp:
 
-4 eth:ethertype:ip:tcp:http:
+4 [1084439828222] eth:ethertype:ip:tcp:http:
   http_request_method=GET
   http_request_uri=/download.html
   http_request_version=HTTP/1.1
@@ -18,33 +18,33 @@
   http_request_full_uri=http://www.ethereal.com/download.html
   http_request_number=1
 
-5 eth:ethertype:ip:tcp:
+5 [1084439828783] eth:ethertype:ip:tcp:
 
-6 eth:ethertype:ip:tcp:http:
+6 [1084439828993] eth:ethertype:ip:tcp:http:
 
-7 eth:ethertype:ip:tcp:
+7 [1084439829123] eth:ethertype:ip:tcp:
 
-8 eth:ethertype:ip:tcp:
+8 [1084439829123] eth:ethertype:ip:tcp:
 
-9 eth:ethertype:ip:tcp:
+9 [1084439829324] eth:ethertype:ip:tcp:
 
-10 eth:ethertype:ip:tcp:
+10 [1084439829754] eth:ethertype:ip:tcp:
 
-11 eth:ethertype:ip:tcp:
+11 [1084439829864] eth:ethertype:ip:tcp:
 
-12 eth:ethertype:ip:tcp:
+12 [1084439829864] eth:ethertype:ip:tcp:
 
-13 eth:ethertype:ip:udp:dns:
+13 [1084439829864] eth:ethertype:ip:udp:dns:
 
-14 eth:ethertype:ip:tcp:
+14 [1084439829945] eth:ethertype:ip:tcp:
 
-15 eth:ethertype:ip:tcp:
+15 [1084439830125] eth:ethertype:ip:tcp:
 
-16 eth:ethertype:ip:tcp:
+16 [1084439830205] eth:ethertype:ip:tcp:
 
-17 eth:ethertype:ip:udp:dns:
+17 [1084439830225] eth:ethertype:ip:udp:dns:
 
-18 eth:ethertype:ip:tcp:http:
+18 [1084439830295] eth:ethertype:ip:tcp:http:
   http_request_method=GET
   http_request_uri=/pagead/ads?client=ca-pub-2309191948673629&random=1084443430285&lmt=1082467020&format=468x60_as&output=html&url=http%3A%2F%2Fwww.ethereal.com%2Fdownload.html&color_bg=FFFFFF&color_text=333333&color_link=000000&color_url=666633&color_border=666633
   http_request_version=HTTP/1.1
@@ -58,23 +58,23 @@
   http_request_full_uri=http://pagead2.googlesyndication.com/pagead/ads?client=ca-pub-2309191948673629&random=1084443430285&lmt=1082467020&format=468x60_as&output=html&url=http%3A%2F%2Fwww.ethereal.com%2Fdownload.html&color_bg=FFFFFF&color_text=333333&color_link=000000&color_url=666633&color_border=666633
   http_request_number=1
 
-19 eth:ethertype:ip:tcp:
+19 [1084439830325] eth:ethertype:ip:tcp:
 
-20 eth:ethertype:ip:tcp:
+20 [1084439830686] eth:ethertype:ip:tcp:
 
-21 eth:ethertype:ip:tcp:
+21 [1084439830806] eth:ethertype:ip:tcp:
 
-22 eth:ethertype:ip:tcp:
+22 [1084439830806] eth:ethertype:ip:tcp:
 
-23 eth:ethertype:ip:tcp:
+23 [1084439830946] eth:ethertype:ip:tcp:
 
-24 eth:ethertype:ip:tcp:
+24 [1084439830956] eth:ethertype:ip:tcp:
 
-25 eth:ethertype:ip:tcp:
+25 [1084439831126] eth:ethertype:ip:tcp:
 
-26 eth:ethertype:ip:tcp:http:
+26 [1084439831226] eth:ethertype:ip:tcp:http:
 
-27 eth:ethertype:ip:tcp:http:data-text-lines:
+27 [1084439831266] eth:ethertype:ip:tcp:http:data-text-lines:
   http_request_version=HTTP/1.1
   http_response_code=200
   http_response_code_desc=OK
@@ -85,27 +85,27 @@
   http_date=Thu, 13 May 2004 10:17:14 GMT
   http_response_number=1
 
-28 eth:ethertype:ip:tcp:
+28 [1084439831266] eth:ethertype:ip:tcp:
 
-29 eth:ethertype:ip:tcp:
+29 [1084439831417] eth:ethertype:ip:tcp:
 
-30 eth:ethertype:ip:tcp:
+30 [1084439831527] eth:ethertype:ip:tcp:
 
-31 eth:ethertype:ip:tcp:
+31 [1084439831537] eth:ethertype:ip:tcp:
 
-32 eth:ethertype:ip:tcp:
+32 [1084439831667] eth:ethertype:ip:tcp:
 
-33 eth:ethertype:ip:tcp:
+33 [1084439831667] eth:ethertype:ip:tcp:
 
-34 eth:ethertype:ip:tcp:
+34 [1084439831807] eth:ethertype:ip:tcp:
 
-35 eth:ethertype:ip:tcp:
+35 [1084439831807] eth:ethertype:ip:tcp:
 
-36 eth:ethertype:ip:tcp:
+36 [1084439832088] eth:ethertype:ip:tcp:
 
-37 eth:ethertype:ip:tcp:
+37 [1084439832088] eth:ethertype:ip:tcp:
 
-38 eth:ethertype:ip:tcp:http:data-text-lines:xml:
+38 [1084439832158] eth:ethertype:ip:tcp:http:data-text-lines:xml:
   http_request_version=HTTP/1.1
   http_connection=Keep-Alive
   http_response_code=200
@@ -116,13 +116,13 @@
   http_date=Thu, 13 May 2004 10:17:12 GMT
   http_response_number=1
 
-39 eth:ethertype:ip:tcp:
+39 [1084439832328] eth:ethertype:ip:tcp:
 
-40 eth:ethertype:ip:tcp:
+40 [1084439845216] eth:ethertype:ip:tcp:
 
-41 eth:ethertype:ip:tcp:
+41 [1084439845216] eth:ethertype:ip:tcp:
 
-42 eth:ethertype:ip:tcp:
+42 [1084439857374] eth:ethertype:ip:tcp:
 
-43 eth:ethertype:ip:tcp:
+43 [1084439857704] eth:ethertype:ip:tcp:
 

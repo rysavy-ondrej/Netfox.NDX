@@ -92,5 +92,6 @@ message PacketBlock {
 message PacketFields {
 	int32 FrameNumber = 1;
 	string FrameProtocols = 2;
+	int64 Timestamp = 3;
 	map<string, string> Fields = 10;
 }

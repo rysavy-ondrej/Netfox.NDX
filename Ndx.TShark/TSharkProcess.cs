@@ -124,6 +124,7 @@ namespace Ndx.TShark
             var jsonObject = JToken.Parse(line);
             var fields = jsonObject["layers"].ToDictionary(y => ((JProperty)y).Name, y => ((JProperty)y).Value);
             var result = new PacketFields();
+            result.Timestamp = (long)jsonObject["timestamp"];
             foreach (var field in fields)
             {
                 switch(field.Key)

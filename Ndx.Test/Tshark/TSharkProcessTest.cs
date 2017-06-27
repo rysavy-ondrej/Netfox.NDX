@@ -47,7 +47,7 @@ namespace Ndx.Test
             var outputCount = 0;
             void Tshark_PacketDecoded(object sender, PacketFields e)
             {
-                outputfile.WriteLine($"{e.FrameNumber} {e.FrameProtocols}:");
+                outputfile.WriteLine($"{e.FrameNumber} [{e.Timestamp}] {e.FrameProtocols}:");
                 foreach (var f in e.Fields)
                 {
                         outputfile.WriteLine($"  {f.Key}={f.Value}");

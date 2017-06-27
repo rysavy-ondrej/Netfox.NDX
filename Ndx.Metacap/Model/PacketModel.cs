@@ -42,11 +42,11 @@ namespace Ndx.Model {
             "dBI1CgtBcHBsaWNhdGlvbhgoIAEoCzIgLm5keC5tb2RlbC5BcHBsaWNhdGlv",
             "blBhY2tldFVuaXQiWQoLUGFja2V0QmxvY2sSDwoHQmxvY2tJZBgBIAEoBRIO",
             "CgZGaWxlSWQYAiABKAUSKQoITGlua1R5cGUYBCABKA4yFy5uZHgubW9kZWwu",
-            "RGF0YUxpbmtUeXBlIp8BCgxQYWNrZXRGaWVsZHMSEwoLRnJhbWVOdW1iZXIY",
-            "ASABKAUSFgoORnJhbWVQcm90b2NvbHMYAiABKAkSMwoGRmllbGRzGAogAygL",
-            "MiMubmR4Lm1vZGVsLlBhY2tldEZpZWxkcy5GaWVsZHNFbnRyeRotCgtGaWVs",
-            "ZHNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBYgZwcm90",
-            "bzM="));
+            "RGF0YUxpbmtUeXBlIrIBCgxQYWNrZXRGaWVsZHMSEwoLRnJhbWVOdW1iZXIY",
+            "ASABKAUSFgoORnJhbWVQcm90b2NvbHMYAiABKAkSEQoJVGltZXN0YW1wGAMg",
+            "ASgDEjMKBkZpZWxkcxgKIAMoCzIjLm5keC5tb2RlbC5QYWNrZXRGaWVsZHMu",
+            "RmllbGRzRW50cnkaLQoLRmllbGRzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZh",
+            "bHVlGAIgASgJOgI4AWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Model.ConstantsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -58,7 +58,7 @@ namespace Ndx.Model {
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.ApplicationPacketUnit), global::Ndx.Model.ApplicationPacketUnit.Parser, new[]{ "Bytes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.MetaFrame), global::Ndx.Model.MetaFrame.Parser, new[]{ "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "Datalink", "Network", "Transport", "Application" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PacketBlock), global::Ndx.Model.PacketBlock.Parser, new[]{ "BlockId", "FileId", "LinkType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PacketFields), global::Ndx.Model.PacketFields.Parser, new[]{ "FrameNumber", "FrameProtocols", "Fields" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PacketFields), global::Ndx.Model.PacketFields.Parser, new[]{ "FrameNumber", "FrameProtocols", "Timestamp", "Fields" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -1606,6 +1606,7 @@ namespace Ndx.Model {
     public PacketFields(PacketFields other) : this() {
       frameNumber_ = other.frameNumber_;
       frameProtocols_ = other.frameProtocols_;
+      timestamp_ = other.timestamp_;
       fields_ = other.fields_.Clone();
     }
 
@@ -1636,6 +1637,17 @@ namespace Ndx.Model {
       }
     }
 
+    /// <summary>Field number for the "Timestamp" field.</summary>
+    public const int TimestampFieldNumber = 3;
+    private long timestamp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long Timestamp {
+      get { return timestamp_; }
+      set {
+        timestamp_ = value;
+      }
+    }
+
     /// <summary>Field number for the "Fields" field.</summary>
     public const int FieldsFieldNumber = 10;
     private static readonly pbc::MapField<string, string>.Codec _map_fields_codec
@@ -1661,6 +1673,7 @@ namespace Ndx.Model {
       }
       if (FrameNumber != other.FrameNumber) return false;
       if (FrameProtocols != other.FrameProtocols) return false;
+      if (Timestamp != other.Timestamp) return false;
       if (!Fields.Equals(other.Fields)) return false;
       return true;
     }
@@ -1670,6 +1683,7 @@ namespace Ndx.Model {
       int hash = 1;
       if (FrameNumber != 0) hash ^= FrameNumber.GetHashCode();
       if (FrameProtocols.Length != 0) hash ^= FrameProtocols.GetHashCode();
+      if (Timestamp != 0L) hash ^= Timestamp.GetHashCode();
       hash ^= Fields.GetHashCode();
       return hash;
     }
@@ -1689,6 +1703,10 @@ namespace Ndx.Model {
         output.WriteRawTag(18);
         output.WriteString(FrameProtocols);
       }
+      if (Timestamp != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(Timestamp);
+      }
       fields_.WriteTo(output, _map_fields_codec);
     }
 
@@ -1700,6 +1718,9 @@ namespace Ndx.Model {
       }
       if (FrameProtocols.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(FrameProtocols);
+      }
+      if (Timestamp != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Timestamp);
       }
       size += fields_.CalculateSize(_map_fields_codec);
       return size;
@@ -1715,6 +1736,9 @@ namespace Ndx.Model {
       }
       if (other.FrameProtocols.Length != 0) {
         FrameProtocols = other.FrameProtocols;
+      }
+      if (other.Timestamp != 0L) {
+        Timestamp = other.Timestamp;
       }
       fields_.Add(other.fields_);
     }
@@ -1733,6 +1757,10 @@ namespace Ndx.Model {
           }
           case 18: {
             FrameProtocols = input.ReadString();
+            break;
+          }
+          case 24: {
+            Timestamp = input.ReadInt64();
             break;
           }
           case 82: {

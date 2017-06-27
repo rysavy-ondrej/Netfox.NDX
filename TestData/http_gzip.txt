@@ -1,10 +1,10 @@
-1 eth:ethertype:ip:tcp:
+1 [1099023660402] eth:ethertype:ip:tcp:
 
-2 eth:ethertype:ip:tcp:
+2 [1099023660402] eth:ethertype:ip:tcp:
 
-3 eth:ethertype:ip:tcp:
+3 [1099023660402] eth:ethertype:ip:tcp:
 
-4 eth:ethertype:ip:tcp:http:
+4 [1099023660402] eth:ethertype:ip:tcp:http:
   http_request_method=GET
   http_request_uri=/test/ethereal.html
   http_request_version=HTTP/1.1
@@ -17,9 +17,9 @@
   http_request_full_uri=http://cerberus/test/ethereal.html
   http_request_number=1
 
-5 eth:ethertype:ip:tcp:
+5 [1099023660402] eth:ethertype:ip:tcp:
 
-6 eth:ethertype:ip:tcp:http:data-text-lines:
+6 [1099023660423] eth:ethertype:ip:tcp:http:data-text-lines:
   http_request_version=HTTP/1.1
   http_connection=close
   http_response_code=200
@@ -31,11 +31,11 @@
   http_date=Fri, 29 Oct 2004 05:21:00 GMT
   http_response_number=1
 
-7 eth:ethertype:ip:tcp:
+7 [1099023660424] eth:ethertype:ip:tcp:
 
-8 eth:ethertype:ip:tcp:
+8 [1099023660424] eth:ethertype:ip:tcp:
 
-9 eth:ethertype:ip:tcp:
+9 [1099023660425] eth:ethertype:ip:tcp:
 
-10 eth:ethertype:ip:tcp:
+10 [1099023660425] eth:ethertype:ip:tcp:
 
