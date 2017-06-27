@@ -29,6 +29,17 @@ namespace Ndx.Test
             {
                 PipeName = $"tshark{id}"
             };
+
+            var outputCount = 0;
+            // results can be read when tshark finishes:s
+            void Tshark_PacketDecoded(object sender, PacketFields e)
+            {
+                Console.WriteLine($"{e.FrameNumber} {e.FrameProtocols}");
+                outputCount++;
+            }
+
+            tshark.PacketDecoded += Tshark_PacketDecoded;
+
             tshark.Fields.Add("http.request.method");
             tshark.Fields.Add("http.request.uri");
             tshark.Fields.Add("http.request.version");
@@ -58,15 +69,10 @@ namespace Ndx.Test
             // then close, the control is returned when tshark finishes
             tshark.Close();
 
-            var outputCount = 0;
-            // results can be read when tshark finishes:s
-            foreach (var r in tshark.Result)
-            {
-                Console.WriteLine($"{r.FrameNumber} {r.FrameProtocols}");
-                outputCount++;
-            }
             Assert.AreEqual(frameCount, outputCount);
         }
-        
+
+
+
     }
 }
