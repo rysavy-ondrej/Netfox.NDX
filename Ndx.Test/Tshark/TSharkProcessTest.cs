@@ -11,6 +11,7 @@ using System;
 using System.Threading.Tasks;
 using System.Net.Mime;
 using System.Linq;
+using Google.Protobuf;
 
 namespace Ndx.Test
 {
@@ -41,9 +42,11 @@ namespace Ndx.Test
             };
 
             var outdir = Path.ChangeExtension(path, "out");
-            var outfilename = Path.ChangeExtension(path, "txt");
-            if(!Directory.Exists(outdir)) Directory.CreateDirectory(outdir);
-            var outputfile = File.CreateText(Path.Combine(outfilename));
+            var outTxtFilename = Path.ChangeExtension(path, "txt");
+            var outPbfFilename = Path.ChangeExtension(path, "pbf");
+            if (!Directory.Exists(outdir)) Directory.CreateDirectory(outdir);
+            var outputfile = File.CreateText(Path.Combine(outTxtFilename));
+            var outputPbfStream = new CodedOutputStream(File.Create(outPbfFilename));
             var outputCount = 0;
             void Tshark_PacketDecoded(object sender, PacketFields e)
             {
@@ -52,6 +55,8 @@ namespace Ndx.Test
                 {
                         outputfile.WriteLine($"  {f.Key}={f.Value}");
                 }
+
+                e.WriteTo(outputPbfStream);
                 outputCount++;
                 outputfile.WriteLine();
             }
@@ -100,6 +105,7 @@ namespace Ndx.Test
             // then close, the control is returned when tshark finishes
             tshark.Close();
             outputfile.Flush();
+            outputPbfStream.Flush();
             Assert.AreEqual(frameCount, outputCount);
         }
     }
