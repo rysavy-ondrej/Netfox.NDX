@@ -1,47 +1,0 @@
-eth:ethertype:ip:tcpï¦šíÇeth:ethertype:ip:tcpş­šíÇeth:ethertype:ip:tcpş­šíÇeth:ethertype:ip:tcp:httpş­šíÇR
-http_request_methodGETR"
-http_request_uri/download.htmlR 
-http_request_versionHTTP/1.1R
-	http_hostwww.ethereal.comRY
-http_user_agentFMozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.6) Gecko/20040113R
-http_accept~text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1R&
-http_accept_languageen-us,en;q=0.5R$
-http_accept_encodinggzip,deflateR
-http_connection
-keep-aliveR8
-http_referer(http://www.ethereal.com/development.htmlR>
-http_request_full_uri%http://www.ethereal.com/download.htmlR
-http_request_number1eth:ethertype:ip:tcp¯²šíÇeth:ethertype:ip:tcp:http´šíÇeth:ethertype:ip:tcpƒµšíÇeth:ethertype:ip:tcpƒµšíÇ	eth:ethertype:ip:tcpÌ¶šíÇ
-eth:ethertype:ip:tcpú¹šíÇeth:ethertype:ip:tcpèºšíÇeth:ethertype:ip:tcpèºšíÇeth:ethertype:ip:udp:dnsèºšíÇeth:ethertype:ip:tcp¹»šíÇeth:ethertype:ip:tcpí¼šíÇeth:ethertype:ip:tcp½½šíÇeth:ethertype:ip:udp:dnsÑ½šíÇeth:ethertype:ip:tcp:http—¾šíÇR
-http_request_methodGETR‹
-http_request_uriö/pagead/ads?client=ca-pub-2309191948673629&random=1084443430285&lmt=1082467020&format=468x60_as&output=html&url=http%3A%2F%2Fwww.ethereal.com%2Fdownload.html&color_bg=FFFFFF&color_text=333333&color_link=000000&color_url=666633&color_border=666633R 
-http_request_versionHTTP/1.1R*
-	http_hostpagead2.googlesyndication.comRY
-http_user_agentFMozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.6) Gecko/20040113R
-http_accept~text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1R&
-http_accept_languageen-us,en;q=0.5R$
-http_accept_encodinggzip,deflateR
-http_connection
-keep-aliveR5
-http_referer%http://www.ethereal.com/download.htmlR´
-http_request_full_urišhttp://pagead2.googlesyndication.com/pagead/ads?client=ca-pub-2309191948673629&random=1084443430285&lmt=1082467020&format=468x60_as&output=html&url=http%3A%2F%2Fwww.ethereal.com%2Fdownload.html&color_bg=FFFFFF&color_text=333333&color_link=000000&color_url=666633&color_border=666633R
-http_request_number1eth:ethertype:ip:tcpµ¾šíÇeth:ethertype:ip:tcpÁšíÇeth:ethertype:ip:tcp–ÂšíÇeth:ethertype:ip:tcp–ÂšíÇeth:ethertype:ip:tcp¢ÃšíÇeth:ethertype:ip:tcp¬ÃšíÇeth:ethertype:ip:tcpÖÄšíÇeth:ethertype:ip:tcp:httpºÅšíÇ)eth:ethertype:ip:tcp:http:data-text-linesâÅšíÇR 
-http_request_versionHTTP/1.1R
-http_response_code200R
-http_response_code_descOKR2
-http_content_typetext/html; charset=ISO-8859-1R
-http_content_encodinggzipR
-http_serverCAFE/1.0R
-http_content_length1272R*
-	http_dateThu, 13 May 2004 10:17:14 GMTR
-http_response_number1eth:ethertype:ip:tcpâÅšíÇeth:ethertype:ip:tcpùÆšíÇeth:ethertype:ip:tcpçÇšíÇeth:ethertype:ip:tcpñÇšíÇ eth:ethertype:ip:tcpóÈšíÇ!eth:ethertype:ip:tcpóÈšíÇ"eth:ethertype:ip:tcpÿÉšíÇ#eth:ethertype:ip:tcpÿÉšíÇ$eth:ethertype:ip:tcp˜ÌšíÇ%eth:ethertype:ip:tcp˜ÌšíÇ&-eth:ethertype:ip:tcp:http:data-text-lines:xmlŞÌšíÇR 
-http_request_versionHTTP/1.1R
-http_connection
-Keep-AliveR
-http_response_code200R
-http_response_code_descOKR2
-http_content_typetext/html; charset=ISO-8859-1R
-http_serverApacheR
-http_content_length18070R*
-	http_dateThu, 13 May 2004 10:17:12 GMTR
-http_response_number1'eth:ethertype:ip:tcpˆÎšíÇ(eth:ethertype:ip:tcpà²›íÇ)eth:ethertype:ip:tcpà²›íÇ*eth:ethertype:ip:tcpŞ‘œíÇ+eth:ethertype:ip:tcp¨”œíÇ

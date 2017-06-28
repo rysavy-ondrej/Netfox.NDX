@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TSharkBlock.cs" />
     <Compile Include="TSharkProcess.cs" />
     <Compile Include="WiresharkSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

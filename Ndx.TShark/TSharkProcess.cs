@@ -20,29 +20,54 @@ namespace Ndx.TShark
             public const string Protocols = "frame.protocols";
         }
     }
-
+    /// <summary>
+    /// Represents a wrapper around TSHARK tool. 
+    /// </summary>
     public class TSharkProcess
     {
         
-        bool m_exportObjects;
-        string m_exportedObjectsPath;
-        MemoryStream m_jsonStream;
-        TextWriter m_writer;
-        string m_pipeName = "tshark";
-        string m_cmdline;
+        private bool m_exportObjects;
+        private string m_exportedObjectsPath;
+        private string m_pipeName = "tshark";
+        private string m_cmdline;
+        private string m_tsharkPath = @"C:\Program Files\Wireshark\tshark.exe";
+        private List<string> m_fields;
+        private Process m_tsharkProcess;
+        /// <summary>
+        /// Creates a new TSHARK process runner.
+        /// </summary>
         public TSharkProcess()
         {
             m_fields = new List<string>();
-            m_jsonStream = new MemoryStream();
-            m_writer = new StreamWriter(m_jsonStream, Encoding.UTF8, 1024, true);
         }
 
-        List<string> m_fields;
-        private Process m_tsharkProcess;
+        public TSharkProcess(string pipeName): this()
+        {
+            m_pipeName = pipeName;
+        }
 
+        /// <summary>
+        /// Gets a collection of fields that is to be exported by TSHARK.
+        /// </summary>
         public IList<string> Fields { get => m_fields; }
-        public string PipeName { get => m_pipeName; set => m_pipeName = value; }
 
+        /// <summary>
+        /// Gets or sets the name of pipe from which TSHARK will read frames.
+        /// </summary>
+        public string PipeName
+        {
+            get => m_pipeName;
+            set
+            {
+                if (this.IsRunning) throw new InvalidOperationException("Cannot set PipeName when the process is running.");
+                m_pipeName = value;
+            }
+        }
+
+        /// <summary>
+        /// Executes TSHARK process. 
+        /// </summary>
+        /// <returns>true; if no errors occured or false on errors.</returns>
         public bool Start()
         {
             try
@@ -51,10 +76,10 @@ namespace Ndx.TShark
                 var pipeName = $@"\\.\pipe\{m_pipeName}";
                 var fields = String.Join(" ", m_fields.Select(x => $"-e {x}"));
                 var exportArgs = m_exportObjects ? $"--export-objects \"http,{m_exportedObjectsPath}\"" : "";
-                m_cmdline = $"{process.StartInfo.FileName} {process.StartInfo.Arguments}";
+               
 
-                process.StartInfo.FileName = @"C:\Program Files\Wireshark\tshark.exe";
-                process.StartInfo.Arguments = $"-i {pipeName} -T ek -e {Field.Frame.Number} -e {Field.Frame.Protocols} {fields} {exportArgs}";
+                process.StartInfo.FileName = m_tsharkPath;
+                process.StartInfo.Arguments = $"-s 10000 -i {pipeName} -T ek -e {Field.Frame.Number} -e {Field.Frame.Protocols} {fields} {exportArgs}";
 
                 process.OutputDataReceived += Process_OutputDataReceived;
                 process.ErrorDataReceived += Process_ErrorDataReceived;
@@ -63,9 +88,12 @@ namespace Ndx.TShark
                 process.StartInfo.RedirectStandardOutput = true;
                 process.StartInfo.RedirectStandardError = true;
                 process.StartInfo.UseShellExecute = false;
+
+                m_cmdline = $"{process.StartInfo.FileName} {process.StartInfo.Arguments}";
                 
                 process.Start();
                 process.BeginOutputReadLine();
+                process.BeginErrorReadLine();
                 m_tsharkProcess = process;
                 return true;
             }
@@ -84,32 +112,54 @@ namespace Ndx.TShark
             {
                 if (e.Data.StartsWith("{\"timestamp\""))
                 {
-                    m_writer.Flush();
                     var result = GetResult(e.Data);
                     OnPacketDecoded(result);
-                    m_jsonStream.Position = 0;
                 }
             }
         }
 
+        string m_errorOutput;
         private void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
-            Console.Error.WriteLine(e.Data);
+            m_errorOutput += e.Data + Environment.NewLine;
         }
 
         private void Process_Exited(object sender, EventArgs e)
         {
-            Console.Error.WriteLine("{}");
+            Console.Error.WriteLine($"{m_cmdline} exited!");
         }
 
-        public Task Completion => Task.Run(() => m_tsharkProcess.WaitForExit());
+        /// <summary>
+        /// Gets the <see cref="Task"/> that finishes when the process completes.
+        /// Use <see cref="Task.WaitAll(Task[])"/> for waiting to completion.
+        /// Note that this must be called after <see cref="TSharkProcess.Start"/> method otherwise it returns finished task.
+        /// </summary>
+        public Task Completion => Task.Run(() => m_tsharkProcess?.WaitForExit());
 
         public bool IsRunning => !(m_tsharkProcess?.HasExited ?? true);
 
+        /// <summary>
+        /// Sets or gets the flag that determines whether to export objects.
+        /// </summary>
         public bool ExportObjects { get => m_exportObjects; set => m_exportObjects = value; }
-        public string ExportedObjectsPath { get => m_exportedObjectsPath; set => m_exportedObjectsPath = value; }
-        public string Cmdline { get => m_cmdline; set => m_cmdline = value; }
 
+        /// <summary>
+        /// Gets or sets the path where to export objects.
+        /// </summary>
+        public string ExportedObjectsPath { get => m_exportedObjectsPath; set => m_exportedObjectsPath = value; }
+
+        /// <summary>
+        /// Gets the command line that representing the currently running TSHark process.
+        /// </summary>
+        public string Cmdline { get => m_cmdline; }
+        public string TsharkExefile { get => m_tsharkPath; set => m_tsharkPath = value; }
+        public string ErrorOutput { get => m_errorOutput; }
+
+        /// <summary>
+        /// Releases resources associated with the process when the process finishes. 
+        /// Calling this method when process is still running causes blocking the caller 
+        /// until the process finishes.
+        /// </summary>
         public void Close()
         {
             if (m_tsharkProcess != null)
@@ -117,34 +167,41 @@ namespace Ndx.TShark
                 m_tsharkProcess.WaitForExit();
                 m_tsharkProcess.Close();
             }
-            if (m_writer != null)
-            {
-                m_writer.Close();
-            }
         }
-
+        /// <summary>
+        /// Immediately stops the associated TSHARK process.
+        /// </summary>
         public void Kill()
         {
-            m_tsharkProcess.Kill();
+            if (m_tsharkProcess != null)
+            {
+                m_tsharkProcess.Kill();
+                m_tsharkProcess.WaitForExit();
+            }
         }
-
 
         /// <summary>
         /// This event is called when the packet was decoded.
         /// </summary>
         public event EventHandler<PacketFields> PacketDecoded;
-
         private void OnPacketDecoded(PacketFields packetFields)
         {
             PacketDecoded?.Invoke(this, packetFields);
         }
 
+        /// <summary>
+        /// Gets the <see cref="PacketFields"/> object for the result line generated by the TSHARK process.
+        /// </summary>
+        /// <param name="line">Result line generated by the associated TSHARK process.</param>
+        /// <returns><see cref="PacketFields"/> object for the result line generated by the TSHARK process.</returns>
         PacketFields GetResult(string line)
         {
             var jsonObject = JToken.Parse(line);
             var fields = jsonObject["layers"].ToDictionary(y => ((JProperty)y).Name, y => ((JProperty)y).Value);
-            var result = new PacketFields();
-            result.Timestamp = (long)jsonObject["timestamp"];
+            var result = new PacketFields()
+            {
+                Timestamp = (long)jsonObject["timestamp"]
+            };
             foreach (var field in fields)
             {
                 switch(field.Key)

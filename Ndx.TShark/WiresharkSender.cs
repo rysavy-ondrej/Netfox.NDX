@@ -130,12 +130,14 @@ namespace Ndx.TShark
     ///</remarks>
     public class WiresharkSender : IDisposable
     {
-        NamedPipeServerStream WiresharkPipe;
+        private NamedPipeServerStream m_wiresharkPipe;
 
-        bool m_isConnected = false;
-        Task m_connectionCompleted;
-        string m_pipeName;
-        DataLinkType m_linkType;
+        private bool m_isConnected = false;
+        private Task m_connectionCompleted;
+        private string m_pipeName;
+        private DataLinkType m_linkType;
+
+
         public WiresharkSender(string pipeName, Ndx.Model.DataLinkType linkType)
         {
             this.m_pipeName = pipeName;
@@ -144,29 +146,33 @@ namespace Ndx.TShark
             m_connectionCompleted = Task.Factory.StartNew(PipeCreate);
         }
 
+        /// <summary>
+        /// <see cref="Task"/> that completes when the pipe is connected.
+        /// </summary>
         public Task Connected => m_connectionCompleted;
 
         private void PipeCreate()
         {
-
             try
             {
-                WiresharkPipe = new NamedPipeServerStream(m_pipeName, PipeDirection.Out, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous);
-                // Wait
-                WiresharkPipe.WaitForConnection();
+                m_wiresharkPipe = new NamedPipeServerStream(m_pipeName, PipeDirection.Out, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous);
+                m_wiresharkPipe.WaitForConnection();
 
                 // Wireshark Global Header
-                pcap_hdr_g p = new pcap_hdr_g(65535, (uint)m_linkType);
-                var bh = p.ToByteArray();
-                WiresharkPipe.Write(bh, 0, bh.Length);
-
+                pcap_hdr_g p = new pcap_hdr_g(UInt16.MaxValue, (uint)m_linkType);
+                var bytes = p.ToByteArray();
+                m_wiresharkPipe.Write(bytes, 0, bytes.Length);
                 m_isConnected = true;
-
             }
-            catch { }
-
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e);
+            }
         }
 
+        /// <summary>
+        /// Gets the information if there is connected listener to the sender's pipe.
+        /// </summary>
         public bool IsConnected { get => m_isConnected; }
 
         private UInt32 DateTimeToUnixTimestamp(DateTime dateTime)
@@ -174,9 +180,21 @@ namespace Ndx.TShark
             return (UInt32)(dateTime - new DateTime(1970, 1, 1).ToLocalTime()).TotalSeconds;
         }
 
+        /// <summary>
+        /// Sends the frame via the pipe to the connected listener.
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="offset"></param>
+        /// <param name="lenght"></param>
+        /// <returns></returns>
         public bool Send(byte[] buffer, int offset, int lenght)
         {
             return Send(buffer, offset, lenght, DateTime.Now);
+        }
+
+        public async Task<bool> SendAsync(byte[] buffer, int offset, int lenght)
+        {
+            return await SendAsync(buffer, offset, lenght, DateTime.Now);
         }
 
         public bool Send(byte[] buffer, int offset, int lenght, DateTime date)
@@ -192,38 +210,27 @@ namespace Ndx.TShark
             return Send(buffer, offset, lenght, date_sec, date_usec);
         }
 
+        public async Task<bool> SendAsync(byte[] buffer, int offset, int lenght, DateTime date)
+        {
+            UInt32 date_sec, date_usec;
+
+            // Suppress all values for ms, us and ns
+            var d2 = new DateTime((date.Ticks / (long)10000000) * (long)10000000);
+
+            date_sec = DateTimeToUnixTimestamp(date);
+            date_usec = (UInt32)((date.Ticks - d2.Ticks) / 10);
+
+            return await SendAsync(buffer, offset, lenght, date_sec, date_usec);
+        }
+
+        public async Task<bool> SendAsync(RawFrame frame)
+        {
+            return await SendAsync(frame.Bytes, 0, frame.FrameLength, frame.DateTime);
+        }
+
         public bool Send(RawFrame frame)
         {
             return Send(frame.Bytes, 0, frame.FrameLength, frame.DateTime);
-        }
-
-        public bool SendRaw(byte[] buffer, int offset, int lenght)
-        {
-            try
-            {
-                WiresharkPipe.Write(buffer, offset, lenght);
-            }
-            catch (IOException)
-            {
-                // broken pipe, try to restart
-                m_isConnected = false;
-                WiresharkPipe.Close();
-                WiresharkPipe.Dispose();
-                var th = new Thread(PipeCreate)
-                {
-                    IsBackground = true
-                };
-                th.Start();
-                return false;
-            }
-            catch (Exception)
-            {
-                // Unknow error, not due to the pipe
-                // No need to restart it
-                return false;
-            }
-
-            return true;
         }
 
         public bool Send(byte[] buffer, int offset, int lenght, UInt32 date_sec, UInt32 date_usec)
@@ -239,21 +246,52 @@ namespace Ndx.TShark
             try
             {
                 // Wireshark Header
-                WiresharkPipe.Write(b, 0, b.Length);
-                // Bacnet packet
-                WiresharkPipe.Write(buffer, offset, lenght);
+                m_wiresharkPipe.Write(b, 0, b.Length);
+                // Packet content
+                m_wiresharkPipe.Write(buffer, offset, lenght);
             }
             catch (IOException)
             {
                 // broken pipe, try to restart
                 m_isConnected = false;
-                WiresharkPipe.Close();
-                WiresharkPipe.Dispose();
-                var th = new Thread(PipeCreate)
-                {
-                    IsBackground = true
-                };
-                th.Start();
+                m_wiresharkPipe.Close();
+                m_wiresharkPipe.Dispose();
+                m_connectionCompleted = Task.Factory.StartNew(PipeCreate);
+                return false;
+            }
+            catch (Exception)
+            {
+                // Unknow error, not due to the pipe
+                // No need to restart it
+                return false;
+            }
+            return true;
+        }
+
+        public async Task<bool> SendAsync(byte[] buffer, int offset, int lenght, UInt32 date_sec, UInt32 date_usec)
+        {
+            if (m_isConnected == false) return false;
+
+            if (buffer == null) return false;
+            if (buffer.Length < (offset + lenght)) return false;
+
+            pcap_hdr_p pHdr = new pcap_hdr_p((UInt32)lenght, date_sec, date_usec);
+            byte[] b = pHdr.ToByteArray();
+
+            try
+            {
+                // Wireshark Header
+                await m_wiresharkPipe.WriteAsync(b, 0, b.Length);
+                // Packet content
+                await m_wiresharkPipe.WriteAsync(buffer, offset, lenght);
+            }
+            catch (IOException)
+            {
+                // broken pipe, try to restart
+                m_isConnected = false;
+                m_wiresharkPipe.Close();
+                m_wiresharkPipe.Dispose();
+                m_connectionCompleted = Task.Factory.StartNew(PipeCreate);
                 return false;
             }
             catch (Exception)
@@ -267,12 +305,12 @@ namespace Ndx.TShark
 
         public void Dispose()
         {
-            WiresharkPipe.Dispose();
+            m_wiresharkPipe.Dispose();
         }
 
         public void Close()
         {
-            WiresharkPipe.Close();
+            m_wiresharkPipe.Close();
         }
     }
 }
