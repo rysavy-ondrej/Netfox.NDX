@@ -1,24 +1,0 @@
-eth:ethertype:ip:tcpòê¨—þeth:ethertype:ip:tcpòê¨—þeth:ethertype:ip:tcpòê¨—þeth:ethertype:ip:tcp:httpòê¨—þR
-http_request_methodGETR'
-http_request_uri/test/ethereal.htmlR 
-http_request_versionHTTP/1.1R
-	http_hostcerberusRZ
-http_user_agentGMozilla/5.0 (X11; U; Linux ppc; rv:1.7.3) Gecko/20041004 Firefox/0.10.1Rr
-http_acceptctext/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5R&
-http_accept_languageen-us,en;q=0.5R$
-http_accept_encodinggzip,deflateR
-http_connection
-keep-aliveR;
-http_request_full_uri"http://cerberus/test/ethereal.htmlR
-http_request_number1eth:ethertype:ip:tcpòê¨—þ)eth:ethertype:ip:tcp:http:data-text-lines‡ë¨—þR 
-http_request_versionHTTP/1.1R
-http_connectioncloseR
-http_response_code200R
-http_response_code_descOKR-
-http_content_typetext/html; charset=UTF-8R
-http_content_encodinggzipR%
-http_serverApache/2.0.50 (Fedora)R
-http_content_length92R*
-	http_dateFri, 29 Oct 2004 05:21:00 GMTR
-http_response_number1eth:ethertype:ip:tcpˆë¨—þeth:ethertype:ip:tcpˆë¨—þ	eth:ethertype:ip:tcp‰ë¨—þ
-eth:ethertype:ip:tcp‰ë¨—þ
