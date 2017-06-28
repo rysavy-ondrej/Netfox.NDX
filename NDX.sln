@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Shell.Console", "Ndx.Shell.Console\Ndx.Shell.Console.csproj", "{75454215-419C-4EC6-9776-06575F374D22}"
 EndProject
@@ -40,6 +40,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Captures", "Ndx.Captures\Ndx.Captures.csproj", "{F7893DF7-5638-43BC-91E5-E612E4D0AD53}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.TShark", "Ndx.TShark\Ndx.TShark.csproj", "{95F5F22B-8E43-4342-B3B3-86EE57A803A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestData", "TestData", "{76D3A5B1-53A8-4105-9671-82FAAE2A7F05}"
+	ProjectSection(SolutionItems) = preProject
+		TestData\http.cap = TestData\http.cap
+		TestData\http_chunked_gzip.cap = TestData\http_chunked_gzip.cap
+		TestData\http_gzip.cap = TestData\http_gzip.cap
+		TestData\http_with_jpegs.cap = TestData\http_with_jpegs.cap
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
