@@ -24,10 +24,24 @@ namespace Ndx.Test
         public void ProcessHttpCaptureByTShark()
         {
             ProcessCapture(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap"));
-            ProcessCapture(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http_gzip.cap"));
-            ProcessCapture(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http_with_jpegs.cap"));
-            //ProcessCapture(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http_chunked_gzip.pcap"));
         }
+        [Test]
+        public void ProcessHttpGzipCaptureByTShark()
+        {
+            ProcessCapture(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http_gzip.cap"));
+        }
+
+        [Test]
+        public void ProcessHttpWithJpegsCaptureByTShark()
+        {
+            ProcessCapture(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http_with_jpegs.cap"));
+        }
+        [Test]
+        public void ProcessHttpChunkedGzipCaptureByTShark()
+        {
+            ProcessCapture(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http_chunked_gzip.cap"));
+        }
+
 
 
         void ProcessCapture(string path)
@@ -97,6 +111,7 @@ namespace Ndx.Test
             var frames = Ndx.Captures.PcapReader.ReadFile(path);
             foreach (var frame in frames)
             {
+                File.WriteAllBytes(Path.Combine(outdir, $"{frameCount}.packet"),frame.Bytes);
                 var res = wsender.Send(frame);
                 frameCount++;
             }

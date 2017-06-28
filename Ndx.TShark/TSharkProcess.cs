@@ -28,14 +28,14 @@ namespace Ndx.TShark
         string m_exportedObjectsPath;
         MemoryStream m_jsonStream;
         TextWriter m_writer;
+        string m_pipeName = "tshark";
+        string m_cmdline;
         public TSharkProcess()
         {
             m_fields = new List<string>();
             m_jsonStream = new MemoryStream();
             m_writer = new StreamWriter(m_jsonStream, Encoding.UTF8, 1024, true);
         }
-
-        string m_pipeName = "tshark";
 
         List<string> m_fields;
         private Process m_tsharkProcess;
@@ -48,15 +48,22 @@ namespace Ndx.TShark
             try
             {
                 var process = new Process();
-                process.StartInfo.FileName = @"C:\Program Files\Wireshark\tshark.exe";
                 var pipeName = $@"\\.\pipe\{m_pipeName}";
                 var fields = String.Join(" ", m_fields.Select(x => $"-e {x}"));
                 var exportArgs = m_exportObjects ? $"--export-objects \"http,{m_exportedObjectsPath}\"" : "";
+                m_cmdline = $"{process.StartInfo.FileName} {process.StartInfo.Arguments}";
+
+                process.StartInfo.FileName = @"C:\Program Files\Wireshark\tshark.exe";
                 process.StartInfo.Arguments = $"-i {pipeName} -T ek -e {Field.Frame.Number} -e {Field.Frame.Protocols} {fields} {exportArgs}";
-                process.OutputDataReceived += new DataReceivedEventHandler(OnOutputDataReceived);
+
+                process.OutputDataReceived += Process_OutputDataReceived;
+                process.ErrorDataReceived += Process_ErrorDataReceived;
+                process.Exited += Process_Exited;
+
                 process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.RedirectStandardError = true;
                 process.StartInfo.UseShellExecute = false;
-                var cmdline = $"{process.StartInfo.FileName} {process.StartInfo.Arguments}";
+                
                 process.Start();
                 process.BeginOutputReadLine();
                 m_tsharkProcess = process;
@@ -68,10 +75,40 @@ namespace Ndx.TShark
             }
         }
 
+        private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            // -T ek is newline delimited JSON format.
+            // {"index" : {"_index": "packets-2017-06-27", "_type": "pcap_file", "_score": null}}
+            // { "timestamp" : "1452112930292", "layers" : { "frame_number": ["28"],"frame_protocols": ["eth:ethertype:ip:tcp"]
+            if (e.Data != null)
+            {
+                if (e.Data.StartsWith("{\"timestamp\""))
+                {
+                    m_writer.Flush();
+                    var result = GetResult(e.Data);
+                    OnPacketDecoded(result);
+                    m_jsonStream.Position = 0;
+                }
+            }
+        }
+
+        private void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            Console.Error.WriteLine(e.Data);
+        }
+
+        private void Process_Exited(object sender, EventArgs e)
+        {
+            Console.Error.WriteLine("{}");
+        }
+
+        public Task Completion => Task.Run(() => m_tsharkProcess.WaitForExit());
+
         public bool IsRunning => !(m_tsharkProcess?.HasExited ?? true);
 
         public bool ExportObjects { get => m_exportObjects; set => m_exportObjects = value; }
         public string ExportedObjectsPath { get => m_exportedObjectsPath; set => m_exportedObjectsPath = value; }
+        public string Cmdline { get => m_cmdline; set => m_cmdline = value; }
 
         public void Close()
         {
@@ -100,23 +137,6 @@ namespace Ndx.TShark
         private void OnPacketDecoded(PacketFields packetFields)
         {
             PacketDecoded?.Invoke(this, packetFields);
-        }
-
-        private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            // -T ek is newline delimited JSON format.
-            // {"index" : {"_index": "packets-2017-06-27", "_type": "pcap_file", "_score": null}}
-            // { "timestamp" : "1452112930292", "layers" : { "frame_number": ["28"],"frame_protocols": ["eth:ethertype:ip:tcp"]
-            if (e.Data != null)
-            {
-                if (e.Data.StartsWith("{\"timestamp\""))
-                {
-                    m_writer.Flush();
-                    var result = GetResult(e.Data);
-                    OnPacketDecoded(result);
-                    m_jsonStream.Position = 0;
-                }
-            }
         }
 
         PacketFields GetResult(string line)
