@@ -50,7 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TSharkBlock.cs" />
+    <Compile Include="TSharkFieldDecoder.cs" />
     <Compile Include="TSharkProcess.cs" />
+    <Compile Include="TSharkProtocolDecoder.cs" />
     <Compile Include="WiresharkSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

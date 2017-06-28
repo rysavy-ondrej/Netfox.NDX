@@ -1,0 +1,323 @@
+eth:ethertype:ip:tcp¯Áô•… eth:ethertype:ip:tcp¯Áô•… eth:ethertype:ip:tcp¯Áô•… eth:ethertype:ip:tcp:http¼Áô•… R
+http_request_methodGETR
+http_request_uri/R 
+http_request_versionHTTP/1.1R
+	http_host10.1.1.1RV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R
+http_connection
+Keep-AliveR)
+http_request_full_urihttp://10.1.1.1/R
+http_request_number1eth:ethertype:ip:tcp½Áô•… )eth:ethertype:ip:tcp:http:data-text-linesÏÁô•… R 
+http_request_versionHTTP/1.1R
+http_connectioncloseR
+http_response_code200R
+http_response_code_descOKR2
+http_content_typetext/html; charset=ISO-8859-1R,
+http_serverApache/2.0.40 (Red Hat Linux)R
+http_content_length160R*
+	http_dateSat, 20 Nov 2004 10:21:06 GMTR
+http_response_number1eth:ethertype:ip:tcpÏÁô•… eth:ethertype:ip:tcpÏÁô•… 	eth:ethertype:ip:tcp©Âô•… 
+eth:ethertype:ip:tcp·Âô•… eth:ethertype:ip:tcp¸Âô•… eth:ethertype:ip:tcp›Äô•… eth:ethertype:ip:tcp›Äô•… eth:ethertype:ip:tcp:httpœÄô•… eth:ethertype:ip:tcp¹Æô•… eth:ethertype:ip:tcp:http:media¹Æô•… R
+http_request_methodPOSTR)
+http_request_uri/scripts/cms/xcms.aspR 
+http_request_versionHTTP/1.1R
+	http_hostins1.opera.comRV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R
+http_connection
+Keep-AliveRC
+http_request_full_uri*http://ins1.opera.com/scripts/cms/xcms.aspR
+http_request_number1R)
+http_content_typeapplication/vnd.xacpR
+http_content_length433eth:ethertype:ip:tcpËÈô•… eth:ethertype:ip:dataéÈô•… eth:ethertype:ip:tcp:http:dataéÈô•… eth:ethertype:ip:tcpéÈô•… eth:ethertype:ip:tcpÉô•… eth:ethertype:ip:tcpÉô•… eth:ethertype:ip:tcpŞÊô•… eth:ethertype:ip:tcpŞÊô•… eth:ethertype:ip:tcpßÊô•… eth:ethertype:ip:tcpùÊô•… eth:ethertype:ip:tcpËô•… eth:ethertype:ip:tcpªËô•… eth:ethertype:ip:tcp«Ëô•… eth:ethertype:ip:tcp«Ëô•… eth:ethertype:ip:tcp:http³Ëô•… R
+http_request_methodGETR(
+http_request_uri/Websidan/index.htmlR 
+http_request_versionHTTP/1.1R
+	http_host10.1.1.1RV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R!
+http_connectionKeep-Alive, TER 
+http_refererhttp://10.1.1.1/R<
+http_request_full_uri#http://10.1.1.1/Websidan/index.htmlR
+http_request_number1 eth:ethertype:ip:tcp´Ëô•… !eth:ethertype:ip:tcp:http·Ëô•… "eth:ethertype:ip:tcp¸Ëô•… #eth:ethertype:ip:tcp¸Ëô•… $eth:ethertype:ip:tcp»Ëô•… %eth:ethertype:ip:tcp»Ëô•… &)eth:ethertype:ip:tcp:http:data-text-lines»Ëô•… R 
+http_request_versionHTTP/1.1R
+http_connectioncloseR
+http_response_code200R
+http_response_code_descOKR2
+http_content_typetext/html; charset=ISO-8859-1R,
+http_serverApache/2.0.40 (Red Hat Linux)R
+http_content_length4323R*
+	http_dateSat, 20 Nov 2004 10:21:07 GMTR
+http_response_number1'eth:ethertype:ip:tcp»Ëô•… (eth:ethertype:ip:tcp’Ìô•… )eth:ethertype:ip:tcp“Ìô•… *eth:ethertype:ip:tcp“Ìô•… +eth:ethertype:ip:tcp”Ìô•… ,eth:ethertype:ip:tcp•Ìô•… -eth:ethertype:ip:tcp•Ìô•… .eth:ethertype:ip:tcp©Ìô•… /eth:ethertype:ip:tcpªÌô•… 0eth:ethertype:ip:tcp:httpªÌô•… R
+http_request_methodGETR,
+http_request_uri/Websidan/images/bg2.jpgR 
+http_request_versionHTTP/1.1R
+	http_host10.1.1.1RV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R!
+http_connectionKeep-Alive, TER3
+http_referer#http://10.1.1.1/Websidan/index.htmlR@
+http_request_full_uri'http://10.1.1.1/Websidan/images/bg2.jpgR
+http_request_number11eth:ethertype:ip:tcp¬Ìô•… 2eth:ethertype:ip:tcp:http¬Ìô•… R
+http_request_methodGETR/
+http_request_uri/Websidan/images/sydney.jpgR 
+http_request_versionHTTP/1.1R
+	http_host10.1.1.1RV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R!
+http_connectionKeep-Alive, TER3
+http_referer#http://10.1.1.1/Websidan/index.htmlRC
+http_request_full_uri*http://10.1.1.1/Websidan/images/sydney.jpgR
+http_request_number13eth:ethertype:ip:tcp­Ìô•… 4eth:ethertype:ip:tcp:http¯Ìô•… 5eth:ethertype:ip:tcp°Ìô•… 6eth:ethertype:ip:tcp°Ìô•… 7eth:ethertype:ip:tcp:http²Ìô•… 8eth:ethertype:ip:tcp³Ìô•… 9eth:ethertype:ip:tcp´Ìô•… :eth:ethertype:ip:tcpµÌô•… ;eth:ethertype:ip:tcp¶Ìô•… <eth:ethertype:ip:tcp¶Ìô•… =$eth:ethertype:ip:tcp:http:image-jfif·Ìô•… R 
+http_request_versionHTTP/1.1R
+http_connectioncloseR
+http_response_code200R
+http_response_code_descOKR
+http_content_type
+image/jpegR,
+http_serverApache/2.0.40 (Red Hat Linux)R
+http_content_length8281R*
+	http_dateSat, 20 Nov 2004 10:21:07 GMTR
+http_response_number1>eth:ethertype:ip:tcp·Ìô•… ?eth:ethertype:ip:tcp¸Ìô•… @eth:ethertype:ip:tcp¹Ìô•… Aeth:ethertype:ip:tcp»Ìô•… Beth:ethertype:ip:tcp»Ìô•… Ceth:ethertype:ip:tcp¼Ìô•… Deth:ethertype:ip:tcp½Ìô•… Eeth:ethertype:ip:tcp½Ìô•… Feth:ethertype:ip:tcp¿Ìô•… Geth:ethertype:ip:tcp¿Ìô•… H$eth:ethertype:ip:tcp:http:image-jfif¿Ìô•… R 
+http_request_versionHTTP/1.1R
+http_connectioncloseR
+http_response_code200R
+http_response_code_descOKR
+http_content_type
+image/jpegR,
+http_serverApache/2.0.40 (Red Hat Linux)R
+http_content_length9045R*
+	http_dateSat, 20 Nov 2004 10:21:07 GMTR
+http_response_number1Ieth:ethertype:ip:tcp¿Ìô•… Jeth:ethertype:ip:tcpÙÌô•… Keth:ethertype:ip:tcpåÌô•… Leth:ethertype:ip:tcpåÌô•… Meth:ethertype:ip:tcpìÌô•… Neth:ethertype:ip:tcpìÌô•… Oeth:ethertype:ip:tcpòÌô•… Peth:ethertype:ip:tcpòÌô•… Qeth:ethertype:ip:tcp:httpŒÍô•… Reth:ethertype:ip:tcp:httpÍô•… R
+http_request_methodGETRU
+http_request_uriA/site=126885/bnum=opera1/bins=1/opid=10030285/ver=711/dst=Win_700R 
+http_request_versionHTTP/1.1R,
+	http_hostopera1-servedby.advertising.comRV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R
+http_connection
+Keep-AliveR€
+http_request_full_urighttp://opera1-servedby.advertising.com/site=126885/bnum=opera1/bins=1/opid=10030285/ver=711/dst=Win_700R
+http_request_number1Seth:ethertype:ip:tcp:httpÍô•… Teth:ethertype:ip:tcp:httpÍô•… R
+http_request_methodGETRU
+http_request_uriA/site=126885/bnum=opera2/bins=1/opid=10030867/ver=711/dst=Win_700R 
+http_request_versionHTTP/1.1R,
+	http_hostopera2-servedby.advertising.comRV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R
+http_connection
+Keep-AliveR€
+http_request_full_urighttp://opera2-servedby.advertising.com/site=126885/bnum=opera2/bins=1/opid=10030867/ver=711/dst=Win_700R
+http_request_number1Ueth:ethertype:ip:tcp:httpÍô•… Veth:ethertype:ip:tcp:httpÍô•… R
+http_request_methodGETRU
+http_request_uriA/site=126885/bnum=opera3/bins=1/opid=10032112/ver=711/dst=Win_700R 
+http_request_versionHTTP/1.1R,
+	http_hostopera3-servedby.advertising.comRV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R
+http_connection
+Keep-AliveR€
+http_request_full_urighttp://opera3-servedby.advertising.com/site=126885/bnum=opera3/bins=1/opid=10032112/ver=711/dst=Win_700R
+http_request_number1Weth:ethertype:ip:tcp”Íô•… Xeth:ethertype:ip:tcp”Íô•… Yeth:ethertype:ip:tcp:http•Íô•… Zeth:ethertype:ip:tcp:http•Íô•… R
+http_request_methodGETRU
+http_request_uriA/site=126885/bnum=opera4/bins=1/opid=10003005/ver=711/dst=Win_700R 
+http_request_versionHTTP/1.1R,
+	http_hostopera4-servedby.advertising.comRV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R
+http_connection
+Keep-AliveR€
+http_request_full_urighttp://opera4-servedby.advertising.com/site=126885/bnum=opera4/bins=1/opid=10003005/ver=711/dst=Win_700R
+http_request_number1[eth:ethertype:ip:tcp¶Íô•… \eth:ethertype:ip:tcp·Íô•… ]eth:ethertype:ip:tcpŞÎô•… ^eth:ethertype:ip:tcpŞÎô•… _eth:ethertype:ip:tcpêÏô•… `eth:ethertype:ip:tcpÁĞô•… aeth:ethertype:ip:tcp:httpÅĞô•… beth:ethertype:ip:dataáĞô•… ceth:ethertype:ip:tcpáĞô•… deth:ethertype:ip:tcp:http:dataùĞô•… eeth:ethertype:ip:tcpùĞô•… feth:ethertype:ip:tcpûĞô•… geth:ethertype:ip:tcpüĞô•… heth:ethertype:ip:tcp«Ñô•… ieth:ethertype:ip:tcpÒô•… jeth:ethertype:ip:tcp:httpˆÒô•… keth:ethertype:ip:data¥Òô•… leth:ethertype:ip:tcp¥Òô•… meth:ethertype:ip:tcp:http:data¼Òô•… neth:ethertype:ip:tcp½Òô•… oeth:ethertype:ip:tcp¾Òô•… peth:ethertype:ip:tcp¿Òô•… qeth:ethertype:ip:tcpëÒô•… reth:ethertype:ip:tcpÀÓô•… seth:ethertype:ip:tcp±Ôô•… teth:ethertype:ip:tcp‡Õô•… ueth:ethertype:ip:tcp:httpŒÕô•… veth:ethertype:ip:data¨Õô•… weth:ethertype:ip:tcp¨Õô•… xeth:ethertype:ip:tcp:http:dataÀÕô•… yeth:ethertype:ip:tcpÀÕô•… zeth:ethertype:ip:tcpÁÕô•… {eth:ethertype:ip:tcpÂÕô•… |eth:ethertype:ip:tcpÂÕô•… }eth:ethertype:ip:tcpÂÕô•… ~eth:ethertype:ip:tcpÃÕô•… eth:ethertype:ip:tcp:httpÃÕô•… €eth:ethertype:ip:tcp:httpÃÕô•… R
+http_request_methodGETRY
+http_request_uriE/site=0000127709/mnum=0000162763/genr=1/logs=0/mdtm=1077726643/bins=1R 
+http_request_versionHTTP/1.1R,
+	http_hostopera1-servedby.advertising.comRV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R!
+http_connectionKeep-Alive, TER„
+http_request_full_urikhttp://opera1-servedby.advertising.com/site=0000127709/mnum=0000162763/genr=1/logs=0/mdtm=1077726643/bins=1R
+http_request_number1eth:ethertype:ip:tcpÅÕô•… ‚eth:ethertype:ip:tcpÆÕô•… ƒeth:ethertype:ip:tcpÆÕô•… „eth:ethertype:ip:tcp:httpÇÕô•… …eth:ethertype:ip:tcp:httpÇÕô•… R
+http_request_methodGETRY
+http_request_uriE/site=0000127709/mnum=0000162763/genr=1/logs=0/mdtm=1077726643/bins=1R 
+http_request_versionHTTP/1.1R,
+	http_hostopera2-servedby.advertising.comRV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R!
+http_connectionKeep-Alive, TER„
+http_request_full_urikhttp://opera2-servedby.advertising.com/site=0000127709/mnum=0000162763/genr=1/logs=0/mdtm=1077726643/bins=1R
+http_request_number1†eth:ethertype:ip:tcp:httpíÖô•… ‡eth:ethertype:ip:dataŠ×ô•… ˆeth:ethertype:ip:tcpŠ×ô•… ‰eth:ethertype:ip:tcp:http:data¡×ô•… Šeth:ethertype:ip:tcp¡×ô•… ‹eth:ethertype:ip:tcp£×ô•… Œeth:ethertype:ip:tcp¤×ô•… eth:ethertype:ip:tcpÀ×ô•… eth:ethertype:ip:tcpË×ô•… eth:ethertype:ip:tcpË×ô•… eth:ethertype:ip:tcp:httpÌ×ô•… ‘eth:ethertype:ip:tcp:httpÌ×ô•… R
+http_request_methodGETRY
+http_request_uriE/site=0000127709/mnum=0000162766/genr=1/logs=0/mdtm=1077726645/bins=1R 
+http_request_versionHTTP/1.1R,
+	http_hostopera4-servedby.advertising.comRV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R!
+http_connectionKeep-Alive, TER„
+http_request_full_urikhttp://opera4-servedby.advertising.com/site=0000127709/mnum=0000162766/genr=1/logs=0/mdtm=1077726645/bins=1R
+http_request_number1’eth:ethertype:ip:tcpµØô•… “eth:ethertype:ip:tcpÙô•… ”eth:ethertype:ip:tcp:httpÙô•… •eth:ethertype:ip:dataºÙô•… –eth:ethertype:ip:tcp»Ùô•… —eth:ethertype:ip:tcpÚô•… ˜eth:ethertype:ip:tcpÙÚô•… ™eth:ethertype:ip:tcp:httpÜÚô•… šeth:ethertype:ip:tcpåÚô•… ›eth:ethertype:ip:tcpåÚô•… œeth:ethertype:ip:tcpåÚô•… eth:ethertype:ip:tcp:httpîÚô•… R
+http_request_methodGETR0
+http_request_uri/Websidan/dagbok/dagbok.htmlR 
+http_request_versionHTTP/1.1R
+	http_host10.1.1.1RV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R!
+http_connectionKeep-Alive, TER3
+http_referer#http://10.1.1.1/Websidan/index.htmlRD
+http_request_full_uri+http://10.1.1.1/Websidan/dagbok/dagbok.htmlR
+http_request_number1eth:ethertype:ip:tcpïÚô•… Ÿ)eth:ethertype:ip:tcp:http:data-text-linesñÚô•… R 
+http_request_versionHTTP/1.1R
+http_connectioncloseR
+http_response_code200R
+http_response_code_descOKR2
+http_content_typetext/html; charset=ISO-8859-1R,
+http_serverApache/2.0.40 (Red Hat Linux)R
+http_content_length416R*
+	http_dateSat, 20 Nov 2004 10:21:09 GMTR
+http_response_number1 eth:ethertype:ip:tcpñÚô•… ¡eth:ethertype:ip:tcpñÚô•… ¢eth:ethertype:ip:dataøÚô•… £eth:ethertype:ip:tcpøÚô•… ¤eth:ethertype:ip:tcpùÚô•… ¥eth:ethertype:ip:tcpûÚô•… ¦eth:ethertype:ip:tcpûÚô•… §eth:ethertype:ip:tcpåÛô•… ¨eth:ethertype:ip:tcp:httpöÛô•… ©eth:ethertype:ip:tcp:http÷Ûô•… R
+http_request_methodGETRY
+http_request_uriE/site=0000127709/mnum=0000162763/genr=1/logs=0/mdtm=1077726643/bins=1R 
+http_request_versionHTTP/1.1R,
+	http_hostopera3-servedby.advertising.comRV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R!
+http_connectionKeep-Alive, TER„
+http_request_full_urikhttp://opera3-servedby.advertising.com/site=0000127709/mnum=0000162763/genr=1/logs=0/mdtm=1077726643/bins=1R
+http_request_number1ªeth:ethertype:ip:tcp¿Üô•… «eth:ethertype:ip:tcp:httpÀÜô•… ¬eth:ethertype:ip:tcpÀÜô•… ­eth:ethertype:ip:tcpÁÜô•… ®eth:ethertype:ip:dataİÜô•… ¯eth:ethertype:ip:tcpİÜô•… °eth:ethertype:ip:dataùÜô•… ±eth:ethertype:ip:data•İô•… ²eth:ethertype:ip:tcp•İô•… ³eth:ethertype:ip:tcp:http:dataªİô•… ´eth:ethertype:ip:tcpªİô•… µeth:ethertype:ip:tcpªİô•… ¶eth:ethertype:ip:dataÆİô•… ·eth:ethertype:ip:dataâİô•… ¸eth:ethertype:ip:tcpâİô•… ¹eth:ethertype:ip:tcp:http:data÷İô•… ºeth:ethertype:ip:tcp÷İô•… »eth:ethertype:ip:tcpøİô•… ¼eth:ethertype:ip:tcpÕŞô•… ½eth:ethertype:ip:tcp­ßô•… ¾eth:ethertype:ip:tcp:http°ßô•… ¿eth:ethertype:ip:dataÍßô•… Àeth:ethertype:ip:tcpÍßô•… Áeth:ethertype:ip:dataéßô•… Âeth:ethertype:ip:data…àô•… Ãeth:ethertype:ip:tcp…àô•… Äeth:ethertype:ip:data¡àô•… Åeth:ethertype:ip:tcp¢àô•… Æeth:ethertype:ip:tcp¤àô•… Çeth:ethertype:ip:tcp‹áô•… Èeth:ethertype:ip:dataßáô•… Éeth:ethertype:ip:dataûáô•… Êeth:ethertype:ip:tcpûáô•… Ëeth:ethertype:ip:tcp:http:dataâô•… Ìeth:ethertype:ip:tcpâô•… Íeth:ethertype:ip:tcpâô•… Îeth:ethertype:ip:data¬âô•… Ïeth:ethertype:ip:tcp:http:dataÁâô•… Ğeth:ethertype:ip:tcpÁâô•… Ñeth:ethertype:ip:tcpÁâô•… Òeth:ethertype:ip:tcpäô•… Óeth:ethertype:ip:tcpÀäô•… Ôeth:ethertype:ip:tcpáçô•… Õeth:ethertype:ip:tcpáçô•… Öeth:ethertype:ip:tcpáçô•… ×eth:ethertype:ip:tcp:httpêçô•… R
+http_request_methodGETR5
+http_request_uri!/Websidan/dagbok/2004/dagbok.htmlR 
+http_request_versionHTTP/1.1R
+	http_host10.1.1.1RV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R!
+http_connectionKeep-Alive, TER;
+http_referer+http://10.1.1.1/Websidan/dagbok/dagbok.htmlRI
+http_request_full_uri0http://10.1.1.1/Websidan/dagbok/2004/dagbok.htmlR
+http_request_number1Øeth:ethertype:ip:tcpëçô•… Ùeth:ethertype:ip:tcp:httpîçô•… Ú)eth:ethertype:ip:tcp:http:data-text-linesîçô•… R 
+http_request_versionHTTP/1.1R
+http_connectioncloseR
+http_response_code200R
+http_response_code_descOKR2
+http_content_typetext/html; charset=ISO-8859-1R,
+http_serverApache/2.0.40 (Red Hat Linux)R
+http_content_length1263R*
+	http_dateSat, 20 Nov 2004 10:21:11 GMTR
+http_response_number1Ûeth:ethertype:ip:tcpîçô•… Üeth:ethertype:ip:tcpîçô•… İeth:ethertype:ip:tcpîçô•… Şeth:ethertype:ip:tcpéô•… ßeth:ethertype:ip:tcpéô•… àeth:ethertype:ip:tcp¥õô•… áeth:ethertype:ip:tcp¦õô•… âeth:ethertype:ip:tcp¦õô•… ãeth:ethertype:ip:tcp:http®õô•… R
+http_request_methodGETR8
+http_request_uri$/Websidan/dagbok/2004/28/dagbok.htmlR 
+http_request_versionHTTP/1.1R
+	http_host10.1.1.1RV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R!
+http_connectionKeep-Alive, TER@
+http_referer0http://10.1.1.1/Websidan/dagbok/2004/dagbok.htmlRL
+http_request_full_uri3http://10.1.1.1/Websidan/dagbok/2004/28/dagbok.htmlR
+http_request_number1äeth:ethertype:ip:tcp¯õô•… åeth:ethertype:ip:tcp:http²õô•… æ)eth:ethertype:ip:tcp:http:data-text-lines³õô•… R 
+http_request_versionHTTP/1.1R
+http_connectioncloseR
+http_response_code200R
+http_response_code_descOKR2
+http_content_typetext/html; charset=ISO-8859-1R,
+http_serverApache/2.0.40 (Red Hat Linux)R
+http_content_length2232R*
+	http_dateSat, 20 Nov 2004 10:21:12 GMTR
+http_response_number1çeth:ethertype:ip:tcp³õô•… èeth:ethertype:ip:tcp³õô•… éeth:ethertype:ip:tcp³õô•… êeth:ethertype:ip:tcpÿõô•… ëeth:ethertype:ip:tcp€öô•… ìeth:ethertype:ip:tcp€öô•… íeth:ethertype:ip:tcpöô•… îeth:ethertype:ip:tcp‚öô•… ïeth:ethertype:ip:tcp‚öô•… ğeth:ethertype:ip:tcp:httpšöô•… R
+http_request_methodGETR?
+http_request_uri+/Websidan/2004-07-SeaWorld/320/DSC07858.JPGR 
+http_request_versionHTTP/1.1R
+	http_host10.1.1.1RV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R!
+http_connectionKeep-Alive, TERC
+http_referer3http://10.1.1.1/Websidan/dagbok/2004/28/dagbok.htmlRS
+http_request_full_uri:http://10.1.1.1/Websidan/2004-07-SeaWorld/320/DSC07858.JPGR
+http_request_number1ñeth:ethertype:ip:tcp:httpšöô•… R
+http_request_methodGETR?
+http_request_uri+/Websidan/2004-07-SeaWorld/320/DSC07859.JPGR 
+http_request_versionHTTP/1.1R
+	http_host10.1.1.1RV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R!
+http_connectionKeep-Alive, TERC
+http_referer3http://10.1.1.1/Websidan/dagbok/2004/28/dagbok.htmlRS
+http_request_full_uri:http://10.1.1.1/Websidan/2004-07-SeaWorld/320/DSC07859.JPGR
+http_request_number1òeth:ethertype:ip:tcp›öô•… óeth:ethertype:ip:tcp›öô•… ôeth:ethertype:ip:tcpœöô•… õeth:ethertype:ip:tcpœöô•… öeth:ethertype:ip:tcp:httpŸöô•… ÷eth:ethertype:ip:tcp öô•… øeth:ethertype:ip:tcp öô•… ùeth:ethertype:ip:tcp:http¢öô•… úeth:ethertype:ip:tcp£öô•… ûeth:ethertype:ip:tcp£öô•… üeth:ethertype:ip:tcp¤öô•… ıeth:ethertype:ip:tcp¦öô•… şeth:ethertype:ip:tcp¦öô•… ÿeth:ethertype:ip:tcp§öô•… €eth:ethertype:ip:tcp§öô•… eth:ethertype:ip:tcp¨öô•… ‚eth:ethertype:ip:tcp¨öô•… ƒ$eth:ethertype:ip:tcp:http:image-jfif©öô•… R 
+http_request_versionHTTP/1.1R
+http_connectioncloseR
+http_response_code200R
+http_response_code_descOKR
+http_content_type
+image/jpegR,
+http_serverApache/2.0.40 (Red Hat Linux)R
+http_content_length8963R*
+	http_dateSat, 20 Nov 2004 10:21:13 GMTR
+http_response_number1„eth:ethertype:ip:tcp©öô•… …eth:ethertype:ip:tcp«öô•… †eth:ethertype:ip:tcp«öô•… ‡eth:ethertype:ip:tcp¬öô•… ˆeth:ethertype:ip:tcp­öô•… ‰eth:ethertype:ip:tcp­öô•… Šeth:ethertype:ip:tcp®öô•… ‹eth:ethertype:ip:tcp¯öô•… Œeth:ethertype:ip:tcp°öô•… $eth:ethertype:ip:tcp:http:image-jfif±öô•… R 
+http_request_versionHTTP/1.1R
+http_connectioncloseR
+http_response_code200R
+http_response_code_descOKR
+http_content_type
+image/jpegR,
+http_serverApache/2.0.40 (Red Hat Linux)R
+http_content_length10730R*
+	http_dateSat, 20 Nov 2004 10:21:13 GMTR
+http_response_number1eth:ethertype:ip:tcp±öô•… eth:ethertype:ip:tcp“÷ô•… eth:ethertype:ip:tcp”÷ô•… ‘eth:ethertype:ip:tcp¦÷ô•… ’eth:ethertype:ip:tcp§÷ô•… “eth:ethertype:ip:tcpû•õ•… ”eth:ethertype:ip:tcpû•õ•… •eth:ethertype:ip:tcpû•õ•… –eth:ethertype:ip:tcp:httpƒ–õ•… R
+http_request_methodGETRD
+http_request_uri0/Websidan/2004-07-SeaWorld/fullsize/DSC07858.JPGR 
+http_request_versionHTTP/1.1R
+	http_host10.1.1.1RV
+http_user_agentCMozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0) Opera 7.11  [en]RÁ
+http_accept±application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1R
+http_accept_languageenR>
+http_accept_encoding&deflate, gzip, x-gzip, identity, *;q=0R!
+http_connectionKeep-Alive, TERC
+http_referer3http://10.1.1.1/Websidan/dagbok/2004/28/dagbok.htmlRX
+http_request_full_uri?http://10.1.1.1/Websidan/2004-07-SeaWorld/fullsize/DSC07858.JPGR
+http_request_number1—eth:ethertype:ip:tcp„–õ•… ˜eth:ethertype:ip:tcp:http‡–õ•… ™eth:ethertype:ip:tcp‰–õ•… šeth:ethertype:ip:tcp‰–õ•… ›eth:ethertype:ip:tcp‹–õ•… œeth:ethertype:ip:tcp‹–õ•… eth:ethertype:ip:tcpŒ–õ•… eth:ethertype:ip:tcp–õ•… Ÿeth:ethertype:ip:tcp–õ•…  eth:ethertype:ip:tcp–õ•… ¡eth:ethertype:ip:tcp–õ•… ¢eth:ethertype:ip:tcp–õ•… £eth:ethertype:ip:tcp’–õ•… ¤eth:ethertype:ip:tcp’–õ•… ¥eth:ethertype:ip:tcp“–õ•… ¦eth:ethertype:ip:tcp“–õ•… §eth:ethertype:ip:tcp”–õ•… ¨eth:ethertype:ip:tcp•–õ•… ©eth:ethertype:ip:tcp•–õ•… ªeth:ethertype:ip:tcp––õ•… «eth:ethertype:ip:tcp˜–õ•… ¬eth:ethertype:ip:tcp˜–õ•… ­eth:ethertype:ip:tcp™–õ•… ®eth:ethertype:ip:tcpš–õ•… ¯eth:ethertype:ip:tcpš–õ•… °eth:ethertype:ip:tcpœ–õ•… ±eth:ethertype:ip:tcp–õ•… ²eth:ethertype:ip:tcp–õ•… ³eth:ethertype:ip:tcp–õ•… ´eth:ethertype:ip:tcpŸ–õ•… µeth:ethertype:ip:tcpŸ–õ•… ¶eth:ethertype:ip:tcp¡–õ•… ·eth:ethertype:ip:tcp¢–õ•… ¸eth:ethertype:ip:tcp¢–õ•… ¹eth:ethertype:ip:tcp£–õ•… ºeth:ethertype:ip:tcp¤–õ•… »eth:ethertype:ip:tcp¥–õ•… ¼eth:ethertype:ip:tcp¦–õ•… ½eth:ethertype:ip:tcp§–õ•… ¾eth:ethertype:ip:tcp§–õ•… ¿eth:ethertype:ip:tcp¨–õ•… Àeth:ethertype:ip:tcpª–õ•… Áeth:ethertype:ip:tcpª–õ•… Âeth:ethertype:ip:tcp«–õ•… Ãeth:ethertype:ip:tcp¬–õ•… Äeth:ethertype:ip:tcp¬–õ•… Åeth:ethertype:ip:tcp­–õ•… Æeth:ethertype:ip:tcp¯–õ•… Çeth:ethertype:ip:tcp¯–õ•… Èeth:ethertype:ip:tcp°–õ•… Éeth:ethertype:ip:tcp±–õ•… Êeth:ethertype:ip:tcp±–õ•… Ëeth:ethertype:ip:tcp³–õ•… Ìeth:ethertype:ip:tcp´–õ•… Íeth:ethertype:ip:tcp´–õ•… Îeth:ethertype:ip:tcpµ–õ•… Ïeth:ethertype:ip:tcp¶–õ•… Ğeth:ethertype:ip:tcp¶–õ•… Ñeth:ethertype:ip:tcp¸–õ•… Òeth:ethertype:ip:tcp¹–õ•… Óeth:ethertype:ip:tcp¹–õ•… Ôeth:ethertype:ip:tcpº–õ•… Õeth:ethertype:ip:tcp¼–õ•… Öeth:ethertype:ip:tcp¼–õ•… ×eth:ethertype:ip:tcp½–õ•… Øeth:ethertype:ip:tcp¾–õ•… Ùeth:ethertype:ip:tcp¾–õ•… Úeth:ethertype:ip:tcp¿–õ•… Ûeth:ethertype:ip:tcpÁ–õ•… Üeth:ethertype:ip:tcpÁ–õ•… İeth:ethertype:ip:tcpÂ–õ•… Şeth:ethertype:ip:tcpÃ–õ•… ßeth:ethertype:ip:tcpÃ–õ•… àeth:ethertype:ip:tcpÄ–õ•… áeth:ethertype:ip:tcpÆ–õ•… âeth:ethertype:ip:tcpÆ–õ•… ãeth:ethertype:ip:tcpÇ–õ•… äeth:ethertype:ip:tcpÈ–õ•… åeth:ethertype:ip:tcpÈ–õ•… æeth:ethertype:ip:tcpÊ–õ•… çeth:ethertype:ip:tcpË–õ•… èeth:ethertype:ip:tcpË–õ•… éeth:ethertype:ip:tcpÌ–õ•… êeth:ethertype:ip:tcpı–õ•… ëeth:ethertype:ip:tcp€—õ•… ìeth:ethertype:ip:tcp—õ•… íeth:ethertype:ip:tcp—õ•… îeth:ethertype:ip:tcp‚—õ•… ïeth:ethertype:ip:tcp„—õ•… ğeth:ethertype:ip:tcp„—õ•… ñeth:ethertype:ip:tcp…—õ•… òeth:ethertype:ip:tcp†—õ•… óeth:ethertype:ip:tcp†—õ•… ôeth:ethertype:ip:tcp‡—õ•… õeth:ethertype:ip:tcp‰—õ•… öeth:ethertype:ip:tcp‰—õ•… ÷eth:ethertype:ip:tcpŠ—õ•… øeth:ethertype:ip:tcp‹—õ•… ùeth:ethertype:ip:tcp‹—õ•… úeth:ethertype:ip:tcp—õ•… ûeth:ethertype:ip:tcp—õ•… üeth:ethertype:ip:tcp—õ•… ıeth:ethertype:ip:tcp—õ•… şeth:ethertype:ip:tcp—õ•… ÿeth:ethertype:ip:tcp—õ•… €eth:ethertype:ip:tcp’—õ•… eth:ethertype:ip:tcp“—õ•… ‚eth:ethertype:ip:tcp“—õ•… ƒeth:ethertype:ip:tcp”—õ•… „eth:ethertype:ip:tcp–—õ•… …eth:ethertype:ip:tcp–—õ•… †eth:ethertype:ip:tcp——õ•… ‡eth:ethertype:ip:tcp˜—õ•… ˆeth:ethertype:ip:tcp˜—õ•… ‰eth:ethertype:ip:tcp™—õ•… Šeth:ethertype:ip:tcp›—õ•… ‹eth:ethertype:ip:tcp›—õ•… Œeth:ethertype:ip:tcpœ—õ•… eth:ethertype:ip:tcp—õ•… eth:ethertype:ip:tcp—õ•… eth:ethertype:ip:tcp—õ•… eth:ethertype:ip:tcp —õ•… ‘eth:ethertype:ip:tcp —õ•… ’eth:ethertype:ip:tcp¡—õ•… “eth:ethertype:ip:tcp¢—õ•… ”eth:ethertype:ip:tcp¢—õ•… •eth:ethertype:ip:tcp¤—õ•… –eth:ethertype:ip:tcp¥—õ•… —eth:ethertype:ip:tcp¥—õ•… ˜eth:ethertype:ip:tcp¦—õ•… ™eth:ethertype:ip:tcp§—õ•… šeth:ethertype:ip:tcp§—õ•… ›eth:ethertype:ip:tcp©—õ•… œeth:ethertype:ip:tcpª—õ•… eth:ethertype:ip:tcpª—õ•… eth:ethertype:ip:tcp«—õ•… Ÿeth:ethertype:ip:tcp­—õ•…  eth:ethertype:ip:tcp­—õ•… ¡eth:ethertype:ip:tcp®—õ•… ¢eth:ethertype:ip:tcp¯—õ•… £eth:ethertype:ip:tcp¯—õ•… ¤eth:ethertype:ip:tcp°—õ•… ¥eth:ethertype:ip:tcp²—õ•… ¦eth:ethertype:ip:tcp²—õ•… §eth:ethertype:ip:tcp³—õ•… ¨eth:ethertype:ip:tcp´—õ•… ©eth:ethertype:ip:tcp´—õ•… ªeth:ethertype:ip:tcp¶—õ•… «eth:ethertype:ip:tcp·—õ•… ¬eth:ethertype:ip:tcp·—õ•… ­eth:ethertype:ip:tcpè—õ•… ®eth:ethertype:ip:tcpê—õ•… ¯eth:ethertype:ip:tcpë—õ•… °eth:ethertype:ip:tcpë—õ•… ±eth:ethertype:ip:tcpì—õ•… ²eth:ethertype:ip:tcpî—õ•… ³eth:ethertype:ip:tcpî—õ•… ´eth:ethertype:ip:tcpï—õ•… µeth:ethertype:ip:tcpğ—õ•… ¶eth:ethertype:ip:tcpğ—õ•… ·eth:ethertype:ip:tcpò—õ•… ¸eth:ethertype:ip:tcpó—õ•… ¹eth:ethertype:ip:tcpó—õ•… ºeth:ethertype:ip:tcpô—õ•… »eth:ethertype:ip:tcpõ—õ•… ¼eth:ethertype:ip:tcpö—õ•… ½eth:ethertype:ip:tcp÷—õ•… ¾eth:ethertype:ip:tcpø—õ•… ¿eth:ethertype:ip:tcpø—õ•… Àeth:ethertype:ip:tcpù—õ•… Áeth:ethertype:ip:tcpû—õ•… Âeth:ethertype:ip:tcpû—õ•… Ãeth:ethertype:ip:tcpü—õ•… Äeth:ethertype:ip:tcpı—õ•… Åeth:ethertype:ip:tcpı—õ•… Æeth:ethertype:ip:tcpş—õ•… Çeth:ethertype:ip:tcp€˜õ•… Èeth:ethertype:ip:tcp€˜õ•… Éeth:ethertype:ip:tcp˜õ•… Êeth:ethertype:ip:tcp‚˜õ•… Ëeth:ethertype:ip:tcp‚˜õ•… Ìeth:ethertype:ip:tcpƒ˜õ•… Íeth:ethertype:ip:tcp…˜õ•… Îeth:ethertype:ip:tcp…˜õ•… Ïeth:ethertype:ip:tcp†˜õ•… Ğeth:ethertype:ip:tcp‡˜õ•… Ñeth:ethertype:ip:tcp‡˜õ•… Òeth:ethertype:ip:tcp‰˜õ•… Óeth:ethertype:ip:tcpŠ˜õ•… Ôeth:ethertype:ip:tcpŠ˜õ•… Õeth:ethertype:ip:tcp‹˜õ•… Öeth:ethertype:ip:tcpŒ˜õ•… ×eth:ethertype:ip:tcp˜õ•… Øeth:ethertype:ip:tcp˜õ•… Ùeth:ethertype:ip:tcp˜õ•… Úeth:ethertype:ip:tcp˜õ•… Ûeth:ethertype:ip:tcp˜õ•… Üeth:ethertype:ip:tcp’˜õ•… İeth:ethertype:ip:tcp’˜õ•… Şeth:ethertype:ip:tcp“˜õ•… ß$eth:ethertype:ip:tcp:http:image-jfif”˜õ•… R 
+http_request_versionHTTP/1.1R
+http_connectioncloseR
+http_response_code200R
+http_response_code_descOKR
+http_content_type
+image/jpegR,
+http_serverApache/2.0.40 (Red Hat Linux)R
+http_content_length191515R*
+	http_dateSat, 20 Nov 2004 10:21:17 GMTR
+http_response_number1àeth:ethertype:ip:tcp”˜õ•… áeth:ethertype:ip:tcp·˜õ•… âeth:ethertype:ip:tcp¦šõ•… ãeth:ethertype:ip:tcp¦šõ•… 

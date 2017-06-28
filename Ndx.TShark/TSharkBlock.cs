@@ -15,9 +15,8 @@ namespace Ndx.TShark
         private WiresharkSender m_wsender;
         private TSharkProcess m_tshark;
 
-        public TSharkBlock(IEnumerable<string> fields, DataLinkType datalinkType = DataLinkType.Ethernet)
+        public TSharkBlock(TSharkProcess tsharkProcess, DataLinkType datalinkType = DataLinkType.Ethernet)
         {
-            if (fields == null) throw new ArgumentNullException(nameof(fields));
             var m_pipename = $"ndx.tshark_{new Random().Next(Int32.MaxValue)}";
 
             m_wsender = new WiresharkSender(m_pipename, datalinkType);
@@ -28,9 +27,9 @@ namespace Ndx.TShark
             m_outputBlock = new BufferBlock<PacketFields>();
 
             // create and initialize TSHARK:
-            m_tshark = new TSharkProcess(m_pipename);
+            m_tshark = tsharkProcess;
+            m_tshark.PipeName = m_pipename;
             m_tshark.PacketDecoded += PacketDecoded;
-            foreach (var field in fields) m_tshark.Fields.Add(field);
             m_tshark.Start();
             m_tshark.Completion.ContinueWith((t) => m_outputBlock.Complete());
 
