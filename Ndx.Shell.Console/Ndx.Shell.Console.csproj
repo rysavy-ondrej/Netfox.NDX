@@ -32,11 +32,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.Protobuf, Version=3.3.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.3.0\lib\net45\Google.Protobuf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Extensions.CommandLineUtils, Version=1.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.CommandLineUtils.1.1.0\lib\net451\Microsoft.Extensions.CommandLineUtils.dll</HintPath>
     </Reference>
-    <Reference Include="PacketDotNet, Version=0.13.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PacketDotNet.Netfox.0.13.0.3\lib\net35\PacketDotNet.dll</HintPath>
+    <Reference Include="PacketDotNet, Version=0.16.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PacketDotNet.0.16.0\lib\PacketDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpPcap, Version=4.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpPcap.4.4.0\lib\SharpPcap.dll</HintPath>
     </Reference>
     <Reference Include="StackExchange.Redis, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\StackExchange.Redis.1.2.1\lib\net45\StackExchange.Redis.dll</HintPath>
@@ -45,6 +54,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.6.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Dataflow.4.7.0\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,15 +66,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Capture.cs" />
+    <Compile Include="Conversations.cs" />
+    <Compile Include="Filter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shell.cs" />
+    <None Include="ndx.workbook" />
+    <None Include="Scripts\Capture.csx" />
+    <None Include="Scripts\Decoder.csx" />
     <None Include="Scripts\Using.csx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ndx.cshell" />
     <None Include="packages.config" />
-    <None Include="Scripts\LoadFile.csx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hadoop\IngestPcap\IngestPcap.csproj">
@@ -89,8 +108,21 @@
       <Name>Ndx.Utils</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="References\" />
+    <Content Include="References\Google.Protobuf.dll" />
+    <Content Include="References\Microsoft.Extensions.CommandLineUtils.dll" />
+    <Content Include="References\Ndx.Captures.dll" />
+    <Content Include="References\Ndx.Ingest.Trace.dll" />
+    <Content Include="References\Ndx.Model.dll" />
+    <Content Include="References\Ndx.TShark.dll" />
+    <Content Include="References\Ndx.Utils.dll" />
+    <Content Include="References\Newtonsoft.Json.dll" />
+    <Content Include="References\NLog.dll" />
+    <Content Include="References\PacketDotNet.dll" />
+    <Content Include="References\Sprache.dll" />
+    <Content Include="References\StackExchange.Redis.dll" />
+    <Content Include="References\System.Threading.Tasks.Dataflow.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

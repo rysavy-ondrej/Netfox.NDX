@@ -14,7 +14,7 @@ namespace Ndx.Ingest
     /// for extracting information from <see cref="RawFrame"/>. This information is used
     /// to provide conversation data for <see cref="ConversationTracker"/>.
     /// </summary>
-    class PacketAnalyzer : PacketDotNet.PacketVisitor
+    public class PacketAnalyzer : PacketVisitor
     {
         ConversationTracker m_tracker;
         MetaFrame m_metaFrame;
@@ -113,17 +113,18 @@ namespace Ndx.Ingest
 
         public override void VisitTcpPacket(TcpPacket packet)
         {
-            var flowKey = new FlowKey()
-            {
-                Type = FlowType.NetworkFlow,
-                IpProtocol = IpProtocolType.Tcp,
-                SourceIpAddress = (packet.ParentPacket as IpPacket).SourceAddress,
-                DestinationIpAddress = (packet.ParentPacket as IpPacket).DestinationAddress,
-                SourcePort = packet.SourcePort,
-                DestinationPort = packet.DestinationPort
-            };
-
+            var flowKey = GetFlowKey(packet);
             UpdateConversation(packet, flowKey);
+        }
+
+        public override void VisitUdpPacket(UdpPacket packet)
+        {
+            var flowKey = GetFlowKey(packet);
+            UpdateConversation(packet, flowKey);
+        }
+
+        public override void VisitWakeOnLanPacket(WakeOnLanPacket packet)
+        {
         }
 
         private void UpdateConversation(TransportPacket transportPacket, FlowKey flowKey)
@@ -146,7 +147,23 @@ namespace Ndx.Ingest
             m_metaFrame.Application = new ApplicationPacketUnit() { Bytes = new ByteRange() { Offset = applicationPacket.BytesHighPerformance.Offset, Length = applicationPacket.BytesHighPerformance.Length } };
         }
 
-        public override void VisitUdpPacket(UdpPacket packet)
+
+        /// <summary>
+        /// Gets <see cref="FlowKey"/> for the passsed <see cref="RawFrame"/>. 
+        /// </summary>
+        /// <param name="frame">The raw frame for which flow key is provided.</param>
+        /// <returns><see cref="FlowKey"/> instance or null if provided frame does not contain TCP or UDP segment.</returns>
+        public static FlowKey GetFlowKey(RawFrame frame)
+        {
+            var packet = Packet.ParsePacket((LinkLayers)frame.LinkType, frame.Bytes);
+            var udpPacket = (UdpPacket) packet.Extract(typeof(UdpPacket));
+            if (udpPacket != null) return GetFlowKey(udpPacket);
+            var tcpPacket = (TcpPacket)packet.Extract(typeof(TcpPacket));
+            if (tcpPacket != null) return GetFlowKey(tcpPacket);
+            return null;
+        }
+
+        public static FlowKey GetFlowKey(UdpPacket packet)
         {
             var flowKey = new FlowKey()
             {
@@ -157,12 +174,21 @@ namespace Ndx.Ingest
                 SourcePort = packet.SourcePort,
                 DestinationPort = packet.DestinationPort
             };
-
-            UpdateConversation(packet, flowKey);
+            return flowKey;
         }
-
-        public override void VisitWakeOnLanPacket(WakeOnLanPacket packet)
+        public static FlowKey GetFlowKey(TcpPacket packet)
         {
+
+            var flowKey = new FlowKey()
+            {
+                Type = FlowType.NetworkFlow,
+                IpProtocol = IpProtocolType.Tcp,
+                SourceIpAddress = (packet.ParentPacket as IpPacket).SourceAddress,
+                DestinationIpAddress = (packet.ParentPacket as IpPacket).DestinationAddress,
+                SourcePort = packet.SourcePort,
+                DestinationPort = packet.DestinationPort
+            };
+            return flowKey;
         }
     }
 }

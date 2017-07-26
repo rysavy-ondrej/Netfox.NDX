@@ -15,7 +15,7 @@ using NLog;
 namespace Ndx.Ingest
 {
     /// <summary>
-    /// This class tracks the conversation at the transport layer. Communication that has not transport layer is ignored. 
+    /// This class tracks the conversation at the transport layer. Communication that has not transport layer (UDP or TCP) is simply ignored. 
     /// </summary>
     /// <remarks>          
     /// Conversation trancker uses the following rules for expiring records from the cache entries:
@@ -73,7 +73,11 @@ namespace Ndx.Ingest
             m_frameAnalyzer = new ActionBlock<RawFrame>(AcceptFrame, new ExecutionDataflowBlockOptions() { MaxDegreeOfParallelism = maxDegreeOfParallelism });
             m_metaframeOutput = new BufferBlock<KeyValuePair<Conversation, MetaFrame>>();
             m_conversations = new Dictionary<FlowKey, Conversation>(m_initialConversationDictionaryCapacity, new FlowKey.ValueComparer());
-            m_frameAnalyzer.Completion.ContinueWith(t => m_metaframeOutput.Complete());
+            m_frameAnalyzer.Completion.ContinueWith(t =>
+            {
+                Console.WriteLine($"[INFO] ConversationTracker: FrameAnalyzer Completed, conversation cache contains {m_metaframeOutput.Count} items.");
+                m_metaframeOutput.Complete();
+                });
         }
 
         async Task AcceptFrame(RawFrame rawframe)
@@ -94,8 +98,11 @@ namespace Ndx.Ingest
                     if (packet.PayloadPacket != null) packet.PayloadPacket.ParentPacket = packet;
 
                     packet.Accept(analyzer);
-                    
-                    await m_metaframeOutput.SendAsync(new KeyValuePair<Conversation, MetaFrame>(analyzer.Conversation, analyzer.MetaFrame));
+
+                    if (analyzer.Conversation != null)
+                    {
+                        await m_metaframeOutput.SendAsync(new KeyValuePair<Conversation, MetaFrame>(analyzer.Conversation, analyzer.MetaFrame));
+                    }
                 }
                 catch(Exception e)
                 {
@@ -191,7 +198,7 @@ namespace Ndx.Ingest
         /// <summary>
         /// Gets the <see cref="Taks"/> that complete when all data were processed. 
         /// </summary>
-        public Task Completion => Task.WhenAll(m_metaframeOutput.Completion);
+        public Task Completion => m_metaframeOutput.Completion;
 
         public int TotalConversations => m_totalConversationCounter;
         public int ActiveConversations => m_conversations.Count;

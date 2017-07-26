@@ -15,6 +15,8 @@
       <File>References\StackExchange.Redis.dll</File>
       <File>References\System.Threading.Tasks.Dataflow.dll</File>
       <File>References\Ndx.Model.dll</File>
+      <File>References\Newtonsoft.Json.dll</File>
+      <File>References\SharpPcap.dll</File>
     </AssemblyFileReferences>
     <AssemblyNameReferences />
     <RootFolder>C:\Users\Ondrej\Documents\GitHub\Netfox.NDX\Ndx.Shell.Console</RootFolder>
@@ -23,12 +25,13 @@
   <LayoutRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <RootPanel Orientation="Vertical">
       <LayoutDocumentPane>
-        <LayoutDocument Title="ndx.cshell" ContentId="file:///C:/Users/Ondrej/Documents/GitHub/Netfox.NDX/Ndx.Shell.Console/ndx.cshell" LastActivationTimeStamp="06/23/2017 16:41:00" />
-        <LayoutDocument Title="Decoder.csx" IsSelected="True" IsLastFocusedDocument="True" ContentId="file:///C:/Users/Ondrej/Documents/GitHub/Netfox.NDX/Ndx.Shell.Console/Scripts/Decoder.csx" LastActivationTimeStamp="06/23/2017 17:22:21" />
-        <LayoutDocument Title="Capture.csx" ContentId="file:///C:/Users/Ondrej/Documents/GitHub/Netfox.NDX/Ndx.Shell.Console/Scripts/Capture.csx" LastActivationTimeStamp="06/23/2017 17:22:21" />
+        <LayoutDocument Title="ndx.cshell" ContentId="file:///C:/Users/Ondrej/Documents/GitHub/Netfox.NDX/Ndx.Shell.Console/ndx.cshell" LastActivationTimeStamp="07/26/2017 09:04:20" />
+        <LayoutDocument Title="Decoder.csx" ContentId="file:///C:/Users/Ondrej/Documents/GitHub/Netfox.NDX/Ndx.Shell.Console/Scripts/Decoder.csx" LastActivationTimeStamp="07/26/2017 09:26:46" />
+        <LayoutDocument Title="Capture.csx" ContentId="file:///C:/Users/Ondrej/Documents/GitHub/Netfox.NDX/Ndx.Shell.Console/Scripts/Capture.csx" LastActivationTimeStamp="07/26/2017 09:55:21" />
+        <LayoutDocument Title="honeypot.csx" IsSelected="True" IsLastFocusedDocument="True" ContentId="file:///C:/Users/Ondrej/Documents/GitHub/Netfox.NDX/Ndx.Shell.Console/Scripts/honeypot.csx" LastActivationTimeStamp="07/26/2017 09:57:15" />
       </LayoutDocumentPane>
-      <LayoutAnchorablePane DockHeight="300">
-        <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="C# Interactive" IsSelected="True" ContentId="tool://cshell/repl" LastActivationTimeStamp="06/23/2017 17:22:53" />
+      <LayoutAnchorablePane DockHeight="372">
+        <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="C# Interactive" IsSelected="True" ContentId="tool://cshell/repl" LastActivationTimeStamp="07/26/2017 09:56:56" />
       </LayoutAnchorablePane>
     </RootPanel>
     <TopSide />

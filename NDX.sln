@@ -28,6 +28,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hadoop", "Hadoop", "{D6FA9DF5-DD4E-487F-B8D3-DF433CF2A199}"
 	ProjectSection(SolutionItems) = preProject
 		Hadoop\CassandraDbFormat.md = Hadoop\CassandraDbFormat.md
+		HadoopCluster.md = HadoopCluster.md
 		NdxInSpark.md = NdxInSpark.md
 	EndProjectSection
 EndProject
