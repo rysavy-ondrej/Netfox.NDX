@@ -22,24 +22,35 @@ namespace Ndx.Model {
     static McapModelReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9NY2FwTW9kZWwucHJvdG8SCW5keC5tb2RlbBoPRmxvd01vZGVsLnByb3Rv",
-            "GhdDb252ZXJzYXRpb25Nb2RlbC5wcm90bxoRUGFja2V0TW9kZWwucHJvdG8i",
-            "awoIUGNhcEZpbGUSLQoKRmlsZUZvcm1hdBgBIAEoDjIZLm5keC5tb2RlbC5Q",
-            "Y2FwRmlsZUZvcm1hdBILCgNVcmkYAiABKAkSDwoHTWQ1aGFzaBgDIAEoDBIS",
-            "CgpJbmdlc3RlZE9uGAQgASgDItwBCgxNZXRhY2FwSW5kZXgSQQoNQ29udmVy",
-            "c2F0aW9ucxgBIAMoCzIqLm5keC5tb2RlbC5NZXRhY2FwSW5kZXguQ29udmVy",
-            "c2F0aW9uc0VudHJ5GikKEENvbnZlcnNhdGlvbkxpc3QSFQoNQ29udmVyc2F0",
-            "aW9ucxgBIAMoBRpeChJDb252ZXJzYXRpb25zRW50cnkSCwoDa2V5GAEgASgJ",
-            "EjcKBXZhbHVlGAIgASgLMigubmR4Lm1vZGVsLk1ldGFjYXBJbmRleC5Db252",
-            "ZXJzYXRpb25MaXN0OgI4ASpYCg5QY2FwRmlsZUZvcm1hdBINCglSYXdGb3Jt",
-            "YXQQABILCgdMaWJwY2FwEAESCgoGUGNhcG5nEAISCgoGTmV0bW9uEAMSEgoN",
-            "VW5rbm93bkZvcm1hdBD/AWIGcHJvdG8z"));
+            "Cg9NY2FwTW9kZWwucHJvdG8SCW5keC5tb2RlbBoRUGFja2V0TW9kZWwucHJv",
+            "dG8aF0NvbnZlcnNhdGlvbk1vZGVsLnByb3RvImsKCFBjYXBGaWxlEi0KCkZp",
+            "bGVGb3JtYXQYASABKA4yGS5uZHgubW9kZWwuUGNhcEZpbGVGb3JtYXQSCwoD",
+            "VXJpGAIgASgJEg8KB01kNWhhc2gYAyABKAwSEgoKSW5nZXN0ZWRPbhgEIAEo",
+            "AyJ+CglQY2FwVGFibGUSLgoFSXRlbXMYCiADKAsyHy5uZHgubW9kZWwuUGNh",
+            "cFRhYmxlLkl0ZW1zRW50cnkaQQoKSXRlbXNFbnRyeRILCgNrZXkYASABKAUS",
+            "IgoFdmFsdWUYAiABKAsyEy5uZHgubW9kZWwuUGNhcEZpbGU6AjgBIpIBChFD",
+            "b252ZXJzYXRpb25UYWJsZRI2CgVJdGVtcxgKIAMoCzInLm5keC5tb2RlbC5D",
+            "b252ZXJzYXRpb25UYWJsZS5JdGVtc0VudHJ5GkUKCkl0ZW1zRW50cnkSCwoD",
+            "a2V5GAEgASgFEiYKBXZhbHVlGAIgASgLMhcubmR4Lm1vZGVsLkNvbnZlcnNh",
+            "dGlvbjoCOAEigQEKCkZyYW1lVGFibGUSLwoFSXRlbXMYCiADKAsyIC5uZHgu",
+            "bW9kZWwuRnJhbWVUYWJsZS5JdGVtc0VudHJ5GkIKCkl0ZW1zRW50cnkSCwoD",
+            "a2V5GAEgASgFEiMKBXZhbHVlGAIgASgLMhQubmR4Lm1vZGVsLk1ldGFGcmFt",
+            "ZToCOAEi+gEKDE1ldGFjYXBJbmRleBInCglQY2FwVGFibGUYAiABKAsyFC5u",
+            "ZHgubW9kZWwuUGNhcFRhYmxlEj0KC0ZyYW1lVGFibGVzGAMgAygLMigubmR4",
+            "Lm1vZGVsLk1ldGFjYXBJbmRleC5GcmFtZVRhYmxlc0VudHJ5EjcKEUNvbnZl",
+            "cnNhdGlvblRhYmxlGAQgASgLMhwubmR4Lm1vZGVsLkNvbnZlcnNhdGlvblRh",
+            "YmxlGkkKEEZyYW1lVGFibGVzRW50cnkSCwoDa2V5GAEgASgFEiQKBXZhbHVl",
+            "GAIgASgLMhUubmR4Lm1vZGVsLkZyYW1lVGFibGU6AjgBKlgKDlBjYXBGaWxl",
+            "Rm9ybWF0Eg0KCVJhd0Zvcm1hdBAAEgsKB0xpYnBjYXAQARIKCgZQY2FwbmcQ",
+            "AhIKCgZOZXRtb24QAxISCg1Vbmtub3duRm9ybWF0EP8BYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Ndx.Model.FlowModelReflection.Descriptor, global::Ndx.Model.ConversationModelReflection.Descriptor, global::Ndx.Model.PacketModelReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Ndx.Model.PacketModelReflection.Descriptor, global::Ndx.Model.ConversationModelReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Ndx.Model.PcapFileFormat), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PcapFile), global::Ndx.Model.PcapFile.Parser, new[]{ "FileFormat", "Uri", "Md5Hash", "IngestedOn" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.MetacapIndex), global::Ndx.Model.MetacapIndex.Parser, new[]{ "Conversations" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.MetacapIndex.Types.ConversationList), global::Ndx.Model.MetacapIndex.Types.ConversationList.Parser, new[]{ "Conversations" }, null, null, null),
-            null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PcapTable), global::Ndx.Model.PcapTable.Parser, new[]{ "Items" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.ConversationTable), global::Ndx.Model.ConversationTable.Parser, new[]{ "Items" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.FrameTable), global::Ndx.Model.FrameTable.Parser, new[]{ "Items" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.MetacapIndex), global::Ndx.Model.MetacapIndex.Parser, new[]{ "PcapTable", "FrameTables", "ConversationTable" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -263,11 +274,343 @@ namespace Ndx.Model {
 
   }
 
+  public sealed partial class PcapTable : pb::IMessage<PcapTable> {
+    private static readonly pb::MessageParser<PcapTable> _parser = new pb::MessageParser<PcapTable>(() => new PcapTable());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<PcapTable> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Ndx.Model.McapModelReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PcapTable() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PcapTable(PcapTable other) : this() {
+      items_ = other.items_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PcapTable Clone() {
+      return new PcapTable(this);
+    }
+
+    /// <summary>Field number for the "Items" field.</summary>
+    public const int ItemsFieldNumber = 10;
+    private static readonly pbc::MapField<int, global::Ndx.Model.PcapFile>.Codec _map_items_codec
+        = new pbc::MapField<int, global::Ndx.Model.PcapFile>.Codec(pb::FieldCodec.ForInt32(8), pb::FieldCodec.ForMessage(18, global::Ndx.Model.PcapFile.Parser), 82);
+    private readonly pbc::MapField<int, global::Ndx.Model.PcapFile> items_ = new pbc::MapField<int, global::Ndx.Model.PcapFile>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<int, global::Ndx.Model.PcapFile> Items {
+      get { return items_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as PcapTable);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(PcapTable other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!Items.Equals(other.Items)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= Items.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      items_.WriteTo(output, _map_items_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += items_.CalculateSize(_map_items_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(PcapTable other) {
+      if (other == null) {
+        return;
+      }
+      items_.Add(other.items_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 82: {
+            items_.AddEntriesFrom(input, _map_items_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   /// <summary>
   //// &lt;summary>
-  ////	Index file is the main entry point to each metacap file.
+  ////	Represents a single conversation table.
+  ////	&lt;/summary>
+  /// </summary>
+  public sealed partial class ConversationTable : pb::IMessage<ConversationTable> {
+    private static readonly pb::MessageParser<ConversationTable> _parser = new pb::MessageParser<ConversationTable>(() => new ConversationTable());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ConversationTable> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Ndx.Model.McapModelReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ConversationTable() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ConversationTable(ConversationTable other) : this() {
+      items_ = other.items_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ConversationTable Clone() {
+      return new ConversationTable(this);
+    }
+
+    /// <summary>Field number for the "Items" field.</summary>
+    public const int ItemsFieldNumber = 10;
+    private static readonly pbc::MapField<int, global::Ndx.Model.Conversation>.Codec _map_items_codec
+        = new pbc::MapField<int, global::Ndx.Model.Conversation>.Codec(pb::FieldCodec.ForInt32(8), pb::FieldCodec.ForMessage(18, global::Ndx.Model.Conversation.Parser), 82);
+    private readonly pbc::MapField<int, global::Ndx.Model.Conversation> items_ = new pbc::MapField<int, global::Ndx.Model.Conversation>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<int, global::Ndx.Model.Conversation> Items {
+      get { return items_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ConversationTable);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ConversationTable other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!Items.Equals(other.Items)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= Items.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      items_.WriteTo(output, _map_items_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += items_.CalculateSize(_map_items_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ConversationTable other) {
+      if (other == null) {
+        return;
+      }
+      items_.Add(other.items_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 82: {
+            items_.AddEntriesFrom(input, _map_items_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  //// &lt;summary>
+  ////	Represents a table of meta information about frames.
   ////	&lt;summary>
   /// </summary>
+  public sealed partial class FrameTable : pb::IMessage<FrameTable> {
+    private static readonly pb::MessageParser<FrameTable> _parser = new pb::MessageParser<FrameTable>(() => new FrameTable());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<FrameTable> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Ndx.Model.McapModelReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public FrameTable() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public FrameTable(FrameTable other) : this() {
+      items_ = other.items_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public FrameTable Clone() {
+      return new FrameTable(this);
+    }
+
+    /// <summary>Field number for the "Items" field.</summary>
+    public const int ItemsFieldNumber = 10;
+    private static readonly pbc::MapField<int, global::Ndx.Model.MetaFrame>.Codec _map_items_codec
+        = new pbc::MapField<int, global::Ndx.Model.MetaFrame>.Codec(pb::FieldCodec.ForInt32(8), pb::FieldCodec.ForMessage(18, global::Ndx.Model.MetaFrame.Parser), 82);
+    private readonly pbc::MapField<int, global::Ndx.Model.MetaFrame> items_ = new pbc::MapField<int, global::Ndx.Model.MetaFrame>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<int, global::Ndx.Model.MetaFrame> Items {
+      get { return items_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as FrameTable);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(FrameTable other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!Items.Equals(other.Items)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= Items.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      items_.WriteTo(output, _map_items_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += items_.CalculateSize(_map_items_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(FrameTable other) {
+      if (other == null) {
+        return;
+      }
+      items_.Add(other.items_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 82: {
+            items_.AddEntriesFrom(input, _map_items_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class MetacapIndex : pb::IMessage<MetacapIndex> {
     private static readonly pb::MessageParser<MetacapIndex> _parser = new pb::MessageParser<MetacapIndex>(() => new MetacapIndex());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -275,7 +618,7 @@ namespace Ndx.Model {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Model.McapModelReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Ndx.Model.McapModelReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -292,7 +635,9 @@ namespace Ndx.Model {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public MetacapIndex(MetacapIndex other) : this() {
-      conversations_ = other.conversations_.Clone();
+      PcapTable = other.pcapTable_ != null ? other.PcapTable.Clone() : null;
+      frameTables_ = other.frameTables_.Clone();
+      ConversationTable = other.conversationTable_ != null ? other.ConversationTable.Clone() : null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -300,14 +645,36 @@ namespace Ndx.Model {
       return new MetacapIndex(this);
     }
 
-    /// <summary>Field number for the "Conversations" field.</summary>
-    public const int ConversationsFieldNumber = 1;
-    private static readonly pbc::MapField<string, global::Ndx.Model.MetacapIndex.Types.ConversationList>.Codec _map_conversations_codec
-        = new pbc::MapField<string, global::Ndx.Model.MetacapIndex.Types.ConversationList>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForMessage(18, global::Ndx.Model.MetacapIndex.Types.ConversationList.Parser), 10);
-    private readonly pbc::MapField<string, global::Ndx.Model.MetacapIndex.Types.ConversationList> conversations_ = new pbc::MapField<string, global::Ndx.Model.MetacapIndex.Types.ConversationList>();
+    /// <summary>Field number for the "PcapTable" field.</summary>
+    public const int PcapTableFieldNumber = 2;
+    private global::Ndx.Model.PcapTable pcapTable_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::MapField<string, global::Ndx.Model.MetacapIndex.Types.ConversationList> Conversations {
-      get { return conversations_; }
+    public global::Ndx.Model.PcapTable PcapTable {
+      get { return pcapTable_; }
+      set {
+        pcapTable_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "FrameTables" field.</summary>
+    public const int FrameTablesFieldNumber = 3;
+    private static readonly pbc::MapField<int, global::Ndx.Model.FrameTable>.Codec _map_frameTables_codec
+        = new pbc::MapField<int, global::Ndx.Model.FrameTable>.Codec(pb::FieldCodec.ForInt32(8), pb::FieldCodec.ForMessage(18, global::Ndx.Model.FrameTable.Parser), 26);
+    private readonly pbc::MapField<int, global::Ndx.Model.FrameTable> frameTables_ = new pbc::MapField<int, global::Ndx.Model.FrameTable>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<int, global::Ndx.Model.FrameTable> FrameTables {
+      get { return frameTables_; }
+    }
+
+    /// <summary>Field number for the "ConversationTable" field.</summary>
+    public const int ConversationTableFieldNumber = 4;
+    private global::Ndx.Model.ConversationTable conversationTable_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Ndx.Model.ConversationTable ConversationTable {
+      get { return conversationTable_; }
+      set {
+        conversationTable_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -323,14 +690,18 @@ namespace Ndx.Model {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!Conversations.Equals(other.Conversations)) return false;
+      if (!object.Equals(PcapTable, other.PcapTable)) return false;
+      if (!FrameTables.Equals(other.FrameTables)) return false;
+      if (!object.Equals(ConversationTable, other.ConversationTable)) return false;
       return true;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= Conversations.GetHashCode();
+      if (pcapTable_ != null) hash ^= PcapTable.GetHashCode();
+      hash ^= FrameTables.GetHashCode();
+      if (conversationTable_ != null) hash ^= ConversationTable.GetHashCode();
       return hash;
     }
 
@@ -341,13 +712,27 @@ namespace Ndx.Model {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      conversations_.WriteTo(output, _map_conversations_codec);
+      if (pcapTable_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(PcapTable);
+      }
+      frameTables_.WriteTo(output, _map_frameTables_codec);
+      if (conversationTable_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(ConversationTable);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      size += conversations_.CalculateSize(_map_conversations_codec);
+      if (pcapTable_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PcapTable);
+      }
+      size += frameTables_.CalculateSize(_map_frameTables_codec);
+      if (conversationTable_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ConversationTable);
+      }
       return size;
     }
 
@@ -356,7 +741,19 @@ namespace Ndx.Model {
       if (other == null) {
         return;
       }
-      conversations_.Add(other.conversations_);
+      if (other.pcapTable_ != null) {
+        if (pcapTable_ == null) {
+          pcapTable_ = new global::Ndx.Model.PcapTable();
+        }
+        PcapTable.MergeFrom(other.PcapTable);
+      }
+      frameTables_.Add(other.frameTables_);
+      if (other.conversationTable_ != null) {
+        if (conversationTable_ == null) {
+          conversationTable_ = new global::Ndx.Model.ConversationTable();
+        }
+        ConversationTable.MergeFrom(other.ConversationTable);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -367,130 +764,27 @@ namespace Ndx.Model {
           default:
             input.SkipLastField();
             break;
-          case 10: {
-            conversations_.AddEntriesFrom(input, _map_conversations_codec);
+          case 18: {
+            if (pcapTable_ == null) {
+              pcapTable_ = new global::Ndx.Model.PcapTable();
+            }
+            input.ReadMessage(pcapTable_);
+            break;
+          }
+          case 26: {
+            frameTables_.AddEntriesFrom(input, _map_frameTables_codec);
+            break;
+          }
+          case 34: {
+            if (conversationTable_ == null) {
+              conversationTable_ = new global::Ndx.Model.ConversationTable();
+            }
+            input.ReadMessage(conversationTable_);
             break;
           }
         }
       }
     }
-
-    #region Nested types
-    /// <summary>Container for nested types declared in the MetacapIndex message type.</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static partial class Types {
-      public sealed partial class ConversationList : pb::IMessage<ConversationList> {
-        private static readonly pb::MessageParser<ConversationList> _parser = new pb::MessageParser<ConversationList>(() => new ConversationList());
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pb::MessageParser<ConversationList> Parser { get { return _parser; } }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pbr::MessageDescriptor Descriptor {
-          get { return global::Ndx.Model.MetacapIndex.Descriptor.NestedTypes[0]; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        pbr::MessageDescriptor pb::IMessage.Descriptor {
-          get { return Descriptor; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public ConversationList() {
-          OnConstruction();
-        }
-
-        partial void OnConstruction();
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public ConversationList(ConversationList other) : this() {
-          conversations_ = other.conversations_.Clone();
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public ConversationList Clone() {
-          return new ConversationList(this);
-        }
-
-        /// <summary>Field number for the "Conversations" field.</summary>
-        public const int ConversationsFieldNumber = 1;
-        private static readonly pb::FieldCodec<int> _repeated_conversations_codec
-            = pb::FieldCodec.ForInt32(10);
-        private readonly pbc::RepeatedField<int> conversations_ = new pbc::RepeatedField<int>();
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<int> Conversations {
-          get { return conversations_; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override bool Equals(object other) {
-          return Equals(other as ConversationList);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public bool Equals(ConversationList other) {
-          if (ReferenceEquals(other, null)) {
-            return false;
-          }
-          if (ReferenceEquals(other, this)) {
-            return true;
-          }
-          if(!conversations_.Equals(other.conversations_)) return false;
-          return true;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override int GetHashCode() {
-          int hash = 1;
-          hash ^= conversations_.GetHashCode();
-          return hash;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override string ToString() {
-          return pb::JsonFormatter.ToDiagnosticString(this);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void WriteTo(pb::CodedOutputStream output) {
-          conversations_.WriteTo(output, _repeated_conversations_codec);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int CalculateSize() {
-          int size = 0;
-          size += conversations_.CalculateSize(_repeated_conversations_codec);
-          return size;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(ConversationList other) {
-          if (other == null) {
-            return;
-          }
-          conversations_.Add(other.conversations_);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(pb::CodedInputStream input) {
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                input.SkipLastField();
-                break;
-              case 10:
-              case 8: {
-                conversations_.AddEntriesFrom(input, _repeated_conversations_codec);
-                break;
-              }
-            }
-          }
-        }
-
-      }
-
-    }
-    #endregion
 
   }
 

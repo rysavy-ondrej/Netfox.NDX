@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaptureStream.cs" />
     <Compile Include="PayloadHeader.cs" />
     <Compile Include="PcapLib.cs" />
     <Compile Include="PcapNetmon.cs" />

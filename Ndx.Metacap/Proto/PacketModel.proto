@@ -73,24 +73,22 @@ message MetaFrame {
 	int32 FrameLength = 2;
 	int64 FrameOffset = 3;
 	int64 TimeStamp = 4;
-	DatalinkPacketUnit Datalink = 10; 
-	NetworkPacketUnit Network = 20;
-	TransportPacketUnit Transport = 30;
-	ApplicationPacketUnit Application = 40;
+	DataLinkType LinkType = 5;
 }
 
 /// <summary>
 ///	Represents a block of packets.
 /// </summary>
+/*
 message PacketBlock {
 	int32 BlockId = 1;
 	int32 FileId = 2;
 	DataLinkType LinkType = 4;
 }
-
+   */
 
 message PacketFields {
-	int32 FrameNumber = 1;
+	int64 FrameNumber = 1;
 	string FrameProtocols = 2;
 	int64 Timestamp = 3;
 	map<string, string> Fields = 10;

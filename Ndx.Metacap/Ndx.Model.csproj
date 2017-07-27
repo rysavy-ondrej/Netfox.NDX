@@ -52,7 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Metacap\Metacap.cs" />
     <Compile Include="Model\ApplicationProtocol.cs" />
     <Compile Include="Model\Constants.cs" />
     <Compile Include="Model\Conversation.cs" />
@@ -60,7 +59,6 @@
     <Compile Include="Model\FlowKey.cs" />
     <Compile Include="Model\FlowModel.cs" />
     <Compile Include="Model\McapModel.cs" />
-    <Compile Include="Model\PacketBlock.cs" />
     <Compile Include="Model\PacketModel.cs" />
     <Compile Include="Model\RawFrame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

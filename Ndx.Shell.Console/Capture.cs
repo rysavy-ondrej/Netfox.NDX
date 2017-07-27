@@ -15,75 +15,39 @@ using SharpPcap.LibPcap;
 namespace Ndx.Shell.Console
 {
     public static class Capture
-    {
-        /// <summary>
-        /// Computes all conversations for the given collection of frames.
-        /// </summary>
-        /// <param name="frames">The input collection of frames.</param>
-        /// <returns>Dictionary containing all conversations for the input collection of frames.</returns>
-        public static IDictionary<Conversation, IList<MetaFrame>> Conversations(IEnumerable<RawFrame> frames)
+    {       
+        public static RawFrame GetRawFrame(this MetaFrame metaframe, Stream stream)
         {
-            var conversations = new Dictionary<Conversation,IList<MetaFrame>>(new Conversation.ReferenceComparer());
-            var frameCount = 0;
-            var tracker = new ConversationTracker();
-
-
-            void AcceptConversation(KeyValuePair<Conversation, MetaFrame> item)
-            {
-                try
-                {
-                    frameCount++;
-                    if (conversations.TryGetValue(item.Key, out IList<MetaFrame> clist))
-                    {
-                        clist.Add(item.Value);
-                    }
-                    else
-                    {
-                        conversations[item.Key] = new List<MetaFrame>(new[] { item.Value });
-                    }
-                }
-                catch (Exception e)
-                {
-                    System.Console.Error.WriteLine($"Capture.AcceptConversation: Error when processing item {item}: {e}. ");
-                }
-            }
-
-            tracker.Output.LinkTo(new ActionBlock<KeyValuePair<Conversation, MetaFrame>>((Action<KeyValuePair<Conversation, MetaFrame>>)AcceptConversation));
-
-            foreach (var frame in frames)
-            {
-                tracker.Input.Post(frame);
-            }
-            tracker.Input.Complete();            
-            Task.WaitAll(tracker.Completion);
-            return conversations;
+            var bytes = Capture.GetFrameBytes(metaframe, stream);
+            if (bytes != null) return new RawFrame(metaframe, bytes);
+            return null;
         }
 
-        /// <summary>
-        /// Gets packet specified by <paramref name="meta"/> by reading it from the provided <paramref name="stream"/>.
-        /// </summary>
-        /// <param name="stream">The source stream.</param>
-        /// <param name="meta">Meta information decribing the packet to read from the source stream.</param>
-        /// <returns><see cref="Packet"/> or null if some error occured.</returns>
-        public static async Task<Packet> GetPacketAsync(LinkLayers linkType, Stream stream, MetaFrame meta)
+        static byte[] GetFrameBytes(this MetaFrame metaframe, Stream stream)
         {
             try
             {
-                stream.Seek(meta.FrameOffset, SeekOrigin.Begin);
-                var buffer = new byte[meta.FrameLength];
-                var result = await stream.ReadAsync(buffer, 0, meta.FrameLength);
-                if (result == meta.FrameLength)
+                stream.Position = metaframe.FrameOffset;
+                var buffer = new byte[metaframe.FrameLength];
+                var result = stream.Read(buffer, 0, metaframe.FrameLength);
+                if (result == metaframe.FrameLength)
                 {
-                    return Packet.ParsePacket(linkType, buffer);
+                    return buffer;
                 }
             }
             catch (Exception e)
             {
                 System.Console.Error.WriteLine($"[ERROR] Capture.GetPacketAsync: {e}");
             }
-                return null;
+            return null;
         }
 
+        public static Packet GetPacket(this MetaFrame metaframe, Stream stream)
+        {
+            var bytes = Capture.GetFrameBytes(metaframe, stream);
+            if (bytes != null) return Packet.ParsePacket((PacketDotNet.LinkLayers)metaframe.LinkType, bytes);
+            return null;
+        }
 
         /// <summary>
         /// Reads frames for the specified collection of capture files.
@@ -112,10 +76,10 @@ namespace Ndx.Shell.Console
                 }
         }
 
-        public static void WriteAllFrames(string capturefile, IEnumerable<RawFrame> frames)
+        public static void WriteFrames(string capturefile, IEnumerable<RawFrame> frames)
         {
             var device = new CaptureFileWriterDevice(capturefile);
-            WriteFrame(device, frames);
+            WriteFrames(device, frames);
             device.Close();
         }
 
@@ -126,20 +90,11 @@ namespace Ndx.Shell.Console
         }
 
 
-        public static void WriteFrame(CaptureFileWriterDevice device, IEnumerable<RawFrame> frames)
+        public static void WriteFrames(CaptureFileWriterDevice device, IEnumerable<RawFrame> frames)
         {
             foreach(var frame in frames)
             {
                 WriteFrame(device, frame);
-            }
-        }
-
-        public static void PrintConversations(IEnumerable<Conversation> conversations)
-        {
-            foreach (var conv in conversations)
-            {
-                System.Console.WriteLine("{0}#{1}@{2}:{3}<->{4}:{5}", conv.ConversationId, conv.ConversationKey.IpProtocol, conv.ConversationKey.SourceIpAddress, conv.ConversationKey.SourcePort,
-                conv.ConversationKey.DestinationIpAddress, conv.ConversationKey.DestinationPort);
             }
         }
     }

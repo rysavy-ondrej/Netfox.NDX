@@ -59,10 +59,7 @@ namespace Ndx.Model
                 }
                 else
                 {
-                    var bytes = sourceAddress_.ToByteArray();
-                    var address = new IPAddress(bytes);
-                    var port = BitConverter.ToInt32(bytes, address.AddressFamily == AddressFamily.InterNetwork ? 4 : 16);
-                    return new IPEndPoint(address, port);
+                    return new IPEndPoint(SourceIpAddress, SourcePort);
                 }
             }
             set
@@ -81,10 +78,7 @@ namespace Ndx.Model
                 }
                 else
                 {
-                    var bytes = destinationAddress_.ToByteArray();
-                    var address = new IPAddress(bytes);
-                    var port = BitConverter.ToInt32(bytes, address.AddressFamily == AddressFamily.InterNetwork ? 4 : 16);
-                    return new IPEndPoint(address, port);
+                    return new IPEndPoint(DestinationIpAddress, DestinationPort);
                 }
             }
             set

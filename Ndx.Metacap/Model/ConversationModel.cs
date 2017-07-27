@@ -41,7 +41,7 @@ namespace Ndx.Model {
             "dGlvbktleRgEIAEoCzISLm5keC5tb2RlbC5GbG93S2V5EikKBlVwZmxvdxgQ",
             "IAEoCzIZLm5keC5tb2RlbC5GbG93QXR0cmlidXRlcxIrCghEb3duZmxvdxgR",
             "IAEoCzIZLm5keC5tb2RlbC5GbG93QXR0cmlidXRlcxIVCg1VcGZsb3dQYWNr",
-            "ZXRzGCAgAygFEhcKD0Rvd25mbG93UGFja2V0cxghIAMoBWIGcHJvdG8z"));
+            "ZXRzGCAgAygDEhcKD0Rvd25mbG93UGFja2V0cxghIAMoA2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Model.FlowModelReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -1218,21 +1218,21 @@ namespace Ndx.Model {
 
     /// <summary>Field number for the "UpflowPackets" field.</summary>
     public const int UpflowPacketsFieldNumber = 32;
-    private static readonly pb::FieldCodec<int> _repeated_upflowPackets_codec
-        = pb::FieldCodec.ForInt32(258);
-    private readonly pbc::RepeatedField<int> upflowPackets_ = new pbc::RepeatedField<int>();
+    private static readonly pb::FieldCodec<long> _repeated_upflowPackets_codec
+        = pb::FieldCodec.ForInt64(258);
+    private readonly pbc::RepeatedField<long> upflowPackets_ = new pbc::RepeatedField<long>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<int> UpflowPackets {
+    public pbc::RepeatedField<long> UpflowPackets {
       get { return upflowPackets_; }
     }
 
     /// <summary>Field number for the "DownflowPackets" field.</summary>
     public const int DownflowPacketsFieldNumber = 33;
-    private static readonly pb::FieldCodec<int> _repeated_downflowPackets_codec
-        = pb::FieldCodec.ForInt32(266);
-    private readonly pbc::RepeatedField<int> downflowPackets_ = new pbc::RepeatedField<int>();
+    private static readonly pb::FieldCodec<long> _repeated_downflowPackets_codec
+        = pb::FieldCodec.ForInt64(266);
+    private readonly pbc::RepeatedField<long> downflowPackets_ = new pbc::RepeatedField<long>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<int> DownflowPackets {
+    public pbc::RepeatedField<long> DownflowPackets {
       get { return downflowPackets_; }
     }
 

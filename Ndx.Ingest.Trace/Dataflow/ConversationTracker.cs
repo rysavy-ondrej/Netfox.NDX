@@ -134,13 +134,13 @@ namespace Ndx.Ingest
         /// <param name="flowPackets">Collection of flow packets that corresponds to the direction of the flow key.</param>
         /// <param name="flowOrientation">The flow orientation with respect to flow key.</param>
         /// <returns>Converdation instance that corresponds to the specified <see cref="FlowKey"/>.</returns>
-        public Conversation GetNetworkConversation(FlowKey flowKey, int parentConversationId, out FlowAttributes flowAttributes, out IList<int> flowPackets, out FlowOrientation flowOrientation)
+        public Conversation GetNetworkConversation(FlowKey flowKey, int parentConversationId, out FlowAttributes flowAttributes, out IList<long> flowPackets, out FlowOrientation flowOrientation)
         {
             return GetConversation(m_conversations, flowKey, parentConversationId, out flowAttributes, out flowPackets, out flowOrientation);
         }
 
         private object m_lockObject = new object();
-        private Conversation GetConversation(Dictionary<FlowKey, Conversation> dictionary, FlowKey flowKey, int parentConversationId, out FlowAttributes flowAttributes, out IList<int> flowPackets, out FlowOrientation flowOrientation)
+        private Conversation GetConversation(Dictionary<FlowKey, Conversation> dictionary, FlowKey flowKey, int parentConversationId, out FlowAttributes flowAttributes, out IList<long> flowPackets, out FlowOrientation flowOrientation)
         {
             lock (m_lockObject)
             {

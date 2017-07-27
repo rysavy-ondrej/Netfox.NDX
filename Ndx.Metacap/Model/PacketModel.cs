@@ -33,20 +33,14 @@ namespace Ndx.Model {
             "VW5pdBIjCgVCeXRlcxgBIAEoCzIULm5keC5tb2RlbC5CeXRlUmFuZ2UiOgoT",
             "VHJhbnNwb3J0UGFja2V0VW5pdBIjCgVCeXRlcxgBIAEoCzIULm5keC5tb2Rl",
             "bC5CeXRlUmFuZ2UiPAoVQXBwbGljYXRpb25QYWNrZXRVbml0EiMKBUJ5dGVz",
-            "GAEgASgLMhQubmR4Lm1vZGVsLkJ5dGVSYW5nZSKnAgoJTWV0YUZyYW1lEhMK",
+            "GAEgASgLMhQubmR4Lm1vZGVsLkJ5dGVSYW5nZSKIAQoJTWV0YUZyYW1lEhMK",
             "C0ZyYW1lTnVtYmVyGAEgASgFEhMKC0ZyYW1lTGVuZ3RoGAIgASgFEhMKC0Zy",
-            "YW1lT2Zmc2V0GAMgASgDEhEKCVRpbWVTdGFtcBgEIAEoAxIvCghEYXRhbGlu",
-            "axgKIAEoCzIdLm5keC5tb2RlbC5EYXRhbGlua1BhY2tldFVuaXQSLQoHTmV0",
-            "d29yaxgUIAEoCzIcLm5keC5tb2RlbC5OZXR3b3JrUGFja2V0VW5pdBIxCglU",
-            "cmFuc3BvcnQYHiABKAsyHi5uZHgubW9kZWwuVHJhbnNwb3J0UGFja2V0VW5p",
-            "dBI1CgtBcHBsaWNhdGlvbhgoIAEoCzIgLm5keC5tb2RlbC5BcHBsaWNhdGlv",
-            "blBhY2tldFVuaXQiWQoLUGFja2V0QmxvY2sSDwoHQmxvY2tJZBgBIAEoBRIO",
-            "CgZGaWxlSWQYAiABKAUSKQoITGlua1R5cGUYBCABKA4yFy5uZHgubW9kZWwu",
-            "RGF0YUxpbmtUeXBlIrIBCgxQYWNrZXRGaWVsZHMSEwoLRnJhbWVOdW1iZXIY",
-            "ASABKAUSFgoORnJhbWVQcm90b2NvbHMYAiABKAkSEQoJVGltZXN0YW1wGAMg",
-            "ASgDEjMKBkZpZWxkcxgKIAMoCzIjLm5keC5tb2RlbC5QYWNrZXRGaWVsZHMu",
-            "RmllbGRzRW50cnkaLQoLRmllbGRzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZh",
-            "bHVlGAIgASgJOgI4AWIGcHJvdG8z"));
+            "YW1lT2Zmc2V0GAMgASgDEhEKCVRpbWVTdGFtcBgEIAEoAxIpCghMaW5rVHlw",
+            "ZRgFIAEoDjIXLm5keC5tb2RlbC5EYXRhTGlua1R5cGUisgEKDFBhY2tldEZp",
+            "ZWxkcxITCgtGcmFtZU51bWJlchgBIAEoAxIWCg5GcmFtZVByb3RvY29scxgC",
+            "IAEoCRIRCglUaW1lc3RhbXAYAyABKAMSMwoGRmllbGRzGAogAygLMiMubmR4",
+            "Lm1vZGVsLlBhY2tldEZpZWxkcy5GaWVsZHNFbnRyeRotCgtGaWVsZHNFbnRy",
+            "eRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Model.ConstantsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -56,8 +50,7 @@ namespace Ndx.Model {
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.NetworkPacketUnit), global::Ndx.Model.NetworkPacketUnit.Parser, new[]{ "Bytes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.TransportPacketUnit), global::Ndx.Model.TransportPacketUnit.Parser, new[]{ "Bytes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.ApplicationPacketUnit), global::Ndx.Model.ApplicationPacketUnit.Parser, new[]{ "Bytes" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.MetaFrame), global::Ndx.Model.MetaFrame.Parser, new[]{ "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "Datalink", "Network", "Transport", "Application" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PacketBlock), global::Ndx.Model.PacketBlock.Parser, new[]{ "BlockId", "FileId", "LinkType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.MetaFrame), global::Ndx.Model.MetaFrame.Parser, new[]{ "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "LinkType" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PacketFields), global::Ndx.Model.PacketFields.Parser, new[]{ "FrameNumber", "FrameProtocols", "Timestamp", "Fields" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
@@ -1093,10 +1086,7 @@ namespace Ndx.Model {
       frameLength_ = other.frameLength_;
       frameOffset_ = other.frameOffset_;
       timeStamp_ = other.timeStamp_;
-      Datalink = other.datalink_ != null ? other.Datalink.Clone() : null;
-      Network = other.network_ != null ? other.Network.Clone() : null;
-      Transport = other.transport_ != null ? other.Transport.Clone() : null;
-      Application = other.application_ != null ? other.Application.Clone() : null;
+      linkType_ = other.linkType_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1148,47 +1138,14 @@ namespace Ndx.Model {
       }
     }
 
-    /// <summary>Field number for the "Datalink" field.</summary>
-    public const int DatalinkFieldNumber = 10;
-    private global::Ndx.Model.DatalinkPacketUnit datalink_;
+    /// <summary>Field number for the "LinkType" field.</summary>
+    public const int LinkTypeFieldNumber = 5;
+    private global::Ndx.Model.DataLinkType linkType_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Model.DatalinkPacketUnit Datalink {
-      get { return datalink_; }
+    public global::Ndx.Model.DataLinkType LinkType {
+      get { return linkType_; }
       set {
-        datalink_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Network" field.</summary>
-    public const int NetworkFieldNumber = 20;
-    private global::Ndx.Model.NetworkPacketUnit network_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Model.NetworkPacketUnit Network {
-      get { return network_; }
-      set {
-        network_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Transport" field.</summary>
-    public const int TransportFieldNumber = 30;
-    private global::Ndx.Model.TransportPacketUnit transport_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Model.TransportPacketUnit Transport {
-      get { return transport_; }
-      set {
-        transport_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Application" field.</summary>
-    public const int ApplicationFieldNumber = 40;
-    private global::Ndx.Model.ApplicationPacketUnit application_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Model.ApplicationPacketUnit Application {
-      get { return application_; }
-      set {
-        application_ = value;
+        linkType_ = value;
       }
     }
 
@@ -1209,10 +1166,7 @@ namespace Ndx.Model {
       if (FrameLength != other.FrameLength) return false;
       if (FrameOffset != other.FrameOffset) return false;
       if (TimeStamp != other.TimeStamp) return false;
-      if (!object.Equals(Datalink, other.Datalink)) return false;
-      if (!object.Equals(Network, other.Network)) return false;
-      if (!object.Equals(Transport, other.Transport)) return false;
-      if (!object.Equals(Application, other.Application)) return false;
+      if (LinkType != other.LinkType) return false;
       return true;
     }
 
@@ -1223,10 +1177,7 @@ namespace Ndx.Model {
       if (FrameLength != 0) hash ^= FrameLength.GetHashCode();
       if (FrameOffset != 0L) hash ^= FrameOffset.GetHashCode();
       if (TimeStamp != 0L) hash ^= TimeStamp.GetHashCode();
-      if (datalink_ != null) hash ^= Datalink.GetHashCode();
-      if (network_ != null) hash ^= Network.GetHashCode();
-      if (transport_ != null) hash ^= Transport.GetHashCode();
-      if (application_ != null) hash ^= Application.GetHashCode();
+      if (LinkType != 0) hash ^= LinkType.GetHashCode();
       return hash;
     }
 
@@ -1253,21 +1204,9 @@ namespace Ndx.Model {
         output.WriteRawTag(32);
         output.WriteInt64(TimeStamp);
       }
-      if (datalink_ != null) {
-        output.WriteRawTag(82);
-        output.WriteMessage(Datalink);
-      }
-      if (network_ != null) {
-        output.WriteRawTag(162, 1);
-        output.WriteMessage(Network);
-      }
-      if (transport_ != null) {
-        output.WriteRawTag(242, 1);
-        output.WriteMessage(Transport);
-      }
-      if (application_ != null) {
-        output.WriteRawTag(194, 2);
-        output.WriteMessage(Application);
+      if (LinkType != 0) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) LinkType);
       }
     }
 
@@ -1286,17 +1225,8 @@ namespace Ndx.Model {
       if (TimeStamp != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(TimeStamp);
       }
-      if (datalink_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Datalink);
-      }
-      if (network_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Network);
-      }
-      if (transport_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Transport);
-      }
-      if (application_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Application);
+      if (LinkType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) LinkType);
       }
       return size;
     }
@@ -1318,29 +1248,8 @@ namespace Ndx.Model {
       if (other.TimeStamp != 0L) {
         TimeStamp = other.TimeStamp;
       }
-      if (other.datalink_ != null) {
-        if (datalink_ == null) {
-          datalink_ = new global::Ndx.Model.DatalinkPacketUnit();
-        }
-        Datalink.MergeFrom(other.Datalink);
-      }
-      if (other.network_ != null) {
-        if (network_ == null) {
-          network_ = new global::Ndx.Model.NetworkPacketUnit();
-        }
-        Network.MergeFrom(other.Network);
-      }
-      if (other.transport_ != null) {
-        if (transport_ == null) {
-          transport_ = new global::Ndx.Model.TransportPacketUnit();
-        }
-        Transport.MergeFrom(other.Transport);
-      }
-      if (other.application_ != null) {
-        if (application_ == null) {
-          application_ = new global::Ndx.Model.ApplicationPacketUnit();
-        }
-        Application.MergeFrom(other.Application);
+      if (other.LinkType != 0) {
+        LinkType = other.LinkType;
       }
     }
 
@@ -1368,209 +1277,7 @@ namespace Ndx.Model {
             TimeStamp = input.ReadInt64();
             break;
           }
-          case 82: {
-            if (datalink_ == null) {
-              datalink_ = new global::Ndx.Model.DatalinkPacketUnit();
-            }
-            input.ReadMessage(datalink_);
-            break;
-          }
-          case 162: {
-            if (network_ == null) {
-              network_ = new global::Ndx.Model.NetworkPacketUnit();
-            }
-            input.ReadMessage(network_);
-            break;
-          }
-          case 242: {
-            if (transport_ == null) {
-              transport_ = new global::Ndx.Model.TransportPacketUnit();
-            }
-            input.ReadMessage(transport_);
-            break;
-          }
-          case 322: {
-            if (application_ == null) {
-              application_ = new global::Ndx.Model.ApplicationPacketUnit();
-            }
-            input.ReadMessage(application_);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  //// &lt;summary>
-  ////	Represents a block of packets.
-  //// &lt;/summary>
-  /// </summary>
-  public sealed partial class PacketBlock : pb::IMessage<PacketBlock> {
-    private static readonly pb::MessageParser<PacketBlock> _parser = new pb::MessageParser<PacketBlock>(() => new PacketBlock());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<PacketBlock> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[7]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PacketBlock() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PacketBlock(PacketBlock other) : this() {
-      blockId_ = other.blockId_;
-      fileId_ = other.fileId_;
-      linkType_ = other.linkType_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PacketBlock Clone() {
-      return new PacketBlock(this);
-    }
-
-    /// <summary>Field number for the "BlockId" field.</summary>
-    public const int BlockIdFieldNumber = 1;
-    private int blockId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int BlockId {
-      get { return blockId_; }
-      set {
-        blockId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "FileId" field.</summary>
-    public const int FileIdFieldNumber = 2;
-    private int fileId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int FileId {
-      get { return fileId_; }
-      set {
-        fileId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "LinkType" field.</summary>
-    public const int LinkTypeFieldNumber = 4;
-    private global::Ndx.Model.DataLinkType linkType_ = 0;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Model.DataLinkType LinkType {
-      get { return linkType_; }
-      set {
-        linkType_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as PacketBlock);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(PacketBlock other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (BlockId != other.BlockId) return false;
-      if (FileId != other.FileId) return false;
-      if (LinkType != other.LinkType) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (BlockId != 0) hash ^= BlockId.GetHashCode();
-      if (FileId != 0) hash ^= FileId.GetHashCode();
-      if (LinkType != 0) hash ^= LinkType.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (BlockId != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(BlockId);
-      }
-      if (FileId != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(FileId);
-      }
-      if (LinkType != 0) {
-        output.WriteRawTag(32);
-        output.WriteEnum((int) LinkType);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (BlockId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BlockId);
-      }
-      if (FileId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FileId);
-      }
-      if (LinkType != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) LinkType);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(PacketBlock other) {
-      if (other == null) {
-        return;
-      }
-      if (other.BlockId != 0) {
-        BlockId = other.BlockId;
-      }
-      if (other.FileId != 0) {
-        FileId = other.FileId;
-      }
-      if (other.LinkType != 0) {
-        LinkType = other.LinkType;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            BlockId = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            FileId = input.ReadInt32();
-            break;
-          }
-          case 32: {
+          case 40: {
             linkType_ = (global::Ndx.Model.DataLinkType) input.ReadEnum();
             break;
           }
@@ -1587,7 +1294,7 @@ namespace Ndx.Model {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1617,9 +1324,9 @@ namespace Ndx.Model {
 
     /// <summary>Field number for the "FrameNumber" field.</summary>
     public const int FrameNumberFieldNumber = 1;
-    private int frameNumber_;
+    private long frameNumber_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int FrameNumber {
+    public long FrameNumber {
       get { return frameNumber_; }
       set {
         frameNumber_ = value;
@@ -1681,7 +1388,7 @@ namespace Ndx.Model {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (FrameNumber != 0) hash ^= FrameNumber.GetHashCode();
+      if (FrameNumber != 0L) hash ^= FrameNumber.GetHashCode();
       if (FrameProtocols.Length != 0) hash ^= FrameProtocols.GetHashCode();
       if (Timestamp != 0L) hash ^= Timestamp.GetHashCode();
       hash ^= Fields.GetHashCode();
@@ -1695,9 +1402,9 @@ namespace Ndx.Model {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (FrameNumber != 0) {
+      if (FrameNumber != 0L) {
         output.WriteRawTag(8);
-        output.WriteInt32(FrameNumber);
+        output.WriteInt64(FrameNumber);
       }
       if (FrameProtocols.Length != 0) {
         output.WriteRawTag(18);
@@ -1713,8 +1420,8 @@ namespace Ndx.Model {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (FrameNumber != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FrameNumber);
+      if (FrameNumber != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(FrameNumber);
       }
       if (FrameProtocols.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(FrameProtocols);
@@ -1731,7 +1438,7 @@ namespace Ndx.Model {
       if (other == null) {
         return;
       }
-      if (other.FrameNumber != 0) {
+      if (other.FrameNumber != 0L) {
         FrameNumber = other.FrameNumber;
       }
       if (other.FrameProtocols.Length != 0) {
@@ -1752,7 +1459,7 @@ namespace Ndx.Model {
             input.SkipLastField();
             break;
           case 8: {
-            FrameNumber = input.ReadInt32();
+            FrameNumber = input.ReadInt64();
             break;
           }
           case 18: {

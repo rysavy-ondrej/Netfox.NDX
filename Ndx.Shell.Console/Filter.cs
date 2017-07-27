@@ -12,7 +12,7 @@ namespace Ndx.Shell.Console
     /// <summary>
     /// This class helps in creating filter predicate.
     /// </summary>
-    public static class Filter
+    public static class FlowExpr
     {
         public static Func<FlowKey,bool> Address(string address)
         {
@@ -73,6 +73,21 @@ namespace Ndx.Shell.Console
             {
                 return filter(conv.ConversationKey);
             });
+        }
+
+
+        public static Func<FlowKey, IPAddress> OtherAddress(string thisAddress)
+        {
+            return OtherAddress(IPAddress.Parse(thisAddress));
+        }
+        public static Func<FlowKey, IPAddress> OtherAddress(IPAddress thisAddress)
+        {                        
+            return (FlowKey f) => 
+            {
+                if (f.SourceIpAddress.Equals(thisAddress)) return f.DestinationIpAddress;
+                if (f.DestinationIpAddress.Equals(thisAddress)) return f.SourceIpAddress;
+                return null;
+            };
         }
     }
 }

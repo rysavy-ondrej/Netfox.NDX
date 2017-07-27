@@ -30,6 +30,7 @@ namespace Ndx.Ingest
                 FrameNumber = rawframe.FrameNumber,
                 FrameOffset = rawframe.FrameOffset,
                 TimeStamp = rawframe.TimeStamp,
+                LinkType = rawframe.LinkType,
             };
         }
 
@@ -141,10 +142,12 @@ namespace Ndx.Ingest
             var applicationPacket = transportPacket.PayloadPacket;
 
             flowPackets.Add(m_metaFrame.FrameNumber);
+            /*
             m_metaFrame.Datalink = new DatalinkPacketUnit() { Bytes = new ByteRange() { Offset = datalinkPacket.BytesHighPerformance.Offset, Length = datalinkPacket.BytesHighPerformance.Length } };
             m_metaFrame.Network = new NetworkPacketUnit() { Bytes = new ByteRange() { Offset = networkPacket.BytesHighPerformance.Offset, Length = networkPacket.BytesHighPerformance.Length } };
             m_metaFrame.Transport = new TransportPacketUnit() { Bytes = new ByteRange() { Offset = transportPacket.BytesHighPerformance.Offset, Length = transportPacket.BytesHighPerformance.Length } };
             m_metaFrame.Application = new ApplicationPacketUnit() { Bytes = new ByteRange() { Offset = applicationPacket.BytesHighPerformance.Offset, Length = applicationPacket.BytesHighPerformance.Length } };
+            */    
         }
 
 

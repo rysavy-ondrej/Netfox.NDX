@@ -62,6 +62,8 @@ message Conversation {
 	FlowKey ConversationKey = 4;
 	FlowAttributes Upflow = 16;
 	FlowAttributes Downflow = 17;
-	repeated int32 UpflowPackets = 32;
-	repeated int32 DownflowPackets = 33;
+	repeated int64 UpflowPackets = 32;
+	repeated int64 DownflowPackets = 33;
 } 
+
+

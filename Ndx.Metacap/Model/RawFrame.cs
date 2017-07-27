@@ -13,6 +13,16 @@ namespace Ndx.Model
         const long TicksPerSecond = 10000000;
         const long TicksPerMicrosecond = 10;
 
+        public RawFrame(MetaFrame metaframe, byte[] bytes)
+        {
+            FrameLength = metaframe.FrameLength;
+            FrameNumber = metaframe.FrameNumber;
+            FrameOffset = metaframe.FrameOffset;
+            LinkType = metaframe.LinkType;
+            TimeStamp = metaframe.TimeStamp;
+            Data = Google.Protobuf.ByteString.CopyFrom(bytes);
+        }
+
         public uint Seconds => (uint)((TimeStamp - UnixBaseTicks) / TicksPerSecond);
 
         public uint Microseconds => (uint)(((TimeStamp - UnixBaseTicks) % TicksPerSecond)/ TicksPerMicrosecond);

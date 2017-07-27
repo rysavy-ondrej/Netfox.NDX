@@ -22,17 +22,17 @@ namespace Ndx.Model {
     static FlowModelReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9GbG93TW9kZWwucHJvdG8SCW5keC5tb2RlbBoPQ29uc3RhbnRzLnByb3Rv",
-            "GhFQYWNrZXRNb2RlbC5wcm90byKmAQoHRmxvd0tleRIhCgRUeXBlGAEgASgO",
-            "MhMubmR4Lm1vZGVsLkZsb3dUeXBlEhAKCFByb3RvY29sGAIgASgMEhUKDVNv",
-            "dXJjZUFkZHJlc3MYICABKAwSGgoSRGVzdGluYXRpb25BZGRyZXNzGCEgASgM",
-            "EhYKDlNvdXJjZVNlbGVjdG9yGEAgASgMEhsKE0Rlc3RpbmF0aW9uU2VsZWN0",
-            "b3IYQSABKAwqOgoPRmxvd09yaWVudGF0aW9uEg0KCVVuZGVmaW5lZBAAEgoK",
-            "BlVwZmxvdxABEgwKCERvd25mbG93EAIqXgoIRmxvd1R5cGUSEQoNVW5kZWZp",
-            "bmVkRmxvdxAAEg8KC05ldHdvcmtGbG93EAESDQoJRXRoZXJGbG93EAISCgoG",
-            "SXBGbG93EAQSEwoPQXBwbGljYXRpb25GbG93EAhiBnByb3RvMw=="));
+            "Cg9GbG93TW9kZWwucHJvdG8SCW5keC5tb2RlbCKmAQoHRmxvd0tleRIhCgRU",
+            "eXBlGAEgASgOMhMubmR4Lm1vZGVsLkZsb3dUeXBlEhAKCFByb3RvY29sGAIg",
+            "ASgMEhUKDVNvdXJjZUFkZHJlc3MYICABKAwSGgoSRGVzdGluYXRpb25BZGRy",
+            "ZXNzGCEgASgMEhYKDlNvdXJjZVNlbGVjdG9yGEAgASgMEhsKE0Rlc3RpbmF0",
+            "aW9uU2VsZWN0b3IYQSABKAwqOgoPRmxvd09yaWVudGF0aW9uEg0KCVVuZGVm",
+            "aW5lZBAAEgoKBlVwZmxvdxABEgwKCERvd25mbG93EAIqXgoIRmxvd1R5cGUS",
+            "EQoNVW5kZWZpbmVkRmxvdxAAEg8KC05ldHdvcmtGbG93EAESDQoJRXRoZXJG",
+            "bG93EAISCgoGSXBGbG93EAQSEwoPQXBwbGljYXRpb25GbG93EAhiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Ndx.Model.ConstantsReflection.Descriptor, global::Ndx.Model.PacketModelReflection.Descriptor, },
+          new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Ndx.Model.FlowOrientation), typeof(global::Ndx.Model.FlowType), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.FlowKey), global::Ndx.Model.FlowKey.Parser, new[]{ "Type", "Protocol", "SourceAddress", "DestinationAddress", "SourceSelector", "DestinationSelector" }, null, null, null)
           }));

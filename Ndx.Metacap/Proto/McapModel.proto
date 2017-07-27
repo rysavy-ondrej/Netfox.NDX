@@ -4,10 +4,8 @@
 //
 syntax = "proto3";
 package ndx.model;
-import "FlowModel.proto";
-import "ConversationModel.proto";
 import "PacketModel.proto";
-
+import "ConversationModel.proto";
 /// <summary>
 ///	Enumerates all supported packet capture file format.
 ///	</summary>
@@ -18,13 +16,26 @@ message PcapFile {
 	bytes Md5hash = 3;
 	int64 IngestedOn = 4;
 }
+message PcapTable {
+	map<int32, PcapFile> Items = 10;
+}
 
 /// <summary>
-///	Index file is the main entry point to each metacap file.
+///	Represents a single conversation table.
+///	</summary>
+message ConversationTable {
+	map<int32, Conversation> Items = 10;
+}
+
+/// <summary>
+///	Represents a table of meta information about frames.
 ///	<summary>
-message MetacapIndex {
-	message ConversationList {
-		repeated int32 Conversations = 1;
-	}
-	map<string, ConversationList> Conversations = 1; 
+message FrameTable {
+	map<int32, MetaFrame> Items = 10;
+}
+
+message MetacapIndex {	
+	PcapTable PcapTable = 2;
+	map<int32, FrameTable> FrameTables = 3;
+	ConversationTable ConversationTable = 4;
 }

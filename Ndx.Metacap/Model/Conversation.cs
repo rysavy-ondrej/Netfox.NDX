@@ -44,5 +44,39 @@ namespace Ndx.Model
 
         ConversationState m_conversationState = ConversationState.Active;
         public ConversationState State => m_conversationState;
+
+
+        public static long PacketPointer(int source, int number)
+        {
+            return ((long)source << 32) + (long)number;
+        }
+
+        public static int PacketSource(long pointer)
+        {
+            return (int)((long)pointer >> 32);
+        }
+
+        public static int PacketNumber(long pointer)
+        {
+            return (int)(pointer & 0xffffffff);
+        }
+    
+        /// <summary>
+        /// Gets all packet pointers for the current conversation.
+        /// </summary>
+        public IEnumerable<long> Packets =>
+            this.UpflowPackets.Union(this.DownflowPackets);
+
+        public long FirstSeen =>
+            Math.Min(this.Upflow.FirstSeen, this.Downflow.FirstSeen);
+
+        public long LastSeen =>
+            Math.Min(this.Upflow.LastSeen, this.Downflow.LastSeen);
+
+        public int PacketCount =>
+            this.Upflow.Packets + this.Downflow.Packets;
+
+        public long Octets =>
+            this.Upflow.Octets + this.Downflow.Octets;
     }
 }

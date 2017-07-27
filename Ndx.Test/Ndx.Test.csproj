@@ -32,8 +32,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Google.Protobuf, Version=3.3.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604" />
-    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="PacketDotNet, Version=0.13.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PacketDotNet.Netfox.0.13.0.3\lib\net35\PacketDotNet.dll</HintPath>
@@ -53,9 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Captures\ReadFiles.cs" />
+    <Compile Include="Console\ConversationsTest.cs" />
     <Compile Include="Filters\FlowKeyFilterTest.cs" />
     <Compile Include="Ingest\FlowKeyTest.cs" />
     <Compile Include="Ingest\LoadFromTest.cs" />
+    <Compile Include="Model\LoadSaveTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ipfix\IpfixTest.cs" />
     <Compile Include="Tshark\TSharkProcessTest.cs" />
@@ -82,6 +84,10 @@
     <ProjectReference Include="..\Ndx.Metacap\Ndx.Model.csproj">
       <Project>{6c85ca82-04e3-4600-80ab-12b53f6ae4b3}</Project>
       <Name>Ndx.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ndx.Shell.Console\Ndx.Shell.Console.csproj">
+      <Project>{75454215-419C-4EC6-9776-06575F374D22}</Project>
+      <Name>Ndx.Shell.Console</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ndx.TShark\Ndx.TShark.csproj">
       <Project>{95f5f22b-8e43-4342-b3b3-86ee57a803a8}</Project>

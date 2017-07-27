@@ -36,7 +36,7 @@ namespace Ndx.Tools.Export
         RocksDb m_rocksDb;
         private IDictionary<int, Conversation> m_conversations;
 
-        private IDictionary<int, MetaFrame> m_frames;
+        private IDictionary<long, MetaFrame> m_frames;
 
         /// <summary>
         /// Gets or sets the path to the input PCAP file.
@@ -63,7 +63,7 @@ namespace Ndx.Tools.Export
                 if (!File.Exists(fullpath)) { throw new FileNotFoundException("${fullpath}"); }
 
                 m_conversations = new Dictionary<int, Conversation>();
-                m_frames = new Dictionary<int, MetaFrame>();
+                m_frames = new Dictionary<long, MetaFrame>();
                
 
                

@@ -4,8 +4,6 @@
 //
 syntax = "proto3";
 package ndx.model;
-import "Constants.proto";
-import "PacketModel.proto";
 
 
 /// <summary>
