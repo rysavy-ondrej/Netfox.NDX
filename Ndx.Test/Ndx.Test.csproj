@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Captures\ReadFiles.cs" />
     <Compile Include="Console\ConversationsTest.cs" />
+    <Compile Include="Decoders\DecodersTest.cs" />
     <Compile Include="Filters\FlowKeyFilterTest.cs" />
     <Compile Include="Ingest\FlowKeyTest.cs" />
     <Compile Include="Ingest\LoadFromTest.cs" />
@@ -72,6 +73,10 @@
     <ProjectReference Include="..\Ndx.Captures\Ndx.Captures.csproj">
       <Project>{f7893df7-5638-43bc-91e5-e612e4d0ad53}</Project>
       <Name>Ndx.Captures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ndx.Decoders\Ndx.Decoders.csproj">
+      <Project>{80f0f0e1-b4bd-4af5-8e92-3f9d2ec4e78a}</Project>
+      <Name>Ndx.Decoders</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ndx.Ingest.Trace\Ndx.Ingest.Trace.csproj">
       <Project>{94d924a3-8ac1-4db2-bddc-862d8a978e31}</Project>

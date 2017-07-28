@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 
 using System.IO;
+using Ndx.Model;
 
 
 
@@ -19,8 +20,34 @@ using System.IO;
 
 namespace Ndx.Captures
 {
-    public class Pcap
+    public static class LibPcapFile
     {
+
+        /// <summary>
+        /// Represents a single record in Libpcap file. 
+        /// </summary>
+        public class PcapRecord
+        {
+            /// <summary>
+            /// Timestamp of the record.
+            /// </summary>
+            public DateTimeOffset Timestamp;
+
+            /// <summary>
+            /// Network type.
+            /// </summary>
+            public uint NetworkId;
+
+            /// <summary>
+            /// Byte array containing packet data.
+            /// </summary>
+            public byte[] Data;
+
+            /// <summary>
+            /// Ofsets of the frame's data within the capture file.
+            /// </summary>
+            public long DataOffset;
+        }
         /// <summary>
         /// Reads network capture file and returns the raw blocks in the order they were written
         /// </summary>
@@ -79,23 +106,49 @@ namespace Ndx.Captures
                 }
             }
         }
-    }
 
-
-
-    public class PcapRecord
-
-    {
-        public DateTimeOffset Timestamp;
-
-        public uint NetworkId;
-
-        public byte[] Data;
+        public const uint MagicNumber = 0xa1b2c3d4;
+        public const ushort VersionMajor = 0x0002;
+        public const ushort VersionMinor = 0x0004;
+        public const uint ThisZone = 0;
+        public const uint Sigfigs = 0;
+        public const uint Snaplen = UInt16.MaxValue;
 
         /// <summary>
-        /// Ofsets of the frame's data within the capture file.
+        /// Creates a new file, write the specified frame array to the file, and then closes the file.
         /// </summary>
-        public long DataOffset;
-    }
+        /// <param name="path">The file to write to.</param>
+        /// <param name="network">The link type.</param>
+        /// <param name="contents">The raw frame array to write to the file.</param>
+        public static void WriteAllFrames(string path, DataLinkType network, IEnumerable<RawFrame> frames)
+        {
+            var stream = File.Create(path);
+            using (var writer = new BinaryWriter(stream))
+            {
+                // WRITE HEADER:
+                writer.Write(MagicNumber);
+                writer.Write(VersionMajor);
+                writer.Write(VersionMinor);
+                writer.Write(ThisZone);
+                writer.Write(Sigfigs);
+                writer.Write(Snaplen);
+                writer.Write((uint)network);
 
+                // WRITE RECORDS
+                foreach (var frame in frames)
+                {
+                    uint ts_sec = (uint)frame.Seconds;
+                    uint ts_usec = (uint)frame.Microseconds;
+                    uint incl_len = (uint)frame.Data.Length;
+                    uint orig_len = (uint)frame.Data.Length;
+                    writer.Write(ts_sec);
+                    writer.Write(ts_usec);
+                    writer.Write(incl_len);
+                    writer.Write(orig_len);
+                    writer.Write(frame.Bytes);
+                }
+            }
+            stream.Close();
+        }
+    }
 }

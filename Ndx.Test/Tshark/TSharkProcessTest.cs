@@ -48,7 +48,7 @@ namespace Ndx.Test
 
         void DecodeProtocol(string path)
         {
-            var process = new TSharkProtocolDecoder(new[] { "dns", "http" });
+            var process = new TSharkProtocolDecoderProcess(new[] { "dns", "http" });
             DecodeCapture(path, process, ".proto");
         }
 
@@ -64,7 +64,7 @@ namespace Ndx.Test
                 "http.date", "http.response_number",
                 "dns.a", "dns.cname", "dns.id", "dns.ns",
             };
-            var process = new TSharkFieldDecoder(fields);
+            var process = new TSharkFieldDecoderProcess(fields);
             DecodeCapture(path, process, ".fields");
         }
 

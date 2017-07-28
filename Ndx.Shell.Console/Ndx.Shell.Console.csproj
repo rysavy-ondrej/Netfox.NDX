@@ -46,9 +46,6 @@
       <HintPath>..\packages\PacketDotNet.0.16.0\lib\PacketDotNet.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SharpPcap, Version=4.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpPcap.4.4.0\lib\SharpPcap.dll</HintPath>
-    </Reference>
     <Reference Include="StackExchange.Redis, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\StackExchange.Redis.1.2.5\lib\net45\StackExchange.Redis.dll</HintPath>

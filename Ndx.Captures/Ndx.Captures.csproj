@@ -52,7 +52,7 @@
   <ItemGroup>
     <Compile Include="CaptureStream.cs" />
     <Compile Include="PayloadHeader.cs" />
-    <Compile Include="PcapLib.cs" />
+    <Compile Include="LibPcapFile.cs" />
     <Compile Include="PcapNetmon.cs" />
     <Compile Include="PcapNg.cs" />
     <Compile Include="PcapReader.cs" />

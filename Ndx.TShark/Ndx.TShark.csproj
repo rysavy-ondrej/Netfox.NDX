@@ -50,10 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TSharkBlock.cs" />
-    <Compile Include="TSharkFieldDecoder.cs" />
+    <Compile Include="TSharkDecoder.cs" />
+    <Compile Include="TSharkFieldDecoderProcess.cs" />
     <Compile Include="TSharkProcess.cs" />
-    <Compile Include="TSharkProtocolDecoder.cs" />
-    <Compile Include="WiresharkSender.cs" />
+    <Compile Include="TSharkProtocolDecoderProcess.cs" />
+    <Compile Include="TSharkSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Readme.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

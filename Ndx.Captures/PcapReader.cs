@@ -114,7 +114,7 @@ namespace Ndx.Captures
                             }
                         case PcapFileFormat.Libpcap:
                             {
-                                return Pcap.ReadForward(stream).Select((pcapRecord, frameNumber) =>
+                                return LibPcapFile.ReadForward(stream).Select((pcapRecord, frameNumber) =>
                                 {
                                     var linkType = GetLinkType(pcapRecord.NetworkId);
                                     return new RawFrame()

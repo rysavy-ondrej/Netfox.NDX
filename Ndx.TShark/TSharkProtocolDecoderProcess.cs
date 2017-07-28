@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Ndx.TShark
 {
-    public class TSharkProtocolDecoder : TSharkProcess
+    public class TSharkProtocolDecoderProcess : TSharkProcess
     {
         private List<string> m_protocols;
         /// <summary>
@@ -16,22 +16,22 @@ namespace Ndx.TShark
         /// </summary>
         public IList<string> Protocols { get => m_protocols; }
 
-        public TSharkProtocolDecoder() : base()
+        public TSharkProtocolDecoderProcess() : base()
         {
             m_protocols = new List<string>();
         }
 
-        public TSharkProtocolDecoder(string pipeName) : base(pipeName)
+        public TSharkProtocolDecoderProcess(string pipeName) : base(pipeName)
         {
             m_protocols = new List<string>();
         }
 
-        public TSharkProtocolDecoder(IEnumerable<string> protocols) : base()
+        public TSharkProtocolDecoderProcess(IEnumerable<string> protocols) : base()
         {
             m_protocols = new List<string>(protocols);
         }
 
-        public TSharkProtocolDecoder(string pipeName, IEnumerable<string> protocols) : base(pipeName)
+        public TSharkProtocolDecoderProcess(string pipeName, IEnumerable<string> protocols) : base(pipeName)
         {
             m_protocols = new List<string>(protocols);
         }

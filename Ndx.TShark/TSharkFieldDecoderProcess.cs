@@ -11,7 +11,7 @@ namespace Ndx.TShark
     /// <summary>
     /// This class represents TSHARK decoder that accepts a collection of fields to extract.
     /// </summary>
-    public class TSharkFieldDecoder : TSharkProcess
+    public class TSharkFieldDecoderProcess : TSharkProcess
     {
         private List<string> m_fields;
         /// <summary>
@@ -20,22 +20,22 @@ namespace Ndx.TShark
         public IList<string> Fields { get => m_fields; }
 
 
-        public TSharkFieldDecoder() : base()
+        public TSharkFieldDecoderProcess() : base()
         {
             m_fields = new List<string>();
         }
 
-        public TSharkFieldDecoder(string pipeName) : base(pipeName)
+        public TSharkFieldDecoderProcess(string pipeName) : base(pipeName)
         {
             m_fields = new List<string>();
         }
 
-        public TSharkFieldDecoder(IEnumerable<string> fields) : base()
+        public TSharkFieldDecoderProcess(IEnumerable<string> fields) : base()
         {
             m_fields = new List<string>(fields);
         }
 
-        public TSharkFieldDecoder(string pipeName, IEnumerable<string> fields) : base(pipeName)
+        public TSharkFieldDecoderProcess(string pipeName, IEnumerable<string> fields) : base(pipeName)
         {
             m_fields = new List<string>(fields);
         }

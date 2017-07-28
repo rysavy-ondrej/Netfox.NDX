@@ -128,7 +128,7 @@ namespace Ndx.TShark
     /// Wireshark can be launched with: Wireshark -ni \\.\pipe\bacnet
     /// TShark can be launced with: tshark -i \\.\pipe\bacnet
     ///</remarks>
-    public class WiresharkSender : IDisposable
+    public class TSharkSender : IDisposable
     {
         private NamedPipeServerStream m_wiresharkPipe;
 
@@ -138,7 +138,7 @@ namespace Ndx.TShark
         private DataLinkType m_linkType;
 
 
-        public WiresharkSender(string pipeName, Ndx.Model.DataLinkType linkType)
+        public TSharkSender(string pipeName, Ndx.Model.DataLinkType linkType)
         {
             this.m_pipeName = pipeName;
             this.m_linkType = linkType;
@@ -249,6 +249,8 @@ namespace Ndx.TShark
                 m_wiresharkPipe.Write(b, 0, b.Length);
                 // Packet content
                 m_wiresharkPipe.Write(buffer, offset, lenght);
+
+                m_wiresharkPipe.Flush();
             }
             catch (IOException)
             {

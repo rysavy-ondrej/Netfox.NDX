@@ -12,14 +12,14 @@ namespace Ndx.TShark
     {
         private ActionBlock<RawFrame> m_inputBlock;
         private BufferBlock<PacketFields> m_outputBlock;
-        private WiresharkSender m_wsender;
+        private TSharkSender m_wsender;
         private TSharkProcess m_tshark;
 
         public TSharkBlock(TSharkProcess tsharkProcess, DataLinkType datalinkType = DataLinkType.Ethernet)
         {
             var m_pipename = $"ndx.tshark_{new Random().Next(Int32.MaxValue)}";
 
-            m_wsender = new WiresharkSender(m_pipename, datalinkType);
+            m_wsender = new TSharkSender(m_pipename, datalinkType);
 
             m_inputBlock = new ActionBlock<RawFrame>(SendFrame);
             m_inputBlock.Completion.ContinueWith((t) => m_wsender.Close());

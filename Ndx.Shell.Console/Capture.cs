@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading.Tasks.Dataflow;
 using Ndx.Captures;
-using Ndx.Ingest;
 using Ndx.Model;
 using PacketDotNet;
-using SharpPcap;
-using SharpPcap.LibPcap;
+using System.Linq;
 
 namespace Ndx.Shell.Console
 {
@@ -76,26 +70,10 @@ namespace Ndx.Shell.Console
                 }
         }
 
-        public static void WriteFrames(string capturefile, IEnumerable<RawFrame> frames)
+        public static void WriteAllFrames(string capturefile, IEnumerable<RawFrame> frames)
         {
-            var device = new CaptureFileWriterDevice(capturefile);
-            WriteFrames(device, frames);
-            device.Close();
-        }
-
-        public static void WriteFrame(CaptureFileWriterDevice device, RawFrame frame)
-        {
-            var capture = new RawCapture(LinkLayers.Ethernet, new PosixTimeval(frame.Seconds, frame.Microseconds), frame.Bytes);
-            device.Write(capture);
-        }
-
-
-        public static void WriteFrames(CaptureFileWriterDevice device, IEnumerable<RawFrame> frames)
-        {
-            foreach(var frame in frames)
-            {
-                WriteFrame(device, frame);
-            }
+            var link = frames.FirstOrDefault()?.LinkType ?? DataLinkType.Ethernet;
+            LibPcapFile.WriteAllFrames(capturefile, link, frames);
         }
     }
 }
