@@ -22,19 +22,19 @@ namespace Ndx.Model {
     static FlowModelReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9GbG93TW9kZWwucHJvdG8SCW5keC5tb2RlbCKmAQoHRmxvd0tleRIhCgRU",
+            "Cg9GbG93TW9kZWwucHJvdG8SCW5keC5tb2RlbCKzAQoHRmxvd0tleRIhCgRU",
             "eXBlGAEgASgOMhMubmR4Lm1vZGVsLkZsb3dUeXBlEhAKCFByb3RvY29sGAIg",
             "ASgMEhUKDVNvdXJjZUFkZHJlc3MYICABKAwSGgoSRGVzdGluYXRpb25BZGRy",
             "ZXNzGCEgASgMEhYKDlNvdXJjZVNlbGVjdG9yGEAgASgMEhsKE0Rlc3RpbmF0",
-            "aW9uU2VsZWN0b3IYQSABKAwqOgoPRmxvd09yaWVudGF0aW9uEg0KCVVuZGVm",
-            "aW5lZBAAEgoKBlVwZmxvdxABEgwKCERvd25mbG93EAIqXgoIRmxvd1R5cGUS",
-            "EQoNVW5kZWZpbmVkRmxvdxAAEg8KC05ldHdvcmtGbG93EAESDQoJRXRoZXJG",
-            "bG93EAISCgoGSXBGbG93EAQSEwoPQXBwbGljYXRpb25GbG93EAhiBnByb3Rv",
-            "Mw=="));
+            "aW9uU2VsZWN0b3IYQSABKAwSCwoDVGFnGFAgASgMKjoKD0Zsb3dPcmllbnRh",
+            "dGlvbhINCglVbmRlZmluZWQQABIKCgZVcGZsb3cQARIMCghEb3duZmxvdxAC",
+            "Kl4KCEZsb3dUeXBlEhEKDVVuZGVmaW5lZEZsb3cQABIPCgtOZXR3b3JrRmxv",
+            "dxABEg0KCUV0aGVyRmxvdxACEgoKBklwRmxvdxAEEhMKD0FwcGxpY2F0aW9u",
+            "RmxvdxAIYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Ndx.Model.FlowOrientation), typeof(global::Ndx.Model.FlowType), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.FlowKey), global::Ndx.Model.FlowKey.Parser, new[]{ "Type", "Protocol", "SourceAddress", "DestinationAddress", "SourceSelector", "DestinationSelector" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.FlowKey), global::Ndx.Model.FlowKey.Parser, new[]{ "Type", "Protocol", "SourceAddress", "DestinationAddress", "SourceSelector", "DestinationSelector", "Tag" }, null, null, null)
           }));
     }
     #endregion
@@ -138,6 +138,7 @@ namespace Ndx.Model {
       destinationAddress_ = other.destinationAddress_;
       sourceSelector_ = other.sourceSelector_;
       destinationSelector_ = other.destinationSelector_;
+      tag_ = other.tag_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -211,6 +212,17 @@ namespace Ndx.Model {
       }
     }
 
+    /// <summary>Field number for the "Tag" field.</summary>
+    public const int TagFieldNumber = 80;
+    private pb::ByteString tag_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pb::ByteString Tag {
+      get { return tag_; }
+      set {
+        tag_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as FlowKey);
@@ -230,6 +242,7 @@ namespace Ndx.Model {
       if (DestinationAddress != other.DestinationAddress) return false;
       if (SourceSelector != other.SourceSelector) return false;
       if (DestinationSelector != other.DestinationSelector) return false;
+      if (Tag != other.Tag) return false;
       return true;
     }
 
@@ -242,6 +255,7 @@ namespace Ndx.Model {
       if (DestinationAddress.Length != 0) hash ^= DestinationAddress.GetHashCode();
       if (SourceSelector.Length != 0) hash ^= SourceSelector.GetHashCode();
       if (DestinationSelector.Length != 0) hash ^= DestinationSelector.GetHashCode();
+      if (Tag.Length != 0) hash ^= Tag.GetHashCode();
       return hash;
     }
 
@@ -276,6 +290,10 @@ namespace Ndx.Model {
         output.WriteRawTag(138, 4);
         output.WriteBytes(DestinationSelector);
       }
+      if (Tag.Length != 0) {
+        output.WriteRawTag(130, 5);
+        output.WriteBytes(Tag);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -298,6 +316,9 @@ namespace Ndx.Model {
       }
       if (DestinationSelector.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeBytesSize(DestinationSelector);
+      }
+      if (Tag.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeBytesSize(Tag);
       }
       return size;
     }
@@ -324,6 +345,9 @@ namespace Ndx.Model {
       }
       if (other.DestinationSelector.Length != 0) {
         DestinationSelector = other.DestinationSelector;
+      }
+      if (other.Tag.Length != 0) {
+        Tag = other.Tag;
       }
     }
 
@@ -357,6 +381,10 @@ namespace Ndx.Model {
           }
           case 522: {
             DestinationSelector = input.ReadBytes();
+            break;
+          }
+          case 642: {
+            Tag = input.ReadBytes();
             break;
           }
         }

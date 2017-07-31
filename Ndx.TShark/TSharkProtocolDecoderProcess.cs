@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,6 +44,10 @@ namespace Ndx.TShark
 
         protected override PacketFields GetResult(string line)
         {
+            return DecodeJsonLine(line);
+        }
+        public PacketFields DecodeJsonLine(string line)
+        { 
             var jsonObject = JToken.Parse(line);
             var layers = jsonObject["layers"]; 
             var frame = layers["frame"];

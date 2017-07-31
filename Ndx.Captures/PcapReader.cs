@@ -53,19 +53,6 @@ namespace Ndx.Captures
             }
         }
 
-        private static LinkLayers GetLinkType(uint networkId)
-        {
-            switch(networkId)
-            {
-                case 1: return LinkLayers.Ethernet;
-                case 8: return LinkLayers.Slip;
-                case 9: return LinkLayers.Ppp;                
-                case 101: return LinkLayers.Raw;
-                case 105: return LinkLayers.Ieee80211;
-                default:
-                    return LinkLayers.Null;
-            }            
-        }
         /// <summary>
         /// Reads the capture file at the specified path. It automatically analyzes type of capture file and applies to corresponding reader. 
         /// This method is implemented by using deferred execution.
@@ -116,7 +103,7 @@ namespace Ndx.Captures
                             {
                                 return LibPcapFile.ReadForward(stream).Select((pcapRecord, frameNumber) =>
                                 {
-                                    var linkType = GetLinkType(pcapRecord.NetworkId);
+                                    var linkType = (LinkLayers)(pcapRecord.NetworkId);
                                     return new RawFrame()
                                     {
                                         Data = ByteString.CopyFrom(pcapRecord.Data),

@@ -72,7 +72,7 @@ namespace Ndx.Ingest
         {
             m_frameAnalyzer = new ActionBlock<RawFrame>(AcceptFrame, new ExecutionDataflowBlockOptions() { MaxDegreeOfParallelism = maxDegreeOfParallelism });
             m_metaframeOutput = new BufferBlock<KeyValuePair<Conversation, MetaFrame>>();
-            m_conversations = new Dictionary<FlowKey, Conversation>(m_initialConversationDictionaryCapacity, new FlowKey.ValueComparer());
+            m_activeConversations = new Dictionary<FlowKey, Conversation>(m_initialConversationDictionaryCapacity, new FlowKey.ValueComparer());
             m_frameAnalyzer.Completion.ContinueWith(t =>
             {
                 Console.WriteLine($"[INFO] ConversationTracker: FrameAnalyzer Completed, conversation cache contains {m_metaframeOutput.Count} items.");
@@ -114,7 +114,6 @@ namespace Ndx.Ingest
                 m_logger.Warn($"AcceptMessage: {rawframe.LinkType} is not supported. Frame is ignored.");
             }
         }
-
         /// <summary>
         /// Stores conversation at network level. The key is represented as
         /// (IpProtocolType, IpAddress, Selector, IpAddress, Selector)
@@ -124,7 +123,7 @@ namespace Ndx.Ingest
         /// depends on the protocol encapsulated in IP packet, for instance, port numbers, 
         /// ICMP type and code, etc.
         /// </remarks>
-        Dictionary<FlowKey, Conversation> m_conversations;
+        Dictionary<FlowKey, Conversation> m_activeConversations;
         /// <summary>
         /// Gets or create a conversation for the specified <see cref="FlowKey"/>.
         /// </summary>
@@ -134,9 +133,27 @@ namespace Ndx.Ingest
         /// <param name="flowPackets">Collection of flow packets that corresponds to the direction of the flow key.</param>
         /// <param name="flowOrientation">The flow orientation with respect to flow key.</param>
         /// <returns>Converdation instance that corresponds to the specified <see cref="FlowKey"/>.</returns>
-        public Conversation GetNetworkConversation(FlowKey flowKey, int parentConversationId, out FlowAttributes flowAttributes, out IList<long> flowPackets, out FlowOrientation flowOrientation)
+        internal Conversation GetNetworkConversation(FlowKey flowKey, int parentConversationId, out FlowAttributes flowAttributes, out IList<long> flowPackets, out FlowOrientation flowOrientation)
         {
-            return GetConversation(m_conversations, flowKey, parentConversationId, out flowAttributes, out flowPackets, out flowOrientation);
+            return GetConversation(m_activeConversations, flowKey, parentConversationId, out flowAttributes, out flowPackets, out flowOrientation);
+        }
+
+        /// <summary>
+        /// Gets a new conversation. If conversation for the given <paramref name="flowKey"/> exists a new conversation will be created.
+        /// </summary>
+        /// <param name="flowKey"></param>
+        /// <param name="parentConversationId"></param>
+        /// <param name="flowAttributes"></param>
+        /// <param name="flowPackets"></param>
+        /// <param name="flowOrientation"></param>
+        /// <returns></returns>
+        internal Conversation CreateNetworkConversation(FlowKey flowKey, int parentConversationId, out FlowAttributes flowAttributes, out IList<long> flowPackets, out FlowOrientation flowOrientation)
+        {
+            lock(m_lockObject)
+            {
+                m_activeConversations.Remove(flowKey);
+            }
+            return GetNetworkConversation(flowKey, parentConversationId, out flowAttributes, out flowPackets, out flowOrientation);
         }
 
         private object m_lockObject = new object();
@@ -201,7 +218,7 @@ namespace Ndx.Ingest
         public Task Completion => m_metaframeOutput.Completion;
 
         public int TotalConversations => m_totalConversationCounter;
-        public int ActiveConversations => m_conversations.Count;
+        public int ActiveConversations => m_activeConversations.Count;
 
     }
 }

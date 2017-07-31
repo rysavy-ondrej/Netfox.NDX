@@ -4,6 +4,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using Google.Protobuf;
@@ -17,6 +18,8 @@ namespace Ndx.Shell.Console
     /// </summary>
     public static class Conversations
     {
+
+        public const int FrameTableMaxItems = 1024;
         /// <summary>
         /// Computes all conversations for the given collection of frames.
         /// </summary>
@@ -28,7 +31,6 @@ namespace Ndx.Shell.Console
             var ftable = new FrameTable();
             var frameCount = 0;
             var tracker = new ConversationTracker();
-
 
             void AcceptConversation(KeyValuePair<Conversation, MetaFrame> item)
             {
@@ -52,6 +54,8 @@ namespace Ndx.Shell.Console
             }
             tracker.Input.Complete();
             Task.WaitAll(tracker.Completion);
+
+            System.Console.WriteLine($"Tracking completed, {ctable.Items.Count} conversations in {ftable.Items.Count} frames.");
             return Tuple.Create(ctable, ftable);
         }
 
@@ -77,6 +81,10 @@ namespace Ndx.Shell.Console
             }
         }
 
+        public static IEnumerable<MetaFrame> Frames(this Conversation conversation, FrameTable ftable)
+        {
+            return Frames(conversation, x => ftable);
+        }
         /// <summary>
         /// Gets a collection of <see cref="MetaFrame"/> objects for the given set of conversations.
         /// </summary>
@@ -99,6 +107,11 @@ namespace Ndx.Shell.Console
             {
                 return c.Packets.Select(p => ftableProvider(Conversation.PacketSource(p)).Items[Conversation.PacketNumber(p)]);
             });
+        }
+
+        public static IEnumerable<MetaFrame> Frames(Conversation conversation, Func<int, FrameTable> ftableProvider)
+        {
+            return conversation.Packets.Select(p => ftableProvider(Conversation.PacketSource(p)).Items[Conversation.PacketNumber(p)]);
         }
 
         public static void MergeFrom(string path, ConversationTable ctable, FrameTable ftable)

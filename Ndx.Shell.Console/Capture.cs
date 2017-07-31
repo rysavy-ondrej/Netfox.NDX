@@ -70,9 +70,8 @@ namespace Ndx.Shell.Console
                 }
         }
 
-        public static void WriteAllFrames(string capturefile, IEnumerable<RawFrame> frames)
+        public static void WriteAllFrames(string capturefile, IEnumerable<RawFrame> frames, DataLinkType link = DataLinkType.Ethernet)
         {
-            var link = frames.FirstOrDefault()?.LinkType ?? DataLinkType.Ethernet;
             LibPcapFile.WriteAllFrames(capturefile, link, frames);
         }
     }

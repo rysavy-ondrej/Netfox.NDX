@@ -74,6 +74,7 @@
     <Compile Include="Formatter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shark.cs" />
     <Compile Include="Shell.cs" />
     <None Include="ndx.workbook" />
     <None Include="Scripts\Capture.csx" />

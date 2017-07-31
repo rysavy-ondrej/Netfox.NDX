@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ndx.Ingest;
 using Ndx.Model;
+using PacketDotNet;
 
 namespace Ndx.Shell.Console
 {
@@ -19,6 +20,12 @@ namespace Ndx.Shell.Console
             var ip = IPAddress.Parse(address);
             return (FlowKey f) => ip.Equals(f.SourceIpAddress) || ip.Equals(f.DestinationIpAddress);
         }
+
+        public static Func<FlowKey, bool> Prefix(string address)
+        {
+            return (FlowKey f) => f.SourceIpAddress.ToString().StartsWith(address) || f.DestinationIpAddress.ToString().StartsWith(address);
+        }
+
         public static Func<FlowKey,bool> SourceAddress(string address)
         {
             var ip = IPAddress.Parse(address);
@@ -67,6 +74,15 @@ namespace Ndx.Shell.Console
             });
         }
 
+        public static Func<Packet, bool> GetPacketFilter(this Func<FlowKey, bool> filter)
+        {
+            return new Func<Packet, bool>((Packet packet) =>
+            {
+                var flowKey = PacketAnalyzer.GetFlowKey(packet);
+                return (flowKey != null && filter(flowKey));
+            });
+        }
+
         public static Func<Conversation, bool> GetConversationFilter(this Func<FlowKey, bool> filter)
         {
             return new Func<Conversation, bool>((Conversation conv) =>
@@ -75,6 +91,7 @@ namespace Ndx.Shell.Console
             });
         }
 
+        
 
         public static Func<FlowKey, IPAddress> OtherAddress(string thisAddress)
         {

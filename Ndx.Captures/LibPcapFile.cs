@@ -63,8 +63,8 @@ namespace Ndx.Captures
         {
             using (var reader = new BinaryReader(stream))
             {
-                int pos = 0;
-                int length = (int)reader.BaseStream.Length;
+                long pos = 0;
+                long length = reader.BaseStream.Length;
                 if (length <= (24 + 16))
                 {
                     yield break;

@@ -63,6 +63,7 @@ message FlowKey {
 	bytes DestinationAddress = 33;
 	bytes SourceSelector = 64;
 	bytes DestinationSelector = 65;
+	bytes Tag = 80;
 }
 
 // REFERENCES:

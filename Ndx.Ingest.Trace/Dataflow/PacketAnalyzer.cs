@@ -114,23 +114,48 @@ namespace Ndx.Ingest
 
         public override void VisitTcpPacket(TcpPacket packet)
         {
-            var flowKey = GetFlowKey(packet);
-            UpdateConversation(packet, flowKey);
+            var flowKey = GetFlowKey(packet, out bool startNewConversation);
+            if (startNewConversation)
+            {
+                CreateConversation(packet, flowKey);
+            }
+            else
+            {
+                GetConversation(packet, flowKey);
+            }
         }
 
         public override void VisitUdpPacket(UdpPacket packet)
         {
-            var flowKey = GetFlowKey(packet);
-            UpdateConversation(packet, flowKey);
+            var flowKey = GetFlowKey(packet, out bool startNewConversation);
+            if (startNewConversation)
+            {
+                CreateConversation(packet, flowKey);
+            }
+            else
+            {
+                GetConversation(packet, flowKey);
+            }
         }
 
         public override void VisitWakeOnLanPacket(WakeOnLanPacket packet)
         {
         }
 
-        private void UpdateConversation(TransportPacket transportPacket, FlowKey flowKey)
+        private void CreateConversation(TransportPacket transportPacket, FlowKey flowKey)
+        {
+            m_conversation = m_tracker.CreateNetworkConversation(flowKey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
+            UpdateConversation(transportPacket, flowAttributes, flowPackets);
+        }   
+
+        private void GetConversation(TransportPacket transportPacket, FlowKey flowKey)
         {
             m_conversation = m_tracker.GetNetworkConversation(flowKey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
+            UpdateConversation(transportPacket, flowAttributes, flowPackets);
+        }
+
+        private void UpdateConversation(TransportPacket transportPacket, FlowAttributes flowAttributes, IList<long> flowPackets)
+        {
             flowAttributes.Octets += transportPacket.PayloadPacket.BytesHighPerformance.Length;
             flowAttributes.Packets += 1;
             flowAttributes.FirstSeen = Math.Min(flowAttributes.FirstSeen, m_metaFrame.TimeStamp);
@@ -147,7 +172,7 @@ namespace Ndx.Ingest
             m_metaFrame.Network = new NetworkPacketUnit() { Bytes = new ByteRange() { Offset = networkPacket.BytesHighPerformance.Offset, Length = networkPacket.BytesHighPerformance.Length } };
             m_metaFrame.Transport = new TransportPacketUnit() { Bytes = new ByteRange() { Offset = transportPacket.BytesHighPerformance.Offset, Length = transportPacket.BytesHighPerformance.Length } };
             m_metaFrame.Application = new ApplicationPacketUnit() { Bytes = new ByteRange() { Offset = applicationPacket.BytesHighPerformance.Offset, Length = applicationPacket.BytesHighPerformance.Length } };
-            */    
+            */
         }
 
 
@@ -159,14 +184,19 @@ namespace Ndx.Ingest
         public static FlowKey GetFlowKey(RawFrame frame)
         {
             var packet = Packet.ParsePacket((LinkLayers)frame.LinkType, frame.Bytes);
-            var udpPacket = (UdpPacket) packet.Extract(typeof(UdpPacket));
-            if (udpPacket != null) return GetFlowKey(udpPacket);
+            return GetFlowKey(packet);
+        }
+
+        public static FlowKey GetFlowKey(Packet packet)
+        {
+            var udpPacket = (UdpPacket)packet.Extract(typeof(UdpPacket));
+            if (udpPacket != null) return GetFlowKey(udpPacket, out bool udpNew);
             var tcpPacket = (TcpPacket)packet.Extract(typeof(TcpPacket));
-            if (tcpPacket != null) return GetFlowKey(tcpPacket);
+            if (tcpPacket != null) return GetFlowKey(tcpPacket, out bool tcpNew);
             return null;
         }
 
-        public static FlowKey GetFlowKey(UdpPacket packet)
+        public static FlowKey GetFlowKey(UdpPacket packet, out bool startNewConversation)
         {
             var flowKey = new FlowKey()
             {
@@ -177,9 +207,10 @@ namespace Ndx.Ingest
                 SourcePort = packet.SourcePort,
                 DestinationPort = packet.DestinationPort
             };
+            startNewConversation = false;
             return flowKey;
         }
-        public static FlowKey GetFlowKey(TcpPacket packet)
+        public static FlowKey GetFlowKey(TcpPacket packet, out bool startNewConversation)
         {
 
             var flowKey = new FlowKey()
@@ -191,6 +222,7 @@ namespace Ndx.Ingest
                 SourcePort = packet.SourcePort,
                 DestinationPort = packet.DestinationPort
             };
+            startNewConversation = packet.Syn && !packet.Ack;
             return flowKey;
         }
     }
