@@ -40,10 +40,11 @@ namespace Ndx.Model
         }
 
 
+        static PhysicalAddress PhysicalAddressEmpty = new PhysicalAddress(new byte[6]);
         static EthernetPacket ConvertToEthernetPacket(Packet packet, PhysicalAddress src =null, PhysicalAddress dst = null)
         {
-            src = src ?? PhysicalAddress.None;
-            dst = dst ?? PhysicalAddress.None;
+            src = src ?? PhysicalAddressEmpty;
+            dst = dst ?? PhysicalAddressEmpty;
             var ipv4 = packet.Extract(typeof(IPv4Packet));
             if (ipv4 != null)
             { return new EthernetPacket(src, dst, PacketDotNet.EthernetPacketType.IpV4) { PayloadPacket = ipv4 }; }

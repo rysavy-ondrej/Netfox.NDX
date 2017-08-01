@@ -40,5 +40,19 @@ namespace Ndx.Test
                 }
             }
         }
+
+        [Test]
+        public void FindBug()
+        {
+
+            foreach (var host in new[] { "192.168.186.45" })
+            {
+                var files = Directory.EnumerateFiles(@"P:\Data\emea").ToArray();
+                var filter = FlowExpr.Address(host);
+                var frames = Capture.Select(files, (file, count) => Console.WriteLine($"{file}: {count} frames"))
+                     .Select(x => new { ts = x.TimeStamp, packet = x.Parse() }).Where(x => filter.GetPacketFilter()(x.packet)).Select(x => RawFrame.EthernetRaw(x.packet, 0, 0, x.ts));
+                Capture.WriteAllFrames($@"C:\Temp\{host}.cap", frames);
+            }
+        }
     }
 }
