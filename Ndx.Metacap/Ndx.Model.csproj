@@ -59,6 +59,7 @@
     <Compile Include="Model\FlowKey.cs" />
     <Compile Include="Model\FlowModel.cs" />
     <Compile Include="Model\McapModel.cs" />
+    <Compile Include="Model\MetaFrame.cs" />
     <Compile Include="Model\PacketFields.cs" />
     <Compile Include="Model\PacketModel.cs" />
     <Compile Include="Model\RawFrame.cs" />

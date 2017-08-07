@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Ndx.Model;
 
 namespace Ndx.Captures
 {
@@ -182,6 +183,8 @@ namespace Ndx.Captures
         public uint Pid;
         public byte[] Data;
         public long DataOffset;
+
+        public int FrameNumber { get; internal set; }
     }
 
 

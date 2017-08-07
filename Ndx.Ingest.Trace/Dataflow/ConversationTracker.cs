@@ -86,34 +86,27 @@ namespace Ndx.Ingest
             {
                 return;
             }
-
-            if (rawframe.LinkType == DataLinkType.Ethernet)
-            {   
+            try
+            {
                 var analyzer = new PacketAnalyzer(this, rawframe);
-                try
+                var packet = Packet.ParsePacket(LinkLayers.Ethernet, rawframe.Data.ToByteArray());
+
+                // Workaround the BUG in PacketDotNET:
+                if (packet.PayloadPacket != null) packet.PayloadPacket.ParentPacket = packet;
+
+                packet.Accept(analyzer);
+
+                if (analyzer.Conversation != null)
                 {
-                    var packet = Packet.ParsePacket(LinkLayers.Ethernet, rawframe.Data.ToByteArray());
-
-                    // Workaround the BUG in PacketDotNET:
-                    if (packet.PayloadPacket != null) packet.PayloadPacket.ParentPacket = packet;
-
-                    packet.Accept(analyzer);
-
-                    if (analyzer.Conversation != null)
-                    {
-                        await m_metaframeOutput.SendAsync(new KeyValuePair<Conversation, MetaFrame>(analyzer.Conversation, analyzer.MetaFrame));
-                    }
-                }
-                catch(Exception e)
-                {
-                    m_logger.Error($"AcceptMessage: Error when processing frame {rawframe.FrameNumber}: {e}. Frame is ignored.");
+                    await m_metaframeOutput.SendAsync(new KeyValuePair<Conversation, MetaFrame>(analyzer.Conversation, analyzer.MetaFrame));
                 }
             }
-            else
+            catch (Exception e)
             {
-                m_logger.Warn($"AcceptMessage: {rawframe.LinkType} is not supported. Frame is ignored.");
+                m_logger.Error($"AcceptMessage: Error when processing frame {rawframe.FrameNumber}: {e}. Frame is ignored.");
             }
         }
+
         /// <summary>
         /// Stores conversation at network level. The key is represented as
         /// (IpProtocolType, IpAddress, Selector, IpAddress, Selector)

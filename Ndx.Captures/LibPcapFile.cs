@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 
 using System.IO;
+using Google.Protobuf;
 using Ndx.Model;
 
 
@@ -22,49 +23,24 @@ namespace Ndx.Captures
 {
     public static class LibPcapFile
     {
-
-        /// <summary>
-        /// Represents a single record in Libpcap file. 
-        /// </summary>
-        public class PcapRecord
-        {
-            /// <summary>
-            /// Timestamp of the record.
-            /// </summary>
-            public DateTimeOffset Timestamp;
-
-            /// <summary>
-            /// Network type.
-            /// </summary>
-            public uint NetworkId;
-
-            /// <summary>
-            /// Byte array containing packet data.
-            /// </summary>
-            public byte[] Data;
-
-            /// <summary>
-            /// Ofsets of the frame's data within the capture file.
-            /// </summary>
-            public long DataOffset;
-        }
+        const long UnixBaseTicks = 621355968000000000; // new DateTime(1970, 1, 1).Ticks;
+        const long TickPerMicroseconds = 10; // TimeSpan.TicksPerMillisecond / 1000)
         /// <summary>
         /// Reads network capture file and returns the raw blocks in the order they were written
         /// </summary>
         /// <param name="filename">Path to the file in pcap-next-generation (.pcapng) format</param>
         /// <returns></returns>
-        public static IEnumerable<PcapRecord> ReadFile(string filename)
+        public static IEnumerable<RawFrame> ReadFile(string filename)
         {
             var stream = File.OpenRead(filename);
             return ReadForward(stream);
         }
 
-        public static IEnumerable<PcapRecord> ReadForward(Stream stream)
+        public static IEnumerable<RawFrame> ReadForward(Stream stream)
         {
             using (var reader = new BinaryReader(stream))
             {
-                long pos = 0;
-                long length = reader.BaseStream.Length;
+                long length = stream.Length;
                 if (length <= (24 + 16))
                 {
                     yield break;
@@ -76,36 +52,35 @@ namespace Ndx.Captures
                 var sigfigs = reader.ReadUInt32();
                 var snaplen = reader.ReadUInt32();
                 var network = reader.ReadUInt32();
-
-                pos += 24;
-
-                while ((pos + 16) < length)
+                var frameNumber = 0;
+                while ((stream.Position + 16) < length)
                 {
-                    var ts_sec = reader.ReadUInt32();
-                    var ts_usec = reader.ReadUInt32();
-                    var incl_len = reader.ReadUInt32();
-                    var orig_len = reader.ReadUInt32();
-                    pos += 16;
-                    if ((pos + incl_len) > length)
-                    {
+                    var tsSeconds = reader.ReadUInt32();
+                    var tsMicroseconds = reader.ReadUInt32();
+                    var ticks = UnixBaseTicks + (tsSeconds * TimeSpan.TicksPerSecond) + (tsMicroseconds * TickPerMicroseconds);
+                    var includedLength = reader.ReadUInt32();
+                    var originalLength = reader.ReadUInt32();
+                    
+                    if ((stream.Position + includedLength) > length)
+                    {   // not enough data to read packet
                         yield break;
                     }
-                    var offset = reader.BaseStream.Position;
-                    var data = reader.ReadBytes((int)incl_len);
-                    pos += (int)incl_len;
-
-                    yield return new PcapRecord
+                    var frameOffset = stream.Position;
+                    var frameBytes = reader.ReadBytes((int)includedLength);
+                    
+                    yield return new RawFrame
                     {
-                        Data = data,
-                        DataOffset = offset,
-                        NetworkId = network,
-                        Timestamp = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero)
-                            .AddSeconds(ts_sec + thiszone)
-                            .AddMilliseconds((ts_usec == 0 || ts_usec >= 1000000) ? ts_usec : ts_usec / 1000)
+                        Data = ByteString.CopyFrom(frameBytes, 0, frameBytes.Length),
+                        FrameOffset = frameOffset,
+                        FrameLength = frameBytes.Length,
+                        FrameNumber = ++frameNumber,
+                        LinkType = (DataLinkType)network,
+                        TimeStamp = ticks, 
                     };
                 }
             }
         }
+
 
         public const uint MagicNumber = 0xa1b2c3d4;
         public const ushort VersionMajor = 0x0002;

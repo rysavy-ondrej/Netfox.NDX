@@ -65,72 +65,57 @@ namespace Ndx.Captures
         /// </remarks>
         public static IEnumerable<RawFrame> ReadFile(string path)
         {
-            FileInfo fileInfo = new FileInfo(path);
-            if (!fileInfo.Exists) throw new ArgumentException($"Specified file '{path}' cannot be found.");
-
-            var magicNumber = new byte[4];
-            using (var fileStream = new FileStream(fileInfo.FullName, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, FileOptions.SequentialScan))
+            var fileInfo = new FileInfo(path);
+            if (!fileInfo.Exists)
             {
-                var len = fileStream.Read(magicNumber, 0, 4);
-                if (len < 4) throw new ArgumentException($"Specified file '{path}' is corrupted, cannot identify its type.");
-                fileStream.Seek(0, SeekOrigin.Begin);
+                throw new ArgumentException($"Specified file '{path}' cannot be found.");
+            }
 
-                var pcapFormat = DetectPcapFileFormat(magicNumber);
-                
-                IEnumerable<RawFrame> ReadForward(Stream stream)
+            using (var stream = new FileStream(fileInfo.FullName, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, FileOptions.SequentialScan))
+            {
+                var magicNumber = new byte[4];
+                var len = stream.Read(magicNumber, 0, 4);
+                if (len < 4)
                 {
-                    switch (pcapFormat)
-                    {
-                        case PcapFileFormat.Netmon:
-                            {
-                                return PcapNetmon.ReadForward(stream).Select((frameRecord, frameNumber) =>
-                                {
-                                    var linkType = GetLinkType(frameRecord.MediaType);
-                                    return new RawFrame()
-                                    {
-                                        Data = ByteString.CopyFrom(frameRecord.Data),
-                                        TimeStamp = frameRecord.Timestamp.Ticks,
-                                        LinkType = (DataLinkType)linkType,
-                                        FrameNumber = frameNumber + 1,     // Frames are numbered from 1!
-                                        FrameLength = frameRecord.Data.Length,
-                                        FrameOffset = frameRecord.DataOffset,
-                                        ProcessId = frameRecord.Pid,
-                                        ProcessName = frameRecord.ProcessName
-                                    };
-                                });
-                            }
-                        case PcapFileFormat.Libpcap:
-                            {
-                                return LibPcapFile.ReadForward(stream).Select((pcapRecord, frameNumber) =>
-                                {
-                                    var linkType = (LinkLayers)(pcapRecord.NetworkId);
-                                    return new RawFrame()
-                                    {
-                                        Data = ByteString.CopyFrom(pcapRecord.Data),
-                                        TimeStamp = pcapRecord.Timestamp.Ticks,
-                                        LinkType = (Model.DataLinkType)linkType,
-                                        FrameNumber = frameNumber + 1,
-                                        FrameLength = pcapRecord.Data.Length,
-                                        FrameOffset = pcapRecord.DataOffset,
-                                        ProcessId = 0,
-                                        ProcessName = String.Empty,
-                                    };
-                                });
-                            }
-                        case PcapFileFormat.Pcapng:
-                            {
-                                throw new NotImplementedException();
-                            }
-                        default:
-                            throw new NotImplementedException($"Reading {pcapFormat} packet capture files is not implemented yet.");
-                    }
+                    throw new ArgumentException($"Specified file '{path}' is corrupted, cannot identify its type.");
                 }
-
-                // this iteration is needed because we have "yield return" inside "using" so 
-                // we have to avoid disposing the stream before we read all frames.
-                foreach (var frame in ReadForward(fileStream))
+                stream.Seek(0, SeekOrigin.Begin);
+                switch (DetectPcapFileFormat(magicNumber))
                 {
-                    yield return frame;
+                    case PcapFileFormat.Netmon:
+                        {
+                            foreach (var frameRecord in PcapNetmon.ReadForward(stream))
+                            {
+                                yield return new RawFrame()
+                                {
+                                    Data = ByteString.CopyFrom(frameRecord.Data),
+                                    TimeStamp = frameRecord.Timestamp.Ticks,
+                                    LinkType = (DataLinkType)GetLinkType(frameRecord.MediaType),
+                                    FrameNumber = frameRecord.FrameNumber,
+                                    FrameLength = frameRecord.Data.Length,
+                                    FrameOffset = frameRecord.DataOffset,
+                                    ProcessId = frameRecord.Pid,
+                                    ProcessName = frameRecord.ProcessName
+                                };
+                            }
+                            break;
+                        }
+                    case PcapFileFormat.Libpcap:
+                        {
+                            // this iteration is needed because we have "yield return" inside "using" so 
+                            // we have to avoid disposing the stream before we read all frames.
+                            foreach (var frame in LibPcapFile.ReadForward(stream))
+                            {
+                                yield return frame;
+                            }
+                            break;
+                        }
+                    case PcapFileFormat.Pcapng:
+                        {
+                            throw new NotSupportedException("PCAP-NG format is not supported yet.");
+                        }
+                    default:
+                        throw new NotImplementedException("Unknown packet type.");
                 }
             }
         }

@@ -10,7 +10,7 @@ using System.Threading.Tasks.Dataflow;
 using Google.Protobuf;
 using Ndx.Ingest;
 using Ndx.Model;
-
+using NFX.ApplicationModel.Pile;
 namespace Ndx.Shell.Console
 {
     /// <summary>
@@ -18,45 +18,62 @@ namespace Ndx.Shell.Console
     /// </summary>
     public static class Conversations
     {
-
+        public static object sync = new object();
         public const int FrameTableMaxItems = 1024;
         /// <summary>
         /// Computes all conversations for the given collection of frames.
         /// </summary>
         /// <param name="frames">The input collection of frames.</param>
         /// <returns>Dictionary containing all conversations for the input collection of frames.</returns>
-        public static Tuple<ConversationTable, FrameTable> TrackConversations(IEnumerable<RawFrame> frames)
+        public static void TrackConversations(IEnumerable<RawFrame> frames, IPile pile, IDictionary<int, PilePointer> ctable, IDictionary<int, PilePointer> ftable)
         {
-            var ctable = new ConversationTable();
-            var ftable = new FrameTable();
-            var frameCount = 0;
             var tracker = new ConversationTracker();
-
             void AcceptConversation(KeyValuePair<Conversation, MetaFrame> item)
             {
                 try
                 {
-                    frameCount++;
-                    ctable.Items[item.Key.ConversationId] = item.Key;
-                    ftable.Items[item.Value.FrameNumber] = item.Value;
+                    lock (sync)
+                    {
+                        var conversationId = item.Key.ConversationId;
+                        if (ctable.TryGetValue(conversationId, out PilePointer ptr))
+                        {
+                            pile.Put(ptr, item.Key.ToByteArray());
+                        }
+                        else
+                        {
+                            var cptr = pile.Put(item.Key.ToByteArray());
+                            ctable[conversationId] = cptr;
+                        }
+                        var fptr = pile.Put(item.Value.ToByteArray());
+                        ftable[item.Value.FrameNumber] = fptr;
+                    }
                 }
                 catch (Exception e)
                 {
                     System.Console.Error.WriteLine($"Capture.AcceptConversation: Error when processing item {item}: {e}. ");
                 }
             }
-
-            tracker.Output.LinkTo(new ActionBlock<KeyValuePair<Conversation, MetaFrame>>((Action<KeyValuePair<Conversation, MetaFrame>>)AcceptConversation));
+            var actionBlock = new ActionBlock<KeyValuePair<Conversation, MetaFrame>>((Action<KeyValuePair<Conversation, MetaFrame>>)AcceptConversation);
+            tracker.Output.LinkTo(actionBlock);
 
             foreach (var frame in frames)
             {
                 tracker.Input.Post(frame);
             }
             tracker.Input.Complete();
+
             Task.WaitAll(tracker.Completion);
 
-            System.Console.WriteLine($"Tracking completed, {ctable.Items.Count} conversations in {ftable.Items.Count} frames.");
-            return Tuple.Create(ctable, ftable);
+            System.Console.WriteLine($"Tracking completed: ctable={ctable.Count}, ftable={ftable.Count}, pile bytes={pile.AllocatedMemoryBytes}.");
+        }
+
+        /// <summary>
+        /// Tracks conversation for the given collection of <paramref name="frames"/>.
+        /// </summary>
+        /// <param name="frames"></param>
+        public static void TrackConversations(IEnumerable<RawFrame> frames)
+        {
+            
         }
 
         /// <summary>
