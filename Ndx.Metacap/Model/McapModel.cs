@@ -42,7 +42,8 @@ namespace Ndx.Model {
             "YmxlGkkKEEZyYW1lVGFibGVzRW50cnkSCwoDa2V5GAEgASgFEiQKBXZhbHVl",
             "GAIgASgLMhUubmR4Lm1vZGVsLkZyYW1lVGFibGU6AjgBKlgKDlBjYXBGaWxl",
             "Rm9ybWF0Eg0KCVJhd0Zvcm1hdBAAEgsKB0xpYnBjYXAQARIKCgZQY2FwbmcQ",
-            "AhIKCgZOZXRtb24QAxISCg1Vbmtub3duRm9ybWF0EP8BYgZwcm90bzM="));
+            "AhIKCgZOZXRtb24QAxISCg1Vbmtub3duRm9ybWF0EP8BQg8KDW9yZy5uZHgu",
+            "bW9kZWxiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Model.PacketModelReflection.Descriptor, global::Ndx.Model.ConversationModelReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Ndx.Model.PcapFileFormat), }, new pbr::GeneratedClrTypeInfo[] {

@@ -41,7 +41,8 @@ namespace Ndx.Model {
             "dGlvbktleRgEIAEoCzISLm5keC5tb2RlbC5GbG93S2V5EikKBlVwZmxvdxgQ",
             "IAEoCzIZLm5keC5tb2RlbC5GbG93QXR0cmlidXRlcxIrCghEb3duZmxvdxgR",
             "IAEoCzIZLm5keC5tb2RlbC5GbG93QXR0cmlidXRlcxIVCg1VcGZsb3dQYWNr",
-            "ZXRzGCAgAygDEhcKD0Rvd25mbG93UGFja2V0cxghIAMoA2IGcHJvdG8z"));
+            "ZXRzGCAgAygDEhcKD0Rvd25mbG93UGFja2V0cxghIAMoA0IPCg1vcmcubmR4",
+            "Lm1vZGVsYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Model.FlowModelReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {

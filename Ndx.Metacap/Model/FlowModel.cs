@@ -30,7 +30,7 @@ namespace Ndx.Model {
             "dGlvbhINCglVbmRlZmluZWQQABIKCgZVcGZsb3cQARIMCghEb3duZmxvdxAC",
             "Kl4KCEZsb3dUeXBlEhEKDVVuZGVmaW5lZEZsb3cQABIPCgtOZXR3b3JrRmxv",
             "dxABEg0KCUV0aGVyRmxvdxACEgoKBklwRmxvdxAEEhMKD0FwcGxpY2F0aW9u",
-            "RmxvdxAIYgZwcm90bzM="));
+            "RmxvdxAIQg8KDW9yZy5uZHgubW9kZWxiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Ndx.Model.FlowOrientation), typeof(global::Ndx.Model.FlowType), }, new pbr::GeneratedClrTypeInfo[] {

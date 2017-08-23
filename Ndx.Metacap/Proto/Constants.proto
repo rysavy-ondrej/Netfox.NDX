@@ -4,6 +4,7 @@
 //
 syntax = "proto3";
 package ndx.model;
+option java_package = "org.ndx.model";
 
 /// <summary>
 ///	This is a list of link-layer header types used in pcap and pcap-ng capture files. See

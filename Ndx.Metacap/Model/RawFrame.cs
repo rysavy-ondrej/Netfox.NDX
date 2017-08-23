@@ -11,9 +11,10 @@ namespace Ndx.Model
     public partial class RawFrame
     {
         //  January 1, 1970
-        static readonly long UnixBaseTicks = new DateTime(1970, 1, 1).Ticks;
-        const long TicksPerSecond = 10000000;
-        const long TicksPerMicrosecond = 10;
+        static public readonly long UnixBaseTicks = new DateTime(1970, 1, 1).Ticks;
+        static public readonly PhysicalAddress PhysicalAddressEmpty = new PhysicalAddress(new byte[6]);
+        public const long TicksPerSecond = 10000000;
+        public const long TicksPerMicrosecond = 10;
 
         public RawFrame(MetaFrame metaframe, byte[] bytes)
         {
@@ -39,8 +40,6 @@ namespace Ndx.Model
             return Packet.ParsePacket((LinkLayers)LinkType, Bytes);
         }
 
-
-        static PhysicalAddress PhysicalAddressEmpty = new PhysicalAddress(new byte[6]);
         static EthernetPacket ConvertToEthernetPacket(Packet packet, PhysicalAddress src =null, PhysicalAddress dst = null)
         {
             src = src ?? PhysicalAddressEmpty;

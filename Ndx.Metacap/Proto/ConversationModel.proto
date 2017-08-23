@@ -5,6 +5,7 @@
 syntax = "proto3";
 package ndx.model;
 import "FlowModel.proto";
+option java_package = "org.ndx.model";
 
 message SmbConversation {
 	int64 Tid = 4;

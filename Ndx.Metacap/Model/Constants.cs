@@ -58,7 +58,8 @@ namespace Ndx.Model {
             "ERIHCgNJRFAQFhIGCgJUUBAdEggKBElQdjYQKRILCgdST1VUSU5HECsSDAoI",
             "RlJBR01FTlQQLBIICgRSU1ZQEC4SBwoDR1JFEC8SBwoDRVNQEDISBgoCQUgQ",
             "MxIKCgZJQ01QVjYQOhIICgROT05FEDsSCwoHRFNUT1BUUxA8EgcKA01UUBBc",
-            "EgkKBUVOQ0FQEGISBwoDUElNEGcSCAoEQ09NUBBsYgZwcm90bzM="));
+            "EgkKBUVOQ0FQEGISBwoDUElNEGcSCAoEQ09NUBBsQg8KDW9yZy5uZHgubW9k",
+            "ZWxiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Ndx.Model.DataLinkType), typeof(global::Ndx.Model.EthernetPacketType), typeof(global::Ndx.Model.IpProtocolType), }, null));

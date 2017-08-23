@@ -151,10 +151,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Hadoop\IngestPcap\IngestPcap.csproj">
-      <Project>{74d03d2c-c56e-4572-8f6d-3cc505b8448e}</Project>
-      <Name>IngestPcap</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Ndx.Captures\Ndx.Captures.csproj">
       <Project>{f7893df7-5638-43bc-91e5-e612e4d0ad53}</Project>
       <Name>Ndx.Captures</Name>

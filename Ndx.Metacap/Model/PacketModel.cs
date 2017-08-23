@@ -40,7 +40,8 @@ namespace Ndx.Model {
             "ZWxkcxITCgtGcmFtZU51bWJlchgBIAEoAxIWCg5GcmFtZVByb3RvY29scxgC",
             "IAEoCRIRCglUaW1lc3RhbXAYAyABKAMSMwoGRmllbGRzGAogAygLMiMubmR4",
             "Lm1vZGVsLlBhY2tldEZpZWxkcy5GaWVsZHNFbnRyeRotCgtGaWVsZHNFbnRy",
-            "eRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBYgZwcm90bzM="));
+            "eRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBQg8KDW9yZy5uZHgu",
+            "bW9kZWxiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Model.ConstantsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {

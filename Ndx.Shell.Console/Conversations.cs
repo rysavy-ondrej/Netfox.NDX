@@ -70,10 +70,14 @@ namespace Ndx.Shell.Console
         /// <summary>
         /// Tracks conversation for the given collection of <paramref name="frames"/>.
         /// </summary>
-        /// <param name="frames"></param>
+        /// <param name="frames">A collection of frames to be processed.</param>
         public static void TrackConversations(IEnumerable<RawFrame> frames)
         {
-            
+            FlowKey getKeySelector(RawFrame frame)
+            {
+                return PacketAnalyzer.GetFlowKey(frame);
+            }
+            var preConversations = frames.Select(rawFrame => new {RawFrame = rawFrame, FlowKey = getKeySelector(rawFrame)}).GroupBy(item => item.FlowKey);
         }
 
         /// <summary>
