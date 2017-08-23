@@ -307,3 +307,11 @@ Ndx.Test/Captures/03d1d7f3e7bc76aa22271f67463d8c3d.cap
 Ndx.Test/Captures/22797e5151de8ccc0ee7106707c53bdd.pcap
 Ndx.Test/Captures/86e86eb18670bdae1f7b038f0fed80c5.pcap
 Ndx.Shell.Console/test.cap
+*.class
+*.dat
+Hadoop/metastore_db/README_DO_NOT_TOUCH_FILES.txt
+*.lck
+Hadoop/metastore_db/seg0/README_DO_NOT_TOUCH_FILES.txt
+Hadoop/Java/target/ndx-spark-0.9-SNAPSHOT-shaded.pom
+Hadoop/Java/target/ndx-spark-model-0.9-SNAPSHOT-shaded.pom
+Hadoop/Java/target/original-ndx-spark-model-0.9-SNAPSHOT-shaded.pom
