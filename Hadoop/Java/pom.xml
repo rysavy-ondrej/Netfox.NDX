@@ -5,11 +5,12 @@
 	<artifactId>ndx-spark</artifactId>
 	<version>0.9-SNAPSHOT</version>
 	<packaging>pom</packaging>
-  <!-- -->
+
 	<modules>
 		<module>ndx-spark-pcap</module>
 		<module>ndx-spark-model</module>
     	<module>ndx-spark-ntrace</module>
+		<module>ndx-spark-shell</module>
   	</modules>
 
 	<properties>
@@ -19,6 +20,7 @@
 	</properties>
 
 	<build>
+	<pluginManagement>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -28,19 +30,18 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			<plugin>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.5.2</version>
-				<configuration>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<tagNameFormat>@{project.version}</tagNameFormat>
-				</configuration>
-			</plugin>			
 		</plugins>
+	</pluginManagement>
 	</build>
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>com.google.protobuf</groupId>
+				<artifactId>protobuf-java</artifactId>
+				<version>3.3.1</version>
+			</dependency>
+			<!--
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>ndx-spark-pcap</artifactId>
@@ -51,6 +52,12 @@
 				<artifactId>ndx-spark-model</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>ndx-spark-ntrace</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			-->
 		</dependencies>
 	</dependencyManagement>
 

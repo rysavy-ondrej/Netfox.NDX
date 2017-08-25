@@ -92,8 +92,6 @@ To get bidirectional flows (conversations), ```Packet``` class implements method
 val flows = packets.map(x=>(x.getSessionString(),x));
 ```
 
-
-
 ## Compute some basic statistics
 The following snippet shows how to compute for each flow the number of its packet:
 ```scala
