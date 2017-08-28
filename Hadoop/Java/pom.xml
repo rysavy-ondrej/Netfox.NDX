@@ -7,9 +7,10 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>ndx-spark-pcap</module>
 		<module>ndx-spark-model</module>
-    	<module>ndx-spark-ntrace</module>
+		<module>ndx-spark-pcap</module>
+    	<!-- <module>ndx-spark-ntrace</module> -->
+		<module>ndx-spark-tshark</module>
 		<module>ndx-spark-shell</module>
   	</modules>
 
@@ -41,23 +42,6 @@
 				<artifactId>protobuf-java</artifactId>
 				<version>3.3.1</version>
 			</dependency>
-			<!--
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>ndx-spark-pcap</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>ndx-spark-model</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>ndx-spark-ntrace</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			-->
 		</dependencies>
 	</dependencyManagement>
 

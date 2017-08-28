@@ -10,6 +10,12 @@
 		<version>0.9-SNAPSHOT</version>
 	</parent>
 
+  <properties>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
+    <encoding>UTF-8</encoding>
+  </properties>
+
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
 		<dependency>
