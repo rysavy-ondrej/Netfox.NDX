@@ -32,7 +32,16 @@ def xf(x:PacketPayload) = x.getPacket().extendWith("http", HttpRequest.tryParseR
 val packets = frames.map(x=> Packet.parsePacket(x._2.get().asInstanceOf[RawFrame], toConsumer(xf))) 
 ```
 
+## Get a sample of HTTP Requests
+
 ```scala
 val http = packets.filter(x=> x.containsKey("http.request"))
 http.take(20).map(HttpRequest.format).foreach(println)
+```
+
+## Group by request URL
+
+```scala
+val requests = http.map(x => (x.get("http.request.line"),1))
+requests.reduceByKey(_ + _).foreach(println)
 ```
