@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.Date;
 import java.util.HashMap;
+import org.apache.commons.lang3.StringUtils;
 import org.ndx.model.Packet;
 import org.ndx.model.Statistics;
 /**
@@ -14,12 +15,81 @@ import org.ndx.model.Statistics;
  * request-header ; Section 5.3 | entity-header ) CRLF) ; Section 7.1 CRLF [
  * message-body ] ; Section 4.3
  * 
+ * All methods:
+ * OPTIONS
+ * GET
+ * HEAD
+ * POST
+ * PUT
+ * DELETE
+ * TRACE
+ * CONNECT
+ * NOTIFY
+ *
+ * PROPFIND
+ * PROPPATCH
+ * MKCOL
+ * COPY
+ * MOVE
+ * LOCK
+ * UNLOCK
+ * VERSION-CONTROL
+ * REPORT
+ * CHECKOUT
+ * CHECKIN
+ * UNCHECKOUT
+ * MKWORKSPACE
+ * UPDATE
+ * LABEL
+ * MERGE
+ * BASELINE-CONTROL
+ * MKACTIVITY
+ * ORDERPATCH
+ * ACL
+ * PATCH
+ * SEARCH
+ * 
  * @author izelaya
  *
  */
 public class HttpRequest extends HashMap<String, Object> {
     private static final long serialVersionUID = 8723225921174160156L;
     private StringBuffer _messagetBody;
+
+    private static String methods[] = {
+        "OPTIONS",
+        "GET",
+        "HEAD",
+        "POST",
+        "PUT",
+        "DELETE",
+        "TRACE",
+        "CONNECT",
+        "NOTIFY",
+        "PROPFIND",
+        "PROPPATCH",
+        "MKCOL",
+        "COPY",
+        "MOVE",
+        "LOCK",
+        "UNLOCK",
+        "VERSION-CONTROL",
+        "REPORT",
+        "CHECKOUT",
+        "CHECKIN",
+        "UNCHECKOUT",
+        "MKWORKSPACE",
+        "UPDATE",
+        "LABEL",
+        "MERGE",
+        "BASELINE-CONTROL",
+        "MKACTIVITY",
+        "ORDERPATCH",
+        "ACL",
+        "PATCH",
+        "SEARCH",
+        "M-SEARCH"
+     };
 
     public HttpRequest() {
         _messagetBody = new StringBuffer();
@@ -32,7 +102,13 @@ public class HttpRequest extends HashMap<String, Object> {
     {
         try {
             String requestString = new String(bytes, "ASCII");
-            return parseRequest(requestString);  
+            if (StringUtils.startsWithAny(requestString, methods)) {
+                return parseRequest(requestString);  
+            }
+            else
+            {
+                return null;
+            }
         } catch (Exception e) {
             return null;
         }
@@ -94,7 +170,7 @@ public class HttpRequest extends HashMap<String, Object> {
         if (idx == -1) {
             throw new HttpFormatException("Invalid Header Parameter: " + header);
         }
-        this.put(header.substring(0, idx).toLowerCase(), header.substring(idx + 1, header.length()));
+        this.put(header.substring(0, idx).toLowerCase().trim(), header.substring(idx + 1, header.length()).trim());
     }
 
     /**
@@ -120,6 +196,25 @@ public class HttpRequest extends HashMap<String, Object> {
      */
     public String getHeaderParam(String headerName){
         return (String)this.get(headerName);
+    }
+
+    /**
+     * Gets the URL for HTTP packets or empty string if packet does not contain valid URL.
+     * @param prefix used for adding HTTP request fields to the packet.
+     * @param packet that shoudl contain HTTP request.
+     * @return String that represents URL of the request HTTP packet. 
+     */
+    public static String getUrl(String prefix, Packet packet)
+    {
+        try {
+        String rline = (String)packet.get(prefix + ".request.line");
+        String host = (String)packet.get(prefix + ".host");
+        return host + rline.split(" ")[1];
+        }
+        catch(Exception e)
+        {
+            return "null";
+        }
     }
 
 

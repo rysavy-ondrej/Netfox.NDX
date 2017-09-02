@@ -49,7 +49,7 @@ stats.takeOrdered(20)(Ordering[Long].reverse.on(x=> x._2.getLastSeen()-x._2.getF
 To get flows of the specific application/service we need to apply a filter:
 
 ```scala
-stats.filter(x=> Packet.flowKeyParse(x._1).getSourceSelector().toStringUtf8().equals("80")) .takeOrdered(20)(Ordering[Long].reverse.on(x=> x._2.getPackets())).map(c=>Statistics.format(c._1, c._2)).foreach(println)
+stats.filter(x=> Packet.flowKeyParse(x._1).getSourceSelector().toStringUtf8().equals("80")).takeOrdered(20)(Ordering[Long].reverse.on(x=> x._2.getPackets())).map(c=>Statistics.format(c._1, c._2)).foreach(println)
 ```
 
 The filter is predicate on stat tuple:

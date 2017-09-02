@@ -40,7 +40,7 @@ that demonstrates the common tasks.
 
 Execute spark-shell from the project's home directory:
 ```bash
-spark-shell --jars ndx-spark-model/target/ndx-spark-model-0.9-SNAPSHOT.jar,ndx-spark-pcap/target/ndx-spark-pcap-0.9-SNAPSHOT.jar
+spark-shell --jars ndx-spark-shell/target/ndx-spark-shell.jar
 ```
 
 
@@ -63,61 +63,11 @@ To compute a number of all packets in the data source, execute the following exp
 frames.count()
 ```
 
-Compare the time necessary for this operation with Wireshark implementation:
-```bash
-capinfos -c sourcecap
-```
-for files of several GB this takes several minutes to complete, while the Spark version requires about 10s.
-## Parse Frames 
-Loader uses PCAP reader to provide raw frames. In order to get packets from the raw frames, we apply ```ParsePacket``` function of ```Packet``` class:
+# Operations
+See available operations:
 
-```scala
-import org.ndx.model.Packet;
-import org.ndx.model.PacketModel.RawFrame;
-val packets = frames.map(x=> Packet.parsePacket(x._2.get().asInstanceOf[RawFrame])); 
-```
+* Information about PCAP files in ```spark-capinfos.md```
 
+* Examples of flow-based analysis in ```spark-flowstat.md```
 
-## Track Flows
-To get unidirectional flows, ```Packet``` class implements method ```getFlowString``` that computes flow key for each packet:
-
-```scala
-val flows = packets.map(x=>(x.getFlowString(),x));
-```
-
-## Track Conversations
-To get bidirectional flows (conversations), ```Packet``` class implements method ```getSessionString``` that computes session key for each packet:
-
-```scala
-val flows = packets.map(x=>(x.getSessionString(),x));
-```
-
-## Compute some basic statistics
-The following snippet shows how to compute for each flow the number of its packet:
-```scala
-val flowCounts = flows.map(x=>(x._1,1)).reduceByKey(_ + _).collect();
-```
-To compute rich statistics is is better to create a new object that would aggregate all statistics. 
-In our case, we can use ```org.ndx.model.ConversationModel.FlowAttributes```.
-Then it is possible to compute flow statistics in the similar way as in the preceding example:
-```scala
-import org.ndx.model.Conversations;
-val stats = flows.map(x=>(x._1,Conversations.fromPacket(x._2))).reduceByKey(Conversations.merge);
-```
-
-Print the flows in usual format using ```ConversationFormatter```:
-```
-println("Date flow start          Duration Proto   Src IP Addr:Port      Dst IP Addr:Port     Packets    Bytes Flows") ;
-stats.takeOrdered(10)(Ordering[Int].reverse.on(x=> x._2.getPackets())).map(c=>Conversations.format(c._1, c._2)).foreach(println)
-
- Date flow start          Duration Proto   Src IP Addr:Port      Dst IP Addr:Port     Packets    Bytes Flows
- 2010-09-01 00:00:00.459     0.000 UDP     127.0.0.1:24920   ->  192.168.0.1:22126        1       46     1
- 2010-09-01 00:00:00.363     0.000 UDP     192.168.0.1:22126 ->  127.0.0.1:24920          1       80     1
-```
-
-The following snippet shows how to get the top 10 flows having the most packets and octets, respectively:
-```scala
-val top10flowsPackets = flows.map(x=>(x._1,Conversations.fromPacket(x._2))).reduceByKey(Conversations.merge).takeOrdered(10)(Ordering[Int].reverse.on(x=> x._2.getPackets()));
-val top10flowsOctets = flows.map(x=>(x._1,Conversations.fromPacket(x._2))).reduceByKey(Conversations.merge).takeOrdered(10)(Ordering[Long].reverse.on(x=> x._2.getOctets()));
-```
-
+* Examples of packet-based analysis in ```spark-xinfo.md```

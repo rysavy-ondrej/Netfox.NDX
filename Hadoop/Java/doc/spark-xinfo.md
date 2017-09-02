@@ -4,6 +4,8 @@ This doucment shows how to use NDX to get HTTP request information for HTTP sess
 
 We are able to parse Http requests uing HttpRequest class. 
 
+We have implemented HTTP request analysis similarly to CloudShark.
+https://support.cloudshark.org/user-guide/analyze-http-requests.html
 
 ## Prepare data source
 
@@ -35,13 +37,32 @@ val packets = frames.map(x=> Packet.parsePacket(x._2.get().asInstanceOf[RawFrame
 ## Get a sample of HTTP Requests
 
 ```scala
-val http = packets.filter(x=> x.containsKey("http.request"))
+val http = packets.filter(x=> x.containsKey("http.request")).cache()
 http.take(20).map(HttpRequest.format).foreach(println)
 ```
 
-## Group by request URL
+## Requests by Host
+The Requests by Hosts view provides a list of all HTTP requests, sorted by host. The percentage of the total number of requests, per host, is displayed on the right side.
 
 ```scala
-val requests = http.map(x => (x.get("http.request.line"),1))
-requests.reduceByKey(_ + _).foreach(println)
+val hosts = http.map(x => (x.get("http.host"),1)).reduceByKey(_ + _)
+hosts.takeOrdered(20)(Ordering[Integer].reverse.on(x=> x._2)).foreach(println)
+```
+
+## Requests by User-Agent
+```scala
+val ua = http.map(x => (x.get("http.user-agent"),1)).reduceByKey(_ + _)
+ua.takeOrdered(20)(Ordering[Integer].reverse.on(x=> x._2)).foreach(println)
+```
+
+## Requests by Request Line
+```scala
+val rline = http.map(x => (x.get("http.request.line"),1)).reduceByKey(_ + _)
+rline.takeOrdered(20)(Ordering[Integer].reverse.on(x=> x._2)).foreach(println)
+```
+
+## Requests by URL
+```scala
+val urls = http.map(x => (HttpRequest.getUrl("http", x),1)).reduceByKey(_ + _)
+urls.takeOrdered(20)(Ordering[Integer].reverse.on(x=> x._2)).foreach(println)
 ```
