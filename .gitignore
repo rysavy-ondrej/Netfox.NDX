@@ -317,3 +317,4 @@ Hadoop/Java/target/ndx-spark-model-0.9-SNAPSHOT-shaded.pom
 Hadoop/Java/target/original-ndx-spark-model-0.9-SNAPSHOT-shaded.pom
 Hadoop/Java/metastore_db/README_DO_NOT_TOUCH_FILES.txt
 Hadoop/Java/metastore_db/seg0/README_DO_NOT_TOUCH_FILES.txt
+Hadoop/Java/metastore_db/service.properties
