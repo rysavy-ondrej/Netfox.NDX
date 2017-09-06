@@ -27,9 +27,9 @@
 			<artifactId>ndx-spark-pcap</artifactId>
 			<version>0.9-SNAPSHOT</version>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>org.ndx.spark</groupId>
-			<artifactId>ndx-spark-tshark</artifactId>
+			<artifactId>ndx-spark-pshark</artifactId>
 			<version>0.9-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

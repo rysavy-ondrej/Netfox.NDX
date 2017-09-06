@@ -9,8 +9,7 @@
 	<modules>
 		<module>ndx-spark-model</module>
 		<module>ndx-spark-pcap</module>
-    	<!-- <module>ndx-spark-ntrace</module> -->
-		<module>ndx-spark-tshark</module>
+		<module>ndx-spark-pshark</module>
 		<module>ndx-spark-shell</module>
   	</modules>
 
@@ -50,5 +49,23 @@
 			<id>cloudera-cdh-build</id>
 			<url>https://repository.cloudera.com/content/groups/cdh-build</url>
 		</repository>
+		<repository>
+			<id>local-repo</id>
+			<url>http://www.fit.vutbr.cz/~rysavy/maven</url>
+		</repository>
 	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>local-repo</id>
+			<url>http://www.fit.vutbr.cz/~rysavy/maven</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
 </project>
