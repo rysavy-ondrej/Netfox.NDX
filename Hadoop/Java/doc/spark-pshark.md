@@ -22,6 +22,8 @@ The different data input can be:
 * Buffer
 * Other?
 
+
+
 # Binary protocols
 
 
@@ -38,4 +40,6 @@ The different data input can be:
 
 ## SMTP
 
-##
+# Resources
+Some other resources related to Network Protocol PArsing:
+* https://curve.carleton.ca/system/files/etd/1fbf53a2-9b3f-4dd6-826e-ad91af12116d/etd_pdf/595d50e82abe7fb03a34d3eb139814da/hughes-parsingstreamingnetworkprotocols.pdf
