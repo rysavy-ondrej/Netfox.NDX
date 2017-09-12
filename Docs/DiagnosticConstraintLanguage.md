@@ -1,5 +1,11 @@
 # Diagnostic Constraint Language
 
+Diagnostic Constraint Language (DCL) is domain specific language to write rules in form of constraints that 
+idnetifies malformed, incorrect or otherwise damaged packet communication. The DCL uses simple syntax based 
+on YAML format and Wireshark display expressions. The evaluation of the SCL rules can be done efficiently 
+by executing SQL like queries. A problematic communication can be also identified as the evaluaiton of rules 
+usually yields to the collection of events.
+
 ## Expressions
 DCL expressions are based on Wireshark display filter expressions. Expressions are composed of the following terms:
 * Fields 
@@ -26,21 +32,22 @@ Every field provided by the protocol parser can be used in the expression. Field
 
 ### Comparison Operators
 Expression can be build using a number of different comparison operators. 
+
 | Operator       | Description  |
 | -------------- | ------------ |
-| ```==```       | Equal        |
-| ```!=```       | Not equal    |
-| ```>```        | Greater than |
-| ```<```        | Less than        |
-| ```>=```       | Less than or equal | 
-| ```<=```       | Greater than or equal |
-| ```contains``` | Protocol, field or slice contains a value. |
-| ```&```        | Compare bit field value, e.g. ```tcp.flags & 0x02``` |
+| `==`           | Equal        |
+| `!=`           | Not equal    |
+| `>`            | Greater than |
+| `<`            | Less than        |
+| `>=`           | Less than or equal | 
+| `<=`           | Greater than or equal |
+| `contains`     | Protocol, field or slice contains a value. |
+| `&`            | Compare bit field value, e.g. `tcp.flags & 0x02` |
 
 ### Constants
 Fields have different types. The supported types are:
 * Unsigned integer - decimal (```1*DIGIT```), octal (```"0" 1*DIGIT```), or hexadecimal (```"0x" 1*HEXDIGIT```) formats are possible. 
-* Signed Integer - decimal (```["-"] 1*DIGIT```), octal (```["-"] "0" 1*DIGIT```), or hexadecimal (```["-"] "0x" 1*HEXDIGIT```) formats are possible. 
+* Signed Integer - decimal (```["-"] 1*DIGIT```), octal (```["-"] "0" 1*DIGIT```), or hexadecimal (```["-"] "0x" 1*HEXDIGIT```) formats are possible.   
 * Boolean - any of the following is a valid boolean constant ```"TRUE", "FALSE", "true", "false", "0", "1"```.
 * Ethernet Address - three syntax forms are possible: ```HEXDIGIT HEXDIGIT 5(":" HEXDIGIT HEXDIGIT)```, 
 ```HEXDIGIT HEXDIGIT 5("-" HEXDIGIT HEXDIGIT)```, or ```HEXDIGIT HEXDIGIT HEXDIGIT HEXDIGIT 2("." HEXDIGIT HEXDIGIT HEXDIGIT HEXDIGIT)```.
@@ -49,13 +56,14 @@ Fields have different types. The supported types are:
 * Text String - TODO (usual C string enclosed in ")
 
 ### Logical Operators
+
 | Operator       | Description  |
 | -------------- | ------------ |
-| ```&&```       | logical AND  |
-| ```||```       | logical OR   |
-| ```^^```       | logical XOR  |
-| ```!```        | logical NOT  |
-| ```in```       | Membership operator, e.g. ```tcp.port in {80 443 8080}``` |
+| `&&`       | logical AND  |
+| `||`       | logical OR   |
+| `^^`       | logical XOR  |
+| `!`        | logical NOT  |
+| `in`       | Membership operator, e.g. ```tcp.port in {80 443 8080}``` |
 
 
 ## Constraints
@@ -202,6 +210,8 @@ select new {query = e1, answer = e2, reason = "DNS error"};
 ```
 
 ## Detecting Absence of Event
+
+## Composing rules
 
 
 # References
