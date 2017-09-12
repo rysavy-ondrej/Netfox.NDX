@@ -1,13 +1,9 @@
 # Diagnostic Constraint Language
 
-Diagnostic Constraint Language (DCL) is domain specific language to write rules in form of constraints that 
-idnetifies malformed, incorrect or otherwise damaged packet communication. The DCL uses simple syntax based 
-on YAML format and Wireshark display expressions. The evaluation of the SCL rules can be done efficiently 
-by executing SQL like queries. A problematic communication can be also identified as the evaluaiton of rules 
-usually yields to the collection of events.
+Diagnostic Constraint Language (DCL) is domain specific language to write rules in the form of constraints that identifies malformed, incorrect or otherwise damaged packet communication. The DCL uses simple syntax based on YAML format and Wireshark display expressions. The evaluation of the SCL rules can be done efficiently by executing SQL like queries. A problematic communication can also be identified as the evaluation of rules usually, yields to the collection of events.
 
 ## Expressions
-DCL expressions are based on Wireshark display filter expressions. Expressions are composed of the following terms:
+The DCL expressions are based on Wireshark display filter expressions. Expressions are composed of the following terms:
 * Fields 
 * Comparison operators
 * Constants
@@ -28,10 +24,10 @@ expression    = "!" expression
               / ( expression )           
 ```
 ### Fields
-Every field provided by the protocol parser can be used in the expression. Field reference can contain fully qualified field name, for instance ```tcp.port```.
+Every field provided by the protocol parser can be used in the expression. Field reference can contain fully qualified field name, for instance, ```tcp.port```.
 
 ### Comparison Operators
-Expression can be build using a number of different comparison operators. 
+The expression can be build using the following comparison operators. 
 
 | Operator       | Description  |
 | -------------- | ------------ |
@@ -46,6 +42,7 @@ Expression can be build using a number of different comparison operators.
 
 ### Constants
 Fields have different types. The supported types are:
+
 * Unsigned integer - decimal (```1*DIGIT```), octal (```"0" 1*DIGIT```), or hexadecimal (```"0x" 1*HEXDIGIT```) formats are possible. 
 * Signed Integer - decimal (```["-"] 1*DIGIT```), octal (```["-"] "0" 1*DIGIT```), or hexadecimal (```["-"] "0x" 1*HEXDIGIT```) formats are possible.   
 * Boolean - any of the following is a valid boolean constant ```"TRUE", "FALSE", "true", "false", "0", "1"```.
@@ -60,7 +57,7 @@ Fields have different types. The supported types are:
 | Operator       | Description  |
 | -------------- | ------------ |
 | `&&`       | logical AND  |
-| `||`       | logical OR   |
+| `⎜⎜`       | logical OR   |
 | `^^`       | logical XOR  |
 | `!`        | logical NOT  |
 | `in`       | Membership operator, e.g. ```tcp.port in {80 443 8080}``` |
@@ -79,8 +76,7 @@ constraint      = expression
                 / event_expression temporal_op event_expression
 ```
 ### Event Expression
-Event expresssion is an expression that when evaluated gives a set of events that satisfies the given expression. 
-It is possible that no event satisfies the expression and in this case this set is empty.
+Event expression is an expression that when evaluated gives a set of events that satisfy the given expression. It is possible that no event satisfies the expression and in this case this set is empty.
 
 ### Temporal Operators
 Constraints can also be composed using temporal operators on event expressions.
@@ -91,13 +87,13 @@ Where `A` and `B` are flow expressions.
 
 It is possible to annotate *leads to* operator with either event interval or time range:
 
-* Event interval ```A {X..Y}~> B```, where X and Y are positive integer numbers. If X = Y it is possible to write ```A {X}~> B```.
+* Event interval ```A {X..Y}~> B```, where X and Y are positive integer numbers. If X = Y then it is possible to write ```A {X}~> B```.
 
-* Time range ```A [X-Y]~> B```, where X and Y are positive numbers that can have associated units of measure. Possible units are ```us```, ```ms```, ```s```, ```m```, ```h```, ```d```. It is be possible to write values such as ```1d2h30m15s```.
+* Time range ```A [X-Y]~> B```, where X and Y are positive numbers that can have associated units of measure. Possible units are ```us```, ```ms```, ```s```, ```m```, ```h```, ```d```. It is possible to compose units into a complex value, such as ```1d2h30m15s```.
 
 ## Rules
 A rule is a collection of event expressions `E1,...,En`, collection of constraints `C1,...,Cm`, 
-and result selectors `R1,...,Rk`. We use YAML syntax to specify rules:
+and the result selectors `R1,...,Rk`. The YAML syntax is employed to specify rules:
 
 ```yaml
 events:
@@ -117,12 +113,11 @@ Rule consists of three blocks.
 
 * Events are defined as maps because each event is assigned a name and expression that provides the event set selector. 
 * Assert block consists of a list of constraints. 
-* Select block constains map for creating resulting structure.
+* Select block contains a map for creating resulting structure.
 
 ## Model and Interpretation
-To evaluate rule in the given data the event model is defined. Data source is 
-organized as the collection of events. Evaluating rule is then performed by translating
-the rule into LINQ query and executing this query for the provided input collection fo events.
+Rules are evaluated according to the specified event model. Event data model is a collection of events. Evaluating rule is performed by translating
+the rule into LINQ query and executing this query for the provided input collection of events.
 
 ### Events
 The model is based on events. An event is defined as:
@@ -148,8 +143,7 @@ Fields of Event structure have the following meaning:
 
 ### Expressions
 Evaluating an expression against the event set results in a collection of events that matches the given expression.
-The language is encoded using YAML (to test the correctness of the syntax see tool at: http://www.yamllint.com/ or 
-http://yaml-online-parser.appspot.com/)
+
 
 For instance, 
 ```yaml
@@ -175,8 +169,8 @@ assert:
     - e1.flow == e2.flow
     - e1 {1}~> e2
 ```
-
-Matching events using a specified attribute(s) can be realized by inner join in LINQ:
+We use ` e1 {1}~> e2` constraint to match the request with the immediate response. 
+Matching events using a specified attribute can be realized by inner join in LINQ:
 ```cs
 from e1 in events 
 join e2 in events on e1.flow equals e2.flow
@@ -184,7 +178,7 @@ where e1.Satisfy("pop.request.command == 'AUTH'") && e2.Satisfy("pop.response.in
    && e1.eid+1 == e2.eid
 select new {e1,e2};
 ```
-The next example shows detection of errorneous DNS resolution and customized output:
+The next example shows the detection of DNS resolution that ends with an error. 
 ```yaml
 events:
     e1: dns.flags.response==0 
@@ -197,7 +191,7 @@ select:
     answer: e2
     reason: "DNS error"
 ```
-The ```select``` attribute can be used to create specific result instead of the default 
+The ```select``` attribute can be used to create a custom result instead of the default 
 output. The LINQ generated uses anonymous type for the result:
 
 ```cs
@@ -210,9 +204,10 @@ select new {query = e1, answer = e2, reason = "DNS error"};
 ```
 
 ## Detecting Absence of Event
+TODO
 
 ## Composing rules
-
+TODO
 
 # References
 * Wireshark - Building display filter expressions
@@ -225,4 +220,6 @@ https://docs.oracle.com/cd/E13157_01/wlevs/docs30/epl_guide/overview.html
 http://yaml.org/
 * YAML @ Microsoft
 https://docs.microsoft.com/en-us/contribute/ops-crr/openpublishing/docs/partnerdocs/yaml
+* YAML online parser
+http://yaml-online-parser.appspot.com/
 
