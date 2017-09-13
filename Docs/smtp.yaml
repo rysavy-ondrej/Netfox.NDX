@@ -1,0 +1,62 @@
+---
+rule:
+    id: smtp_event_exists
+events:
+    e1: 
+    e2:   
+assert:
+    - 
+    - 
+select:
+---
+rule:
+    id: smtp_server_welcome
+events:
+    e1: 
+    e2:   
+assert:
+    - 
+    - 
+select:
+---
+rule:
+    id: smtp_server_ready
+events:
+    e1: 
+    e2:   
+assert:
+    - 
+    - 
+select:
+---
+rule:
+    id: smtp_not_ready
+events:
+    e1: 
+    e2:   
+assert:
+    - 
+    - 
+select:
+
+---
+rule:
+    id: smtp_ready
+events:
+    e1: 
+    e2:   
+assert:
+    - 
+    - 
+select:
+
+---
+rule:
+    id: smtp_authentication_try
+events:
+    e1: 
+    e2:   
+assert:
+    - 
+    - 
+select:
