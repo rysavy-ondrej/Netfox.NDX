@@ -82,7 +82,7 @@ Event expression is an expression that when evaluated gives a set of events that
 Constraints can also be composed using temporal operators on event expressions.
 A single temporal operator of the language is *leads to* operator:
 
-* `A ~> B` is defined as `[](A => <>B)`.
+* `A ~> B` is defined as `◻︎(A ⟹ ◇B)`.
 Where `A` and `B` are flow expressions.
 
 It is possible to annotate *leads to* operator with either event interval or time range:
@@ -123,27 +123,27 @@ the rule into LINQ query and executing this query for the provided input collect
 The model is based on events. An event is defined as:
 
 ```protobuf
+import "google/protobuf/timestamp.proto"
 message Event 
 {
-    uint32 ts_sec = 1;
-    uint32 ts_usec = 1;
+    Timestamp timestamp = 1;    
     bytes flow = 2;
     string origin = 3;
-    int32 eid = 5;
-    map<string.string> attributes = 5;
+    int32 eid = 4;
+    repeated int32 packets = 5;
+    map<string,string> attributes = 8;
 }
 ```
 Fields of Event structure have the following meaning:
-* ts_sec - POSIX timestamp of the event
-* ts_usec - microseconds to add to the POSIX timestamp (https://www.elvidence.com.au/understanding-time-stamps-in-packet-capture-data-pcap-files/)
+* timestamp - Timestamp value encoded in Timestamp message (https://github.com/google/protobuf/blob/master/src/google/protobuf/timestamp.proto)
 * flow - identification of the flow of the event
 * origin - source module that produces the event (protocol analyzer)
 * eid - unique id of the event with respect to the flow
-* attributes - dictionary of event attributes, usually, these correspond to the protocol field and its value.
+* packets - a collection of packet numbers for referencing the source of the event
+* attributes - dictionary of event attributes, usually, these correspond to the protocol fields and their values.
 
 ### Expressions
 Evaluating an expression against the event set results in a collection of events that matches the given expression.
-
 
 For instance, 
 ```yaml
@@ -180,12 +180,13 @@ select new {e1,e2};
 ```
 The next example shows the detection of DNS resolution that ends with an error. 
 ```yaml
+---
 events:
     e1: dns.flags.response==0 
     e2: dns.flags.response==1 && dns.flags.rcode!=0
 assert: 
     - e1.dns.id = e2.dns.id
-    - e1 [30s]~> e2
+    - e1 [0-30s]~> e2
 select:
     query: e1
     answer: e2
@@ -199,7 +200,7 @@ from e1 in events
 join e2 in events on e1["dns.id"] equals e2["dns.id"]
 where e1.Satisfy("dns.flags.response==0") 
    && e2.Satisfy("dns.flags.response==1 && dns.id==id && dns.flags.rcode!=0")
-   && e1.ts_sec >= e2.ts_sec && e2.ts_sec <= e1.ts_sec + 30  
+   && e1.ts_sec + 0 <= e2.ts_sec && e2.ts_sec <= e1.ts_sec + 30  
 select new {query = e1, answer = e2, reason = "DNS error"};
 ```
 
@@ -222,4 +223,7 @@ http://yaml.org/
 https://docs.microsoft.com/en-us/contribute/ops-crr/openpublishing/docs/partnerdocs/yaml
 * YAML online parser
 http://yaml-online-parser.appspot.com/
-
+* Temporal Operators
+https://pdfs.semanticscholar.org/6ed6/404cc710511c2a77d190ff10f83e46324d91.pdf
+* Google Protocol Buffers
+https://developers.google.com/protocol-buffers/
