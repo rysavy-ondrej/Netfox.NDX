@@ -154,8 +154,7 @@ events:
 yields to all events that represent authentication command in a POP session. The corresponding 
 LINQ is created as follows:
 ```cs
-from e in events 
-where e.Satisfy("pop.request.command == 'AUTH'") 
+from e in events.Where(e => e.Satisfy("pop.request.command == 'AUTH'")) 
 select new { e };
 ```
 
@@ -172,10 +171,10 @@ assert:
 We use ` e1 {1}~> e2` constraint to match the request with the immediate response. 
 Matching events using a specified attribute can be realized by inner join in LINQ:
 ```cs
-from e1 in events 
-join e2 in events on e1.flow equals e2.flow
-where e1.Satisfy("pop.request.command == 'AUTH'") && e2.Satisfy("pop.response.indicator == '-ERR'")
-   && e1.eid+1 == e2.eid
+from e1 in events.Where(e=>e.Satisfy("pop.request.command == 'AUTH'")) 
+join e2 in events.Where(e=>e.Satisfy("pop.response.indicator == '-ERR'"))
+  on e1.flow equals e2.flow
+where e1.eid+1 == e2.eid
 select new {e1,e2};
 ```
 The next example shows the detection of DNS resolution that ends with an error. 
@@ -185,27 +184,51 @@ events:
     e1: dns.flags.response==0 
     e2: dns.flags.response==1 && dns.flags.rcode!=0
 assert: 
-    - e1.dns.id = e2.dns.id
+    - e1.dns.id == e2.dns.id
     - e1 [0-30s]~> e2
 select:
     query: e1
     answer: e2
-    reason: "DNS error"
+    reason: "DNS error replied."
 ```
 The ```select``` attribute can be used to create a custom result instead of the default 
 output. The LINQ generated uses anonymous type for the result:
 
 ```cs
-from e1 in events 
-join e2 in events on e1["dns.id"] equals e2["dns.id"]
-where e1.Satisfy("dns.flags.response==0") 
-   && e2.Satisfy("dns.flags.response==1 && dns.id==id && dns.flags.rcode!=0")
-   && e1.ts_sec + 0 <= e2.ts_sec && e2.ts_sec <= e1.ts_sec + 30  
+from e1 in events.Where(e => e.Satisfy("dns.flags.response==0")) 
+join e2 in events.Where(e => e.Satisfy("dns.flags.response==1 && dns.flags.rcode!=0"))  
+  on e1["dns.id"] equals e2["dns.id"]
+where e1.timestamp + Timestamp.fromSeconds(0) <= e2.timestamp && e2.timestamp <= e1.timestamp + Timestamp.fromSeconds(30)  
 select new {query = e1, answer = e2, reason = "DNS error"};
 ```
 
 ## Detecting Absence of Event
-TODO
+For instance, we would like to 
+create rule that expresses the situation when no reply to DNS request is 
+received. It is stated as `e1 ~> !e2` that express the situation that there is `e1`
+which is not followed by `e2`.
+
+```yaml
+---
+events:
+    e1: dns.flags.response==0 
+    e2: dns.flags.response==1    
+assert:
+    - e1.dns.id == e2.dns.id
+    - e1 ~> !e2
+select:
+    query: e1   
+    desc: "DNS no reply."
+```
+This rule is translated to the following LINQ employing Left Outer Join ():
+```cs
+from e1 in events.Where(e => e.Satisfy("dns.flags.response==0"))
+join e2 in events.Where(e => e.Satisfy("dns.flags.response==1"))
+on e1["dns.id"] equals e2["dns.id"] into grp
+from right in grp.DefaultIfEmpty()
+where right == null
+select (new { query = e1, desc =  "DNS no reply." });
+```
 
 ## Composing rules
 TODO
@@ -227,3 +250,5 @@ http://yaml-online-parser.appspot.com/
 https://pdfs.semanticscholar.org/6ed6/404cc710511c2a77d190ff10f83e46324d91.pdf
 * Google Protocol Buffers
 https://developers.google.com/protocol-buffers/
+* LINQ Join Clause
+https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/join-clause
