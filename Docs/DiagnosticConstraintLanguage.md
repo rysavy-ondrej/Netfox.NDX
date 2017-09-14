@@ -230,8 +230,52 @@ where right == null
 select (new { query = e1, desc =  "DNS no reply." });
 ```
 
+## Parametrized Rules
+
+```yaml
+params:
+    - host
+events:
+    e1: dns.flags.response==0 && ip.src == host
+    e2: dns.flags.response==1    
+assert:
+    - e1.dns.id == e2.dns.id
+    - e1 ~> !e2
+select:
+    query: e1   
+    desc: "DNS no reply."
+``` 
+
+## Named rules
+
+```yaml
+rule:
+    id: dns_no_reply 
+params:
+    - host
+events:
+    e1: dns.flags.response==0 && ip.src == host
+    e2: dns.flags.response==1    
+assert:
+    - e1.dns.id == e2.dns.id
+    - e1 ~> !e2
+select:
+    query: e1   
+    desc: "DNS no reply."
+``` 
+
+
 ## Composing rules
-TODO
+
+```yaml
+rule:
+    id: dns_check
+params:
+    - host
+select:
+    result: dns_no_reply(host: host) | dns_error(host: host) | dns_ok(host: host)
+```
+
 
 # References
 * Wireshark - Building display filter expressions
