@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{59950E31-B0C4-4619-8A62-7914A659ED50}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ExportIec104</RootNamespace>
+    <AssemblyName>ExportIec104</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Microsoft.Extensions.CommandLineUtils">
+      <HintPath>..\..\packages\Microsoft.Extensions.CommandLineUtils.1.1.1\lib\net451\Microsoft.Extensions.CommandLineUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="PacketDotNet">
+      <HintPath>..\..\packages\PacketDotNet.Netfox.0.13.0.3\lib\net35\PacketDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ExportIecCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Readme.md" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Ndx.Shell.Commands\Ndx.Shell.Commands.csproj">
+      <Project>{96565D54-4EAB-455A-85FE-AE5EA02B4EFE}</Project>
+      <Name>Ndx.Shell.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ndx.Captures\Ndx.Captures.csproj">
+      <Project>{F7893DF7-5638-43BC-91E5-E612E4D0AD53}</Project>
+      <Name>Ndx.Captures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ndx.Metacap\Ndx.Model.csproj">
+      <Project>{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}</Project>
+      <Name>Ndx.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
