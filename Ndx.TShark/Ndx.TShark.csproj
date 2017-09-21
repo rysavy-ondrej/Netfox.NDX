@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TSharkBlock.cs" />
+    <Compile Include="TSharkDataset.cs" />
     <Compile Include="TSharkDecoder.cs" />
     <Compile Include="TSharkFieldDecoderProcess.cs" />
     <Compile Include="TSharkProcess.cs" />

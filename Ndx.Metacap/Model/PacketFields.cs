@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ndx.Utils;
 
 namespace Ndx.Model
 {
@@ -18,5 +19,6 @@ namespace Ndx.Model
         {
             return Fields.TryGetValue(field, out string value) ? value : defaultValue;
         }
+
     }
 }

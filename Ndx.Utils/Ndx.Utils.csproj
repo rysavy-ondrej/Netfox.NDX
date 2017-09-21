@@ -60,6 +60,7 @@
     <Compile Include="Format.cs" />
     <Compile Include="HashProvider.cs" />
     <Compile Include="IPAddress.cs" />
+    <Compile Include="NVariant.cs" />
     <Compile Include="PacketDotNet.cs" />
     <Compile Include="ProgressMonitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
