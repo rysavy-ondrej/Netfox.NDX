@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -62,6 +62,10 @@
     <ProjectReference Include="..\Ndx.Metacap\Ndx.Model.csproj">
       <Project>{6c85ca82-04e3-4600-80ab-12b53f6ae4b3}</Project>
       <Name>Ndx.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ndx.Utils\Ndx.Utils.csproj">
+      <Project>{CAD4B73F-5BAB-479F-BE15-C7BDCC510FA3}</Project>
+      <Name>Ndx.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
