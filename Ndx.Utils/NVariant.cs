@@ -36,7 +36,7 @@ namespace Ndx.Utils
 
         public static NVariant Make(JValue value)
         {
-            
+            throw new NotImplementedException();
         }
 
         public virtual TypeCode GetTypeCode()
