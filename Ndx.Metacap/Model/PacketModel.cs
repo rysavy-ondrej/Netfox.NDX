@@ -23,35 +23,20 @@ namespace Ndx.Model {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFQYWNrZXRNb2RlbC5wcm90bxIJbmR4Lm1vZGVsGg9Db25zdGFudHMucHJv",
-            "dG8ivQEKCFJhd0ZyYW1lEikKCExpbmtUeXBlGAEgASgOMhcubmR4Lm1vZGVs",
-            "LkRhdGFMaW5rVHlwZRITCgtGcmFtZU51bWJlchgCIAEoBRITCgtGcmFtZUxl",
-            "bmd0aBgDIAEoBRITCgtGcmFtZU9mZnNldBgEIAEoAxIRCglUaW1lU3RhbXAY",
-            "BSABKAMSEQoJUHJvY2Vzc0lkGAYgASgDEhMKC1Byb2Nlc3NOYW1lGAcgASgJ",
-            "EgwKBERhdGEYCiABKAwiKwoJQnl0ZVJhbmdlEg4KBk9mZnNldBgBIAEoBRIO",
-            "CgZMZW5ndGgYAiABKAUiOQoSRGF0YWxpbmtQYWNrZXRVbml0EiMKBUJ5dGVz",
-            "GAEgASgLMhQubmR4Lm1vZGVsLkJ5dGVSYW5nZSI4ChFOZXR3b3JrUGFja2V0",
-            "VW5pdBIjCgVCeXRlcxgBIAEoCzIULm5keC5tb2RlbC5CeXRlUmFuZ2UiOgoT",
-            "VHJhbnNwb3J0UGFja2V0VW5pdBIjCgVCeXRlcxgBIAEoCzIULm5keC5tb2Rl",
-            "bC5CeXRlUmFuZ2UiPAoVQXBwbGljYXRpb25QYWNrZXRVbml0EiMKBUJ5dGVz",
-            "GAEgASgLMhQubmR4Lm1vZGVsLkJ5dGVSYW5nZSKIAQoJTWV0YUZyYW1lEhMK",
-            "C0ZyYW1lTnVtYmVyGAEgASgFEhMKC0ZyYW1lTGVuZ3RoGAIgASgFEhMKC0Zy",
-            "YW1lT2Zmc2V0GAMgASgDEhEKCVRpbWVTdGFtcBgEIAEoAxIpCghMaW5rVHlw",
-            "ZRgFIAEoDjIXLm5keC5tb2RlbC5EYXRhTGlua1R5cGUisgEKDFBhY2tldEZp",
-            "ZWxkcxITCgtGcmFtZU51bWJlchgBIAEoAxIWCg5GcmFtZVByb3RvY29scxgC",
-            "IAEoCRIRCglUaW1lc3RhbXAYAyABKAMSMwoGRmllbGRzGAogAygLMiMubmR4",
-            "Lm1vZGVsLlBhY2tldEZpZWxkcy5GaWVsZHNFbnRyeRotCgtGaWVsZHNFbnRy",
-            "eRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBQg8KDW9yZy5uZHgu",
-            "bW9kZWxiBnByb3RvMw=="));
+            "dG8i0gEKBUZyYW1lEikKCExpbmtUeXBlGAEgASgOMhcubmR4Lm1vZGVsLkRh",
+            "dGFMaW5rVHlwZRITCgtGcmFtZU51bWJlchgCIAEoBRITCgtGcmFtZUxlbmd0",
+            "aBgDIAEoBRITCgtGcmFtZU9mZnNldBgEIAEoAxIRCglUaW1lU3RhbXAYBSAB",
+            "KAMSEQoJUHJvY2Vzc0lkGAYgASgDEhMKC1Byb2Nlc3NOYW1lGAcgASgJEgwK",
+            "BERhdGEYCiABKAwSFgoOQ29udmVyc2F0aW9uSWQYCyABKAUisgEKDFBhY2tl",
+            "dEZpZWxkcxITCgtGcmFtZU51bWJlchgBIAEoAxIWCg5GcmFtZVByb3RvY29s",
+            "cxgCIAEoCRIRCglUaW1lc3RhbXAYAyABKAMSMwoGRmllbGRzGAogAygLMiMu",
+            "bmR4Lm1vZGVsLlBhY2tldEZpZWxkcy5GaWVsZHNFbnRyeRotCgtGaWVsZHNF",
+            "bnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBQg8KDW9yZy5u",
+            "ZHgubW9kZWxiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Model.ConstantsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.RawFrame), global::Ndx.Model.RawFrame.Parser, new[]{ "LinkType", "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "ProcessId", "ProcessName", "Data" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.ByteRange), global::Ndx.Model.ByteRange.Parser, new[]{ "Offset", "Length" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.DatalinkPacketUnit), global::Ndx.Model.DatalinkPacketUnit.Parser, new[]{ "Bytes" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.NetworkPacketUnit), global::Ndx.Model.NetworkPacketUnit.Parser, new[]{ "Bytes" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.TransportPacketUnit), global::Ndx.Model.TransportPacketUnit.Parser, new[]{ "Bytes" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.ApplicationPacketUnit), global::Ndx.Model.ApplicationPacketUnit.Parser, new[]{ "Bytes" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.MetaFrame), global::Ndx.Model.MetaFrame.Parser, new[]{ "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "LinkType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Frame), global::Ndx.Model.Frame.Parser, new[]{ "LinkType", "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "ProcessId", "ProcessName", "Data", "ConversationId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PacketFields), global::Ndx.Model.PacketFields.Parser, new[]{ "FrameNumber", "FrameProtocols", "Timestamp", "Fields" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
@@ -64,10 +49,10 @@ namespace Ndx.Model {
   //// Represents a single captured packet and its metadata
   //// &lt;/summary>
   /// </summary>
-  public sealed partial class RawFrame : pb::IMessage<RawFrame> {
-    private static readonly pb::MessageParser<RawFrame> _parser = new pb::MessageParser<RawFrame>(() => new RawFrame());
+  public sealed partial class Frame : pb::IMessage<Frame> {
+    private static readonly pb::MessageParser<Frame> _parser = new pb::MessageParser<Frame>(() => new Frame());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<RawFrame> Parser { get { return _parser; } }
+    public static pb::MessageParser<Frame> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -80,14 +65,14 @@ namespace Ndx.Model {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RawFrame() {
+    public Frame() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RawFrame(RawFrame other) : this() {
+    public Frame(Frame other) : this() {
       linkType_ = other.linkType_;
       frameNumber_ = other.frameNumber_;
       frameLength_ = other.frameLength_;
@@ -96,11 +81,12 @@ namespace Ndx.Model {
       processId_ = other.processId_;
       processName_ = other.processName_;
       data_ = other.data_;
+      conversationId_ = other.conversationId_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RawFrame Clone() {
-      return new RawFrame(this);
+    public Frame Clone() {
+      return new Frame(this);
     }
 
     /// <summary>Field number for the "LinkType" field.</summary>
@@ -226,13 +212,29 @@ namespace Ndx.Model {
       }
     }
 
+    /// <summary>Field number for the "ConversationId" field.</summary>
+    public const int ConversationIdFieldNumber = 11;
+    private int conversationId_;
+    /// <summary>
+    //// &lt;summary>
+    ////	Gets or sets the conversation ID of this frame.
+    ////	&lt;/summary>
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as RawFrame);
+    public int ConversationId {
+      get { return conversationId_; }
+      set {
+        conversationId_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(RawFrame other) {
+    public override bool Equals(object other) {
+      return Equals(other as Frame);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Frame other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -247,6 +249,7 @@ namespace Ndx.Model {
       if (ProcessId != other.ProcessId) return false;
       if (ProcessName != other.ProcessName) return false;
       if (Data != other.Data) return false;
+      if (ConversationId != other.ConversationId) return false;
       return true;
     }
 
@@ -261,6 +264,7 @@ namespace Ndx.Model {
       if (ProcessId != 0L) hash ^= ProcessId.GetHashCode();
       if (ProcessName.Length != 0) hash ^= ProcessName.GetHashCode();
       if (Data.Length != 0) hash ^= Data.GetHashCode();
+      if (ConversationId != 0) hash ^= ConversationId.GetHashCode();
       return hash;
     }
 
@@ -303,6 +307,10 @@ namespace Ndx.Model {
         output.WriteRawTag(82);
         output.WriteBytes(Data);
       }
+      if (ConversationId != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(ConversationId);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -332,11 +340,14 @@ namespace Ndx.Model {
       if (Data.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Data);
       }
+      if (ConversationId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ConversationId);
+      }
       return size;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(RawFrame other) {
+    public void MergeFrom(Frame other) {
       if (other == null) {
         return;
       }
@@ -363,6 +374,9 @@ namespace Ndx.Model {
       }
       if (other.Data.Length != 0) {
         Data = other.Data;
+      }
+      if (other.ConversationId != 0) {
+        ConversationId = other.ConversationId;
       }
     }
 
@@ -406,880 +420,8 @@ namespace Ndx.Model {
             Data = input.ReadBytes();
             break;
           }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  //// &lt;summary>
-  //// Represents a byte range as the pair of offset and length values.
-  //// &lt;/summary>
-  /// </summary>
-  public sealed partial class ByteRange : pb::IMessage<ByteRange> {
-    private static readonly pb::MessageParser<ByteRange> _parser = new pb::MessageParser<ByteRange>(() => new ByteRange());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<ByteRange> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[1]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ByteRange() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ByteRange(ByteRange other) : this() {
-      offset_ = other.offset_;
-      length_ = other.length_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ByteRange Clone() {
-      return new ByteRange(this);
-    }
-
-    /// <summary>Field number for the "Offset" field.</summary>
-    public const int OffsetFieldNumber = 1;
-    private int offset_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Offset {
-      get { return offset_; }
-      set {
-        offset_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Length" field.</summary>
-    public const int LengthFieldNumber = 2;
-    private int length_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Length {
-      get { return length_; }
-      set {
-        length_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as ByteRange);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(ByteRange other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Offset != other.Offset) return false;
-      if (Length != other.Length) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Offset != 0) hash ^= Offset.GetHashCode();
-      if (Length != 0) hash ^= Length.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Offset != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Offset);
-      }
-      if (Length != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(Length);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Offset != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Offset);
-      }
-      if (Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Length);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(ByteRange other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Offset != 0) {
-        Offset = other.Offset;
-      }
-      if (other.Length != 0) {
-        Length = other.Length;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            Offset = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            Length = input.ReadInt32();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class DatalinkPacketUnit : pb::IMessage<DatalinkPacketUnit> {
-    private static readonly pb::MessageParser<DatalinkPacketUnit> _parser = new pb::MessageParser<DatalinkPacketUnit>(() => new DatalinkPacketUnit());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<DatalinkPacketUnit> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[2]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public DatalinkPacketUnit() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public DatalinkPacketUnit(DatalinkPacketUnit other) : this() {
-      Bytes = other.bytes_ != null ? other.Bytes.Clone() : null;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public DatalinkPacketUnit Clone() {
-      return new DatalinkPacketUnit(this);
-    }
-
-    /// <summary>Field number for the "Bytes" field.</summary>
-    public const int BytesFieldNumber = 1;
-    private global::Ndx.Model.ByteRange bytes_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Model.ByteRange Bytes {
-      get { return bytes_; }
-      set {
-        bytes_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as DatalinkPacketUnit);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(DatalinkPacketUnit other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (!object.Equals(Bytes, other.Bytes)) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (bytes_ != null) hash ^= Bytes.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (bytes_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Bytes);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (bytes_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Bytes);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(DatalinkPacketUnit other) {
-      if (other == null) {
-        return;
-      }
-      if (other.bytes_ != null) {
-        if (bytes_ == null) {
-          bytes_ = new global::Ndx.Model.ByteRange();
-        }
-        Bytes.MergeFrom(other.Bytes);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 10: {
-            if (bytes_ == null) {
-              bytes_ = new global::Ndx.Model.ByteRange();
-            }
-            input.ReadMessage(bytes_);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class NetworkPacketUnit : pb::IMessage<NetworkPacketUnit> {
-    private static readonly pb::MessageParser<NetworkPacketUnit> _parser = new pb::MessageParser<NetworkPacketUnit>(() => new NetworkPacketUnit());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<NetworkPacketUnit> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[3]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public NetworkPacketUnit() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public NetworkPacketUnit(NetworkPacketUnit other) : this() {
-      Bytes = other.bytes_ != null ? other.Bytes.Clone() : null;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public NetworkPacketUnit Clone() {
-      return new NetworkPacketUnit(this);
-    }
-
-    /// <summary>Field number for the "Bytes" field.</summary>
-    public const int BytesFieldNumber = 1;
-    private global::Ndx.Model.ByteRange bytes_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Model.ByteRange Bytes {
-      get { return bytes_; }
-      set {
-        bytes_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as NetworkPacketUnit);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(NetworkPacketUnit other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (!object.Equals(Bytes, other.Bytes)) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (bytes_ != null) hash ^= Bytes.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (bytes_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Bytes);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (bytes_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Bytes);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(NetworkPacketUnit other) {
-      if (other == null) {
-        return;
-      }
-      if (other.bytes_ != null) {
-        if (bytes_ == null) {
-          bytes_ = new global::Ndx.Model.ByteRange();
-        }
-        Bytes.MergeFrom(other.Bytes);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 10: {
-            if (bytes_ == null) {
-              bytes_ = new global::Ndx.Model.ByteRange();
-            }
-            input.ReadMessage(bytes_);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class TransportPacketUnit : pb::IMessage<TransportPacketUnit> {
-    private static readonly pb::MessageParser<TransportPacketUnit> _parser = new pb::MessageParser<TransportPacketUnit>(() => new TransportPacketUnit());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<TransportPacketUnit> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[4]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TransportPacketUnit() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TransportPacketUnit(TransportPacketUnit other) : this() {
-      Bytes = other.bytes_ != null ? other.Bytes.Clone() : null;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TransportPacketUnit Clone() {
-      return new TransportPacketUnit(this);
-    }
-
-    /// <summary>Field number for the "Bytes" field.</summary>
-    public const int BytesFieldNumber = 1;
-    private global::Ndx.Model.ByteRange bytes_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Model.ByteRange Bytes {
-      get { return bytes_; }
-      set {
-        bytes_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as TransportPacketUnit);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(TransportPacketUnit other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (!object.Equals(Bytes, other.Bytes)) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (bytes_ != null) hash ^= Bytes.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (bytes_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Bytes);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (bytes_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Bytes);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(TransportPacketUnit other) {
-      if (other == null) {
-        return;
-      }
-      if (other.bytes_ != null) {
-        if (bytes_ == null) {
-          bytes_ = new global::Ndx.Model.ByteRange();
-        }
-        Bytes.MergeFrom(other.Bytes);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 10: {
-            if (bytes_ == null) {
-              bytes_ = new global::Ndx.Model.ByteRange();
-            }
-            input.ReadMessage(bytes_);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class ApplicationPacketUnit : pb::IMessage<ApplicationPacketUnit> {
-    private static readonly pb::MessageParser<ApplicationPacketUnit> _parser = new pb::MessageParser<ApplicationPacketUnit>(() => new ApplicationPacketUnit());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<ApplicationPacketUnit> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[5]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ApplicationPacketUnit() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ApplicationPacketUnit(ApplicationPacketUnit other) : this() {
-      Bytes = other.bytes_ != null ? other.Bytes.Clone() : null;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ApplicationPacketUnit Clone() {
-      return new ApplicationPacketUnit(this);
-    }
-
-    /// <summary>Field number for the "Bytes" field.</summary>
-    public const int BytesFieldNumber = 1;
-    private global::Ndx.Model.ByteRange bytes_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Model.ByteRange Bytes {
-      get { return bytes_; }
-      set {
-        bytes_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as ApplicationPacketUnit);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(ApplicationPacketUnit other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (!object.Equals(Bytes, other.Bytes)) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (bytes_ != null) hash ^= Bytes.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (bytes_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Bytes);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (bytes_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Bytes);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(ApplicationPacketUnit other) {
-      if (other == null) {
-        return;
-      }
-      if (other.bytes_ != null) {
-        if (bytes_ == null) {
-          bytes_ = new global::Ndx.Model.ByteRange();
-        }
-        Bytes.MergeFrom(other.Bytes);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 10: {
-            if (bytes_ == null) {
-              bytes_ = new global::Ndx.Model.ByteRange();
-            }
-            input.ReadMessage(bytes_);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  //// &lt;summary>
-  ////	Stores the metadata of a single captured frame.
-  ////	&lt;/summary>
-  /// </summary>
-  public sealed partial class MetaFrame : pb::IMessage<MetaFrame> {
-    private static readonly pb::MessageParser<MetaFrame> _parser = new pb::MessageParser<MetaFrame>(() => new MetaFrame());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<MetaFrame> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[6]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MetaFrame() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MetaFrame(MetaFrame other) : this() {
-      frameNumber_ = other.frameNumber_;
-      frameLength_ = other.frameLength_;
-      frameOffset_ = other.frameOffset_;
-      timeStamp_ = other.timeStamp_;
-      linkType_ = other.linkType_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MetaFrame Clone() {
-      return new MetaFrame(this);
-    }
-
-    /// <summary>Field number for the "FrameNumber" field.</summary>
-    public const int FrameNumberFieldNumber = 1;
-    private int frameNumber_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int FrameNumber {
-      get { return frameNumber_; }
-      set {
-        frameNumber_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "FrameLength" field.</summary>
-    public const int FrameLengthFieldNumber = 2;
-    private int frameLength_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int FrameLength {
-      get { return frameLength_; }
-      set {
-        frameLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "FrameOffset" field.</summary>
-    public const int FrameOffsetFieldNumber = 3;
-    private long frameOffset_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long FrameOffset {
-      get { return frameOffset_; }
-      set {
-        frameOffset_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "TimeStamp" field.</summary>
-    public const int TimeStampFieldNumber = 4;
-    private long timeStamp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long TimeStamp {
-      get { return timeStamp_; }
-      set {
-        timeStamp_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "LinkType" field.</summary>
-    public const int LinkTypeFieldNumber = 5;
-    private global::Ndx.Model.DataLinkType linkType_ = 0;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Model.DataLinkType LinkType {
-      get { return linkType_; }
-      set {
-        linkType_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as MetaFrame);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(MetaFrame other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (FrameNumber != other.FrameNumber) return false;
-      if (FrameLength != other.FrameLength) return false;
-      if (FrameOffset != other.FrameOffset) return false;
-      if (TimeStamp != other.TimeStamp) return false;
-      if (LinkType != other.LinkType) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (FrameNumber != 0) hash ^= FrameNumber.GetHashCode();
-      if (FrameLength != 0) hash ^= FrameLength.GetHashCode();
-      if (FrameOffset != 0L) hash ^= FrameOffset.GetHashCode();
-      if (TimeStamp != 0L) hash ^= TimeStamp.GetHashCode();
-      if (LinkType != 0) hash ^= LinkType.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (FrameNumber != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(FrameNumber);
-      }
-      if (FrameLength != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(FrameLength);
-      }
-      if (FrameOffset != 0L) {
-        output.WriteRawTag(24);
-        output.WriteInt64(FrameOffset);
-      }
-      if (TimeStamp != 0L) {
-        output.WriteRawTag(32);
-        output.WriteInt64(TimeStamp);
-      }
-      if (LinkType != 0) {
-        output.WriteRawTag(40);
-        output.WriteEnum((int) LinkType);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (FrameNumber != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FrameNumber);
-      }
-      if (FrameLength != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FrameLength);
-      }
-      if (FrameOffset != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(FrameOffset);
-      }
-      if (TimeStamp != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(TimeStamp);
-      }
-      if (LinkType != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) LinkType);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(MetaFrame other) {
-      if (other == null) {
-        return;
-      }
-      if (other.FrameNumber != 0) {
-        FrameNumber = other.FrameNumber;
-      }
-      if (other.FrameLength != 0) {
-        FrameLength = other.FrameLength;
-      }
-      if (other.FrameOffset != 0L) {
-        FrameOffset = other.FrameOffset;
-      }
-      if (other.TimeStamp != 0L) {
-        TimeStamp = other.TimeStamp;
-      }
-      if (other.LinkType != 0) {
-        LinkType = other.LinkType;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            FrameNumber = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            FrameLength = input.ReadInt32();
-            break;
-          }
-          case 24: {
-            FrameOffset = input.ReadInt64();
-            break;
-          }
-          case 32: {
-            TimeStamp = input.ReadInt64();
-            break;
-          }
-          case 40: {
-            linkType_ = (global::Ndx.Model.DataLinkType) input.ReadEnum();
+          case 88: {
+            ConversationId = input.ReadInt32();
             break;
           }
         }
@@ -1295,7 +437,7 @@ namespace Ndx.Model {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

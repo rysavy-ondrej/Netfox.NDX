@@ -30,7 +30,7 @@ namespace ExportIec104
 
         protected override void ProcessRecord()
         {
-            IEnumerable<byte[]> ExtractIefPdus(RawFrame frame)
+            IEnumerable<byte[]> ExtractIefPdus(Frame frame)
             {
                 var packet = frame.Parse();
                 var tcpSegment = (TcpPacket)packet.Extract(typeof(TcpPacket));
@@ -61,7 +61,7 @@ namespace ExportIec104
             }
 
             var frames = Ndx.Captures.PcapReader.ReadFile(InputPath);
-            var pdus = frames.SelectMany((RawFrame frame, int index) =>
+            var pdus = frames.SelectMany((Frame frame, int index) =>
             {
                 return ExtractIefPdus(frame).Select((byte[] arg1, int arg2) => Tuple.Create(index, arg2, arg1));
             });

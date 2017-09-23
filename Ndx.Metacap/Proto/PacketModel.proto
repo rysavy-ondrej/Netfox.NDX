@@ -10,7 +10,7 @@ import "Constants.proto";
 /// <summary>
 /// Represents a single captured packet and its metadata
 /// </summary>
-message RawFrame {
+message Frame {
     DataLinkType LinkType = 1;
 	/// <summary>
     /// Gets or sets frame number.
@@ -40,53 +40,11 @@ message RawFrame {
     /// Gets or sets the raw frame content.
     /// </summary>	
 	bytes Data = 10;
+	/// <summary>
+	///	Gets or sets the conversation ID of this frame.
+	///	</summary>
+	int32 ConversationId = 11;
 }
-
-/// <summary>
-/// Represents a byte range as the pair of offset and length values.
-/// </summary>
-message ByteRange {
-	int32 Offset = 1;
-	int32 Length = 2;
-} 
-
-message DatalinkPacketUnit {	
-	ByteRange Bytes = 1;		
-}
-
-message NetworkPacketUnit {
-	ByteRange Bytes = 1;
-}
-
-message TransportPacketUnit {
-	ByteRange Bytes = 1;
-}
-
-message ApplicationPacketUnit {
-	ByteRange Bytes = 1;
-}
-
-/// <summary>
-///	Stores the metadata of a single captured frame.
-///	</summary>
-message MetaFrame {
-	int32 FrameNumber = 1;
-	int32 FrameLength = 2;
-	int64 FrameOffset = 3;
-	int64 TimeStamp = 4;
-	DataLinkType LinkType = 5;
-}
-
-/// <summary>
-///	Represents a block of packets.
-/// </summary>
-/*
-message PacketBlock {
-	int32 BlockId = 1;
-	int32 FileId = 2;
-	DataLinkType LinkType = 4;
-}
-   */
 
 message PacketFields {
 	int64 FrameNumber = 1;

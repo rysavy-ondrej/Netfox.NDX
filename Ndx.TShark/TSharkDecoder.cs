@@ -11,7 +11,7 @@ namespace Ndx.TShark
     public static class TSharkDecoder
     {
         /// <summary>
-        /// Decodes each <see cref="RawFrame"/> of a sequence into a <see cref="PacketFields"/> object.
+        /// Decodes each <see cref="Frame"/> of a sequence into a <see cref="PacketFields"/> object.
         /// </summary>
         /// <param name="frames">A sequence of values to invoke a transform function on.</param>
         /// <param name="tsharkProcess">A decoder process to apply to each element.</param>
@@ -24,7 +24,7 @@ namespace Ndx.TShark
         /// that is required to perform the action. The query represented by this method is not executed until the object is enumerated 
         /// either by calling its GetEnumerator method directly or by using foreach.
         /// </remarks>
-        public static IEnumerable<PacketFields> Decode(this IEnumerable<RawFrame> frames, TSharkProcess tsharkProcess, DataLinkType datalinkType = DataLinkType.Ethernet)
+        public static IEnumerable<PacketFields> Decode(this IEnumerable<Frame> frames, TSharkProcess tsharkProcess, DataLinkType datalinkType = DataLinkType.Ethernet)
         {
             var pipename = $"ndx.tshark_{new Random().Next(Int32.MaxValue)}";
             var wsender = new TSharkSender(pipename, datalinkType);

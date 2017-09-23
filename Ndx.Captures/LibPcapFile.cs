@@ -30,13 +30,13 @@ namespace Ndx.Captures
         /// </summary>
         /// <param name="filename">Path to the file in pcap-next-generation (.pcapng) format</param>
         /// <returns></returns>
-        public static IEnumerable<RawFrame> ReadFile(string filename)
+        public static IEnumerable<Frame> ReadFile(string filename)
         {
             var stream = File.OpenRead(filename);
             return ReadForward(stream);
         }
 
-        public static IEnumerable<RawFrame> ReadForward(Stream stream)
+        public static IEnumerable<Frame> ReadForward(Stream stream)
         {
             using (var reader = new BinaryReader(stream))
             {
@@ -68,7 +68,7 @@ namespace Ndx.Captures
                     var frameOffset = stream.Position;
                     var frameBytes = reader.ReadBytes((int)includedLength);
                     
-                    yield return new RawFrame
+                    yield return new Frame
                     {
                         Data = ByteString.CopyFrom(frameBytes, 0, frameBytes.Length),
                         FrameOffset = frameOffset,
@@ -95,7 +95,7 @@ namespace Ndx.Captures
         /// <param name="path">The file to write to.</param>
         /// <param name="network">The link type.</param>
         /// <param name="contents">The raw frame array to write to the file.</param>
-        public static void WriteAllFrames(string path, DataLinkType network, IEnumerable<RawFrame> frames)
+        public static void WriteAllFrames(string path, DataLinkType network, IEnumerable<Frame> frames)
         {
             var stream = File.Create(path);
             using (var writer = new BinaryWriter(stream))

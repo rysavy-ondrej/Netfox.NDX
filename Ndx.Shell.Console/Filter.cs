@@ -65,9 +65,9 @@ namespace Ndx.Shell.Console
             return (FlowKey f) => pred(f) == false;
         }
 
-        public static Func<RawFrame,bool> GetFrameFilter(this Func<FlowKey,bool> filter)
+        public static Func<Frame,bool> GetFrameFilter(this Func<FlowKey,bool> filter)
         {
-            return new Func<RawFrame,bool>((RawFrame frame) =>
+            return new Func<Frame,bool>((Frame frame) =>
             {
                 var flowKey = PacketAnalyzer.GetFlowKey(frame);
                 return (flowKey != null && filter(flowKey));

@@ -11,27 +11,18 @@ namespace Ndx.Ingest
 {
     /// <summary>
     /// <see cref="PacketAnalyzer"/> implements <see cref="PacketDotNet.PacketVisitor"/>
-    /// for extracting information from <see cref="RawFrame"/>. This information is used
+    /// for extracting information from <see cref="Frame"/>. This information is used
     /// to provide conversation data for <see cref="ConversationTracker"/>.
     /// </summary>
     public class PacketAnalyzer : PacketVisitor
     {
         ConversationTracker m_tracker;
-        MetaFrame m_metaFrame;
-        Conversation m_conversation;
-        public MetaFrame MetaFrame => m_metaFrame;
-        public Conversation Conversation => m_conversation;
-        public PacketAnalyzer(ConversationTracker tracker, RawFrame rawframe)
+        Frame m_frame;
+        public Frame Frame => m_frame;
+        public PacketAnalyzer(ConversationTracker tracker, Frame rawframe)
         {
             m_tracker = tracker;
-            m_metaFrame = new MetaFrame()
-            {
-                FrameLength = rawframe.FrameLength,
-                FrameNumber = rawframe.FrameNumber,
-                FrameOffset = rawframe.FrameOffset,
-                TimeStamp = rawframe.TimeStamp,
-                LinkType = rawframe.LinkType,
-            };
+            m_frame = rawframe;
         }
 
 
@@ -144,44 +135,40 @@ namespace Ndx.Ingest
 
         private void CreateConversation(TransportPacket transportPacket, FlowKey flowKey)
         {
-            m_conversation = m_tracker.CreateNetworkConversation(flowKey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
+            var conversation = m_tracker.CreateNetworkConversation(flowKey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
             UpdateConversation(transportPacket, flowAttributes, flowPackets);
+            m_frame.ConversationId = conversation.ConversationId;
         }   
 
         private void GetConversation(TransportPacket transportPacket, FlowKey flowKey)
         {
-            m_conversation = m_tracker.GetNetworkConversation(flowKey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
+            var conversation = m_tracker.GetNetworkConversation(flowKey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
             UpdateConversation(transportPacket, flowAttributes, flowPackets);
+            m_frame.ConversationId = conversation.ConversationId;
         }
 
         private void UpdateConversation(TransportPacket transportPacket, FlowAttributes flowAttributes, IList<long> flowPackets)
         {
             flowAttributes.Octets += transportPacket.PayloadPacket.BytesHighPerformance.Length;
             flowAttributes.Packets += 1;
-            flowAttributes.FirstSeen = Math.Min(flowAttributes.FirstSeen, m_metaFrame.TimeStamp);
-            flowAttributes.LastSeen = Math.Max(flowAttributes.FirstSeen, m_metaFrame.TimeStamp);
+            flowAttributes.FirstSeen = Math.Min(flowAttributes.FirstSeen, m_frame.TimeStamp);
+            flowAttributes.LastSeen = Math.Max(flowAttributes.FirstSeen, m_frame.TimeStamp);
             // TODO: Compute other attributes
 
             var networkPacket = transportPacket.ParentPacket;
             var datalinkPacket = networkPacket.ParentPacket;
             var applicationPacket = transportPacket.PayloadPacket;
 
-            flowPackets.Add(m_metaFrame.FrameNumber);
-            /*
-            m_metaFrame.Datalink = new DatalinkPacketUnit() { Bytes = new ByteRange() { Offset = datalinkPacket.BytesHighPerformance.Offset, Length = datalinkPacket.BytesHighPerformance.Length } };
-            m_metaFrame.Network = new NetworkPacketUnit() { Bytes = new ByteRange() { Offset = networkPacket.BytesHighPerformance.Offset, Length = networkPacket.BytesHighPerformance.Length } };
-            m_metaFrame.Transport = new TransportPacketUnit() { Bytes = new ByteRange() { Offset = transportPacket.BytesHighPerformance.Offset, Length = transportPacket.BytesHighPerformance.Length } };
-            m_metaFrame.Application = new ApplicationPacketUnit() { Bytes = new ByteRange() { Offset = applicationPacket.BytesHighPerformance.Offset, Length = applicationPacket.BytesHighPerformance.Length } };
-            */
+            flowPackets.Add(m_frame.FrameNumber);
         }
 
 
         /// <summary>
-        /// Gets <see cref="FlowKey"/> for the passsed <see cref="RawFrame"/>. 
+        /// Gets <see cref="FlowKey"/> for the passsed <see cref="Frame"/>. 
         /// </summary>
         /// <param name="frame">The raw frame for which flow key is provided.</param>
         /// <returns><see cref="FlowKey"/> instance or null if provided frame does not contain TCP or UDP segment.</returns>
-        public static FlowKey GetFlowKey(RawFrame frame)
+        public static FlowKey GetFlowKey(Frame frame)
         {
             var packet = Packet.ParsePacket((LinkLayers)frame.LinkType, frame.Bytes);
             return GetFlowKey(packet);

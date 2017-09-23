@@ -53,59 +53,17 @@ namespace Ndx.Ingest
     /// </description>
     /// </item>
     /// </list>
+    /// See also: 
+    /// * https://www.cisco.com/c/en/us/td/docs/ios/fnetflow/command/reference/fnf_book/fnf_01.html 
+    /// * https://research.utwente.nl/files/6519120/tutorial.pdf
     /// </remarks>
-    public class ConversationTracker
+    public class ConversationTracker : IObservable<Conversation>
     {
         private static Logger m_logger = LogManager.GetCurrentClassLogger();
 
         private int m_lastConversationId;
         private int m_initialConversationDictionaryCapacity = 1024;
-        ActionBlock<RawFrame> m_frameAnalyzer;
-        BufferBlock<KeyValuePair<Conversation, MetaFrame>> m_metaframeOutput;
-
         int m_totalConversationCounter;
-
-        /// <summary>
-        /// Creates a new instance of conversation tracker. 
-        /// </summary>
-        public ConversationTracker(int maxDegreeOfParallelism = 1)
-        {
-            m_frameAnalyzer = new ActionBlock<RawFrame>(AcceptFrame, new ExecutionDataflowBlockOptions() { MaxDegreeOfParallelism = maxDegreeOfParallelism });
-            m_metaframeOutput = new BufferBlock<KeyValuePair<Conversation, MetaFrame>>();
-            m_activeConversations = new Dictionary<FlowKey, Conversation>(m_initialConversationDictionaryCapacity, new FlowKey.ValueComparer());
-            m_frameAnalyzer.Completion.ContinueWith(t =>
-            {
-                Console.WriteLine($"[INFO] ConversationTracker: FrameAnalyzer Completed, conversation cache contains {m_metaframeOutput.Count} items.");
-                m_metaframeOutput.Complete();
-                });
-        }
-
-        async Task AcceptFrame(RawFrame rawframe)
-        {
-            if (rawframe == null)
-            {
-                return;
-            }
-            try
-            {
-                var analyzer = new PacketAnalyzer(this, rawframe);
-                var packet = Packet.ParsePacket(LinkLayers.Ethernet, rawframe.Data.ToByteArray());
-
-                // Workaround the BUG in PacketDotNET:
-                if (packet.PayloadPacket != null) packet.PayloadPacket.ParentPacket = packet;
-
-                packet.Accept(analyzer);
-
-                if (analyzer.Conversation != null)
-                {
-                    await m_metaframeOutput.SendAsync(new KeyValuePair<Conversation, MetaFrame>(analyzer.Conversation, analyzer.MetaFrame));
-                }
-            }
-            catch (Exception e)
-            {
-                m_logger.Error($"AcceptMessage: Error when processing frame {rawframe.FrameNumber}: {e}. Frame is ignored.");
-            }
-        }
 
         /// <summary>
         /// Stores conversation at network level. The key is represented as
@@ -117,6 +75,88 @@ namespace Ndx.Ingest
         /// ICMP type and code, etc.
         /// </remarks>
         Dictionary<FlowKey, Conversation> m_activeConversations;
+
+        /// <summary>
+        /// Specifies the active flow timeout. Default is 1800s.
+        /// </summary>
+        public TimeSpan TimeOutActive { get; set; }
+
+        /// <summary>
+        /// Specifies the active flow timeout. Default is 1800s.
+        /// </summary>
+        public TimeSpan TimeOutInactive { get; set; }
+
+        public int Entries { get; set; }
+
+        /// <summary>
+        /// Creates a new instance of conversation tracker. 
+        /// </summary>
+        public ConversationTracker()
+        {
+            m_activeConversations = new Dictionary<FlowKey, Conversation>(m_initialConversationDictionaryCapacity);
+            m_observers = new List<IObserver<Conversation>>();
+        }
+
+        /// <summary>
+        /// Gets the <see cref="Conversation"/> and <see cref="MetaFrame"/> for the given <see cref="Frame"/>.
+        /// </summary>
+        /// <param name="rawframe"></param>
+        /// <returns></returns>
+        public Frame ProcessFrame(Frame rawframe)
+        {
+            if (rawframe != null)
+            {
+                try
+                {
+                    var analyzer = new PacketAnalyzer(this, rawframe);
+                    var packet = Packet.ParsePacket(LinkLayers.Ethernet, rawframe.Data.ToByteArray());
+
+                    // Workaround the BUG in PacketDotNET:
+                    if (packet.PayloadPacket != null) packet.PayloadPacket.ParentPacket = packet;
+
+                    packet.Accept(analyzer);
+
+                    return analyzer.Frame;
+                }
+                catch (Exception e)
+                {
+                    m_logger.Error($"AcceptMessage: Error when processing frame {rawframe.FrameNumber}: {e}. Frame is ignored.");
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// This method causes that all active conversations will be completed.
+        /// </summary>
+        public void Complete()
+        {
+            var conversations = m_activeConversations;
+            m_activeConversations = null;
+            foreach(var conversation in conversations)
+            {
+                SendConversation(conversation.Value);
+            }
+            SendCompleted();
+        }
+
+        /// <summary>
+        /// Forces the <see cref="ConversationTracker"/> to flush flow cache. 
+        /// </summary>
+        public void Flush()
+        {
+            var conversations = m_activeConversations;
+            m_activeConversations = new Dictionary<FlowKey, Conversation>(m_initialConversationDictionaryCapacity);
+            foreach (var conversation in conversations)
+            {
+                SendConversation(conversation.Value);
+            }
+        }
+
         /// <summary>
         /// Gets or create a conversation for the specified <see cref="FlowKey"/>.
         /// </summary>
@@ -187,16 +227,6 @@ namespace Ndx.Ingest
         }
 
         /// <summary>
-        /// Gets the data flow target block that accepts <see cref="RawFrame"/>.
-        /// </summary>
-        public ActionBlock<RawFrame> Input { get => m_frameAnalyzer; }
-        /// <summary>
-        /// Gets the data flow source block that provides <see cref="MetaFrame"/> objects. For each object also its <see cref="Conversation"/>
-        /// is provided. The provided conversation object is still maintained by <see cref="ConversationTracker"/> and thus its properties 
-        /// can be modified. Check the <see cref="Conversation.State"/> for determining the current state of the conversation.
-        /// </summary>
-        public ISourceBlock<KeyValuePair<Conversation,MetaFrame>> Output { get => m_metaframeOutput; }
-        /// <summary>
         /// Gets the next available conversation ID value.
         /// </summary>
         /// <returns></returns>
@@ -205,10 +235,62 @@ namespace Ndx.Ingest
             return Interlocked.Increment(ref m_lastConversationId);
         }
 
+
+        private void SendConversation(Conversation conversation)
+        {
+            var observers = m_observers;
+            foreach(var observer in observers)
+            {
+                observer.OnNext(conversation);
+            }
+        }
+
+        private void SendCompleted()
+        {
+            var observers = m_observers;
+            foreach (var observer in observers)
+            {
+                observer.OnCompleted();
+            }
+        }
+
         /// <summary>
-        /// Gets the <see cref="Taks"/> that complete when all data were processed. 
+        /// Notifies the provider that an observer is to receive notifications.
         /// </summary>
-        public Task Completion => m_metaframeOutput.Completion;
+        /// <param name="observer">The object that is to receive notifications.</param>
+        /// <returns>A reference to an interface that allows observers to stop receiving notifications before the provider has finished sending them.</returns>
+        public IDisposable Subscribe(IObserver<Conversation> observer)
+        {
+            if (!m_observers.Contains(observer))
+                m_observers.Add(observer);
+            return new Unsubscriber(m_observers, observer);
+        }
+        #region Observable private implementation
+        /// <summary>
+        /// Stores the list of active observers.
+        /// </summary>
+        private List<IObserver<Conversation>> m_observers;
+        /// <summary>
+        /// Implements Unsubscribe pattern.
+        /// </summary>
+        private class Unsubscriber : IDisposable
+        {
+            private List<IObserver<Conversation>> m_observers;
+            private IObserver<Conversation> m_observer;
+
+            public Unsubscriber(List<IObserver<Conversation>> observers, IObserver<Conversation> observer)
+            {
+                this.m_observers = observers;
+                this.m_observer = observer;
+            }
+
+            public void Dispose()
+            {
+                if (m_observer != null && m_observers.Contains(m_observer))
+                    m_observers.Remove(m_observer);
+            }
+        }
+        #endregion
 
         public int TotalConversations => m_totalConversationCounter;
         public int ActiveConversations => m_activeConversations.Count;

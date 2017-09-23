@@ -15,7 +15,7 @@ using System.Threading.Tasks.Dataflow;
 
 namespace Ndx.Captures
 {
-
+    public enum PcapFileFormat { Libpcap, Netmon, Pcapng, UnknownFormat }
     /// <summary>
     /// Provides a unified access to packet captures of supported formats.
     /// </summary>
@@ -63,7 +63,7 @@ namespace Ndx.Captures
         /// Three types of capture files are currently supported: i)PcapLib, ii)PcapNg and iii) NetMon 3 cap file.
         /// As convenient for Wireshar and Network Monitor, frames are numbered from 1.
         /// </remarks>
-        public static IEnumerable<RawFrame> ReadFile(string path)
+        public static IEnumerable<Frame> ReadFile(string path)
         {
             var fileInfo = new FileInfo(path);
             if (!fileInfo.Exists)
@@ -86,7 +86,7 @@ namespace Ndx.Captures
                         {
                             foreach (var frameRecord in PcapNetmon.ReadForward(stream))
                             {
-                                yield return new RawFrame()
+                                yield return new Frame()
                                 {
                                     Data = ByteString.CopyFrom(frameRecord.Data),
                                     TimeStamp = frameRecord.Timestamp.Ticks,

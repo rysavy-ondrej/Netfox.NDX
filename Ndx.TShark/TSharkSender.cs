@@ -223,12 +223,12 @@ namespace Ndx.TShark
             return await SendAsync(buffer, offset, lenght, date_sec, date_usec);
         }
 
-        public async Task<bool> SendAsync(RawFrame frame)
+        public async Task<bool> SendAsync(Frame frame)
         {
             return await SendAsync(frame.Bytes, 0, frame.FrameLength, frame.DateTime);
         }
 
-        public bool Send(RawFrame frame)
+        public bool Send(Frame frame)
         {
             return Send(frame.Bytes, 0, frame.FrameLength, frame.DateTime);
         }

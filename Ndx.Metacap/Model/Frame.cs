@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using Google.Protobuf;
 using PacketDotNet;
 
 namespace Ndx.Model
 {
-    public partial class RawFrame
+    public partial class Frame
     {
         //  January 1, 1970
         static public readonly long UnixBaseTicks = new DateTime(1970, 1, 1).Ticks;
@@ -16,23 +18,13 @@ namespace Ndx.Model
         public const long TicksPerSecond = 10000000;
         public const long TicksPerMicrosecond = 10;
 
-        public RawFrame(MetaFrame metaframe, byte[] bytes)
-        {
-            FrameLength = metaframe.FrameLength;
-            FrameNumber = metaframe.FrameNumber;
-            FrameOffset = metaframe.FrameOffset;
-            LinkType = metaframe.LinkType;
-            TimeStamp = metaframe.TimeStamp;
-            Data = Google.Protobuf.ByteString.CopyFrom(bytes);
-        }
-
         public uint Seconds => (uint)((TimeStamp - UnixBaseTicks) / TicksPerSecond);
 
         public uint Microseconds => (uint)(((TimeStamp - UnixBaseTicks) % TicksPerSecond)/ TicksPerMicrosecond);
 
         public DateTime DateTime => new DateTime(TimeStamp);
 
-        public byte[] Bytes => Data.ToByteArray();
+        public byte[] Bytes { get => Data.ToByteArray(); set => data_ = ByteString.CopyFrom(value); }
 
 
         public Packet Parse()
@@ -53,11 +45,41 @@ namespace Ndx.Model
             return new EthernetPacket(src, dst, PacketDotNet.EthernetPacketType.None);
         }
 
-        public static RawFrame EthernetRaw(Packet p, int frameNumber, int frameOffset, long timestamp, PhysicalAddress src = null, PhysicalAddress dst = null)
+        public static Frame EthernetRaw(Packet p, int frameNumber, int frameOffset, long timestamp, PhysicalAddress src = null, PhysicalAddress dst = null)
         {
             var eth = p.Extract(typeof(EthernetPacket)) ?? ConvertToEthernetPacket(p, src, dst);
             var bytes = eth.Bytes;
-            return new RawFrame(new MetaFrame() { FrameLength = bytes.Length, FrameNumber = frameNumber, FrameOffset = frameOffset, LinkType = DataLinkType.Ethernet, TimeStamp = timestamp }, bytes);
+            return new Frame { FrameLength = bytes.Length, FrameNumber = frameNumber, FrameOffset = frameOffset, LinkType = DataLinkType.Ethernet, TimeStamp = timestamp, Bytes = bytes };
+        }
+
+
+        public bool HasBytes => !data_.IsEmpty;
+
+        /// <summary>
+        /// Loads the frame bytes from the given stream. It requires an input stream and this 
+        /// stream must be seekable and be for an exclusive use of this method. 
+        /// </summary>
+        /// <param name="frame">The meta frame that contains information about the packet.</param>
+        /// <param name="stream">A stream to read data from.</param>
+        /// <returns>True or false depending on the reslt of this operation.</returns>
+        public bool LoadFrameBytes(Stream stream)
+        {
+            try
+            {
+                stream.Position = this.FrameOffset;
+                var buffer = new byte[this.FrameLength];
+                var result = stream.Read(buffer, 0, this.FrameLength);
+                if (result == this.FrameLength)
+                {
+                    this.Bytes = buffer;
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                System.Console.Error.WriteLine($"[ERROR] Capture.GetFrameBytes: {e}");
+            }
+            return false;
         }
     }
 }

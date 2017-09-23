@@ -8,9 +8,9 @@ using Ndx.Model;
 
 namespace Ndx.TShark
 {
-    public class TSharkBlock : IPropagatorBlock<RawFrame, PacketFields>
+    public class TSharkBlock : IPropagatorBlock<Frame, PacketFields>
     {
-        private ActionBlock<RawFrame> m_inputBlock;
+        private ActionBlock<Frame> m_inputBlock;
         private BufferBlock<PacketFields> m_outputBlock;
         private TSharkSender m_wsender;
         private TSharkProcess m_tshark;
@@ -21,7 +21,7 @@ namespace Ndx.TShark
 
             m_wsender = new TSharkSender(m_pipename, datalinkType);
 
-            m_inputBlock = new ActionBlock<RawFrame>(SendFrame);
+            m_inputBlock = new ActionBlock<Frame>(SendFrame);
             m_inputBlock.Completion.ContinueWith((t) => m_wsender.Close());
 
             m_outputBlock = new BufferBlock<PacketFields>();
@@ -36,7 +36,7 @@ namespace Ndx.TShark
             m_wsender.Connected.Wait();
         }
 
-        private async Task SendFrame(RawFrame rawFrame)
+        private async Task SendFrame(Frame rawFrame)
         {
             await m_wsender.SendAsync(rawFrame);
         }
@@ -70,16 +70,16 @@ namespace Ndx.TShark
             return ((ISourceBlock<PacketFields>)m_outputBlock).LinkTo(target, linkOptions);
         }
 
-        public DataflowMessageStatus OfferMessage(DataflowMessageHeader messageHeader, RawFrame messageValue, ISourceBlock<RawFrame> source, bool consumeToAccept)
+        public DataflowMessageStatus OfferMessage(DataflowMessageHeader messageHeader, Frame messageValue, ISourceBlock<Frame> source, bool consumeToAccept)
         {
-            return ((ITargetBlock<RawFrame>)m_inputBlock).OfferMessage(messageHeader, messageValue, source, consumeToAccept);
+            return ((ITargetBlock<Frame>)m_inputBlock).OfferMessage(messageHeader, messageValue, source, consumeToAccept);
         }
 
         /// <summary>
         /// Consumes all frames from the provided collection and completes.
         /// </summary>
         /// <param name="frames">A collection of frames to be processed.</param>
-        public void Consume(IEnumerable<RawFrame> frames)
+        public void Consume(IEnumerable<Frame> frames)
         {
             foreach (var frame in frames)
             {
@@ -92,7 +92,7 @@ namespace Ndx.TShark
         /// </summary>
         /// <param name="frames">A collection of frames to be processed.</param>
         /// <returns><see cref="Task"/> object that completes when this operation is done.</returns>
-        public async Task ConsumeAsync(IEnumerable<RawFrame> frames)
+        public async Task ConsumeAsync(IEnumerable<Frame> frames)
         {
             foreach (var frame in frames)
             {

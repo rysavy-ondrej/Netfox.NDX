@@ -12,6 +12,10 @@ using NFX.ApplicationModel.Pile;
 using NUnit.Framework;
 namespace Ndx.Test
 {
+    /// <summary>
+    /// This test uses NFX Object Pile to store conversations and frame metadata.
+    /// https://github.com/aumcode/nfx/tree/master/Source/NFX/ApplicationModel/Pile
+    /// </summary>
     [TestFixture]
     public class ConversationsTest
     {
@@ -19,18 +23,14 @@ namespace Ndx.Test
         string captureFile = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap");
         string converFile = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.conv");
         [Test]
-        public void Console_TrackConversations_WriteToPile()
+        public void Console_TrackConversations_Pile()
         {
-            // foreach (var item in new[] { "192.168.186.18.cap", "192.168.186.21.cap", "192.168.186.22.cap", "192.168.186.43.cap", "192.168.186.44.cap", "192.168.186.45.cap", "192.168.186.46.cap", "192.168.186.47.cap", "192.168.186.168.cap" })
-            {
-                var item = "192.168.186.21.cap";
-                var input = $@"C:\Temp\{item}";
-                var maproot = Path.ChangeExtension(input, "map");
+                var maproot = Path.ChangeExtension(captureFile, "map");
                 if (!Directory.Exists(maproot)) Directory.CreateDirectory(maproot);
-                var frames = Capture.Select(input);
+                var frames = Capture.Select(captureFile);
                 var pile = new MMFPile() { DataDirectoryRoot = maproot };
-                pile.Start();
 
+                pile.Start();
                 var buffer = new byte[1234];
                 var ptr1 = pile.Put(buffer);
                 var ptr2 = pile.Put(buffer);
@@ -43,25 +43,14 @@ namespace Ndx.Test
                 
                 pile.WaitForCompleteStop();
                 pile.Dispose();
-            }
         }
 
-
         [Test]
-        public void BigInputFileTest()
+        public void Conversations_TrackConversations_Linq()
         {
-            foreach (var item in new[] { "192.168.186.18.cap", "192.168.186.21.cap", "192.168.186.22.cap", "192.168.186.43.cap", "192.168.186.44.cap", "192.168.186.45.cap", "192.168.186.46.cap", "192.168.186.47.cap", "192.168.186.168.cap" })
-            {
-                var path = $@"C:\Temp\{item}";
-                long length = new FileInfo(path).Length;
-                var sw = new Stopwatch();
-                sw.Start();
-                Console.WriteLine($"{sw.Elapsed}: processing '{path}', length={Format.ByteSize(length)}.");
-                var sshFrames = Capture.Select(path);
-                var frames = 0;
-                var max = sshFrames.Select(MetaFrame.Create).Max(x => { frames++; return x.FrameLength; });
-                Console.WriteLine($"{sw.Elapsed}: finished: total frames={frames},  max frame={max}B.");
-            }
+            var frames = Capture.Select(captureFile);
+            var metaFrames = Conversations.TrackConversations(frames, out IDictionary<int, Conversation> conversations);
+                                                
         }
     }
 }

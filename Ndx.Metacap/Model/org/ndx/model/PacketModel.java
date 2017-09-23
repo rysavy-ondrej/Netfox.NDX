@@ -14,8 +14,8 @@ public final class PacketModel {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface RawFrameOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ndx.model.RawFrame)
+  public interface FrameOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ndx.model.Frame)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -114,6 +114,17 @@ public final class PacketModel {
      * <code>bytes Data = 10;</code>
      */
     com.google.protobuf.ByteString getData();
+
+    /**
+     * <pre>
+     *&#47; &lt;summary&gt;
+     * /	Gets or sets the conversation ID of this frame.
+     * /	&lt;/summary&gt;
+     * </pre>
+     *
+     * <code>int32 ConversationId = 11;</code>
+     */
+    int getConversationId();
   }
   /**
    * <pre>
@@ -122,17 +133,17 @@ public final class PacketModel {
    * / &lt;/summary&gt;
    * </pre>
    *
-   * Protobuf type {@code ndx.model.RawFrame}
+   * Protobuf type {@code ndx.model.Frame}
    */
-  public  static final class RawFrame extends
+  public  static final class Frame extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ndx.model.RawFrame)
-      RawFrameOrBuilder {
-    // Use RawFrame.newBuilder() to construct.
-    private RawFrame(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:ndx.model.Frame)
+      FrameOrBuilder {
+    // Use Frame.newBuilder() to construct.
+    private Frame(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private RawFrame() {
+    private Frame() {
       linkType_ = 0;
       frameNumber_ = 0;
       frameLength_ = 0;
@@ -141,6 +152,7 @@ public final class PacketModel {
       processId_ = 0L;
       processName_ = "";
       data_ = com.google.protobuf.ByteString.EMPTY;
+      conversationId_ = 0;
     }
 
     @java.lang.Override
@@ -148,7 +160,7 @@ public final class PacketModel {
     getUnknownFields() {
       return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
-    private RawFrame(
+    private Frame(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -210,6 +222,11 @@ public final class PacketModel {
               data_ = input.readBytes();
               break;
             }
+            case 88: {
+
+              conversationId_ = input.readInt32();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -223,14 +240,14 @@ public final class PacketModel {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.ndx.model.PacketModel.internal_static_ndx_model_RawFrame_descriptor;
+      return org.ndx.model.PacketModel.internal_static_ndx_model_Frame_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.ndx.model.PacketModel.internal_static_ndx_model_RawFrame_fieldAccessorTable
+      return org.ndx.model.PacketModel.internal_static_ndx_model_Frame_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.ndx.model.PacketModel.RawFrame.class, org.ndx.model.PacketModel.RawFrame.Builder.class);
+              org.ndx.model.PacketModel.Frame.class, org.ndx.model.PacketModel.Frame.Builder.class);
     }
 
     public static final int LINKTYPE_FIELD_NUMBER = 1;
@@ -385,6 +402,21 @@ public final class PacketModel {
       return data_;
     }
 
+    public static final int CONVERSATIONID_FIELD_NUMBER = 11;
+    private int conversationId_;
+    /**
+     * <pre>
+     *&#47; &lt;summary&gt;
+     * /	Gets or sets the conversation ID of this frame.
+     * /	&lt;/summary&gt;
+     * </pre>
+     *
+     * <code>int32 ConversationId = 11;</code>
+     */
+    public int getConversationId() {
+      return conversationId_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -420,6 +452,9 @@ public final class PacketModel {
       }
       if (!data_.isEmpty()) {
         output.writeBytes(10, data_);
+      }
+      if (conversationId_ != 0) {
+        output.writeInt32(11, conversationId_);
       }
     }
 
@@ -459,6 +494,10 @@ public final class PacketModel {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(10, data_);
       }
+      if (conversationId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(11, conversationId_);
+      }
       memoizedSize = size;
       return size;
     }
@@ -469,10 +508,10 @@ public final class PacketModel {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof org.ndx.model.PacketModel.RawFrame)) {
+      if (!(obj instanceof org.ndx.model.PacketModel.Frame)) {
         return super.equals(obj);
       }
-      org.ndx.model.PacketModel.RawFrame other = (org.ndx.model.PacketModel.RawFrame) obj;
+      org.ndx.model.PacketModel.Frame other = (org.ndx.model.PacketModel.Frame) obj;
 
       boolean result = true;
       result = result && linkType_ == other.linkType_;
@@ -490,6 +529,8 @@ public final class PacketModel {
           .equals(other.getProcessName());
       result = result && getData()
           .equals(other.getData());
+      result = result && (getConversationId()
+          == other.getConversationId());
       return result;
     }
 
@@ -519,74 +560,76 @@ public final class PacketModel {
       hash = (53 * hash) + getProcessName().hashCode();
       hash = (37 * hash) + DATA_FIELD_NUMBER;
       hash = (53 * hash) + getData().hashCode();
+      hash = (37 * hash) + CONVERSATIONID_FIELD_NUMBER;
+      hash = (53 * hash) + getConversationId();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static org.ndx.model.PacketModel.RawFrame parseFrom(
+    public static org.ndx.model.PacketModel.Frame parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.ndx.model.PacketModel.RawFrame parseFrom(
+    public static org.ndx.model.PacketModel.Frame parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.ndx.model.PacketModel.RawFrame parseFrom(
+    public static org.ndx.model.PacketModel.Frame parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.ndx.model.PacketModel.RawFrame parseFrom(
+    public static org.ndx.model.PacketModel.Frame parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.ndx.model.PacketModel.RawFrame parseFrom(byte[] data)
+    public static org.ndx.model.PacketModel.Frame parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.ndx.model.PacketModel.RawFrame parseFrom(
+    public static org.ndx.model.PacketModel.Frame parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.ndx.model.PacketModel.RawFrame parseFrom(java.io.InputStream input)
+    public static org.ndx.model.PacketModel.Frame parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.ndx.model.PacketModel.RawFrame parseFrom(
+    public static org.ndx.model.PacketModel.Frame parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.ndx.model.PacketModel.RawFrame parseDelimitedFrom(java.io.InputStream input)
+    public static org.ndx.model.PacketModel.Frame parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static org.ndx.model.PacketModel.RawFrame parseDelimitedFrom(
+    public static org.ndx.model.PacketModel.Frame parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.ndx.model.PacketModel.RawFrame parseFrom(
+    public static org.ndx.model.PacketModel.Frame parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.ndx.model.PacketModel.RawFrame parseFrom(
+    public static org.ndx.model.PacketModel.Frame parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -598,7 +641,7 @@ public final class PacketModel {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(org.ndx.model.PacketModel.RawFrame prototype) {
+    public static Builder newBuilder(org.ndx.model.PacketModel.Frame prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -619,25 +662,25 @@ public final class PacketModel {
      * / &lt;/summary&gt;
      * </pre>
      *
-     * Protobuf type {@code ndx.model.RawFrame}
+     * Protobuf type {@code ndx.model.Frame}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ndx.model.RawFrame)
-        org.ndx.model.PacketModel.RawFrameOrBuilder {
+        // @@protoc_insertion_point(builder_implements:ndx.model.Frame)
+        org.ndx.model.PacketModel.FrameOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_RawFrame_descriptor;
+        return org.ndx.model.PacketModel.internal_static_ndx_model_Frame_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_RawFrame_fieldAccessorTable
+        return org.ndx.model.PacketModel.internal_static_ndx_model_Frame_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.ndx.model.PacketModel.RawFrame.class, org.ndx.model.PacketModel.RawFrame.Builder.class);
+                org.ndx.model.PacketModel.Frame.class, org.ndx.model.PacketModel.Frame.Builder.class);
       }
 
-      // Construct using org.ndx.model.PacketModel.RawFrame.newBuilder()
+      // Construct using org.ndx.model.PacketModel.Frame.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -670,28 +713,30 @@ public final class PacketModel {
 
         data_ = com.google.protobuf.ByteString.EMPTY;
 
+        conversationId_ = 0;
+
         return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_RawFrame_descriptor;
+        return org.ndx.model.PacketModel.internal_static_ndx_model_Frame_descriptor;
       }
 
-      public org.ndx.model.PacketModel.RawFrame getDefaultInstanceForType() {
-        return org.ndx.model.PacketModel.RawFrame.getDefaultInstance();
+      public org.ndx.model.PacketModel.Frame getDefaultInstanceForType() {
+        return org.ndx.model.PacketModel.Frame.getDefaultInstance();
       }
 
-      public org.ndx.model.PacketModel.RawFrame build() {
-        org.ndx.model.PacketModel.RawFrame result = buildPartial();
+      public org.ndx.model.PacketModel.Frame build() {
+        org.ndx.model.PacketModel.Frame result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.ndx.model.PacketModel.RawFrame buildPartial() {
-        org.ndx.model.PacketModel.RawFrame result = new org.ndx.model.PacketModel.RawFrame(this);
+      public org.ndx.model.PacketModel.Frame buildPartial() {
+        org.ndx.model.PacketModel.Frame result = new org.ndx.model.PacketModel.Frame(this);
         result.linkType_ = linkType_;
         result.frameNumber_ = frameNumber_;
         result.frameLength_ = frameLength_;
@@ -700,6 +745,7 @@ public final class PacketModel {
         result.processId_ = processId_;
         result.processName_ = processName_;
         result.data_ = data_;
+        result.conversationId_ = conversationId_;
         onBuilt();
         return result;
       }
@@ -731,16 +777,16 @@ public final class PacketModel {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.ndx.model.PacketModel.RawFrame) {
-          return mergeFrom((org.ndx.model.PacketModel.RawFrame)other);
+        if (other instanceof org.ndx.model.PacketModel.Frame) {
+          return mergeFrom((org.ndx.model.PacketModel.Frame)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.ndx.model.PacketModel.RawFrame other) {
-        if (other == org.ndx.model.PacketModel.RawFrame.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.ndx.model.PacketModel.Frame other) {
+        if (other == org.ndx.model.PacketModel.Frame.getDefaultInstance()) return this;
         if (other.linkType_ != 0) {
           setLinkTypeValue(other.getLinkTypeValue());
         }
@@ -766,6 +812,9 @@ public final class PacketModel {
         if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
           setData(other.getData());
         }
+        if (other.getConversationId() != 0) {
+          setConversationId(other.getConversationId());
+        }
         onChanged();
         return this;
       }
@@ -778,11 +827,11 @@ public final class PacketModel {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.ndx.model.PacketModel.RawFrame parsedMessage = null;
+        org.ndx.model.PacketModel.Frame parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.ndx.model.PacketModel.RawFrame) e.getUnfinishedMessage();
+          parsedMessage = (org.ndx.model.PacketModel.Frame) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1201,518 +1250,47 @@ public final class PacketModel {
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
 
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ndx.model.RawFrame)
-    }
-
-    // @@protoc_insertion_point(class_scope:ndx.model.RawFrame)
-    private static final org.ndx.model.PacketModel.RawFrame DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new org.ndx.model.PacketModel.RawFrame();
-    }
-
-    public static org.ndx.model.PacketModel.RawFrame getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<RawFrame>
-        PARSER = new com.google.protobuf.AbstractParser<RawFrame>() {
-      public RawFrame parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new RawFrame(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<RawFrame> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<RawFrame> getParserForType() {
-      return PARSER;
-    }
-
-    public org.ndx.model.PacketModel.RawFrame getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ByteRangeOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ndx.model.ByteRange)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>int32 Offset = 1;</code>
-     */
-    int getOffset();
-
-    /**
-     * <code>int32 Length = 2;</code>
-     */
-    int getLength();
-  }
-  /**
-   * <pre>
-   *&#47; &lt;summary&gt;
-   * / Represents a byte range as the pair of offset and length values.
-   * / &lt;/summary&gt;
-   * </pre>
-   *
-   * Protobuf type {@code ndx.model.ByteRange}
-   */
-  public  static final class ByteRange extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ndx.model.ByteRange)
-      ByteRangeOrBuilder {
-    // Use ByteRange.newBuilder() to construct.
-    private ByteRange(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ByteRange() {
-      offset_ = 0;
-      length_ = 0;
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private ByteRange(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-
-              offset_ = input.readInt32();
-              break;
-            }
-            case 16: {
-
-              length_ = input.readInt32();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.ndx.model.PacketModel.internal_static_ndx_model_ByteRange_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.ndx.model.PacketModel.internal_static_ndx_model_ByteRange_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.ndx.model.PacketModel.ByteRange.class, org.ndx.model.PacketModel.ByteRange.Builder.class);
-    }
-
-    public static final int OFFSET_FIELD_NUMBER = 1;
-    private int offset_;
-    /**
-     * <code>int32 Offset = 1;</code>
-     */
-    public int getOffset() {
-      return offset_;
-    }
-
-    public static final int LENGTH_FIELD_NUMBER = 2;
-    private int length_;
-    /**
-     * <code>int32 Length = 2;</code>
-     */
-    public int getLength() {
-      return length_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (offset_ != 0) {
-        output.writeInt32(1, offset_);
-      }
-      if (length_ != 0) {
-        output.writeInt32(2, length_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (offset_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, offset_);
-      }
-      if (length_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, length_);
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.ndx.model.PacketModel.ByteRange)) {
-        return super.equals(obj);
-      }
-      org.ndx.model.PacketModel.ByteRange other = (org.ndx.model.PacketModel.ByteRange) obj;
-
-      boolean result = true;
-      result = result && (getOffset()
-          == other.getOffset());
-      result = result && (getLength()
-          == other.getLength());
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + OFFSET_FIELD_NUMBER;
-      hash = (53 * hash) + getOffset();
-      hash = (37 * hash) + LENGTH_FIELD_NUMBER;
-      hash = (53 * hash) + getLength();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.ndx.model.PacketModel.ByteRange parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.ByteRange parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.ByteRange parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.ByteRange parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.ByteRange parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.ByteRange parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.ByteRange parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.ByteRange parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.ByteRange parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.ByteRange parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.ByteRange parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.ByteRange parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(org.ndx.model.PacketModel.ByteRange prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     *&#47; &lt;summary&gt;
-     * / Represents a byte range as the pair of offset and length values.
-     * / &lt;/summary&gt;
-     * </pre>
-     *
-     * Protobuf type {@code ndx.model.ByteRange}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ndx.model.ByteRange)
-        org.ndx.model.PacketModel.ByteRangeOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_ByteRange_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_ByteRange_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.ndx.model.PacketModel.ByteRange.class, org.ndx.model.PacketModel.ByteRange.Builder.class);
-      }
-
-      // Construct using org.ndx.model.PacketModel.ByteRange.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        offset_ = 0;
-
-        length_ = 0;
-
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_ByteRange_descriptor;
-      }
-
-      public org.ndx.model.PacketModel.ByteRange getDefaultInstanceForType() {
-        return org.ndx.model.PacketModel.ByteRange.getDefaultInstance();
-      }
-
-      public org.ndx.model.PacketModel.ByteRange build() {
-        org.ndx.model.PacketModel.ByteRange result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public org.ndx.model.PacketModel.ByteRange buildPartial() {
-        org.ndx.model.PacketModel.ByteRange result = new org.ndx.model.PacketModel.ByteRange(this);
-        result.offset_ = offset_;
-        result.length_ = length_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.ndx.model.PacketModel.ByteRange) {
-          return mergeFrom((org.ndx.model.PacketModel.ByteRange)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(org.ndx.model.PacketModel.ByteRange other) {
-        if (other == org.ndx.model.PacketModel.ByteRange.getDefaultInstance()) return this;
-        if (other.getOffset() != 0) {
-          setOffset(other.getOffset());
-        }
-        if (other.getLength() != 0) {
-          setLength(other.getLength());
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.ndx.model.PacketModel.ByteRange parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.ndx.model.PacketModel.ByteRange) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int offset_ ;
+      private int conversationId_ ;
       /**
-       * <code>int32 Offset = 1;</code>
+       * <pre>
+       *&#47; &lt;summary&gt;
+       * /	Gets or sets the conversation ID of this frame.
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>int32 ConversationId = 11;</code>
        */
-      public int getOffset() {
-        return offset_;
+      public int getConversationId() {
+        return conversationId_;
       }
       /**
-       * <code>int32 Offset = 1;</code>
+       * <pre>
+       *&#47; &lt;summary&gt;
+       * /	Gets or sets the conversation ID of this frame.
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>int32 ConversationId = 11;</code>
        */
-      public Builder setOffset(int value) {
+      public Builder setConversationId(int value) {
         
-        offset_ = value;
+        conversationId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 Offset = 1;</code>
+       * <pre>
+       *&#47; &lt;summary&gt;
+       * /	Gets or sets the conversation ID of this frame.
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>int32 ConversationId = 11;</code>
        */
-      public Builder clearOffset() {
+      public Builder clearConversationId() {
         
-        offset_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int length_ ;
-      /**
-       * <code>int32 Length = 2;</code>
-       */
-      public int getLength() {
-        return length_;
-      }
-      /**
-       * <code>int32 Length = 2;</code>
-       */
-      public Builder setLength(int value) {
-        
-        length_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 Length = 2;</code>
-       */
-      public Builder clearLength() {
-        
-        length_ = 0;
+        conversationId_ = 0;
         onChanged();
         return this;
       }
@@ -1727,3058 +1305,39 @@ public final class PacketModel {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:ndx.model.ByteRange)
+      // @@protoc_insertion_point(builder_scope:ndx.model.Frame)
     }
 
-    // @@protoc_insertion_point(class_scope:ndx.model.ByteRange)
-    private static final org.ndx.model.PacketModel.ByteRange DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:ndx.model.Frame)
+    private static final org.ndx.model.PacketModel.Frame DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.ndx.model.PacketModel.ByteRange();
+      DEFAULT_INSTANCE = new org.ndx.model.PacketModel.Frame();
     }
 
-    public static org.ndx.model.PacketModel.ByteRange getDefaultInstance() {
+    public static org.ndx.model.PacketModel.Frame getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ByteRange>
-        PARSER = new com.google.protobuf.AbstractParser<ByteRange>() {
-      public ByteRange parsePartialFrom(
+    private static final com.google.protobuf.Parser<Frame>
+        PARSER = new com.google.protobuf.AbstractParser<Frame>() {
+      public Frame parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ByteRange(input, extensionRegistry);
+          return new Frame(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ByteRange> parser() {
+    public static com.google.protobuf.Parser<Frame> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ByteRange> getParserForType() {
+    public com.google.protobuf.Parser<Frame> getParserForType() {
       return PARSER;
     }
 
-    public org.ndx.model.PacketModel.ByteRange getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface DatalinkPacketUnitOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ndx.model.DatalinkPacketUnit)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    boolean hasBytes();
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    org.ndx.model.PacketModel.ByteRange getBytes();
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    org.ndx.model.PacketModel.ByteRangeOrBuilder getBytesOrBuilder();
-  }
-  /**
-   * Protobuf type {@code ndx.model.DatalinkPacketUnit}
-   */
-  public  static final class DatalinkPacketUnit extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ndx.model.DatalinkPacketUnit)
-      DatalinkPacketUnitOrBuilder {
-    // Use DatalinkPacketUnit.newBuilder() to construct.
-    private DatalinkPacketUnit(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private DatalinkPacketUnit() {
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private DatalinkPacketUnit(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              org.ndx.model.PacketModel.ByteRange.Builder subBuilder = null;
-              if (bytes_ != null) {
-                subBuilder = bytes_.toBuilder();
-              }
-              bytes_ = input.readMessage(org.ndx.model.PacketModel.ByteRange.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(bytes_);
-                bytes_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.ndx.model.PacketModel.internal_static_ndx_model_DatalinkPacketUnit_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.ndx.model.PacketModel.internal_static_ndx_model_DatalinkPacketUnit_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.ndx.model.PacketModel.DatalinkPacketUnit.class, org.ndx.model.PacketModel.DatalinkPacketUnit.Builder.class);
-    }
-
-    public static final int BYTES_FIELD_NUMBER = 1;
-    private org.ndx.model.PacketModel.ByteRange bytes_;
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    public boolean hasBytes() {
-      return bytes_ != null;
-    }
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    public org.ndx.model.PacketModel.ByteRange getBytes() {
-      return bytes_ == null ? org.ndx.model.PacketModel.ByteRange.getDefaultInstance() : bytes_;
-    }
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    public org.ndx.model.PacketModel.ByteRangeOrBuilder getBytesOrBuilder() {
-      return getBytes();
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (bytes_ != null) {
-        output.writeMessage(1, getBytes());
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (bytes_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getBytes());
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.ndx.model.PacketModel.DatalinkPacketUnit)) {
-        return super.equals(obj);
-      }
-      org.ndx.model.PacketModel.DatalinkPacketUnit other = (org.ndx.model.PacketModel.DatalinkPacketUnit) obj;
-
-      boolean result = true;
-      result = result && (hasBytes() == other.hasBytes());
-      if (hasBytes()) {
-        result = result && getBytes()
-            .equals(other.getBytes());
-      }
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasBytes()) {
-        hash = (37 * hash) + BYTES_FIELD_NUMBER;
-        hash = (53 * hash) + getBytes().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.ndx.model.PacketModel.DatalinkPacketUnit parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.DatalinkPacketUnit parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.DatalinkPacketUnit parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.DatalinkPacketUnit parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.DatalinkPacketUnit parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.DatalinkPacketUnit parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.DatalinkPacketUnit parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.DatalinkPacketUnit parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.DatalinkPacketUnit parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.DatalinkPacketUnit parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.DatalinkPacketUnit parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.DatalinkPacketUnit parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(org.ndx.model.PacketModel.DatalinkPacketUnit prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code ndx.model.DatalinkPacketUnit}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ndx.model.DatalinkPacketUnit)
-        org.ndx.model.PacketModel.DatalinkPacketUnitOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_DatalinkPacketUnit_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_DatalinkPacketUnit_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.ndx.model.PacketModel.DatalinkPacketUnit.class, org.ndx.model.PacketModel.DatalinkPacketUnit.Builder.class);
-      }
-
-      // Construct using org.ndx.model.PacketModel.DatalinkPacketUnit.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        if (bytesBuilder_ == null) {
-          bytes_ = null;
-        } else {
-          bytes_ = null;
-          bytesBuilder_ = null;
-        }
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_DatalinkPacketUnit_descriptor;
-      }
-
-      public org.ndx.model.PacketModel.DatalinkPacketUnit getDefaultInstanceForType() {
-        return org.ndx.model.PacketModel.DatalinkPacketUnit.getDefaultInstance();
-      }
-
-      public org.ndx.model.PacketModel.DatalinkPacketUnit build() {
-        org.ndx.model.PacketModel.DatalinkPacketUnit result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public org.ndx.model.PacketModel.DatalinkPacketUnit buildPartial() {
-        org.ndx.model.PacketModel.DatalinkPacketUnit result = new org.ndx.model.PacketModel.DatalinkPacketUnit(this);
-        if (bytesBuilder_ == null) {
-          result.bytes_ = bytes_;
-        } else {
-          result.bytes_ = bytesBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.ndx.model.PacketModel.DatalinkPacketUnit) {
-          return mergeFrom((org.ndx.model.PacketModel.DatalinkPacketUnit)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(org.ndx.model.PacketModel.DatalinkPacketUnit other) {
-        if (other == org.ndx.model.PacketModel.DatalinkPacketUnit.getDefaultInstance()) return this;
-        if (other.hasBytes()) {
-          mergeBytes(other.getBytes());
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.ndx.model.PacketModel.DatalinkPacketUnit parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.ndx.model.PacketModel.DatalinkPacketUnit) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private org.ndx.model.PacketModel.ByteRange bytes_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          org.ndx.model.PacketModel.ByteRange, org.ndx.model.PacketModel.ByteRange.Builder, org.ndx.model.PacketModel.ByteRangeOrBuilder> bytesBuilder_;
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public boolean hasBytes() {
-        return bytesBuilder_ != null || bytes_ != null;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public org.ndx.model.PacketModel.ByteRange getBytes() {
-        if (bytesBuilder_ == null) {
-          return bytes_ == null ? org.ndx.model.PacketModel.ByteRange.getDefaultInstance() : bytes_;
-        } else {
-          return bytesBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder setBytes(org.ndx.model.PacketModel.ByteRange value) {
-        if (bytesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          bytes_ = value;
-          onChanged();
-        } else {
-          bytesBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder setBytes(
-          org.ndx.model.PacketModel.ByteRange.Builder builderForValue) {
-        if (bytesBuilder_ == null) {
-          bytes_ = builderForValue.build();
-          onChanged();
-        } else {
-          bytesBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder mergeBytes(org.ndx.model.PacketModel.ByteRange value) {
-        if (bytesBuilder_ == null) {
-          if (bytes_ != null) {
-            bytes_ =
-              org.ndx.model.PacketModel.ByteRange.newBuilder(bytes_).mergeFrom(value).buildPartial();
-          } else {
-            bytes_ = value;
-          }
-          onChanged();
-        } else {
-          bytesBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder clearBytes() {
-        if (bytesBuilder_ == null) {
-          bytes_ = null;
-          onChanged();
-        } else {
-          bytes_ = null;
-          bytesBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public org.ndx.model.PacketModel.ByteRange.Builder getBytesBuilder() {
-        
-        onChanged();
-        return getBytesFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public org.ndx.model.PacketModel.ByteRangeOrBuilder getBytesOrBuilder() {
-        if (bytesBuilder_ != null) {
-          return bytesBuilder_.getMessageOrBuilder();
-        } else {
-          return bytes_ == null ?
-              org.ndx.model.PacketModel.ByteRange.getDefaultInstance() : bytes_;
-        }
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          org.ndx.model.PacketModel.ByteRange, org.ndx.model.PacketModel.ByteRange.Builder, org.ndx.model.PacketModel.ByteRangeOrBuilder> 
-          getBytesFieldBuilder() {
-        if (bytesBuilder_ == null) {
-          bytesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              org.ndx.model.PacketModel.ByteRange, org.ndx.model.PacketModel.ByteRange.Builder, org.ndx.model.PacketModel.ByteRangeOrBuilder>(
-                  getBytes(),
-                  getParentForChildren(),
-                  isClean());
-          bytes_ = null;
-        }
-        return bytesBuilder_;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ndx.model.DatalinkPacketUnit)
-    }
-
-    // @@protoc_insertion_point(class_scope:ndx.model.DatalinkPacketUnit)
-    private static final org.ndx.model.PacketModel.DatalinkPacketUnit DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new org.ndx.model.PacketModel.DatalinkPacketUnit();
-    }
-
-    public static org.ndx.model.PacketModel.DatalinkPacketUnit getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<DatalinkPacketUnit>
-        PARSER = new com.google.protobuf.AbstractParser<DatalinkPacketUnit>() {
-      public DatalinkPacketUnit parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new DatalinkPacketUnit(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<DatalinkPacketUnit> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<DatalinkPacketUnit> getParserForType() {
-      return PARSER;
-    }
-
-    public org.ndx.model.PacketModel.DatalinkPacketUnit getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface NetworkPacketUnitOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ndx.model.NetworkPacketUnit)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    boolean hasBytes();
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    org.ndx.model.PacketModel.ByteRange getBytes();
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    org.ndx.model.PacketModel.ByteRangeOrBuilder getBytesOrBuilder();
-  }
-  /**
-   * Protobuf type {@code ndx.model.NetworkPacketUnit}
-   */
-  public  static final class NetworkPacketUnit extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ndx.model.NetworkPacketUnit)
-      NetworkPacketUnitOrBuilder {
-    // Use NetworkPacketUnit.newBuilder() to construct.
-    private NetworkPacketUnit(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private NetworkPacketUnit() {
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private NetworkPacketUnit(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              org.ndx.model.PacketModel.ByteRange.Builder subBuilder = null;
-              if (bytes_ != null) {
-                subBuilder = bytes_.toBuilder();
-              }
-              bytes_ = input.readMessage(org.ndx.model.PacketModel.ByteRange.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(bytes_);
-                bytes_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.ndx.model.PacketModel.internal_static_ndx_model_NetworkPacketUnit_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.ndx.model.PacketModel.internal_static_ndx_model_NetworkPacketUnit_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.ndx.model.PacketModel.NetworkPacketUnit.class, org.ndx.model.PacketModel.NetworkPacketUnit.Builder.class);
-    }
-
-    public static final int BYTES_FIELD_NUMBER = 1;
-    private org.ndx.model.PacketModel.ByteRange bytes_;
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    public boolean hasBytes() {
-      return bytes_ != null;
-    }
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    public org.ndx.model.PacketModel.ByteRange getBytes() {
-      return bytes_ == null ? org.ndx.model.PacketModel.ByteRange.getDefaultInstance() : bytes_;
-    }
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    public org.ndx.model.PacketModel.ByteRangeOrBuilder getBytesOrBuilder() {
-      return getBytes();
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (bytes_ != null) {
-        output.writeMessage(1, getBytes());
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (bytes_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getBytes());
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.ndx.model.PacketModel.NetworkPacketUnit)) {
-        return super.equals(obj);
-      }
-      org.ndx.model.PacketModel.NetworkPacketUnit other = (org.ndx.model.PacketModel.NetworkPacketUnit) obj;
-
-      boolean result = true;
-      result = result && (hasBytes() == other.hasBytes());
-      if (hasBytes()) {
-        result = result && getBytes()
-            .equals(other.getBytes());
-      }
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasBytes()) {
-        hash = (37 * hash) + BYTES_FIELD_NUMBER;
-        hash = (53 * hash) + getBytes().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.ndx.model.PacketModel.NetworkPacketUnit parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.NetworkPacketUnit parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.NetworkPacketUnit parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.NetworkPacketUnit parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.NetworkPacketUnit parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.NetworkPacketUnit parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.NetworkPacketUnit parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.NetworkPacketUnit parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.NetworkPacketUnit parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.NetworkPacketUnit parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.NetworkPacketUnit parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.NetworkPacketUnit parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(org.ndx.model.PacketModel.NetworkPacketUnit prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code ndx.model.NetworkPacketUnit}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ndx.model.NetworkPacketUnit)
-        org.ndx.model.PacketModel.NetworkPacketUnitOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_NetworkPacketUnit_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_NetworkPacketUnit_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.ndx.model.PacketModel.NetworkPacketUnit.class, org.ndx.model.PacketModel.NetworkPacketUnit.Builder.class);
-      }
-
-      // Construct using org.ndx.model.PacketModel.NetworkPacketUnit.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        if (bytesBuilder_ == null) {
-          bytes_ = null;
-        } else {
-          bytes_ = null;
-          bytesBuilder_ = null;
-        }
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_NetworkPacketUnit_descriptor;
-      }
-
-      public org.ndx.model.PacketModel.NetworkPacketUnit getDefaultInstanceForType() {
-        return org.ndx.model.PacketModel.NetworkPacketUnit.getDefaultInstance();
-      }
-
-      public org.ndx.model.PacketModel.NetworkPacketUnit build() {
-        org.ndx.model.PacketModel.NetworkPacketUnit result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public org.ndx.model.PacketModel.NetworkPacketUnit buildPartial() {
-        org.ndx.model.PacketModel.NetworkPacketUnit result = new org.ndx.model.PacketModel.NetworkPacketUnit(this);
-        if (bytesBuilder_ == null) {
-          result.bytes_ = bytes_;
-        } else {
-          result.bytes_ = bytesBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.ndx.model.PacketModel.NetworkPacketUnit) {
-          return mergeFrom((org.ndx.model.PacketModel.NetworkPacketUnit)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(org.ndx.model.PacketModel.NetworkPacketUnit other) {
-        if (other == org.ndx.model.PacketModel.NetworkPacketUnit.getDefaultInstance()) return this;
-        if (other.hasBytes()) {
-          mergeBytes(other.getBytes());
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.ndx.model.PacketModel.NetworkPacketUnit parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.ndx.model.PacketModel.NetworkPacketUnit) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private org.ndx.model.PacketModel.ByteRange bytes_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          org.ndx.model.PacketModel.ByteRange, org.ndx.model.PacketModel.ByteRange.Builder, org.ndx.model.PacketModel.ByteRangeOrBuilder> bytesBuilder_;
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public boolean hasBytes() {
-        return bytesBuilder_ != null || bytes_ != null;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public org.ndx.model.PacketModel.ByteRange getBytes() {
-        if (bytesBuilder_ == null) {
-          return bytes_ == null ? org.ndx.model.PacketModel.ByteRange.getDefaultInstance() : bytes_;
-        } else {
-          return bytesBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder setBytes(org.ndx.model.PacketModel.ByteRange value) {
-        if (bytesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          bytes_ = value;
-          onChanged();
-        } else {
-          bytesBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder setBytes(
-          org.ndx.model.PacketModel.ByteRange.Builder builderForValue) {
-        if (bytesBuilder_ == null) {
-          bytes_ = builderForValue.build();
-          onChanged();
-        } else {
-          bytesBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder mergeBytes(org.ndx.model.PacketModel.ByteRange value) {
-        if (bytesBuilder_ == null) {
-          if (bytes_ != null) {
-            bytes_ =
-              org.ndx.model.PacketModel.ByteRange.newBuilder(bytes_).mergeFrom(value).buildPartial();
-          } else {
-            bytes_ = value;
-          }
-          onChanged();
-        } else {
-          bytesBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder clearBytes() {
-        if (bytesBuilder_ == null) {
-          bytes_ = null;
-          onChanged();
-        } else {
-          bytes_ = null;
-          bytesBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public org.ndx.model.PacketModel.ByteRange.Builder getBytesBuilder() {
-        
-        onChanged();
-        return getBytesFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public org.ndx.model.PacketModel.ByteRangeOrBuilder getBytesOrBuilder() {
-        if (bytesBuilder_ != null) {
-          return bytesBuilder_.getMessageOrBuilder();
-        } else {
-          return bytes_ == null ?
-              org.ndx.model.PacketModel.ByteRange.getDefaultInstance() : bytes_;
-        }
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          org.ndx.model.PacketModel.ByteRange, org.ndx.model.PacketModel.ByteRange.Builder, org.ndx.model.PacketModel.ByteRangeOrBuilder> 
-          getBytesFieldBuilder() {
-        if (bytesBuilder_ == null) {
-          bytesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              org.ndx.model.PacketModel.ByteRange, org.ndx.model.PacketModel.ByteRange.Builder, org.ndx.model.PacketModel.ByteRangeOrBuilder>(
-                  getBytes(),
-                  getParentForChildren(),
-                  isClean());
-          bytes_ = null;
-        }
-        return bytesBuilder_;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ndx.model.NetworkPacketUnit)
-    }
-
-    // @@protoc_insertion_point(class_scope:ndx.model.NetworkPacketUnit)
-    private static final org.ndx.model.PacketModel.NetworkPacketUnit DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new org.ndx.model.PacketModel.NetworkPacketUnit();
-    }
-
-    public static org.ndx.model.PacketModel.NetworkPacketUnit getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<NetworkPacketUnit>
-        PARSER = new com.google.protobuf.AbstractParser<NetworkPacketUnit>() {
-      public NetworkPacketUnit parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new NetworkPacketUnit(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<NetworkPacketUnit> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<NetworkPacketUnit> getParserForType() {
-      return PARSER;
-    }
-
-    public org.ndx.model.PacketModel.NetworkPacketUnit getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface TransportPacketUnitOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ndx.model.TransportPacketUnit)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    boolean hasBytes();
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    org.ndx.model.PacketModel.ByteRange getBytes();
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    org.ndx.model.PacketModel.ByteRangeOrBuilder getBytesOrBuilder();
-  }
-  /**
-   * Protobuf type {@code ndx.model.TransportPacketUnit}
-   */
-  public  static final class TransportPacketUnit extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ndx.model.TransportPacketUnit)
-      TransportPacketUnitOrBuilder {
-    // Use TransportPacketUnit.newBuilder() to construct.
-    private TransportPacketUnit(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private TransportPacketUnit() {
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private TransportPacketUnit(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              org.ndx.model.PacketModel.ByteRange.Builder subBuilder = null;
-              if (bytes_ != null) {
-                subBuilder = bytes_.toBuilder();
-              }
-              bytes_ = input.readMessage(org.ndx.model.PacketModel.ByteRange.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(bytes_);
-                bytes_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.ndx.model.PacketModel.internal_static_ndx_model_TransportPacketUnit_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.ndx.model.PacketModel.internal_static_ndx_model_TransportPacketUnit_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.ndx.model.PacketModel.TransportPacketUnit.class, org.ndx.model.PacketModel.TransportPacketUnit.Builder.class);
-    }
-
-    public static final int BYTES_FIELD_NUMBER = 1;
-    private org.ndx.model.PacketModel.ByteRange bytes_;
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    public boolean hasBytes() {
-      return bytes_ != null;
-    }
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    public org.ndx.model.PacketModel.ByteRange getBytes() {
-      return bytes_ == null ? org.ndx.model.PacketModel.ByteRange.getDefaultInstance() : bytes_;
-    }
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    public org.ndx.model.PacketModel.ByteRangeOrBuilder getBytesOrBuilder() {
-      return getBytes();
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (bytes_ != null) {
-        output.writeMessage(1, getBytes());
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (bytes_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getBytes());
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.ndx.model.PacketModel.TransportPacketUnit)) {
-        return super.equals(obj);
-      }
-      org.ndx.model.PacketModel.TransportPacketUnit other = (org.ndx.model.PacketModel.TransportPacketUnit) obj;
-
-      boolean result = true;
-      result = result && (hasBytes() == other.hasBytes());
-      if (hasBytes()) {
-        result = result && getBytes()
-            .equals(other.getBytes());
-      }
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasBytes()) {
-        hash = (37 * hash) + BYTES_FIELD_NUMBER;
-        hash = (53 * hash) + getBytes().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.ndx.model.PacketModel.TransportPacketUnit parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.TransportPacketUnit parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.TransportPacketUnit parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.TransportPacketUnit parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.TransportPacketUnit parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.TransportPacketUnit parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.TransportPacketUnit parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.TransportPacketUnit parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.TransportPacketUnit parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.TransportPacketUnit parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.TransportPacketUnit parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.TransportPacketUnit parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(org.ndx.model.PacketModel.TransportPacketUnit prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code ndx.model.TransportPacketUnit}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ndx.model.TransportPacketUnit)
-        org.ndx.model.PacketModel.TransportPacketUnitOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_TransportPacketUnit_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_TransportPacketUnit_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.ndx.model.PacketModel.TransportPacketUnit.class, org.ndx.model.PacketModel.TransportPacketUnit.Builder.class);
-      }
-
-      // Construct using org.ndx.model.PacketModel.TransportPacketUnit.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        if (bytesBuilder_ == null) {
-          bytes_ = null;
-        } else {
-          bytes_ = null;
-          bytesBuilder_ = null;
-        }
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_TransportPacketUnit_descriptor;
-      }
-
-      public org.ndx.model.PacketModel.TransportPacketUnit getDefaultInstanceForType() {
-        return org.ndx.model.PacketModel.TransportPacketUnit.getDefaultInstance();
-      }
-
-      public org.ndx.model.PacketModel.TransportPacketUnit build() {
-        org.ndx.model.PacketModel.TransportPacketUnit result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public org.ndx.model.PacketModel.TransportPacketUnit buildPartial() {
-        org.ndx.model.PacketModel.TransportPacketUnit result = new org.ndx.model.PacketModel.TransportPacketUnit(this);
-        if (bytesBuilder_ == null) {
-          result.bytes_ = bytes_;
-        } else {
-          result.bytes_ = bytesBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.ndx.model.PacketModel.TransportPacketUnit) {
-          return mergeFrom((org.ndx.model.PacketModel.TransportPacketUnit)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(org.ndx.model.PacketModel.TransportPacketUnit other) {
-        if (other == org.ndx.model.PacketModel.TransportPacketUnit.getDefaultInstance()) return this;
-        if (other.hasBytes()) {
-          mergeBytes(other.getBytes());
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.ndx.model.PacketModel.TransportPacketUnit parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.ndx.model.PacketModel.TransportPacketUnit) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private org.ndx.model.PacketModel.ByteRange bytes_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          org.ndx.model.PacketModel.ByteRange, org.ndx.model.PacketModel.ByteRange.Builder, org.ndx.model.PacketModel.ByteRangeOrBuilder> bytesBuilder_;
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public boolean hasBytes() {
-        return bytesBuilder_ != null || bytes_ != null;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public org.ndx.model.PacketModel.ByteRange getBytes() {
-        if (bytesBuilder_ == null) {
-          return bytes_ == null ? org.ndx.model.PacketModel.ByteRange.getDefaultInstance() : bytes_;
-        } else {
-          return bytesBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder setBytes(org.ndx.model.PacketModel.ByteRange value) {
-        if (bytesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          bytes_ = value;
-          onChanged();
-        } else {
-          bytesBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder setBytes(
-          org.ndx.model.PacketModel.ByteRange.Builder builderForValue) {
-        if (bytesBuilder_ == null) {
-          bytes_ = builderForValue.build();
-          onChanged();
-        } else {
-          bytesBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder mergeBytes(org.ndx.model.PacketModel.ByteRange value) {
-        if (bytesBuilder_ == null) {
-          if (bytes_ != null) {
-            bytes_ =
-              org.ndx.model.PacketModel.ByteRange.newBuilder(bytes_).mergeFrom(value).buildPartial();
-          } else {
-            bytes_ = value;
-          }
-          onChanged();
-        } else {
-          bytesBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder clearBytes() {
-        if (bytesBuilder_ == null) {
-          bytes_ = null;
-          onChanged();
-        } else {
-          bytes_ = null;
-          bytesBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public org.ndx.model.PacketModel.ByteRange.Builder getBytesBuilder() {
-        
-        onChanged();
-        return getBytesFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public org.ndx.model.PacketModel.ByteRangeOrBuilder getBytesOrBuilder() {
-        if (bytesBuilder_ != null) {
-          return bytesBuilder_.getMessageOrBuilder();
-        } else {
-          return bytes_ == null ?
-              org.ndx.model.PacketModel.ByteRange.getDefaultInstance() : bytes_;
-        }
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          org.ndx.model.PacketModel.ByteRange, org.ndx.model.PacketModel.ByteRange.Builder, org.ndx.model.PacketModel.ByteRangeOrBuilder> 
-          getBytesFieldBuilder() {
-        if (bytesBuilder_ == null) {
-          bytesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              org.ndx.model.PacketModel.ByteRange, org.ndx.model.PacketModel.ByteRange.Builder, org.ndx.model.PacketModel.ByteRangeOrBuilder>(
-                  getBytes(),
-                  getParentForChildren(),
-                  isClean());
-          bytes_ = null;
-        }
-        return bytesBuilder_;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ndx.model.TransportPacketUnit)
-    }
-
-    // @@protoc_insertion_point(class_scope:ndx.model.TransportPacketUnit)
-    private static final org.ndx.model.PacketModel.TransportPacketUnit DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new org.ndx.model.PacketModel.TransportPacketUnit();
-    }
-
-    public static org.ndx.model.PacketModel.TransportPacketUnit getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<TransportPacketUnit>
-        PARSER = new com.google.protobuf.AbstractParser<TransportPacketUnit>() {
-      public TransportPacketUnit parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new TransportPacketUnit(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<TransportPacketUnit> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<TransportPacketUnit> getParserForType() {
-      return PARSER;
-    }
-
-    public org.ndx.model.PacketModel.TransportPacketUnit getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ApplicationPacketUnitOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ndx.model.ApplicationPacketUnit)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    boolean hasBytes();
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    org.ndx.model.PacketModel.ByteRange getBytes();
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    org.ndx.model.PacketModel.ByteRangeOrBuilder getBytesOrBuilder();
-  }
-  /**
-   * Protobuf type {@code ndx.model.ApplicationPacketUnit}
-   */
-  public  static final class ApplicationPacketUnit extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ndx.model.ApplicationPacketUnit)
-      ApplicationPacketUnitOrBuilder {
-    // Use ApplicationPacketUnit.newBuilder() to construct.
-    private ApplicationPacketUnit(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ApplicationPacketUnit() {
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private ApplicationPacketUnit(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              org.ndx.model.PacketModel.ByteRange.Builder subBuilder = null;
-              if (bytes_ != null) {
-                subBuilder = bytes_.toBuilder();
-              }
-              bytes_ = input.readMessage(org.ndx.model.PacketModel.ByteRange.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(bytes_);
-                bytes_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.ndx.model.PacketModel.internal_static_ndx_model_ApplicationPacketUnit_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.ndx.model.PacketModel.internal_static_ndx_model_ApplicationPacketUnit_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.ndx.model.PacketModel.ApplicationPacketUnit.class, org.ndx.model.PacketModel.ApplicationPacketUnit.Builder.class);
-    }
-
-    public static final int BYTES_FIELD_NUMBER = 1;
-    private org.ndx.model.PacketModel.ByteRange bytes_;
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    public boolean hasBytes() {
-      return bytes_ != null;
-    }
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    public org.ndx.model.PacketModel.ByteRange getBytes() {
-      return bytes_ == null ? org.ndx.model.PacketModel.ByteRange.getDefaultInstance() : bytes_;
-    }
-    /**
-     * <code>.ndx.model.ByteRange Bytes = 1;</code>
-     */
-    public org.ndx.model.PacketModel.ByteRangeOrBuilder getBytesOrBuilder() {
-      return getBytes();
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (bytes_ != null) {
-        output.writeMessage(1, getBytes());
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (bytes_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getBytes());
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.ndx.model.PacketModel.ApplicationPacketUnit)) {
-        return super.equals(obj);
-      }
-      org.ndx.model.PacketModel.ApplicationPacketUnit other = (org.ndx.model.PacketModel.ApplicationPacketUnit) obj;
-
-      boolean result = true;
-      result = result && (hasBytes() == other.hasBytes());
-      if (hasBytes()) {
-        result = result && getBytes()
-            .equals(other.getBytes());
-      }
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasBytes()) {
-        hash = (37 * hash) + BYTES_FIELD_NUMBER;
-        hash = (53 * hash) + getBytes().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.ndx.model.PacketModel.ApplicationPacketUnit parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.ApplicationPacketUnit parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.ApplicationPacketUnit parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.ApplicationPacketUnit parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.ApplicationPacketUnit parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.ApplicationPacketUnit parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.ApplicationPacketUnit parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.ApplicationPacketUnit parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.ApplicationPacketUnit parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.ApplicationPacketUnit parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.ApplicationPacketUnit parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.ApplicationPacketUnit parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(org.ndx.model.PacketModel.ApplicationPacketUnit prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code ndx.model.ApplicationPacketUnit}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ndx.model.ApplicationPacketUnit)
-        org.ndx.model.PacketModel.ApplicationPacketUnitOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_ApplicationPacketUnit_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_ApplicationPacketUnit_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.ndx.model.PacketModel.ApplicationPacketUnit.class, org.ndx.model.PacketModel.ApplicationPacketUnit.Builder.class);
-      }
-
-      // Construct using org.ndx.model.PacketModel.ApplicationPacketUnit.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        if (bytesBuilder_ == null) {
-          bytes_ = null;
-        } else {
-          bytes_ = null;
-          bytesBuilder_ = null;
-        }
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_ApplicationPacketUnit_descriptor;
-      }
-
-      public org.ndx.model.PacketModel.ApplicationPacketUnit getDefaultInstanceForType() {
-        return org.ndx.model.PacketModel.ApplicationPacketUnit.getDefaultInstance();
-      }
-
-      public org.ndx.model.PacketModel.ApplicationPacketUnit build() {
-        org.ndx.model.PacketModel.ApplicationPacketUnit result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public org.ndx.model.PacketModel.ApplicationPacketUnit buildPartial() {
-        org.ndx.model.PacketModel.ApplicationPacketUnit result = new org.ndx.model.PacketModel.ApplicationPacketUnit(this);
-        if (bytesBuilder_ == null) {
-          result.bytes_ = bytes_;
-        } else {
-          result.bytes_ = bytesBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.ndx.model.PacketModel.ApplicationPacketUnit) {
-          return mergeFrom((org.ndx.model.PacketModel.ApplicationPacketUnit)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(org.ndx.model.PacketModel.ApplicationPacketUnit other) {
-        if (other == org.ndx.model.PacketModel.ApplicationPacketUnit.getDefaultInstance()) return this;
-        if (other.hasBytes()) {
-          mergeBytes(other.getBytes());
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.ndx.model.PacketModel.ApplicationPacketUnit parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.ndx.model.PacketModel.ApplicationPacketUnit) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private org.ndx.model.PacketModel.ByteRange bytes_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          org.ndx.model.PacketModel.ByteRange, org.ndx.model.PacketModel.ByteRange.Builder, org.ndx.model.PacketModel.ByteRangeOrBuilder> bytesBuilder_;
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public boolean hasBytes() {
-        return bytesBuilder_ != null || bytes_ != null;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public org.ndx.model.PacketModel.ByteRange getBytes() {
-        if (bytesBuilder_ == null) {
-          return bytes_ == null ? org.ndx.model.PacketModel.ByteRange.getDefaultInstance() : bytes_;
-        } else {
-          return bytesBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder setBytes(org.ndx.model.PacketModel.ByteRange value) {
-        if (bytesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          bytes_ = value;
-          onChanged();
-        } else {
-          bytesBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder setBytes(
-          org.ndx.model.PacketModel.ByteRange.Builder builderForValue) {
-        if (bytesBuilder_ == null) {
-          bytes_ = builderForValue.build();
-          onChanged();
-        } else {
-          bytesBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder mergeBytes(org.ndx.model.PacketModel.ByteRange value) {
-        if (bytesBuilder_ == null) {
-          if (bytes_ != null) {
-            bytes_ =
-              org.ndx.model.PacketModel.ByteRange.newBuilder(bytes_).mergeFrom(value).buildPartial();
-          } else {
-            bytes_ = value;
-          }
-          onChanged();
-        } else {
-          bytesBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public Builder clearBytes() {
-        if (bytesBuilder_ == null) {
-          bytes_ = null;
-          onChanged();
-        } else {
-          bytes_ = null;
-          bytesBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public org.ndx.model.PacketModel.ByteRange.Builder getBytesBuilder() {
-        
-        onChanged();
-        return getBytesFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      public org.ndx.model.PacketModel.ByteRangeOrBuilder getBytesOrBuilder() {
-        if (bytesBuilder_ != null) {
-          return bytesBuilder_.getMessageOrBuilder();
-        } else {
-          return bytes_ == null ?
-              org.ndx.model.PacketModel.ByteRange.getDefaultInstance() : bytes_;
-        }
-      }
-      /**
-       * <code>.ndx.model.ByteRange Bytes = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          org.ndx.model.PacketModel.ByteRange, org.ndx.model.PacketModel.ByteRange.Builder, org.ndx.model.PacketModel.ByteRangeOrBuilder> 
-          getBytesFieldBuilder() {
-        if (bytesBuilder_ == null) {
-          bytesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              org.ndx.model.PacketModel.ByteRange, org.ndx.model.PacketModel.ByteRange.Builder, org.ndx.model.PacketModel.ByteRangeOrBuilder>(
-                  getBytes(),
-                  getParentForChildren(),
-                  isClean());
-          bytes_ = null;
-        }
-        return bytesBuilder_;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ndx.model.ApplicationPacketUnit)
-    }
-
-    // @@protoc_insertion_point(class_scope:ndx.model.ApplicationPacketUnit)
-    private static final org.ndx.model.PacketModel.ApplicationPacketUnit DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new org.ndx.model.PacketModel.ApplicationPacketUnit();
-    }
-
-    public static org.ndx.model.PacketModel.ApplicationPacketUnit getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ApplicationPacketUnit>
-        PARSER = new com.google.protobuf.AbstractParser<ApplicationPacketUnit>() {
-      public ApplicationPacketUnit parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ApplicationPacketUnit(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ApplicationPacketUnit> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ApplicationPacketUnit> getParserForType() {
-      return PARSER;
-    }
-
-    public org.ndx.model.PacketModel.ApplicationPacketUnit getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface MetaFrameOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ndx.model.MetaFrame)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>int32 FrameNumber = 1;</code>
-     */
-    int getFrameNumber();
-
-    /**
-     * <code>int32 FrameLength = 2;</code>
-     */
-    int getFrameLength();
-
-    /**
-     * <code>int64 FrameOffset = 3;</code>
-     */
-    long getFrameOffset();
-
-    /**
-     * <code>int64 TimeStamp = 4;</code>
-     */
-    long getTimeStamp();
-
-    /**
-     * <code>.ndx.model.DataLinkType LinkType = 5;</code>
-     */
-    int getLinkTypeValue();
-    /**
-     * <code>.ndx.model.DataLinkType LinkType = 5;</code>
-     */
-    org.ndx.model.Constants.DataLinkType getLinkType();
-  }
-  /**
-   * <pre>
-   *&#47; &lt;summary&gt;
-   * /	Stores the metadata of a single captured frame.
-   * /	&lt;/summary&gt;
-   * </pre>
-   *
-   * Protobuf type {@code ndx.model.MetaFrame}
-   */
-  public  static final class MetaFrame extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ndx.model.MetaFrame)
-      MetaFrameOrBuilder {
-    // Use MetaFrame.newBuilder() to construct.
-    private MetaFrame(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private MetaFrame() {
-      frameNumber_ = 0;
-      frameLength_ = 0;
-      frameOffset_ = 0L;
-      timeStamp_ = 0L;
-      linkType_ = 0;
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private MetaFrame(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-
-              frameNumber_ = input.readInt32();
-              break;
-            }
-            case 16: {
-
-              frameLength_ = input.readInt32();
-              break;
-            }
-            case 24: {
-
-              frameOffset_ = input.readInt64();
-              break;
-            }
-            case 32: {
-
-              timeStamp_ = input.readInt64();
-              break;
-            }
-            case 40: {
-              int rawValue = input.readEnum();
-
-              linkType_ = rawValue;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.ndx.model.PacketModel.internal_static_ndx_model_MetaFrame_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.ndx.model.PacketModel.internal_static_ndx_model_MetaFrame_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.ndx.model.PacketModel.MetaFrame.class, org.ndx.model.PacketModel.MetaFrame.Builder.class);
-    }
-
-    public static final int FRAMENUMBER_FIELD_NUMBER = 1;
-    private int frameNumber_;
-    /**
-     * <code>int32 FrameNumber = 1;</code>
-     */
-    public int getFrameNumber() {
-      return frameNumber_;
-    }
-
-    public static final int FRAMELENGTH_FIELD_NUMBER = 2;
-    private int frameLength_;
-    /**
-     * <code>int32 FrameLength = 2;</code>
-     */
-    public int getFrameLength() {
-      return frameLength_;
-    }
-
-    public static final int FRAMEOFFSET_FIELD_NUMBER = 3;
-    private long frameOffset_;
-    /**
-     * <code>int64 FrameOffset = 3;</code>
-     */
-    public long getFrameOffset() {
-      return frameOffset_;
-    }
-
-    public static final int TIMESTAMP_FIELD_NUMBER = 4;
-    private long timeStamp_;
-    /**
-     * <code>int64 TimeStamp = 4;</code>
-     */
-    public long getTimeStamp() {
-      return timeStamp_;
-    }
-
-    public static final int LINKTYPE_FIELD_NUMBER = 5;
-    private int linkType_;
-    /**
-     * <code>.ndx.model.DataLinkType LinkType = 5;</code>
-     */
-    public int getLinkTypeValue() {
-      return linkType_;
-    }
-    /**
-     * <code>.ndx.model.DataLinkType LinkType = 5;</code>
-     */
-    public org.ndx.model.Constants.DataLinkType getLinkType() {
-      org.ndx.model.Constants.DataLinkType result = org.ndx.model.Constants.DataLinkType.valueOf(linkType_);
-      return result == null ? org.ndx.model.Constants.DataLinkType.UNRECOGNIZED : result;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (frameNumber_ != 0) {
-        output.writeInt32(1, frameNumber_);
-      }
-      if (frameLength_ != 0) {
-        output.writeInt32(2, frameLength_);
-      }
-      if (frameOffset_ != 0L) {
-        output.writeInt64(3, frameOffset_);
-      }
-      if (timeStamp_ != 0L) {
-        output.writeInt64(4, timeStamp_);
-      }
-      if (linkType_ != org.ndx.model.Constants.DataLinkType.Null.getNumber()) {
-        output.writeEnum(5, linkType_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (frameNumber_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, frameNumber_);
-      }
-      if (frameLength_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, frameLength_);
-      }
-      if (frameOffset_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(3, frameOffset_);
-      }
-      if (timeStamp_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(4, timeStamp_);
-      }
-      if (linkType_ != org.ndx.model.Constants.DataLinkType.Null.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(5, linkType_);
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.ndx.model.PacketModel.MetaFrame)) {
-        return super.equals(obj);
-      }
-      org.ndx.model.PacketModel.MetaFrame other = (org.ndx.model.PacketModel.MetaFrame) obj;
-
-      boolean result = true;
-      result = result && (getFrameNumber()
-          == other.getFrameNumber());
-      result = result && (getFrameLength()
-          == other.getFrameLength());
-      result = result && (getFrameOffset()
-          == other.getFrameOffset());
-      result = result && (getTimeStamp()
-          == other.getTimeStamp());
-      result = result && linkType_ == other.linkType_;
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + FRAMENUMBER_FIELD_NUMBER;
-      hash = (53 * hash) + getFrameNumber();
-      hash = (37 * hash) + FRAMELENGTH_FIELD_NUMBER;
-      hash = (53 * hash) + getFrameLength();
-      hash = (37 * hash) + FRAMEOFFSET_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getFrameOffset());
-      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getTimeStamp());
-      hash = (37 * hash) + LINKTYPE_FIELD_NUMBER;
-      hash = (53 * hash) + linkType_;
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.ndx.model.PacketModel.MetaFrame parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.MetaFrame parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.MetaFrame parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.MetaFrame parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.MetaFrame parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.ndx.model.PacketModel.MetaFrame parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.MetaFrame parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.MetaFrame parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.MetaFrame parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.MetaFrame parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.ndx.model.PacketModel.MetaFrame parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.ndx.model.PacketModel.MetaFrame parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(org.ndx.model.PacketModel.MetaFrame prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     *&#47; &lt;summary&gt;
-     * /	Stores the metadata of a single captured frame.
-     * /	&lt;/summary&gt;
-     * </pre>
-     *
-     * Protobuf type {@code ndx.model.MetaFrame}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ndx.model.MetaFrame)
-        org.ndx.model.PacketModel.MetaFrameOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_MetaFrame_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_MetaFrame_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.ndx.model.PacketModel.MetaFrame.class, org.ndx.model.PacketModel.MetaFrame.Builder.class);
-      }
-
-      // Construct using org.ndx.model.PacketModel.MetaFrame.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        frameNumber_ = 0;
-
-        frameLength_ = 0;
-
-        frameOffset_ = 0L;
-
-        timeStamp_ = 0L;
-
-        linkType_ = 0;
-
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.ndx.model.PacketModel.internal_static_ndx_model_MetaFrame_descriptor;
-      }
-
-      public org.ndx.model.PacketModel.MetaFrame getDefaultInstanceForType() {
-        return org.ndx.model.PacketModel.MetaFrame.getDefaultInstance();
-      }
-
-      public org.ndx.model.PacketModel.MetaFrame build() {
-        org.ndx.model.PacketModel.MetaFrame result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public org.ndx.model.PacketModel.MetaFrame buildPartial() {
-        org.ndx.model.PacketModel.MetaFrame result = new org.ndx.model.PacketModel.MetaFrame(this);
-        result.frameNumber_ = frameNumber_;
-        result.frameLength_ = frameLength_;
-        result.frameOffset_ = frameOffset_;
-        result.timeStamp_ = timeStamp_;
-        result.linkType_ = linkType_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.ndx.model.PacketModel.MetaFrame) {
-          return mergeFrom((org.ndx.model.PacketModel.MetaFrame)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(org.ndx.model.PacketModel.MetaFrame other) {
-        if (other == org.ndx.model.PacketModel.MetaFrame.getDefaultInstance()) return this;
-        if (other.getFrameNumber() != 0) {
-          setFrameNumber(other.getFrameNumber());
-        }
-        if (other.getFrameLength() != 0) {
-          setFrameLength(other.getFrameLength());
-        }
-        if (other.getFrameOffset() != 0L) {
-          setFrameOffset(other.getFrameOffset());
-        }
-        if (other.getTimeStamp() != 0L) {
-          setTimeStamp(other.getTimeStamp());
-        }
-        if (other.linkType_ != 0) {
-          setLinkTypeValue(other.getLinkTypeValue());
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.ndx.model.PacketModel.MetaFrame parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.ndx.model.PacketModel.MetaFrame) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int frameNumber_ ;
-      /**
-       * <code>int32 FrameNumber = 1;</code>
-       */
-      public int getFrameNumber() {
-        return frameNumber_;
-      }
-      /**
-       * <code>int32 FrameNumber = 1;</code>
-       */
-      public Builder setFrameNumber(int value) {
-        
-        frameNumber_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 FrameNumber = 1;</code>
-       */
-      public Builder clearFrameNumber() {
-        
-        frameNumber_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int frameLength_ ;
-      /**
-       * <code>int32 FrameLength = 2;</code>
-       */
-      public int getFrameLength() {
-        return frameLength_;
-      }
-      /**
-       * <code>int32 FrameLength = 2;</code>
-       */
-      public Builder setFrameLength(int value) {
-        
-        frameLength_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 FrameLength = 2;</code>
-       */
-      public Builder clearFrameLength() {
-        
-        frameLength_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private long frameOffset_ ;
-      /**
-       * <code>int64 FrameOffset = 3;</code>
-       */
-      public long getFrameOffset() {
-        return frameOffset_;
-      }
-      /**
-       * <code>int64 FrameOffset = 3;</code>
-       */
-      public Builder setFrameOffset(long value) {
-        
-        frameOffset_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int64 FrameOffset = 3;</code>
-       */
-      public Builder clearFrameOffset() {
-        
-        frameOffset_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private long timeStamp_ ;
-      /**
-       * <code>int64 TimeStamp = 4;</code>
-       */
-      public long getTimeStamp() {
-        return timeStamp_;
-      }
-      /**
-       * <code>int64 TimeStamp = 4;</code>
-       */
-      public Builder setTimeStamp(long value) {
-        
-        timeStamp_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int64 TimeStamp = 4;</code>
-       */
-      public Builder clearTimeStamp() {
-        
-        timeStamp_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private int linkType_ = 0;
-      /**
-       * <code>.ndx.model.DataLinkType LinkType = 5;</code>
-       */
-      public int getLinkTypeValue() {
-        return linkType_;
-      }
-      /**
-       * <code>.ndx.model.DataLinkType LinkType = 5;</code>
-       */
-      public Builder setLinkTypeValue(int value) {
-        linkType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.ndx.model.DataLinkType LinkType = 5;</code>
-       */
-      public org.ndx.model.Constants.DataLinkType getLinkType() {
-        org.ndx.model.Constants.DataLinkType result = org.ndx.model.Constants.DataLinkType.valueOf(linkType_);
-        return result == null ? org.ndx.model.Constants.DataLinkType.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.ndx.model.DataLinkType LinkType = 5;</code>
-       */
-      public Builder setLinkType(org.ndx.model.Constants.DataLinkType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        linkType_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.ndx.model.DataLinkType LinkType = 5;</code>
-       */
-      public Builder clearLinkType() {
-        
-        linkType_ = 0;
-        onChanged();
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ndx.model.MetaFrame)
-    }
-
-    // @@protoc_insertion_point(class_scope:ndx.model.MetaFrame)
-    private static final org.ndx.model.PacketModel.MetaFrame DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new org.ndx.model.PacketModel.MetaFrame();
-    }
-
-    public static org.ndx.model.PacketModel.MetaFrame getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<MetaFrame>
-        PARSER = new com.google.protobuf.AbstractParser<MetaFrame>() {
-      public MetaFrame parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new MetaFrame(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<MetaFrame> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<MetaFrame> getParserForType() {
-      return PARSER;
-    }
-
-    public org.ndx.model.PacketModel.MetaFrame getDefaultInstanceForType() {
+    public org.ndx.model.PacketModel.Frame getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5738,40 +2297,10 @@ public final class PacketModel {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ndx_model_RawFrame_descriptor;
+    internal_static_ndx_model_Frame_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ndx_model_RawFrame_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ndx_model_ByteRange_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ndx_model_ByteRange_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ndx_model_DatalinkPacketUnit_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ndx_model_DatalinkPacketUnit_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ndx_model_NetworkPacketUnit_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ndx_model_NetworkPacketUnit_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ndx_model_TransportPacketUnit_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ndx_model_TransportPacketUnit_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ndx_model_ApplicationPacketUnit_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ndx_model_ApplicationPacketUnit_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ndx_model_MetaFrame_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ndx_model_MetaFrame_fieldAccessorTable;
+      internal_static_ndx_model_Frame_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ndx_model_PacketFields_descriptor;
   private static final 
@@ -5792,27 +2321,17 @@ public final class PacketModel {
   static {
     java.lang.String[] descriptorData = {
       "\n\021PacketModel.proto\022\tndx.model\032\017Constant" +
-      "s.proto\"\275\001\n\010RawFrame\022)\n\010LinkType\030\001 \001(\0162\027" +
-      ".ndx.model.DataLinkType\022\023\n\013FrameNumber\030\002" +
-      " \001(\005\022\023\n\013FrameLength\030\003 \001(\005\022\023\n\013FrameOffset" +
-      "\030\004 \001(\003\022\021\n\tTimeStamp\030\005 \001(\003\022\021\n\tProcessId\030\006" +
-      " \001(\003\022\023\n\013ProcessName\030\007 \001(\t\022\014\n\004Data\030\n \001(\014\"" +
-      "+\n\tByteRange\022\016\n\006Offset\030\001 \001(\005\022\016\n\006Length\030\002" +
-      " \001(\005\"9\n\022DatalinkPacketUnit\022#\n\005Bytes\030\001 \001(" +
-      "\0132\024.ndx.model.ByteRange\"8\n\021NetworkPacket" +
-      "Unit\022#\n\005Bytes\030\001 \001(\0132\024.ndx.model.ByteRang",
-      "e\":\n\023TransportPacketUnit\022#\n\005Bytes\030\001 \001(\0132" +
-      "\024.ndx.model.ByteRange\"<\n\025ApplicationPack" +
-      "etUnit\022#\n\005Bytes\030\001 \001(\0132\024.ndx.model.ByteRa" +
-      "nge\"\210\001\n\tMetaFrame\022\023\n\013FrameNumber\030\001 \001(\005\022\023" +
-      "\n\013FrameLength\030\002 \001(\005\022\023\n\013FrameOffset\030\003 \001(\003" +
-      "\022\021\n\tTimeStamp\030\004 \001(\003\022)\n\010LinkType\030\005 \001(\0162\027." +
-      "ndx.model.DataLinkType\"\262\001\n\014PacketFields\022" +
-      "\023\n\013FrameNumber\030\001 \001(\003\022\026\n\016FrameProtocols\030\002" +
-      " \001(\t\022\021\n\tTimestamp\030\003 \001(\003\0223\n\006Fields\030\n \003(\0132" +
-      "#.ndx.model.PacketFields.FieldsEntry\032-\n\013",
-      "FieldsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:" +
-      "\0028\001B\017\n\rorg.ndx.modelb\006proto3"
+      "s.proto\"\322\001\n\005Frame\022)\n\010LinkType\030\001 \001(\0162\027.nd" +
+      "x.model.DataLinkType\022\023\n\013FrameNumber\030\002 \001(" +
+      "\005\022\023\n\013FrameLength\030\003 \001(\005\022\023\n\013FrameOffset\030\004 " +
+      "\001(\003\022\021\n\tTimeStamp\030\005 \001(\003\022\021\n\tProcessId\030\006 \001(" +
+      "\003\022\023\n\013ProcessName\030\007 \001(\t\022\014\n\004Data\030\n \001(\014\022\026\n\016" +
+      "ConversationId\030\013 \001(\005\"\262\001\n\014PacketFields\022\023\n" +
+      "\013FrameNumber\030\001 \001(\003\022\026\n\016FrameProtocols\030\002 \001" +
+      "(\t\022\021\n\tTimestamp\030\003 \001(\003\0223\n\006Fields\030\n \003(\0132#." +
+      "ndx.model.PacketFields.FieldsEntry\032-\n\013Fi",
+      "eldsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028" +
+      "\001B\017\n\rorg.ndx.modelb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5827,50 +2346,14 @@ public final class PacketModel {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           org.ndx.model.Constants.getDescriptor(),
         }, assigner);
-    internal_static_ndx_model_RawFrame_descriptor =
+    internal_static_ndx_model_Frame_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_ndx_model_RawFrame_fieldAccessorTable = new
+    internal_static_ndx_model_Frame_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ndx_model_RawFrame_descriptor,
-        new java.lang.String[] { "LinkType", "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "ProcessId", "ProcessName", "Data", });
-    internal_static_ndx_model_ByteRange_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_ndx_model_ByteRange_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ndx_model_ByteRange_descriptor,
-        new java.lang.String[] { "Offset", "Length", });
-    internal_static_ndx_model_DatalinkPacketUnit_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_ndx_model_DatalinkPacketUnit_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ndx_model_DatalinkPacketUnit_descriptor,
-        new java.lang.String[] { "Bytes", });
-    internal_static_ndx_model_NetworkPacketUnit_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_ndx_model_NetworkPacketUnit_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ndx_model_NetworkPacketUnit_descriptor,
-        new java.lang.String[] { "Bytes", });
-    internal_static_ndx_model_TransportPacketUnit_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_ndx_model_TransportPacketUnit_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ndx_model_TransportPacketUnit_descriptor,
-        new java.lang.String[] { "Bytes", });
-    internal_static_ndx_model_ApplicationPacketUnit_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_ndx_model_ApplicationPacketUnit_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ndx_model_ApplicationPacketUnit_descriptor,
-        new java.lang.String[] { "Bytes", });
-    internal_static_ndx_model_MetaFrame_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_ndx_model_MetaFrame_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ndx_model_MetaFrame_descriptor,
-        new java.lang.String[] { "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "LinkType", });
+        internal_static_ndx_model_Frame_descriptor,
+        new java.lang.String[] { "LinkType", "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "ProcessId", "ProcessName", "Data", "ConversationId", });
     internal_static_ndx_model_PacketFields_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_ndx_model_PacketFields_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ndx_model_PacketFields_descriptor,

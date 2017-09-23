@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Parsers\Binary\BinaryProtocols.md" />
+    <None Include="Parsers\Text\TextProtocols.md" />
     <None Include="Proto\compile.cmd" />
     <None Include="Proto\SSH.proto" />
   </ItemGroup>
@@ -59,5 +61,6 @@
       <Name>Ndx.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

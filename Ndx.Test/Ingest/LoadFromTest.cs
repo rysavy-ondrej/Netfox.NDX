@@ -12,6 +12,8 @@ namespace Ndx.Test
 {
     /// <summary>
     /// This class test the whole Ingest Pcap processing pipeline.
+    /// Pipelines usually consists of:
+    /// source ---> filter --->  ... ---> filter ---> sink
     /// </summary>
     [TestFixture]
     public class LoadFromTest
@@ -20,18 +22,20 @@ namespace Ndx.Test
         [Test]
         public void LoadTestFile()
         {
-            var conversations = new HashSet<Conversation>(new Conversation.ReferenceComparer());
+            var conversations = new HashSet<int>();
             var frameCount = 0;
-            var input = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap");
-            var sink = new ActionBlock<KeyValuePair<Conversation, MetaFrame>>(x => { frameCount++; conversations.Add(x.Key); });
-            var ct = new ConversationTracker();
-            ct.Output.LinkTo(sink, new DataflowLinkOptions() { PropagateCompletion = true });
 
-            foreach(var f in PcapReader.ReadFile(input))
+            var source = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap");
+            var tracker = new ConversationTracker();
+            var filter = new TransformBlock<Frame, Frame>(x=> tracker.ProcessFrame(x));
+            var sink = new ActionBlock<Frame>(x => { frameCount++; conversations.Add(x.ConversationId); });
+            filter.LinkTo(sink, new DataflowLinkOptions() { PropagateCompletion = true });
+
+            foreach(var f in PcapReader.ReadFile(source))
             {
-                ct.Input.Post(f);
+                filter.Post(f);
             }
-            ct.Input.Complete();
+            filter.Complete();
             Task.WaitAll(sink.Completion);
             Assert.AreEqual(3, conversations.Count);
             Assert.AreEqual(43, frameCount);
