@@ -20,8 +20,12 @@ namespace Ndx.Test
     public class LoadFromTest
     {
         TestContext m_testContext = TestContext.CurrentContext;
+        /// <summary>
+        /// Load file and track conversation using Dataflow pattern.
+        /// </summary>
+        /// <returns></returns>
         [Test]
-        public async Task LoadTestFile()
+        public async Task LoadTestFile_Dataflow()
         {
             var conversations = new HashSet<int>();
             var frameCount = 0;
@@ -35,6 +39,21 @@ namespace Ndx.Test
             await PcapReader.ReadFile(source).ForEachAsync(async f => await filter.SendAsync(f));
             filter.Complete();
             await sink.Completion;
+            Assert.AreEqual(3, conversations.Count);
+            Assert.AreEqual(43, frameCount);
+        }
+        /// <summary>
+        /// Load file and track conversation using RX pattern.
+        /// </summary>
+        /// <returns></returns>
+        [Test]
+        public async Task LoadTestFile_Rx()
+        {
+            var conversations = new HashSet<int>();
+            var frameCount = 0;
+            var source = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap");
+            var tracker = new ConversationTracker();
+            await PcapReader.ReadFile(source).Select(x=> { var c = tracker.ProcessFrame(x); x.ConversationId = c.ConversationId; return x; }).ForEachAsync(x=> { frameCount++; conversations.Add(x.ConversationId); });
             Assert.AreEqual(3, conversations.Count);
             Assert.AreEqual(43, frameCount);
         }
