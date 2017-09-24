@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 
 using System.IO;
+using System.Reactive.Linq;
+using System.Threading.Tasks;
 using Google.Protobuf;
 using Ndx.Model;
 
@@ -60,14 +62,14 @@ namespace Ndx.Captures
                     var ticks = UnixBaseTicks + (tsSeconds * TimeSpan.TicksPerSecond) + (tsMicroseconds * TickPerMicroseconds);
                     var includedLength = reader.ReadUInt32();
                     var originalLength = reader.ReadUInt32();
-                    
+
                     if ((stream.Position + includedLength) > length)
                     {   // not enough data to read packet
                         yield break;
                     }
                     var frameOffset = stream.Position;
                     var frameBytes = reader.ReadBytes((int)includedLength);
-                    
+
                     yield return new Frame
                     {
                         Data = ByteString.CopyFrom(frameBytes, 0, frameBytes.Length),
@@ -75,7 +77,7 @@ namespace Ndx.Captures
                         FrameLength = frameBytes.Length,
                         FrameNumber = ++frameNumber,
                         LinkType = (DataLinkType)network,
-                        TimeStamp = ticks, 
+                        TimeStamp = ticks,
                     };
                 }
             }
@@ -95,35 +97,38 @@ namespace Ndx.Captures
         /// <param name="path">The file to write to.</param>
         /// <param name="network">The link type.</param>
         /// <param name="contents">The raw frame array to write to the file.</param>
-        public static void WriteAllFrames(string path, DataLinkType network, IEnumerable<Frame> frames)
+        public static async Task WriteAllFramesAsync(string path, DataLinkType network, IObservable<Frame> frames)
         {
-            var stream = File.Create(path);
-            using (var writer = new BinaryWriter(stream))
+
+            using (var stream = File.Create(path))
             {
+                async Task writeAsync(byte[] buffer)
+                {
+                    await stream.WriteAsync(buffer, 0, buffer.Length);
+                }
                 // WRITE HEADER:
-                writer.Write(MagicNumber);
-                writer.Write(VersionMajor);
-                writer.Write(VersionMinor);
-                writer.Write(ThisZone);
-                writer.Write(Sigfigs);
-                writer.Write(Snaplen);
-                writer.Write((uint)network);
+                await writeAsync(BitConverter.GetBytes(MagicNumber));
+                await writeAsync(BitConverter.GetBytes(VersionMajor));
+                await writeAsync(BitConverter.GetBytes(VersionMinor));
+                await writeAsync(BitConverter.GetBytes(ThisZone));
+                await writeAsync(BitConverter.GetBytes(Sigfigs));
+                await writeAsync(BitConverter.GetBytes(Snaplen));
+                await writeAsync(BitConverter.GetBytes((uint)network));
 
                 // WRITE RECORDS
-                foreach (var frame in frames)
+                await frames.ForEachAsync(async frame =>
                 {
                     uint ts_sec = (uint)frame.Seconds;
                     uint ts_usec = (uint)frame.Microseconds;
                     uint incl_len = (uint)frame.Data.Length;
                     uint orig_len = (uint)frame.Data.Length;
-                    writer.Write(ts_sec);
-                    writer.Write(ts_usec);
-                    writer.Write(incl_len);
-                    writer.Write(orig_len);
-                    writer.Write(frame.Bytes);
-                }
+                    await writeAsync(BitConverter.GetBytes(ts_sec));
+                    await writeAsync(BitConverter.GetBytes(ts_usec));
+                    await writeAsync(BitConverter.GetBytes(incl_len));
+                    await writeAsync(BitConverter.GetBytes(orig_len));
+                    await writeAsync(frame.Bytes);
+                });
             }
-            stream.Close();
         }
     }
 }

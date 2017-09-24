@@ -56,6 +56,7 @@
     <Compile Include="Model\Constants.cs" />
     <Compile Include="Model\Conversation.cs" />
     <Compile Include="Model\ConversationModel.cs" />
+    <Compile Include="Model\FlowAttributes.cs" />
     <Compile Include="Model\FlowKey.cs" />
     <Compile Include="Model\FlowModel.cs" />
     <Compile Include="Model\PacketFields.cs" />

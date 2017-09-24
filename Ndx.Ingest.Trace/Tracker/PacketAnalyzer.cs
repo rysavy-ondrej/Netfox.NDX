@@ -10,180 +10,54 @@ using PacketDotNet.Ieee80211;
 namespace Ndx.Ingest
 {
     /// <summary>
-    /// <see cref="PacketAnalyzer"/> implements <see cref="PacketDotNet.PacketVisitor"/>
-    /// for extracting information from <see cref="Frame"/>. This information is used
-    /// to provide conversation data for <see cref="ConversationTracker"/>.
+    /// This class implementes extension of <see cref="Packet"/> class and <see cref="Frame"/> class.
     /// </summary>
-    public class PacketAnalyzer : PacketVisitor
+    public static class PacketAnalyzer
     {
-        ConversationTracker m_tracker;
-        Frame m_frame;
-        public Frame Frame => m_frame;
-        public PacketAnalyzer(ConversationTracker tracker, Frame rawframe)
-        {
-            m_tracker = tracker;
-            m_frame = rawframe;
-        }
 
-
-        public override void VisitApplicationPacket(ApplicationPayloadPacket packet)
-        {
-        }
-
-        public override void VisitArpPacket(ARPPacket packet)
-        {
-        }
-
-        public override void VisitEthernetPacket(EthernetPacket packet)
-        {
-                
-        }
-
-        public override void VisitICMPv4Packet(ICMPv4Packet packet)
-        {
-        }
-
-        public override void VisitICMPv6Packet(ICMPv6Packet packet)
-        {
-        }
-
-        public override void VisitIeee80211ControlFrame(ControlFrame frame)
-        {
-        }
-
-        public override void VisitIeee80211DataFrame(DataFrame frame)
-        {
-        }
-
-        public override void VisitIeee80211ManagementFrame(ManagementFrame frame)
-        {
-        }
-
-        public override void VisitIeee8021QPacket(Ieee8021QPacket packet)
-        {
-        }
-
-        public override void VisitIGMPv2Packet(IGMPv2Packet packet)
-        {
-        }
-
-        public override void VisitIPv4Packet(IPv4Packet packet)
-        {                        
-        }
-
-        public override void VisitIPv6Packet(IPv6Packet packet)
-        {
-        }
-
-        public override void VisitLinuxSLLPacket(LinuxSLLPacket packet)
-        {
-        }
-
-        public override void VisitLLDPPacket(LLDPPacket packet)
-        {
-        }
-
-        public override void VisitOSPFv2Packet(OSPFv2Packet packet)
-        {
-        }
-
-        public override void VisitPpiPacket(PpiPacket packet)
-        {
-        }
-
-        public override void VisitPPPoEPacket(PPPoEPacket packet)
-        {
-        }
-
-        public override void VisitPPPPacket(PPPPacket packet)
-        {
-        }
-
-        public override void VisitRadioPacket(RadioPacket packet)
-        {
-        }
-
-        public override void VisitTcpPacket(TcpPacket packet)
-        {
-            var flowKey = GetFlowKey(packet, out bool startNewConversation);
-            if (startNewConversation)
-            {
-                CreateConversation(packet, flowKey);
-            }
-            else
-            {
-                GetConversation(packet, flowKey);
-            }
-        }
-
-        public override void VisitUdpPacket(UdpPacket packet)
-        {
-            var flowKey = GetFlowKey(packet, out bool startNewConversation);
-            if (startNewConversation)
-            {
-                CreateConversation(packet, flowKey);
-            }
-            else
-            {
-                GetConversation(packet, flowKey);
-            }
-        }
-
-        public override void VisitWakeOnLanPacket(WakeOnLanPacket packet)
-        {
-        }
-
-        private void CreateConversation(TransportPacket transportPacket, FlowKey flowKey)
-        {
-            var conversation = m_tracker.CreateNetworkConversation(flowKey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
-            UpdateConversation(transportPacket, flowAttributes, flowPackets);
-            m_frame.ConversationId = conversation.ConversationId;
-        }   
-
-        private void GetConversation(TransportPacket transportPacket, FlowKey flowKey)
-        {
-            var conversation = m_tracker.GetNetworkConversation(flowKey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
-            UpdateConversation(transportPacket, flowAttributes, flowPackets);
-            m_frame.ConversationId = conversation.ConversationId;
-        }
-
-        private void UpdateConversation(TransportPacket transportPacket, FlowAttributes flowAttributes, IList<long> flowPackets)
-        {
-            flowAttributes.Octets += transportPacket.PayloadPacket.BytesHighPerformance.Length;
-            flowAttributes.Packets += 1;
-            flowAttributes.FirstSeen = Math.Min(flowAttributes.FirstSeen, m_frame.TimeStamp);
-            flowAttributes.LastSeen = Math.Max(flowAttributes.FirstSeen, m_frame.TimeStamp);
-            // TODO: Compute other attributes
-
-            var networkPacket = transportPacket.ParentPacket;
-            var datalinkPacket = networkPacket.ParentPacket;
-            var applicationPacket = transportPacket.PayloadPacket;
-
-            flowPackets.Add(m_frame.FrameNumber);
-        }
 
 
         /// <summary>
         /// Gets <see cref="FlowKey"/> for the passsed <see cref="Frame"/>. 
         /// </summary>
         /// <param name="frame">The raw frame for which flow key is provided.</param>
-        /// <returns><see cref="FlowKey"/> instance or null if provided frame does not contain TCP or UDP segment.</returns>
-        public static FlowKey GetFlowKey(Frame frame)
+        /// <returns><see cref="FlowKey"/> instance or null if provided frame does not contain TCP or UDP segment nor bytes.</returns>
+        public static FlowKey GetFlowKey(this Frame frame, out bool startNewConversation)
         {
-            var packet = Packet.ParsePacket((LinkLayers)frame.LinkType, frame.Bytes);
-            return GetFlowKey(packet);
+            if (frame.HasBytes)
+            {
+                var packet = Packet.ParsePacket((LinkLayers)frame.LinkType, frame.Bytes);
+                return GetFlowKey(packet, out startNewConversation);
+            }
+            else
+            {
+                startNewConversation = false;
+                return null;
+            }
+        }
+        public static FlowKey GetFlowKey(this Frame frame)
+        {
+            return GetFlowKey(frame, out var startNewConversation);
         }
 
-        public static FlowKey GetFlowKey(Packet packet)
+        public static FlowKey GetFlowKey(this Packet packet, out bool startNewConversation)
         {
+            startNewConversation = false;
             var udpPacket = (UdpPacket)packet.Extract(typeof(UdpPacket));
-            if (udpPacket != null) return GetFlowKey(udpPacket, out bool udpNew);
+            if (udpPacket != null) return GetFlowKey(udpPacket, out startNewConversation);
             var tcpPacket = (TcpPacket)packet.Extract(typeof(TcpPacket));
-            if (tcpPacket != null) return GetFlowKey(tcpPacket, out bool tcpNew);
-            return null;
+            if (tcpPacket != null) return GetFlowKey(tcpPacket, out startNewConversation);
+            return FlowKey.None;
         }
 
-        public static FlowKey GetFlowKey(UdpPacket packet, out bool startNewConversation)
+        public static FlowKey GetFlowKey(this Packet packet)
+        {
+            return GetFlowKey(packet, out var startNewConversation);
+        }
+
+
+
+        public static FlowKey GetFlowKey(this UdpPacket packet, out bool startNewConversation)
         {
             var flowKey = new FlowKey()
             {
@@ -197,7 +71,7 @@ namespace Ndx.Ingest
             startNewConversation = false;
             return flowKey;
         }
-        public static FlowKey GetFlowKey(TcpPacket packet, out bool startNewConversation)
+        public static FlowKey GetFlowKey(this TcpPacket packet, out bool startNewConversation)
         {
 
             var flowKey = new FlowKey()

@@ -27,11 +27,27 @@ namespace Ndx.Model
         public byte[] Bytes { get => Data.ToByteArray(); set => data_ = ByteString.CopyFrom(value); }
 
 
+        /// <summary>
+        /// Parses the current <see cref="Frame"/> into <see cref="Packet"/>.
+        /// </summary>
+        /// <returns>Parsed packet or null if the <see cref="Frame"/> cannot be parsed or does not contain content bytes.</returns>
         public Packet Parse()
         {
-            return Packet.ParsePacket((LinkLayers)LinkType, Bytes);
+            if (HasBytes)
+            {
+                return Packet.ParsePacket((LinkLayers)LinkType, Bytes);
+            }
+            else
+                return null;
         }
 
+        /// <summary>
+        /// Creates a new <see cref="EthernetPacket"/> from the provided <see cref="Packet"/>. 
+        /// </summary>
+        /// <param name="packet"></param>
+        /// <param name="src"></param>
+        /// <param name="dst"></param>
+        /// <returns>A new <see cref="EthernetPacket"/> crafted from the <paramref name="packet"/> using <paramref name="src"/> and <paramref name="dst"/> addresses.</returns>
         static EthernetPacket ConvertToEthernetPacket(Packet packet, PhysicalAddress src =null, PhysicalAddress dst = null)
         {
             src = src ?? PhysicalAddressEmpty;
@@ -53,6 +69,10 @@ namespace Ndx.Model
         }
 
 
+        /// <summary>
+        /// Tests if the <see cref="Frame"/> has content bytes or not. Use <see cref="DropBytes"/> to remove the content from the <see cref="Frame"/> to save space 
+        /// and <see cref="LoadFrameBytes(Stream)"/> to reload the content from the source <see cref="Stream"/>.
+        /// </summary>
         public bool HasBytes => !data_.IsEmpty;
 
         /// <summary>
@@ -80,6 +100,14 @@ namespace Ndx.Model
                 System.Console.Error.WriteLine($"[ERROR] Capture.GetFrameBytes: {e}");
             }
             return false;
+        }
+
+        /// <summary>
+        /// Removes the content of the frame. The content can be reloaded by <see cref="LoadFrameBytes(Stream)"/> function.
+        /// </summary>
+        public void DropBytes()
+        {
+            this.data_ = ByteString.Empty;
         }
     }
 }

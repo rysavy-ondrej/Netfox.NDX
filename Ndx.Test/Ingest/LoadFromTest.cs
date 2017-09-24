@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using Ndx.Captures;
@@ -20,23 +21,20 @@ namespace Ndx.Test
     {
         TestContext m_testContext = TestContext.CurrentContext;
         [Test]
-        public void LoadTestFile()
+        public async Task LoadTestFile()
         {
             var conversations = new HashSet<int>();
             var frameCount = 0;
 
             var source = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap");
             var tracker = new ConversationTracker();
-            var filter = new TransformBlock<Frame, Frame>(x=> tracker.ProcessFrame(x));
+            var filter = new TransformBlock<Frame, Frame>(x=> { var c = tracker.ProcessFrame(x); x.ConversationId = c.ConversationId; return x; });
             var sink = new ActionBlock<Frame>(x => { frameCount++; conversations.Add(x.ConversationId); });
             filter.LinkTo(sink, new DataflowLinkOptions() { PropagateCompletion = true });
 
-            foreach(var f in PcapReader.ReadFile(source))
-            {
-                filter.Post(f);
-            }
+            await PcapReader.ReadFile(source).ForEachAsync(async f => await filter.SendAsync(f));
             filter.Complete();
-            Task.WaitAll(sink.Completion);
+            await sink.Completion;
             Assert.AreEqual(3, conversations.Count);
             Assert.AreEqual(43, frameCount);
         }

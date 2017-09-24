@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
@@ -73,6 +74,15 @@ namespace Ndx.TShark
         public DataflowMessageStatus OfferMessage(DataflowMessageHeader messageHeader, Frame messageValue, ISourceBlock<Frame> source, bool consumeToAccept)
         {
             return ((ITargetBlock<Frame>)m_inputBlock).OfferMessage(messageHeader, messageValue, source, consumeToAccept);
+        }
+
+        public async Task ConsumeAsync(IObservable<Frame> frames)
+        {
+            await frames.ForEachAsync(async frame =>
+            {
+                await m_inputBlock.SendAsync(frame);
+            });
+            m_inputBlock.Complete();
         }
 
         /// <summary>

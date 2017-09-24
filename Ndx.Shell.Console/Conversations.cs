@@ -7,6 +7,7 @@ using System.Threading.Tasks.Dataflow;
 using Google.Protobuf;
 using Ndx.Ingest;
 using Ndx.Model;
+using Ndx.Utils;
 using NFX.ApplicationModel.Pile;
  
 namespace Ndx.Shell.Console
@@ -30,52 +31,9 @@ namespace Ndx.Shell.Console
         /// <returns>Dictionary containing all conversations for the input collection of frames.</returns>
         public static void TrackConversations(IEnumerable<Frame> frames, IPile pile, IDictionary<int, PilePointer> ctable, IDictionary<int, PilePointer> ftable)
         {
-            var tracker = new ConversationTracker();
-            void AcceptConversation(Frame item)
-            {
-                try
-                {
-                    
-                    // TODO: Implement storing frames in PILE
-                }
-                catch (Exception e)
-                {
-                    System.Console.Error.WriteLine($"Capture.AcceptConversation: Error when processing item {item}: {e}. ");
-                }
-            }
-            var sink = new ActionBlock<Frame>((Action<Frame>)AcceptConversation);
-            var filter = new TransformBlock<Frame,Frame>(x => tracker.ProcessFrame(x));
-            filter.LinkTo(sink, new DataflowLinkOptions() { PropagateCompletion = true });
 
-            foreach (var frame in frames)
-            {
-                filter.Post(frame);
-            }
-            filter.Complete();
-
-            Task.WaitAll(sink.Completion);
-
-            System.Console.WriteLine($"Tracking completed: ctable={ctable.Count}, ftable={ftable.Count}, pile bytes={pile.AllocatedMemoryBytes}.");
         }
 
-        /// <summary>
-        /// Tracks conversation for the given collection of <paramref name="frames"/>.
-        /// </summary>
-        /// <param name="frames">A collection of frames to be processed.</param>
-        /// <returns>A collection of conversations. Each conversation is represented as group with conversationas a key and related frames as values.</returns>
-        public static IEnumerable<Frame> TrackConversations(IEnumerable<Frame> frames, out IConversationTable conversations)
-        {
-            var tracker = new ConversationTracker();
-            var _conversations = new Dictionary<int, Conversation>();
-            var observer = new Ndx.Utils.Observer<Conversation>(x => _conversations.Add(x.ConversationId, x));
-            using (var t = tracker.Subscribe(observer))
-            {
-                var labeledFrames = frames.Select(x => tracker.ProcessFrame(x)).Where(x => x != null).ToList();
-                tracker.Complete();
-                conversations = _conversations;
-                return labeledFrames;
-            }
-        }
 
         /// <summary>
         /// Saves the conversation dictionary to the specified file. 
@@ -84,26 +42,9 @@ namespace Ndx.Shell.Console
         /// <param name="path">Path to the output file. The file must not exists otherwise an exception is thrown.</param>
         public static void WriteTo(IConversationTable ctable, IFrameTable ftable, string path)
         {
-            using (var archive = ZipFile.Open(path, ZipArchiveMode.Create))
-            {
-                var ctableEntry = archive.CreateEntry("ctable", CompressionLevel.Fastest);
-                using (var ctableOutput = ctableEntry.Open())
-                {
-                    foreach (var item in ctable)
-                    {
-                        item.Value.WriteDelimitedTo(ctableOutput);
-                    }
-                }
-                var ftableEntry = archive.CreateEntry("ftable", CompressionLevel.Fastest);
-                using (var ftableOutput = ftableEntry.Open())
-                {
-                    foreach(var item in ftable)
-                    {
-                        item.Value.WriteDelimitedTo(ftableOutput);
-                    }
-                }
-            }
+
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -143,48 +84,18 @@ namespace Ndx.Shell.Console
             return conversation.Packets.Select(p => ftableProvider(Conversation.PacketSource(p))[Conversation.PacketNumber(p)]);
         }
 
+
         public static void MergeFrom(string path, IDictionary<int,Conversation> ctable, IFrameTable ftable)
         {
             using (var archive = ZipFile.OpenRead(path))
             {
                 if (ctable != null)
                 {
-                    var ctableEntry = archive.GetEntry("ctable");
-                    using (var ctableInput = ctableEntry.Open())
-                    {
-                        while (true)
-                        {
-                            var conversation = Conversation.Parser.ParseDelimitedFrom(ctableInput);
-                            if (conversation != null)
-                            {
-                                ctable[conversation.ConversationId] = conversation;
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        }
-                    }
+                    archive.MergeFrom("conversations", ctable, Conversation.Parser, x => x.ConversationId, x => x);
                 }
                 if (ftable != null)
                 {
-                    var ftableEntry = archive.GetEntry("ftable");
-                    using (var ftableInput = ftableEntry.Open())
-                    {
-                        while (true)
-                        {
-
-                            var frame = Frame.Parser.ParseDelimitedFrom(ftableInput);
-                            if (frame != null)
-                            {
-                                ftable[frame.FrameNumber] = frame;
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        }
-                    }
+                    archive.MergeFrom("frames", ftable, Frame.Parser, x => x.ConversationId, x => x);
                 }
             }
         }

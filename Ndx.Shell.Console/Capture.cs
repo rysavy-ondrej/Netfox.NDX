@@ -1,46 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reactive.Linq;
+using System.Threading.Tasks;
 using Ndx.Captures;
 using Ndx.Model;
-using PacketDotNet;
-using System.Linq;
 
 namespace Ndx.Shell.Console
 {
-    public static class Capture
-    {      
-
+    public class Capture
+    {
+        FileInfo m_fileInfo;
+        public Capture(string path)
+        {
+            m_fileInfo = new FileInfo(path);
+        }
         /// <summary>
         /// Reads frames for the specified collection of capture files.
         /// </summary>
         /// <param name="captures">Collection of capture files.</param>
         /// <returns>A collection of frames read sequentially from the specified capture files.</returns>
-        public static IEnumerable<Frame> Select(IEnumerable<string> captures, Action<string,int> progressCallback = null)
+        public static IObservable<Frame> ReadAllFrames(IEnumerable<Capture> captures, Action<string,int> progressCallback = null)
         {
-            foreach (var capture in captures)
-            {
-                int frameCount = 0;
-                foreach (var frame in PcapReader.ReadFile(capture))
-                {
-                    frameCount++;
-                    yield return frame;                    
-                }
-                progressCallback?.Invoke(capture, frameCount);
-            }
-        }
-
-        public static IEnumerable<Frame> Select(string capture)
-        {
-                foreach (var frame in PcapReader.ReadFile(capture))
-                {
-                    yield return frame;
-                }
-        }
-
-        public static void WriteAllFrames(string capturefile, IEnumerable<Frame> frames, DataLinkType link = DataLinkType.Ethernet)
-        {
-            LibPcapFile.WriteAllFrames(capturefile, link, frames);
+            return captures.ToObservable().SelectMany(x => PcapReader.ReadFile(x.m_fileInfo.FullName));
         }
     }
 }

@@ -8,6 +8,7 @@ using Ndx.Captures;
 using System.Linq;
 using Ndx.Model;
 using PacketDotNet;
+using System.Reactive.Linq;
 
 namespace Ndx.Test
 {
@@ -33,12 +34,12 @@ namespace Ndx.Test
             var buffer = new ActionBlock<Frame>((x) => count++);
             var input = @"C:\Users\Ondrej\Documents\Network Monitor 3\Captures\2adc3aaa83b46ef8d86457e0209e0aa9.cap";
             var items = PcapReader.ReadFile(input);
-            foreach (var item in items)
+            var task = items.ForEachAsync(async item =>
             {
-                buffer.Post(item);
-            }
+                await buffer.SendAsync(item);
+            });
             buffer.Complete();
-            Task.WaitAll(buffer.Completion);
+            Task.WaitAll(task, buffer.Completion);
         }
 
 
@@ -49,21 +50,18 @@ namespace Ndx.Test
             var input = Path.Combine(testContext.TestDirectory, @"..\..\..\TestData\CookedLink.cap");
             var items = PcapReader.ReadFile(input);
             var count = items.Count();
-            foreach (var p in items.Select(x => x.Parse()))
-            {
-                Console.WriteLine(p);
-            }
+            items.Select(x => x.Parse()).ForEach(p => Console.WriteLine(p));
         }
 
 
         [Test]
-        public void ReadLinuxLinkTypeAndStoreAsEthernet()
+        public async Task ReadLinuxLinkTypeAndStoreAsEthernet()
         {
             var input = Path.Combine(testContext.TestDirectory, @"..\..\..\TestData\CookedLink.cap");
             var output = Path.Combine(testContext.TestDirectory, @"..\..\..\TestData\CookedEthernet.cap");
             var items = PcapReader.ReadFile(input);
             var frames = items.Select(x => Frame.EthernetRaw(x.Parse(), x.FrameNumber, 0, x.TimeStamp));
-            LibPcapFile.WriteAllFrames(output, DataLinkType.Ethernet, frames);
+            await LibPcapFile.WriteAllFramesAsync(output, DataLinkType.Ethernet, frames);
         }
     }
 }

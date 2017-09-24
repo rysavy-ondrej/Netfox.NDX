@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reactive.Linq;
 using Ndx.Model;
 using Ndx.Shell.Commands;
 using PacketDotNet;
@@ -65,12 +66,14 @@ namespace ExportIec104
             {
                 return ExtractIefPdus(frame).Select((byte[] arg1, int arg2) => Tuple.Create(index, arg2, arg1));
             });
-            foreach(var pdu in pdus)
+
+            var task = pdus.ForEachAsync(pdu =>
             {
-                var path = Path.Combine(OutputPath, $"{(pdu.Item1+1).ToString("D4")}-{(pdu.Item2+1).ToString("D2")}.raw");
+                var path = Path.Combine(OutputPath, $"{(pdu.Item1 + 1).ToString("D4")}-{(pdu.Item2 + 1).ToString("D2")}.raw");
                 File.WriteAllBytes(path, pdu.Item3);
                 this.WriteObject(path);
-            }
+            });
+            task.Wait();
         }
     }
 }

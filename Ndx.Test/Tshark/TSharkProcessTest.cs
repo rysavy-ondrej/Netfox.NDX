@@ -46,13 +46,13 @@ namespace Ndx.Test
         }
 
 
-        void DecodeProtocol(string path)
+        async Task DecodeProtocol(string path)
         {
             var process = new TSharkProtocolDecoderProcess(new[] { "dns", "http" });
-            DecodeCapture(path, process, ".proto");
+            await DecodeCaptureAsync(path, process, ".proto");
         }
 
-        void DecodeFields(string path)
+        async Task DecodeFields(string path)
         {
             var fields = new[] {
                 "http.request.method", "http.request.uri", "http.request.version", "http.host",
@@ -65,10 +65,10 @@ namespace Ndx.Test
                 "dns.a", "dns.cname", "dns.id", "dns.ns",
             };
             var process = new TSharkFieldDecoderProcess(fields);
-            DecodeCapture(path, process, ".fields");
+            await DecodeCaptureAsync(path, process, ".fields");
         }
 
-        void DecodeCapture(string path, TSharkProcess tsharkProcess, string prefix)
+        async Task DecodeCaptureAsync(string path, TSharkProcess tsharkProcess, string prefix)
         {
             var tsharkBlock = new TSharkBlock(tsharkProcess);
 
@@ -96,7 +96,7 @@ namespace Ndx.Test
             tsharkBlock.LinkTo(consumer, new DataflowLinkOptions() { PropagateCompletion = true });
 
             var frames = Captures.PcapReader.ReadFile(path);
-            tsharkBlock.Consume(frames);
+            await tsharkBlock.ConsumeAsync(frames);
             consumer.Completion.Wait();
             outputTxtfile.Close();
             outputPbfStream.Dispose();

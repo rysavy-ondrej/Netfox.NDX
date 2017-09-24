@@ -14,9 +14,13 @@ using System.Runtime.CompilerServices;
 
 namespace Ndx.Model
 {
-    [DebuggerDisplay("[FlowKey: ???]")]
+    [DebuggerDisplay("[FlowKey: {IpProtocol} {SourceIpAddress}:{SourcePort} -> {DestinationIpAddress}:{DestinationPort}]")]
     public partial class FlowKey : IEquatable<FlowKey>
     {
+
+        private static readonly FlowKey m_none = new FlowKey() { IpProtocol = IpProtocolType.None, SourceIpAddress = IPAddress.None, SourcePort = 0, DestinationIpAddress = IPAddress.None, DestinationPort = 0 };
+        public static FlowKey None => m_none;
+
         public IPAddress SourceIpAddress
         {
             get => this.sourceAddress_.IsEmpty ? IPAddress.None : new IPAddress(this.sourceAddress_.ToByteArray());
@@ -31,8 +35,8 @@ namespace Ndx.Model
 
         public ushort SourcePort
         {
-            get => this.sourceSelector_.IsEmpty ? (ushort)0 : BitConverter.ToUInt16(this.sourceSelector_.ToByteArray(),0);
-            set => this.sourceSelector_= Google.Protobuf.ByteString.CopyFrom(BitConverter.GetBytes(value));
+            get => this.sourceSelector_.IsEmpty ? (ushort)0 : BitConverter.ToUInt16(this.sourceSelector_.ToByteArray(), 0);
+            set => this.sourceSelector_ = Google.Protobuf.ByteString.CopyFrom(BitConverter.GetBytes(value));
         }
         public ushort DestinationPort
         {
@@ -41,7 +45,7 @@ namespace Ndx.Model
         }
         public PhysicalAddress SourceMacAddress
         {
-            get => this.sourceAddress_.IsEmpty ? PhysicalAddress.None: new PhysicalAddress(sourceAddress_.ToByteArray());
+            get => this.sourceAddress_.IsEmpty ? PhysicalAddress.None : new PhysicalAddress(sourceAddress_.ToByteArray());
             set => this.sourceAddress_ = Google.Protobuf.ByteString.CopyFrom(value.GetAddressBytes());
         }
         public PhysicalAddress DestinationMacAddress
@@ -63,7 +67,7 @@ namespace Ndx.Model
                 }
             }
             set
-            {                
+            {
                 var bytes = value.Address.GetAddressBytes().Concat(BitConverter.GetBytes(value.Port)).ToArray();
                 this.sourceAddress_ = Google.Protobuf.ByteString.CopyFrom(bytes);
             }
@@ -90,7 +94,7 @@ namespace Ndx.Model
 
         public IpProtocolType IpProtocol
         {
-            get => this.protocol_.IsEmpty ? IpProtocolType.None : (IpProtocolType)(BitConverter.ToInt32(protocol_.ToByteArray(),0));
+            get => this.protocol_.IsEmpty ? IpProtocolType.None : (IpProtocolType)(BitConverter.ToInt32(protocol_.ToByteArray(), 0));
             set => this.protocol_ = Google.Protobuf.ByteString.CopyFrom(BitConverter.GetBytes((Int32)value));
         }
 
@@ -114,7 +118,7 @@ namespace Ndx.Model
                 }
             }
         }
-                           
+
         /// <summary>
         /// Gets bytes that represents the current object.
         /// </summary>
@@ -169,5 +173,6 @@ namespace Ndx.Model
                 return obj?.GetHashCode() ?? 0;
             }
         }
+        public string IpFlowKeyString => $"{IpProtocol}!{SourceIpAddress}:{SourcePort}->{DestinationIpAddress}{DestinationPort}";
     }
 }

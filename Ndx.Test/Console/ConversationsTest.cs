@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
+using Ndx.Ingest;
 using Ndx.Model;
 using Ndx.Shell.Console;
 using Ndx.Utils;
@@ -22,35 +26,49 @@ namespace Ndx.Test
         static TestContext m_testContext = TestContext.CurrentContext;
         string captureFile = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap");
         string converFile = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.conv");
-        [Test]
-        public void Console_TrackConversations_Pile()
-        {
-                var maproot = Path.ChangeExtension(captureFile, "map");
-                if (!Directory.Exists(maproot)) Directory.CreateDirectory(maproot);
-                var frames = Capture.Select(captureFile);
-                var pile = new MMFPile() { DataDirectoryRoot = maproot };
-
-                pile.Start();
-                var buffer = new byte[1234];
-                var ptr1 = pile.Put(buffer);
-                var ptr2 = pile.Put(buffer);
-                var ptr3 = pile.Put(buffer);
-                var got = pile.Get(ptr1) as byte[];
-
-                var ctable = new Dictionary<int, PilePointer>();
-                var ftable = new Dictionary<int, PilePointer>();
-                Conversations.TrackConversations(frames, pile, ctable, ftable);
-                
-                pile.WaitForCompleteStop();
-                pile.Dispose();
-        }
-
+       
         [Test]
         public void Conversations_TrackConversations_Linq()
         {
-            var frames = Capture.Select(captureFile);
-            var metaFrames = Conversations.TrackConversations(frames, out IDictionary<int, Conversation> conversations);
-                                                
+            var frames = Capture.ReadAllFrames(new[] { new Capture(captureFile) });
+            var tracker = new ConversationTracker();
+            var _conversations = new Dictionary<int, Conversation>();
+            var observer = new Ndx.Utils.Observer<Conversation>(x => _conversations.Add(x.ConversationId, x));
+            using (var t = tracker.Subscribe(observer))
+            {
+                var labeledFrames = frames.Select(x => { var c = tracker.ProcessFrame(x); x.ConversationId = c.ConversationId; return x; }).Where(x => x != null).ToList();
+                tracker.Complete();
+            }
+        }
+
+        [Test]
+        public void Conversations_TrackConversations_WriteTo()
+        {
+            var zipfile = Path.ChangeExtension(captureFile, "zip");
+            var frames = Capture.ReadAllFrames(new[] { new Capture(captureFile) });
+
+            var conversationsTable = new Dictionary<int, Conversation>();
+
+            var tracker = new ConversationTracker();
+            Frame ProcessFrame(Frame f)
+            {
+                var c = tracker.ProcessFrame(f);
+                f.ConversationId = c.ConversationId;
+                if (!conversationsTable.ContainsKey(c.ConversationId))
+                {
+                    conversationsTable[c.ConversationId] = c;
+                }
+                return f;
+            }
+
+            var framesTable = frames.Select(ProcessFrame).Where(x => x != null).ToEnumerable().ToDictionary(x=>x.FrameNumber);
+
+            File.Delete(zipfile);
+            using (var archive = ZipFile.Open(zipfile, ZipArchiveMode.Create))
+            {
+                archive.WriteTo("conversations", conversationsTable, x => x.Value);
+                archive.WriteTo("frames", framesTable, x => x.Value);
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reactive.Linq;
 using Ndx.Captures;
 using Ndx.Decoders;
 using Ndx.TShark;
@@ -16,10 +17,8 @@ namespace Ndx.Test
             var tsharkProcess = new TSharkFieldDecoderProcess(SSH.Fields);            
             var frames = PcapReader.ReadFile(@"C:\Temp\NAS-SSH-154.0.166.83.cap");
             var packets = frames.Take(1000).Decode(tsharkProcess);
-            foreach(var packet in packets)
-            {
-                Console.WriteLine(packet);
-            }
+
+            packets.ForEach(packet => Console.WriteLine(packet));
         }
         [Test]
         public void SshDecoderTest_ProtocolDecoder()
@@ -27,10 +26,7 @@ namespace Ndx.Test
             var tsharkProcess = new TSharkProtocolDecoderProcess(new string[] { "ssh", "tcp" });
             var frames = PcapReader.ReadFile(@"C:\Temp\NAS-SSH-154.0.166.83.cap");
             var packets = frames.Take(1000).Decode(tsharkProcess).Where(x=>x.FrameProtocols.Contains("ssh"));
-            foreach (var packet in packets)
-            {
-                Console.WriteLine(packet);
-            }
+            packets.ForEach(packet => Console.WriteLine(packet));
         }
     }
 }

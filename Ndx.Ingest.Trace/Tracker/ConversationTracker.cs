@@ -14,6 +14,7 @@ using NLog;
 
 namespace Ndx.Ingest
 {
+    using IConversationTable = System.Collections.Generic.IDictionary<int, Ndx.Model.Conversation>;
     /// <summary>
     /// This class tracks the conversation at the transport layer. Communication that has not transport layer (UDP or TCP) is simply ignored. 
     /// </summary>
@@ -98,37 +99,64 @@ namespace Ndx.Ingest
         }
 
         /// <summary>
-        /// Gets the <see cref="Conversation"/> and <see cref="MetaFrame"/> for the given <see cref="Frame"/>.
+        /// This method is called for each frame and it updates the frame's conversation and labels the frame with <see cref="Frame.ConversationId"/>.
         /// </summary>
-        /// <param name="rawframe"></param>
-        /// <returns></returns>
-        public Frame ProcessFrame(Frame rawframe)
+        /// <param name="frame">Frame to be processed.</param>
+        /// <returns>Conversation object that owns the input frame.</returns>
+        public Conversation ProcessFrame(Frame frame)
         {
-            if (rawframe != null)
+            if (frame == null) return null;
+            void UpdateConversation(TransportPacket transportPacket, FlowAttributes flowAttributes, IList<long> flowPackets)
             {
-                try
+                flowAttributes.Octets += transportPacket.PayloadPacket.BytesHighPerformance.Length;
+                flowAttributes.Packets += 1;
+                flowAttributes.FirstSeen = Math.Min(flowAttributes.FirstSeen, frame.TimeStamp);
+                flowAttributes.LastSeen = Math.Max(flowAttributes.FirstSeen, frame.TimeStamp);
+                flowAttributes.MaximumInterarrivalTime = 0;
+                flowAttributes.MaximumPayloadSize = Math.Max(flowAttributes.MaximumPayloadSize, transportPacket.PayloadPacket.BytesHighPerformance.Length);
+                flowAttributes.MeanInterarrivalTime = 0;
+                flowAttributes.MeanPayloadSize = (int) (flowAttributes.Octets / flowAttributes.Packets);
+                flowAttributes.MinimumInterarrivalTime = 0;
+                flowAttributes.MinimumPayloadSize = Math.Min(flowAttributes.MaximumPayloadSize, transportPacket.PayloadPacket.BytesHighPerformance.Length);
+                flowAttributes.StdevInterarrivalTime = 0;
+                flowAttributes.StdevPayloadSize = 0;
+
+                // TODO: Compute other attributes
+
+                var networkPacket = transportPacket.ParentPacket;
+                var datalinkPacket = networkPacket.ParentPacket;
+                var applicationPacket = transportPacket.PayloadPacket;
+
+                flowPackets.Add(frame.FrameNumber);
+            }
+
+            try
+            {
+                var startNewConversation = false;
+                var packet = Packet.ParsePacket(LinkLayers.Ethernet, frame.Data.ToByteArray());
+                var flowkey = packet?.GetFlowKey(out startNewConversation) ?? FlowKey.None;
+                var transportPacket = (TransportPacket)packet.Extract(typeof(TransportPacket));
+                if (startNewConversation)
                 {
-                    var analyzer = new PacketAnalyzer(this, rawframe);
-                    var packet = Packet.ParsePacket(LinkLayers.Ethernet, rawframe.Data.ToByteArray());
 
-                    // Workaround the BUG in PacketDotNET:
-                    if (packet.PayloadPacket != null) packet.PayloadPacket.ParentPacket = packet;
-
-                    packet.Accept(analyzer);
-
-                    return analyzer.Frame;
+                    var conversation = CreateNetworkConversation(flowkey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
+                    UpdateConversation(transportPacket, flowAttributes, flowPackets);
+                    return conversation;
                 }
-                catch (Exception e)
+                else
                 {
-                    m_logger.Error($"AcceptMessage: Error when processing frame {rawframe.FrameNumber}: {e}. Frame is ignored.");
-                    return null;
+                    var conversation = GetNetworkConversation(flowkey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
+                    UpdateConversation(transportPacket, flowAttributes, flowPackets);
+                    return conversation;
                 }
             }
-            else
+            catch (Exception e)
             {
+                m_logger.Error($"AcceptMessage: Error when processing frame {frame.FrameNumber}: {e}. Frame is ignored.");
                 return null;
             }
         }
+
 
         /// <summary>
         /// This method causes that all active conversations will be completed.
@@ -182,11 +210,26 @@ namespace Ndx.Ingest
         /// <returns></returns>
         internal Conversation CreateNetworkConversation(FlowKey flowKey, int parentConversationId, out FlowAttributes flowAttributes, out IList<long> flowPackets, out FlowOrientation flowOrientation)
         {
-            lock(m_lockObject)
-            {
-                m_activeConversations.Remove(flowKey);
-            }
+            RemoveConversations(m_activeConversations, flowKey, parentConversationId);
             return GetNetworkConversation(flowKey, parentConversationId, out flowAttributes, out flowPackets, out flowOrientation);
+        }
+
+        private void RemoveConversations(Dictionary<FlowKey, Conversation> dictionary, FlowKey flowKey, int parentConversationId)
+        {
+            lock (m_lockObject)
+            {
+                if (dictionary.TryGetValue(flowKey, out var conversation))
+                {
+                    dictionary.Remove(flowKey);
+                    SendConversation(conversation);
+                }
+                else
+                if (dictionary.TryGetValue(flowKey.Swap(), out conversation))
+                {
+                    dictionary.Remove(flowKey.Swap());
+                    SendConversation(conversation); 
+                }
+            }
         }
 
         private object m_lockObject = new object();
@@ -294,6 +337,5 @@ namespace Ndx.Ingest
 
         public int TotalConversations => m_totalConversationCounter;
         public int ActiveConversations => m_activeConversations.Count;
-
     }
 }
