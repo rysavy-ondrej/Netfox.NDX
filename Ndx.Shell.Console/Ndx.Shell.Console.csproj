@@ -141,8 +141,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Capture.cs" />
-    <Compile Include="Conversations.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="Formatter.cs" />
     <Compile Include="Program.cs" />

@@ -31,8 +31,8 @@ namespace Ndx.Test
             var frameCount = 0;
 
             var source = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap");
-            var tracker = new ConversationTracker();
-            var filter = new TransformBlock<Frame, Frame>(x=> { var c = tracker.ProcessFrame(x); x.ConversationId = c.ConversationId; return x; });
+            var tracker = new ConversationTracker<Frame>(f => { var k = f.GetFlowKey(out bool snc); return (k, snc); }, ConversationTracker<Frame>.UpdateConversation);
+            var filter = new TransformBlock<Frame, Frame>(x=> { var c = tracker.ProcessRecord(x); x.ConversationId = c.ConversationId; return x; });
             var sink = new ActionBlock<Frame>(x => { frameCount++; conversations.Add(x.ConversationId); });
             filter.LinkTo(sink, new DataflowLinkOptions() { PropagateCompletion = true });
 
@@ -52,8 +52,8 @@ namespace Ndx.Test
             var conversations = new HashSet<int>();
             var frameCount = 0;
             var source = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap");
-            var tracker = new ConversationTracker();
-            await PcapFile.ReadFile(source).Select(x=> { var c = tracker.ProcessFrame(x); x.ConversationId = c.ConversationId; return x; }).ForEachAsync(x=> { frameCount++; conversations.Add(x.ConversationId); });
+            var tracker = new ConversationTracker<Frame>(f => { var k = f.GetFlowKey(out bool snc); return (k, snc); }, ConversationTracker<Frame>.UpdateConversation);
+            await PcapFile.ReadFile(source).Select(x=> { var c = tracker.ProcessRecord(x); x.ConversationId = c.ConversationId; return x; }).ForEachAsync(x=> { frameCount++; conversations.Add(x.ConversationId); });
             Assert.AreEqual(3, conversations.Count);
             Assert.AreEqual(43, frameCount);
         }

@@ -223,8 +223,7 @@ namespace Ndx.Model {
       }
     }
 
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as FlowKey);
     }

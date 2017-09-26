@@ -1,8 +1,8 @@
-﻿# Ndx.Metacap
+﻿# Ndx.Model
 
-Library for manipulation of packet trace files. In comparison to other similar libraries the main idea here is to 
-create a list of conversations first and then apply additional processing to selected conversation only.
-
+The library provides various data models used in NDX solution. All models are defined
+as protocol buffer objects which simplifies their implementation and provides the efficient 
+serialization and deserialization operations.
 
 ## Suport for multiple PCAPs
 It is possible to have a collection of PCAP files as the source for all operations offered by NDX.

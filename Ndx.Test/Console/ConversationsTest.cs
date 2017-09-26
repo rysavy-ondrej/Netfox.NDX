@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using Google.Protobuf;
+using Ndx.Captures;
 using Ndx.Ingest;
 using Ndx.Model;
 using Ndx.Shell.Console;
@@ -31,12 +32,12 @@ namespace Ndx.Test
         [Test]
         public void Conversations_TrackConversations_Linq()
         {
-            var frames = Capture.ReadAllFrames(new[] { new Capture(captureFile) });
-            var tracker = new ConversationTracker();
+            var frames = PcapFile.ReadFile(captureFile);
+            var tracker = new ConversationTracker<Frame>(f => { var k = f.GetFlowKey(out bool snc); return (k, snc); }, ConversationTracker<Frame>.UpdateConversation);
             var observer = new Ndx.Utils.Observer<Conversation>(Console.WriteLine);
             using (tracker.Conversations.Subscribe(observer))
             {
-                frames.Select(x => { var c = tracker.ProcessFrame(x); x.ConversationId = c.ConversationId; return x; }).Where(x => x != null).ForEach(Console.WriteLine);
+                frames.Select(x => { var c = tracker.ProcessRecord(x); x.ConversationId = c.ConversationId; return x; }).Where(x => x != null).ForEach(Console.WriteLine);
                 tracker.Complete();
             }
             
@@ -51,13 +52,13 @@ namespace Ndx.Test
             using (var conversationStream = File.Create(conversationsFilename))
             using (var frameStream = File.Create(framesFilename))
             {
-                var tracker = new ConversationTracker();
+                var tracker = new ConversationTracker<Frame>(f => { var k = f.GetFlowKey(out bool snc); return (k, snc); }, ConversationTracker<Frame>.UpdateConversation);
                 tracker.Conversations.Subscribe(conversation => conversation.WriteDelimitedTo(conversationStream));
 
-                var frames = Capture.ReadAllFrames(new[] { new Capture(captureFile) });
+                var frames = PcapFile.ReadFile(captureFile);
                 Frame ProcessFrame(Frame f)
                 {
-                    var c = tracker.ProcessFrame(f);
+                    var c = tracker.ProcessRecord(f);
                     f.ConversationId = c.ConversationId;
                     return f;
                 }

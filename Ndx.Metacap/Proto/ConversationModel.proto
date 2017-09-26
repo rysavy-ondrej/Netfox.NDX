@@ -41,20 +41,6 @@ message FlowAttributes {
 }
 
 /// <summary>
-///	This class is used to reference packets within conversations.
-///	</summary>
-message PacketReference {
-	/// <summary>
-	///	The id of block in which the packet is located.
-	///	<summary>
-	int32 BlockId = 1;
-	/// <summary>
-	///	The index within the block of packets.
-	///	<summary>
-	int32 Index = 2;
-}
-
-/// <summary>
 ///	Stores the properties of a single conversation.
 /// </summary>
 message Conversation {
