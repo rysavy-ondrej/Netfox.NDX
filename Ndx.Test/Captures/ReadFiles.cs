@@ -22,17 +22,17 @@ namespace Ndx.Test
         [Test]
         public void ReadNetmonEnumerable()
         {
-            var input = Path.Combine(testContext.TestDirectory, @"..\..\..\TestData\http.cap");
+            var input = Path.Combine(testContext.TestDirectory, @"..\..\..\TestData\http.pcap");
             var items = PcapFile.ReadFile(input);
-            var count = items.Count();
+            items.ForEach(Console.WriteLine);
         }
 
         [Test]
         public void ReadNetmonDataflow()
         {
+            var input = Path.Combine(testContext.TestDirectory, @"..\..\..\TestData\http.pcap");
             var count = 0;
             var buffer = new ActionBlock<Frame>((x) => count++);
-            var input = @"C:\Users\Ondrej\Documents\Network Monitor 3\Captures\2adc3aaa83b46ef8d86457e0209e0aa9.cap";
             var items = PcapFile.ReadFile(input);
             var task = items.ForEachAsync(async item =>
             {

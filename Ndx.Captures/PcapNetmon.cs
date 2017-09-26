@@ -38,18 +38,26 @@ namespace Ndx.Captures
         /// <param name="stream">Stream in pcap-next-generation format</param>
         /// <returns></returns>
         public Frame Read()
-        {   
-            m_reader.BaseStream.Seek((long)m_frameTableOffsets[m_frameNumber], SeekOrigin.Begin);
-            var frameStruct = FrameLayout.Read(m_reader);
-            return new Frame()
-            {                
-                TimeStamp = (m_header.TimeStamp.ToDateTime() + TimeSpan.FromMilliseconds(((double)frameStruct.TimeOffsetLocal) / 1000)).ToBinary(),
-                LinkType = GetLinkLayers((MediaType)frameStruct.MediaType),
-                FrameOffset = frameStruct.FrameDataOffset,
-                Bytes = frameStruct.FrameData,
-                ProcessId = frameStruct.ProcessInfoIndex < m_processInfoTable.Length ? m_processInfoTable[frameStruct.ProcessInfoIndex].PID : 0,
-                ProcessName = frameStruct.ProcessInfoIndex < m_processInfoTable.Length ? m_processInfoTable[frameStruct.ProcessInfoIndex].ProcessName : String.Empty
-            };
+        {
+            int frameNumber = m_frameNumber++;
+            if (frameNumber < m_frameTableOffsets.Length)
+            {
+                m_reader.BaseStream.Seek(m_frameTableOffsets[frameNumber], SeekOrigin.Begin);
+
+                var frameStruct = FrameLayout.Read(m_reader);
+                return new Frame()
+                {
+                    FrameNumber = frameNumber,
+                    FrameLength = (int)frameStruct.FrameLength,
+                    TimeStamp = (m_header.TimeStamp.ToDateTime() + TimeSpan.FromMilliseconds(((double)frameStruct.TimeOffsetLocal) / 1000)).ToBinary(),
+                    LinkType = GetLinkLayers((MediaType)frameStruct.MediaType),
+                    FrameOffset = frameStruct.FrameDataOffset,
+                    Bytes = frameStruct.FrameData,
+                    ProcessId = frameStruct.ProcessInfoIndex < m_processInfoTable.Length ? m_processInfoTable[frameStruct.ProcessInfoIndex].PID : 0,
+                    ProcessName = frameStruct.ProcessInfoIndex < m_processInfoTable.Length ? m_processInfoTable[frameStruct.ProcessInfoIndex].ProcessName : String.Empty
+                };
+            }
+            else return null;
         }
 
         public static DataLinkType GetLinkLayers(MediaType media)
