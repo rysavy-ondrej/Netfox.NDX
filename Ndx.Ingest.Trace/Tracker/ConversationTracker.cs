@@ -60,17 +60,23 @@ namespace Ndx.Ingest
     /// * https://www.cisco.com/c/en/us/td/docs/ios/fnetflow/command/reference/fnf_book/fnf_01.html 
     /// * https://research.utwente.nl/files/6519120/tutorial.pdf
     /// </remarks>
-    public class ConversationTracker 
+    public class ConversationTracker<TSource> 
     {
         private static Logger m_logger = LogManager.GetCurrentClassLogger();
 
         private int m_lastConversationId;
+
         private int m_initialConversationDictionaryCapacity = 1024;
+
         int m_totalConversationCounter;
 
+        Func<TSource, (FlowKey, bool)> m_getKeyFunc;
+
+        private object m_lockObject = new object();
+
+        private Func<TSource, FlowAttributes, long> m_updateFlowFunc;
 
         Subject<Conversation> m_conversationSubject;
-
 
         /// <summary>
         /// Stores conversation at network level. The key is represented as
@@ -98,8 +104,10 @@ namespace Ndx.Ingest
         /// <summary>
         /// Creates a new instance of conversation tracker. 
         /// </summary>
-        public ConversationTracker()
+        public ConversationTracker(Func<TSource, (FlowKey,bool)> getKey, Func<TSource, FlowAttributes, long> updateFlow)
         {
+            m_getKeyFunc = getKey;
+            m_updateFlowFunc = updateFlow;
             m_activeConversations = new Dictionary<FlowKey, Conversation>(m_initialConversationDictionaryCapacity);
             m_conversationSubject = new Subject<Conversation>();
         }
@@ -109,56 +117,30 @@ namespace Ndx.Ingest
         /// </summary>
         /// <param name="frame">Frame to be processed.</param>
         /// <returns>Conversation object that owns the input frame.</returns>
-        public Conversation ProcessFrame(Frame frame)
+        public Conversation ProcessRecord(TSource record)
         {
-            if (frame == null) return null;
-            void UpdateConversation(TransportPacket transportPacket, FlowAttributes flowAttributes, IList<long> flowPackets)
-            {
-                flowAttributes.Octets += transportPacket.PayloadPacket.BytesHighPerformance.Length;
-                flowAttributes.Packets += 1;
-                flowAttributes.FirstSeen = Math.Min(flowAttributes.FirstSeen, frame.TimeStamp);
-                flowAttributes.LastSeen = Math.Max(flowAttributes.FirstSeen, frame.TimeStamp);
-                flowAttributes.MaximumInterarrivalTime = 0;
-                flowAttributes.MaximumPayloadSize = Math.Max(flowAttributes.MaximumPayloadSize, transportPacket.PayloadPacket.BytesHighPerformance.Length);
-                flowAttributes.MeanInterarrivalTime = 0;
-                flowAttributes.MeanPayloadSize = (int) (flowAttributes.Octets / flowAttributes.Packets);
-                flowAttributes.MinimumInterarrivalTime = 0;
-                flowAttributes.MinimumPayloadSize = Math.Min(flowAttributes.MaximumPayloadSize, transportPacket.PayloadPacket.BytesHighPerformance.Length);
-                flowAttributes.StdevInterarrivalTime = 0;
-                flowAttributes.StdevPayloadSize = 0;
-
-                // TODO: Compute other attributes
-
-                var networkPacket = transportPacket.ParentPacket;
-                var datalinkPacket = networkPacket.ParentPacket;
-                var applicationPacket = transportPacket.PayloadPacket;
-
-                flowPackets.Add(frame.FrameNumber);
-            }
-
+            if (record == null) return null;
             try
-            {
-                var startNewConversation = false;
-                var packet = Packet.ParsePacket(LinkLayers.Ethernet, frame.Data.ToByteArray());
-                var flowkey = packet?.GetFlowKey(out startNewConversation) ?? FlowKey.None;
-                var transportPacket = (TransportPacket)packet.Extract(typeof(TransportPacket));
+            {                
+                (FlowKey flowkey, bool startNewConversation) = m_getKeyFunc(record);
+               
                 if (startNewConversation)
                 {
-
+                    
                     var conversation = CreateNetworkConversation(flowkey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
-                    UpdateConversation(transportPacket, flowAttributes, flowPackets);
+                    flowPackets.Add(m_updateFlowFunc(record, flowAttributes));                    
                     return conversation;
                 }
                 else
                 {
                     var conversation = GetNetworkConversation(flowkey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
-                    UpdateConversation(transportPacket, flowAttributes, flowPackets);
+                    flowPackets.Add(m_updateFlowFunc(record, flowAttributes));
                     return conversation;
                 }
             }
             catch (Exception e)
             {
-                m_logger.Error($"AcceptMessage: Error when processing frame {frame.FrameNumber}: {e}. Frame is ignored.");
+                m_logger.Error($"AcceptMessage: Error when processing record {record}: {e}. Frame is ignored.");
                 return null;
             }
         }
@@ -238,7 +220,7 @@ namespace Ndx.Ingest
             }
         }
 
-        private object m_lockObject = new object();
+
         private Conversation GetConversation(Dictionary<FlowKey, Conversation> dictionary, FlowKey flowKey, int parentConversationId, out FlowAttributes flowAttributes, out IList<long> flowPackets, out FlowOrientation flowOrientation)
         {
             lock (m_lockObject)
@@ -301,5 +283,63 @@ namespace Ndx.Ingest
 
         public int TotalConversations => m_totalConversationCounter;
         public int ActiveConversations => m_activeConversations.Count;
+
+
+
+        /// <summary>
+        /// This methods performs flow update calculations for <see cref="PacketFields"/> record source.
+        /// </summary>
+        /// <param name="packet">The packet.</param>
+        /// <param name="flowAttributes">Flow attributes to be updated.</param>
+        /// <returns>The frame number.</returns>
+        public static long UpdateConversation(PacketFields packet, FlowAttributes flowAttributes)
+        {
+            var tcplen = Int32.Parse(packet.GetFieldValue("tcp_tcp_len", "-1"));
+            var udplen = Int32.Parse(packet.GetFieldValue("udp_udp_length", "-1"));
+            var iplen = Int32.Parse(packet.GetFieldValue("ip_ip_len", "-1"));
+            var framelen = Int32.Parse(packet.GetFieldValue("frame_frame_len", "0"));
+            var payloadSize = tcplen >= 0 ? tcplen : (udplen >= 0 ? udplen : (iplen >= 0 ? iplen : framelen));
+            flowAttributes.Octets += payloadSize;
+            flowAttributes.Packets += 1;
+            flowAttributes.FirstSeen = Math.Min(flowAttributes.FirstSeen, packet.Timestamp);
+            flowAttributes.LastSeen = Math.Max(flowAttributes.FirstSeen, packet.Timestamp);
+            flowAttributes.MaximumInterarrivalTime = 0;
+            flowAttributes.MaximumPayloadSize = Math.Max(flowAttributes.MaximumPayloadSize, payloadSize);
+            flowAttributes.MeanInterarrivalTime = 0;
+            flowAttributes.MeanPayloadSize = (int)(flowAttributes.Octets / flowAttributes.Packets);
+            flowAttributes.MinimumInterarrivalTime = 0;
+            flowAttributes.MinimumPayloadSize = Math.Min(flowAttributes.MaximumPayloadSize, payloadSize);
+            flowAttributes.StdevInterarrivalTime = 0;
+            flowAttributes.StdevPayloadSize = 0;
+
+            return Int64.Parse(packet.GetFieldValue("frame_frame_number", "0"));
+        }
+
+        /// <summary>
+        /// This methods performs flow update calculations for <see cref="Frame"/> record source.
+        /// </summary>
+        /// <param name="packet">The packet.</param>
+        /// <param name="flowAttributes">Flow attributes to be updated.</param>
+        /// <returns>The frame number.</returns>
+        public static long UpdateConversation(Frame frame, FlowAttributes flowAttributes)
+        {
+            var packet = frame.Parse();
+            var transportPacket = (TransportPacket)packet.Extract(typeof(TransportPacket));
+            flowAttributes.Octets += transportPacket.PayloadPacket.BytesHighPerformance.Length;
+            flowAttributes.Packets += 1;
+            flowAttributes.FirstSeen = Math.Min(flowAttributes.FirstSeen, frame.TimeStamp);
+            flowAttributes.LastSeen = Math.Max(flowAttributes.FirstSeen, frame.TimeStamp);
+            flowAttributes.MaximumInterarrivalTime = 0;
+            flowAttributes.MaximumPayloadSize = Math.Max(flowAttributes.MaximumPayloadSize, transportPacket.PayloadPacket.BytesHighPerformance.Length);
+            flowAttributes.MeanInterarrivalTime = 0;
+            flowAttributes.MeanPayloadSize = (int)(flowAttributes.Octets / flowAttributes.Packets);
+            flowAttributes.MinimumInterarrivalTime = 0;
+            flowAttributes.MinimumPayloadSize = Math.Min(flowAttributes.MaximumPayloadSize, transportPacket.PayloadPacket.BytesHighPerformance.Length);
+            flowAttributes.StdevInterarrivalTime = 0;
+            flowAttributes.StdevPayloadSize = 0;
+
+            return frame.FrameNumber;
+        }
+
     }
 }

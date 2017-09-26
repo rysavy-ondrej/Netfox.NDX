@@ -68,7 +68,7 @@
     <Compile Include="LibPcapStream.cs" />
     <Compile Include="PcapFile.cs" />
     <Compile Include="PcapJsonStream.cs" />
-    <Compile Include="PcapNetmon.cs" />
+    <Compile Include="PcapNetmonStream.cs" />
     <Compile Include="PcapNg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Readme.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
