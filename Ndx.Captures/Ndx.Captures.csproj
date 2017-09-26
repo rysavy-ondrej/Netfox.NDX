@@ -33,6 +33,10 @@
     <Reference Include="Google.Protobuf, Version=3.3.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.3.0\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Ndx.Shell.Console\References\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PacketDotNet, Version=0.13.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PacketDotNet.Netfox.0.13.0.3\lib\net35\PacketDotNet.dll</HintPath>
     </Reference>
@@ -61,10 +65,11 @@
   <ItemGroup>
     <Compile Include="CaptureStream.cs" />
     <Compile Include="PayloadHeader.cs" />
-    <Compile Include="LibPcapFile.cs" />
+    <Compile Include="LibPcapStream.cs" />
+    <Compile Include="PcapFile.cs" />
+    <Compile Include="PcapJsonStream.cs" />
     <Compile Include="PcapNetmon.cs" />
     <Compile Include="PcapNg.cs" />
-    <Compile Include="PcapReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

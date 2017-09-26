@@ -10,20 +10,26 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Ndx.Model;
+using PacketDotNet;
 
 namespace Ndx.Captures
 {
-    public class PcapNetmon
+    public class PcapNetmonStream
     {
-        /// <summary>
-        /// Reads network capture file and returns the raw blocks in the order they were written
-        /// </summary>
-        /// <param name="filename">Path to the file in pcap-next-generation (.pcapng) format</param>
-        /// <returns></returns>
-        public static IEnumerable<FrameRecord> ReadForward(string filename)
+        BinaryReader m_reader;
+        int m_frameNumber;
+        LinkType m_network;
+        uint[] m_frameTableOffsets;
+        CapFileHeader m_header;
+        ProcessInfo[] m_processInfoTable;
+
+        public PcapNetmonStream(Stream stream)
         {
-            var stream = File.OpenRead(filename);
-            return ReadForward(stream);
+            m_reader = new BinaryReader(stream);
+            m_header = CapFileHeader.ReadFrom(m_reader);
+            m_processInfoTable = ReadProcessInfoTable(m_header, m_reader);
+            m_network = (LinkType)m_header.MacType;
+            m_frameTableOffsets = ReadFrameTable(m_reader, m_header);
         }
 
         /// <summary>
@@ -31,31 +37,30 @@ namespace Ndx.Captures
         /// </summary>
         /// <param name="stream">Stream in pcap-next-generation format</param>
         /// <returns></returns>
-        public static IEnumerable<FrameRecord> ReadForward(Stream stream)
+        public Frame Read()
+        {   
+            m_reader.BaseStream.Seek((long)m_frameTableOffsets[m_frameNumber], SeekOrigin.Begin);
+            var frameStruct = FrameLayout.Read(m_reader);
+            return new Frame()
+            {                
+                TimeStamp = (m_header.TimeStamp.ToDateTime() + TimeSpan.FromMilliseconds(((double)frameStruct.TimeOffsetLocal) / 1000)).ToBinary(),
+                LinkType = GetLinkLayers((MediaType)frameStruct.MediaType),
+                FrameOffset = frameStruct.FrameDataOffset,
+                Bytes = frameStruct.FrameData,
+                ProcessId = frameStruct.ProcessInfoIndex < m_processInfoTable.Length ? m_processInfoTable[frameStruct.ProcessInfoIndex].PID : 0,
+                ProcessName = frameStruct.ProcessInfoIndex < m_processInfoTable.Length ? m_processInfoTable[frameStruct.ProcessInfoIndex].ProcessName : String.Empty
+            };
+        }
+
+        public static DataLinkType GetLinkLayers(MediaType media)
         {
-            using (var reader = new BinaryReader(stream))
+            switch (media)
             {
-                var capHdr = CapFileHeader.ReadFrom(reader);
-                var processInfoTable = ReadProcessInfoTable(capHdr, reader);
-
-                var linkType = (LinkType)capHdr.MacType;
-
-                uint[] frameTableOffsets = ReadFrameTable(reader, capHdr);
-                // read frames
-                for (int i = 0; i < frameTableOffsets.Length; i++)
-                {
-                    stream.Seek((long)frameTableOffsets[i], SeekOrigin.Begin);
-                    var frameStruct = FrameLayout.Read(reader);
-                    yield return new FrameRecord()
-                    {
-                        Timestamp = capHdr.TimeStamp.ToDateTime() + TimeSpan.FromMilliseconds(((double)frameStruct.TimeOffsetLocal) / 1000),
-                        MediaType = (MediaType)frameStruct.MediaType,
-                        DataOffset = frameStruct.FrameDataOffset,
-                        Data = frameStruct.FrameData,
-                        Pid = frameStruct.ProcessInfoIndex < processInfoTable.Length ? processInfoTable[frameStruct.ProcessInfoIndex].PID : 0,
-                        ProcessName = frameStruct.ProcessInfoIndex < processInfoTable.Length ? processInfoTable[frameStruct.ProcessInfoIndex].ProcessName : String.Empty
-                    };
-                }
+                case MediaType.Ethernet: return DataLinkType.Ethernet;
+                case MediaType.ATM: return DataLinkType.AtmRfc1483;
+                case MediaType.Wifi: return DataLinkType.Ieee80211;
+                default:
+                    return DataLinkType.Null;
             }
         }
 

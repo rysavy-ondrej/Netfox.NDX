@@ -11,6 +11,8 @@ using System.Threading.Tasks.Dataflow;
 using System.Threading;
 using PacketDotNet;
 using NLog;
+using System.Reactive.Subjects;
+using System.Reactive.Linq;
 
 namespace Ndx.Ingest
 {
@@ -58,13 +60,17 @@ namespace Ndx.Ingest
     /// * https://www.cisco.com/c/en/us/td/docs/ios/fnetflow/command/reference/fnf_book/fnf_01.html 
     /// * https://research.utwente.nl/files/6519120/tutorial.pdf
     /// </remarks>
-    public class ConversationTracker : IObservable<Conversation>
+    public class ConversationTracker 
     {
         private static Logger m_logger = LogManager.GetCurrentClassLogger();
 
         private int m_lastConversationId;
         private int m_initialConversationDictionaryCapacity = 1024;
         int m_totalConversationCounter;
+
+
+        Subject<Conversation> m_conversationSubject;
+
 
         /// <summary>
         /// Stores conversation at network level. The key is represented as
@@ -95,7 +101,7 @@ namespace Ndx.Ingest
         public ConversationTracker()
         {
             m_activeConversations = new Dictionary<FlowKey, Conversation>(m_initialConversationDictionaryCapacity);
-            m_observers = new List<IObserver<Conversation>>();
+            m_conversationSubject = new Subject<Conversation>();
         }
 
         /// <summary>
@@ -281,59 +287,17 @@ namespace Ndx.Ingest
 
         private void SendConversation(Conversation conversation)
         {
-            var observers = m_observers;
-            foreach(var observer in observers)
-            {
-                observer.OnNext(conversation);
-            }
+                m_conversationSubject.OnNext(conversation);
+
         }
 
         private void SendCompleted()
         {
-            var observers = m_observers;
-            foreach (var observer in observers)
-            {
-                observer.OnCompleted();
-            }
+                m_conversationSubject.OnCompleted();
         }
 
-        /// <summary>
-        /// Notifies the provider that an observer is to receive notifications.
-        /// </summary>
-        /// <param name="observer">The object that is to receive notifications.</param>
-        /// <returns>A reference to an interface that allows observers to stop receiving notifications before the provider has finished sending them.</returns>
-        public IDisposable Subscribe(IObserver<Conversation> observer)
-        {
-            if (!m_observers.Contains(observer))
-                m_observers.Add(observer);
-            return new Unsubscriber(m_observers, observer);
-        }
-        #region Observable private implementation
-        /// <summary>
-        /// Stores the list of active observers.
-        /// </summary>
-        private List<IObserver<Conversation>> m_observers;
-        /// <summary>
-        /// Implements Unsubscribe pattern.
-        /// </summary>
-        private class Unsubscriber : IDisposable
-        {
-            private List<IObserver<Conversation>> m_observers;
-            private IObserver<Conversation> m_observer;
 
-            public Unsubscriber(List<IObserver<Conversation>> observers, IObserver<Conversation> observer)
-            {
-                this.m_observers = observers;
-                this.m_observer = observer;
-            }
-
-            public void Dispose()
-            {
-                if (m_observer != null && m_observers.Contains(m_observer))
-                    m_observers.Remove(m_observer);
-            }
-        }
-        #endregion
+        public IObservable<Conversation> Conversations => m_conversationSubject;
 
         public int TotalConversations => m_totalConversationCounter;
         public int ActiveConversations => m_activeConversations.Count;

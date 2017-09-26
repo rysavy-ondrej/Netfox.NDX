@@ -44,9 +44,9 @@ namespace Ndx.TShark
 
         protected override PacketFields GetResult(string line)
         {
-            return DecodeJsonLine(line);
+            return DecodeJsonLine(m_protocols, line);
         }
-        public PacketFields DecodeJsonLine(string line)
+        public static PacketFields DecodeJsonLine(IEnumerable<string> protocols, string line)
         { 
             var jsonObject = JToken.Parse(line);
             var layers = jsonObject["layers"]; 
@@ -58,7 +58,7 @@ namespace Ndx.TShark
                 FrameProtocols = (string)frame["frame_frame_protocols"]
             };
 
-            foreach (var proto in m_protocols)
+            foreach (var proto in protocols)
             {
                 var fields = layers[proto];
                 if (fields!=null)

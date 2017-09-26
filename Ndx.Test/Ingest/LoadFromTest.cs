@@ -36,7 +36,7 @@ namespace Ndx.Test
             var sink = new ActionBlock<Frame>(x => { frameCount++; conversations.Add(x.ConversationId); });
             filter.LinkTo(sink, new DataflowLinkOptions() { PropagateCompletion = true });
 
-            await PcapReader.ReadFile(source).ForEachAsync(async f => await filter.SendAsync(f));
+            await PcapFile.ReadFile(source).ForEachAsync(async f => await filter.SendAsync(f));
             filter.Complete();
             await sink.Completion;
             Assert.AreEqual(3, conversations.Count);
@@ -53,7 +53,7 @@ namespace Ndx.Test
             var frameCount = 0;
             var source = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap");
             var tracker = new ConversationTracker();
-            await PcapReader.ReadFile(source).Select(x=> { var c = tracker.ProcessFrame(x); x.ConversationId = c.ConversationId; return x; }).ForEachAsync(x=> { frameCount++; conversations.Add(x.ConversationId); });
+            await PcapFile.ReadFile(source).Select(x=> { var c = tracker.ProcessFrame(x); x.ConversationId = c.ConversationId; return x; }).ForEachAsync(x=> { frameCount++; conversations.Add(x.ConversationId); });
             Assert.AreEqual(3, conversations.Count);
             Assert.AreEqual(43, frameCount);
         }

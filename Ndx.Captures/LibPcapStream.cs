@@ -23,66 +23,64 @@ using Ndx.Model;
 
 namespace Ndx.Captures
 {
-    public static class LibPcapFile
+    public class LibPcapStream : IDisposable
     {
         const long UnixBaseTicks = 621355968000000000; // new DateTime(1970, 1, 1).Ticks;
         const long TickPerMicroseconds = 10; // TimeSpan.TicksPerMillisecond / 1000)
-        /// <summary>
-        /// Reads network capture file and returns the raw blocks in the order they were written
-        /// </summary>
-        /// <param name="filename">Path to the file in pcap-next-generation (.pcapng) format</param>
-        /// <returns></returns>
-        public static IEnumerable<Frame> ReadFile(string filename)
+
+        BinaryReader m_reader;
+        int m_frameNumber;
+        DataLinkType m_network;
+        public LibPcapStream(FileStream stream)
         {
-            var stream = File.OpenRead(filename);
-            return ReadForward(stream);
+            m_reader = new BinaryReader(stream);
+            ReadHeader();
         }
 
-        public static IEnumerable<Frame> ReadForward(Stream stream)
+        public void ReadHeader()
         {
-            using (var reader = new BinaryReader(stream))
+            var magicNumber = m_reader.ReadUInt32();
+            var version_major = m_reader.ReadUInt16();
+            var version_minor = m_reader.ReadUInt16();
+            var thiszone = m_reader.ReadInt32();
+            var sigfigs = m_reader.ReadUInt32();
+            var snaplen = m_reader.ReadUInt32();
+            m_network = (DataLinkType)m_reader.ReadUInt32();
+        }
+
+        public Frame Read()
+        {
+            if (m_reader.BaseStream.Position + 16 <= m_reader.BaseStream.Length)
             {
-                long length = stream.Length;
-                if (length <= (24 + 16))
-                {
-                    yield break;
-                }
-                var magicNumber = reader.ReadUInt32();
-                var version_major = reader.ReadUInt16();
-                var version_minor = reader.ReadUInt16();
-                var thiszone = reader.ReadInt32();
-                var sigfigs = reader.ReadUInt32();
-                var snaplen = reader.ReadUInt32();
-                var network = reader.ReadUInt32();
-                var frameNumber = 0;
-                while ((stream.Position + 16) < length)
-                {
-                    var tsSeconds = reader.ReadUInt32();
-                    var tsMicroseconds = reader.ReadUInt32();
-                    var ticks = UnixBaseTicks + (tsSeconds * TimeSpan.TicksPerSecond) + (tsMicroseconds * TickPerMicroseconds);
-                    var includedLength = reader.ReadUInt32();
-                    var originalLength = reader.ReadUInt32();
+                var tsSeconds = m_reader.ReadUInt32();
+                var tsMicroseconds = m_reader.ReadUInt32();
+                var ticks = UnixBaseTicks + (tsSeconds * TimeSpan.TicksPerSecond) + (tsMicroseconds * TickPerMicroseconds);
+                var includedLength = m_reader.ReadUInt32();
+                var originalLength = m_reader.ReadUInt32();
 
-                    if ((stream.Position + includedLength) > length)
-                    {   // not enough data to read packet
-                        yield break;
-                    }
-                    var frameOffset = stream.Position;
-                    var frameBytes = reader.ReadBytes((int)includedLength);
+                if ((m_reader.BaseStream.Position + includedLength) <= m_reader.BaseStream.Length)
+                {
 
-                    yield return new Frame
+                    var frameOffset = m_reader.BaseStream.Position;
+                    var frameBytes = m_reader.ReadBytes((int)includedLength);
+
+                    return new Frame
                     {
                         Data = ByteString.CopyFrom(frameBytes, 0, frameBytes.Length),
                         FrameOffset = frameOffset,
                         FrameLength = frameBytes.Length,
-                        FrameNumber = ++frameNumber,
-                        LinkType = (DataLinkType)network,
+                        FrameNumber = ++m_frameNumber,
+                        LinkType = m_network,
                         TimeStamp = ticks,
                     };
                 }
+                return null;
+            }
+            else
+            {
+                return null;
             }
         }
-
 
         public const uint MagicNumber = 0xa1b2c3d4;
         public const ushort VersionMajor = 0x0002;
@@ -129,6 +127,11 @@ namespace Ndx.Captures
                     await writeAsync(frame.Bytes);
                 });
             }
+        }
+
+        public void Dispose()
+        {
+            ((IDisposable)m_reader).Dispose();
         }
     }
 }

@@ -95,7 +95,7 @@ namespace Ndx.Test
                 });
             tsharkBlock.LinkTo(consumer, new DataflowLinkOptions() { PropagateCompletion = true });
 
-            var frames = Captures.PcapReader.ReadFile(path);
+            var frames = Captures.PcapFile.ReadFile(path);
             await tsharkBlock.ConsumeAsync(frames);
             consumer.Completion.Wait();
             outputTxtfile.Close();

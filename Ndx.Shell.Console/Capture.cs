@@ -22,7 +22,7 @@ namespace Ndx.Shell.Console
         /// <returns>A collection of frames read sequentially from the specified capture files.</returns>
         public static IObservable<Frame> ReadAllFrames(IEnumerable<Capture> captures, Action<string,int> progressCallback = null)
         {
-            return captures.ToObservable().SelectMany(x => PcapReader.ReadFile(x.m_fileInfo.FullName));
+            return captures.ToObservable().SelectMany(x => PcapFile.ReadFile(x.m_fileInfo.FullName));
         }
     }
 }

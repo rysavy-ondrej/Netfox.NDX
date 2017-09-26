@@ -8,6 +8,7 @@ using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using Google.Protobuf;
 using Ndx.Ingest;
 using Ndx.Model;
 using Ndx.Shell.Console;
@@ -32,42 +33,36 @@ namespace Ndx.Test
         {
             var frames = Capture.ReadAllFrames(new[] { new Capture(captureFile) });
             var tracker = new ConversationTracker();
-            var _conversations = new Dictionary<int, Conversation>();
-            var observer = new Ndx.Utils.Observer<Conversation>(x => _conversations.Add(x.ConversationId, x));
-            using (var t = tracker.Subscribe(observer))
+            var observer = new Ndx.Utils.Observer<Conversation>(Console.WriteLine);
+            using (tracker.Conversations.Subscribe(observer))
             {
-                var labeledFrames = frames.Select(x => { var c = tracker.ProcessFrame(x); x.ConversationId = c.ConversationId; return x; }).Where(x => x != null).ToList();
+                frames.Select(x => { var c = tracker.ProcessFrame(x); x.ConversationId = c.ConversationId; return x; }).Where(x => x != null).ForEach(Console.WriteLine);
                 tracker.Complete();
             }
+            
         }
 
         [Test]
-        public void Conversations_TrackConversations_WriteTo()
+        public async Task Conversations_TrackConversations_WriteTo()
         {
-            var zipfile = Path.ChangeExtension(captureFile, "zip");
-            var frames = Capture.ReadAllFrames(new[] { new Capture(captureFile) });
+            var conversationsFilename = Path.ChangeExtension(captureFile, "conversations");
+            var framesFilename = Path.ChangeExtension(captureFile, "frames");
 
-            var conversationsTable = new Dictionary<int, Conversation>();
-
-            var tracker = new ConversationTracker();
-            Frame ProcessFrame(Frame f)
+            using (var conversationStream = File.Create(conversationsFilename))
+            using (var frameStream = File.Create(framesFilename))
             {
-                var c = tracker.ProcessFrame(f);
-                f.ConversationId = c.ConversationId;
-                if (!conversationsTable.ContainsKey(c.ConversationId))
+                var tracker = new ConversationTracker();
+                tracker.Conversations.Subscribe(conversation => conversation.WriteDelimitedTo(conversationStream));
+
+                var frames = Capture.ReadAllFrames(new[] { new Capture(captureFile) });
+                Frame ProcessFrame(Frame f)
                 {
-                    conversationsTable[c.ConversationId] = c;
+                    var c = tracker.ProcessFrame(f);
+                    f.ConversationId = c.ConversationId;
+                    return f;
                 }
-                return f;
-            }
-
-            var framesTable = frames.Select(ProcessFrame).Where(x => x != null).ToEnumerable().ToDictionary(x=>x.FrameNumber);
-
-            File.Delete(zipfile);
-            using (var archive = ZipFile.Open(zipfile, ZipArchiveMode.Create))
-            {
-                archive.WriteTo("conversations", conversationsTable, x => x.Value);
-                archive.WriteTo("frames", framesTable, x => x.Value);
+                await frames.Select(ProcessFrame).Where(x => x != null).ForEachAsync(frame => frame.WriteDelimitedTo(frameStream));
+                tracker.Complete();
             }
         }
     }

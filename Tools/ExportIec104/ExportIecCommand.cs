@@ -61,7 +61,7 @@ namespace ExportIec104
                 }
             }
 
-            var frames = Ndx.Captures.PcapReader.ReadFile(InputPath);
+            var frames = Ndx.Captures.PcapFile.ReadFile(InputPath);
             var pdus = frames.SelectMany((Frame frame, int index) =>
             {
                 return ExtractIefPdus(frame).Select((byte[] arg1, int arg2) => Tuple.Create(index, arg2, arg1));
