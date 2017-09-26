@@ -23,6 +23,9 @@ using Ndx.Model;
 
 namespace Ndx.Captures
 {
+    /// <summary>
+    /// Implements the read access to Libpcap file format. 
+    /// </summary>
     public class LibPcapStream : IDisposable
     {
         const long UnixBaseTicks = 621355968000000000; // new DateTime(1970, 1, 1).Ticks;

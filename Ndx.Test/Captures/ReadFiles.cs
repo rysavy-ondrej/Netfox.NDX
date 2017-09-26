@@ -20,11 +20,11 @@ namespace Ndx.Test
     {
         TestContext testContext = TestContext.CurrentContext;
         [Test]
-        public void ReadNetmonEnumerable()
+        public async Task ReadNetmonEnumerable()
         {
             var input = Path.Combine(testContext.TestDirectory, @"..\..\..\TestData\http.pcap");
             var items = PcapFile.ReadFile(input);
-            items.ForEach(Console.WriteLine);
+            await items.ForEachAsync(Console.WriteLine);
         }
 
         [Test]
@@ -45,12 +45,12 @@ namespace Ndx.Test
 
 
         [Test]
-        public void ReadLinuxLinkType()
+        public async Task ReadLinuxLinkType()
         {
             var input = Path.Combine(testContext.TestDirectory, @"..\..\..\TestData\CookedLink.cap");
             var items = PcapFile.ReadFile(input);
             var count = items.Count();
-            items.Select(x => x.Parse()).ForEach(p => Console.WriteLine(p));
+            await items.Select(x => x.Parse()).ForEachAsync(p => Console.WriteLine(p));
         }
 
 
