@@ -20,5 +20,20 @@ namespace Ndx.Model
             return Fields.TryGetValue(field, out string value) ? value : defaultValue;
         }
 
+        public string this[string name]
+        {
+            get
+            {
+                if (Fields.TryGetValue(name, out string value))
+                {
+                    return value;
+                }
+                else
+                {
+                    return String.Empty;
+                }
+            }
+        }
+
     }
 }

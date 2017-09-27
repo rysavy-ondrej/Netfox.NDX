@@ -63,7 +63,7 @@
       <Project>{F7893DF7-5638-43BC-91E5-E612E4D0AD53}</Project>
       <Name>Ndx.Captures</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Ndx.Metacap\Ndx.Model.csproj">
+    <ProjectReference Include="..\..\Ndx.Model\Ndx.Model.csproj">
       <Project>{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}</Project>
       <Name>Ndx.Model</Name>
     </ProjectReference>

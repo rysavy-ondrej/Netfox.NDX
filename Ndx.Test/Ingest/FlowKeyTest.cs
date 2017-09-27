@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using Ndx.Model;
 using System.Net.NetworkInformation;
+using System.IO;
 
 namespace Ndx.Test
 {
@@ -12,6 +13,7 @@ namespace Ndx.Test
     [TestFixture]
     public class FlowKeyTest
     {
+
         [Test]
         public void FlowKey_StoreLoad()
         {

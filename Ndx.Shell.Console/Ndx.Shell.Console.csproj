@@ -151,6 +151,7 @@
     <None Include="Readme.md" />
     <None Include="Scripts\Capture.csx" />
     <None Include="Scripts\Decoder.csx" />
+    <None Include="Scripts\nowebaccess1.csx" />
     <None Include="Scripts\Using.csx" />
   </ItemGroup>
   <ItemGroup>
@@ -167,7 +168,7 @@
       <Project>{94d924a3-8ac1-4db2-bddc-862d8a978e31}</Project>
       <Name>Ndx.Ingest.Trace</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ndx.Metacap\Ndx.Model.csproj">
+    <ProjectReference Include="..\Ndx.Model\Ndx.Model.csproj">
       <Project>{6c85ca82-04e3-4600-80ab-12b53f6ae4b3}</Project>
       <Name>Ndx.Model</Name>
     </ProjectReference>
