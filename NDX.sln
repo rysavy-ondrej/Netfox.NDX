@@ -34,7 +34,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hadoop", "Hadoop", "{D6FA9D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Ipfix", "Ndx.Ipfix\Ndx.Ipfix.csproj", "{4A62DEF0-2792-4380-B6C8-EC5B53784746}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Model", "Ndx.Metacap\Ndx.Model.csproj", "{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Model", "Ndx.Model\Ndx.Model.csproj", "{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Captures", "Ndx.Captures\Ndx.Captures.csproj", "{F7893DF7-5638-43BC-91E5-E612E4D0AD53}"
 EndProject
@@ -53,6 +53,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IngestNetworkTrace", "Hadoop\IngestNetworkTrace\IngestNetworkTrace.csproj", "{74D03D2C-C56E-4572-8F6D-3CC505B8448E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportIec104", "Tools\ExportIec104\ExportIec104.csproj", "{59950E31-B0C4-4619-8A62-7914A659ED50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netdx", "Tools\netdx\netdx.csproj", "{347DCEE4-292E-4FC6-BD73-85706985A0E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -208,6 +210,18 @@ Global
 		{59950E31-B0C4-4619-8A62-7914A659ED50}.Release|x64.Build.0 = Release|Any CPU
 		{59950E31-B0C4-4619-8A62-7914A659ED50}.Release|x86.ActiveCfg = Release|Any CPU
 		{59950E31-B0C4-4619-8A62-7914A659ED50}.Release|x86.Build.0 = Release|Any CPU
+		{347DCEE4-292E-4FC6-BD73-85706985A0E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{347DCEE4-292E-4FC6-BD73-85706985A0E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{347DCEE4-292E-4FC6-BD73-85706985A0E1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{347DCEE4-292E-4FC6-BD73-85706985A0E1}.Debug|x64.Build.0 = Debug|Any CPU
+		{347DCEE4-292E-4FC6-BD73-85706985A0E1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{347DCEE4-292E-4FC6-BD73-85706985A0E1}.Debug|x86.Build.0 = Debug|Any CPU
+		{347DCEE4-292E-4FC6-BD73-85706985A0E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{347DCEE4-292E-4FC6-BD73-85706985A0E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{347DCEE4-292E-4FC6-BD73-85706985A0E1}.Release|x64.ActiveCfg = Release|Any CPU
+		{347DCEE4-292E-4FC6-BD73-85706985A0E1}.Release|x64.Build.0 = Release|Any CPU
+		{347DCEE4-292E-4FC6-BD73-85706985A0E1}.Release|x86.ActiveCfg = Release|Any CPU
+		{347DCEE4-292E-4FC6-BD73-85706985A0E1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -215,5 +229,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{74D03D2C-C56E-4572-8F6D-3CC505B8448E} = {D6FA9DF5-DD4E-487F-B8D3-DF433CF2A199}
 		{59950E31-B0C4-4619-8A62-7914A659ED50} = {D88F88ED-6A2A-4EA8-9B67-725FBF2B4BC9}
+		{347DCEE4-292E-4FC6-BD73-85706985A0E1} = {D88F88ED-6A2A-4EA8-9B67-725FBF2B4BC9}
 	EndGlobalSection
 EndGlobal

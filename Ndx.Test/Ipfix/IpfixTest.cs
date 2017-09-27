@@ -1,8 +1,5 @@
-﻿
-using Ndx.Metacap;
+﻿using Ndx.Ipfix;
 using NUnit.Framework;
-using System;
-using Ndx.Ipfix;
 using PacketDotNet.Utils;
 
 namespace Ndx.Test.Ipfix

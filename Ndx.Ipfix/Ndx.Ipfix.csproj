@@ -53,14 +53,15 @@
     <Compile Include="IpfixMessage.cs" />
     <Compile Include="IpfixTemplateSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resource.Designer.cs">
-      <DependentUpon>Resource.resx</DependentUpon>
+    <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="InformationElements.txt" />
+    <None Include="Resources\Description.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -71,9 +72,9 @@
     <None Include="Resources\PacketMeta.json" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resource.resx">
+    <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

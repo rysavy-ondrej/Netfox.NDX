@@ -7,7 +7,7 @@ To use with CommandLineUtils, the main class instantiates `CommandLineApplicatio
 and defines all available commands by invoking `Command` method.
 
 ```csharp
-using Microsoft.Extensions.CommandLineUtils
+using Microsoft.Extensions.CommandLineUtils;
 
 class MainClass
 {
@@ -23,7 +23,8 @@ class MainClass
             {
                 var cmd = new PrintDateCommand();
                 var results = cmd.Invoke().Cast<string>();
-                results.ForEach(Console.WriteLine);         
+                results.ForEach(Console.WriteLine);
+                return 0;         
             });
         });
 

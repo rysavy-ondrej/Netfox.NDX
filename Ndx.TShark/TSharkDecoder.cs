@@ -60,6 +60,7 @@ namespace Ndx.TShark
                 {
                     obs.OnNext(decodedPackets.Take());
                 }
+                obs.OnCompleted();
                 return Disposable.Create(() => { });
             });
             return observable;

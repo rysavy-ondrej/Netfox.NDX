@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using Ndx.Ipfix.Properties;
 using Newtonsoft.Json;
 using PacketDotNet.Utils;
 
@@ -198,7 +199,7 @@ namespace Ndx.Ipfix
         {
             get
             {
-                using(var stream = new MemoryStream(Resource.ConversationIpv4))
+                using(var stream = new MemoryStream(Resources.ConversationIpv4))
                 {
                     return Load(stream);
                 }
@@ -209,7 +210,7 @@ namespace Ndx.Ipfix
         {
             get
             {
-                using (var stream = new MemoryStream(Resource.FlowIpv4))
+                using (var stream = new MemoryStream(Resources.FlowIpv4))
                 {
                     return Load(stream);
                 }
@@ -219,7 +220,7 @@ namespace Ndx.Ipfix
         {
             get
             {
-                using (var stream = new MemoryStream(Resource.ConversationIpv6))
+                using (var stream = new MemoryStream(Resources.ConversationIpv6))
                 {
                     return Load(stream);
                 }
@@ -229,7 +230,7 @@ namespace Ndx.Ipfix
         {
             get
             {
-                using (var stream = new MemoryStream(Resource.FlowIpv6))
+                using (var stream = new MemoryStream(Resources.FlowIpv6))
                 {
                     return Load(stream);
                 }
@@ -239,7 +240,7 @@ namespace Ndx.Ipfix
         {
             get
             {
-                using (var stream = new MemoryStream(Resource.PacketMeta))
+                using (var stream = new MemoryStream(Resources.PacketMeta))
                 {
                     return Load(stream);
                 }

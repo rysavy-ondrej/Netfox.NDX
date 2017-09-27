@@ -168,7 +168,7 @@ namespace Ndx.Metacap
                     case "destinationaddress":
                         return Expression.Convert(Expression.PropertyOrField(flowKey, nameof(FlowKey.DestinationIpAddress)), typeof(object));
                     case "protocol":
-                        return Expression.Convert(Expression.PropertyOrField(flowKey, nameof(FlowKey.Protocol)), typeof(object));
+                        return Expression.Convert(Expression.PropertyOrField(flowKey, nameof(FlowKey.IpProtocol)), typeof(object));
                     default:
                         return Expression.Constant(name);
                 }
