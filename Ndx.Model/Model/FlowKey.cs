@@ -173,6 +173,6 @@ namespace Ndx.Model
                 return obj?.GetHashCode() ?? 0;
             }
         }
-        public string IpFlowKeyString => $"{IpProtocol}!{SourceIpAddress}:{SourcePort}->{DestinationIpAddress}{DestinationPort}";
+        public string IpFlowKeyString => $"{IpProtocol}!{SourceIpAddress}:{SourcePort}->{DestinationIpAddress}:{DestinationPort}";
     }
 }

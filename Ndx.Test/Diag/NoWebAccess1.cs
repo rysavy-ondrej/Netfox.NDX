@@ -4,6 +4,11 @@ using System.Linq;
 using System.Reactive.Linq;
 using Ndx.Captures;
 using NUnit.Framework;
+using Ndx.Ingest;
+using Ndx.Diagnostics;
+using System.Dynamic;
+using System.Collections.Generic;
+using Ndx.Model;
 
 namespace Ndx.Test.Diag
 {
@@ -11,12 +16,12 @@ namespace Ndx.Test.Diag
     class NoWebAccess1
     {
         static TestContext m_testContext = TestContext.CurrentContext;
-        string source = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\PPA\nowebaccess1.json");
+        string m_source = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\PPA\nowebaccess1.json");
         [Test]
         public void ArpGatewayOk()
         {
             // event source
-            var events = PcapFile.ReadJson(source).ToEnumerable();
+            var events = PcapFile.ReadJson(m_source).ToEnumerable();
 
             // rule:
             //      id: arp_gw_ok
@@ -53,16 +58,17 @@ namespace Ndx.Test.Diag
             }
         }
         [Test]
-        public void DnsTest()
+        public void DnsOk()
         {
-            var events = PcapFile.ReadJson(source).ToEnumerable();
+            var hostIp = "172.16.0.8";
+            var events = PcapFile.ReadJson(m_source).ToEnumerable();
             // rule:
             //      id: dns_test_ok
             //      description: Rule that select sucessful DNS communication of the specified host.
             // params:
-            //      - hostMac
+            //      - hostIp
             // events:
-            //      e1: dns.flags.response == 0
+            //      e1: dns.flags.response == 0 && ip.src == hostIp
             //      e2: dns.flags.response == 1 && dns.flags.rcode == 0
             // assert:
             //      - e1.dns.id == e2.dns.id
@@ -70,13 +76,141 @@ namespace Ndx.Test.Diag
             // select:
             //      query: e1
             //      answer: e2
-            //      desc: "DNS error replied."
-            var results =
-            from e1 in events.Where(e => e.FrameProtocols.Contains("dns") && e["dns_dns_flags_response"].Equals("0"))
-            join e2 in events.Where(e => e.FrameProtocols.Contains("dns") && e["dns_dns_flags_response"].Equals("1") && e["dns_dns_flags_rcode"].Equals("0"))
+            //      description: "DNS OK."
+            var resultSet =
+            from e1 in events.Where(e => e.FrameProtocols.Contains("dns") && e["dns_flags_dns_flags_response"].Equals("0") && e["ip_ip_src"].Equals(hostIp))
+            join e2 in events.Where(e => e.FrameProtocols.Contains("dns") && e["dns_flags_dns_flags_response"].Equals("1") && e["dns_flags_dns_flags_rcode"].Equals("0"))
             on e1["dns.id"] equals e2["dns.id"]
             where e1.Timestamp <= e2.Timestamp && e2.Timestamp <= e1.Timestamp + 5000
-            select new { query = e1, answer = e2, desc = $"DNS OK: Query '', reply received within {DateTime.FromBinary(e2.Timestamp - e1.Timestamp)}s." };
+            select new { query = e1, answer = e2, description = $"DNS OK: Query '', reply received within {DateTime.FromBinary(e2.Timestamp - e1.Timestamp)}s." };
+
+            Console.WriteLine("Diagnostic Trace:");
+            foreach (var result in resultSet)
+            {
+                Console.WriteLine(result.description);
+            }
+        }
+        [Test]
+        public void DnsError()
+        {
+            var hostIp = "172.16.0.8";
+            var events = PcapFile.ReadJson(m_source).ToEnumerable();
+            // rule:
+            //      id: dns_test_ok
+            //      description: Rule that select sucessful DNS communication of the specified host.
+            // params:
+            //      - hostMac
+            // events:
+            //      e1: dns.flags.response == 0
+            //      e2: dns.flags.response == 1 && dns.flags.rcode == 1
+            // assert:
+            //      - e1.dns.id == e2.dns.id
+            //      - e1 [0 - 5s]~> e2
+            // select:
+            //      query: e1
+            //      answer: e2
+            //      description: "DNS Error."
+            var resultSet =
+            from e1 in events.Where(e => e.FrameProtocols.Contains("dns") && e["dns_flags_dns_flags_response"].Equals("0") && e["ip_ip_src"].Equals(hostIp))
+            from e2 in events.Where(e => e.FrameProtocols.Contains("dns") && e["dns_flags_dns_flags_response"].Equals("1") && e["dns_flags_dns_flags_rcode"].Equals("1"))
+            where  
+                   e1["dns.id"].Equals(e2["dns.id"]) 
+                && e1.Timestamp <= e2.Timestamp && e2.Timestamp <= e1.Timestamp + 5000
+            select new { query = e1, answer = e2, description = $"DNS Error: Error reply received within {DateTime.FromBinary(e2.Timestamp - e1.Timestamp)}s." };
+
+            Console.WriteLine("Diagnostic Trace:");
+            foreach (var result in resultSet)
+            {
+                Console.WriteLine(result.description);
+            }
+        }
+
+        [Test]
+        public void DnsNoResponseRule()
+        {
+            var rule = new Rule()
+            {
+                Id = "Dns.NoResponse",
+                Description = "DNS server not responding error."
+            };
+            rule.Events.Add("e1", ctx => ctx.Input.Where(e => e.FrameProtocols.Contains("dns") && e["dns_flags_dns_flags_response"].Equals("0") && e["ip_ip_src"].Equals(ctx["host"]["ip_ip_src"])));
+            rule.Events.Add("e2", ctx => ctx.Input.Where(e => e.FrameProtocols.Contains("dns") && e["dns_flags_dns_flags_response"].Equals("1")));
+            rule.Assert.Add(ctx => ctx["e1"]["dns.id"].Equals(ctx["e2"]["dns.id"]));
+            rule.Assert.Add(ctx => ctx.LeadsToFalse(TimeSpan.Zero, TimeSpan.FromSeconds(5), ctx["e1"], ctx["e2"]));
+
+
+            var events = PcapFile.ReadJson(m_source).ToEnumerable().ToList();
+            var args = new Dictionary<string, PacketFields>
+            {
+                {"host", PacketFields.FromFields( new Dictionary<string,string>() { { "ip_ip_src" , "172.16.0.8" } } ) }
+            };
+            
+            var resultSet = rule.Evaluate(events, args, ctx => new { query = ctx["e1"],
+                description = $"{ctx["e1"].DateTime}: DNS Response Lost: {ctx["e1"].GetFlowKey().IpFlowKeyString}: {ctx["e1"]["dns_text"]} : {ctx["e1"]["text_text"]}"  });
+            Console.WriteLine("Diagnostic Trace:");
+            foreach (var result in resultSet)
+            {
+                Console.WriteLine(result.description);
+            }
+        }
+
+        [Test]
+        public void DnsNoResponse()
+        {
+            var hostIp = "172.16.0.8";
+            var events = PcapFile.ReadJson(m_source).ToEnumerable().ToList();
+            // rule:
+            //      id: dns_no_response
+            //      description: DNS server not responding error. 
+            // params:
+            //      - host
+            // events:
+            //      e1: dns.flags.response == 0 && ip.src == host
+            //      e2: dns.flags.response == 1 
+            // assert:
+            //      - e1.dns.id == e2.dns.id
+            //      - e1 [0 - 5s]~> !e2
+            // select:
+            //      query: e1
+            //      description: "{e1.timestamp}: DNS Response Lost: {e1.flow}: {e1.dns.text}: {e1.text.text}"
+            var resultSet =
+                from e1 in events.Where(e => e.FrameProtocols.Contains("dns") && e["dns_flags_dns_flags_response"].Equals("0") && e["ip_ip_src"].Equals(hostIp))
+                let _x0001 =
+                    from _e1 in events.Where(e => e.FrameProtocols.Contains("dns") && e["dns_flags_dns_flags_response"].Equals("0") && e["ip_ip_src"].Equals(hostIp))
+                    from _e2 in events.Where(e => e.FrameProtocols.Contains("dns") && e["dns_flags_dns_flags_response"].Equals("1"))
+                    where
+                           _e1["dns.id"].Equals(_e2["dns.id"])
+                        && _e1.Timestamp <= _e2.Timestamp && _e2.Timestamp <= _e1.Timestamp + 5000
+                    select _e1
+                where !_x0001.Contains(e1)
+                select new { query = e1,
+                             description = $"{e1.DateTime}: DNS Response Lost: {e1.GetFlowKey().IpFlowKeyString}: {e1["dns_text"]} : {e1["text_text"]}" };
+            Console.WriteLine("Diagnostic Trace:");
+            foreach (var result in resultSet)
+            {
+                Console.WriteLine(result.description);
+            }
+        }
+        // Perform custom join operations:
+        // https://docs.microsoft.com/en-us/dotnet/csharp/linq/perform-custom-join-operations
+
+
+        public void LinqTest001()
+        {
+            var xs = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var ys = new int[] { 2, 4, 6, 8, 10 };
+            var zs = new int[] { 1, 3, 5, 7, 9 };
+
+            // var rs =
+            //    from x in xs
+            //    from y in ys
+            //    from z in zs
+            //    where x == y && y == z
+            //    select new { left = x, middle = y, right = z };
+            var rs = xs.SelectMany(x => ys, (x, y) => new {x, y})
+                .SelectMany(@t => zs, (@t, z) => new {@t, z})
+                .Where(@t => @t.@t.x == @t.@t.y && @t.@t.y == @t.z)
+                .Select(@t => new {left = @t.@t.x, middle = @t.@t.y, right = @t.z});
         }
     }
 }

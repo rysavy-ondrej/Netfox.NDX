@@ -1,21 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Reactive.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Threading.Tasks.Dataflow;
 using Google.Protobuf;
 using Ndx.Captures;
 using Ndx.Ingest;
 using Ndx.Model;
-using Ndx.Shell.Console;
-using Ndx.Utils;
-using NFX.ApplicationModel.Pile;
 using NUnit.Framework;
+
 namespace Ndx.Test
 {
     /// <summary>

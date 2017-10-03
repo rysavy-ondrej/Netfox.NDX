@@ -97,6 +97,10 @@
       <Project>{80f0f0e1-b4bd-4af5-8e92-3f9d2ec4e78a}</Project>
       <Name>Ndx.Decoders</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ndx.Diagnostics\Ndx.Diagnostics.csproj">
+      <Project>{24A07218-15D0-40A2-9571-F4E5D1287DC2}</Project>
+      <Name>Ndx.Diagnostics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ndx.Ingest.Trace\Ndx.Ingest.Trace.csproj">
       <Project>{94d924a3-8ac1-4db2-bddc-862d8a978e31}</Project>
       <Name>Ndx.Ingest.Trace</Name>

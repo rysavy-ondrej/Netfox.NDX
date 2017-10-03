@@ -103,6 +103,11 @@ namespace Ndx.Ingest
             };
         }
 
+
+        public static FlowKey GetFlowKey(this PacketFields packet)
+        {
+            return GetFlowKey(packet, out bool snc);
+        }
         /// <summary>
         /// Gets a network flow key for the current <see cref="PacketFields"/>.
         /// </summary>

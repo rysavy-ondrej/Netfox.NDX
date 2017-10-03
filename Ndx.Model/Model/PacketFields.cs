@@ -34,6 +34,20 @@ namespace Ndx.Model
                 }
             }
         }
+        /// <summary>
+        /// Get the timestamp as <see cref="DateTime"/> value.
+        /// </summary>
+        public DateTime DateTime => DateTime.FromBinary(this.Timestamp);
 
+        static readonly PacketFields m_empty = new PacketFields();
+        public static PacketFields Empty => m_empty;
+        public bool IsEmpty => ReferenceEquals(this, m_empty);
+
+        public static PacketFields FromFields(IDictionary<string, string> entries)
+        {
+            var pf = new PacketFields();
+            pf.Fields.Add(entries);
+            return pf;
+        }
     }
 }
