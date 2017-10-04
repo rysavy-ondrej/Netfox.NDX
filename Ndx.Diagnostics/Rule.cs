@@ -49,29 +49,25 @@ namespace Ndx.Diagnostics
         /// <param name="right"></param>
         /// <returns></returns>
         public bool LeadsTo(TimeSpan from, TimeSpan to, PacketFields left, PacketFields right)
-        {
+        {           
+            if (left.IsEmpty) return true;
             return
                 !right.IsEmpty
                 && left.DateTime + from <= right.DateTime
                 && right.DateTime <= left.DateTime + to;
         }
-
-        /// <summary>
-        /// Represents left [from-to]~> !right temporal relation.
-        /// </summary>
-        /// <param name="from"></param>
-        /// <param name="to"></param>
-        /// <param name="left"></param>
-        /// <param name="right"></param>
-        /// <returns></returns>
-        public bool LeadsToFalse(TimeSpan from, TimeSpan to, PacketFields left, PacketFields right)
+        public bool NotLeadsTo(TimeSpan from, TimeSpan to, PacketFields left, PacketFields right)
         {
-            return !left.IsEmpty && right.IsEmpty;
+            if (left.IsEmpty) return true;
+            if (right.IsEmpty) return true;
+            return (left.DateTime + from <= right.DateTime
+                   && right.DateTime <= left.DateTime + to) == false;
         }
+
     }
 
     /// <summary>
-    /// This is the base class for all rules.
+    /// This is class represents a diagnostic rule template.
     /// </summary>
     public class Rule
     {
@@ -85,19 +81,28 @@ namespace Ndx.Diagnostics
             Assert = new List<Func<Context, bool>>();
         }
 
+        /// <summary>
+        /// Evaluates the rule for the provided input and arguments.
+        /// </summary>
+        /// <typeparam name="T">The type of result.</typeparam>
+        /// <param name="input">The input stream of events.</param>
+        /// <param name="args">Arguments of the rule.</param>
+        /// <param name="select">Selector function to produce result records.</param>
+        /// <returns>Stream of resulting events.</returns>
         public IEnumerable<T> Evaluate<T>(IEnumerable<PacketFields> input, IDictionary<string, PacketFields> args, Func<Context, T> select)
         {
             var context = new Context(this, input, args);
             var evts = this.Events.SelectMany(p => p.Value(context), Tuple.Create).ToLookup(p => p.Item1.Key, p => p.Item2);
             var seq = LinqTemplate(evts);
-            return seq.Where(evt =>
-            {
-                return Assert.All(f => f(new Context(this, null, evt)));
-            }).Select(evt => select(new Context(this, null, evt)));
+            return seq.Where(evt => Assert.All(f => f(new Context(this, null, evt)))).                
+                Select(evt => select(new Context(this, null, evt)));
         }
 
-
-
+        /// <summary>
+        /// Computes cross join for the provided events. 
+        /// </summary>
+        /// <param name="events">Lookup that represents all input events.</param>
+        /// <returns>Rows of the cross join suitable for further processing using where and select operations.</returns>
         private static IEnumerable<Dictionary<string, PacketFields>> LinqTemplate(ILookup<string, PacketFields> events)
         {
             IEnumerable<Dictionary<string, PacketFields>> seed = new[] { new Dictionary<string, PacketFields> { { "__init", PacketFields.Empty } } };
@@ -110,7 +115,7 @@ namespace Ndx.Diagnostics
 
                 var result = accumulator.SelectMany(
                     (dictionary) => eventEnumerable,
-                    (dictionary, valuePair) => new Dictionary<string, PacketFields>(dictionary) {{valuePair.Key, valuePair.Value}}).ToList();
+                    (dictionary, valuePair) => new Dictionary<string, PacketFields>(dictionary) {{valuePair.Key, valuePair.Value}});
                 return result;
             });
          }

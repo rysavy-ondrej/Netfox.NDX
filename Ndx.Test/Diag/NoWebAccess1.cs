@@ -136,7 +136,9 @@ namespace Ndx.Test.Diag
             rule.Events.Add("e1", ctx => ctx.Input.Where(e => e.FrameProtocols.Contains("dns") && e["dns_flags_dns_flags_response"].Equals("0") && e["ip_ip_src"].Equals(ctx["host"]["ip_ip_src"])));
             rule.Events.Add("e2", ctx => ctx.Input.Where(e => e.FrameProtocols.Contains("dns") && e["dns_flags_dns_flags_response"].Equals("1")));
             rule.Assert.Add(ctx => ctx["e1"]["dns.id"].Equals(ctx["e2"]["dns.id"]));
-            rule.Assert.Add(ctx => ctx.LeadsToFalse(TimeSpan.Zero, TimeSpan.FromSeconds(5), ctx["e1"], ctx["e2"]));
+
+
+            rule.Assert.Add(ctx => ctx.NotLeadsTo(TimeSpan.Zero, TimeSpan.FromSeconds(5), ctx["e1"], ctx["e2"]));
 
 
             var events = PcapFile.ReadJson(m_source).ToEnumerable().ToList();
