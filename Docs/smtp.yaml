@@ -1,19 +1,8 @@
 ---
 rule:
-    id: smtp_event_exists
-events:
-    e1: 
-    e2:   
-assert:
-    - 
-    - 
-select:
----
-rule:
     id: smtp_server_welcome
 events:
-    e1: 
-    e2:   
+    e1: smtp.req.command in { "HELO",  "EHLO" }
 assert:
     - 
     - 

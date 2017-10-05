@@ -69,27 +69,44 @@ Constraints are built from expressions and temporal operators. The syntax of con
 temporal_op     = "~>" 
                 / "{" event_range "}~>"
                 / "[" time_range "]~>"
-
-event_expression = expression
+                / "~!>" 
+                / "{" event_range "}~!>"
+                / "[" time_range "]~!>"
 
 constraint      = expression
-                / event_expression temporal_op event_expression
+                / event_variable temporal_op event_variable
 ```
 ### Event Expression
 Event expression is an expression that when evaluated gives a set of events that satisfy the given expression. It is possible that no event satisfies the expression and in this case this set is empty.
 
 ### Temporal Operators
-Constraints can also be composed using temporal operators on event expressions.
-A single temporal operator of the language is *leads to* operator:
+Constraints can also be composed using temporal operators on event expressions. Two operators are defined:
 
-* `A ~> B` is defined as `◻︎(A ⟹ ◇B)`.
-Where `A` and `B` are flow expressions.
-
+### `~>` operator
+Leads to operator `A ~> B` is defined as `◻︎(A ⟹ ◇B)`, where `A` and `B` are flow expressions.
+This property can be expressed in first-order logic using timing variables:
+` ∀ t1 ≥ 0 : ( A(t1) ⟹ ∃t2 ≥ t1 : B(t2) ) `
 It is possible to annotate *leads to* operator with either event interval or time range:
 
 * Event interval ```A {X..Y}~> B```, where X and Y are positive integer numbers. If X = Y then it is possible to write ```A {X}~> B```.
 
 * Time range ```A [X-Y]~> B```, where X and Y are positive numbers that can have associated units of measure. Possible units are ```us```, ```ms```, ```s```, ```m```, ```h```, ```d```. It is possible to compose units into a complex value, such as ```1d2h30m15s```.
+
+
+Evaluation, given two events A and B:
+|= A ~> B   if T(B) ≥ T(A) 
+
+
+### `~!>` operator
+Operator  `A ~!> B` is defined as `◻︎(A ⟹ ¬◇B)`, where `A` and `B` are flow expressions.
+FOL representation of this operator is:
+` ∀ t1 ≥ 0 : ( A(t1) ⟹ ¬ ∃t2 ≥ t1 : B(t2) )`. 
+This is equivalent to ` ∀ t1 ≥ 0 : ( A(t1) ⟹  ∀t2 ≥ t1 : ¬ B(t2) )`. 
+Similarly to `~!>` it is possible to annotate the operator with interval or time range:
+* Event interval ```A {X..Y}~!> B```, where X and Y are positive integer numbers. If X = Y then it is possible to write ```A {X}~!> B```.
+
+* Time range ```A [X-Y]~!> B```, where X and Y are positive numbers that can have associated units of measure. Possible units are ```us```, ```ms```, ```s```, ```m```, ```h```, ```d```. It is possible to compose units into a complex value, such as ```1d2h30m15s```.
+
 
 ## Rules
 A rule is a collection of event expressions `E1,...,En`, collection of constraints `C1,...,Cm`, 
@@ -111,8 +128,8 @@ select:
 ```
 Rule consists of three blocks. 
 
-* Events are defined as maps because each event is assigned a name and expression that provides the event set selector. 
-* Assert block consists of a list of constraints. 
+* Events are defined as maps because each event is assigned a name and expression that provides the event stream selector. 
+* Assert block consists of a list of constraints. The meaning of assert is defined by the conjunction of its constrain expressions.ß
 * Select block contains a map for creating resulting structure.
 
 ## Model and Interpretation
@@ -169,14 +186,7 @@ assert:
     - e1 {1}~> e2
 ```
 We use ` e1 {1}~> e2` constraint to match the request with the immediate response. 
-Matching events using a specified attribute can be realized by inner join in LINQ:
-```cs
-from e1 in events.Where(e=>e.Satisfy("pop.request.command == 'AUTH'")) 
-join e2 in events.Where(e=>e.Satisfy("pop.response.indicator == '-ERR'"))
-  on e1.flow equals e2.flow
-where e1.eid+1 == e2.eid
-select new {e1,e2};
-```
+
 The next example shows the detection of DNS resolution that ends with an error. 
 ```yaml
 ---
@@ -192,15 +202,7 @@ select:
     reason: "DNS error replied."
 ```
 The ```select``` attribute can be used to create a custom result instead of the default 
-output. The LINQ generated uses anonymous type for the result:
-
-```cs
-from e1 in events.Where(e => e.Satisfy("dns.flags.response==0")) 
-join e2 in events.Where(e => e.Satisfy("dns.flags.response==1 && dns.flags.rcode!=0"))  
-  on e1["dns.id"] equals e2["dns.id"]
-where e1.timestamp + Timestamp.fromSeconds(0) <= e2.timestamp && e2.timestamp <= e1.timestamp + Timestamp.fromSeconds(30)  
-select new {query = e1, answer = e2, reason = "DNS error"};
-```
+output. 
 
 ## Detecting Absence of Event
 For instance, we would like to 
@@ -215,20 +217,12 @@ events:
     e2: dns.flags.response==1    
 assert:
     - e1.dns.id == e2.dns.id
-    - e1 ~> !e2
+    - e1 ~!> e2
 select:
     query: e1   
     desc: "DNS no reply."
 ```
-This rule is translated to the following LINQ employing Left Outer Join ():
-```cs
-from e1 in events.Where(e => e.Satisfy("dns.flags.response==0"))
-join e2 in events.Where(e => e.Satisfy("dns.flags.response==1"))
-on e1["dns.id"] equals e2["dns.id"] into grp
-from right in grp.DefaultIfEmpty()
-where right == null
-select (new { query = e1, desc =  "DNS no reply." });
-```
+Note that referencing `e2` in `select` is possible and it gives undefined event.
 
 ## Parametrized Rules
 
