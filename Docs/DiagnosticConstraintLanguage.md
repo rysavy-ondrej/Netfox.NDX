@@ -234,7 +234,7 @@ events:
     e2: dns.flags.response==1    
 assert:
     - e1.dns.id == e2.dns.id
-    - e1 ~> !e2
+    - e1 ~!> e2
 select:
     query: e1   
     desc: "DNS no reply."
@@ -252,7 +252,7 @@ events:
     e2: dns.flags.response==1    
 assert:
     - e1.dns.id == e2.dns.id
-    - e1 ~> !e2
+    - e1 ~!> e2
 select:
     query: e1   
     desc: "DNS no reply."
