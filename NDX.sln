@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Shell.Console", "Ndx.Shell.Console\Ndx.Shell.Console.csproj", "{75454215-419C-4EC6-9776-06575F374D22}"
 EndProject
@@ -42,10 +42,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.TShark", "Ndx.TShark\Nd
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestData", "TestData", "{76D3A5B1-53A8-4105-9671-82FAAE2A7F05}"
 	ProjectSection(SolutionItems) = preProject
+		TestData\CookedEthernet.cap = TestData\CookedEthernet.cap
+		TestData\CookedLink.cap = TestData\CookedLink.cap
 		TestData\http.cap = TestData\http.cap
+		TestData\http.json = TestData\http.json
+		TestData\http.pcap = TestData\http.pcap
 		TestData\http_chunked_gzip.cap = TestData\http_chunked_gzip.cap
 		TestData\http_gzip.cap = TestData\http_gzip.cap
 		TestData\http_with_jpegs.cap = TestData\http_with_jpegs.cap
+		TestData\ssh.cap = TestData\ssh.cap
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Decoders", "Ndx.Decoders\Ndx.Decoders.csproj", "{80F0F0E1-B4BD-4AF5-8E92-3F9D2EC4E78A}"
@@ -57,6 +62,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netdx", "Tools\netdx\netdx.csproj", "{347DCEE4-292E-4FC6-BD73-85706985A0E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Diagnostics", "Ndx.Diagnostics\Ndx.Diagnostics.csproj", "{24A07218-15D0-40A2-9571-F4E5D1287DC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PPA", "PPA", "{AA3303A3-FAAA-4F6E-972C-270D0953888D}"
+	ProjectSection(SolutionItems) = preProject
+		TestData\PPA\nowebaccess1.json = TestData\PPA\nowebaccess1.json
+		TestData\PPA\nowebaccess1.pcap = TestData\PPA\nowebaccess1.pcap
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -244,5 +255,9 @@ Global
 		{74D03D2C-C56E-4572-8F6D-3CC505B8448E} = {D6FA9DF5-DD4E-487F-B8D3-DF433CF2A199}
 		{59950E31-B0C4-4619-8A62-7914A659ED50} = {D88F88ED-6A2A-4EA8-9B67-725FBF2B4BC9}
 		{347DCEE4-292E-4FC6-BD73-85706985A0E1} = {D88F88ED-6A2A-4EA8-9B67-725FBF2B4BC9}
+		{AA3303A3-FAAA-4F6E-972C-270D0953888D} = {76D3A5B1-53A8-4105-9671-82FAAE2A7F05}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81AAAA90-A87F-4CCD-BD2A-A99FA97609F3}
 	EndGlobalSection
 EndGlobal
