@@ -76,9 +76,10 @@ namespace Ndx.Diagnostics
 
         Expression AccessField(ParameterExpression packetFieldsArray, string name)
         {
+            var parts = name.Split('.');
             if (m_args != null)
             {   // access the field using e[index][name]
-                var parts = name.Split('.');
+                
                 var source = parts.First();
                 var path = parts.Skip(1).ToArray();
 
@@ -91,14 +92,14 @@ namespace Ndx.Diagnostics
                 }
                 else
                 {
-                    var indexExpr = Expression.Property(eventSourceExpression, typeof(PacketFields).GetProperty("Item"), Expression.Constant(String.Join(".", path)));
+                    var indexExpr = Expression.Property(eventSourceExpression, typeof(PacketFields).GetProperty("Item"), Expression.Constant(String.Join("_", path)));
                     return indexExpr;
                 }
             }
             else
             {   // access the field using e[0][name]
                 var eventSourceExpression = Expression.ArrayIndex(packetFieldsArray, Expression.Constant(0));
-                var indexExpr = Expression.Property(eventSourceExpression, typeof(PacketFields).GetProperty("Item"), Expression.Constant(name));
+                var indexExpr = Expression.Property(eventSourceExpression, typeof(PacketFields).GetProperty("Item"), Expression.Constant(String.Join("_", parts)));
                 return indexExpr;
             }
         }
@@ -117,7 +118,7 @@ namespace Ndx.Diagnostics
 
         Parser<Expression> TempExpr(ParameterExpression packetFields)
         {
-            return Sprache.Parse.ChainOperator(LeadsTo, Term(packetFields), MakeBinary);
+            return Sprache.Parse.ChainOperator(LeadsTo.Or(NotLeadsTo), Term(packetFields), MakeBinary);
         }
 
         Parser<Expression> Term(ParameterExpression packetFields)
@@ -167,7 +168,7 @@ namespace Ndx.Diagnostics
             internal static Expression LessThanOrEqual => Expression.New(typeof(Operator.LessThanOrEqual));
             internal static Expression Not => Expression.New(typeof(Operator.Not));
             internal static Expression NotEqual => Expression.New(typeof(Operator.NotEqual));
-            internal static Expression NotLeadsTo(string str) => Expression.New(typeof(Operator.NotLeadsTo));
+            internal static Expression NotLeadsTo(string str) => Expression.New(Operator.NotLeadsTo._ConstructorInfo, Expression.Constant(str));
             internal static Expression OrElse => Expression.New(typeof(Operator.OrElse));
 
         }
@@ -187,6 +188,9 @@ namespace Ndx.Diagnostics
             {
                 try
                 {
+                    if (x is string s1 && s1.StartsWith("0x")) { x = Convert.ToInt64(s1.Substring(2), 16); }
+                    if (y is string s2 && s2.StartsWith("0x")) { y = Convert.ToInt64(s2.Substring(2), 16); }
+
                     var arg1 = System.Convert.ToDecimal(x);
                     var arg2 = System.Convert.ToDecimal(y);
                     return f(arg1,arg2);
@@ -353,11 +357,11 @@ namespace Ndx.Diagnostics
             {
                 TimeSpan m_from;
                 TimeSpan m_to;
-                internal static ConstructorInfo _ConstructorInfo => typeof(LeadsTo).GetConstructor(new Type[] { typeof(string) });
+                internal static ConstructorInfo _ConstructorInfo => typeof(NotLeadsTo).GetConstructor(new Type[] { typeof(string) });
 
                 public NotLeadsTo(string lexpr)
                 {
-                    var regex = new Regex(@"\[\s*(?<from>\d+)\s*\-\s*(?<to>\d+)\s*\]~>");
+                    var regex = new Regex(@"\[\s*(?<from>\d+)\s*\-\s*(?<to>\d+)\s*\]~!>");
                     var match = regex.Match(lexpr);
                     var fromString = match.Groups["from"].Value;
                     var toString = match.Groups["to"].Value;

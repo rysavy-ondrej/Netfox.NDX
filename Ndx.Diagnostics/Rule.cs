@@ -17,6 +17,8 @@ namespace Ndx.Diagnostics
     /// </summary>
     public class Rule
     {
+        private  AssertPredicateExpression[] m_asserts;
+        private  Dictionary<string, DisplayFilterExpression> m_events;
         /// <summary>
         /// Gets or sets the rule identifier.
         /// </summary>
@@ -25,14 +27,7 @@ namespace Ndx.Diagnostics
         /// Gets or sets the description of the rule.
         /// </summary>
         public string Description { get; set; }
-        /// <summary>
-        /// Gets the EVENT selector functions.
-        /// </summary>
-        public IDictionary<string,Func<Context,IEnumerable<PacketFields>>> Events { get; }
-        /// <summary>
-        /// Gets the collection of ASSERT expressions.
-        /// </summary>
-        public IList<Func<Context, bool>> Assert { get; }
+
         /// <summary>
         /// Gets the array representing named parameters of the rule.
         /// </summary>
@@ -43,8 +38,6 @@ namespace Ndx.Diagnostics
         /// </summary>
         public Rule()
         {
-            Events = new Dictionary<string, Func<Context, IEnumerable<PacketFields>>>();
-            Assert = new List<Func<Context, bool>>();
         }
 
         /// <summary>
@@ -55,36 +48,59 @@ namespace Ndx.Diagnostics
         /// <param name="args">Arguments of the rule.</param>
         /// <param name="select">Selector function to produce result records.</param>
         /// <returns>Stream of resulting events.</returns>
-        public IEnumerable<T> Evaluate<T>(IEnumerable<PacketFields> input, IDictionary<string, PacketFields> args, Func<Context, T> select)
+        public IEnumerable<T> Evaluate<T>(IEnumerable<PacketFields> input, IDictionary<string, PacketFields> args, Func<PacketFields[],T> selector)
         {
-            var context = new Context(this, input, args);
-            var evts = this.Events.SelectMany(p => p.Value(context), Tuple.Create).ToLookup(p => p.Item1.Key, p => p.Item2);
-            var seq = LinqTemplate(evts);
-            return seq.Where(evt => Assert.All(f => f(new Context(this, null, evt)))).                
-                Select(evt => select(new Context(this, null, evt)));
-        }
-
-        /// <summary>
-        /// Computes cross join for the provided events. 
-        /// </summary>
-        /// <param name="events">Lookup that represents all input events.</param>
-        /// <returns>Rows of the cross join suitable for further processing using where and select operations.</returns>
-        private static IEnumerable<Dictionary<string, PacketFields>> LinqTemplate(ILookup<string, PacketFields> events)
-        {
-            IEnumerable<Dictionary<string, PacketFields>> seed = new[] { new Dictionary<string, PacketFields> { { "__init", PacketFields.Empty } } };
-
-            return events.Aggregate(seed: seed, func: (accumulator, valueTuple) =>
+            // convert argumenst to array:
+            var argValues = this.Params.Select(x => args[x]).ToArray();
+            var assertArguments = Params.Concat(m_events.Keys).ToArray();
+            IEnumerable<PacketFields> GetEvent(DisplayFilterExpression eventFilter)
             {
-                var eventName = valueTuple.Key;
-                var eventEnumerable = valueTuple.DefaultIfEmpty(PacketFields.Empty)
-                    .Select(packetFields => new KeyValuePair<string, PacketFields>(eventName, packetFields)).ToList();
+                return input.Where(pf => eventFilter.FilterFunction.Invoke(pf) == true);
+            }
 
-                var result = accumulator.SelectMany(
-                    (dictionary) => eventEnumerable,
-                    (dictionary, valuePair) => new Dictionary<string, PacketFields>(dictionary) {{valuePair.Key, valuePair.Value}});
+
+            IEnumerable<PacketFields[]> CrossJoin1(IEnumerable<PacketFields> e1)
+            {
+                return e1.Select(_e1 => argValues.Concat(new PacketFields[] { _e1 }).ToArray());
+            }
+
+            IEnumerable<PacketFields[]> CrossJoin2(IEnumerable<PacketFields> e1, IEnumerable<PacketFields> e2)
+            {
+                var result = e1.SelectMany(_e1 => e2, (x1, x2) => argValues.Concat(new PacketFields[] { x1, x2 }).ToArray());
                 return result;
-            });
-         }
+            }
+            IEnumerable<PacketFields[]> CrossJoin3(IEnumerable<PacketFields> e1, IEnumerable<PacketFields> e2, IEnumerable<PacketFields> e3)
+            {
+                var r2 = e2.SelectMany(_e2 => e3, (x2,x3) => (x2,x3));
+                var r1 = e1.SelectMany(_e1 => r2, (x1,rx) => (x1,rx.x2,rx.x3)); 
+                var result = r1.Select( (t) => argValues.Concat(new PacketFields[] { t.x1, t.x2, t.x3 }).ToArray());
+                return result;
+            }
+            IEnumerable<PacketFields[]> CrossJoin4(IEnumerable<PacketFields> e1, IEnumerable<PacketFields> e2, IEnumerable<PacketFields> e3, IEnumerable<PacketFields> e4)
+            {
+                var r3 = e3.SelectMany(_e3 => e4, (x3, x4) => (x3, x4));
+                var r2 = e2.SelectMany(_e2 => r3, (x2, rx) => (x2, rx.x3, rx.x4));
+                var r1 = e1.SelectMany(_e1 => r2, (x1, rx) => (x1, rx.x2, rx.x3, rx.x4));
+                var result = r1.Select((t) => argValues.Concat(new PacketFields[] { t.x1, t.x2, t.x3 }).ToArray());
+                return result;
+            }
+            IEnumerable<PacketFields[]> CrossJoin(params IEnumerable<PacketFields>[] es)
+            {
+                switch(es.Length)
+                {
+                    case 1: return CrossJoin1(es[0]);
+                    case 2: return CrossJoin2(es[0], es[1]);
+                    case 3: return CrossJoin3(es[0], es[1], es[2]);
+                    case 4: return CrossJoin4(es[0], es[1], es[2],es[3]);
+                    default: return null;
+                }
+            }
+
+            var events = m_events.Select(x=> GetEvent(x.Value).DefaultIfEmpty()).ToArray();
+            var sequence = CrossJoin(events);
+            return sequence.Where(evt => m_asserts.All(f => f.FlowFilter(evt) == true)).                
+                Select(evt => selector(evt));
+        }
 
 
         /// <summary>
@@ -109,11 +125,11 @@ namespace Ndx.Diagnostics
             rule.Id = ((YamlScalarNode)yamlRule.Children[new YamlScalarNode("id")])?.Value ?? String.Empty;
             rule.Description = ((YamlScalarNode)yamlRule.Children[new YamlScalarNode("description")])?.Value ?? String.Empty;
             rule.Params = yamlParams?.Select(x => ((YamlScalarNode)x).Value).ToArray() ?? new String[] { };
-
-            var events = yamlEvents.Children.Keys.Select(k => ((YamlScalarNode)k).Value);
+            var events = yamlEvents.Children.Keys.Select(k => ((YamlScalarNode)k).Value).ToArray();
+            var assertArguments = rule.Params.Concat(events).ToArray();
             // assert:
-            var asserts = yamlAssert.Select(x => ((YamlScalarNode)x).Value).Select(x => AssertPredicateExpression.Parse(x, events.ToArray())).ToArray();
-            
+            rule.m_asserts = yamlAssert.Select(x => ((YamlScalarNode)x).Value).Select(x => AssertPredicateExpression.Parse(x,assertArguments)).ToArray();
+            rule.m_events = yamlEvents.Select(x => (name: ((YamlScalarNode)x.Key).Value, events: ((YamlScalarNode)x.Value).Value)).Select(x => (name: x.name, events: DisplayFilterExpression.Parse(x.events))).ToDictionary(x=> x.name, x => x.events );
 
             return rule;
         }

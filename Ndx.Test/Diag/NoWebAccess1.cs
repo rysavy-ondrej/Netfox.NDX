@@ -127,37 +127,6 @@ namespace Ndx.Test.Diag
         }
 
         [Test]
-        public void DnsNoResponseRule()
-        {
-            var rule = new Rule()
-            {
-                Id = "Dns.NoResponse",
-                Description = "DNS server not responding error."
-            };
-            rule.Events.Add("e1", ctx => ctx.Input.Where(e => e.FrameProtocols.Contains("dns") && e["dns_flags_dns_flags_response"].Equals("0") && e["ip_ip_src"].Equals(ctx["host"]["ip_ip_src"])));
-            rule.Events.Add("e2", ctx => ctx.Input.Where(e => e.FrameProtocols.Contains("dns") && e["dns_flags_dns_flags_response"].Equals("1")));
-            rule.Assert.Add(ctx => ctx["e1"]["dns.id"].Equals(ctx["e2"]["dns.id"]));
-
-
-            rule.Assert.Add(ctx => ctx.NotLeadsTo(TimeSpan.Zero, TimeSpan.FromSeconds(5), ctx["e1"], ctx["e2"]));
-
-
-            var events = PcapFile.ReadJson(m_source).ToEnumerable().ToList();
-            var args = new Dictionary<string, PacketFields>
-            {
-                {"host", PacketFields.FromFields( new Dictionary<string,string>() { { "ip_ip_src" , "172.16.0.8" } } ) }
-            };
-            
-            var resultSet = rule.Evaluate(events, args, ctx => new { query = ctx["e1"],
-                description = $"{ctx["e1"].DateTime}: DNS Response Lost: {ctx["e1"].GetFlowKey().IpFlowKeyString}: {ctx["e1"]["dns_text"]} : {ctx["e1"]["text_text"]}"  });
-            Console.WriteLine("Diagnostic Trace:");
-            foreach (var result in resultSet)
-            {
-                Console.WriteLine(result.description);
-            }
-        }
-
-        [Test]
         public void DnsNoResponse()
         {
             var hostIp = "172.16.0.8";

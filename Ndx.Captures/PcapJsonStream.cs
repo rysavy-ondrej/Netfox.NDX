@@ -67,7 +67,17 @@ namespace Ndx.Captures
                         var field = (JProperty)_field;
                         if (field?.Value.Type == JTokenType.String)
                         {
-                            result.Fields.Add(field.Name, (string)field.Value);
+                            // field name has a prefix, for instance:
+                            // dns_dns_count_answers 
+                            // dns_flags_dns_flags_opcode
+                            // the following tries to remove this prefix:
+                            var fieldNameParts = field.Name.Split('_');
+                            var fieldNameCore = fieldNameParts.Skip(1).SkipWhile(s => !s.Equals(proto)).ToArray();
+                            if (fieldNameCore.Count() > 0)
+                            {
+                                var fieldName = String.Join("_", fieldNameCore);
+                                result.Fields[fieldName] = (string)field.Value;
+                            }
                         }
                     }
                 }
