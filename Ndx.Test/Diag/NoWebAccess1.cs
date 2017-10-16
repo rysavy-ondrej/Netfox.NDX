@@ -99,11 +99,12 @@ namespace Ndx.Test.Diag
             //      id: dns_test_ok
             //      description: Rule that select sucessful DNS communication of the specified host.
             // params:
-            //      - hostMac
+            //      - host
             // events:
             //      e1: dns.flags.response == 0
             //      e2: dns.flags.response == 1 && dns.flags.rcode == 1
             // assert:
+            //      - e1.ip.src == host.ip.src
             //      - e1.dns.id == e2.dns.id
             //      - e1 [0 - 5s]~> e2
             // select:

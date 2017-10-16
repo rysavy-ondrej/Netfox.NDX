@@ -49,5 +49,15 @@ namespace Ndx.Model
             pf.Fields.Add(entries);
             return pf;
         }
+
+        /// <summary>
+        /// Tests if the <see cref="PacketFields"/> object is null or equal to the Empty instance.
+        /// </summary>
+        /// <param name="pf">The <see cref="PacketFields"/> object to test.</param>
+        /// <returns>true if the <see cref="PacketFields"/> object is null or equal to the Empty instance.</returns>
+        public static bool IsNullOrEmpty(PacketFields pf)
+        {
+            return pf == null || pf == PacketFields.Empty;
+        }
     }
 }

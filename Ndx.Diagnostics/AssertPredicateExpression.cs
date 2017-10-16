@@ -6,14 +6,14 @@ namespace Ndx.Diagnostics
 {
     public class AssertPredicateExpression
     {
-        private Expression<Func<PacketFields[], bool>> m_filterExpression;
-        public AssertPredicateExpression(Expression<Func<PacketFields[], bool>> expression)
+        private Expression<Func<PacketFields[], bool?>> m_filterExpression;
+        public AssertPredicateExpression(Expression<Func<PacketFields[], bool?>> expression)
         {
             this.m_filterExpression = expression;
         }
 
-        private Func<PacketFields[], bool> m_filterFunc;
-        public Func<PacketFields[], bool> FlowFilter
+        private Func<PacketFields[], bool?> m_filterFunc;
+        public Func<PacketFields[], bool?> FlowFilter
         {
             get
             {

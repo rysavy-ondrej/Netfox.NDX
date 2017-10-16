@@ -72,6 +72,7 @@
     <Compile Include="Captures\ReadFiles.cs" />
     <Compile Include="Console\ConversationsTest.cs" />
     <Compile Include="Decoders\DecodersTest.cs" />
+    <Compile Include="Diag\RuleTest.cs" />
     <Compile Include="Diag\ExpressionTest.cs" />
     <Compile Include="Diag\NoWebAccess1.cs" />
     <Compile Include="Filters\FlowKeyFilterTest.cs" />
