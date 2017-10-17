@@ -1,18 +1,25 @@
 ﻿using Ndx.Model;
+using NLog;
 using Sprache;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Net;
-using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace Ndx.Diagnostics
 {
 
-    internal class ExpressionParser
+    /// <summary>
+    /// Implements a parser for wirshakr display filter language.
+    /// </summary>
+    /// <remarks>
+    /// See https://www.wireshark.org/docs/man-pages/wireshark-filter.html for details.
+    /// </remarks>
+    internal partial class ExpressionParser
     {
+        private static Logger m_logger = LogManager.GetCurrentClassLogger();
+
         private Dictionary<string, int> m_args = null;
 
         internal ExpressionParser()
@@ -60,19 +67,32 @@ namespace Ndx.Diagnostics
 
         static readonly Parser<Expression> Subtract = MakeOperator("-", OperatorExpression.Subtract);
 
-        static Regex rxIpAddress = new Regex(@"((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)");
-        static Regex rxField = new Regex(@"([A-Za-z_][A-Za-z_0-9]*)(\.([A-Za-z_][A-Za-z_0-9]*))*");
+        static readonly Parser<Expression> StringContains = MakeOperator("contains", OperatorExpression.StringContains);
+
+        static readonly Parser<Expression> StringEqual = MakeOperator("eq", OperatorExpression.StringEqual);
+
+        static readonly Parser<Expression> StringNotEqual = MakeOperator("ne", OperatorExpression.StringNotEqual);
+
+        static readonly Parser<Expression> StringMatches = MakeOperator("matches", OperatorExpression.StringMatches);
+
+
+        static Regex rxIpAddress = new Regex(@"((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)", RegexOptions.Compiled);
+        static Regex rxField = new Regex(@"([A-Za-z_][A-Za-z_0-9]*)(\.([A-Za-z_][A-Za-z_0-9]*))*", RegexOptions.Compiled);
 
         static readonly Parser<Expression> IpAddress =
             from ipv4 in Sprache.Parse.Regex(rxIpAddress)
             select Expression.Constant(ipv4);
 
-        static readonly Parser<Expression> Number =
+        static readonly Parser<Expression> NumberConstant =
             from num in Sprache.Parse.Number
             select Expression.Convert(Expression.Constant(long.Parse(num)), typeof(object));
 
+        static readonly Parser<Expression> StringConstant =
+            from str in Sprache.Parse.Regex("['\"][^\"]*[\"']")
+            select Expression.Constant(str.Trim('"','\''));
+
         static readonly Parser<Expression> Constant =
-            IpAddress.XOr(Number);
+            IpAddress.XOr(NumberConstant).XOr(StringConstant);
 
         Parser<Expression> Field(ParameterExpression flowKey) =>
             from name in Sprache.Parse.Regex(rxField)
@@ -116,13 +136,19 @@ namespace Ndx.Diagnostics
 
         Parser<Expression> AndExpr(ParameterExpression packetFields)
         {
-            return Sprache.Parse.ChainOperator(AndAlso, Predicate(packetFields), MakeBinaryBool);
+            return Sprache.Parse.ChainOperator(AndAlso, PredicateDecimal(packetFields), MakeBinaryBool);
         }
 
-        Parser<Expression> Predicate(ParameterExpression packetFields)
+        Parser<Expression> PredicateDecimal(ParameterExpression packetFields)
         {
             return Sprache.Parse.ChainOperator(Equal.Or(NotEqual).Or(GreaterThanOrEqual).Or(LessThanOrEqual).Or(GreaterThan).Or(LessThan),
-                WeakTerm(packetFields), MakeBinaryDecimal);
+                PredicateString(packetFields), MakeBinaryDecimal);
+        }
+
+        Parser<Expression> PredicateString(ParameterExpression packetFields)
+        {
+            return Sprache.Parse.ChainOperator(StringEqual.Or(StringMatches).Or(StringContains).Or(StringNotEqual),
+                WeakTerm(packetFields), MakeBinaryString);
         }
 
         Parser<Expression> WeakTerm(ParameterExpression packetFields)
@@ -155,12 +181,25 @@ namespace Ndx.Diagnostics
             return OrExpr(param).End().Select(body => Expression.Lambda<Func<PacketFields[], bool?>>(body, param));
         }
 
+        /// <summary>
+        /// Creates a binary expression for the given operator and converts arguments to <see cref="decimal"/> when necessary.
+        /// </summary>
+        /// <param name="operatorExpression"></param>
+        /// <param name="arg1"></param>
+        /// <param name="arg2"></param>
+        /// <returns></returns>
         Expression MakeBinaryDecimal(Expression operatorExpression, Expression arg1, Expression arg2)
         {
-            var arg1Expr = Expression.Call(Operator._ToDecimalMethodInfo.MakeGenericMethod(arg1.Type), arg1);
-            var arg2Expr = Expression.Call(Operator._ToDecimalMethodInfo.MakeGenericMethod(arg2.Type), arg2);
+            var arg1Expr = Expression.Call(Diagnostics.OperatorExpression._ToDecimalMethodInfo.MakeGenericMethod(arg1.Type), arg1);
+            var arg2Expr = Expression.Call(Diagnostics.OperatorExpression._ToDecimalMethodInfo.MakeGenericMethod(arg2.Type), arg2);
             var methodInfo = operatorExpression.Type.GetMethod("Apply");
             return Expression.Call(operatorExpression, methodInfo, arg1Expr, arg2Expr);
+        }
+
+        Expression MakeBinaryString(Expression operatorExpression, Expression arg1, Expression arg2)
+        {
+            var methodInfo = operatorExpression.Type.GetMethod("Apply");
+            return Expression.Call(operatorExpression, methodInfo, arg1, arg2);
         }
 
         Expression MakeBinaryBool(Expression operatorExpression, Expression arg1, Expression arg2)
@@ -173,172 +212,25 @@ namespace Ndx.Diagnostics
         /// </summary>
         internal static class OperatorExpression
         {
-            internal static Expression AndAlso => Expression.New(typeof(Operator.AndAlso));
-            internal static Expression Equal => Expression.New(typeof(Operator.Equal));
-            internal static Expression GreaterThan => Expression.New(typeof(Operator.GreaterThan));
-            internal static Expression GreaterThanOrEqual => Expression.New(typeof(Operator.GreaterThanOrEqual));
-            internal static Expression LessThan => Expression.New(typeof(Operator.LessThan));
-            internal static Expression LessThanOrEqual => Expression.New(typeof(Operator.LessThanOrEqual));
-            internal static Expression Not => Expression.New(typeof(Operator.Not));
-            internal static Expression NotEqual => Expression.New(typeof(Operator.NotEqual));
-            internal static Expression OrElse => Expression.New(typeof(Operator.OrElse));
+            internal static Expression AndAlso => Expression.New(typeof(Diagnostics.OperatorExpression.AndAlso));
+            internal static Expression Equal => Expression.New(typeof(Diagnostics.OperatorExpression.Equal));
+            internal static Expression GreaterThan => Expression.New(typeof(Diagnostics.OperatorExpression.GreaterThan));
+            internal static Expression GreaterThanOrEqual => Expression.New(typeof(Diagnostics.OperatorExpression.GreaterThanOrEqual));
+            internal static Expression LessThan => Expression.New(typeof(Diagnostics.OperatorExpression.LessThan));
+            internal static Expression LessThanOrEqual => Expression.New(typeof(Diagnostics.OperatorExpression.LessThanOrEqual));
+            internal static Expression Not => Expression.New(typeof(Diagnostics.OperatorExpression.Not));
+            internal static Expression NotEqual => Expression.New(typeof(Diagnostics.OperatorExpression.NotEqual));
+            internal static Expression OrElse => Expression.New(typeof(Diagnostics.OperatorExpression.OrElse));
 
-            public static Expression Add => Expression.New(typeof(Operator.Add));
-            public static Expression Divide => Expression.New(typeof(Operator.Divide));
-            public static Expression Modulo => Expression.New(typeof(Operator.Modulo));
-            public static Expression Multiply => Expression.New(typeof(Operator.Multiply));
-            public static Expression Subtract => Expression.New(typeof(Operator.Subtract));
-        }
-        /// <summary>
-        /// Derived classes implement operator expressions.
-        /// </summary>
-        public abstract class Operator
-        {
-
-            internal static MethodInfo _ToDecimalMethodInfo => typeof(Operator).GetMethod("ToDecimal");
-            /// <summary>
-            /// Converts input object of type <typeparamref name="T"/> to <see cref="decimal?"/> value.
-            /// </summary>
-            /// <remarks>
-            /// This method can convert string reperesentation of ordinal number, flow, 
-            /// hexadecimal number starting with 0x prefix, and IPv4 address. 
-            /// </remarks>
-            /// <param name="x">The input string.</param>
-            /// <returns><see cref="decimal?"/> value for the provided input string.</returns>
-            public static decimal? ToDecimal<T>(T x)
-            {
-                try
-                {
-                    if (x is decimal d) return d;
-
-                    if (x is string s)
-                    {
-                        // empty string is converted to null
-                        if (String.IsNullOrEmpty(s)) return null;
-
-                        // hexadecimal number:
-                        if (s.StartsWith("0x")) { return System.Convert.ToDecimal(Convert.ToInt64(s.Substring(2), 16)); }
-
-                        // ipaddress
-                        if (Regex.IsMatch(s, "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"))
-                            return Convert.ToDecimal(IPAddress.Parse(s).Address);
-
-                        if (Regex.IsMatch(s, @"^\d+(.\d+)?$")) return System.Convert.ToDecimal(x);
-
-                        return null;
-                    }
-                    
-                    return System.Convert.ToDecimal(x);
-                }
-                // This is just for sure, using exception is very very slow, so this should not happen in most of the cases!
-                catch(Exception)
-                {
-                    return null;
-                }
-            }
-
-            public static bool IsString(object value)
-            {
-                return value is string;
-            }
-            public static bool IsNumber(object value)
-            {
-                return value is sbyte
-                        || value is byte
-                        || value is short
-                        || value is ushort
-                        || value is int
-                        || value is uint
-                        || value is long
-                        || value is ulong
-                        || value is float
-                        || value is double
-                        || value is decimal;
-            }
-            public static bool IsBoolean(object value)
-            {
-                return value is bool;
-            }
-
-            public static bool IsEnum(object value)
-            {
-                return value is Enum;
-            }
-
-            internal class AndAlso : Operator
-            {
-                public bool? Apply(bool? x, bool? y)
-                {
-                    if (!x.HasValue || !y.HasValue) return null;
-                    return x.Value && y.Value;
-                }
-            }
-            internal class OrElse : Operator
-            {
-                public bool? Apply(bool? x, bool? y)
-                {
-                    if (!x.HasValue || !y.HasValue) return null;
-                    return x.Value || y.Value;
-                }
-            }
-            internal class Not : Operator
-            {
-                public bool? Apply(bool? x)
-                {
-                    return !x;
-                }
-            }
-
-            internal class Equal : Operator
-            {
-                public bool? Apply(decimal? x, decimal? y) => x == y;
-            }
-            internal class NotEqual : Operator
-            {
-                public bool? Apply(decimal? x, decimal? y) => x != y;
-            }
-            internal class GreaterThan : Operator
-            {
-                public bool? Apply(decimal? x, decimal? y) => x > y;
-            }
-            internal class GreaterThanOrEqual : Operator
-            {
-
-                public bool? Apply(decimal? x, decimal? y) => x >= y;
-            }
-            internal class LessThan : Operator
-            {
-                public bool? Apply(decimal? x, decimal? y) => x < y;
-            }
-            internal class LessThanOrEqual : Operator
-            {
-                public bool? Apply(decimal? x, decimal? y) => x <= y;
-            }
-
-            internal class Add : Operator
-            {
-                public decimal? Apply(decimal? x, decimal? y) => x + y;
-            }
-
-            internal class Divide : Operator
-            {
-                public decimal? Apply(decimal? x, decimal? y) => x / y;
-            }
-
-            internal class Modulo : Operator
-            {
-                public decimal? Apply(decimal? x, decimal? y) => x % y;
-            }
-
-            internal class Multiply : Operator
-            {
-                public decimal? Apply(decimal? x, decimal? y) => x * y;
-            }
-
-            internal class Subtract : Operator
-            {
-                public decimal? Apply(decimal? x, decimal? y) => x - y;
-            }
+            internal static Expression Add => Expression.New(typeof(Diagnostics.OperatorExpression.Add));
+            internal static Expression Divide => Expression.New(typeof(Diagnostics.OperatorExpression.Divide));
+            internal static Expression Modulo => Expression.New(typeof(Diagnostics.OperatorExpression.Modulo));
+            internal static Expression Multiply => Expression.New(typeof(Diagnostics.OperatorExpression.Multiply));
+            internal static Expression Subtract => Expression.New(typeof(Diagnostics.OperatorExpression.Subtract));
+            internal static Expression StringContains => Expression.New(typeof(Diagnostics.OperatorExpression.StringContains));
+            internal static Expression StringMatches => Expression.New(typeof(Diagnostics.OperatorExpression.StringMatches));
+            internal static Expression StringEqual => Expression.New(typeof(Diagnostics.OperatorExpression.StringEqual));
+            internal static Expression StringNotEqual => Expression.New(typeof(Diagnostics.OperatorExpression.StringNotEqual));
         }
     }
 }

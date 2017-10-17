@@ -59,6 +59,7 @@ events:
     e2: dns.flags.response == 1 && dns.flags.rcode == 0
 assert:    
     - dnsClient.ip.src == e1.ip.src
+    - e1.ip.src eq '192.168.111.100'
     - e1.dns.id == e2.dns.id
     - e1.ts < e2.ts && e2.ts <= e1.ts + 10 
 select:
