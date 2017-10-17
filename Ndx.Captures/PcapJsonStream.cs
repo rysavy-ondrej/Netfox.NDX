@@ -51,11 +51,11 @@ namespace Ndx.Captures
             var frame = layers["frame"];
             var result = new PacketFields()
             {
-                Timestamp = (long)jsonObject["timestamp"],
+                Timestamp = EpochMsToTick((long)jsonObject["timestamp"]),
                 FrameNumber = (int)frame["frame_frame_number"],
                 FrameProtocols = (string)frame["frame_frame_protocols"]
             };
-
+            result.Fields["ts"] = (string)jsonObject["timestamp"];
             var protocols = result.FrameProtocols.Split(':');
             foreach (var proto in protocols)
             {
@@ -83,6 +83,11 @@ namespace Ndx.Captures
                 }
             }
             return result;
+        }
+
+        private static long EpochMsToTick(long epochms)
+        {
+            return DateTimeOffset.FromUnixTimeMilliseconds(epochms).Ticks;
         }
 
         public void Dispose()

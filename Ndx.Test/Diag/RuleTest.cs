@@ -10,6 +10,7 @@ using System.Reactive.Linq;
 using System.Linq;
 using System.Collections.Generic;
 using System;
+using System.Diagnostics;
 
 namespace Ndx.Test.Filters
 {
@@ -22,21 +23,24 @@ namespace Ndx.Test.Filters
         [Test]
         public void Rule_LoadFromYaml()
         {
-            var rule = Rule.Load(theRule);
+            var rule = Rule.Load(m_theRule);
         }
 
 
         [Test]
         public void Rule_LoadAndEvaluate()
         {
-            var rule = Rule.Load(theRule);
+            var sw = new Stopwatch();
+            sw.Start();
+            var rule = Rule.Load(m_theRule);
             var events = PcapFile.ReadJson(m_source).ToEnumerable().ToList();
-
+            Console.WriteLine($"{events.Count()} events readed in {sw.ElapsedMilliseconds} ms.");
             var host = new PacketFields();
-            host.Fields["ip_src"] = "172.16.0.8";
+            sw.Restart();
+            host.Fields["ip_src"] = "192.168.111.100";
 
             var dginfo = rule.Evaluate(events, new Dictionary<string, PacketFields>() { { "dnsClient", host } }, x => x ).ToArray();
-            Console.WriteLine($"Matching DNS messages count={dginfo.Count()}");
+            Console.WriteLine($"Matching DNS messages count={dginfo.Count()}, computed in {sw.ElapsedMilliseconds} ms.");
             foreach (var item in dginfo)
             {
                 Console.WriteLine($"{item[1].FrameNumber} <- {item[1]["dns_id"]}  -> {item[2].FrameNumber}, RTT = {(item[2].DateTime - item[1].DateTime).TotalMilliseconds} ms");
@@ -44,7 +48,7 @@ namespace Ndx.Test.Filters
         }
 
 
-        private const string theRule = @"---
+        private const string m_theRule = @"---
 rule:
     id: dns_test_ok
     description: Rule that select successful DNS communication of the specified host.
@@ -53,9 +57,10 @@ params:
 events:
     e1: dns.flags.response == 0
     e2: dns.flags.response == 1 && dns.flags.rcode == 0
-assert:
+assert:    
+    - dnsClient.ip.src == e1.ip.src
     - e1.dns.id == e2.dns.id
-   
+    - e1.ts < e2.ts && e2.ts <= e1.ts + 10 
 select:
     host: dnsClient
     query: e1

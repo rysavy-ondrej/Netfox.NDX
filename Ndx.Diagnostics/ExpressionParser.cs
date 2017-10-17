@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
@@ -49,17 +50,21 @@ namespace Ndx.Diagnostics
 
         static readonly Parser<Expression> LessThanOrEqual = MakeOperator("<=", OperatorExpression.LessThanOrEqual);
 
-        // [0-5s]~>
-        static readonly Parser<Expression> LeadsTo =
-            from lexpr in Sprache.Parse.Regex(@"\[\s*\d+\s*\-\s*\d+\s*\]~>")
-            select OperatorExpression.LeadsTo(lexpr);
+        static readonly Parser<Expression> Add = MakeOperator("+", OperatorExpression.Add);
 
-        static readonly Parser<Expression> NotLeadsTo =
-            from lexpr in Sprache.Parse.Regex(@"\[\s*\d+\s*\-\s*\d+\s*\]~!>")
-            select OperatorExpression.NotLeadsTo(lexpr);
+        static readonly Parser<Expression> Divide = MakeOperator("/", OperatorExpression.Divide);
+
+        static readonly Parser<Expression> Modulo = MakeOperator("%", OperatorExpression.Modulo);
+
+        static readonly Parser<Expression> Multiply = MakeOperator("*", OperatorExpression.Multiply);
+
+        static readonly Parser<Expression> Subtract = MakeOperator("-", OperatorExpression.Subtract);
+
+        static Regex rxIpAddress = new Regex(@"((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)");
+        static Regex rxField = new Regex(@"([A-Za-z_][A-Za-z_0-9]*)(\.([A-Za-z_][A-Za-z_0-9]*))*");
 
         static readonly Parser<Expression> IpAddress =
-            from ipv4 in Sprache.Parse.Regex(@"((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)")
+            from ipv4 in Sprache.Parse.Regex(rxIpAddress)
             select Expression.Constant(ipv4);
 
         static readonly Parser<Expression> Number =
@@ -70,7 +75,7 @@ namespace Ndx.Diagnostics
             IpAddress.XOr(Number);
 
         Parser<Expression> Field(ParameterExpression flowKey) =>
-            from name in Sprache.Parse.Regex(@"([A-Za-z_][A-Za-z_0-9]*)(\.([A-Za-z_][A-Za-z_0-9]*))*")
+            from name in Sprache.Parse.Regex(rxField)
             select AccessField(flowKey, name);
 
 
@@ -104,33 +109,32 @@ namespace Ndx.Diagnostics
             }
         }
 
-
-
         Parser<Expression> OrExpr(ParameterExpression packetFields)
         {
-            return Sprache.Parse.ChainOperator(OrElse, AndExpr(packetFields), MakeBinary);
+            return Sprache.Parse.ChainOperator(OrElse, AndExpr(packetFields), MakeBinaryBool);
         }
 
         Parser<Expression> AndExpr(ParameterExpression packetFields)
         {
-            return Sprache.Parse.ChainOperator(AndAlso, TempExpr(packetFields), MakeBinary);
+            return Sprache.Parse.ChainOperator(AndAlso, Predicate(packetFields), MakeBinaryBool);
         }
 
-        Parser<Expression> TempExpr(ParameterExpression packetFields)
+        Parser<Expression> Predicate(ParameterExpression packetFields)
         {
-            return Sprache.Parse.ChainOperator(LeadsTo.Or(NotLeadsTo), Term(packetFields), MakeBinary);
+            return Sprache.Parse.ChainOperator(Equal.Or(NotEqual).Or(GreaterThanOrEqual).Or(LessThanOrEqual).Or(GreaterThan).Or(LessThan),
+                WeakTerm(packetFields), MakeBinaryDecimal);
         }
 
-        Parser<Expression> Term(ParameterExpression packetFields)
+        Parser<Expression> WeakTerm(ParameterExpression packetFields)
         {
-            return Sprache.Parse.ChainOperator(Equal.Or(NotEqual).Or(GreaterThan).Or(GreaterThanOrEqual).Or(LessThan).Or(LessThanOrEqual),
-                Operand(packetFields), MakeBinary);
+            return Sprache.Parse.ChainOperator(Add.XOr(Subtract),
+                StrongTerm(packetFields), MakeBinaryDecimal);
         }
 
-        Expression MakeBinary(Expression operatorExpression, Expression arg1, Expression arg2)
+        Parser<Expression> StrongTerm(ParameterExpression packetFields)
         {
-            var methodInfo = operatorExpression.Type.GetMethod("Apply");
-            return Expression.Call(operatorExpression,methodInfo, arg1, arg2);
+            return Sprache.Parse.ChainOperator(Multiply.XOr(Divide).XOr(Modulo),
+                Operand(packetFields), MakeBinaryDecimal);
         }
 
         Parser<Expression> Operand(ParameterExpression flowKey) =>
@@ -143,17 +147,27 @@ namespace Ndx.Diagnostics
           (from lparen in Sprache.Parse.Char('(')
            from expr in Sprache.Parse.Ref(() => OrExpr(flowKey))
            from rparen in Sprache.Parse.Char(')')
-           select expr).Named("expression")
-           .XOr(Constant)
-           .XOr(Field(flowKey));
+           select expr).XOr(Constant).XOr(Field(flowKey));
 
         public Parser<Expression<Func<PacketFields[], bool?>>> Lambda()
         {
-            var param = Expression.Parameter(typeof(PacketFields[]), "args");
+            var param = Expression.Parameter(typeof(PacketFields[]), "@t");
             return OrExpr(param).End().Select(body => Expression.Lambda<Func<PacketFields[], bool?>>(body, param));
         }
 
+        Expression MakeBinaryDecimal(Expression operatorExpression, Expression arg1, Expression arg2)
+        {
+            var arg1Expr = Expression.Call(Operator._ToDecimalMethodInfo.MakeGenericMethod(arg1.Type), arg1);
+            var arg2Expr = Expression.Call(Operator._ToDecimalMethodInfo.MakeGenericMethod(arg2.Type), arg2);
+            var methodInfo = operatorExpression.Type.GetMethod("Apply");
+            return Expression.Call(operatorExpression, methodInfo, arg1Expr, arg2Expr);
+        }
 
+        Expression MakeBinaryBool(Expression operatorExpression, Expression arg1, Expression arg2)
+        {
+            var methodInfo = operatorExpression.Type.GetMethod("Apply");
+            return Expression.Call(operatorExpression, methodInfo, arg1, arg2);
+        }
         /// <summary>
         /// Provides <see cref="Expresssion"/> object for operators. TODO: convert to singleton where suitable.
         /// </summary>
@@ -163,58 +177,65 @@ namespace Ndx.Diagnostics
             internal static Expression Equal => Expression.New(typeof(Operator.Equal));
             internal static Expression GreaterThan => Expression.New(typeof(Operator.GreaterThan));
             internal static Expression GreaterThanOrEqual => Expression.New(typeof(Operator.GreaterThanOrEqual));
-            internal static Expression LeadsTo(string str) => Expression.New(Operator.LeadsTo._ConstructorInfo, Expression.Constant(str));
             internal static Expression LessThan => Expression.New(typeof(Operator.LessThan));
             internal static Expression LessThanOrEqual => Expression.New(typeof(Operator.LessThanOrEqual));
             internal static Expression Not => Expression.New(typeof(Operator.Not));
             internal static Expression NotEqual => Expression.New(typeof(Operator.NotEqual));
-            internal static Expression NotLeadsTo(string str) => Expression.New(Operator.NotLeadsTo._ConstructorInfo, Expression.Constant(str));
             internal static Expression OrElse => Expression.New(typeof(Operator.OrElse));
 
+            public static Expression Add => Expression.New(typeof(Operator.Add));
+            public static Expression Divide => Expression.New(typeof(Operator.Divide));
+            public static Expression Modulo => Expression.New(typeof(Operator.Modulo));
+            public static Expression Multiply => Expression.New(typeof(Operator.Multiply));
+            public static Expression Subtract => Expression.New(typeof(Operator.Subtract));
         }
         /// <summary>
         /// Derived classes implement operator expressions.
         /// </summary>
-        internal abstract class Operator
+        public abstract class Operator
         {
+
+            internal static MethodInfo _ToDecimalMethodInfo => typeof(Operator).GetMethod("ToDecimal");
             /// <summary>
-            /// Applies operator between numbers.
+            /// Converts input object of type <typeparamref name="T"/> to <see cref="decimal?"/> value.
             /// </summary>
-            /// <param name="f"></param>
-            /// <param name="x"></param>
-            /// <param name="y"></param>
-            /// <returns></returns>
-            public static bool? ApplyDecimalOperator(Func<decimal, decimal, bool> f, object x, object y)
+            /// <remarks>
+            /// This method can convert string reperesentation of ordinal number, flow, 
+            /// hexadecimal number starting with 0x prefix, and IPv4 address. 
+            /// </remarks>
+            /// <param name="x">The input string.</param>
+            /// <returns><see cref="decimal?"/> value for the provided input string.</returns>
+            public static decimal? ToDecimal<T>(T x)
             {
                 try
                 {
-                    if (x is string s1 && s1.StartsWith("0x")) { x = Convert.ToInt64(s1.Substring(2), 16); }
-                    if (y is string s2 && s2.StartsWith("0x")) { y = Convert.ToInt64(s2.Substring(2), 16); }
+                    if (x is decimal d) return d;
 
-                    var arg1 = System.Convert.ToDecimal(x);
-                    var arg2 = System.Convert.ToDecimal(y);
-                    return f(arg1,arg2);
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-            }
+                    if (x is string s)
+                    {
+                        // empty string is converted to null
+                        if (String.IsNullOrEmpty(s)) return null;
 
-            public static bool? ApplyStringOperator(Func<string,string,bool> f, object x, object y)
-            {
-                try
-                {
-                    var arg1 = x.ToString();
-                    var arg2 = y.ToString();
-                    return f(arg1, arg2);
+                        // hexadecimal number:
+                        if (s.StartsWith("0x")) { return System.Convert.ToDecimal(Convert.ToInt64(s.Substring(2), 16)); }
+
+                        // ipaddress
+                        if (Regex.IsMatch(s, "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"))
+                            return Convert.ToDecimal(IPAddress.Parse(s).Address);
+
+                        if (Regex.IsMatch(s, @"^\d+(.\d+)?$")) return System.Convert.ToDecimal(x);
+
+                        return null;
+                    }
+                    
+                    return System.Convert.ToDecimal(x);
                 }
+                // This is just for sure, using exception is very very slow, so this should not happen in most of the cases!
                 catch(Exception)
                 {
                     return null;
                 }
             }
-
 
             public static bool IsString(object value)
             {
@@ -270,129 +291,53 @@ namespace Ndx.Diagnostics
 
             internal class Equal : Operator
             {
-                public bool? Apply(object x, object y) { return ApplyDecimalOperator(Decimal.Equals, x, y); }
+                public bool? Apply(decimal? x, decimal? y) => x == y;
             }
             internal class NotEqual : Operator
             {
-                public bool? Apply(object x, object y) { return !ApplyDecimalOperator(Decimal.Equals, x, y); }
+                public bool? Apply(decimal? x, decimal? y) => x != y;
             }
             internal class GreaterThan : Operator
             {
-                public bool? Apply(object x, object y)
-                {
-                    return ApplyDecimalOperator((l,r)=> l>r, x, y);
-                }
+                public bool? Apply(decimal? x, decimal? y) => x > y;
             }
             internal class GreaterThanOrEqual : Operator
             {
 
-                public bool? Apply(object x, object y)
-                {
-                    return ApplyDecimalOperator((l, r) => l >= r, x, y);
-                }
+                public bool? Apply(decimal? x, decimal? y) => x >= y;
             }
             internal class LessThan : Operator
             {
-                public bool? Apply(object x, object y)
-                {
-                    return ApplyDecimalOperator((l, r) => l < r, x, y);
-
-                }
+                public bool? Apply(decimal? x, decimal? y) => x < y;
             }
             internal class LessThanOrEqual : Operator
             {
-                public bool? Apply(object x, object y)
-                {
-                    return ApplyDecimalOperator((l, r) => l <= r, x, y);
-                }
+                public bool? Apply(decimal? x, decimal? y) => x <= y;
             }
-            internal class LeadsTo : Operator
+
+            internal class Add : Operator
             {
-                TimeSpan m_from;
-                TimeSpan m_to;
-                internal static ConstructorInfo _ConstructorInfo => typeof(LeadsTo).GetConstructor(new Type[] { typeof(string) });
-
-                public LeadsTo(string lexpr)
-                {
-                    var regex = new Regex(@"\[\s*(?<from>\d+)\s*\-\s*(?<to>\d+)\s*\]~>");
-                    var match = regex.Match(lexpr);
-                    var fromString = match.Groups["from"].Value;
-                    var toString = match.Groups["to"].Value;
-                    m_from = TimeSpan.FromSeconds(Int32.Parse(fromString));
-                    m_to = TimeSpan.FromSeconds(Int32.Parse(toString));
-                }
-
-                internal LeadsTo(int from, int to)
-                { m_from = TimeSpan.FromSeconds(from); m_to = TimeSpan.FromSeconds(to); }
-
-
-                public bool? Apply(PacketFields left, PacketFields right)
-                {
-                    return _Apply(this.m_from, this.m_to, left, right);
-                }
-                /// <summary>
-                /// Represents left [from-to]~> right temporal operator.
-                /// </summary>
-                /// <param name="from"></param>
-                /// <param name="to"></param>
-                /// <param name="left"></param>
-                /// <param name="right"></param>
-                /// <returns></returns>
-                static bool _Apply(TimeSpan from, TimeSpan to, PacketFields left, PacketFields right)
-                {
-                    if (PacketFields.IsNullOrEmpty(left))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return
-                            !PacketFields.IsNullOrEmpty(right)
-                            && left.DateTime + from <= right.DateTime
-                            && right.DateTime <= left.DateTime + to;
-                    }
-                }
+                public decimal? Apply(decimal? x, decimal? y) => x + y;
             }
-            internal class NotLeadsTo : Operator
+
+            internal class Divide : Operator
             {
-                TimeSpan m_from;
-                TimeSpan m_to;
-                internal static ConstructorInfo _ConstructorInfo => typeof(NotLeadsTo).GetConstructor(new Type[] { typeof(string) });
+                public decimal? Apply(decimal? x, decimal? y) => x / y;
+            }
 
-                public NotLeadsTo(string lexpr)
-                {
-                    var regex = new Regex(@"\[\s*(?<from>\d+)\s*\-\s*(?<to>\d+)\s*\]~!>");
-                    var match = regex.Match(lexpr);
-                    var fromString = match.Groups["from"].Value;
-                    var toString = match.Groups["to"].Value;
-                    m_from = TimeSpan.FromSeconds(Int32.Parse(fromString));
-                    m_to = TimeSpan.FromSeconds(Int32.Parse(toString));
-                }
+            internal class Modulo : Operator
+            {
+                public decimal? Apply(decimal? x, decimal? y) => x % y;
+            }
 
-                internal NotLeadsTo(int from, int to)
-                { m_from = TimeSpan.FromSeconds(from); m_to = TimeSpan.FromSeconds(to); }
+            internal class Multiply : Operator
+            {
+                public decimal? Apply(decimal? x, decimal? y) => x * y;
+            }
 
-
-                public bool? Apply(PacketFields left, PacketFields right)
-                {
-                    return _Apply(this.m_from, this.m_to, left, right);
-                }
-                /// <summary>
-                /// Represents left [from-to]~!> right temporal operator.
-                /// </summary>
-                /// <param name="from"></param>
-                /// <param name="to"></param>
-                /// <param name="left"></param>
-                /// <param name="right"></param>
-                /// <returns></returns>
-                static bool _Apply(TimeSpan from, TimeSpan to,PacketFields left, PacketFields right)
-                {
-                    if (PacketFields.IsNullOrEmpty(left)) return true;
-                    if (PacketFields.IsNullOrEmpty(right)) return true;
-                    return (left.DateTime + from <= right.DateTime
-                           && right.DateTime <= left.DateTime + to) == false;
-
-                }
+            internal class Subtract : Operator
+            {
+                public decimal? Apply(decimal? x, decimal? y) => x - y;
             }
         }
     }
