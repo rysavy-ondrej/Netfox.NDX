@@ -49,13 +49,20 @@ namespace Ndx.Captures
             var jsonObject = JToken.Parse(line);
             var layers = jsonObject["layers"];
             var frame = layers["frame"];
+
+            var timestamp = ((long)jsonObject["timestamp"]);
+            var framenumber = (int)frame["frame_frame_number"];
+            var frameprotocols = (string)frame["frame_frame_protocols"];
+
             var result = new PacketFields()
             {
-                Timestamp = EpochMsToTick((long)jsonObject["timestamp"]),
-                FrameNumber = (int)frame["frame_frame_number"],
-                FrameProtocols = (string)frame["frame_frame_protocols"]
+                Timestamp = EpochMsToTick(timestamp),
+                FrameNumber = framenumber,
+                FrameProtocols = frameprotocols
             };
-            result.Fields["ts"] = (string)jsonObject["timestamp"];
+
+            result.Fields["timestamp"] = timestamp.ToString();
+            result.Fields["frame_number"] = framenumber.ToString();
             var protocols = result.FrameProtocols.Split(':');
             foreach (var proto in protocols)
             {

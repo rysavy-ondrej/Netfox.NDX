@@ -1,6 +1,9 @@
 # Diagnostic Constraint Language
 
-Diagnostic Constraint Language (DCL) is domain specific language to write rules in the form of constraints that identifies malformed, incorrect or otherwise damaged packet communication. The DCL uses simple syntax based on YAML format and Wireshark display expressions. The evaluation of the SCL rules can be done efficiently by executing SQL like queries. A problematic communication can also be identified as the evaluation of rules usually, yields to the collection of events.
+Diagnostic Constraint Language (DCL) is domain specific language to write rules in the form of constraints that identifies malformed, 
+incorrect or otherwise damaged packet communication. The DCL uses simple syntax based on YAML format and Wireshark display expressions. 
+The evaluation of the SCL rules can be done efficiently by executing SQL like queries. A problematic communication can also be identified 
+as the evaluation of rules usually, yields to the collection of events.
 
 ## Expressions
 The DCL expressions are based on Wireshark display filter expressions. Expressions are composed of the following terms:
@@ -26,87 +29,93 @@ expression    = "!" expression
 ### Fields
 Every field provided by the protocol parser can be used in the expression. Field reference can contain fully qualified field name, for instance, ```tcp.port```.
 
+| Priority | Associaton | Operator               | Description  |
+| -------- | ---------- | ---------------------- | ------------ |
+| 1        | Left       | BlockName`.`MemberName | Access members in a block.  
+
+### Constants
+Fields have different types. The supported basic types are:
+
+| Type    | Description       |
+| ------- | ----------------- |
+| bool    |	   |
+| string  |	   |
+| bytes   |	   |
+| int32	  |	   |
+| uint32  |	   |
+| int64   |	   |
+| uint64  |	   |
+| float   |	   |
+
+In addition, it is possible to use the following constants:
+* Ethernet Address - three syntax forms are possible: ```HEXDIGIT HEXDIGIT 5(":" HEXDIGIT HEXDIGIT)```, 
+```HEXDIGIT HEXDIGIT 5("-" HEXDIGIT HEXDIGIT)```, or ```HEXDIGIT HEXDIGIT HEXDIGIT HEXDIGIT 2("." HEXDIGIT HEXDIGIT HEXDIGIT HEXDIGIT)```.
+Comverted to bytes.
+* IPv4 Address - Represented as bytes.
+* IPv6 Address - Represented as bytes.
+
 ### Comparison Operators
 The expression can be build using the following comparison operators. 
 
-| Operator       | Description  |
-| -------------- | ------------ |
-| `==`           | Equal        |
-| `!=`           | Not equal    |
-| `>`            | Greater than |
-| `<`            | Less than        |
-| `>=`           | Less than or equal | 
-| `<=`           | Greater than or equal |
-| `contains`     | Protocol, field or slice contains a value. |
-| `&`            | Compare bit field value, e.g. `tcp.flags & 0x02` |
+| Priority | Associaton | Operator       | Description  |
+| -------- | ---------- | -------------- | ------------ |
+| 6        | Left       | Operand `>` Operand   | Greater than |
+| 6        | Left       | Operand `<` Operand   | Less than    |
+| 6        | Left       | Operand `>=` Operand  | Less than or equal | 
+| 6        | Left       | Operand `<=` Operand  | Greater than or equal |
+| 7        | Left       | Operand `==` Operand  | Equal        |
+| 7        | Left       | Operand `!=` Operand  | Not equal    |
+| 7        | Left       | Operand `<>` Operand	| Not equal    |
 
-### Constants
-Fields have different types. The supported types are:
+### Set Operators
 
-* Unsigned integer - decimal (```1*DIGIT```), octal (```"0" 1*DIGIT```), or hexadecimal (```"0x" 1*HEXDIGIT```) formats are possible. 
-* Signed Integer - decimal (```["-"] 1*DIGIT```), octal (```["-"] "0" 1*DIGIT```), or hexadecimal (```["-"] "0x" 1*HEXDIGIT```) formats are possible.   
-* Boolean - any of the following is a valid boolean constant ```"TRUE", "FALSE", "true", "false", "0", "1"```.
-* Ethernet Address - three syntax forms are possible: ```HEXDIGIT HEXDIGIT 5(":" HEXDIGIT HEXDIGIT)```, 
-```HEXDIGIT HEXDIGIT 5("-" HEXDIGIT HEXDIGIT)```, or ```HEXDIGIT HEXDIGIT HEXDIGIT HEXDIGIT 2("." HEXDIGIT HEXDIGIT HEXDIGIT HEXDIGIT)```.
-* IPv4 Address - TODO
-* IPv6 Address - TODO
-* Text String - TODO (usual C string enclosed in ")
+| Priority | Associaton | Operator       | Description  |
+| -------- | ---------- | -------------- | ------------ |
+| ? | Left | Operand `contains` Value    | Protocol, field or slice contains a value. |
+| ? | Left | Operand `in` Set            | Membership operator, e.g. ```tcp.port in {80 443 8080}``` |
+
+### Bits Operators
+
+| Priority | Associaton | Operator       | Description  |
+| -------- | ---------- | -------------- | ------------ |
+| 2        | Right      | `~` Operand            | Bits Complement     |
+| 5        | Left       | Operand `<<` Number           | Bits Left Shift |
+| 5        | Left       | Operand `>>` Number           | Bits Right Shift |
+| 8        | Left       | Operand `&` Operand          | Bits AND     |
+| 9        | Left       | Operand `^` Operand			 | Bits XOR     |
+| 10       | Left       | Operand `|` Operand			 | Bits OR      |
+
 
 ### Logical Operators
 
-| Operator       | Description  |
-| -------------- | ------------ |
-| `&&`       | logical AND  |
-| `⎜⎜`       | logical OR   |
-| `^^`       | logical XOR  |
-| `!`        | logical NOT  |
-| `in`       | Membership operator, e.g. ```tcp.port in {80 443 8080}``` |
+| Priority | Associaton | Operator       | Description  |
+| -------- | ---------- | -------------- | ------------ |
+| 2        | Right      | `!` Operand               | logical NOT  |
+| 11       | Left       | Operand `&&` Operand      | logical AND  |
+| 11       | Left       | Operand `AND` Operand     | logical AND  |
+| 12       | Left       | Operand `⎜⎜` Operand      | logical OR   |
+| 12       | Left       | Operand `OR` Operand      | logical OR   |
+
+### Arithmetic Operators
+
+| Priority | Associaton | Operator       | Description  |
+| -------- | ---------- | -------------- | ------------ |
+| 2        | Right      | Operand `-` Operand           | Minus        |
+| 3        | Left       | Operand `*` Operand			 | Multiply     |
+| 3        | Left       | Operand `/` Operand            | Divide       |
+| 3        | Left       | Operand `%` Operand            | Remainder    |
+| 4        | Left       | Operand `+` Operand            | Add       |
+| 4        | Left       | Operand `-` Operand            | Subtract    |
 
 
-## Constraints
-Constraints are built from expressions and temporal operators. The syntax of constraints in ABNF is:
+### Concept of NONE
+If a protocol does not define a field, the value of the nonexistent field defaults to NONE.
+This is more suitable for most of the situations that using some default value if the field is non existent.
+For instance the expression:
 ```
-temporal_op     = "~>" 
-                / "{" event_range "}~>"
-                / "[" time_range "]~>"
-                / "~!>" 
-                / "{" event_range "}~!>"
-                / "[" time_range "]~!>"
-
-constraint      = expression
-                / event_variable temporal_op event_variable
+ip.len < 60
 ```
-### Event Expression
-Event expression is an expression that when evaluated gives a set of events that satisfy the given expression. It is possible that no event satisfies the expression and in this case this set is empty.
-
-### Temporal Operators
-Constraints can also be composed using temporal operators on event expressions. Two operators are defined:
-
-### `~>` operator
-Leads to operator `A ~> B` is defined as `◻︎(A ⟹ ◇B)`, where `A` and `B` are flow expressions.
-This property can be expressed in first-order logic using timing variables:
-` ∀ t1 ≥ 0 : ( A(t1) ⟹ ∃t2 ≥ t1 : B(t2) ) `
-It is possible to annotate *leads to* operator with either event interval or time range:
-
-* Event interval ```A {X..Y}~> B```, where X and Y are positive integer numbers. If X = Y then it is possible to write ```A {X}~> B```.
-
-* Time range ```A [X-Y]~> B```, where X and Y are positive numbers that can have associated units of measure. Possible units are ```us```, ```ms```, ```s```, ```m```, ```h```, ```d```. It is possible to compose units into a complex value, such as ```1d2h30m15s```.
-
-
-Evaluation, given two events A and B:
-|= A ~> B   if T(B) ≥ T(A) 
-
-
-### `~!>` operator
-Operator  `A ~!> B` is defined as `◻︎(A ⟹ ¬◇B)`, where `A` and `B` are flow expressions.
-FOL representation of this operator is:
-` ∀ t1 ≥ 0 : ( A(t1) ⟹ ¬ ∃t2 ≥ t1 : B(t2) )`. 
-This is equivalent to ` ∀ t1 ≥ 0 : ( A(t1) ⟹  ∀t2 ≥ t1 : ¬ B(t2) )`. 
-Similarly to `~!>` it is possible to annotate the operator with interval or time range:
-* Event interval ```A {X..Y}~!> B```, where X and Y are positive integer numbers. If X = Y then it is possible to write ```A {X}~!> B```.
-
-* Time range ```A [X-Y]~!> B```, where X and Y are positive numbers that can have associated units of measure. Possible units are ```us```, ```ms```, ```s```, ```m```, ```h```, ```d```. It is possible to compose units into a complex value, such as ```1d2h30m15s```.
-
+will yield to false if the frame does not contain ip packet. Using default values this would be evaluated to true. 
 
 ## Rules
 A rule is a collection of event expressions `E1,...,En`, collection of constraints `C1,...,Cm`, 
@@ -129,7 +138,7 @@ select:
 Rule consists of three blocks. 
 
 * Events are defined as maps because each event is assigned a name and expression that provides the event stream selector. 
-* Assert block consists of a list of constraints. The meaning of assert is defined by the conjunction of its constrain expressions.ß
+* Assert block consists of a list of constraints. The meaning of assert is defined by the conjunction of its constrain expressions.
 * Select block contains a map for creating resulting structure.
 
 ## Model and Interpretation
@@ -140,10 +149,9 @@ the rule into LINQ query and executing this query for the provided input collect
 The model is based on events. An event is defined as:
 
 ```protobuf
-import "google/protobuf/timestamp.proto"
 message Event 
 {
-    Timestamp timestamp = 1;    
+    int64 timestamp = 1;    
     bytes flow = 2;
     string origin = 3;
     int32 eid = 4;
@@ -152,7 +160,7 @@ message Event
 }
 ```
 Fields of Event structure have the following meaning:
-* timestamp - Timestamp value encoded in Timestamp message (https://github.com/google/protobuf/blob/master/src/google/protobuf/timestamp.proto)
+* timestamp - the timestamp value encoded the number of miliseconds since UNIX Epoch.
 * flow - identification of the flow of the event
 * origin - source module that produces the event (protocol analyzer)
 * eid - unique id of the event with respect to the flow

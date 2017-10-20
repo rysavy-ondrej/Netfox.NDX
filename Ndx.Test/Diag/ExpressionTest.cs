@@ -23,8 +23,6 @@ namespace Ndx.Test.Filters
         {
             var a1 = AssertPredicateExpression.Parse("e1.dns.flags.response == 0", new string[] { "e1", "e2" });
             var a2 = AssertPredicateExpression.Parse("e1.dns.flags.response == 1 && e2.dns.flags.rcode == 1", new string[] { "e1", "e2" });
-            var a3 = AssertPredicateExpression.Parse("e1 [0-5]~> e2", new string[] { "e1", "e2" });
-            var a4 = AssertPredicateExpression.Parse("e1 [0-5]~!> e2", new string[] { "e1", "e2" });
             var a5 = AssertPredicateExpression.Parse("e1.ip.src == host.ip.src", new string[] { "host", "e1", "e2" });
 
         }
