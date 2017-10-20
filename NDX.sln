@@ -25,13 +25,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Shell.Commands", "Ndx.Shell.Commands\Ndx.Shell.Commands.csproj", "{96565D54-4EAB-455A-85FE-AE5EA02B4EFE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hadoop", "Hadoop", "{D6FA9DF5-DD4E-487F-B8D3-DF433CF2A199}"
-	ProjectSection(SolutionItems) = preProject
-		Hadoop\CassandraDbFormat.md = Hadoop\CassandraDbFormat.md
-		HadoopCluster.md = HadoopCluster.md
-		NdxInSpark.md = NdxInSpark.md
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Ipfix", "Ndx.Ipfix\Ndx.Ipfix.csproj", "{4A62DEF0-2792-4380-B6C8-EC5B53784746}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Model", "Ndx.Model\Ndx.Model.csproj", "{6C85CA82-04E3-4600-80AB-12B53F6AE4B3}"
@@ -54,8 +47,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestData", "TestData", "{76
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Decoders", "Ndx.Decoders\Ndx.Decoders.csproj", "{80F0F0E1-B4BD-4AF5-8E92-3F9D2EC4E78A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IngestNetworkTrace", "Hadoop\IngestNetworkTrace\IngestNetworkTrace.csproj", "{74D03D2C-C56E-4572-8F6D-3CC505B8448E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportIec104", "Tools\ExportIec104\ExportIec104.csproj", "{59950E31-B0C4-4619-8A62-7914A659ED50}"
 EndProject
@@ -199,18 +190,6 @@ Global
 		{80F0F0E1-B4BD-4AF5-8E92-3F9D2EC4E78A}.Release|x64.Build.0 = Release|Any CPU
 		{80F0F0E1-B4BD-4AF5-8E92-3F9D2EC4E78A}.Release|x86.ActiveCfg = Release|Any CPU
 		{80F0F0E1-B4BD-4AF5-8E92-3F9D2EC4E78A}.Release|x86.Build.0 = Release|Any CPU
-		{74D03D2C-C56E-4572-8F6D-3CC505B8448E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74D03D2C-C56E-4572-8F6D-3CC505B8448E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74D03D2C-C56E-4572-8F6D-3CC505B8448E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{74D03D2C-C56E-4572-8F6D-3CC505B8448E}.Debug|x64.Build.0 = Debug|Any CPU
-		{74D03D2C-C56E-4572-8F6D-3CC505B8448E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{74D03D2C-C56E-4572-8F6D-3CC505B8448E}.Debug|x86.Build.0 = Debug|Any CPU
-		{74D03D2C-C56E-4572-8F6D-3CC505B8448E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74D03D2C-C56E-4572-8F6D-3CC505B8448E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74D03D2C-C56E-4572-8F6D-3CC505B8448E}.Release|x64.ActiveCfg = Release|Any CPU
-		{74D03D2C-C56E-4572-8F6D-3CC505B8448E}.Release|x64.Build.0 = Release|Any CPU
-		{74D03D2C-C56E-4572-8F6D-3CC505B8448E}.Release|x86.ActiveCfg = Release|Any CPU
-		{74D03D2C-C56E-4572-8F6D-3CC505B8448E}.Release|x86.Build.0 = Release|Any CPU
 		{59950E31-B0C4-4619-8A62-7914A659ED50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{59950E31-B0C4-4619-8A62-7914A659ED50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59950E31-B0C4-4619-8A62-7914A659ED50}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -252,7 +231,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{74D03D2C-C56E-4572-8F6D-3CC505B8448E} = {D6FA9DF5-DD4E-487F-B8D3-DF433CF2A199}
 		{59950E31-B0C4-4619-8A62-7914A659ED50} = {D88F88ED-6A2A-4EA8-9B67-725FBF2B4BC9}
 		{347DCEE4-292E-4FC6-BD73-85706985A0E1} = {D88F88ED-6A2A-4EA8-9B67-725FBF2B4BC9}
 		{AA3303A3-FAAA-4F6E-972C-270D0953888D} = {76D3A5B1-53A8-4105-9671-82FAAE2A7F05}

@@ -1,1 +1,0 @@
-java -cp ..\repository\com.parse2.aparse\aparse\2.5\aparse-2.5.jar com.parse2.aparse.Parser -language java -destdir src\main\java\org\ndx\pshark\parsers\http -package org.ndx.pshark.parsers.http src\grammars\CoreNetworking\http.abnf
