@@ -42,16 +42,16 @@ namespace Ndx.TShark
             return $"-J \"frame {protocols}\"";
         }
 
-        protected override PacketFields GetResult(string line)
+        protected override DecodedFrame GetResult(string line)
         {
             return DecodeJsonLine(m_protocols, line);
         }
-        public static PacketFields DecodeJsonLine(IEnumerable<string> protocols, string line)
+        public static DecodedFrame DecodeJsonLine(IEnumerable<string> protocols, string line)
         { 
             var jsonObject = JToken.Parse(line);
             var layers = jsonObject["layers"]; 
             var frame = layers["frame"];
-            var result = new PacketFields()
+            var result = new DecodedFrame()
             {
                 Timestamp = (long)jsonObject["timestamp"],
                 FrameNumber = (int)frame["frame_frame_number"],

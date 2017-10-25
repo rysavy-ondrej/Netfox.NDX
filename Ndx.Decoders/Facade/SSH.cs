@@ -40,7 +40,7 @@ namespace Ndx.Decoders
         };
 
 
-        public static SshEvent Event(PacketFields packet)
+        public static SshEvent Event(DecodedFrame packet)
         {
             
             return new SshEvent()

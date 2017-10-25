@@ -11,7 +11,7 @@ using PacketDotNet.Ieee80211;
 namespace Ndx.Ingest
 {
     /// <summary>
-    /// This class extends <see cref="Packet"/> class, <see cref="Frame"/> class and <see cref="PacketFields"/> class 
+    /// This class extends <see cref="Packet"/> class, <see cref="Frame"/> class and <see cref="DecodedFrame"/> class 
     /// with methods for computing <see cref="FlowKey"/>.
     /// </summary>
     public static class PacketAnalyzer
@@ -104,17 +104,17 @@ namespace Ndx.Ingest
         }
 
 
-        public static FlowKey GetFlowKey(this PacketFields packet)
+        public static FlowKey GetFlowKey(this DecodedFrame packet)
         {
             return GetFlowKey(packet, out bool snc);
         }
         /// <summary>
-        /// Gets a network flow key for the current <see cref="PacketFields"/>.
+        /// Gets a network flow key for the current <see cref="DecodedFrame"/>.
         /// </summary>
         /// <param name=""></param>
         /// <param name="startNewConversation">Indicates that new conversation should be created becasue SYN flag was detected.</param>
         /// <returns></returns>
-        public static FlowKey GetFlowKey(this PacketFields packet, out bool startNewConversation)
+        public static FlowKey GetFlowKey(this DecodedFrame packet, out bool startNewConversation)
         {
             startNewConversation = false;
             var ipProto = (IpProtocolType)Int32.Parse(packet.GetFieldValue("ip_ip_proto", "0"));

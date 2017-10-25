@@ -25,8 +25,8 @@ namespace Ndx.Captures
         /// <summary>
         /// Reads the single packet from the source stream.
         /// </summary>
-        /// <returns>Next <see cref="PacketFields"/> object or null if the end of source stream was reached.</returns>
-        public PacketFields Read()
+        /// <returns>Next <see cref="DecodedFrame"/> object or null if the end of source stream was reached.</returns>
+        public DecodedFrame Read()
         {
             while (true)
             {
@@ -40,11 +40,11 @@ namespace Ndx.Captures
         }
 
         /// <summary>
-        /// Decodes JSON line produced by TSHARK to <see cref="PacketFields"/> object.
+        /// Decodes JSON line produced by TSHARK to <see cref="DecodedFrame"/> object.
         /// </summary>
         /// <param name="line"></param>
         /// <returns></returns>
-        public static PacketFields DecodeJsonLine(string line)
+        public static DecodedFrame DecodeJsonLine(string line)
         {
             var jsonObject = JToken.Parse(line);
             var layers = jsonObject["layers"];
@@ -54,7 +54,7 @@ namespace Ndx.Captures
             var framenumber = (int)frame["frame_frame_number"];
             var frameprotocols = (string)frame["frame_frame_protocols"];
 
-            var result = new PacketFields()
+            var result = new DecodedFrame()
             {
                 Timestamp = EpochMsToTick(timestamp),
                 FrameNumber = framenumber,

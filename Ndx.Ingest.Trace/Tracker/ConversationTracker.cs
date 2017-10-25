@@ -287,12 +287,12 @@ namespace Ndx.Ingest
 
 
         /// <summary>
-        /// This methods performs flow update calculations for <see cref="PacketFields"/> record source.
+        /// This methods performs flow update calculations for <see cref="DecodedFrame"/> record source.
         /// </summary>
         /// <param name="packet">The packet.</param>
         /// <param name="flowAttributes">Flow attributes to be updated.</param>
         /// <returns>The frame number.</returns>
-        public static long UpdateConversation(PacketFields packet, FlowAttributes flowAttributes)
+        public static long UpdateConversation(DecodedFrame packet, FlowAttributes flowAttributes)
         {
             var tcplen = Int32.Parse(packet.GetFieldValue("tcp_tcp_len", "-1"));
             var udplen = Int32.Parse(packet.GetFieldValue("udp_udp_length", "-1"));

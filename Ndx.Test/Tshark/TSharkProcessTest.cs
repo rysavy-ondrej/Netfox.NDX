@@ -79,7 +79,7 @@ namespace Ndx.Test
             var outputPbfStream = new CodedOutputStream(File.Create(outPbfFilename));
             var outputCount = 0;
 
-            var consumer = new ActionBlock<PacketFields>(
+            var consumer = new ActionBlock<DecodedFrame>(
                 async e =>
                 {
                     await outputTxtfile.WriteLineAsync($"{e.FrameNumber} [{e.Timestamp}] {e.FrameProtocols}:");

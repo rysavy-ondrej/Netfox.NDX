@@ -47,21 +47,21 @@ namespace Ndx.Diagnostics
         /// <param name="ruleArguments">Arguments of the rule.</param>
         /// <param name="select">Selector function to produce result records.</param>
         /// <returns>Stream of resulting events.</returns>
-        public IEnumerable<T> Evaluate<T>(IEnumerable<PacketFields> input, IDictionary<string, PacketFields> ruleArguments, Func<PacketFields[],T> selector)
+        public IEnumerable<T> Evaluate<T>(IEnumerable<DecodedFrame> input, IDictionary<string, DecodedFrame> ruleArguments, Func<DecodedFrame[],T> selector)
         {
             // convert argumenst to array:
             var ruleArgumentValues = this.Parameters.Select(x => ruleArguments[x]).ToArray();
             var assertArgumentNames = Parameters.Concat(m_events.Keys).ToArray();
 
-            IEnumerable<PacketFields> GetEvent(DisplayFilterExpression eventFilter)
+            IEnumerable<DecodedFrame> GetEvent(DisplayFilterExpression eventFilter)
             {
                 return input.Where(pf => eventFilter.FilterFunction(pf) == true).ToList();
             }
 
-            PacketFields[] GetArray(params PacketFields[] inputFields)
+            DecodedFrame[] GetArray(params DecodedFrame[] inputFields)
             {
                 var argumentValuesArrayLength = ruleArgumentValues.Length;
-                var outArray = new PacketFields[argumentValuesArrayLength + inputFields.Length];
+                var outArray = new DecodedFrame[argumentValuesArrayLength + inputFields.Length];
                 for(int i = 0; i < ruleArgumentValues.Length; i++)
                 {
                     outArray[i] = ruleArgumentValues[i];
@@ -73,24 +73,24 @@ namespace Ndx.Diagnostics
                 return outArray;
             }
 
-            IEnumerable<PacketFields[]> CrossJoin1(IEnumerable<PacketFields> e1)
+            IEnumerable<DecodedFrame[]> CrossJoin1(IEnumerable<DecodedFrame> e1)
             {
                 return e1.Select(_e1 => GetArray(_e1));
             }
 
-            IEnumerable<PacketFields[]> CrossJoin2(IEnumerable<PacketFields> e1, IEnumerable<PacketFields> e2)
+            IEnumerable<DecodedFrame[]> CrossJoin2(IEnumerable<DecodedFrame> e1, IEnumerable<DecodedFrame> e2)
             {
                 var result = e1.SelectMany(_e1 => e2, (x1, x2) => GetArray(x1,x2));
                 return result;
             }
-            IEnumerable<PacketFields[]> CrossJoin3(IEnumerable<PacketFields> e1, IEnumerable<PacketFields> e2, IEnumerable<PacketFields> e3)
+            IEnumerable<DecodedFrame[]> CrossJoin3(IEnumerable<DecodedFrame> e1, IEnumerable<DecodedFrame> e2, IEnumerable<DecodedFrame> e3)
             {
                 var r2 = e2.SelectMany(_e2 => e3, (x2,x3) => (x2,x3));
                 var r1 = e1.SelectMany(_e1 => r2, (x1,rx) => (x1,rx.x2,rx.x3)); 
                 var result = r1.Select( (t) => GetArray(t.x1, t.x2, t.x3));
                 return result;
             }
-            IEnumerable<PacketFields[]> CrossJoin4(IEnumerable<PacketFields> e1, IEnumerable<PacketFields> e2, IEnumerable<PacketFields> e3, IEnumerable<PacketFields> e4)
+            IEnumerable<DecodedFrame[]> CrossJoin4(IEnumerable<DecodedFrame> e1, IEnumerable<DecodedFrame> e2, IEnumerable<DecodedFrame> e3, IEnumerable<DecodedFrame> e4)
             {
                 var r3 = e3.SelectMany(_e3 => e4, (x3, x4) => (x3, x4));
                 var r2 = e2.SelectMany(_e2 => r3, (x2, rx) => (x2, rx.x3, rx.x4));
@@ -98,7 +98,7 @@ namespace Ndx.Diagnostics
                 var result = r1.Select((t) => GetArray(t.x1, t.x2, t.x3, t.x4));
                 return result;
             }
-            IEnumerable<PacketFields[]> CrossJoin(params IEnumerable<PacketFields>[] es)
+            IEnumerable<DecodedFrame[]> CrossJoin(params IEnumerable<DecodedFrame>[] es)
             {
                 switch(es.Length)
                 {

@@ -7,32 +7,32 @@ namespace Ndx.Diagnostics
     public class Context 
     {
         private Rule m_rule;
-        private IDictionary<string,PacketFields> m_objects;
-        private IEnumerable<PacketFields> m_input;
-        public Context(Rule rule, IEnumerable<PacketFields> input, IDictionary<string,PacketFields> objects)
+        private IDictionary<string,DecodedFrame> m_objects;
+        private IEnumerable<DecodedFrame> m_input;
+        public Context(Rule rule, IEnumerable<DecodedFrame> input, IDictionary<string,DecodedFrame> objects)
         {
             m_rule = rule;
             m_input = input;
             m_objects = objects;
         }
 
-        public PacketFields this[string name]
+        public DecodedFrame this[string name]
         {
             get
             {
-                if (m_objects.TryGetValue(name, out PacketFields value))
+                if (m_objects.TryGetValue(name, out DecodedFrame value))
                 {
                     return value;
                 }
                 else
                 {
-                    return PacketFields.Empty;
+                    return DecodedFrame.Empty;
                 }
             }
         }
 
         public Rule Rule => m_rule;
-        public IEnumerable<PacketFields> Input { get => m_input; set => m_input = value; }
+        public IEnumerable<DecodedFrame> Input { get => m_input; set => m_input = value; }
 
         /// <summary>
         /// Represents left [from-to]~> right temporal operator.
@@ -42,7 +42,7 @@ namespace Ndx.Diagnostics
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public bool LeadsTo(TimeSpan from, TimeSpan to, PacketFields left, PacketFields right)
+        public bool LeadsTo(TimeSpan from, TimeSpan to, DecodedFrame left, DecodedFrame right)
         {           
             if (left.IsEmpty) return true;
             return
@@ -58,7 +58,7 @@ namespace Ndx.Diagnostics
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public bool NotLeadsTo(TimeSpan from, TimeSpan to, PacketFields left, PacketFields right)
+        public bool NotLeadsTo(TimeSpan from, TimeSpan to, DecodedFrame left, DecodedFrame right)
         {
             if (left.IsEmpty) return true;
             if (right.IsEmpty) return true;

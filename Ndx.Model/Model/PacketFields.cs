@@ -7,7 +7,7 @@ using Ndx.Utils;
 
 namespace Ndx.Model
 {
-    public partial class PacketFields
+    public partial class DecodedFrame
     {
         /// <summary>
         /// Gets the value of the field or provided defaultValue.
@@ -39,25 +39,25 @@ namespace Ndx.Model
         /// </summary>
         public DateTime DateTime => DateTime.FromBinary(this.Timestamp);
 
-        static readonly PacketFields m_empty = new PacketFields();
-        public static PacketFields Empty => m_empty;
+        static readonly DecodedFrame m_empty = new DecodedFrame();
+        public static DecodedFrame Empty => m_empty;
         public bool IsEmpty => ReferenceEquals(this, m_empty);
 
-        public static PacketFields FromFields(IDictionary<string, string> entries)
+        public static DecodedFrame FromFields(IDictionary<string, string> entries)
         {
-            var pf = new PacketFields();
+            var pf = new DecodedFrame();
             pf.Fields.Add(entries);
             return pf;
         }
 
         /// <summary>
-        /// Tests if the <see cref="PacketFields"/> object is null or equal to the Empty instance.
+        /// Tests if the <see cref="DecodedFrame"/> object is null or equal to the Empty instance.
         /// </summary>
-        /// <param name="pf">The <see cref="PacketFields"/> object to test.</param>
-        /// <returns>true if the <see cref="PacketFields"/> object is null or equal to the Empty instance.</returns>
-        public static bool IsNullOrEmpty(PacketFields pf)
+        /// <param name="pf">The <see cref="DecodedFrame"/> object to test.</param>
+        /// <returns>true if the <see cref="DecodedFrame"/> object is null or equal to the Empty instance.</returns>
+        public static bool IsNullOrEmpty(DecodedFrame pf)
         {
-            return pf == null || pf == PacketFields.Empty;
+            return pf == null || pf == DecodedFrame.Empty;
         }
     }
 }

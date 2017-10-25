@@ -117,14 +117,14 @@ namespace Ndx.Diagnostics
                 }
                 else
                 {
-                    var indexExpr = Expression.Property(eventSourceExpression, typeof(PacketFields).GetProperty("Item"), Expression.Constant(String.Join("_", path)));
+                    var indexExpr = Expression.Property(eventSourceExpression, typeof(DecodedFrame).GetProperty("Item"), Expression.Constant(String.Join("_", path)));
                     return indexExpr;
                 }
             }
             else
             {   // access the field using e[0][name]
                 var eventSourceExpression = Expression.ArrayIndex(packetFieldsArray, Expression.Constant(0));
-                var indexExpr = Expression.Property(eventSourceExpression, typeof(PacketFields).GetProperty("Item"), Expression.Constant(String.Join("_", parts)));
+                var indexExpr = Expression.Property(eventSourceExpression, typeof(DecodedFrame).GetProperty("Item"), Expression.Constant(String.Join("_", parts)));
                 return indexExpr;
             }
         }
@@ -175,10 +175,10 @@ namespace Ndx.Diagnostics
            from rparen in Sprache.Parse.Char(')')
            select expr).XOr(Constant).XOr(Field(flowKey));
 
-        public Parser<Expression<Func<PacketFields[], bool?>>> Lambda()
+        public Parser<Expression<Func<DecodedFrame[], bool?>>> Lambda()
         {
-            var param = Expression.Parameter(typeof(PacketFields[]), "@t");
-            return OrExpr(param).End().Select(body => Expression.Lambda<Func<PacketFields[], bool?>>(body, param));
+            var param = Expression.Parameter(typeof(DecodedFrame[]), "@t");
+            return OrExpr(param).End().Select(body => Expression.Lambda<Func<DecodedFrame[], bool?>>(body, param));
         }
 
         /// <summary>

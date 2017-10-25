@@ -10,7 +10,7 @@ namespace Ndx.Shell.Console
 {
     public static class Shark
     {
-        public static IEnumerable<PacketFields> DecodeTSharkOutput(this IEnumerable<string> lines)
+        public static IEnumerable<DecodedFrame> DecodeTSharkOutput(this IEnumerable<string> lines)
         {
             foreach (var line in lines)
             {

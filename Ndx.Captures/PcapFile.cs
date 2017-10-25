@@ -50,12 +50,12 @@ namespace Ndx.Captures
         }
 
 
-        public static IObservable<PacketFields> ReadJson(string path)
+        public static IObservable<DecodedFrame> ReadJson(string path)
         {
             return Observable.Using(() => File.OpenText(path), stream =>
             {
                 var source = new PcapJsonStream(stream);
-                var observable = Observable.Create<PacketFields>(obs =>
+                var observable = Observable.Create<DecodedFrame>(obs =>
                 {
 
                     var frame = source.Read();

@@ -35,11 +35,11 @@ namespace Ndx.Test.Filters
             var rule = Rule.Load(m_theRule);
             var events = PcapFile.ReadJson(m_source).ToEnumerable().ToList();
             Console.WriteLine($"{events.Count()} events readed in {sw.ElapsedMilliseconds} ms.");
-            var host = new PacketFields();
+            var host = new DecodedFrame();
             sw.Restart();
             host.Fields["ip_src"] = "192.168.111.100";
 
-            var dginfo = rule.Evaluate(events, new Dictionary<string, PacketFields>() { { "dnsClient", host } }, x => x).ToList();
+            var dginfo = rule.Evaluate(events, new Dictionary<string, DecodedFrame>() { { "dnsClient", host } }, x => x).ToList();
             Console.WriteLine($"Matching DNS messages count={dginfo.Count()}, computed in {sw.ElapsedMilliseconds} ms.");
             foreach (var item in dginfo)
             {

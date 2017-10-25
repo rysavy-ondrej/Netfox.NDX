@@ -27,10 +27,10 @@ namespace Ndx.Model {
             "dGFMaW5rVHlwZRITCgtGcmFtZU51bWJlchgCIAEoBRITCgtGcmFtZUxlbmd0",
             "aBgDIAEoBRITCgtGcmFtZU9mZnNldBgEIAEoAxIRCglUaW1lU3RhbXAYBSAB",
             "KAMSEQoJUHJvY2Vzc0lkGAYgASgDEhMKC1Byb2Nlc3NOYW1lGAcgASgJEgwK",
-            "BERhdGEYCiABKAwSFgoOQ29udmVyc2F0aW9uSWQYCyABKAUisgEKDFBhY2tl",
-            "dEZpZWxkcxITCgtGcmFtZU51bWJlchgBIAEoAxIWCg5GcmFtZVByb3RvY29s",
+            "BERhdGEYCiABKAwSFgoOQ29udmVyc2F0aW9uSWQYCyABKAUisgEKDERlY29k",
+            "ZWRGcmFtZRITCgtGcmFtZU51bWJlchgBIAEoAxIWCg5GcmFtZVByb3RvY29s",
             "cxgCIAEoCRIRCglUaW1lc3RhbXAYAyABKAMSMwoGRmllbGRzGAogAygLMiMu",
-            "bmR4Lm1vZGVsLlBhY2tldEZpZWxkcy5GaWVsZHNFbnRyeRotCgtGaWVsZHNF",
+            "bmR4Lm1vZGVsLkRlY29kZWRGcmFtZS5GaWVsZHNFbnRyeRotCgtGaWVsZHNF",
             "bnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIoYBCglQYXJh",
             "bWV0ZXISDAoETmFtZRgBIAEoCRI4CgpQcm9wZXJ0aWVzGAIgAygLMiQubmR4",
             "Lm1vZGVsLlBhcmFtZXRlci5Qcm9wZXJ0aWVzRW50cnkaMQoPUHJvcGVydGll",
@@ -38,8 +38,8 @@ namespace Ndx.Model {
             "ZW50EgwKBE5hbWUYASABKAkSEQoJVGltZXN0YW1wGAIgASgDEioKBUl0ZW1z",
             "GAMgAygLMhsubmR4Lm1vZGVsLkV2ZW50Lkl0ZW1zRW50cnkapwEKCkV2ZW50",
             "VmFsdWUSFQoLU3RyaW5nVmFsdWUYASABKAlIABIVCgtOdW1iZXJWYWx1ZRgC",
-            "IAEoA0gAEi4KC1BhY2tldFZhbHVlGAMgASgLMhcubmR4Lm1vZGVsLlBhY2tl",
-            "dEZpZWxkc0gAEi4KDlBhcmFtZXRlclZhbHVlGAQgASgLMhQubmR4Lm1vZGVs",
+            "IAEoA0gAEi4KC1BhY2tldFZhbHVlGAMgASgLMhcubmR4Lm1vZGVsLkRlY29k",
+            "ZWRGcmFtZUgAEi4KDlBhcmFtZXRlclZhbHVlGAQgASgLMhQubmR4Lm1vZGVs",
             "LlBhcmFtZXRlckgAQgsKCVZhbHVlVHlwZRpJCgpJdGVtc0VudHJ5EgsKA2tl",
             "eRgBIAEoCRIqCgV2YWx1ZRgCIAEoCzIbLm5keC5tb2RlbC5FdmVudC5FdmVu",
             "dFZhbHVlOgI4AUIPCg1vcmcubmR4Lm1vZGVsYgZwcm90bzM="));
@@ -47,7 +47,7 @@ namespace Ndx.Model {
           new pbr::FileDescriptor[] { global::Ndx.Model.ConstantsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Frame), global::Ndx.Model.Frame.Parser, new[]{ "LinkType", "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "ProcessId", "ProcessName", "Data", "ConversationId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PacketFields), global::Ndx.Model.PacketFields.Parser, new[]{ "FrameNumber", "FrameProtocols", "Timestamp", "Fields" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.DecodedFrame), global::Ndx.Model.DecodedFrame.Parser, new[]{ "FrameNumber", "FrameProtocols", "Timestamp", "Fields" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Parameter), global::Ndx.Model.Parameter.Parser, new[]{ "Name", "Properties" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Event), global::Ndx.Model.Event.Parser, new[]{ "Name", "Timestamp", "Items" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Event.Types.EventValue), global::Ndx.Model.Event.Types.EventValue.Parser, new[]{ "StringValue", "NumberValue", "PacketValue", "ParameterValue" }, new[]{ "ValueType" }, null, null),
             null, })
@@ -443,10 +443,10 @@ namespace Ndx.Model {
 
   }
 
-  public sealed partial class PacketFields : pb::IMessage<PacketFields> {
-    private static readonly pb::MessageParser<PacketFields> _parser = new pb::MessageParser<PacketFields>(() => new PacketFields());
+  public sealed partial class DecodedFrame : pb::IMessage<DecodedFrame> {
+    private static readonly pb::MessageParser<DecodedFrame> _parser = new pb::MessageParser<DecodedFrame>(() => new DecodedFrame());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<PacketFields> Parser { get { return _parser; } }
+    public static pb::MessageParser<DecodedFrame> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -459,14 +459,14 @@ namespace Ndx.Model {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PacketFields() {
+    public DecodedFrame() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PacketFields(PacketFields other) : this() {
+    public DecodedFrame(DecodedFrame other) : this() {
       frameNumber_ = other.frameNumber_;
       frameProtocols_ = other.frameProtocols_;
       timestamp_ = other.timestamp_;
@@ -474,8 +474,8 @@ namespace Ndx.Model {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PacketFields Clone() {
-      return new PacketFields(this);
+    public DecodedFrame Clone() {
+      return new DecodedFrame(this);
     }
 
     /// <summary>Field number for the "FrameNumber" field.</summary>
@@ -523,11 +523,11 @@ namespace Ndx.Model {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as PacketFields);
+      return Equals(other as DecodedFrame);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(PacketFields other) {
+    public bool Equals(DecodedFrame other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -590,7 +590,7 @@ namespace Ndx.Model {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(PacketFields other) {
+    public void MergeFrom(DecodedFrame other) {
       if (other == null) {
         return;
       }
@@ -1011,8 +1011,8 @@ namespace Ndx.Model {
         /// <summary>Field number for the "PacketValue" field.</summary>
         public const int PacketValueFieldNumber = 3;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::Ndx.Model.PacketFields PacketValue {
-          get { return valueTypeCase_ == ValueTypeOneofCase.PacketValue ? (global::Ndx.Model.PacketFields) valueType_ : null; }
+        public global::Ndx.Model.DecodedFrame PacketValue {
+          get { return valueTypeCase_ == ValueTypeOneofCase.PacketValue ? (global::Ndx.Model.DecodedFrame) valueType_ : null; }
           set {
             valueType_ = value;
             valueTypeCase_ = value == null ? ValueTypeOneofCase.None : ValueTypeOneofCase.PacketValue;
@@ -1165,7 +1165,7 @@ namespace Ndx.Model {
                 break;
               }
               case 26: {
-                global::Ndx.Model.PacketFields subBuilder = new global::Ndx.Model.PacketFields();
+                global::Ndx.Model.DecodedFrame subBuilder = new global::Ndx.Model.DecodedFrame();
                 if (valueTypeCase_ == ValueTypeOneofCase.PacketValue) {
                   subBuilder.MergeFrom(PacketValue);
                 }

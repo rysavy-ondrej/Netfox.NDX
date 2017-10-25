@@ -46,7 +46,7 @@ message Frame {
 	int32 ConversationId = 11;
 }
 
-message PacketFields {
+message DecodedFrame {
 	int64 FrameNumber = 1;
 	string FrameProtocols = 2;
 	int64 Timestamp = 3;
@@ -64,7 +64,7 @@ message Event {
 		oneof ValueType {
 			string StringValue = 1;
 			int64 NumberValue = 2;
-			PacketFields PacketValue = 3;
+			DecodedFrame PacketValue = 3;
 			Parameter ParameterValue = 4;
 		}
 	}
