@@ -134,7 +134,7 @@ namespace Ndx.Diagnostics
             var yamlParams = (YamlSequenceNode)mapping.Children[new YamlScalarNode("params")];
             var yamlEvents = (YamlMappingNode)mapping.Children[new YamlScalarNode("events")];
             var yamlAssert = (YamlSequenceNode)mapping.Children[new YamlScalarNode("assert")];
-            var yamlSelect = (YamlMappingNode)mapping.Children[new YamlScalarNode("select")];
+            var yamlResult = (YamlScalarNode)yamlRule.Children[new YamlScalarNode("result")];
 
             var eventNames = yamlEvents.Children.Keys.Select(k => ((YamlScalarNode)k).Value).ToArray();
             var paramNames = yamlParams?.Select(x => ((YamlScalarNode)x).Value).ToArray() ?? new String[] { };

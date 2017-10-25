@@ -35,14 +35,13 @@ namespace Ndx.Model {
             "dGRldlBheWxvYWRTaXplGAsgASgFEh8KF01pbmltdW1JbnRlcmFycml2YWxU",
             "aW1lGBAgASgDEhwKFE1lYW5JbnRlcmFycml2YWxUaW1lGBEgASgDEh8KF01h",
             "eGltdW1JbnRlcmFycml2YWxUaW1lGBIgASgDEh0KFVN0ZGV2SW50ZXJhcnJp",
-            "dmFsVGltZRgTIAEoAyIxCg9QYWNrZXRSZWZlcmVuY2USDwoHQmxvY2tJZBgB",
-            "IAEoBRINCgVJbmRleBgCIAEoBSLtAQoMQ29udmVyc2F0aW9uEhYKDkNvbnZl",
-            "cnNhdGlvbklkGAEgASgFEhAKCFBhcmVudElkGAIgASgFEisKD0NvbnZlcnNh",
-            "dGlvbktleRgEIAEoCzISLm5keC5tb2RlbC5GbG93S2V5EikKBlVwZmxvdxgQ",
-            "IAEoCzIZLm5keC5tb2RlbC5GbG93QXR0cmlidXRlcxIrCghEb3duZmxvdxgR",
-            "IAEoCzIZLm5keC5tb2RlbC5GbG93QXR0cmlidXRlcxIVCg1VcGZsb3dQYWNr",
-            "ZXRzGCAgAygDEhcKD0Rvd25mbG93UGFja2V0cxghIAMoA0IPCg1vcmcubmR4",
-            "Lm1vZGVsYgZwcm90bzM="));
+            "dmFsVGltZRgTIAEoAyLtAQoMQ29udmVyc2F0aW9uEhYKDkNvbnZlcnNhdGlv",
+            "bklkGAEgASgFEhAKCFBhcmVudElkGAIgASgFEisKD0NvbnZlcnNhdGlvbktl",
+            "eRgEIAEoCzISLm5keC5tb2RlbC5GbG93S2V5EikKBlVwZmxvdxgQIAEoCzIZ",
+            "Lm5keC5tb2RlbC5GbG93QXR0cmlidXRlcxIrCghEb3duZmxvdxgRIAEoCzIZ",
+            "Lm5keC5tb2RlbC5GbG93QXR0cmlidXRlcxIVCg1VcGZsb3dQYWNrZXRzGCAg",
+            "AygDEhcKD0Rvd25mbG93UGFja2V0cxghIAMoA0IPCg1vcmcubmR4Lm1vZGVs",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Model.FlowModelReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -50,7 +49,6 @@ namespace Ndx.Model {
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.HttpConversation), global::Ndx.Model.HttpConversation.Parser, new[]{ "Uri" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.ApplicationConversation), global::Ndx.Model.ApplicationConversation.Parser, new[]{ "Smb", "Http" }, new[]{ "Application" }, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.FlowAttributes), global::Ndx.Model.FlowAttributes.Parser, new[]{ "FirstSeen", "LastSeen", "Packets", "Octets", "MinimumPayloadSize", "MeanPayloadSize", "MaximumPayloadSize", "StdevPayloadSize", "MinimumInterarrivalTime", "MeanInterarrivalTime", "MaximumInterarrivalTime", "StdevInterarrivalTime" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PacketReference), global::Ndx.Model.PacketReference.Parser, new[]{ "BlockId", "Index" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Conversation), global::Ndx.Model.Conversation.Parser, new[]{ "ConversationId", "ParentId", "ConversationKey", "Upflow", "Downflow", "UpflowPackets", "DownflowPackets" }, null, null, null)
           }));
     }
@@ -961,166 +959,6 @@ namespace Ndx.Model {
 
   /// <summary>
   //// &lt;summary>
-  ////	This class is used to reference packets within conversations.
-  ////	&lt;/summary>
-  /// </summary>
-  public sealed partial class PacketReference : pb::IMessage<PacketReference> {
-    private static readonly pb::MessageParser<PacketReference> _parser = new pb::MessageParser<PacketReference>(() => new PacketReference());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<PacketReference> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Model.ConversationModelReflection.Descriptor.MessageTypes[4]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PacketReference() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PacketReference(PacketReference other) : this() {
-      blockId_ = other.blockId_;
-      index_ = other.index_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PacketReference Clone() {
-      return new PacketReference(this);
-    }
-
-    /// <summary>Field number for the "BlockId" field.</summary>
-    public const int BlockIdFieldNumber = 1;
-    private int blockId_;
-    /// <summary>
-    //// &lt;summary>
-    ////	The id of block in which the packet is located.
-    ////	&lt;summary>
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int BlockId {
-      get { return blockId_; }
-      set {
-        blockId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Index" field.</summary>
-    public const int IndexFieldNumber = 2;
-    private int index_;
-    /// <summary>
-    //// &lt;summary>
-    ////	The index within the block of packets.
-    ////	&lt;summary>
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Index {
-      get { return index_; }
-      set {
-        index_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as PacketReference);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(PacketReference other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (BlockId != other.BlockId) return false;
-      if (Index != other.Index) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (BlockId != 0) hash ^= BlockId.GetHashCode();
-      if (Index != 0) hash ^= Index.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (BlockId != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(BlockId);
-      }
-      if (Index != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(Index);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (BlockId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BlockId);
-      }
-      if (Index != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Index);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(PacketReference other) {
-      if (other == null) {
-        return;
-      }
-      if (other.BlockId != 0) {
-        BlockId = other.BlockId;
-      }
-      if (other.Index != 0) {
-        Index = other.Index;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            BlockId = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            Index = input.ReadInt32();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  //// &lt;summary>
   ////	Stores the properties of a single conversation.
   //// &lt;/summary>
   /// </summary>
@@ -1131,7 +969,7 @@ namespace Ndx.Model {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Model.ConversationModelReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Ndx.Model.ConversationModelReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

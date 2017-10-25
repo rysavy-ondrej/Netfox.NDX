@@ -31,13 +31,26 @@ namespace Ndx.Model {
             "dEZpZWxkcxITCgtGcmFtZU51bWJlchgBIAEoAxIWCg5GcmFtZVByb3RvY29s",
             "cxgCIAEoCRIRCglUaW1lc3RhbXAYAyABKAMSMwoGRmllbGRzGAogAygLMiMu",
             "bmR4Lm1vZGVsLlBhY2tldEZpZWxkcy5GaWVsZHNFbnRyeRotCgtGaWVsZHNF",
-            "bnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBQg8KDW9yZy5u",
-            "ZHgubW9kZWxiBnByb3RvMw=="));
+            "bnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIoYBCglQYXJh",
+            "bWV0ZXISDAoETmFtZRgBIAEoCRI4CgpQcm9wZXJ0aWVzGAIgAygLMiQubmR4",
+            "Lm1vZGVsLlBhcmFtZXRlci5Qcm9wZXJ0aWVzRW50cnkaMQoPUHJvcGVydGll",
+            "c0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEiyQIKBUV2",
+            "ZW50EgwKBE5hbWUYASABKAkSEQoJVGltZXN0YW1wGAIgASgDEioKBUl0ZW1z",
+            "GAMgAygLMhsubmR4Lm1vZGVsLkV2ZW50Lkl0ZW1zRW50cnkapwEKCkV2ZW50",
+            "VmFsdWUSFQoLU3RyaW5nVmFsdWUYASABKAlIABIVCgtOdW1iZXJWYWx1ZRgC",
+            "IAEoA0gAEi4KC1BhY2tldFZhbHVlGAMgASgLMhcubmR4Lm1vZGVsLlBhY2tl",
+            "dEZpZWxkc0gAEi4KDlBhcmFtZXRlclZhbHVlGAQgASgLMhQubmR4Lm1vZGVs",
+            "LlBhcmFtZXRlckgAQgsKCVZhbHVlVHlwZRpJCgpJdGVtc0VudHJ5EgsKA2tl",
+            "eRgBIAEoCRIqCgV2YWx1ZRgCIAEoCzIbLm5keC5tb2RlbC5FdmVudC5FdmVu",
+            "dFZhbHVlOgI4AUIPCg1vcmcubmR4Lm1vZGVsYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Model.ConstantsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Frame), global::Ndx.Model.Frame.Parser, new[]{ "LinkType", "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "ProcessId", "ProcessName", "Data", "ConversationId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PacketFields), global::Ndx.Model.PacketFields.Parser, new[]{ "FrameNumber", "FrameProtocols", "Timestamp", "Fields" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.PacketFields), global::Ndx.Model.PacketFields.Parser, new[]{ "FrameNumber", "FrameProtocols", "Timestamp", "Fields" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Parameter), global::Ndx.Model.Parameter.Parser, new[]{ "Name", "Properties" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Event), global::Ndx.Model.Event.Parser, new[]{ "Name", "Timestamp", "Items" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Event.Types.EventValue), global::Ndx.Model.Event.Types.EventValue.Parser, new[]{ "StringValue", "NumberValue", "PacketValue", "ParameterValue" }, new[]{ "ValueType" }, null, null),
+            null, })
           }));
     }
     #endregion
@@ -620,6 +633,563 @@ namespace Ndx.Model {
         }
       }
     }
+
+  }
+
+  public sealed partial class Parameter : pb::IMessage<Parameter> {
+    private static readonly pb::MessageParser<Parameter> _parser = new pb::MessageParser<Parameter>(() => new Parameter());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Parameter> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Parameter() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Parameter(Parameter other) : this() {
+      name_ = other.name_;
+      properties_ = other.properties_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Parameter Clone() {
+      return new Parameter(this);
+    }
+
+    /// <summary>Field number for the "Name" field.</summary>
+    public const int NameFieldNumber = 1;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Properties" field.</summary>
+    public const int PropertiesFieldNumber = 2;
+    private static readonly pbc::MapField<string, string>.Codec _map_properties_codec
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 18);
+    private readonly pbc::MapField<string, string> properties_ = new pbc::MapField<string, string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<string, string> Properties {
+      get { return properties_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Parameter);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Parameter other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Name != other.Name) return false;
+      if (!Properties.Equals(other.Properties)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      hash ^= Properties.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      properties_.WriteTo(output, _map_properties_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      size += properties_.CalculateSize(_map_properties_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Parameter other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      properties_.Add(other.properties_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            properties_.AddEntriesFrom(input, _map_properties_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Event : pb::IMessage<Event> {
+    private static readonly pb::MessageParser<Event> _parser = new pb::MessageParser<Event>(() => new Event());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Event> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Event() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Event(Event other) : this() {
+      name_ = other.name_;
+      timestamp_ = other.timestamp_;
+      items_ = other.items_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Event Clone() {
+      return new Event(this);
+    }
+
+    /// <summary>Field number for the "Name" field.</summary>
+    public const int NameFieldNumber = 1;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Timestamp" field.</summary>
+    public const int TimestampFieldNumber = 2;
+    private long timestamp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long Timestamp {
+      get { return timestamp_; }
+      set {
+        timestamp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Items" field.</summary>
+    public const int ItemsFieldNumber = 3;
+    private static readonly pbc::MapField<string, global::Ndx.Model.Event.Types.EventValue>.Codec _map_items_codec
+        = new pbc::MapField<string, global::Ndx.Model.Event.Types.EventValue>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForMessage(18, global::Ndx.Model.Event.Types.EventValue.Parser), 26);
+    private readonly pbc::MapField<string, global::Ndx.Model.Event.Types.EventValue> items_ = new pbc::MapField<string, global::Ndx.Model.Event.Types.EventValue>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<string, global::Ndx.Model.Event.Types.EventValue> Items {
+      get { return items_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Event);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Event other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Name != other.Name) return false;
+      if (Timestamp != other.Timestamp) return false;
+      if (!Items.Equals(other.Items)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Timestamp != 0L) hash ^= Timestamp.GetHashCode();
+      hash ^= Items.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Timestamp != 0L) {
+        output.WriteRawTag(16);
+        output.WriteInt64(Timestamp);
+      }
+      items_.WriteTo(output, _map_items_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Timestamp != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Timestamp);
+      }
+      size += items_.CalculateSize(_map_items_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Event other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.Timestamp != 0L) {
+        Timestamp = other.Timestamp;
+      }
+      items_.Add(other.items_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 16: {
+            Timestamp = input.ReadInt64();
+            break;
+          }
+          case 26: {
+            items_.AddEntriesFrom(input, _map_items_codec);
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the Event message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class EventValue : pb::IMessage<EventValue> {
+        private static readonly pb::MessageParser<EventValue> _parser = new pb::MessageParser<EventValue>(() => new EventValue());
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<EventValue> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::Ndx.Model.Event.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public EventValue() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public EventValue(EventValue other) : this() {
+          switch (other.ValueTypeCase) {
+            case ValueTypeOneofCase.StringValue:
+              StringValue = other.StringValue;
+              break;
+            case ValueTypeOneofCase.NumberValue:
+              NumberValue = other.NumberValue;
+              break;
+            case ValueTypeOneofCase.PacketValue:
+              PacketValue = other.PacketValue.Clone();
+              break;
+            case ValueTypeOneofCase.ParameterValue:
+              ParameterValue = other.ParameterValue.Clone();
+              break;
+          }
+
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public EventValue Clone() {
+          return new EventValue(this);
+        }
+
+        /// <summary>Field number for the "StringValue" field.</summary>
+        public const int StringValueFieldNumber = 1;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string StringValue {
+          get { return valueTypeCase_ == ValueTypeOneofCase.StringValue ? (string) valueType_ : ""; }
+          set {
+            valueType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+            valueTypeCase_ = ValueTypeOneofCase.StringValue;
+          }
+        }
+
+        /// <summary>Field number for the "NumberValue" field.</summary>
+        public const int NumberValueFieldNumber = 2;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long NumberValue {
+          get { return valueTypeCase_ == ValueTypeOneofCase.NumberValue ? (long) valueType_ : 0L; }
+          set {
+            valueType_ = value;
+            valueTypeCase_ = ValueTypeOneofCase.NumberValue;
+          }
+        }
+
+        /// <summary>Field number for the "PacketValue" field.</summary>
+        public const int PacketValueFieldNumber = 3;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Model.PacketFields PacketValue {
+          get { return valueTypeCase_ == ValueTypeOneofCase.PacketValue ? (global::Ndx.Model.PacketFields) valueType_ : null; }
+          set {
+            valueType_ = value;
+            valueTypeCase_ = value == null ? ValueTypeOneofCase.None : ValueTypeOneofCase.PacketValue;
+          }
+        }
+
+        /// <summary>Field number for the "ParameterValue" field.</summary>
+        public const int ParameterValueFieldNumber = 4;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Model.Parameter ParameterValue {
+          get { return valueTypeCase_ == ValueTypeOneofCase.ParameterValue ? (global::Ndx.Model.Parameter) valueType_ : null; }
+          set {
+            valueType_ = value;
+            valueTypeCase_ = value == null ? ValueTypeOneofCase.None : ValueTypeOneofCase.ParameterValue;
+          }
+        }
+
+        private object valueType_;
+        /// <summary>Enum of possible cases for the "ValueType" oneof.</summary>
+        public enum ValueTypeOneofCase {
+          None = 0,
+          StringValue = 1,
+          NumberValue = 2,
+          PacketValue = 3,
+          ParameterValue = 4,
+        }
+        private ValueTypeOneofCase valueTypeCase_ = ValueTypeOneofCase.None;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public ValueTypeOneofCase ValueTypeCase {
+          get { return valueTypeCase_; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void ClearValueType() {
+          valueTypeCase_ = ValueTypeOneofCase.None;
+          valueType_ = null;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as EventValue);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(EventValue other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (StringValue != other.StringValue) return false;
+          if (NumberValue != other.NumberValue) return false;
+          if (!object.Equals(PacketValue, other.PacketValue)) return false;
+          if (!object.Equals(ParameterValue, other.ParameterValue)) return false;
+          if (ValueTypeCase != other.ValueTypeCase) return false;
+          return true;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (valueTypeCase_ == ValueTypeOneofCase.StringValue) hash ^= StringValue.GetHashCode();
+          if (valueTypeCase_ == ValueTypeOneofCase.NumberValue) hash ^= NumberValue.GetHashCode();
+          if (valueTypeCase_ == ValueTypeOneofCase.PacketValue) hash ^= PacketValue.GetHashCode();
+          if (valueTypeCase_ == ValueTypeOneofCase.ParameterValue) hash ^= ParameterValue.GetHashCode();
+          hash ^= (int) valueTypeCase_;
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (valueTypeCase_ == ValueTypeOneofCase.StringValue) {
+            output.WriteRawTag(10);
+            output.WriteString(StringValue);
+          }
+          if (valueTypeCase_ == ValueTypeOneofCase.NumberValue) {
+            output.WriteRawTag(16);
+            output.WriteInt64(NumberValue);
+          }
+          if (valueTypeCase_ == ValueTypeOneofCase.PacketValue) {
+            output.WriteRawTag(26);
+            output.WriteMessage(PacketValue);
+          }
+          if (valueTypeCase_ == ValueTypeOneofCase.ParameterValue) {
+            output.WriteRawTag(34);
+            output.WriteMessage(ParameterValue);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (valueTypeCase_ == ValueTypeOneofCase.StringValue) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(StringValue);
+          }
+          if (valueTypeCase_ == ValueTypeOneofCase.NumberValue) {
+            size += 1 + pb::CodedOutputStream.ComputeInt64Size(NumberValue);
+          }
+          if (valueTypeCase_ == ValueTypeOneofCase.PacketValue) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(PacketValue);
+          }
+          if (valueTypeCase_ == ValueTypeOneofCase.ParameterValue) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(ParameterValue);
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(EventValue other) {
+          if (other == null) {
+            return;
+          }
+          switch (other.ValueTypeCase) {
+            case ValueTypeOneofCase.StringValue:
+              StringValue = other.StringValue;
+              break;
+            case ValueTypeOneofCase.NumberValue:
+              NumberValue = other.NumberValue;
+              break;
+            case ValueTypeOneofCase.PacketValue:
+              PacketValue = other.PacketValue;
+              break;
+            case ValueTypeOneofCase.ParameterValue:
+              ParameterValue = other.ParameterValue;
+              break;
+          }
+
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                input.SkipLastField();
+                break;
+              case 10: {
+                StringValue = input.ReadString();
+                break;
+              }
+              case 16: {
+                NumberValue = input.ReadInt64();
+                break;
+              }
+              case 26: {
+                global::Ndx.Model.PacketFields subBuilder = new global::Ndx.Model.PacketFields();
+                if (valueTypeCase_ == ValueTypeOneofCase.PacketValue) {
+                  subBuilder.MergeFrom(PacketValue);
+                }
+                input.ReadMessage(subBuilder);
+                PacketValue = subBuilder;
+                break;
+              }
+              case 34: {
+                global::Ndx.Model.Parameter subBuilder = new global::Ndx.Model.Parameter();
+                if (valueTypeCase_ == ValueTypeOneofCase.ParameterValue) {
+                  subBuilder.MergeFrom(ParameterValue);
+                }
+                input.ReadMessage(subBuilder);
+                ParameterValue = subBuilder;
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
 
   }
 

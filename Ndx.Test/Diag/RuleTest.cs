@@ -39,7 +39,7 @@ namespace Ndx.Test.Filters
             sw.Restart();
             host.Fields["ip_src"] = "192.168.111.100";
 
-            var dginfo = rule.Evaluate(events, new Dictionary<string, PacketFields>() { { "dnsClient", host } }, x => x).ToArray();
+            var dginfo = rule.Evaluate(events, new Dictionary<string, PacketFields>() { { "dnsClient", host } }, x => x).ToList();
             Console.WriteLine($"Matching DNS messages count={dginfo.Count()}, computed in {sw.ElapsedMilliseconds} ms.");
             foreach (var item in dginfo)
             {
@@ -50,8 +50,9 @@ namespace Ndx.Test.Filters
 
         private const string m_theRule = @"---
 rule:
-    id: dns_test_ok
-    description: DNS success queries. 
+    id: dns_query_response_ok
+    description: Correlates sucessful DNS query and response into a single event. 
+    result: ( query:e1, reply:e2 )
 params:
     - dnsClient
 events:
@@ -61,13 +62,7 @@ assert:
     - dnsClient.ip.src == e1.ip.src
     - e1.ip.src eq '192.168.111.100'
     - e1.dns.id == e2.dns.id
-    - e1.timestamp < e2.timestamp && e2.timestamp <= e1.timestamp + 2000 
-select:
-    host: dnsClient
-    query: e1
-    answer: e2
-    info: '{e1.timestamp}: {e1.ip.src} -> {e1.ip.dst}: {e1.frame.number} <- {e1.dns.id} -> {e2.frame.number}, RTT = {e2.timestamp - e1.timestamp} ms'
-";
+    - e1.timestamp < e2.timestamp && e2.timestamp <= e1.timestamp + 2000 ";
     }
 }
 
