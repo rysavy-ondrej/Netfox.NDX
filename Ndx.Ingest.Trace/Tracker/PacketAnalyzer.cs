@@ -117,20 +117,20 @@ namespace Ndx.Ingest
         public static FlowKey GetFlowKey(this DecodedFrame packet, out bool startNewConversation)
         {
             startNewConversation = false;
-            var ipProto = (IpProtocolType)Int32.Parse(packet.GetFieldValue("ip_ip_proto", "0"));
+            var ipProto = (IpProtocolType)(packet.GetFieldValue("ip.proto", new Variant(0)).ToInt32());
             switch (ipProto)
             {
                 case IpProtocolType.Tcp:
-                    startNewConversation = packet.GetFieldValue("tcp_flags_tcp_flags_syn", "0").Equals("1") &&
-                        packet.GetFieldValue("tcp_flags_tcp_flags_ack", "0").Equals("0");
+                    startNewConversation = packet.GetFieldValue("tcp.flags.syn", new Variant(false)).Equals(new Variant(true)) &&
+                        packet.GetFieldValue("tcp.flags.ack", new Variant(false)).Equals(new Variant(false));
                     return new FlowKey()
                     {
                         Type = FlowType.NetworkFlow,
                         IpProtocol = ipProto,
-                        SourceIpAddress = IPAddress.Parse(packet.GetFieldValue("ip_ip_src", "0.0.0.0")),
-                        SourcePort = UInt16.Parse(packet.GetFieldValue("tcp_tcp_srcport", "0")),
-                        DestinationIpAddress = IPAddress.Parse(packet.GetFieldValue("ip_ip_dst", "0.0.0.0")),
-                        DestinationPort = UInt16.Parse(packet.GetFieldValue("tcp_tcp_dstport", "0")),
+                        SourceIpAddress = packet.GetFieldValue("ip.src", new Variant("0.0.0.0")).ToIPAddress(),
+                        SourcePort = (ushort) packet.GetFieldValue("tcp.srcport", new Variant(0)).ToInt32(),
+                        DestinationIpAddress = (packet.GetFieldValue("ip.dst", "0.0.0.0")).ToIPAddress(),
+                        DestinationPort = (ushort) packet.GetFieldValue("tcp.dstport", "0").ToInt32(),
                     };
                 case IpProtocolType.Udp:
                     startNewConversation = false;
@@ -138,20 +138,20 @@ namespace Ndx.Ingest
                     {
                         Type = FlowType.NetworkFlow,
                         IpProtocol = ipProto,
-                        SourceIpAddress = IPAddress.Parse(packet.GetFieldValue("ip_ip_src", "0.0.0.0")),
-                        SourcePort = UInt16.Parse(packet.GetFieldValue("udp_udp_srcport", "0")),
-                        DestinationIpAddress = IPAddress.Parse(packet.GetFieldValue("ip_ip_dst", "0.0.0.0")),
-                        DestinationPort = UInt16.Parse(packet.GetFieldValue("udp_udp_dstport", "0")),
+                        SourceIpAddress = packet.GetFieldValue("ip.src", new Variant("0.0.0.0")).ToIPAddress(),
+                        SourcePort = (ushort)packet.GetFieldValue("tcp.srcport", new Variant(0)).ToInt32(),
+                        DestinationIpAddress = (packet.GetFieldValue("ip.dst", "0.0.0.0")).ToIPAddress(),
+                        DestinationPort = (ushort)packet.GetFieldValue("tcp.dstport", "0").ToInt32(),
                     };
                 default:
                     return new FlowKey()
                     {
                         Type = FlowType.NetworkFlow,
                         IpProtocol = ipProto,
-                        SourceIpAddress = IPAddress.Parse(packet.GetFieldValue("ip_ip_src", "0.0.0.0")),
-                        SourcePort = UInt16.Parse(packet.GetFieldValue("udp_udp_srcport", "0")),
-                        DestinationIpAddress = IPAddress.Parse(packet.GetFieldValue("ip_ip_dst", "0.0.0.0")),
-                        DestinationPort = UInt16.Parse(packet.GetFieldValue("udp_udp_dstport", "0")),
+                        SourceIpAddress = packet.GetFieldValue("ip.src", new Variant("0.0.0.0")).ToIPAddress(),
+                        SourcePort = 0,
+                        DestinationIpAddress = (packet.GetFieldValue("ip.dst", "0.0.0.0")).ToIPAddress(),
+                        DestinationPort = 0,
                     };
             }
         }

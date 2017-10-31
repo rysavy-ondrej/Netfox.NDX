@@ -22,7 +22,7 @@ namespace Ndx.Test
 
             var fk1 = new FlowKey()
             {
-                IpProtocol = Model.IpProtocolType.Udp,
+                IpProtocol = IpProtocolType.Udp,
                 SourceIpAddress = srcIp,
                 SourcePort = 53,
                 DestinationIpAddress = dstIp,
@@ -45,7 +45,7 @@ namespace Ndx.Test
 
             var arp = new FlowKey()
             {
-                EthernetType = Model.EthernetPacketType.Arp,
+                EthernetType = Ndx.Model.EthernetPacketType.Arp,
                 SourceMacAddress = PhysicalAddress.Parse("60-57-18-3E-2E-75"),
                 DestinationMacAddress = PhysicalAddress.Parse("FF-FF-FF-FF-FF-FF")
             };

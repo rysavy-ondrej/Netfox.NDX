@@ -1343,6 +1343,1332 @@ public final class PacketModel {
 
   }
 
+  public interface VariantOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ndx.model.Variant)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>bool BoolValue = 1;</code>
+     */
+    boolean getBoolValue();
+
+    /**
+     * <code>int32 Int32Value = 2;</code>
+     */
+    int getInt32Value();
+
+    /**
+     * <code>int64 Int64Value = 3;</code>
+     */
+    long getInt64Value();
+
+    /**
+     * <code>float FloatValue = 4;</code>
+     */
+    float getFloatValue();
+
+    /**
+     * <code>double DoubleValue = 5;</code>
+     */
+    double getDoubleValue();
+
+    /**
+     * <code>string StringValue = 6;</code>
+     */
+    java.lang.String getStringValue();
+    /**
+     * <code>string StringValue = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getStringValueBytes();
+
+    /**
+     * <code>bytes BytesValue = 7;</code>
+     */
+    com.google.protobuf.ByteString getBytesValue();
+
+    /**
+     * <code>string DecimalValue = 8;</code>
+     */
+    java.lang.String getDecimalValue();
+    /**
+     * <code>string DecimalValue = 8;</code>
+     */
+    com.google.protobuf.ByteString
+        getDecimalValueBytes();
+
+    /**
+     * <code>int64 DateTimeValue = 9;</code>
+     */
+    long getDateTimeValue();
+
+    public org.ndx.model.PacketModel.Variant.ValueCase getValueCase();
+  }
+  /**
+   * Protobuf type {@code ndx.model.Variant}
+   */
+  public  static final class Variant extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ndx.model.Variant)
+      VariantOrBuilder {
+    // Use Variant.newBuilder() to construct.
+    private Variant(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Variant() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private Variant(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              valueCase_ = 1;
+              value_ = input.readBool();
+              break;
+            }
+            case 16: {
+              valueCase_ = 2;
+              value_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              valueCase_ = 3;
+              value_ = input.readInt64();
+              break;
+            }
+            case 37: {
+              valueCase_ = 4;
+              value_ = input.readFloat();
+              break;
+            }
+            case 41: {
+              valueCase_ = 5;
+              value_ = input.readDouble();
+              break;
+            }
+            case 50: {
+              java.lang.String s = input.readStringRequireUtf8();
+              valueCase_ = 6;
+              value_ = s;
+              break;
+            }
+            case 58: {
+              valueCase_ = 7;
+              value_ = input.readBytes();
+              break;
+            }
+            case 66: {
+              java.lang.String s = input.readStringRequireUtf8();
+              valueCase_ = 8;
+              value_ = s;
+              break;
+            }
+            case 72: {
+              valueCase_ = 9;
+              value_ = input.readInt64();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.ndx.model.PacketModel.internal_static_ndx_model_Variant_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.ndx.model.PacketModel.internal_static_ndx_model_Variant_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.ndx.model.PacketModel.Variant.class, org.ndx.model.PacketModel.Variant.Builder.class);
+    }
+
+    private int valueCase_ = 0;
+    private java.lang.Object value_;
+    public enum ValueCase
+        implements com.google.protobuf.Internal.EnumLite {
+      BOOLVALUE(1),
+      INT32VALUE(2),
+      INT64VALUE(3),
+      FLOATVALUE(4),
+      DOUBLEVALUE(5),
+      STRINGVALUE(6),
+      BYTESVALUE(7),
+      DECIMALVALUE(8),
+      DATETIMEVALUE(9),
+      VALUE_NOT_SET(0);
+      private final int value;
+      private ValueCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static ValueCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static ValueCase forNumber(int value) {
+        switch (value) {
+          case 1: return BOOLVALUE;
+          case 2: return INT32VALUE;
+          case 3: return INT64VALUE;
+          case 4: return FLOATVALUE;
+          case 5: return DOUBLEVALUE;
+          case 6: return STRINGVALUE;
+          case 7: return BYTESVALUE;
+          case 8: return DECIMALVALUE;
+          case 9: return DATETIMEVALUE;
+          case 0: return VALUE_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public ValueCase
+    getValueCase() {
+      return ValueCase.forNumber(
+          valueCase_);
+    }
+
+    public static final int BOOLVALUE_FIELD_NUMBER = 1;
+    /**
+     * <code>bool BoolValue = 1;</code>
+     */
+    public boolean getBoolValue() {
+      if (valueCase_ == 1) {
+        return (java.lang.Boolean) value_;
+      }
+      return false;
+    }
+
+    public static final int INT32VALUE_FIELD_NUMBER = 2;
+    /**
+     * <code>int32 Int32Value = 2;</code>
+     */
+    public int getInt32Value() {
+      if (valueCase_ == 2) {
+        return (java.lang.Integer) value_;
+      }
+      return 0;
+    }
+
+    public static final int INT64VALUE_FIELD_NUMBER = 3;
+    /**
+     * <code>int64 Int64Value = 3;</code>
+     */
+    public long getInt64Value() {
+      if (valueCase_ == 3) {
+        return (java.lang.Long) value_;
+      }
+      return 0L;
+    }
+
+    public static final int FLOATVALUE_FIELD_NUMBER = 4;
+    /**
+     * <code>float FloatValue = 4;</code>
+     */
+    public float getFloatValue() {
+      if (valueCase_ == 4) {
+        return (java.lang.Float) value_;
+      }
+      return 0F;
+    }
+
+    public static final int DOUBLEVALUE_FIELD_NUMBER = 5;
+    /**
+     * <code>double DoubleValue = 5;</code>
+     */
+    public double getDoubleValue() {
+      if (valueCase_ == 5) {
+        return (java.lang.Double) value_;
+      }
+      return 0D;
+    }
+
+    public static final int STRINGVALUE_FIELD_NUMBER = 6;
+    /**
+     * <code>string StringValue = 6;</code>
+     */
+    public java.lang.String getStringValue() {
+      java.lang.Object ref = "";
+      if (valueCase_ == 6) {
+        ref = value_;
+      }
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (valueCase_ == 6) {
+          value_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>string StringValue = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStringValueBytes() {
+      java.lang.Object ref = "";
+      if (valueCase_ == 6) {
+        ref = value_;
+      }
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        if (valueCase_ == 6) {
+          value_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BYTESVALUE_FIELD_NUMBER = 7;
+    /**
+     * <code>bytes BytesValue = 7;</code>
+     */
+    public com.google.protobuf.ByteString getBytesValue() {
+      if (valueCase_ == 7) {
+        return (com.google.protobuf.ByteString) value_;
+      }
+      return com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final int DECIMALVALUE_FIELD_NUMBER = 8;
+    /**
+     * <code>string DecimalValue = 8;</code>
+     */
+    public java.lang.String getDecimalValue() {
+      java.lang.Object ref = "";
+      if (valueCase_ == 8) {
+        ref = value_;
+      }
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (valueCase_ == 8) {
+          value_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>string DecimalValue = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDecimalValueBytes() {
+      java.lang.Object ref = "";
+      if (valueCase_ == 8) {
+        ref = value_;
+      }
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        if (valueCase_ == 8) {
+          value_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DATETIMEVALUE_FIELD_NUMBER = 9;
+    /**
+     * <code>int64 DateTimeValue = 9;</code>
+     */
+    public long getDateTimeValue() {
+      if (valueCase_ == 9) {
+        return (java.lang.Long) value_;
+      }
+      return 0L;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (valueCase_ == 1) {
+        output.writeBool(
+            1, (boolean)((java.lang.Boolean) value_));
+      }
+      if (valueCase_ == 2) {
+        output.writeInt32(
+            2, (int)((java.lang.Integer) value_));
+      }
+      if (valueCase_ == 3) {
+        output.writeInt64(
+            3, (long)((java.lang.Long) value_));
+      }
+      if (valueCase_ == 4) {
+        output.writeFloat(
+            4, (float)((java.lang.Float) value_));
+      }
+      if (valueCase_ == 5) {
+        output.writeDouble(
+            5, (double)((java.lang.Double) value_));
+      }
+      if (valueCase_ == 6) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, value_);
+      }
+      if (valueCase_ == 7) {
+        output.writeBytes(
+            7, (com.google.protobuf.ByteString) value_);
+      }
+      if (valueCase_ == 8) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, value_);
+      }
+      if (valueCase_ == 9) {
+        output.writeInt64(
+            9, (long)((java.lang.Long) value_));
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (valueCase_ == 1) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(
+              1, (boolean)((java.lang.Boolean) value_));
+      }
+      if (valueCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(
+              2, (int)((java.lang.Integer) value_));
+      }
+      if (valueCase_ == 3) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(
+              3, (long)((java.lang.Long) value_));
+      }
+      if (valueCase_ == 4) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(
+              4, (float)((java.lang.Float) value_));
+      }
+      if (valueCase_ == 5) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(
+              5, (double)((java.lang.Double) value_));
+      }
+      if (valueCase_ == 6) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, value_);
+      }
+      if (valueCase_ == 7) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(
+              7, (com.google.protobuf.ByteString) value_);
+      }
+      if (valueCase_ == 8) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, value_);
+      }
+      if (valueCase_ == 9) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(
+              9, (long)((java.lang.Long) value_));
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.ndx.model.PacketModel.Variant)) {
+        return super.equals(obj);
+      }
+      org.ndx.model.PacketModel.Variant other = (org.ndx.model.PacketModel.Variant) obj;
+
+      boolean result = true;
+      result = result && getValueCase().equals(
+          other.getValueCase());
+      if (!result) return false;
+      switch (valueCase_) {
+        case 1:
+          result = result && (getBoolValue()
+              == other.getBoolValue());
+          break;
+        case 2:
+          result = result && (getInt32Value()
+              == other.getInt32Value());
+          break;
+        case 3:
+          result = result && (getInt64Value()
+              == other.getInt64Value());
+          break;
+        case 4:
+          result = result && (
+              java.lang.Float.floatToIntBits(getFloatValue())
+              == java.lang.Float.floatToIntBits(
+                  other.getFloatValue()));
+          break;
+        case 5:
+          result = result && (
+              java.lang.Double.doubleToLongBits(getDoubleValue())
+              == java.lang.Double.doubleToLongBits(
+                  other.getDoubleValue()));
+          break;
+        case 6:
+          result = result && getStringValue()
+              .equals(other.getStringValue());
+          break;
+        case 7:
+          result = result && getBytesValue()
+              .equals(other.getBytesValue());
+          break;
+        case 8:
+          result = result && getDecimalValue()
+              .equals(other.getDecimalValue());
+          break;
+        case 9:
+          result = result && (getDateTimeValue()
+              == other.getDateTimeValue());
+          break;
+        case 0:
+        default:
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      switch (valueCase_) {
+        case 1:
+          hash = (37 * hash) + BOOLVALUE_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+              getBoolValue());
+          break;
+        case 2:
+          hash = (37 * hash) + INT32VALUE_FIELD_NUMBER;
+          hash = (53 * hash) + getInt32Value();
+          break;
+        case 3:
+          hash = (37 * hash) + INT64VALUE_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getInt64Value());
+          break;
+        case 4:
+          hash = (37 * hash) + FLOATVALUE_FIELD_NUMBER;
+          hash = (53 * hash) + java.lang.Float.floatToIntBits(
+              getFloatValue());
+          break;
+        case 5:
+          hash = (37 * hash) + DOUBLEVALUE_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              java.lang.Double.doubleToLongBits(getDoubleValue()));
+          break;
+        case 6:
+          hash = (37 * hash) + STRINGVALUE_FIELD_NUMBER;
+          hash = (53 * hash) + getStringValue().hashCode();
+          break;
+        case 7:
+          hash = (37 * hash) + BYTESVALUE_FIELD_NUMBER;
+          hash = (53 * hash) + getBytesValue().hashCode();
+          break;
+        case 8:
+          hash = (37 * hash) + DECIMALVALUE_FIELD_NUMBER;
+          hash = (53 * hash) + getDecimalValue().hashCode();
+          break;
+        case 9:
+          hash = (37 * hash) + DATETIMEVALUE_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getDateTimeValue());
+          break;
+        case 0:
+        default:
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.ndx.model.PacketModel.Variant parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.ndx.model.PacketModel.Variant parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.ndx.model.PacketModel.Variant parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.ndx.model.PacketModel.Variant parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.ndx.model.PacketModel.Variant parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.ndx.model.PacketModel.Variant parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.ndx.model.PacketModel.Variant parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.ndx.model.PacketModel.Variant parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.ndx.model.PacketModel.Variant parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.ndx.model.PacketModel.Variant parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.ndx.model.PacketModel.Variant parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.ndx.model.PacketModel.Variant parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.ndx.model.PacketModel.Variant prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ndx.model.Variant}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ndx.model.Variant)
+        org.ndx.model.PacketModel.VariantOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.ndx.model.PacketModel.internal_static_ndx_model_Variant_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.ndx.model.PacketModel.internal_static_ndx_model_Variant_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.ndx.model.PacketModel.Variant.class, org.ndx.model.PacketModel.Variant.Builder.class);
+      }
+
+      // Construct using org.ndx.model.PacketModel.Variant.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        valueCase_ = 0;
+        value_ = null;
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.ndx.model.PacketModel.internal_static_ndx_model_Variant_descriptor;
+      }
+
+      public org.ndx.model.PacketModel.Variant getDefaultInstanceForType() {
+        return org.ndx.model.PacketModel.Variant.getDefaultInstance();
+      }
+
+      public org.ndx.model.PacketModel.Variant build() {
+        org.ndx.model.PacketModel.Variant result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.ndx.model.PacketModel.Variant buildPartial() {
+        org.ndx.model.PacketModel.Variant result = new org.ndx.model.PacketModel.Variant(this);
+        if (valueCase_ == 1) {
+          result.value_ = value_;
+        }
+        if (valueCase_ == 2) {
+          result.value_ = value_;
+        }
+        if (valueCase_ == 3) {
+          result.value_ = value_;
+        }
+        if (valueCase_ == 4) {
+          result.value_ = value_;
+        }
+        if (valueCase_ == 5) {
+          result.value_ = value_;
+        }
+        if (valueCase_ == 6) {
+          result.value_ = value_;
+        }
+        if (valueCase_ == 7) {
+          result.value_ = value_;
+        }
+        if (valueCase_ == 8) {
+          result.value_ = value_;
+        }
+        if (valueCase_ == 9) {
+          result.value_ = value_;
+        }
+        result.valueCase_ = valueCase_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.ndx.model.PacketModel.Variant) {
+          return mergeFrom((org.ndx.model.PacketModel.Variant)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.ndx.model.PacketModel.Variant other) {
+        if (other == org.ndx.model.PacketModel.Variant.getDefaultInstance()) return this;
+        switch (other.getValueCase()) {
+          case BOOLVALUE: {
+            setBoolValue(other.getBoolValue());
+            break;
+          }
+          case INT32VALUE: {
+            setInt32Value(other.getInt32Value());
+            break;
+          }
+          case INT64VALUE: {
+            setInt64Value(other.getInt64Value());
+            break;
+          }
+          case FLOATVALUE: {
+            setFloatValue(other.getFloatValue());
+            break;
+          }
+          case DOUBLEVALUE: {
+            setDoubleValue(other.getDoubleValue());
+            break;
+          }
+          case STRINGVALUE: {
+            valueCase_ = 6;
+            value_ = other.value_;
+            onChanged();
+            break;
+          }
+          case BYTESVALUE: {
+            setBytesValue(other.getBytesValue());
+            break;
+          }
+          case DECIMALVALUE: {
+            valueCase_ = 8;
+            value_ = other.value_;
+            onChanged();
+            break;
+          }
+          case DATETIMEVALUE: {
+            setDateTimeValue(other.getDateTimeValue());
+            break;
+          }
+          case VALUE_NOT_SET: {
+            break;
+          }
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.ndx.model.PacketModel.Variant parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.ndx.model.PacketModel.Variant) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int valueCase_ = 0;
+      private java.lang.Object value_;
+      public ValueCase
+          getValueCase() {
+        return ValueCase.forNumber(
+            valueCase_);
+      }
+
+      public Builder clearValue() {
+        valueCase_ = 0;
+        value_ = null;
+        onChanged();
+        return this;
+      }
+
+
+      /**
+       * <code>bool BoolValue = 1;</code>
+       */
+      public boolean getBoolValue() {
+        if (valueCase_ == 1) {
+          return (java.lang.Boolean) value_;
+        }
+        return false;
+      }
+      /**
+       * <code>bool BoolValue = 1;</code>
+       */
+      public Builder setBoolValue(boolean value) {
+        valueCase_ = 1;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool BoolValue = 1;</code>
+       */
+      public Builder clearBoolValue() {
+        if (valueCase_ == 1) {
+          valueCase_ = 0;
+          value_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>int32 Int32Value = 2;</code>
+       */
+      public int getInt32Value() {
+        if (valueCase_ == 2) {
+          return (java.lang.Integer) value_;
+        }
+        return 0;
+      }
+      /**
+       * <code>int32 Int32Value = 2;</code>
+       */
+      public Builder setInt32Value(int value) {
+        valueCase_ = 2;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 Int32Value = 2;</code>
+       */
+      public Builder clearInt32Value() {
+        if (valueCase_ == 2) {
+          valueCase_ = 0;
+          value_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>int64 Int64Value = 3;</code>
+       */
+      public long getInt64Value() {
+        if (valueCase_ == 3) {
+          return (java.lang.Long) value_;
+        }
+        return 0L;
+      }
+      /**
+       * <code>int64 Int64Value = 3;</code>
+       */
+      public Builder setInt64Value(long value) {
+        valueCase_ = 3;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 Int64Value = 3;</code>
+       */
+      public Builder clearInt64Value() {
+        if (valueCase_ == 3) {
+          valueCase_ = 0;
+          value_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>float FloatValue = 4;</code>
+       */
+      public float getFloatValue() {
+        if (valueCase_ == 4) {
+          return (java.lang.Float) value_;
+        }
+        return 0F;
+      }
+      /**
+       * <code>float FloatValue = 4;</code>
+       */
+      public Builder setFloatValue(float value) {
+        valueCase_ = 4;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>float FloatValue = 4;</code>
+       */
+      public Builder clearFloatValue() {
+        if (valueCase_ == 4) {
+          valueCase_ = 0;
+          value_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>double DoubleValue = 5;</code>
+       */
+      public double getDoubleValue() {
+        if (valueCase_ == 5) {
+          return (java.lang.Double) value_;
+        }
+        return 0D;
+      }
+      /**
+       * <code>double DoubleValue = 5;</code>
+       */
+      public Builder setDoubleValue(double value) {
+        valueCase_ = 5;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double DoubleValue = 5;</code>
+       */
+      public Builder clearDoubleValue() {
+        if (valueCase_ == 5) {
+          valueCase_ = 0;
+          value_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>string StringValue = 6;</code>
+       */
+      public java.lang.String getStringValue() {
+        java.lang.Object ref = "";
+        if (valueCase_ == 6) {
+          ref = value_;
+        }
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (valueCase_ == 6) {
+            value_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string StringValue = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStringValueBytes() {
+        java.lang.Object ref = "";
+        if (valueCase_ == 6) {
+          ref = value_;
+        }
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (valueCase_ == 6) {
+            value_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string StringValue = 6;</code>
+       */
+      public Builder setStringValue(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  valueCase_ = 6;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string StringValue = 6;</code>
+       */
+      public Builder clearStringValue() {
+        if (valueCase_ == 6) {
+          valueCase_ = 0;
+          value_ = null;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>string StringValue = 6;</code>
+       */
+      public Builder setStringValueBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        valueCase_ = 6;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>bytes BytesValue = 7;</code>
+       */
+      public com.google.protobuf.ByteString getBytesValue() {
+        if (valueCase_ == 7) {
+          return (com.google.protobuf.ByteString) value_;
+        }
+        return com.google.protobuf.ByteString.EMPTY;
+      }
+      /**
+       * <code>bytes BytesValue = 7;</code>
+       */
+      public Builder setBytesValue(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  valueCase_ = 7;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes BytesValue = 7;</code>
+       */
+      public Builder clearBytesValue() {
+        if (valueCase_ == 7) {
+          valueCase_ = 0;
+          value_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>string DecimalValue = 8;</code>
+       */
+      public java.lang.String getDecimalValue() {
+        java.lang.Object ref = "";
+        if (valueCase_ == 8) {
+          ref = value_;
+        }
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (valueCase_ == 8) {
+            value_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string DecimalValue = 8;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDecimalValueBytes() {
+        java.lang.Object ref = "";
+        if (valueCase_ == 8) {
+          ref = value_;
+        }
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (valueCase_ == 8) {
+            value_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string DecimalValue = 8;</code>
+       */
+      public Builder setDecimalValue(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  valueCase_ = 8;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string DecimalValue = 8;</code>
+       */
+      public Builder clearDecimalValue() {
+        if (valueCase_ == 8) {
+          valueCase_ = 0;
+          value_ = null;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>string DecimalValue = 8;</code>
+       */
+      public Builder setDecimalValueBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        valueCase_ = 8;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>int64 DateTimeValue = 9;</code>
+       */
+      public long getDateTimeValue() {
+        if (valueCase_ == 9) {
+          return (java.lang.Long) value_;
+        }
+        return 0L;
+      }
+      /**
+       * <code>int64 DateTimeValue = 9;</code>
+       */
+      public Builder setDateTimeValue(long value) {
+        valueCase_ = 9;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 DateTimeValue = 9;</code>
+       */
+      public Builder clearDateTimeValue() {
+        if (valueCase_ == 9) {
+          valueCase_ = 0;
+          value_ = null;
+          onChanged();
+        }
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ndx.model.Variant)
+    }
+
+    // @@protoc_insertion_point(class_scope:ndx.model.Variant)
+    private static final org.ndx.model.PacketModel.Variant DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.ndx.model.PacketModel.Variant();
+    }
+
+    public static org.ndx.model.PacketModel.Variant getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Variant>
+        PARSER = new com.google.protobuf.AbstractParser<Variant>() {
+      public Variant parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Variant(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Variant> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Variant> getParserForType() {
+      return PARSER;
+    }
+
+    public org.ndx.model.PacketModel.Variant getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface DecodedFrameOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ndx.model.DecodedFrame)
       com.google.protobuf.MessageOrBuilder {
@@ -1368,11 +2694,11 @@ public final class PacketModel {
     long getTimestamp();
 
     /**
-     * <code>map&lt;string, string&gt; Fields = 10;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
      */
     int getFieldsCount();
     /**
-     * <code>map&lt;string, string&gt; Fields = 10;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
      */
     boolean containsFields(
         java.lang.String key);
@@ -1380,25 +2706,25 @@ public final class PacketModel {
      * Use {@link #getFieldsMap()} instead.
      */
     @java.lang.Deprecated
-    java.util.Map<java.lang.String, java.lang.String>
+    java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant>
     getFields();
     /**
-     * <code>map&lt;string, string&gt; Fields = 10;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
      */
-    java.util.Map<java.lang.String, java.lang.String>
+    java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant>
     getFieldsMap();
     /**
-     * <code>map&lt;string, string&gt; Fields = 10;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
      */
 
-    java.lang.String getFieldsOrDefault(
+    org.ndx.model.PacketModel.Variant getFieldsOrDefault(
         java.lang.String key,
-        java.lang.String defaultValue);
+        org.ndx.model.PacketModel.Variant defaultValue);
     /**
-     * <code>map&lt;string, string&gt; Fields = 10;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
      */
 
-    java.lang.String getFieldsOrThrow(
+    org.ndx.model.PacketModel.Variant getFieldsOrThrow(
         java.lang.String key);
   }
   /**
@@ -1465,7 +2791,7 @@ public final class PacketModel {
                     FieldsDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000008;
               }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+              com.google.protobuf.MapEntry<java.lang.String, org.ndx.model.PacketModel.Variant>
               fields__ = input.readMessage(
                   FieldsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               fields_.getMutableMap().put(
@@ -1562,18 +2888,18 @@ public final class PacketModel {
     public static final int FIELDS_FIELD_NUMBER = 10;
     private static final class FieldsDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, java.lang.String> defaultEntry =
+          java.lang.String, org.ndx.model.PacketModel.Variant> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, java.lang.String>newDefaultInstance(
+              .<java.lang.String, org.ndx.model.PacketModel.Variant>newDefaultInstance(
                   org.ndx.model.PacketModel.internal_static_ndx_model_DecodedFrame_FieldsEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.STRING,
-                  "");
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  org.ndx.model.PacketModel.Variant.getDefaultInstance());
     }
     private com.google.protobuf.MapField<
-        java.lang.String, java.lang.String> fields_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+        java.lang.String, org.ndx.model.PacketModel.Variant> fields_;
+    private com.google.protobuf.MapField<java.lang.String, org.ndx.model.PacketModel.Variant>
     internalGetFields() {
       if (fields_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -1586,7 +2912,7 @@ public final class PacketModel {
       return internalGetFields().getMap().size();
     }
     /**
-     * <code>map&lt;string, string&gt; Fields = 10;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
      */
 
     public boolean containsFields(
@@ -1598,36 +2924,36 @@ public final class PacketModel {
      * Use {@link #getFieldsMap()} instead.
      */
     @java.lang.Deprecated
-    public java.util.Map<java.lang.String, java.lang.String> getFields() {
+    public java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> getFields() {
       return getFieldsMap();
     }
     /**
-     * <code>map&lt;string, string&gt; Fields = 10;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
      */
 
-    public java.util.Map<java.lang.String, java.lang.String> getFieldsMap() {
+    public java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> getFieldsMap() {
       return internalGetFields().getMap();
     }
     /**
-     * <code>map&lt;string, string&gt; Fields = 10;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
      */
 
-    public java.lang.String getFieldsOrDefault(
+    public org.ndx.model.PacketModel.Variant getFieldsOrDefault(
         java.lang.String key,
-        java.lang.String defaultValue) {
+        org.ndx.model.PacketModel.Variant defaultValue) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, java.lang.String> map =
+      java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> map =
           internalGetFields().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, string&gt; Fields = 10;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
      */
 
-    public java.lang.String getFieldsOrThrow(
+    public org.ndx.model.PacketModel.Variant getFieldsOrThrow(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, java.lang.String> map =
+      java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> map =
           internalGetFields().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
@@ -1680,9 +3006,9 @@ public final class PacketModel {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(3, timestamp_);
       }
-      for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
+      for (java.util.Map.Entry<java.lang.String, org.ndx.model.PacketModel.Variant> entry
            : internalGetFields().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+        com.google.protobuf.MapEntry<java.lang.String, org.ndx.model.PacketModel.Variant>
         fields__ = FieldsDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -2126,8 +3452,8 @@ public final class PacketModel {
       }
 
       private com.google.protobuf.MapField<
-          java.lang.String, java.lang.String> fields_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+          java.lang.String, org.ndx.model.PacketModel.Variant> fields_;
+      private com.google.protobuf.MapField<java.lang.String, org.ndx.model.PacketModel.Variant>
       internalGetFields() {
         if (fields_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
@@ -2135,7 +3461,7 @@ public final class PacketModel {
         }
         return fields_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      private com.google.protobuf.MapField<java.lang.String, org.ndx.model.PacketModel.Variant>
       internalGetMutableFields() {
         onChanged();;
         if (fields_ == null) {
@@ -2152,7 +3478,7 @@ public final class PacketModel {
         return internalGetFields().getMap().size();
       }
       /**
-       * <code>map&lt;string, string&gt; Fields = 10;</code>
+       * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
        */
 
       public boolean containsFields(
@@ -2164,36 +3490,36 @@ public final class PacketModel {
        * Use {@link #getFieldsMap()} instead.
        */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.String> getFields() {
+      public java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> getFields() {
         return getFieldsMap();
       }
       /**
-       * <code>map&lt;string, string&gt; Fields = 10;</code>
+       * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
        */
 
-      public java.util.Map<java.lang.String, java.lang.String> getFieldsMap() {
+      public java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> getFieldsMap() {
         return internalGetFields().getMap();
       }
       /**
-       * <code>map&lt;string, string&gt; Fields = 10;</code>
+       * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
        */
 
-      public java.lang.String getFieldsOrDefault(
+      public org.ndx.model.PacketModel.Variant getFieldsOrDefault(
           java.lang.String key,
-          java.lang.String defaultValue) {
+          org.ndx.model.PacketModel.Variant defaultValue) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, java.lang.String> map =
+        java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> map =
             internalGetFields().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, string&gt; Fields = 10;</code>
+       * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
        */
 
-      public java.lang.String getFieldsOrThrow(
+      public org.ndx.model.PacketModel.Variant getFieldsOrThrow(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, java.lang.String> map =
+        java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> map =
             internalGetFields().getMap();
         if (!map.containsKey(key)) {
           throw new java.lang.IllegalArgumentException();
@@ -2207,7 +3533,7 @@ public final class PacketModel {
         return this;
       }
       /**
-       * <code>map&lt;string, string&gt; Fields = 10;</code>
+       * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
        */
 
       public Builder removeFields(
@@ -2221,16 +3547,16 @@ public final class PacketModel {
        * Use alternate mutation accessors instead.
        */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.String>
+      public java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant>
       getMutableFields() {
         return internalGetMutableFields().getMutableMap();
       }
       /**
-       * <code>map&lt;string, string&gt; Fields = 10;</code>
+       * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
        */
       public Builder putFields(
           java.lang.String key,
-          java.lang.String value) {
+          org.ndx.model.PacketModel.Variant value) {
         if (key == null) { throw new java.lang.NullPointerException(); }
         if (value == null) { throw new java.lang.NullPointerException(); }
         internalGetMutableFields().getMutableMap()
@@ -2238,11 +3564,11 @@ public final class PacketModel {
         return this;
       }
       /**
-       * <code>map&lt;string, string&gt; Fields = 10;</code>
+       * <code>map&lt;string, .ndx.model.Variant&gt; Fields = 10;</code>
        */
 
       public Builder putAllFields(
-          java.util.Map<java.lang.String, java.lang.String> values) {
+          java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> values) {
         internalGetMutableFields().getMutableMap()
             .putAll(values);
         return this;
@@ -2311,11 +3637,11 @@ public final class PacketModel {
         getNameBytes();
 
     /**
-     * <code>map&lt;string, string&gt; Properties = 2;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
      */
     int getPropertiesCount();
     /**
-     * <code>map&lt;string, string&gt; Properties = 2;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
      */
     boolean containsProperties(
         java.lang.String key);
@@ -2323,25 +3649,25 @@ public final class PacketModel {
      * Use {@link #getPropertiesMap()} instead.
      */
     @java.lang.Deprecated
-    java.util.Map<java.lang.String, java.lang.String>
+    java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant>
     getProperties();
     /**
-     * <code>map&lt;string, string&gt; Properties = 2;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
      */
-    java.util.Map<java.lang.String, java.lang.String>
+    java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant>
     getPropertiesMap();
     /**
-     * <code>map&lt;string, string&gt; Properties = 2;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
      */
 
-    java.lang.String getPropertiesOrDefault(
+    org.ndx.model.PacketModel.Variant getPropertiesOrDefault(
         java.lang.String key,
-        java.lang.String defaultValue);
+        org.ndx.model.PacketModel.Variant defaultValue);
     /**
-     * <code>map&lt;string, string&gt; Properties = 2;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
      */
 
-    java.lang.String getPropertiesOrThrow(
+    org.ndx.model.PacketModel.Variant getPropertiesOrThrow(
         java.lang.String key);
   }
   /**
@@ -2396,7 +3722,7 @@ public final class PacketModel {
                     PropertiesDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000002;
               }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+              com.google.protobuf.MapEntry<java.lang.String, org.ndx.model.PacketModel.Variant>
               properties__ = input.readMessage(
                   PropertiesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               properties_.getMutableMap().put(
@@ -2475,18 +3801,18 @@ public final class PacketModel {
     public static final int PROPERTIES_FIELD_NUMBER = 2;
     private static final class PropertiesDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, java.lang.String> defaultEntry =
+          java.lang.String, org.ndx.model.PacketModel.Variant> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, java.lang.String>newDefaultInstance(
+              .<java.lang.String, org.ndx.model.PacketModel.Variant>newDefaultInstance(
                   org.ndx.model.PacketModel.internal_static_ndx_model_Parameter_PropertiesEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.STRING,
-                  "");
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  org.ndx.model.PacketModel.Variant.getDefaultInstance());
     }
     private com.google.protobuf.MapField<
-        java.lang.String, java.lang.String> properties_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+        java.lang.String, org.ndx.model.PacketModel.Variant> properties_;
+    private com.google.protobuf.MapField<java.lang.String, org.ndx.model.PacketModel.Variant>
     internalGetProperties() {
       if (properties_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -2499,7 +3825,7 @@ public final class PacketModel {
       return internalGetProperties().getMap().size();
     }
     /**
-     * <code>map&lt;string, string&gt; Properties = 2;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
      */
 
     public boolean containsProperties(
@@ -2511,36 +3837,36 @@ public final class PacketModel {
      * Use {@link #getPropertiesMap()} instead.
      */
     @java.lang.Deprecated
-    public java.util.Map<java.lang.String, java.lang.String> getProperties() {
+    public java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> getProperties() {
       return getPropertiesMap();
     }
     /**
-     * <code>map&lt;string, string&gt; Properties = 2;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
      */
 
-    public java.util.Map<java.lang.String, java.lang.String> getPropertiesMap() {
+    public java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> getPropertiesMap() {
       return internalGetProperties().getMap();
     }
     /**
-     * <code>map&lt;string, string&gt; Properties = 2;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
      */
 
-    public java.lang.String getPropertiesOrDefault(
+    public org.ndx.model.PacketModel.Variant getPropertiesOrDefault(
         java.lang.String key,
-        java.lang.String defaultValue) {
+        org.ndx.model.PacketModel.Variant defaultValue) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, java.lang.String> map =
+      java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> map =
           internalGetProperties().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, string&gt; Properties = 2;</code>
+     * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
      */
 
-    public java.lang.String getPropertiesOrThrow(
+    public org.ndx.model.PacketModel.Variant getPropertiesOrThrow(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, java.lang.String> map =
+      java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> map =
           internalGetProperties().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
@@ -2579,9 +3905,9 @@ public final class PacketModel {
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
       }
-      for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
+      for (java.util.Map.Entry<java.lang.String, org.ndx.model.PacketModel.Variant> entry
            : internalGetProperties().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+        com.google.protobuf.MapEntry<java.lang.String, org.ndx.model.PacketModel.Variant>
         properties__ = PropertiesDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -2951,8 +4277,8 @@ public final class PacketModel {
       }
 
       private com.google.protobuf.MapField<
-          java.lang.String, java.lang.String> properties_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+          java.lang.String, org.ndx.model.PacketModel.Variant> properties_;
+      private com.google.protobuf.MapField<java.lang.String, org.ndx.model.PacketModel.Variant>
       internalGetProperties() {
         if (properties_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
@@ -2960,7 +4286,7 @@ public final class PacketModel {
         }
         return properties_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      private com.google.protobuf.MapField<java.lang.String, org.ndx.model.PacketModel.Variant>
       internalGetMutableProperties() {
         onChanged();;
         if (properties_ == null) {
@@ -2977,7 +4303,7 @@ public final class PacketModel {
         return internalGetProperties().getMap().size();
       }
       /**
-       * <code>map&lt;string, string&gt; Properties = 2;</code>
+       * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
        */
 
       public boolean containsProperties(
@@ -2989,36 +4315,36 @@ public final class PacketModel {
        * Use {@link #getPropertiesMap()} instead.
        */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.String> getProperties() {
+      public java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> getProperties() {
         return getPropertiesMap();
       }
       /**
-       * <code>map&lt;string, string&gt; Properties = 2;</code>
+       * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
        */
 
-      public java.util.Map<java.lang.String, java.lang.String> getPropertiesMap() {
+      public java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> getPropertiesMap() {
         return internalGetProperties().getMap();
       }
       /**
-       * <code>map&lt;string, string&gt; Properties = 2;</code>
+       * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
        */
 
-      public java.lang.String getPropertiesOrDefault(
+      public org.ndx.model.PacketModel.Variant getPropertiesOrDefault(
           java.lang.String key,
-          java.lang.String defaultValue) {
+          org.ndx.model.PacketModel.Variant defaultValue) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, java.lang.String> map =
+        java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> map =
             internalGetProperties().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, string&gt; Properties = 2;</code>
+       * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
        */
 
-      public java.lang.String getPropertiesOrThrow(
+      public org.ndx.model.PacketModel.Variant getPropertiesOrThrow(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, java.lang.String> map =
+        java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> map =
             internalGetProperties().getMap();
         if (!map.containsKey(key)) {
           throw new java.lang.IllegalArgumentException();
@@ -3032,7 +4358,7 @@ public final class PacketModel {
         return this;
       }
       /**
-       * <code>map&lt;string, string&gt; Properties = 2;</code>
+       * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
        */
 
       public Builder removeProperties(
@@ -3046,16 +4372,16 @@ public final class PacketModel {
        * Use alternate mutation accessors instead.
        */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.String>
+      public java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant>
       getMutableProperties() {
         return internalGetMutableProperties().getMutableMap();
       }
       /**
-       * <code>map&lt;string, string&gt; Properties = 2;</code>
+       * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
        */
       public Builder putProperties(
           java.lang.String key,
-          java.lang.String value) {
+          org.ndx.model.PacketModel.Variant value) {
         if (key == null) { throw new java.lang.NullPointerException(); }
         if (value == null) { throw new java.lang.NullPointerException(); }
         internalGetMutableProperties().getMutableMap()
@@ -3063,11 +4389,11 @@ public final class PacketModel {
         return this;
       }
       /**
-       * <code>map&lt;string, string&gt; Properties = 2;</code>
+       * <code>map&lt;string, .ndx.model.Variant&gt; Properties = 2;</code>
        */
 
       public Builder putAllProperties(
-          java.util.Map<java.lang.String, java.lang.String> values) {
+          java.util.Map<java.lang.String, org.ndx.model.PacketModel.Variant> values) {
         internalGetMutableProperties().getMutableMap()
             .putAll(values);
         return this;
@@ -3278,26 +4604,20 @@ public final class PacketModel {
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <code>string StringValue = 1;</code>
+       * <code>.ndx.model.Variant VariantValue = 1;</code>
        */
-      java.lang.String getStringValue();
+      org.ndx.model.PacketModel.Variant getVariantValue();
       /**
-       * <code>string StringValue = 1;</code>
+       * <code>.ndx.model.Variant VariantValue = 1;</code>
        */
-      com.google.protobuf.ByteString
-          getStringValueBytes();
+      org.ndx.model.PacketModel.VariantOrBuilder getVariantValueOrBuilder();
 
       /**
-       * <code>int64 NumberValue = 2;</code>
-       */
-      long getNumberValue();
-
-      /**
-       * <code>.ndx.model.DecodedFrame PacketValue = 3;</code>
+       * <code>.ndx.model.DecodedFrame PacketValue = 2;</code>
        */
       org.ndx.model.PacketModel.DecodedFrame getPacketValue();
       /**
-       * <code>.ndx.model.DecodedFrame PacketValue = 3;</code>
+       * <code>.ndx.model.DecodedFrame PacketValue = 2;</code>
        */
       org.ndx.model.PacketModel.DecodedFrameOrBuilder getPacketValueOrBuilder();
 
@@ -3352,19 +4672,22 @@ public final class PacketModel {
                 break;
               }
               case 10: {
-                java.lang.String s = input.readStringRequireUtf8();
+                org.ndx.model.PacketModel.Variant.Builder subBuilder = null;
+                if (valueTypeCase_ == 1) {
+                  subBuilder = ((org.ndx.model.PacketModel.Variant) valueType_).toBuilder();
+                }
+                valueType_ =
+                    input.readMessage(org.ndx.model.PacketModel.Variant.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom((org.ndx.model.PacketModel.Variant) valueType_);
+                  valueType_ = subBuilder.buildPartial();
+                }
                 valueTypeCase_ = 1;
-                valueType_ = s;
                 break;
               }
-              case 16: {
-                valueTypeCase_ = 2;
-                valueType_ = input.readInt64();
-                break;
-              }
-              case 26: {
+              case 18: {
                 org.ndx.model.PacketModel.DecodedFrame.Builder subBuilder = null;
-                if (valueTypeCase_ == 3) {
+                if (valueTypeCase_ == 2) {
                   subBuilder = ((org.ndx.model.PacketModel.DecodedFrame) valueType_).toBuilder();
                 }
                 valueType_ =
@@ -3373,7 +4696,7 @@ public final class PacketModel {
                   subBuilder.mergeFrom((org.ndx.model.PacketModel.DecodedFrame) valueType_);
                   valueType_ = subBuilder.buildPartial();
                 }
-                valueTypeCase_ = 3;
+                valueTypeCase_ = 2;
                 break;
               }
               case 34: {
@@ -3417,9 +4740,8 @@ public final class PacketModel {
       private java.lang.Object valueType_;
       public enum ValueTypeCase
           implements com.google.protobuf.Internal.EnumLite {
-        STRINGVALUE(1),
-        NUMBERVALUE(2),
-        PACKETVALUE(3),
+        VARIANTVALUE(1),
+        PACKETVALUE(2),
         PARAMETERVALUE(4),
         VALUETYPE_NOT_SET(0);
         private final int value;
@@ -3436,9 +4758,8 @@ public final class PacketModel {
 
         public static ValueTypeCase forNumber(int value) {
           switch (value) {
-            case 1: return STRINGVALUE;
-            case 2: return NUMBERVALUE;
-            case 3: return PACKETVALUE;
+            case 1: return VARIANTVALUE;
+            case 2: return PACKETVALUE;
             case 4: return PARAMETERVALUE;
             case 0: return VALUETYPE_NOT_SET;
             default: return null;
@@ -3455,75 +4776,41 @@ public final class PacketModel {
             valueTypeCase_);
       }
 
-      public static final int STRINGVALUE_FIELD_NUMBER = 1;
+      public static final int VARIANTVALUE_FIELD_NUMBER = 1;
       /**
-       * <code>string StringValue = 1;</code>
+       * <code>.ndx.model.Variant VariantValue = 1;</code>
        */
-      public java.lang.String getStringValue() {
-        java.lang.Object ref = "";
+      public org.ndx.model.PacketModel.Variant getVariantValue() {
         if (valueTypeCase_ == 1) {
-          ref = valueType_;
+           return (org.ndx.model.PacketModel.Variant) valueType_;
         }
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (valueTypeCase_ == 1) {
-            valueType_ = s;
-          }
-          return s;
-        }
+        return org.ndx.model.PacketModel.Variant.getDefaultInstance();
       }
       /**
-       * <code>string StringValue = 1;</code>
+       * <code>.ndx.model.Variant VariantValue = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getStringValueBytes() {
-        java.lang.Object ref = "";
+      public org.ndx.model.PacketModel.VariantOrBuilder getVariantValueOrBuilder() {
         if (valueTypeCase_ == 1) {
-          ref = valueType_;
+           return (org.ndx.model.PacketModel.Variant) valueType_;
         }
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (valueTypeCase_ == 1) {
-            valueType_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+        return org.ndx.model.PacketModel.Variant.getDefaultInstance();
       }
 
-      public static final int NUMBERVALUE_FIELD_NUMBER = 2;
+      public static final int PACKETVALUE_FIELD_NUMBER = 2;
       /**
-       * <code>int64 NumberValue = 2;</code>
-       */
-      public long getNumberValue() {
-        if (valueTypeCase_ == 2) {
-          return (java.lang.Long) valueType_;
-        }
-        return 0L;
-      }
-
-      public static final int PACKETVALUE_FIELD_NUMBER = 3;
-      /**
-       * <code>.ndx.model.DecodedFrame PacketValue = 3;</code>
+       * <code>.ndx.model.DecodedFrame PacketValue = 2;</code>
        */
       public org.ndx.model.PacketModel.DecodedFrame getPacketValue() {
-        if (valueTypeCase_ == 3) {
+        if (valueTypeCase_ == 2) {
            return (org.ndx.model.PacketModel.DecodedFrame) valueType_;
         }
         return org.ndx.model.PacketModel.DecodedFrame.getDefaultInstance();
       }
       /**
-       * <code>.ndx.model.DecodedFrame PacketValue = 3;</code>
+       * <code>.ndx.model.DecodedFrame PacketValue = 2;</code>
        */
       public org.ndx.model.PacketModel.DecodedFrameOrBuilder getPacketValueOrBuilder() {
-        if (valueTypeCase_ == 3) {
+        if (valueTypeCase_ == 2) {
            return (org.ndx.model.PacketModel.DecodedFrame) valueType_;
         }
         return org.ndx.model.PacketModel.DecodedFrame.getDefaultInstance();
@@ -3562,14 +4849,10 @@ public final class PacketModel {
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
         if (valueTypeCase_ == 1) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, valueType_);
+          output.writeMessage(1, (org.ndx.model.PacketModel.Variant) valueType_);
         }
         if (valueTypeCase_ == 2) {
-          output.writeInt64(
-              2, (long)((java.lang.Long) valueType_));
-        }
-        if (valueTypeCase_ == 3) {
-          output.writeMessage(3, (org.ndx.model.PacketModel.DecodedFrame) valueType_);
+          output.writeMessage(2, (org.ndx.model.PacketModel.DecodedFrame) valueType_);
         }
         if (valueTypeCase_ == 4) {
           output.writeMessage(4, (org.ndx.model.PacketModel.Parameter) valueType_);
@@ -3582,16 +4865,12 @@ public final class PacketModel {
 
         size = 0;
         if (valueTypeCase_ == 1) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, valueType_);
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(1, (org.ndx.model.PacketModel.Variant) valueType_);
         }
         if (valueTypeCase_ == 2) {
           size += com.google.protobuf.CodedOutputStream
-            .computeInt64Size(
-                2, (long)((java.lang.Long) valueType_));
-        }
-        if (valueTypeCase_ == 3) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(3, (org.ndx.model.PacketModel.DecodedFrame) valueType_);
+            .computeMessageSize(2, (org.ndx.model.PacketModel.DecodedFrame) valueType_);
         }
         if (valueTypeCase_ == 4) {
           size += com.google.protobuf.CodedOutputStream
@@ -3618,14 +4897,10 @@ public final class PacketModel {
         if (!result) return false;
         switch (valueTypeCase_) {
           case 1:
-            result = result && getStringValue()
-                .equals(other.getStringValue());
+            result = result && getVariantValue()
+                .equals(other.getVariantValue());
             break;
           case 2:
-            result = result && (getNumberValue()
-                == other.getNumberValue());
-            break;
-          case 3:
             result = result && getPacketValue()
                 .equals(other.getPacketValue());
             break;
@@ -3648,15 +4923,10 @@ public final class PacketModel {
         hash = (19 * hash) + getDescriptor().hashCode();
         switch (valueTypeCase_) {
           case 1:
-            hash = (37 * hash) + STRINGVALUE_FIELD_NUMBER;
-            hash = (53 * hash) + getStringValue().hashCode();
+            hash = (37 * hash) + VARIANTVALUE_FIELD_NUMBER;
+            hash = (53 * hash) + getVariantValue().hashCode();
             break;
           case 2:
-            hash = (37 * hash) + NUMBERVALUE_FIELD_NUMBER;
-            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-                getNumberValue());
-            break;
-          case 3:
             hash = (37 * hash) + PACKETVALUE_FIELD_NUMBER;
             hash = (53 * hash) + getPacketValue().hashCode();
             break;
@@ -3821,12 +5091,13 @@ public final class PacketModel {
         public org.ndx.model.PacketModel.Event.EventValue buildPartial() {
           org.ndx.model.PacketModel.Event.EventValue result = new org.ndx.model.PacketModel.Event.EventValue(this);
           if (valueTypeCase_ == 1) {
-            result.valueType_ = valueType_;
+            if (variantValueBuilder_ == null) {
+              result.valueType_ = valueType_;
+            } else {
+              result.valueType_ = variantValueBuilder_.build();
+            }
           }
           if (valueTypeCase_ == 2) {
-            result.valueType_ = valueType_;
-          }
-          if (valueTypeCase_ == 3) {
             if (packetValueBuilder_ == null) {
               result.valueType_ = valueType_;
             } else {
@@ -3883,14 +5154,8 @@ public final class PacketModel {
         public Builder mergeFrom(org.ndx.model.PacketModel.Event.EventValue other) {
           if (other == org.ndx.model.PacketModel.Event.EventValue.getDefaultInstance()) return this;
           switch (other.getValueTypeCase()) {
-            case STRINGVALUE: {
-              valueTypeCase_ = 1;
-              valueType_ = other.valueType_;
-              onChanged();
-              break;
-            }
-            case NUMBERVALUE: {
-              setNumberValue(other.getNumberValue());
+            case VARIANTVALUE: {
+              mergeVariantValue(other.getVariantValue());
               break;
             }
             case PACKETVALUE: {
@@ -3946,136 +5211,156 @@ public final class PacketModel {
         }
 
 
+        private com.google.protobuf.SingleFieldBuilderV3<
+            org.ndx.model.PacketModel.Variant, org.ndx.model.PacketModel.Variant.Builder, org.ndx.model.PacketModel.VariantOrBuilder> variantValueBuilder_;
         /**
-         * <code>string StringValue = 1;</code>
+         * <code>.ndx.model.Variant VariantValue = 1;</code>
          */
-        public java.lang.String getStringValue() {
-          java.lang.Object ref = "";
-          if (valueTypeCase_ == 1) {
-            ref = valueType_;
-          }
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
+        public org.ndx.model.PacketModel.Variant getVariantValue() {
+          if (variantValueBuilder_ == null) {
             if (valueTypeCase_ == 1) {
-              valueType_ = s;
+              return (org.ndx.model.PacketModel.Variant) valueType_;
             }
-            return s;
+            return org.ndx.model.PacketModel.Variant.getDefaultInstance();
           } else {
-            return (java.lang.String) ref;
-          }
-        }
-        /**
-         * <code>string StringValue = 1;</code>
-         */
-        public com.google.protobuf.ByteString
-            getStringValueBytes() {
-          java.lang.Object ref = "";
-          if (valueTypeCase_ == 1) {
-            ref = valueType_;
-          }
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
             if (valueTypeCase_ == 1) {
-              valueType_ = b;
+              return variantValueBuilder_.getMessage();
             }
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
+            return org.ndx.model.PacketModel.Variant.getDefaultInstance();
           }
         }
         /**
-         * <code>string StringValue = 1;</code>
+         * <code>.ndx.model.Variant VariantValue = 1;</code>
          */
-        public Builder setStringValue(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  valueTypeCase_ = 1;
-          valueType_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>string StringValue = 1;</code>
-         */
-        public Builder clearStringValue() {
-          if (valueTypeCase_ == 1) {
-            valueTypeCase_ = 0;
-            valueType_ = null;
+        public Builder setVariantValue(org.ndx.model.PacketModel.Variant value) {
+          if (variantValueBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            valueType_ = value;
             onChanged();
+          } else {
+            variantValueBuilder_.setMessage(value);
           }
-          return this;
-        }
-        /**
-         * <code>string StringValue = 1;</code>
-         */
-        public Builder setStringValueBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
           valueTypeCase_ = 1;
-          valueType_ = value;
-          onChanged();
-          return this;
-        }
-
-        /**
-         * <code>int64 NumberValue = 2;</code>
-         */
-        public long getNumberValue() {
-          if (valueTypeCase_ == 2) {
-            return (java.lang.Long) valueType_;
-          }
-          return 0L;
-        }
-        /**
-         * <code>int64 NumberValue = 2;</code>
-         */
-        public Builder setNumberValue(long value) {
-          valueTypeCase_ = 2;
-          valueType_ = value;
-          onChanged();
           return this;
         }
         /**
-         * <code>int64 NumberValue = 2;</code>
+         * <code>.ndx.model.Variant VariantValue = 1;</code>
          */
-        public Builder clearNumberValue() {
-          if (valueTypeCase_ == 2) {
-            valueTypeCase_ = 0;
-            valueType_ = null;
+        public Builder setVariantValue(
+            org.ndx.model.PacketModel.Variant.Builder builderForValue) {
+          if (variantValueBuilder_ == null) {
+            valueType_ = builderForValue.build();
             onChanged();
+          } else {
+            variantValueBuilder_.setMessage(builderForValue.build());
+          }
+          valueTypeCase_ = 1;
+          return this;
+        }
+        /**
+         * <code>.ndx.model.Variant VariantValue = 1;</code>
+         */
+        public Builder mergeVariantValue(org.ndx.model.PacketModel.Variant value) {
+          if (variantValueBuilder_ == null) {
+            if (valueTypeCase_ == 1 &&
+                valueType_ != org.ndx.model.PacketModel.Variant.getDefaultInstance()) {
+              valueType_ = org.ndx.model.PacketModel.Variant.newBuilder((org.ndx.model.PacketModel.Variant) valueType_)
+                  .mergeFrom(value).buildPartial();
+            } else {
+              valueType_ = value;
+            }
+            onChanged();
+          } else {
+            if (valueTypeCase_ == 1) {
+              variantValueBuilder_.mergeFrom(value);
+            }
+            variantValueBuilder_.setMessage(value);
+          }
+          valueTypeCase_ = 1;
+          return this;
+        }
+        /**
+         * <code>.ndx.model.Variant VariantValue = 1;</code>
+         */
+        public Builder clearVariantValue() {
+          if (variantValueBuilder_ == null) {
+            if (valueTypeCase_ == 1) {
+              valueTypeCase_ = 0;
+              valueType_ = null;
+              onChanged();
+            }
+          } else {
+            if (valueTypeCase_ == 1) {
+              valueTypeCase_ = 0;
+              valueType_ = null;
+            }
+            variantValueBuilder_.clear();
           }
           return this;
+        }
+        /**
+         * <code>.ndx.model.Variant VariantValue = 1;</code>
+         */
+        public org.ndx.model.PacketModel.Variant.Builder getVariantValueBuilder() {
+          return getVariantValueFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>.ndx.model.Variant VariantValue = 1;</code>
+         */
+        public org.ndx.model.PacketModel.VariantOrBuilder getVariantValueOrBuilder() {
+          if ((valueTypeCase_ == 1) && (variantValueBuilder_ != null)) {
+            return variantValueBuilder_.getMessageOrBuilder();
+          } else {
+            if (valueTypeCase_ == 1) {
+              return (org.ndx.model.PacketModel.Variant) valueType_;
+            }
+            return org.ndx.model.PacketModel.Variant.getDefaultInstance();
+          }
+        }
+        /**
+         * <code>.ndx.model.Variant VariantValue = 1;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+            org.ndx.model.PacketModel.Variant, org.ndx.model.PacketModel.Variant.Builder, org.ndx.model.PacketModel.VariantOrBuilder> 
+            getVariantValueFieldBuilder() {
+          if (variantValueBuilder_ == null) {
+            if (!(valueTypeCase_ == 1)) {
+              valueType_ = org.ndx.model.PacketModel.Variant.getDefaultInstance();
+            }
+            variantValueBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                org.ndx.model.PacketModel.Variant, org.ndx.model.PacketModel.Variant.Builder, org.ndx.model.PacketModel.VariantOrBuilder>(
+                    (org.ndx.model.PacketModel.Variant) valueType_,
+                    getParentForChildren(),
+                    isClean());
+            valueType_ = null;
+          }
+          valueTypeCase_ = 1;
+          onChanged();;
+          return variantValueBuilder_;
         }
 
         private com.google.protobuf.SingleFieldBuilderV3<
             org.ndx.model.PacketModel.DecodedFrame, org.ndx.model.PacketModel.DecodedFrame.Builder, org.ndx.model.PacketModel.DecodedFrameOrBuilder> packetValueBuilder_;
         /**
-         * <code>.ndx.model.DecodedFrame PacketValue = 3;</code>
+         * <code>.ndx.model.DecodedFrame PacketValue = 2;</code>
          */
         public org.ndx.model.PacketModel.DecodedFrame getPacketValue() {
           if (packetValueBuilder_ == null) {
-            if (valueTypeCase_ == 3) {
+            if (valueTypeCase_ == 2) {
               return (org.ndx.model.PacketModel.DecodedFrame) valueType_;
             }
             return org.ndx.model.PacketModel.DecodedFrame.getDefaultInstance();
           } else {
-            if (valueTypeCase_ == 3) {
+            if (valueTypeCase_ == 2) {
               return packetValueBuilder_.getMessage();
             }
             return org.ndx.model.PacketModel.DecodedFrame.getDefaultInstance();
           }
         }
         /**
-         * <code>.ndx.model.DecodedFrame PacketValue = 3;</code>
+         * <code>.ndx.model.DecodedFrame PacketValue = 2;</code>
          */
         public Builder setPacketValue(org.ndx.model.PacketModel.DecodedFrame value) {
           if (packetValueBuilder_ == null) {
@@ -4087,11 +5372,11 @@ public final class PacketModel {
           } else {
             packetValueBuilder_.setMessage(value);
           }
-          valueTypeCase_ = 3;
+          valueTypeCase_ = 2;
           return this;
         }
         /**
-         * <code>.ndx.model.DecodedFrame PacketValue = 3;</code>
+         * <code>.ndx.model.DecodedFrame PacketValue = 2;</code>
          */
         public Builder setPacketValue(
             org.ndx.model.PacketModel.DecodedFrame.Builder builderForValue) {
@@ -4101,15 +5386,15 @@ public final class PacketModel {
           } else {
             packetValueBuilder_.setMessage(builderForValue.build());
           }
-          valueTypeCase_ = 3;
+          valueTypeCase_ = 2;
           return this;
         }
         /**
-         * <code>.ndx.model.DecodedFrame PacketValue = 3;</code>
+         * <code>.ndx.model.DecodedFrame PacketValue = 2;</code>
          */
         public Builder mergePacketValue(org.ndx.model.PacketModel.DecodedFrame value) {
           if (packetValueBuilder_ == null) {
-            if (valueTypeCase_ == 3 &&
+            if (valueTypeCase_ == 2 &&
                 valueType_ != org.ndx.model.PacketModel.DecodedFrame.getDefaultInstance()) {
               valueType_ = org.ndx.model.PacketModel.DecodedFrame.newBuilder((org.ndx.model.PacketModel.DecodedFrame) valueType_)
                   .mergeFrom(value).buildPartial();
@@ -4118,26 +5403,26 @@ public final class PacketModel {
             }
             onChanged();
           } else {
-            if (valueTypeCase_ == 3) {
+            if (valueTypeCase_ == 2) {
               packetValueBuilder_.mergeFrom(value);
             }
             packetValueBuilder_.setMessage(value);
           }
-          valueTypeCase_ = 3;
+          valueTypeCase_ = 2;
           return this;
         }
         /**
-         * <code>.ndx.model.DecodedFrame PacketValue = 3;</code>
+         * <code>.ndx.model.DecodedFrame PacketValue = 2;</code>
          */
         public Builder clearPacketValue() {
           if (packetValueBuilder_ == null) {
-            if (valueTypeCase_ == 3) {
+            if (valueTypeCase_ == 2) {
               valueTypeCase_ = 0;
               valueType_ = null;
               onChanged();
             }
           } else {
-            if (valueTypeCase_ == 3) {
+            if (valueTypeCase_ == 2) {
               valueTypeCase_ = 0;
               valueType_ = null;
             }
@@ -4146,32 +5431,32 @@ public final class PacketModel {
           return this;
         }
         /**
-         * <code>.ndx.model.DecodedFrame PacketValue = 3;</code>
+         * <code>.ndx.model.DecodedFrame PacketValue = 2;</code>
          */
         public org.ndx.model.PacketModel.DecodedFrame.Builder getPacketValueBuilder() {
           return getPacketValueFieldBuilder().getBuilder();
         }
         /**
-         * <code>.ndx.model.DecodedFrame PacketValue = 3;</code>
+         * <code>.ndx.model.DecodedFrame PacketValue = 2;</code>
          */
         public org.ndx.model.PacketModel.DecodedFrameOrBuilder getPacketValueOrBuilder() {
-          if ((valueTypeCase_ == 3) && (packetValueBuilder_ != null)) {
+          if ((valueTypeCase_ == 2) && (packetValueBuilder_ != null)) {
             return packetValueBuilder_.getMessageOrBuilder();
           } else {
-            if (valueTypeCase_ == 3) {
+            if (valueTypeCase_ == 2) {
               return (org.ndx.model.PacketModel.DecodedFrame) valueType_;
             }
             return org.ndx.model.PacketModel.DecodedFrame.getDefaultInstance();
           }
         }
         /**
-         * <code>.ndx.model.DecodedFrame PacketValue = 3;</code>
+         * <code>.ndx.model.DecodedFrame PacketValue = 2;</code>
          */
         private com.google.protobuf.SingleFieldBuilderV3<
             org.ndx.model.PacketModel.DecodedFrame, org.ndx.model.PacketModel.DecodedFrame.Builder, org.ndx.model.PacketModel.DecodedFrameOrBuilder> 
             getPacketValueFieldBuilder() {
           if (packetValueBuilder_ == null) {
-            if (!(valueTypeCase_ == 3)) {
+            if (!(valueTypeCase_ == 2)) {
               valueType_ = org.ndx.model.PacketModel.DecodedFrame.getDefaultInstance();
             }
             packetValueBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -4181,7 +5466,7 @@ public final class PacketModel {
                     isClean());
             valueType_ = null;
           }
-          valueTypeCase_ = 3;
+          valueTypeCase_ = 2;
           onChanged();;
           return packetValueBuilder_;
         }
@@ -5107,6 +6392,11 @@ public final class PacketModel {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ndx_model_Frame_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ndx_model_Variant_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ndx_model_Variant_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ndx_model_DecodedFrame_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -5156,24 +6446,30 @@ public final class PacketModel {
       "\005\022\023\n\013FrameLength\030\003 \001(\005\022\023\n\013FrameOffset\030\004 " +
       "\001(\003\022\021\n\tTimeStamp\030\005 \001(\003\022\021\n\tProcessId\030\006 \001(" +
       "\003\022\023\n\013ProcessName\030\007 \001(\t\022\014\n\004Data\030\n \001(\014\022\026\n\016" +
-      "ConversationId\030\013 \001(\005\"\262\001\n\014DecodedFrame\022\023\n" +
-      "\013FrameNumber\030\001 \001(\003\022\026\n\016FrameProtocols\030\002 \001" +
-      "(\t\022\021\n\tTimestamp\030\003 \001(\003\0223\n\006Fields\030\n \003(\0132#." +
-      "ndx.model.DecodedFrame.FieldsEntry\032-\n\013Fi",
-      "eldsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028" +
-      "\001\"\206\001\n\tParameter\022\014\n\004Name\030\001 \001(\t\0228\n\nPropert" +
-      "ies\030\002 \003(\0132$.ndx.model.Parameter.Properti" +
-      "esEntry\0321\n\017PropertiesEntry\022\013\n\003key\030\001 \001(\t\022" +
-      "\r\n\005value\030\002 \001(\t:\0028\001\"\311\002\n\005Event\022\014\n\004Name\030\001 \001" +
-      "(\t\022\021\n\tTimestamp\030\002 \001(\003\022*\n\005Items\030\003 \003(\0132\033.n" +
-      "dx.model.Event.ItemsEntry\032\247\001\n\nEventValue" +
-      "\022\025\n\013StringValue\030\001 \001(\tH\000\022\025\n\013NumberValue\030\002" +
-      " \001(\003H\000\022.\n\013PacketValue\030\003 \001(\0132\027.ndx.model." +
-      "DecodedFrameH\000\022.\n\016ParameterValue\030\004 \001(\0132\024",
-      ".ndx.model.ParameterH\000B\013\n\tValueType\032I\n\nI" +
-      "temsEntry\022\013\n\003key\030\001 \001(\t\022*\n\005value\030\002 \001(\0132\033." +
-      "ndx.model.Event.EventValue:\0028\001B\017\n\rorg.nd" +
-      "x.modelb\006proto3"
+      "ConversationId\030\013 \001(\005\"\336\001\n\007Variant\022\023\n\tBool" +
+      "Value\030\001 \001(\010H\000\022\024\n\nInt32Value\030\002 \001(\005H\000\022\024\n\nI" +
+      "nt64Value\030\003 \001(\003H\000\022\024\n\nFloatValue\030\004 \001(\002H\000\022" +
+      "\025\n\013DoubleValue\030\005 \001(\001H\000\022\025\n\013StringValue\030\006 ",
+      "\001(\tH\000\022\024\n\nBytesValue\030\007 \001(\014H\000\022\026\n\014DecimalVa" +
+      "lue\030\010 \001(\tH\000\022\027\n\rDateTimeValue\030\t \001(\003H\000B\007\n\005" +
+      "Value\"\306\001\n\014DecodedFrame\022\023\n\013FrameNumber\030\001 " +
+      "\001(\003\022\026\n\016FrameProtocols\030\002 \001(\t\022\021\n\tTimestamp" +
+      "\030\003 \001(\003\0223\n\006Fields\030\n \003(\0132#.ndx.model.Decod" +
+      "edFrame.FieldsEntry\032A\n\013FieldsEntry\022\013\n\003ke" +
+      "y\030\001 \001(\t\022!\n\005value\030\002 \001(\0132\022.ndx.model.Varia" +
+      "nt:\0028\001\"\232\001\n\tParameter\022\014\n\004Name\030\001 \001(\t\0228\n\nPr" +
+      "operties\030\002 \003(\0132$.ndx.model.Parameter.Pro" +
+      "pertiesEntry\032E\n\017PropertiesEntry\022\013\n\003key\030\001",
+      " \001(\t\022!\n\005value\030\002 \001(\0132\022.ndx.model.Variant:" +
+      "\0028\001\"\307\002\n\005Event\022\014\n\004Name\030\001 \001(\t\022\021\n\tTimestamp" +
+      "\030\002 \001(\003\022*\n\005Items\030\003 \003(\0132\033.ndx.model.Event." +
+      "ItemsEntry\032\245\001\n\nEventValue\022*\n\014VariantValu" +
+      "e\030\001 \001(\0132\022.ndx.model.VariantH\000\022.\n\013PacketV" +
+      "alue\030\002 \001(\0132\027.ndx.model.DecodedFrameH\000\022.\n" +
+      "\016ParameterValue\030\004 \001(\0132\024.ndx.model.Parame" +
+      "terH\000B\013\n\tValueType\032I\n\nItemsEntry\022\013\n\003key\030" +
+      "\001 \001(\t\022*\n\005value\030\002 \001(\0132\033.ndx.model.Event.E" +
+      "ventValue:\0028\001B\017\n\rorg.ndx.modelb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5194,8 +6490,14 @@ public final class PacketModel {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ndx_model_Frame_descriptor,
         new java.lang.String[] { "LinkType", "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "ProcessId", "ProcessName", "Data", "ConversationId", });
-    internal_static_ndx_model_DecodedFrame_descriptor =
+    internal_static_ndx_model_Variant_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_ndx_model_Variant_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ndx_model_Variant_descriptor,
+        new java.lang.String[] { "BoolValue", "Int32Value", "Int64Value", "FloatValue", "DoubleValue", "StringValue", "BytesValue", "DecimalValue", "DateTimeValue", "Value", });
+    internal_static_ndx_model_DecodedFrame_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_ndx_model_DecodedFrame_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ndx_model_DecodedFrame_descriptor,
@@ -5207,7 +6509,7 @@ public final class PacketModel {
         internal_static_ndx_model_DecodedFrame_FieldsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_ndx_model_Parameter_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_ndx_model_Parameter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ndx_model_Parameter_descriptor,
@@ -5219,7 +6521,7 @@ public final class PacketModel {
         internal_static_ndx_model_Parameter_PropertiesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_ndx_model_Event_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_ndx_model_Event_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ndx_model_Event_descriptor,
@@ -5229,7 +6531,7 @@ public final class PacketModel {
     internal_static_ndx_model_Event_EventValue_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ndx_model_Event_EventValue_descriptor,
-        new java.lang.String[] { "StringValue", "NumberValue", "PacketValue", "ParameterValue", "ValueType", });
+        new java.lang.String[] { "VariantValue", "PacketValue", "ParameterValue", "ValueType", });
     internal_static_ndx_model_Event_ItemsEntry_descriptor =
       internal_static_ndx_model_Event_descriptor.getNestedTypes().get(1);
     internal_static_ndx_model_Event_ItemsEntry_fieldAccessorTable = new

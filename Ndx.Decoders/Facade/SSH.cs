@@ -45,7 +45,7 @@ namespace Ndx.Decoders
             
             return new SshEvent()
             {
-                Code = (SshMessageCode)Int32.Parse(packet.GetFieldValue(SSH.MessageCode, "0")),
+                Code = (SshMessageCode)(packet.GetFieldValue(SSH.MessageCode, 0).ToInt32())
                 //TODO: ???
             };
             

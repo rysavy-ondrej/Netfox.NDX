@@ -79,6 +79,7 @@
     <Compile Include="Filters\FlowKeyFilterTest.cs" />
     <Compile Include="Ingest\FlowKeyTest.cs" />
     <Compile Include="Ingest\LoadFromTest.cs" />
+    <Compile Include="Model\VariantTest.cs" />
     <Compile Include="Model\LoadSaveTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ipfix\IpfixTest.cs" />

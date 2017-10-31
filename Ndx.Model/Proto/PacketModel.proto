@@ -46,25 +46,39 @@ message Frame {
 	int32 ConversationId = 11;
 }
 
+message Variant {
+	oneof Value {
+		bool BoolValue = 1;
+	    int32 Int32Value = 2;
+		int64 Int64Value = 3;
+		float FloatValue = 4;
+		double DoubleValue = 5;
+		string StringValue = 6;
+		bytes BytesValue = 7;
+		string DecimalValue = 8;
+		int64 DateTimeValue = 9;
+	}
+}
+
 message DecodedFrame {
+
 	int64 FrameNumber = 1;
 	string FrameProtocols = 2;
 	int64 Timestamp = 3;
-	map<string, string> Fields = 10;
+	map<string, Variant> Fields = 10;
 }
 
 
 message Parameter {
 	string Name = 1;
-	map<string,string> Properties = 2;
+	map<string,Variant> Properties = 2;
 }
 
 message Event {
 	message EventValue {
 		oneof ValueType {
-			string StringValue = 1;
-			int64 NumberValue = 2;
-			DecodedFrame PacketValue = 3;
+			Variant VariantValue = 1;
+			DecodedFrame PacketValue = 2;
 			Parameter ParameterValue = 4;
 		}
 	}
@@ -73,3 +87,4 @@ message Event {
 	int64 Timestamp = 2;
 	map<string,EventValue> Items = 3; 
 }
+

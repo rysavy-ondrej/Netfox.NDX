@@ -68,7 +68,7 @@ namespace Ndx.TShark
                         var field = (JProperty)_field;
                         if (field?.Value.Type == JTokenType.String)
                         {
-                            result.Fields.Add(field.Name, (string)field.Value);
+                            result.Fields.Add(field.Name, new Variant((string)field.Value));
                         }
                     }
                 }                       

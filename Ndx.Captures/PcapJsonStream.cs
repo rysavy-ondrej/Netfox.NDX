@@ -51,8 +51,8 @@ namespace Ndx.Captures
             var frame = layers["frame"];
 
             var timestamp = ((long)jsonObject["timestamp"]);
-            var framenumber = (int)frame["frame_frame_number"];
-            var frameprotocols = (string)frame["frame_frame_protocols"];
+            var framenumber = (int)frame["frame_number"];
+            var frameprotocols = (string)frame["frame_protocols"];
 
             var result = new DecodedFrame()
             {
@@ -61,8 +61,8 @@ namespace Ndx.Captures
                 FrameProtocols = frameprotocols
             };
 
-            result.Fields["timestamp"] = timestamp.ToString();
-            result.Fields["frame_number"] = framenumber.ToString();
+            result.Fields["timestamp"] = new Variant(timestamp);
+            result.Fields["frame_number"] = new Variant(framenumber);
             var protocols = result.FrameProtocols.Split(':');
             foreach (var proto in protocols)
             {
@@ -83,7 +83,7 @@ namespace Ndx.Captures
                             if (fieldNameCore.Count() > 0)
                             {
                                 var fieldName = String.Join("_", fieldNameCore);
-                                result.Fields[fieldName] = (string)field.Value;
+                                result.Fields[fieldName] = new Variant((string)field.Value);
                             }
                         }
                     }

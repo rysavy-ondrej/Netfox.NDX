@@ -60,9 +60,11 @@
     <Compile Include="Model\FlowAttributes.cs" />
     <Compile Include="Model\FlowKey.cs" />
     <Compile Include="Model\FlowModel.cs" />
-    <Compile Include="Model\PacketFields.cs" />
+    <Compile Include="Model\DecodedPacket.cs" />
     <Compile Include="Model\PacketModel.cs" />
     <Compile Include="Model\Frame.cs" />
+    <Compile Include="Model\Variant.cs" />
+    <Compile Include="Model\VariantArithmetic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

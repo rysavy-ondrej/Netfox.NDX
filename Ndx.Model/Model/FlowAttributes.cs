@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ndx.Model.Model
+namespace Ndx.Model
 {
     public partial class FlowAttributes
     {

@@ -294,10 +294,10 @@ namespace Ndx.Ingest
         /// <returns>The frame number.</returns>
         public static long UpdateConversation(DecodedFrame packet, FlowAttributes flowAttributes)
         {
-            var tcplen = Int32.Parse(packet.GetFieldValue("tcp_tcp_len", "-1"));
-            var udplen = Int32.Parse(packet.GetFieldValue("udp_udp_length", "-1"));
-            var iplen = Int32.Parse(packet.GetFieldValue("ip_ip_len", "-1"));
-            var framelen = Int32.Parse(packet.GetFieldValue("frame_frame_len", "0"));
+            var tcplen = packet.GetFieldValue("tcp.len", new Variant(0)).ToInt32();
+            var udplen = packet.GetFieldValue("udp.length", 0).ToInt32();
+            var iplen = packet.GetFieldValue("ip.len", 0).ToInt32();
+            var framelen = packet.GetFieldValue("frame.len", 0).ToInt32();
             var payloadSize = tcplen >= 0 ? tcplen : (udplen >= 0 ? udplen : (iplen >= 0 ? iplen : framelen));
             flowAttributes.Octets += payloadSize;
             flowAttributes.Packets += 1;
@@ -312,7 +312,7 @@ namespace Ndx.Ingest
             flowAttributes.StdevInterarrivalTime = 0;
             flowAttributes.StdevPayloadSize = 0;
 
-            return Int64.Parse(packet.GetFieldValue("frame_frame_number", "0"));
+            return packet.GetFieldValue("frame.number", new Variant(0)).ToInt64();
         }
 
         /// <summary>

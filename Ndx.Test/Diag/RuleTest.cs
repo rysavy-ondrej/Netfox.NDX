@@ -37,7 +37,7 @@ namespace Ndx.Test.Filters
             Console.WriteLine($"{events.Count()} events readed in {sw.ElapsedMilliseconds} ms.");
             var host = new DecodedFrame();
             sw.Restart();
-            host.Fields["ip_src"] = "192.168.111.100";
+            host.Fields["ip_src"] = new Variant("192.168.111.100");
 
             var dginfo = rule.Evaluate(events, new Dictionary<string, DecodedFrame>() { { "dnsClient", host } }, x => x).ToList();
             Console.WriteLine($"Matching DNS messages count={dginfo.Count()}, computed in {sw.ElapsedMilliseconds} ms.");

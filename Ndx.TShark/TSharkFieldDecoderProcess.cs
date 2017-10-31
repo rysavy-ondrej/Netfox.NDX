@@ -76,7 +76,7 @@ namespace Ndx.TShark
                         result.FrameProtocols = (string)field.Value.First;
                         break;
                     default:
-                        result.Fields.Add(field.Key, (string)field.Value.First);
+                        result.Fields.Add(field.Key, new Variant((string)field.Value.First));
                         break;
                 }
             }
