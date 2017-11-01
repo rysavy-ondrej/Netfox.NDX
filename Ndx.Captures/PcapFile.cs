@@ -50,7 +50,7 @@ namespace Ndx.Captures
         }
 
 
-        public static IObservable<DecodedFrame> ReadJson(string path)
+        public static IObservable<DecodedFrame> ReadJson(string path, Func<String, String, String, Tuple<String, Variant>> customDecoder = null)
         {
             return Observable.Using(() => File.OpenText(path), stream =>
             {
@@ -62,7 +62,7 @@ namespace Ndx.Captures
                     while (frame != null)
                     {
                         obs.OnNext(frame);
-                        frame = source.Read();
+                        frame = source.Read(customDecoder);
                     }
                     obs.OnCompleted();
                     return Disposable.Create(() => { });

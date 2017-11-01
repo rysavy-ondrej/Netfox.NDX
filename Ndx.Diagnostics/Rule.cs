@@ -55,7 +55,7 @@ namespace Ndx.Diagnostics
 
             IEnumerable<DecodedFrame> GetEvent(DisplayFilterExpression eventFilter)
             {
-                return input.Where(pf => eventFilter.FilterFunction(pf) == true).ToList();
+                return input.Where(pf => eventFilter.FilterFunction(pf)?.ToBoolean() ?? false).ToList();
             }
 
             DecodedFrame[] GetArray(params DecodedFrame[] inputFields)
@@ -114,7 +114,7 @@ namespace Ndx.Diagnostics
 
             var sequence = CrossJoin(events);
 
-            return sequence.Where(evt => m_asserts.All(f => f.FlowFilter(evt) == true)).Select(evt => selector(evt));
+            return sequence.Where(evt => m_asserts.All(f => f.FlowFilter(evt)?.ToBoolean() ?? false)).Select(evt => selector(evt));
         }
 
 

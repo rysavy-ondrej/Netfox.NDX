@@ -8,17 +8,17 @@ namespace Ndx.Diagnostics
 
     public class DisplayFilterExpression
     {
-        private Expression<Func<DecodedFrame, bool?>> m_filterExpression;
-        public DisplayFilterExpression(Expression<Func<DecodedFrame[], bool?>> expression)
+        private Expression<Func<DecodedFrame, Variant>> m_filterExpression;
+        public DisplayFilterExpression(Expression<Func<DecodedFrame[], Variant>> expression)
         {
             var paramExpression = Expression.Parameter(typeof(DecodedFrame), "e");
             var arrayExpression = Expression.NewArrayInit(typeof(DecodedFrame), paramExpression);
             
-            this.m_filterExpression = Expression.Lambda<Func<DecodedFrame, bool?>>(Expression.Invoke(expression, arrayExpression), paramExpression);   
+            this.m_filterExpression = Expression.Lambda<Func<DecodedFrame, Variant>>(Expression.Invoke(expression, arrayExpression), paramExpression);   
         }
 
-        private Func<DecodedFrame, bool?> m_filterFunc;
-        public Func<DecodedFrame, bool?> FilterFunction
+        private Func<DecodedFrame, Variant> m_filterFunc;
+        public Func<DecodedFrame, Variant> FilterFunction
         {
             get
             {

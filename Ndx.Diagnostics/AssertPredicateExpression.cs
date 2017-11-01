@@ -6,14 +6,14 @@ namespace Ndx.Diagnostics
 {
     public class AssertPredicateExpression
     {
-        private Expression<Func<DecodedFrame[], bool?>> m_filterExpression;
-        public AssertPredicateExpression(Expression<Func<DecodedFrame[], bool?>> expression)
+        private Expression<Func<DecodedFrame[], Variant>> m_filterExpression;
+        public AssertPredicateExpression(Expression<Func<DecodedFrame[], Variant>> expression)
         {
             this.m_filterExpression = expression;
         }
 
-        private Func<DecodedFrame[], bool?> m_filterFunc;
-        public Func<DecodedFrame[], bool?> FlowFilter
+        private Func<DecodedFrame[], Variant> m_filterFunc;
+        public Func<DecodedFrame[], Variant> FlowFilter
         {
             get
             {

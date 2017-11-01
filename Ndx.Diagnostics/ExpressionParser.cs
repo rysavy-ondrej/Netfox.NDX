@@ -78,15 +78,15 @@ namespace Ndx.Diagnostics
 
         static readonly Parser<Expression> IpAddress =
             from ipv4 in Sprache.Parse.Regex(rxIpAddress)
-            select Expression.Constant(ipv4);
+            select Expression.New(typeof(Variant).GetConstructor(new Type[] { typeof(string) }),Expression.Constant(ipv4));
 
         static readonly Parser<Expression> NumberConstant =
             from num in Sprache.Parse.Number
-            select Expression.Convert(Expression.Constant(long.Parse(num)), typeof(object));
+            select Expression.New(typeof(Variant).GetConstructor(new Type[] { typeof(long) }), Expression.Constant(long.Parse(num)));
 
         static readonly Parser<Expression> StringConstant =
             from str in Sprache.Parse.Regex("['\"][^\"]*[\"']")
-            select Expression.Constant(str.Trim('"','\''));
+            select Expression.New(typeof(Variant).GetConstructor(new Type[] { typeof(string) }), Expression.Constant(str.Trim('"', '\'')));
 
         static readonly Parser<Expression> Constant =
             IpAddress.XOr(NumberConstant).XOr(StringConstant);
@@ -94,7 +94,6 @@ namespace Ndx.Diagnostics
         Parser<Expression> Field(ParameterExpression flowKey) =>
             from name in Sprache.Parse.Regex(rxField)
             select AccessField(flowKey, name);
-
 
         Expression AccessField(ParameterExpression packetFieldsArray, string name)
         {
@@ -172,24 +171,22 @@ namespace Ndx.Diagnostics
            from rparen in Sprache.Parse.Char(')')
            select expr).XOr(Constant).XOr(Field(flowKey));
 
-        public Parser<Expression<Func<DecodedFrame[], bool?>>> Lambda()
+        public Parser<Expression<Func<DecodedFrame[], Variant>>> Lambda()
         {
             var param = Expression.Parameter(typeof(DecodedFrame[]), "@t");
-            return OrExpr(param).End().Select(body => Expression.Lambda<Func<DecodedFrame[], bool?>>(body, param));
+            return OrExpr(param).End().Select(body => Expression.Lambda<Func<DecodedFrame[], Variant>>(body, param));
         }
 
         /// <summary>
-        /// Creates a binary expression for the given operator and converts arguments to <see cref="decimal"/> when necessary.
+        /// Creates a binary expression for the given operator and arguments.
         /// </summary>
-        /// <param name="operatorMethod"></param>
-        /// <param name="arg1"></param>
-        /// <param name="arg2"></param>
+        /// <param name="operatorMethod">The operator method info object.</param>
+        /// <param name="arg1">The first operand.</param>
+        /// <param name="arg2">The second operand.</param>
         /// <returns></returns>
         Expression MakeBinary(MethodInfo operatorMethod, Expression arg1, Expression arg2)
         {
-            var arg1Expr = Expression.Call(Diagnostics.OperatorExpression._ToDecimalMethodInfo.MakeGenericMethod(arg1.Type), arg1);
-            var arg2Expr = Expression.Call(Diagnostics.OperatorExpression._ToDecimalMethodInfo.MakeGenericMethod(arg2.Type), arg2);
-            return Expression.Call(operatorMethod, arg1Expr, arg2Expr);
+            return Expression.Call(operatorMethod, arg1, arg2);
         }
 
         /// <summary>
