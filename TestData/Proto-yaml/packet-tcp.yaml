@@ -1,0 +1,725 @@
+---
+tcp.srcport:
+  type: FT_UINT16
+  base: BASE_PT_TCP
+  info: Source Port
+tcp.dstport:
+  type: FT_UINT16
+  base: BASE_PT_TCP
+  info: Destination Port
+tcp.port:
+  type: FT_UINT16
+  base: BASE_PT_TCP
+  info: Source or Destination Port
+tcp.stream:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Stream index
+tcp.seq:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Sequence number
+tcp.nxtseq:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Next sequence number
+tcp.ack:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Acknowledgment number
+tcp.hdr_len:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Header Length
+tcp.flags:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Flags
+tcp.flags.res:
+  type: FT_BOOLEAN
+  base: 12
+  info: Reserved
+tcp.flags.ns:
+  type: FT_BOOLEAN
+  base: 12
+  info: Nonce
+tcp.flags.cwr:
+  type: FT_BOOLEAN
+  base: 12
+  info: Congestion Window Reduced (CWR)
+tcp.flags.ecn:
+  type: FT_BOOLEAN
+  base: 12
+  info: ECN-Echo
+tcp.flags.urg:
+  type: FT_BOOLEAN
+  base: 12
+  info: Urgent
+tcp.flags.ack:
+  type: FT_BOOLEAN
+  base: 12
+  info: Acknowledgment
+tcp.flags.push:
+  type: FT_BOOLEAN
+  base: 12
+  info: Push
+tcp.flags.reset:
+  type: FT_BOOLEAN
+  base: 12
+  info: Reset
+tcp.flags.syn:
+  type: FT_BOOLEAN
+  base: 12
+  info: Syn
+tcp.flags.fin:
+  type: FT_BOOLEAN
+  base: 12
+  info: Fin
+tcp.flags.str:
+  type: FT_STRING
+  base: STR_UNICODE
+  info: TCP Flags
+tcp.window_size_value:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Window size value
+tcp.window_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Calculated window size
+tcp.window_size_scalefactor:
+  type: FT_INT32
+  base: BASE_DEC
+  info: Window size scaling factor
+tcp.checksum:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Checksum
+tcp.checksum.status:
+  type: FT_UINT8
+  base: BASE_NONE
+  info: Checksum Status
+tcp.checksum_calculated:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Calculated Checksum
+tcp.analysis:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SEQ/ACK analysis
+tcp.analysis.flags:
+  type: FT_NONE
+  base: BASE_NONE
+  info: TCP Analysis Flags
+tcp.analysis.duplicate_ack:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Duplicate ACK
+tcp.analysis.duplicate_ack_num:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Duplicate ACK #
+tcp.analysis.duplicate_ack_frame:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Duplicate to the ACK in frame
+tcp.continuation_to:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: This is a continuation to the PDU in frame
+tcp.len:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: TCP Segment Len
+tcp.analysis.acks_frame:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: This is an ACK to the segment in frame
+tcp.analysis.bytes_in_flight:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Bytes in flight
+tcp.analysis.push_bytes_sent:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Bytes sent since last PSH flag
+tcp.analysis.ack_rtt:
+  type: FT_RELATIVE_TIME
+  base: BASE_NONE
+  info: The RTT to ACK the segment was
+tcp.analysis.initial_rtt:
+  type: FT_RELATIVE_TIME
+  base: BASE_NONE
+  info: iRTT
+tcp.analysis.rto:
+  type: FT_RELATIVE_TIME
+  base: BASE_NONE
+  info: The RTO for this segment was
+tcp.analysis.rto_frame:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: RTO based on delta from frame
+tcp.urgent_pointer:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Urgent pointer
+tcp.segment.overlap:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Segment overlap
+tcp.segment.overlap.conflict:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Conflicting data in segment overlap
+tcp.segment.multipletails:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Multiple tail segments found
+tcp.segment.toolongfragment:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Segment too long
+tcp.segment.error:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Reassembling error
+tcp.segment.count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Segment count
+tcp.segment:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: TCP Segment
+tcp.segments:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Reassembled TCP Segments
+tcp.reassembled_in:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Reassembled PDU in frame
+tcp.reassembled.length:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Reassembled TCP length
+tcp.reassembled.data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Reassembled TCP Data
+tcp.option_kind:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Kind
+tcp.option_len:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Length
+tcp.options:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: TCP Options
+tcp.options.mss_val:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: MSS Value
+tcp.options.wscale.shift:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Shift count
+tcp.options.wscale.multiplier:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Multiplier
+tcp.options.experimental.data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Data
+tcp.options.experimental.magic_number:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Magic Number
+tcp.options.sack_le:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: TCP SACK Left Edge
+tcp.options.sack_re:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: TCP SACK Right Edge
+tcp.options.sack.count:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: TCP SACK Count
+tcp.options.echo_value:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: TCP Echo Option
+tcp.options.timestamp.tsval:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Timestamp value
+tcp.options.timestamp.tsecr:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Timestamp echo reply
+tcp.options.mptcp.subtype:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Multipath TCP subtype
+tcp.options.mptcp.version:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Multipath TCP version
+tcp.options.mptcp.reserved:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Reserved
+tcp.options.mptcp.flags:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Multipath TCP flags
+tcp.options.mptcp.backup.flag:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Backup flag
+tcp.options.mptcp.checksumreq.flags:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Checksum required
+tcp.options.mptcp.extensibility.flag:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Extensibility
+tcp.options.mptcp.sha1.flag:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Use HMAC-SHA1
+tcp.options.mptcp.datafin.flag:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: DATA_FIN
+tcp.options.mptcp.dseqn8.flag:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Data Sequence Number is 8 octets
+tcp.options.mptcp.dseqnpresent.flag:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Data Sequence Number, Subflow Sequence Number, Data-level Length, Checksum present
+tcp.options.mptcp.dataack8.flag:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Data ACK is 8 octets
+tcp.options.mptcp.dataackpresent.flag:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Data ACK is present
+tcp.options.mptcp.reserved.flag:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Reserved
+tcp.options.mptcp.addrid:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Address ID
+tcp.options.mptcp.sendkey:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Sender's Key
+tcp.options.mptcp.recvkey:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Receiver's Key
+tcp.options.mptcp.recvtok:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Receiver's Token
+tcp.options.mptcp.sendrand:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Sender's Random Number
+tcp.options.mptcp.sendtrunchmac:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Sender's Truncated HMAC
+tcp.options.mptcp.sendhmac:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Sender's HMAC
+tcp.options.mptcp.addaddrtrunchmac:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Truncated HMAC
+tcp.options.mptcp.rawdataack:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Original MPTCP Data ACK
+tcp.options.mptcp.rawdataseqno:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Data Sequence Number
+tcp.options.mptcp.subflowseqno:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Subflow Sequence Number
+tcp.options.mptcp.datalvllen:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Data-level Length
+tcp.options.mptcp.checksum:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Checksum
+tcp.options.mptcp.ipver:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: IP version
+tcp.options.mptcp.ipv4:
+  type: FT_IPv4
+  base: BASE_NONE
+  info: Advertised IPv4 Address
+tcp.options.mptcp.ipv6:
+  type: FT_IPv6
+  base: BASE_NONE
+  info: Advertised IPv6 Address
+tcp.options.mptcp.port:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Advertised port
+tcp.options.cc_value:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: TCP CC Option
+tcp.options.md5.digest:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: MD5 digest
+tcp.options.qs.rate:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: QS Rate
+tcp.options.qs.ttl_diff:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: QS Rate
+tcp.options.scps.vector:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: TCP SCPS Capabilities Vector
+tcp.options.scps.binding.id:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Binding Space (Community) ID
+tcp.options.scps.binding.len:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Extended Capability Length
+tcp.options.snack.offset:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: TCP SNACK Offset
+tcp.options.snack.size:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: TCP SNACK Size
+tcp.options.snack.le:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: TCP SNACK Left Edge
+tcp.options.snack.re:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: TCP SNACK Right Edge
+tcp.options.scpsflags.bets:
+  type: FT_BOOLEAN
+  base: 8
+  info: Partial Reliability Capable (BETS)
+tcp.options.scpsflags.snack1:
+  type: FT_BOOLEAN
+  base: 8
+  info: Short Form SNACK Capable (SNACK1)
+tcp.options.scpsflags.snack2:
+  type: FT_BOOLEAN
+  base: 8
+  info: Long Form SNACK Capable (SNACK2)
+tcp.options.scpsflags.compress:
+  type: FT_BOOLEAN
+  base: 8
+  info: Lossless Header Compression (COMP)
+tcp.options.scpsflags.nlts:
+  type: FT_BOOLEAN
+  base: 8
+  info: Network Layer Timestamp (NLTS)
+tcp.options.scpsflags.reserved:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Reserved
+tcp.options.scps.binding:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Connection ID
+tcp.options.user_to_granularity:
+  type: FT_BOOLEAN
+  base: 16
+  info: Granularity
+tcp.options.user_to_val:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: User Timeout
+tcp.options.rvbd.probe.type1:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Type
+tcp.options.rvbd.probe.type2:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Type
+tcp.options.rvbd.probe.version:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Version
+tcp.options.rvbd.probe.version_raw:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Version
+tcp.options.rvbd.probe.len:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Length
+tcp.options.rvbd.probe.prober:
+  type: FT_IPv4
+  base: BASE_NONE
+  info: CSH IP
+tcp.options.rvbd.probe.proxy.ip:
+  type: FT_IPv4
+  base: BASE_NONE
+  info: SSH IP
+tcp.options.rvbd.probe.proxy.port:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: SSH Port
+tcp.options.rvbd.probe.appli_ver:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Application Version
+tcp.options.rvbd.probe.client.ip:
+  type: FT_IPv4
+  base: BASE_NONE
+  info: Client IP
+tcp.options.rvbd.probe.storeid:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: CFE Store ID
+tcp.options.rvbd.probe.flags:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Probe Flags
+tcp.options.rvbd.probe.flags.notcfe:
+  type: FT_BOOLEAN
+  base: 8
+  info: Not CFE
+tcp.options.rvbd.probe.flags.last:
+  type: FT_BOOLEAN
+  base: 8
+  info: Last Notify
+tcp.options.rvbd.probe.flags.probe:
+  type: FT_BOOLEAN
+  base: 8
+  info: Disable Probe Cache on CSH
+tcp.options.rvbd.probe.flags.ssl:
+  type: FT_BOOLEAN
+  base: 8
+  info: SSL Enabled
+tcp.options.rvbd.probe.flags.server:
+  type: FT_BOOLEAN
+  base: 8
+  info: SSH outer to server established
+tcp.options.rvbd.trpy.flags:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Transparency Options
+tcp.options.rvbd.trpy.flags.fw_rst_probe:
+  type: FT_BOOLEAN
+  base: 16
+  info: Enable FW traversal feature
+tcp.options.rvbd.trpy.flags.fw_rst_inner:
+  type: FT_BOOLEAN
+  base: 16
+  info: Enable Inner FW feature on All FWs
+tcp.options.rvbd.trpy.flags.fw_rst:
+  type: FT_BOOLEAN
+  base: 16
+  info: Enable Transparency FW feature on All FWs
+tcp.options.rvbd.trpy.flags.chksum:
+  type: FT_BOOLEAN
+  base: 16
+  info: Reserved
+tcp.options.rvbd.trpy.flags.oob:
+  type: FT_BOOLEAN
+  base: 16
+  info: Out of band connection
+tcp.options.rvbd.trpy.flags.mode:
+  type: FT_BOOLEAN
+  base: 16
+  info: Transparency Mode
+tcp.options.rvbd.trpy.src.ip:
+  type: FT_IPv4
+  base: BASE_NONE
+  info: Src SH IP Addr
+tcp.options.rvbd.trpy.dst.ip:
+  type: FT_IPv4
+  base: BASE_NONE
+  info: Dst SH IP Addr
+tcp.options.rvbd.trpy.src.port:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Src SH Inner Port
+tcp.options.rvbd.trpy.dst.port:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Dst SH Inner Port
+tcp.options.rvbd.trpy.client.port:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Out of band connection Client Port
+tcp.options.tfo.request:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Fast Open Cookie Request
+tcp.options.tfo.cookie:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Fast Open Cookie
+tcp.pdu.time:
+  type: FT_RELATIVE_TIME
+  base: BASE_NONE
+  info: Time until the last segment of this PDU
+tcp.pdu.size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: PDU Size
+tcp.pdu.last_frame:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Last frame of this PDU
+tcp.time_relative:
+  type: FT_RELATIVE_TIME
+  base: BASE_NONE
+  info: Time since first frame in this TCP stream
+tcp.time_delta:
+  type: FT_RELATIVE_TIME
+  base: BASE_NONE
+  info: Time since previous frame in this TCP stream
+tcp.proc.srcuid:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Source process user ID
+tcp.proc.srcpid:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Source process ID
+tcp.proc.srcuname:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Source process user name
+tcp.proc.srccmd:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Source process name
+tcp.proc.dstuid:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Destination process user ID
+tcp.proc.dstpid:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Destination process ID
+tcp.proc.dstuname:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Destination process user name
+tcp.proc.dstcmd:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Destination process name
+tcp.segment_data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: TCP segment data
+tcp.payload:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: TCP payload
+tcp.options.scps.binding.data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Binding Space Data
+tcp.options.rvbd.probe.reserved:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Reserved
+tcp.fin_retransmission:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Retransmission of FIN from frame
+tcp.reset_cause:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Reset cause
+mptcp.ack:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Multipath TCP Data ACK
+mptcp.dsn:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Data Sequence Number
+mptcp.rawdsn64:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Raw Data Sequence Number
+mptcp.dss.dsn:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: DSS Data Sequence Number
+mptcp.expected_idsn:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Subflow expected IDSN
+mptcp.analysis.subflows.streamid:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: List subflow Stream IDs
+mptcp.analysis:
+  type: FT_NONE
+  base: BASE_NONE
+  info: MPTCP analysis
+mptcp.related_mapping:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Related mapping
+mptcp.duplicated_dsn:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Was data duplicated
+mptcp.analysis.subflows:
+  type: FT_NONE
+  base: BASE_NONE
+  info: TCP subflow stream id(s):
+mptcp.stream:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Stream index
+mptcp.rm_addr.count:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Number of removed addresses
+mptcp.expected_token:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Subflow token generated from key
+mptcp.master:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Master flow
