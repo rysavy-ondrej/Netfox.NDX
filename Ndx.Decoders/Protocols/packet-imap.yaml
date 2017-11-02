@@ -1,0 +1,41 @@
+---
+imap.isrequest:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Request
+imap.line:
+  type: FT_STRINGZ
+  base: BASE_NONE
+  info: Line
+imap.request:
+  type: FT_STRINGZ
+  base: BASE_NONE
+  info: Request
+imap.request_tag:
+  type: FT_STRINGZ
+  base: BASE_NONE
+  info: Request Tag
+imap.response:
+  type: FT_STRINGZ
+  base: BASE_NONE
+  info: Response
+imap.response_tag:
+  type: FT_STRINGZ
+  base: BASE_NONE
+  info: Response Tag
+imap.request.command:
+  type: FT_STRINGZ
+  base: BASE_NONE
+  info: Request Command
+imap.response.status:
+  type: FT_STRINGZ
+  base: BASE_NONE
+  info: Response Status
+imap.request.folder:
+  type: FT_STRINGZ
+  base: BASE_NONE
+  info: Request Folder
+imap.request.command.uid:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Request isUID

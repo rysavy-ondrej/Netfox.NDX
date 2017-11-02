@@ -1,0 +1,2689 @@
+---
+smb.cmd:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: SMB Command
+smb.cmd:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: AndXCommand
+smb.trans2.cmd:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Subcommand
+smb.nt.function:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Function
+smb.wct:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Word Count (WCT)
+smb.bcc:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Byte Count (BCC)
+smb.response_to:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Response to
+smb.time:
+  type: FT_RELATIVE_TIME
+  base: BASE_NONE
+  info: Time from request
+smb.response_in:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Response in
+smb.continuation_to:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Continuation to
+smb.nt_status:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: NT Status
+smb.error_class:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Error Class
+smb.error_code:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Error Code
+smb.reserved:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Reserved
+smb.signature:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Signature
+smb.key:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Key
+smb.sessid:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Session ID
+smb.sequence_num:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Sequence Number
+smb.group_id:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Group ID
+smb.pid:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Process ID
+smb.pid.high:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Process ID High
+smb.tid:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Tree ID
+smb.uid:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: User ID
+smb.mid:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Multiplex ID
+smb.flags:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Flags
+smb.flags.lock:
+  type: FT_BOOLEAN
+  base: 8
+  info: Lock and Read
+smb.flags.receive_buffer:
+  type: FT_BOOLEAN
+  base: 8
+  info: Receive Buffer Posted
+smb.flags.caseless:
+  type: FT_BOOLEAN
+  base: 8
+  info: Case Sensitivity
+smb.flags.canon:
+  type: FT_BOOLEAN
+  base: 8
+  info: Canonicalized Pathnames
+smb.flags.oplock:
+  type: FT_BOOLEAN
+  base: 8
+  info: Oplocks
+smb.flags.notify:
+  type: FT_BOOLEAN
+  base: 8
+  info: Notify
+smb.flags.response:
+  type: FT_BOOLEAN
+  base: 8
+  info: Request/Response
+smb.flags2:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Flags2
+smb.flags2.long_names_allowed:
+  type: FT_BOOLEAN
+  base: 16
+  info: Long Names Allowed
+smb.flags2.ea:
+  type: FT_BOOLEAN
+  base: 16
+  info: Extended Attributes
+smb.flags2.sec_sig:
+  type: FT_BOOLEAN
+  base: 16
+  info: Security Signatures
+smb.flags2.compressed:
+  type: FT_BOOLEAN
+  base: 16
+  info: Compressed
+smb.flags2.sec_sig_required:
+  type: FT_BOOLEAN
+  base: 16
+  info: Security Signatures Required
+smb.flags2.long_names_used:
+  type: FT_BOOLEAN
+  base: 16
+  info: Long Names Used
+smb.flags2.reparse_path:
+  type: FT_BOOLEAN
+  base: 16
+  info: Reparse Path
+smb.flags2.esn:
+  type: FT_BOOLEAN
+  base: 16
+  info: Extended Security Negotiation
+smb.flags2.dfs:
+  type: FT_BOOLEAN
+  base: 16
+  info: Dfs
+smb.flags2.roe:
+  type: FT_BOOLEAN
+  base: 16
+  info: Execute-only Reads
+smb.flags2.nt_error:
+  type: FT_BOOLEAN
+  base: 16
+  info: Error Code Type
+smb.flags2.string:
+  type: FT_BOOLEAN
+  base: 16
+  info: Unicode Strings
+smb.buffer_format:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Buffer Format
+smb.dialect:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Dialect
+smb.dialect.name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Name
+smb.dialect.index:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Selected Index
+smb.max_bufsize:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Max Buffer Size
+smb.max_mpx_count:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Max Mpx Count
+smb.max_vcs:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Max VCs
+smb.session_key:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Session Key
+smb.server_timezone:
+  type: FT_INT16
+  base: BASE_DEC
+  info: Server Time Zone
+smb.challenge_length:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Challenge Length
+smb.challenge:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Challenge
+smb.primary_domain:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Primary Domain
+smb.server:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Server
+smb.max_raw:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Max Raw Buffer
+smb.server_guid:
+  type: FT_GUID
+  base: BASE_NONE
+  info: Server GUID
+smb.volume_guid:
+  type: FT_GUID
+  base: BASE_NONE
+  info: Volume GUID
+smb.security_blob_len:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Security Blob Length
+smb.security_blob:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Security Blob
+smb.sm:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Security Mode
+smb.sm.mode:
+  type: FT_BOOLEAN
+  base: 16
+  info: Mode
+smb.sm.password:
+  type: FT_BOOLEAN
+  base: 16
+  info: Password
+smb.sm:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Security Mode
+smb.sm.mode:
+  type: FT_BOOLEAN
+  base: 8
+  info: Mode
+smb.sm.password:
+  type: FT_BOOLEAN
+  base: 8
+  info: Password
+smb.sm.signatures:
+  type: FT_BOOLEAN
+  base: 8
+  info: Signatures
+smb.sm.sig_required:
+  type: FT_BOOLEAN
+  base: 8
+  info: Sig Req
+smb.rm:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Raw Mode
+smb.rm.read:
+  type: FT_BOOLEAN
+  base: 16
+  info: Read Raw
+smb.rm.write:
+  type: FT_BOOLEAN
+  base: 16
+  info: Write Raw
+smb.server_date_time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Server Date and Time
+smb.server_date_time.smb_date:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Server Date
+smb.server_date_time.smb_time:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Server Time
+smb.server_cap:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Capabilities
+smb.server_cap.raw_mode:
+  type: FT_BOOLEAN
+  base: 32
+  info: Raw Mode
+smb.server_cap.mpx_mode:
+  type: FT_BOOLEAN
+  base: 32
+  info: MPX Mode
+smb.server_cap.unicode:
+  type: FT_BOOLEAN
+  base: 32
+  info: Unicode
+smb.server_cap.large_files:
+  type: FT_BOOLEAN
+  base: 32
+  info: Large Files
+smb.server_cap.nt_smbs:
+  type: FT_BOOLEAN
+  base: 32
+  info: NT SMBs
+smb.server_cap.rpc_remote_apis:
+  type: FT_BOOLEAN
+  base: 32
+  info: RPC Remote APIs
+smb.server_cap.nt_status:
+  type: FT_BOOLEAN
+  base: 32
+  info: NT Status Codes
+smb.server_cap.level_2_oplocks:
+  type: FT_BOOLEAN
+  base: 32
+  info: Level 2 Oplocks
+smb.server_cap.lock_and_read:
+  type: FT_BOOLEAN
+  base: 32
+  info: Lock and Read
+smb.server_cap.nt_find:
+  type: FT_BOOLEAN
+  base: 32
+  info: NT Find
+smb.server_cap.dfs:
+  type: FT_BOOLEAN
+  base: 32
+  info: Dfs
+smb.server_cap.infolevel_passthru:
+  type: FT_BOOLEAN
+  base: 32
+  info: Infolevel Passthru
+smb.server_cap.large_readx:
+  type: FT_BOOLEAN
+  base: 32
+  info: Large ReadX
+smb.server_cap.large_writex:
+  type: FT_BOOLEAN
+  base: 32
+  info: Large WriteX
+smb.server_cap.lwio:
+  type: FT_BOOLEAN
+  base: 32
+  info: LWIO
+smb.server_cap.unix:
+  type: FT_BOOLEAN
+  base: 32
+  info: UNIX
+smb.server_cap.compressed_data:
+  type: FT_BOOLEAN
+  base: 32
+  info: Compressed Data
+smb.server_cap.dynamic_reauth:
+  type: FT_BOOLEAN
+  base: 32
+  info: Dynamic Reauth
+smb.server_cap.extended_security:
+  type: FT_BOOLEAN
+  base: 32
+  info: Extended Security
+smb.system.time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: System Time
+smb.unknown_data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Unknown Data
+smb.dir_name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Directory
+smb.echo.count:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Echo Count
+smb.echo.data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Echo Data
+smb.echo.seq_num:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Echo Seq Num
+smb.max_buf:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Max Buffer
+smb.path:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Path
+smb.service:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Service
+smb.password:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Password
+smb.ansi_password:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: ANSI Password
+smb.unicode_password:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Unicode Password
+smb.move.flags:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Flags
+smb.move.flags.file:
+  type: FT_BOOLEAN
+  base: 16
+  info: Must be file
+smb.move.flags.dir:
+  type: FT_BOOLEAN
+  base: 16
+  info: Must be directory
+smb.move.flags.verify:
+  type: FT_BOOLEAN
+  base: 16
+  info: Verify writes
+smb.files_moved:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Files Moved
+smb.copy.flags:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Flags
+smb.copy.flags.file:
+  type: FT_BOOLEAN
+  base: 16
+  info: Must be file
+smb.copy.flags.dir:
+  type: FT_BOOLEAN
+  base: 16
+  info: Must be directory
+smb.copy.flags.dest_mode:
+  type: FT_BOOLEAN
+  base: 16
+  info: Destination mode
+smb.copy.flags.source_mode:
+  type: FT_BOOLEAN
+  base: 16
+  info: Source mode
+smb.copy.flags.verify:
+  type: FT_BOOLEAN
+  base: 16
+  info: Verify writes
+smb.copy.flags.tree_copy:
+  type: FT_BOOLEAN
+  base: 16
+  info: Tree copy
+smb.copy.flags.ea_action:
+  type: FT_BOOLEAN
+  base: 16
+  info: EA action if EAs not supported on dest
+smb.count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Count
+smb.count_low:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Count Low
+smb.count_high:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Count High (multiply with 64K)
+smb.file:
+  type: FT_STRING
+  base: BASE_NONE
+  info: File Name
+smb.open.function:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Open Function
+smb.open.function.create:
+  type: FT_BOOLEAN
+  base: 16
+  info: Create
+smb.open.function.open:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Open
+smb.fid:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: FID
+smb.file_attribute:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: File Attributes
+smb.file_attribute:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: File Attributes
+smb.file_attribute.read_only:
+  type: FT_BOOLEAN
+  base: 16
+  info: Read Only
+smb.file_attribute.read_only:
+  type: FT_BOOLEAN
+  base: 8
+  info: Read Only
+smb.file_attribute.hidden:
+  type: FT_BOOLEAN
+  base: 16
+  info: Hidden
+smb.file_attribute.hidden:
+  type: FT_BOOLEAN
+  base: 8
+  info: Hidden
+smb.file_attribute.system:
+  type: FT_BOOLEAN
+  base: 16
+  info: System
+smb.file_attribute.system:
+  type: FT_BOOLEAN
+  base: 8
+  info: System
+smb.file_attribute.volume:
+  type: FT_BOOLEAN
+  base: 16
+  info: Volume ID
+smb.file_attribute.volume:
+  type: FT_BOOLEAN
+  base: 8
+  info: Volume ID
+smb.file_attribute.directory:
+  type: FT_BOOLEAN
+  base: 16
+  info: Directory
+smb.file_attribute.directory:
+  type: FT_BOOLEAN
+  base: 8
+  info: Directory
+smb.file_attribute.archive:
+  type: FT_BOOLEAN
+  base: 16
+  info: Archive
+smb.file_attribute.archive:
+  type: FT_BOOLEAN
+  base: 8
+  info: Archive
+smb.file_attribute.device:
+  type: FT_BOOLEAN
+  base: 16
+  info: Device
+smb.file_attribute.normal:
+  type: FT_BOOLEAN
+  base: 16
+  info: Normal
+smb.file_attribute.temporary:
+  type: FT_BOOLEAN
+  base: 16
+  info: Temporary
+smb.file_attribute.sparse:
+  type: FT_BOOLEAN
+  base: 16
+  info: Sparse
+smb.file_attribute.reparse:
+  type: FT_BOOLEAN
+  base: 16
+  info: Reparse Point
+smb.file_attribute.compressed:
+  type: FT_BOOLEAN
+  base: 16
+  info: Compressed
+smb.file_attribute.offline:
+  type: FT_BOOLEAN
+  base: 16
+  info: Offline
+smb.file_attribute.not_content_indexed:
+  type: FT_BOOLEAN
+  base: 16
+  info: Content Indexed
+smb.file_attribute.encrypted:
+  type: FT_BOOLEAN
+  base: 16
+  info: Encrypted
+smb.file_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: File Size
+smb.search.attribute:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Search Attributes
+smb.search.attribute.read_only:
+  type: FT_BOOLEAN
+  base: 16
+  info: Read Only
+smb.search.attribute.hidden:
+  type: FT_BOOLEAN
+  base: 16
+  info: Hidden
+smb.search.attribute.system:
+  type: FT_BOOLEAN
+  base: 16
+  info: System
+smb.search.attribute.volume:
+  type: FT_BOOLEAN
+  base: 16
+  info: Volume ID
+smb.search.attribute.directory:
+  type: FT_BOOLEAN
+  base: 16
+  info: Directory
+smb.search.attribute.archive:
+  type: FT_BOOLEAN
+  base: 16
+  info: Archive
+smb.access.mode:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Access Mode
+smb.access.sharing:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Sharing Mode
+smb.access.locality:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Locality
+smb.access.caching:
+  type: FT_BOOLEAN
+  base: 16
+  info: Caching
+smb.access.desired:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Desired Access
+smb.access.granted:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Granted Access
+smb.access.writethrough:
+  type: FT_BOOLEAN
+  base: 16
+  info: Writethrough
+smb.create.time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Created
+smb.modify.time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Modified
+smb.backup.time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Backed-up
+smb.alloc.count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Allocation Block Count
+smb.alloc.size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Allocation Block Count
+smb.free_block.count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Free Block Count
+smb.root.file.count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Root File Count
+smb.root.dir.count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Root Directory Count
+smb.file.count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Root File Count
+smb.dir.count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Root Directory Count
+smb.mac:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Mac Support Flags
+smb.mac.access_control:
+  type: FT_BOOLEAN
+  base: 32
+  info: Mac Access Control
+smb.mac.get_set_comments:
+  type: FT_BOOLEAN
+  base: 32
+  info: Get Set Comments
+smb.mac.desktop_db_calls:
+  type: FT_BOOLEAN
+  base: 32
+  info: Desktop DB Calls
+smb.mac.uids:
+  type: FT_BOOLEAN
+  base: 32
+  info: Macintosh Unique IDs
+smb.mac.streams_support:
+  type: FT_BOOLEAN
+  base: 32
+  info: Mac Streams
+smb.create.smb.date:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Create Date
+smb.create.smb.time:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Create Time
+smb.last_write.time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Last Write
+smb.last_write.smb.date:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Last Write Date
+smb.last_write.smb.time:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Last Write Time
+smb.old_file:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Old File Name
+smb.offset:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Offset
+smb.remaining:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Remaining
+smb.padding:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Padding
+smb.file_data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: File Data
+smb.ea_data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: EA Data
+smb.mac.finderinfo:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Finder Info
+smb.total_data_len:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Total Data Length
+smb.data_len:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Data Length
+smb.data_len_low:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Data Length Low
+smb.data_len_high:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Data Length High (multiply with 64K)
+smb.seek_mode:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Seek Mode
+smb.access.time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Last Access
+smb.access.smb.date:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Last Access Date
+smb.access.smb.time:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Last Access Time
+smb.data_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Data Size
+smb.alloc_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Allocation Size
+smb.maxcount:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Max Count
+smb.maxcount_low:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Max Count Low
+smb.maxcount_high:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Max Count High (multiply with 64K)
+smb.mincount:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Min Count
+smb.timeout:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Timeout
+smb.offset_high:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: High Offset
+smb.units:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Total Units
+smb.bpu:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Blocks Per Unit
+smb.blocksize:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Block Size
+smb.free_units:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Free Units
+smb.data_offset:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Data Offset
+smb.dcm:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Data Compaction Mode
+smb.request.mask:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Request Mask
+smb.response.mask:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Response Mask
+smb.search_id:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Search ID
+smb.write.mode:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Write Mode
+smb.write.mode.write_through:
+  type: FT_BOOLEAN
+  base: 16
+  info: Write Through
+smb.write.mode.return_remaining:
+  type: FT_BOOLEAN
+  base: 16
+  info: Return Remaining
+smb.write.mode.raw:
+  type: FT_BOOLEAN
+  base: 16
+  info: Write Raw
+smb.write.mode.message_start:
+  type: FT_BOOLEAN
+  base: 16
+  info: Message Start
+smb.write.mode.connectionless:
+  type: FT_BOOLEAN
+  base: 16
+  info: Connectionless
+smb.resume.key_len:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Resume Key Length
+smb.resume.find_id:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Find ID
+smb.resume.server.cookie:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Server Cookie
+smb.resume.client.cookie:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Client Cookie
+smb.andxoffset:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: AndXOffset
+smb.lock.type:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Lock Type
+smb.lock.type.large:
+  type: FT_BOOLEAN
+  base: 8
+  info: Large Files
+smb.lock.type.cancel:
+  type: FT_BOOLEAN
+  base: 8
+  info: Cancel
+smb.lock.type.change:
+  type: FT_BOOLEAN
+  base: 8
+  info: Change
+smb.lock.type.oplock_release:
+  type: FT_BOOLEAN
+  base: 8
+  info: Oplock Break
+smb.lock.type.shared:
+  type: FT_BOOLEAN
+  base: 8
+  info: Shared
+smb.locking.oplock.level:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Oplock Level
+smb.locking.num_locks:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Number of Locks
+smb.locking.num_unlocks:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Number of Unlocks
+smb.lock.length:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Length
+smb.lock.offset:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Offset
+smb.file_type:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: File Type
+smb.ipc_state:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: IPC State
+smb.ipc_state.nonblocking:
+  type: FT_BOOLEAN
+  base: 16
+  info: Nonblocking
+smb.ipc_state.endpoint:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Endpoint
+smb.ipc_state.pipe_type:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Pipe Type
+smb.ipc_state.read_mode:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Read Mode
+smb.ipc_state.icount:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Icount
+smb.server_fid:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Server FID
+smb.open.flags:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Flags
+smb.open.flags.add_info:
+  type: FT_BOOLEAN
+  base: 16
+  info: Additional Info
+smb.open.flags.ex_oplock:
+  type: FT_BOOLEAN
+  base: 16
+  info: Exclusive Oplock
+smb.open.flags.batch_oplock:
+  type: FT_BOOLEAN
+  base: 16
+  info: Batch Oplock
+smb.open.flags.ealen:
+  type: FT_BOOLEAN
+  base: 16
+  info: Total EA Len
+smb.open.action:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Action
+smb.open.action.open:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Open Action
+smb.open.action.lock:
+  type: FT_BOOLEAN
+  base: 16
+  info: Exclusive Open
+smb.vc:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: VC Number
+smb.pwlen:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Password Length
+smb.ansi_pwlen:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: ANSI Password Length
+smb.unicode_pwlen:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Unicode Password Length
+smb.account:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Account
+smb.native_os:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Native OS
+smb.native_lanman:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Native LAN Manager
+smb.setup.action:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Action
+smb.setup.action.guest:
+  type: FT_BOOLEAN
+  base: 16
+  info: Guest
+smb.native_fs:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Native File System
+smb.connect.flags:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Flags
+smb.connect.flags.dtid:
+  type: FT_BOOLEAN
+  base: 16
+  info: Disconnect TID
+smb.connect.flags.extendedsig:
+  type: FT_BOOLEAN
+  base: 16
+  info: Extended Signature
+smb.connect.flags.extendedresp:
+  type: FT_BOOLEAN
+  base: 16
+  info: Extended Response
+smb.connect.support:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Optional Support
+smb.connect.support.search:
+  type: FT_BOOLEAN
+  base: 16
+  info: Search Bits
+smb.connect.support.dfs:
+  type: FT_BOOLEAN
+  base: 16
+  info: In Dfs
+smb.connect.support.cscmask:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: CSC Mask
+smb.connect.support.uniqfilename:
+  type: FT_BOOLEAN
+  base: 16
+  info: Unique File Name
+smb.connect.support.extendedsig:
+  type: FT_BOOLEAN
+  base: 16
+  info: Extended Signatures
+smb.msc:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Max Setup Count
+smb.tpc:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Total Parameter Count
+smb.tdc:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Total Data Count
+smb.mpc:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Max Parameter Count
+smb.mdc:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Max Data Count
+smb.pd:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Parameter Displacement
+smb.pc:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Parameter Count
+smb.po:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Parameter Offset
+smb.pd:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Parameter Displacement
+smb.pc:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Parameter Count
+smb.po:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Parameter Offset
+smb.dc:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Data Count
+smb.data_disp:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Data Displacement
+smb.data_offset:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Data Offset
+smb.dc:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Data Count
+smb.data_disp:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Data Displacement
+smb.data_offset:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Data Offset
+smb.sc:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Setup Count
+smb.nt.ioctl.isfsctl:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: IsFSctl
+smb.nt.ioctl.completion_filter:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Completion Filter
+smb.nt.ioctl.flags.root_handle:
+  type: FT_BOOLEAN
+  base: 8
+  info: Root Handle
+smb.nt.notify.action:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Action
+smb.nt.notify.watch_tree:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Watch Tree
+smb.nt.notify.completion_filter:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Completion Filter
+smb.nt.notify.file_name:
+  type: FT_BOOLEAN
+  base: 32
+  info: File Name Change
+smb.nt.notify.dir_name:
+  type: FT_BOOLEAN
+  base: 32
+  info: Directory Name Change
+smb.nt.notify.attributes:
+  type: FT_BOOLEAN
+  base: 32
+  info: Attribute Change
+smb.nt.notify.size:
+  type: FT_BOOLEAN
+  base: 32
+  info: Size Change
+smb.nt.notify.last_write:
+  type: FT_BOOLEAN
+  base: 32
+  info: Last Write Change
+smb.nt.notify.last_access:
+  type: FT_BOOLEAN
+  base: 32
+  info: Last Access Change
+smb.nt.notify.creation:
+  type: FT_BOOLEAN
+  base: 32
+  info: Created Change
+smb.nt.notify.ea:
+  type: FT_BOOLEAN
+  base: 32
+  info: EA Change
+smb.nt.notify.security:
+  type: FT_BOOLEAN
+  base: 32
+  info: Security Change
+smb.nt.notify.stream_name:
+  type: FT_BOOLEAN
+  base: 32
+  info: Stream Name Change
+smb.nt.notify.stream_size:
+  type: FT_BOOLEAN
+  base: 32
+  info: Stream Size Change
+smb.nt.notify.stream_write:
+  type: FT_BOOLEAN
+  base: 32
+  info: Stream Write
+smb.rfid:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Root FID
+smb.alloc_size64:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Allocation Size
+smb.create.disposition:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Disposition
+smb.sd.length:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: SD Length
+smb.ea.list_length:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: EA List Length
+smb.ea.flags:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: EA Flags
+smb.ea.name_length:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: EA Name Length
+smb.ea.data_length:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: EA Data Length
+smb.ea.name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: EA Name
+smb.ea.data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: EA Data
+smb.file_name_len:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: File Name Len
+smb.impersonation.level:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Impersonation
+smb.security.flags:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Security Flags
+smb.security.flags.context_tracking:
+  type: FT_BOOLEAN
+  base: 8
+  info: Context Tracking
+smb.security.flags.effective_only:
+  type: FT_BOOLEAN
+  base: 8
+  info: Effective Only
+smb.access.generic_read:
+  type: FT_BOOLEAN
+  base: 32
+  info: Generic Read
+smb.access.generic_write:
+  type: FT_BOOLEAN
+  base: 32
+  info: Generic Write
+smb.access.generic_execute:
+  type: FT_BOOLEAN
+  base: 32
+  info: Generic Execute
+smb.access.generic_all:
+  type: FT_BOOLEAN
+  base: 32
+  info: Generic All
+smb.access.maximum_allowed:
+  type: FT_BOOLEAN
+  base: 32
+  info: Maximum Allowed
+smb.access.system_security:
+  type: FT_BOOLEAN
+  base: 32
+  info: System Security
+smb.access.synchronize:
+  type: FT_BOOLEAN
+  base: 32
+  info: Synchronize
+smb.access.write_owner:
+  type: FT_BOOLEAN
+  base: 32
+  info: Write Owner
+smb.access.write_dac:
+  type: FT_BOOLEAN
+  base: 32
+  info: Write DAC
+smb.access.read_control:
+  type: FT_BOOLEAN
+  base: 32
+  info: Read Control
+smb.access.delete:
+  type: FT_BOOLEAN
+  base: 32
+  info: Delete
+smb.access.write_attributes:
+  type: FT_BOOLEAN
+  base: 32
+  info: Write Attributes
+smb.access.read_attributes:
+  type: FT_BOOLEAN
+  base: 32
+  info: Read Attributes
+smb.access.delete_child:
+  type: FT_BOOLEAN
+  base: 32
+  info: Delete Child
+smb.access.execute:
+  type: FT_BOOLEAN
+  base: 32
+  info: Execute
+smb.access.write_ea:
+  type: FT_BOOLEAN
+  base: 32
+  info: Write EA
+smb.access.read_ea:
+  type: FT_BOOLEAN
+  base: 32
+  info: Read EA
+smb.access.append:
+  type: FT_BOOLEAN
+  base: 32
+  info: Append
+smb.access.write:
+  type: FT_BOOLEAN
+  base: 32
+  info: Write
+smb.access.read:
+  type: FT_BOOLEAN
+  base: 32
+  info: Read
+smb.nt.create.oplock:
+  type: FT_BOOLEAN
+  base: 32
+  info: Exclusive Oplock
+smb.nt.create.batch_oplock:
+  type: FT_BOOLEAN
+  base: 32
+  info: Batch Oplock
+smb.nt.create.dir:
+  type: FT_BOOLEAN
+  base: 32
+  info: Create Directory
+smb.nt.create.ext:
+  type: FT_BOOLEAN
+  base: 32
+  info: Extended Response
+smb.nt.create_options.directory:
+  type: FT_BOOLEAN
+  base: 32
+  info: Directory
+smb.nt.create_options.write_through:
+  type: FT_BOOLEAN
+  base: 32
+  info: Write Through
+smb.nt.create_options.sequential_only:
+  type: FT_BOOLEAN
+  base: 32
+  info: Sequential Only
+smb.nt.create_options.intermediate_buffering:
+  type: FT_BOOLEAN
+  base: 32
+  info: Intermediate Buffering
+smb.nt.create_options.sync_io_alert:
+  type: FT_BOOLEAN
+  base: 32
+  info: Sync I/O Alert
+smb.nt.create_options.sync_io_nonalert:
+  type: FT_BOOLEAN
+  base: 32
+  info: Sync I/O Nonalert
+smb.nt.create_options.non_directory:
+  type: FT_BOOLEAN
+  base: 32
+  info: Non-Directory
+smb.nt.create_options.create_tree_connection:
+  type: FT_BOOLEAN
+  base: 32
+  info: Create Tree Connection
+smb.nt.create_options.complete_if_oplocked:
+  type: FT_BOOLEAN
+  base: 32
+  info: Complete If Oplocked
+smb.nt.create_options.no_ea_knowledge:
+  type: FT_BOOLEAN
+  base: 32
+  info: No EA Knowledge
+smb.nt.create_options.eight_dot_three_only:
+  type: FT_BOOLEAN
+  base: 32
+  info: 8.3 Only
+smb.nt.create_options.random_access:
+  type: FT_BOOLEAN
+  base: 32
+  info: Random Access
+smb.nt.create_options.delete_on_close:
+  type: FT_BOOLEAN
+  base: 32
+  info: Delete On Close
+smb.nt.create_options.open_by_fileid:
+  type: FT_BOOLEAN
+  base: 32
+  info: Open By FileID
+smb.nt.create_options.backup_intent:
+  type: FT_BOOLEAN
+  base: 32
+  info: Backup Intent
+smb.nt.create_options.no_compression:
+  type: FT_BOOLEAN
+  base: 32
+  info: No Compression
+smb.nt.create_options.reserve_opfilter:
+  type: FT_BOOLEAN
+  base: 32
+  info: Reserve Opfilter
+smb.nt.create_options.open_reparse_point:
+  type: FT_BOOLEAN
+  base: 32
+  info: Open Reparse Point
+smb.nt.create_options.open_no_recall:
+  type: FT_BOOLEAN
+  base: 32
+  info: Open No Recall
+smb.nt.create_options.open_for_free_space_query:
+  type: FT_BOOLEAN
+  base: 32
+  info: Open For Free Space query
+smb.share.access.read:
+  type: FT_BOOLEAN
+  base: 32
+  info: Read
+smb.share.access.write:
+  type: FT_BOOLEAN
+  base: 32
+  info: Write
+smb.share.access.delete:
+  type: FT_BOOLEAN
+  base: 32
+  info: Delete
+smb.file_attribute:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: File Attributes
+smb.file_attribute.read_only:
+  type: FT_BOOLEAN
+  base: 32
+  info: Read Only
+smb.file_attribute.hidden:
+  type: FT_BOOLEAN
+  base: 32
+  info: Hidden
+smb.file_attribute.system:
+  type: FT_BOOLEAN
+  base: 32
+  info: System
+smb.file_attribute.volume:
+  type: FT_BOOLEAN
+  base: 32
+  info: Volume ID
+smb.file_attribute.directory:
+  type: FT_BOOLEAN
+  base: 32
+  info: Directory
+smb.file_attribute.archive:
+  type: FT_BOOLEAN
+  base: 32
+  info: Archive
+smb.file_attribute.device:
+  type: FT_BOOLEAN
+  base: 32
+  info: Device
+smb.file_attribute.normal:
+  type: FT_BOOLEAN
+  base: 32
+  info: Normal
+smb.file_attribute.temporary:
+  type: FT_BOOLEAN
+  base: 32
+  info: Temporary
+smb.file_attribute.sparse:
+  type: FT_BOOLEAN
+  base: 32
+  info: Sparse
+smb.file_attribute.reparse:
+  type: FT_BOOLEAN
+  base: 32
+  info: Reparse Point
+smb.file_attribute.compressed:
+  type: FT_BOOLEAN
+  base: 32
+  info: Compressed
+smb.file_attribute.offline:
+  type: FT_BOOLEAN
+  base: 32
+  info: Offline
+smb.file_attribute.not_content_indexed:
+  type: FT_BOOLEAN
+  base: 32
+  info: Content Indexed
+smb.file_attribute.encrypted:
+  type: FT_BOOLEAN
+  base: 32
+  info: Encrypted
+smb.size_returned_quota_data:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Size of returned Quota data
+smb.sec_desc_len:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: NT Security Descriptor Length
+smb.nt_qsd:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Security Information
+smb.nt_qsd.owner:
+  type: FT_BOOLEAN
+  base: 32
+  info: Owner
+smb.nt_qsd.group:
+  type: FT_BOOLEAN
+  base: 32
+  info: Group
+smb.nt_qsd.dacl:
+  type: FT_BOOLEAN
+  base: 32
+  info: DACL
+smb.nt_qsd.sacl:
+  type: FT_BOOLEAN
+  base: 32
+  info: SACL
+smb.ext_attr:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Extended Attributes
+smb.oplock.level:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Oplock level
+smb.create.action:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Create action
+smb.create.file_id:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Server unique file ID
+smb.create.file_id_64b:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Server unique 64-bit file ID
+smb.ea.error_offset:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: EA Error offset
+smb.end_of_file:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: End Of File
+smb.replace:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Replace
+smb.root_dir_handle:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Root Directory Handle
+smb.target_name_len:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Target name length
+smb.target_name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Target name
+smb.device.type:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Device Type
+smb.is_directory:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Is Directory
+smb.next_entry_offset:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Next Entry Offset
+smb.change.time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Change
+smb.print.setup.len:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Setup Len
+smb.print.mode:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Mode
+smb.print.identifier:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Identifier
+smb.print.restart_index:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Restart Index
+smb.print.queued.date:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Queued
+smb.print.queued.smb.date:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Queued Date
+smb.print.queued.smb.time:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Queued Time
+smb.print.status:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Status
+smb.print.spool.file_number:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Spool File Number
+smb.print.spool.file_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Spool File Size
+smb.print.spool.name:
+  type: FT_STRINGZ
+  base: BASE_NONE
+  info: Name
+smb.print.start_index:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Start Index
+smb.originator_name:
+  type: FT_STRINGZ
+  base: BASE_NONE
+  info: Originator Name
+smb.destination_name:
+  type: FT_STRINGZ
+  base: BASE_NONE
+  info: Destination Name
+smb.message.len:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Message Len
+smb.message:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Message
+smb.mgid:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Message Group ID
+smb.forwarded_name:
+  type: FT_STRINGZ
+  base: BASE_NONE
+  info: Forwarded Name
+smb.machine_name:
+  type: FT_STRINGZ
+  base: BASE_NONE
+  info: Machine Name
+smb.cancel_to:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Cancel to
+smb.trans_name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Transaction Name
+smb.transaction.flags:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Flags
+smb.transaction.flags.dtid:
+  type: FT_BOOLEAN
+  base: 16
+  info: Disconnect TID
+smb.transaction.flags.owt:
+  type: FT_BOOLEAN
+  base: 16
+  info: One Way Transaction
+smb.search_count:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Search Count
+smb.search_pattern:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Search Pattern
+smb.find_first2.flags:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Flags
+smb.find_first2.flags.backup:
+  type: FT_BOOLEAN
+  base: 16
+  info: Backup Intent
+smb.find_first2.flags.continue:
+  type: FT_BOOLEAN
+  base: 16
+  info: Continue
+smb.find_first2.flags.resume:
+  type: FT_BOOLEAN
+  base: 16
+  info: Resume
+smb.find_first2.flags.eos:
+  type: FT_BOOLEAN
+  base: 16
+  info: Close on EOS
+smb.find_first2.flags.close:
+  type: FT_BOOLEAN
+  base: 16
+  info: Close
+smb.ff2_loi:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Level of Interest
+smb.qpi_loi:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Level of Interest
+smb.spi_loi:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Level of Interest
+smb.sfi_flags:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: IO Flag
+smb.sfi_writethrough:
+  type: FT_BOOLEAN
+  base: 16
+  info: Writethrough
+smb.sfi_caching:
+  type: FT_BOOLEAN
+  base: 16
+  info: Caching
+smb.storage_type:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Storage Type
+smb.resume:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Resume Key
+smb.max_referral_level:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Max Referral Level
+smb.qfsi_loi:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Level of Interest
+smb.sfsi_loi:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Level of Interest
+smb.ntr_loi:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Level of Interest
+smb.ntr_clu:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Cluster count
+smb.link_count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Link Count
+smb.delete_pending:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Delete Pending
+smb.index_number:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Index Number
+smb.position:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Position
+smb.offset:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Current Offset
+smb.alignment:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Alignment
+smb.stream_name_len:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Stream Name Length
+smb.stream_size:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Stream Size
+smb.stream_name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Stream Name
+smb.compressed.file_size:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Compressed Size
+smb.compressed.format:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Compression Format
+smb.compressed.unit_shift:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Unit Shift
+smb.compressed.chunk_shift:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Chunk Shift
+smb.compressed.cluster_shift:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Cluster Shift
+smb.marked_for_deletion:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Marked for Deletion
+smb.dfs.path_consumed:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Path Consumed
+smb.dfs.num_referrals:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Num Referrals
+smb.dfs.flags:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Flags
+smb.dfs.flags.server_hold_storage:
+  type: FT_BOOLEAN
+  base: 16
+  info: Hold Storage
+smb.dfs.flags.fielding:
+  type: FT_BOOLEAN
+  base: 16
+  info: Fielding
+smb.dfs.referral.version:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Version
+smb.dfs.referral.size:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Size
+smb.dfs.referral.server.type:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Server Type
+smb.dfs.referral.flags:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Flags
+smb.dfs.referral.flags.name_list_referral:
+  type: FT_BOOLEAN
+  base: 16
+  info: NameListReferral
+smb.dfs.referral.flags.target_set_boundary:
+  type: FT_BOOLEAN
+  base: 16
+  info: TargetSetBoundary
+smb.dfs.referral.node_offset:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Node Offset
+smb.dfs.referral.node:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Node
+smb.dfs.referral.proximity:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Proximity
+smb.dfs.referral.ttl:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: TTL
+smb.dfs.referral.path_offset:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Path Offset
+smb.dfs.referral.path:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Path
+smb.dfs.referral.alt_path_offset:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Alt Path Offset
+smb.dfs.referral.alt_path:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Alt Path
+smb.dfs.referral.domain_offset:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Domain Offset
+smb.dfs.referral.number_of_expnames:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Number of Expanded Names
+smb.dfs.referral.expnames_offset:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Expanded Names Offset
+smb.dfs.referral.domain_name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Domain Name
+smb.dfs.referral.expname:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Expanded Name
+smb.dfs.referral.server_guid:
+  type: FT_GUID
+  base: BASE_NONE
+  info: Server GUID
+smb.end_of_search:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: End Of Search
+smb.last_name_offset:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Last Name Offset
+smb.fn_loi:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Level of Interest
+smb.monitor_handle:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Monitor Handle
+smb.change_count:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Change Count
+smb.file_index:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: File Index
+smb.short_file:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Short File Name
+smb.short_file_name_len:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Short File Name Len
+smb.fs_id:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: FS Id
+smb.fs_sector_per_unit:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Sectors/Unit
+smb.fs_units:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Total Units
+smb.fs_bytes_per_sector:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Bytes per Sector
+smb.avail.units:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Available Units
+smb.volume.serial:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Volume Serial Number
+smb.volume.label.len:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Label Length
+smb.volume.label:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Label
+smb.free_alloc_units:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Free Units
+smb.caller_free_alloc_units:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Caller Free Units
+smb.actual_free_alloc_units:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Actual Free Units
+smb.quota.soft.default:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: (Soft) Quota Threshold
+smb.quota.hard.default:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: (Hard) Quota Limit
+smb.quota.used:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Quota Used
+smb.fs_max_name_len:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Max name length
+smb.fs_name.len:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Label Length
+smb.fs_name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: FS Name
+smb.device:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Device Characteristics
+smb.device.removable:
+  type: FT_BOOLEAN
+  base: 32
+  info: Removable
+smb.device.read_only:
+  type: FT_BOOLEAN
+  base: 32
+  info: Read Only
+smb.device.floppy:
+  type: FT_BOOLEAN
+  base: 32
+  info: Floppy
+smb.device.write_once:
+  type: FT_BOOLEAN
+  base: 32
+  info: Write Once
+smb.device.remote:
+  type: FT_BOOLEAN
+  base: 32
+  info: Remote
+smb.device.mounted:
+  type: FT_BOOLEAN
+  base: 32
+  info: Mounted
+smb.device.virtual:
+  type: FT_BOOLEAN
+  base: 32
+  info: Virtual
+smb.fs_attr:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: FS Attributes
+smb.fs_attr.css:
+  type: FT_BOOLEAN
+  base: 32
+  info: Case Sensitive Search
+smb.fs_attr.cpn:
+  type: FT_BOOLEAN
+  base: 32
+  info: Case Preserving
+smb.fs_attr.uod:
+  type: FT_BOOLEAN
+  base: 32
+  info: Unicode On Disk
+smb.fs_attr.pacls:
+  type: FT_BOOLEAN
+  base: 32
+  info: Persistent ACLs
+smb.fs_attr.fc:
+  type: FT_BOOLEAN
+  base: 32
+  info: Compression
+smb.fs_attr.vq:
+  type: FT_BOOLEAN
+  base: 32
+  info: Volume Quotas
+smb.fs_attr.ssf:
+  type: FT_BOOLEAN
+  base: 32
+  info: Sparse Files
+smb.fs_attr.srp:
+  type: FT_BOOLEAN
+  base: 32
+  info: Reparse Points
+smb.fs_attr.srs:
+  type: FT_BOOLEAN
+  base: 32
+  info: Remote Storage
+smb.fs_attr.sla:
+  type: FT_BOOLEAN
+  base: 32
+  info: LFN APIs
+smb.fs_attr.vis:
+  type: FT_BOOLEAN
+  base: 32
+  info: Volume Is Compressed
+smb.fs_attr.soids:
+  type: FT_BOOLEAN
+  base: 32
+  info: Supports OIDs
+smb.fs_attr.se:
+  type: FT_BOOLEAN
+  base: 32
+  info: Supports Encryption
+smb.fs_attr.ns:
+  type: FT_BOOLEAN
+  base: 32
+  info: Named Streams
+smb.fs_attr.rov:
+  type: FT_BOOLEAN
+  base: 32
+  info: Read Only Volume
+smb.quota.user.change_time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Change Time
+smb.length_of_sid:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Length of SID
+smb.quota.user.offset:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Next Offset
+smb.pipe.write_len:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Pipe Write Len
+smb.quota.flags.deny_disk:
+  type: FT_BOOLEAN
+  base: 8
+  info: Deny Disk
+smb.quota.flags.log_limit:
+  type: FT_BOOLEAN
+  base: 8
+  info: Log Limit
+smb.quota.flags.log_warning:
+  type: FT_BOOLEAN
+  base: 8
+  info: Log Warning
+smb.quota.flags:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Quota Flags
+smb.quota.flags.enabled:
+  type: FT_BOOLEAN
+  base: 8
+  info: Enabled
+smb.segment.overlap:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Fragment overlap
+smb.segment.overlap.conflict:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Conflicting data in fragment overlap
+smb.segment.multipletails:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Multiple tail fragments found
+smb.segment.toolongfragment:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Fragment too long
+smb.segment.error:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Defragmentation error
+smb.fragment.count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Fragment count
+smb.reassembled.length:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Reassembled SMB length
+smb.fid.opened_in:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Opened in
+smb.fid.closed_in:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Closed in
+smb.fid.mapped_in:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Mapped in
+smb.fid.unmapped_in:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Unmapped in
+smb.segment:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: SMB Segment
+smb.segment.segments:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB Segments
+smb.unix.major_version:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Major Version
+smb.unix.minor_version:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Minor Version
+smb.unix.capability:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Capabilities
+smb.unix.capability.fcntl:
+  type: FT_BOOLEAN
+  base: 32
+  info: FCNTL Capability
+smb.unix.capability.posix_acl:
+  type: FT_BOOLEAN
+  base: 32
+  info: POSIX ACL Capability
+smb.unix.capability.ea:
+  type: FT_BOOLEAN
+  base: 32
+  info: EA Capability
+smb.unix.capability.attr:
+  type: FT_BOOLEAN
+  base: 32
+  info: Additional Attributes Capability
+smb.unix.capability.posix_paths:
+  type: FT_BOOLEAN
+  base: 32
+  info: POSIX Pathnames Capability
+smb.unix.capability.posix_path_ops:
+  type: FT_BOOLEAN
+  base: 32
+  info: POSIX Path Operations Capability
+smb.unix.capability.large_read:
+  type: FT_BOOLEAN
+  base: 32
+  info: Large Read Capability
+smb.unix.capability.large_write:
+  type: FT_BOOLEAN
+  base: 32
+  info: Large Write Capability
+smb.unix.capability.encrpytion:
+  type: FT_BOOLEAN
+  base: 32
+  info: Encryption Capability
+smb.unix.capability.mandatory_crypto:
+  type: FT_BOOLEAN
+  base: 32
+  info: Mandatory Encryption Capability
+smb.unix.capability.proxy:
+  type: FT_BOOLEAN
+  base: 32
+  info: Proxy Capability
+smb.file.accessmask.read_data:
+  type: FT_BOOLEAN
+  base: 32
+  info: Read Data
+smb.file.accessmask.write_data:
+  type: FT_BOOLEAN
+  base: 32
+  info: Write Data
+smb.file.accessmask.append_data:
+  type: FT_BOOLEAN
+  base: 32
+  info: Append Data
+smb.file.accessmask.read_ea:
+  type: FT_BOOLEAN
+  base: 32
+  info: Read EA
+smb.file.accessmask.write_ea:
+  type: FT_BOOLEAN
+  base: 32
+  info: Write EA
+smb.file.accessmask.execute:
+  type: FT_BOOLEAN
+  base: 32
+  info: Execute
+smb.file.accessmask.read_attribute:
+  type: FT_BOOLEAN
+  base: 32
+  info: Read Attribute
+smb.file.accessmask.write_attribute:
+  type: FT_BOOLEAN
+  base: 32
+  info: Write Attribute
+smb.dir.accessmask.list:
+  type: FT_BOOLEAN
+  base: 32
+  info: List
+smb.dir.accessmask.add_file:
+  type: FT_BOOLEAN
+  base: 32
+  info: Add File
+smb.dir.accessmask.add_subdir:
+  type: FT_BOOLEAN
+  base: 32
+  info: Add Subdir
+smb.dir.accessmask.read_ea:
+  type: FT_BOOLEAN
+  base: 32
+  info: Read EA
+smb.dir.accessmask.write_ea:
+  type: FT_BOOLEAN
+  base: 32
+  info: Write EA
+smb.dir.accessmask.traverse:
+  type: FT_BOOLEAN
+  base: 32
+  info: Traverse
+smb.dir.accessmask.delete_child:
+  type: FT_BOOLEAN
+  base: 32
+  info: Delete Child
+smb.dir.accessmask.read_attribute:
+  type: FT_BOOLEAN
+  base: 32
+  info: Read Attribute
+smb.dir.accessmask.write_attribute:
+  type: FT_BOOLEAN
+  base: 32
+  info: Write Attribute
+smb.unix.file.link_dest:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Link destination
+smb.unix.file.size:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: File size
+smb.unix.file.num_bytes:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Number of bytes
+smb.unix.file.stime:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Last status change
+smb.unix.file.atime:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Last access
+smb.unix.file.mtime:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Last modification
+smb.unix.file.crtime:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Creation time
+smb.unix.file.uid:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: UID
+smb.unix.file.gid:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: GID
+smb.unix.file.file_type:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: File type
+smb.unix.file.dev_major:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Major device
+smb.unix.file.dev_minor:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Minor device
+smb.unix.file.unique_id:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Unique ID
+smb.unix.file.perms:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: File permissions
+smb.unix.file.num_links:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Num links
+smb.unix_info2.file.flags:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Flags
+smb.unix_info2.file.flags_mask:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Flags mask
+smb.unix_info2.file.flags.secure_delete:
+  type: FT_BOOLEAN
+  base: 32
+  info: Secure delete
+smb.unix_info2.file.flags.enable_undelete:
+  type: FT_BOOLEAN
+  base: 32
+  info: Enable undelete
+smb.unix_info2.file.flags.synchronous:
+  type: FT_BOOLEAN
+  base: 32
+  info: Synchronous
+smb.unix_info2.file.flags.immutable:
+  type: FT_BOOLEAN
+  base: 32
+  info: Immutable
+smb.unix_info2.file.flags.append_only:
+  type: FT_BOOLEAN
+  base: 32
+  info: Append-only
+smb.unix_info2.file.flags.do_not_backup:
+  type: FT_BOOLEAN
+  base: 32
+  info: Do not backup
+smb.unix_info2.file.flags.no_update_atime:
+  type: FT_BOOLEAN
+  base: 32
+  info: Don't update atime
+smb.unix_info2.file.flags.hidden:
+  type: FT_BOOLEAN
+  base: 32
+  info: Hidden
+smb.unix.file.name_length:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: File name length
+smb.unix.file.name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: File name
+smb.unix.find_file.next_offset:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Next entry offset
+smb.unix.find_file.resume_key:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Resume key
+smb.unix.whoami.mapflags:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: UNIX whoami mapping flags
+smb.unix.whoami.mapflags_mask:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: UNIX whoami mapping flags mask
+smb.unix.whoami.num_gids:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Number of supplementary UNIX GIDs
+smb.unix.whoami.num_sids:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Number of supplementary SIDs
+smb.unix.whoami.sids_buflen:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Supplementary SIDs buffer length
+smb.create_flags:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Create Flags
+smb.create_options:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Create Options
+smb.share_access:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Share Access
+smb.access_mask:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Access Mask
+smb.mode:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Mode
+smb.attribute:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Attribute
+smb.reparse_tag:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Reparse Tag
+smb.disposition.delete_on_close:
+  type: FT_BOOLEAN
+  base: 8
+  info: Delete on close
+smb.pipe_info_flag:
+  type: FT_BOOLEAN
+  base: 8
+  info: Pipe Info
+smb.logged_in:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Logged In
+smb.logged_out:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Logged Out
+smb.file.rw.offset:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: File Offset
+smb.file.rw.length:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: File RW Length
+smb.posix_acl.version:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Posix ACL version
+smb.posix_acl.num_file_aces:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Number of file ACEs
+smb.posix_acl.num_def_aces:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Number of default ACEs
+smb.posix_acl.ace_type:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: ACE Type
+smb.posix_acl.ace_perms:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Permissions
+smb.posix_acl.ace_perms.read:
+  type: FT_BOOLEAN
+  base: 8
+  info: READ
+smb.posix_acl.ace_perms.write:
+  type: FT_BOOLEAN
+  base: 8
+  info: WRITE
+smb.posix_acl.ace_perms.execute:
+  type: FT_BOOLEAN
+  base: 8
+  info: EXECUTE
+smb.posix_acl.ace_perms.owner_uid:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Owner UID
+smb.posix_acl.ace_perms.owner_gid:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Owner GID
+smb.posix_acl.ace_perms.uid:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: UID
+smb.posix_acl.ace_perms.gid:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: GID
+smb.trans_data.setup_word:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Setup Word
+smb.trans_data.parameters:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Parameters
+smb.trans_data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Data
+smb.extra_byte_parameters:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Extra byte parameters
+smb.file.accessmask.full_control:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: FULL CONTROL
+smb.dir.accessmask.full_control:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: FULL CONTROL
+smb.word_unk_response_format:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Words for unknown response format
+smb.nt_transaction_setup:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: NT Transaction Setup
+smb.server_component:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Server Component
+smb.byte_parameters:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Byte parameters
+smb.word_parameters:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Word parameters

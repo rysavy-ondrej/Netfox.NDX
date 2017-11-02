@@ -20,14 +20,19 @@ namespace Ndx.Model
 
         public static Variant True => new Variant(true);
 
-        public bool IsNumeric => this.ValueCase == ValueOneofCase.DecimalValue
-            || this.ValueCase == ValueOneofCase.DoubleValue
+        public bool IsNumeric => 
+               this.ValueCase == ValueOneofCase.DoubleValue
             || this.ValueCase == ValueOneofCase.FloatValue
             || this.ValueCase == ValueOneofCase.Int64Value
-            || this.ValueCase == ValueOneofCase.Int32Value;
+            || this.ValueCase == ValueOneofCase.Int32Value
+            || this.ValueCase == ValueOneofCase.UInt64Value
+            || this.ValueCase == ValueOneofCase.UInt32Value;
 
-        public bool IsInteger => this.ValueCase == ValueOneofCase.Int64Value
-            || this.ValueCase == ValueOneofCase.Int32Value;
+        public bool IsInteger => 
+               this.ValueCase == ValueOneofCase.Int64Value
+            || this.ValueCase == ValueOneofCase.Int32Value
+            || this.ValueCase == ValueOneofCase.UInt64Value
+            || this.ValueCase == ValueOneofCase.UInt32Value;
 
         public bool IsEmpty => this.ValueCase == ValueOneofCase.None;
 
@@ -46,6 +51,16 @@ namespace Ndx.Model
             this.Int64Value = value;
         }
 
+        public Variant(uint value)
+        {
+            this.UInt32Value = value;
+        }
+
+        public Variant(ulong value)
+        {
+            this.UInt64Value = value;
+        }
+
         public Variant(byte[] value)
         {
             this.BytesValue = ByteString.CopyFrom(value);
@@ -61,9 +76,9 @@ namespace Ndx.Model
             this.DateTimeValue = value.ToBinary();
         }
 
-        public Variant(decimal value)
+        public Variant(IPAddress value)
         {
-            this.DecimalValue = value.ToString();
+            this.IpAddressValue = value.ToString();
         }
 
         public Variant(double value)
@@ -85,22 +100,23 @@ namespace Ndx.Model
         /// Creates a new Variant instance from the object value.
         /// The Variant type is inferred from the object type.
         /// </summary>
-        /// <param name="value"></param>
-        public Variant(object value)
+        /// <param name="obj"></param>
+        public Variant(object obj)
         {
-            switch(value)
+            switch(obj)
             {
-                case bool boolValue:        BoolValue = boolValue; break;
-                case string stringValue:    StringValue = stringValue; break;
-                case SByte intValue:        Int32Value = intValue; break;
-                case Int16 intValue:        Int32Value = intValue; break;
-                case Int32 intValue:        Int32Value = intValue; break;
-                case Int64 intValue:        Int64Value = intValue; break;
-                case UInt16 intValue:       Int32Value = intValue; break;
-                case UInt32 intValue:       Int64Value = intValue; break;
-                case UInt64 intValue:       DecimalValue = intValue.ToString(); break;
-                case Decimal decimalValue:  DecimalValue = decimalValue.ToString(); break; 
-                case byte[] bytes:          BytesValue = ByteString.CopyFrom(bytes); break;
+                case bool value:        BoolValue = value; break;
+                case string value:      StringValue = value; break;
+                case SByte value:       Int32Value = value; break;
+                case Int16 value:       Int32Value = value; break;
+                case Int32 value:       Int32Value = value; break;
+                case Int64 value:       Int64Value = value; break;
+                case Byte value:        UInt32Value = value; break;
+                case UInt16 value:      UInt32Value = value; break;
+                case UInt32 value:      UInt64Value = value; break;
+                case UInt64 value:      UInt64Value = value;  break;
+                case IPAddress value:   IpAddressValue = value.ToString(); break; 
+                case byte[] value:      BytesValue = ByteString.CopyFrom(value); break;
                 default: break;                
             }
         }
@@ -140,14 +156,24 @@ namespace Ndx.Model
             return new Variant(ToInt64());
         }
 
-        public decimal ToDecimal()
+        public uint ToUInt32()
         {
-            return (decimal)Convert.ChangeType(value_, TypeCode.Decimal);
+            return (uint)Convert.ChangeType(value_, TypeCode.UInt32);
         }
 
-        public Variant AsDecimal()
+        public Variant AsUInt32()
         {
-            return new Variant(ToDecimal());
+            return new Variant(ToUInt32());
+        }
+
+        public ulong ToUInt64()
+        {
+            return (ulong)Convert.ChangeType(value_, TypeCode.UInt64);
+        }
+
+        public Variant AsUInt64()
+        {
+            return new Variant(ToUInt64());
         }
 
         public float ToFloat()
@@ -194,9 +220,10 @@ namespace Ndx.Model
                 case TypeCode.Empty: return ValueOneofCase.None;
                 case TypeCode.Boolean: return ValueOneofCase.BoolValue;
                 case TypeCode.DateTime: return ValueOneofCase.DateTimeValue;
-                case TypeCode.Decimal: return ValueOneofCase.DecimalValue;
                 case TypeCode.Double: return ValueOneofCase.DoubleValue;
                 case TypeCode.String: return ValueOneofCase.StringValue;
+                case TypeCode.UInt32: return ValueOneofCase.UInt32Value;
+                case TypeCode.UInt64: return ValueOneofCase.UInt64Value;
                 case TypeCode.Int32: return ValueOneofCase.Int32Value;
                 case TypeCode.Int64: return ValueOneofCase.Int64Value;
                 default: return ValueOneofCase.BytesValue;
@@ -223,6 +250,11 @@ namespace Ndx.Model
                 case ValueOneofCase.BoolValue: return new IPAddress(BytesValue.ToByteArray());
                 default: return null;
             }
+        }
+
+        public Variant AsIPAddress()
+        {
+            return new Variant(ToIPAddress());
         }
     }
 }

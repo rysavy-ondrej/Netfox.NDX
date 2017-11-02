@@ -14,6 +14,1055 @@ public final class PacketModel {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  /**
+   * Protobuf enum {@code ndx.model.FieldType}
+   */
+  public enum FieldType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <pre>
+     * used for text labels with no value 
+     * </pre>
+     *
+     * <code>FT_NONE = 0;</code>
+     */
+    FT_NONE(0),
+    /**
+     * <code>FT_PROTOCOL = 1;</code>
+     */
+    FT_PROTOCOL(1),
+    /**
+     * <pre>
+     * TRUE and FALSE come from &lt;glib.h&gt; 
+     * </pre>
+     *
+     * <code>FT_BOOLEAN = 2;</code>
+     */
+    FT_BOOLEAN(2),
+    /**
+     * <pre>
+     * 1-octet character as 0-255 
+     * </pre>
+     *
+     * <code>FT_CHAR = 3;</code>
+     */
+    FT_CHAR(3),
+    /**
+     * <code>FT_UINT8 = 4;</code>
+     */
+    FT_UINT8(4),
+    /**
+     * <code>FT_UINT16 = 5;</code>
+     */
+    FT_UINT16(5),
+    /**
+     * <pre>
+     * really a UINT32, but displayed as 6 hex-digits if FD_HEX
+     * </pre>
+     *
+     * <code>FT_UINT24 = 6;</code>
+     */
+    FT_UINT24(6),
+    /**
+     * <code>FT_UINT32 = 7;</code>
+     */
+    FT_UINT32(7),
+    /**
+     * <pre>
+     * really a UINT64, but displayed as 10 hex-digits if FD_HEX
+     * </pre>
+     *
+     * <code>FT_UINT40 = 8;</code>
+     */
+    FT_UINT40(8),
+    /**
+     * <pre>
+     * really a UINT64, but displayed as 12 hex-digits if FD_HEX
+     * </pre>
+     *
+     * <code>FT_UINT48 = 9;</code>
+     */
+    FT_UINT48(9),
+    /**
+     * <pre>
+     * really a UINT64, but displayed as 14 hex-digits if FD_HEX
+     * </pre>
+     *
+     * <code>FT_UINT56 = 10;</code>
+     */
+    FT_UINT56(10),
+    /**
+     * <code>FT_UINT64 = 11;</code>
+     */
+    FT_UINT64(11),
+    /**
+     * <code>FT_INT8 = 12;</code>
+     */
+    FT_INT8(12),
+    /**
+     * <code>FT_INT16 = 13;</code>
+     */
+    FT_INT16(13),
+    /**
+     * <pre>
+     * same as for UINT24 
+     * </pre>
+     *
+     * <code>FT_INT24 = 14;</code>
+     */
+    FT_INT24(14),
+    /**
+     * <code>FT_INT32 = 15;</code>
+     */
+    FT_INT32(15),
+    /**
+     * <pre>
+     * same as for UINT40 
+     * </pre>
+     *
+     * <code>FT_INT40 = 16;</code>
+     */
+    FT_INT40(16),
+    /**
+     * <pre>
+     * same as for UINT48 
+     * </pre>
+     *
+     * <code>FT_INT48 = 17;</code>
+     */
+    FT_INT48(17),
+    /**
+     * <pre>
+     * same as for UINT56 
+     * </pre>
+     *
+     * <code>FT_INT56 = 18;</code>
+     */
+    FT_INT56(18),
+    /**
+     * <code>FT_INT64 = 19;</code>
+     */
+    FT_INT64(19),
+    /**
+     * <code>FT_IEEE_11073_SFLOAT = 20;</code>
+     */
+    FT_IEEE_11073_SFLOAT(20),
+    /**
+     * <code>FT_IEEE_11073_FLOAT = 21;</code>
+     */
+    FT_IEEE_11073_FLOAT(21),
+    /**
+     * <code>FT_FLOAT = 22;</code>
+     */
+    FT_FLOAT(22),
+    /**
+     * <code>FT_DOUBLE = 23;</code>
+     */
+    FT_DOUBLE(23),
+    /**
+     * <code>FT_ABSOLUTE_TIME = 24;</code>
+     */
+    FT_ABSOLUTE_TIME(24),
+    /**
+     * <code>FT_RELATIVE_TIME = 25;</code>
+     */
+    FT_RELATIVE_TIME(25),
+    /**
+     * <code>FT_STRING = 26;</code>
+     */
+    FT_STRING(26),
+    /**
+     * <pre>
+     * for use with proto_tree_add_item() 
+     * </pre>
+     *
+     * <code>FT_STRINGZ = 27;</code>
+     */
+    FT_STRINGZ(27),
+    /**
+     * <pre>
+     * for use with proto_tree_add_item() 
+     * </pre>
+     *
+     * <code>FT_UINT_STRING = 28;</code>
+     */
+    FT_UINT_STRING(28),
+    /**
+     * <code>FT_ETHER = 29;</code>
+     */
+    FT_ETHER(29),
+    /**
+     * <code>FT_BYTES = 30;</code>
+     */
+    FT_BYTES(30),
+    /**
+     * <code>FT_UINT_BYTES = 31;</code>
+     */
+    FT_UINT_BYTES(31),
+    /**
+     * <code>FT_IPv4 = 32;</code>
+     */
+    FT_IPv4(32),
+    /**
+     * <code>FT_IPv6 = 33;</code>
+     */
+    FT_IPv6(33),
+    /**
+     * <code>FT_IPXNET = 34;</code>
+     */
+    FT_IPXNET(34),
+    /**
+     * <pre>
+     * a UINT32, but if selected lets you go to frame with that number 
+     * </pre>
+     *
+     * <code>FT_FRAMENUM = 35;</code>
+     */
+    FT_FRAMENUM(35),
+    /**
+     * <pre>
+     * a compiled Perl-Compatible Regular Expression object 
+     * </pre>
+     *
+     * <code>FT_PCRE = 36;</code>
+     */
+    FT_PCRE(36),
+    /**
+     * <pre>
+     * GUID, UUID 
+     * </pre>
+     *
+     * <code>FT_GUID = 37;</code>
+     */
+    FT_GUID(37),
+    /**
+     * <pre>
+     * OBJECT IDENTIFIER 
+     * </pre>
+     *
+     * <code>FT_OID = 38;</code>
+     */
+    FT_OID(38),
+    /**
+     * <code>FT_EUI64 = 39;</code>
+     */
+    FT_EUI64(39),
+    /**
+     * <code>FT_AX25 = 40;</code>
+     */
+    FT_AX25(40),
+    /**
+     * <code>FT_VINES = 41;</code>
+     */
+    FT_VINES(41),
+    /**
+     * <pre>
+     * RELATIVE-OID 
+     * </pre>
+     *
+     * <code>FT_REL_OID = 42;</code>
+     */
+    FT_REL_OID(42),
+    /**
+     * <code>FT_SYSTEM_ID = 43;</code>
+     */
+    FT_SYSTEM_ID(43),
+    /**
+     * <pre>
+     * for use with proto_tree_add_item() 
+     * </pre>
+     *
+     * <code>FT_STRINGZPAD = 44;</code>
+     */
+    FT_STRINGZPAD(44),
+    /**
+     * <code>FT_FCWWN = 45;</code>
+     */
+    FT_FCWWN(45),
+    /**
+     * <pre>
+     * last item number plus one 
+     * </pre>
+     *
+     * <code>FT_NUM_TYPES = 46;</code>
+     */
+    FT_NUM_TYPES(46),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <pre>
+     * used for text labels with no value 
+     * </pre>
+     *
+     * <code>FT_NONE = 0;</code>
+     */
+    public static final int FT_NONE_VALUE = 0;
+    /**
+     * <code>FT_PROTOCOL = 1;</code>
+     */
+    public static final int FT_PROTOCOL_VALUE = 1;
+    /**
+     * <pre>
+     * TRUE and FALSE come from &lt;glib.h&gt; 
+     * </pre>
+     *
+     * <code>FT_BOOLEAN = 2;</code>
+     */
+    public static final int FT_BOOLEAN_VALUE = 2;
+    /**
+     * <pre>
+     * 1-octet character as 0-255 
+     * </pre>
+     *
+     * <code>FT_CHAR = 3;</code>
+     */
+    public static final int FT_CHAR_VALUE = 3;
+    /**
+     * <code>FT_UINT8 = 4;</code>
+     */
+    public static final int FT_UINT8_VALUE = 4;
+    /**
+     * <code>FT_UINT16 = 5;</code>
+     */
+    public static final int FT_UINT16_VALUE = 5;
+    /**
+     * <pre>
+     * really a UINT32, but displayed as 6 hex-digits if FD_HEX
+     * </pre>
+     *
+     * <code>FT_UINT24 = 6;</code>
+     */
+    public static final int FT_UINT24_VALUE = 6;
+    /**
+     * <code>FT_UINT32 = 7;</code>
+     */
+    public static final int FT_UINT32_VALUE = 7;
+    /**
+     * <pre>
+     * really a UINT64, but displayed as 10 hex-digits if FD_HEX
+     * </pre>
+     *
+     * <code>FT_UINT40 = 8;</code>
+     */
+    public static final int FT_UINT40_VALUE = 8;
+    /**
+     * <pre>
+     * really a UINT64, but displayed as 12 hex-digits if FD_HEX
+     * </pre>
+     *
+     * <code>FT_UINT48 = 9;</code>
+     */
+    public static final int FT_UINT48_VALUE = 9;
+    /**
+     * <pre>
+     * really a UINT64, but displayed as 14 hex-digits if FD_HEX
+     * </pre>
+     *
+     * <code>FT_UINT56 = 10;</code>
+     */
+    public static final int FT_UINT56_VALUE = 10;
+    /**
+     * <code>FT_UINT64 = 11;</code>
+     */
+    public static final int FT_UINT64_VALUE = 11;
+    /**
+     * <code>FT_INT8 = 12;</code>
+     */
+    public static final int FT_INT8_VALUE = 12;
+    /**
+     * <code>FT_INT16 = 13;</code>
+     */
+    public static final int FT_INT16_VALUE = 13;
+    /**
+     * <pre>
+     * same as for UINT24 
+     * </pre>
+     *
+     * <code>FT_INT24 = 14;</code>
+     */
+    public static final int FT_INT24_VALUE = 14;
+    /**
+     * <code>FT_INT32 = 15;</code>
+     */
+    public static final int FT_INT32_VALUE = 15;
+    /**
+     * <pre>
+     * same as for UINT40 
+     * </pre>
+     *
+     * <code>FT_INT40 = 16;</code>
+     */
+    public static final int FT_INT40_VALUE = 16;
+    /**
+     * <pre>
+     * same as for UINT48 
+     * </pre>
+     *
+     * <code>FT_INT48 = 17;</code>
+     */
+    public static final int FT_INT48_VALUE = 17;
+    /**
+     * <pre>
+     * same as for UINT56 
+     * </pre>
+     *
+     * <code>FT_INT56 = 18;</code>
+     */
+    public static final int FT_INT56_VALUE = 18;
+    /**
+     * <code>FT_INT64 = 19;</code>
+     */
+    public static final int FT_INT64_VALUE = 19;
+    /**
+     * <code>FT_IEEE_11073_SFLOAT = 20;</code>
+     */
+    public static final int FT_IEEE_11073_SFLOAT_VALUE = 20;
+    /**
+     * <code>FT_IEEE_11073_FLOAT = 21;</code>
+     */
+    public static final int FT_IEEE_11073_FLOAT_VALUE = 21;
+    /**
+     * <code>FT_FLOAT = 22;</code>
+     */
+    public static final int FT_FLOAT_VALUE = 22;
+    /**
+     * <code>FT_DOUBLE = 23;</code>
+     */
+    public static final int FT_DOUBLE_VALUE = 23;
+    /**
+     * <code>FT_ABSOLUTE_TIME = 24;</code>
+     */
+    public static final int FT_ABSOLUTE_TIME_VALUE = 24;
+    /**
+     * <code>FT_RELATIVE_TIME = 25;</code>
+     */
+    public static final int FT_RELATIVE_TIME_VALUE = 25;
+    /**
+     * <code>FT_STRING = 26;</code>
+     */
+    public static final int FT_STRING_VALUE = 26;
+    /**
+     * <pre>
+     * for use with proto_tree_add_item() 
+     * </pre>
+     *
+     * <code>FT_STRINGZ = 27;</code>
+     */
+    public static final int FT_STRINGZ_VALUE = 27;
+    /**
+     * <pre>
+     * for use with proto_tree_add_item() 
+     * </pre>
+     *
+     * <code>FT_UINT_STRING = 28;</code>
+     */
+    public static final int FT_UINT_STRING_VALUE = 28;
+    /**
+     * <code>FT_ETHER = 29;</code>
+     */
+    public static final int FT_ETHER_VALUE = 29;
+    /**
+     * <code>FT_BYTES = 30;</code>
+     */
+    public static final int FT_BYTES_VALUE = 30;
+    /**
+     * <code>FT_UINT_BYTES = 31;</code>
+     */
+    public static final int FT_UINT_BYTES_VALUE = 31;
+    /**
+     * <code>FT_IPv4 = 32;</code>
+     */
+    public static final int FT_IPv4_VALUE = 32;
+    /**
+     * <code>FT_IPv6 = 33;</code>
+     */
+    public static final int FT_IPv6_VALUE = 33;
+    /**
+     * <code>FT_IPXNET = 34;</code>
+     */
+    public static final int FT_IPXNET_VALUE = 34;
+    /**
+     * <pre>
+     * a UINT32, but if selected lets you go to frame with that number 
+     * </pre>
+     *
+     * <code>FT_FRAMENUM = 35;</code>
+     */
+    public static final int FT_FRAMENUM_VALUE = 35;
+    /**
+     * <pre>
+     * a compiled Perl-Compatible Regular Expression object 
+     * </pre>
+     *
+     * <code>FT_PCRE = 36;</code>
+     */
+    public static final int FT_PCRE_VALUE = 36;
+    /**
+     * <pre>
+     * GUID, UUID 
+     * </pre>
+     *
+     * <code>FT_GUID = 37;</code>
+     */
+    public static final int FT_GUID_VALUE = 37;
+    /**
+     * <pre>
+     * OBJECT IDENTIFIER 
+     * </pre>
+     *
+     * <code>FT_OID = 38;</code>
+     */
+    public static final int FT_OID_VALUE = 38;
+    /**
+     * <code>FT_EUI64 = 39;</code>
+     */
+    public static final int FT_EUI64_VALUE = 39;
+    /**
+     * <code>FT_AX25 = 40;</code>
+     */
+    public static final int FT_AX25_VALUE = 40;
+    /**
+     * <code>FT_VINES = 41;</code>
+     */
+    public static final int FT_VINES_VALUE = 41;
+    /**
+     * <pre>
+     * RELATIVE-OID 
+     * </pre>
+     *
+     * <code>FT_REL_OID = 42;</code>
+     */
+    public static final int FT_REL_OID_VALUE = 42;
+    /**
+     * <code>FT_SYSTEM_ID = 43;</code>
+     */
+    public static final int FT_SYSTEM_ID_VALUE = 43;
+    /**
+     * <pre>
+     * for use with proto_tree_add_item() 
+     * </pre>
+     *
+     * <code>FT_STRINGZPAD = 44;</code>
+     */
+    public static final int FT_STRINGZPAD_VALUE = 44;
+    /**
+     * <code>FT_FCWWN = 45;</code>
+     */
+    public static final int FT_FCWWN_VALUE = 45;
+    /**
+     * <pre>
+     * last item number plus one 
+     * </pre>
+     *
+     * <code>FT_NUM_TYPES = 46;</code>
+     */
+    public static final int FT_NUM_TYPES_VALUE = 46;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static FieldType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static FieldType forNumber(int value) {
+      switch (value) {
+        case 0: return FT_NONE;
+        case 1: return FT_PROTOCOL;
+        case 2: return FT_BOOLEAN;
+        case 3: return FT_CHAR;
+        case 4: return FT_UINT8;
+        case 5: return FT_UINT16;
+        case 6: return FT_UINT24;
+        case 7: return FT_UINT32;
+        case 8: return FT_UINT40;
+        case 9: return FT_UINT48;
+        case 10: return FT_UINT56;
+        case 11: return FT_UINT64;
+        case 12: return FT_INT8;
+        case 13: return FT_INT16;
+        case 14: return FT_INT24;
+        case 15: return FT_INT32;
+        case 16: return FT_INT40;
+        case 17: return FT_INT48;
+        case 18: return FT_INT56;
+        case 19: return FT_INT64;
+        case 20: return FT_IEEE_11073_SFLOAT;
+        case 21: return FT_IEEE_11073_FLOAT;
+        case 22: return FT_FLOAT;
+        case 23: return FT_DOUBLE;
+        case 24: return FT_ABSOLUTE_TIME;
+        case 25: return FT_RELATIVE_TIME;
+        case 26: return FT_STRING;
+        case 27: return FT_STRINGZ;
+        case 28: return FT_UINT_STRING;
+        case 29: return FT_ETHER;
+        case 30: return FT_BYTES;
+        case 31: return FT_UINT_BYTES;
+        case 32: return FT_IPv4;
+        case 33: return FT_IPv6;
+        case 34: return FT_IPXNET;
+        case 35: return FT_FRAMENUM;
+        case 36: return FT_PCRE;
+        case 37: return FT_GUID;
+        case 38: return FT_OID;
+        case 39: return FT_EUI64;
+        case 40: return FT_AX25;
+        case 41: return FT_VINES;
+        case 42: return FT_REL_OID;
+        case 43: return FT_SYSTEM_ID;
+        case 44: return FT_STRINGZPAD;
+        case 45: return FT_FCWWN;
+        case 46: return FT_NUM_TYPES;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<FieldType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        FieldType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<FieldType>() {
+            public FieldType findValueByNumber(int number) {
+              return FieldType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return org.ndx.model.PacketModel.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final FieldType[] VALUES = values();
+
+    public static FieldType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private FieldType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:ndx.model.FieldType)
+  }
+
+  /**
+   * Protobuf enum {@code ndx.model.FieldDisplay}
+   */
+  public enum FieldDisplay
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <pre>
+     **&lt; none 
+     * </pre>
+     *
+     * <code>BASE_NONE = 0;</code>
+     */
+    BASE_NONE(0),
+    /**
+     * <pre>
+     **&lt; decimal 
+     * </pre>
+     *
+     * <code>BASE_DEC = 1;</code>
+     */
+    BASE_DEC(1),
+    /**
+     * <pre>
+     **&lt; hexadecimal 
+     * </pre>
+     *
+     * <code>BASE_HEX = 2;</code>
+     */
+    BASE_HEX(2),
+    /**
+     * <pre>
+     **&lt; octal 
+     * </pre>
+     *
+     * <code>BASE_OCT = 3;</code>
+     */
+    BASE_OCT(3),
+    /**
+     * <pre>
+     **&lt; decimal (hexadecimal) 
+     * </pre>
+     *
+     * <code>BASE_DEC_HEX = 4;</code>
+     */
+    BASE_DEC_HEX(4),
+    /**
+     * <pre>
+     **&lt; hexadecimal (decimal) 
+     * </pre>
+     *
+     * <code>BASE_HEX_DEC = 5;</code>
+     */
+    BASE_HEX_DEC(5),
+    /**
+     * <pre>
+     **&lt; call custom routine (in -&gt;strings) to format 
+     * </pre>
+     *
+     * <code>BASE_CUSTOM = 6;</code>
+     */
+    BASE_CUSTOM(6),
+    /**
+     * <pre>
+     **&lt; shows non-printable UNICODE characters as &#92;&#92;uXXXX (XXX for now non-printable characters display depends on UI) 
+     * </pre>
+     *
+     * <code>STR_UNICODE = 7;</code>
+     */
+    STR_UNICODE(7),
+    /**
+     * <pre>
+     **&lt; hexadecimal bytes with a period (.) between each byte 
+     * </pre>
+     *
+     * <code>SEP_DOT = 8;</code>
+     */
+    SEP_DOT(8),
+    /**
+     * <pre>
+     **&lt; hexadecimal bytes with a dash (-) between each byte 
+     * </pre>
+     *
+     * <code>SEP_DASH = 9;</code>
+     */
+    SEP_DASH(9),
+    /**
+     * <pre>
+     **&lt; hexadecimal bytes with a colon (:) between each byte 
+     * </pre>
+     *
+     * <code>SEP_COLON = 10;</code>
+     */
+    SEP_COLON(10),
+    /**
+     * <pre>
+     **&lt; hexadecimal bytes with a space between each byte 
+     * </pre>
+     *
+     * <code>SEP_SPACE = 11;</code>
+     */
+    SEP_SPACE(11),
+    /**
+     * <pre>
+     * Address types 
+     * </pre>
+     *
+     * <code>BASE_NETMASK = 12;</code>
+     */
+    BASE_NETMASK(12),
+    /**
+     * <pre>
+     * Port types 
+     * </pre>
+     *
+     * <code>BASE_PT_UDP = 13;</code>
+     */
+    BASE_PT_UDP(13),
+    /**
+     * <pre>
+     **&lt; TCP port 
+     * </pre>
+     *
+     * <code>BASE_PT_TCP = 14;</code>
+     */
+    BASE_PT_TCP(14),
+    /**
+     * <pre>
+     **&lt; DCCP port 
+     * </pre>
+     *
+     * <code>BASE_PT_DCCP = 15;</code>
+     */
+    BASE_PT_DCCP(15),
+    /**
+     * <pre>
+     **&lt; SCTP port 
+     * </pre>
+     *
+     * <code>BASE_PT_SCTP = 16;</code>
+     */
+    BASE_PT_SCTP(16),
+    /**
+     * <pre>
+     * OUI types 
+     * </pre>
+     *
+     * <code>BASE_OUI = 17;</code>
+     */
+    BASE_OUI(17),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <pre>
+     **&lt; none 
+     * </pre>
+     *
+     * <code>BASE_NONE = 0;</code>
+     */
+    public static final int BASE_NONE_VALUE = 0;
+    /**
+     * <pre>
+     **&lt; decimal 
+     * </pre>
+     *
+     * <code>BASE_DEC = 1;</code>
+     */
+    public static final int BASE_DEC_VALUE = 1;
+    /**
+     * <pre>
+     **&lt; hexadecimal 
+     * </pre>
+     *
+     * <code>BASE_HEX = 2;</code>
+     */
+    public static final int BASE_HEX_VALUE = 2;
+    /**
+     * <pre>
+     **&lt; octal 
+     * </pre>
+     *
+     * <code>BASE_OCT = 3;</code>
+     */
+    public static final int BASE_OCT_VALUE = 3;
+    /**
+     * <pre>
+     **&lt; decimal (hexadecimal) 
+     * </pre>
+     *
+     * <code>BASE_DEC_HEX = 4;</code>
+     */
+    public static final int BASE_DEC_HEX_VALUE = 4;
+    /**
+     * <pre>
+     **&lt; hexadecimal (decimal) 
+     * </pre>
+     *
+     * <code>BASE_HEX_DEC = 5;</code>
+     */
+    public static final int BASE_HEX_DEC_VALUE = 5;
+    /**
+     * <pre>
+     **&lt; call custom routine (in -&gt;strings) to format 
+     * </pre>
+     *
+     * <code>BASE_CUSTOM = 6;</code>
+     */
+    public static final int BASE_CUSTOM_VALUE = 6;
+    /**
+     * <pre>
+     **&lt; shows non-printable UNICODE characters as &#92;&#92;uXXXX (XXX for now non-printable characters display depends on UI) 
+     * </pre>
+     *
+     * <code>STR_UNICODE = 7;</code>
+     */
+    public static final int STR_UNICODE_VALUE = 7;
+    /**
+     * <pre>
+     **&lt; hexadecimal bytes with a period (.) between each byte 
+     * </pre>
+     *
+     * <code>SEP_DOT = 8;</code>
+     */
+    public static final int SEP_DOT_VALUE = 8;
+    /**
+     * <pre>
+     **&lt; hexadecimal bytes with a dash (-) between each byte 
+     * </pre>
+     *
+     * <code>SEP_DASH = 9;</code>
+     */
+    public static final int SEP_DASH_VALUE = 9;
+    /**
+     * <pre>
+     **&lt; hexadecimal bytes with a colon (:) between each byte 
+     * </pre>
+     *
+     * <code>SEP_COLON = 10;</code>
+     */
+    public static final int SEP_COLON_VALUE = 10;
+    /**
+     * <pre>
+     **&lt; hexadecimal bytes with a space between each byte 
+     * </pre>
+     *
+     * <code>SEP_SPACE = 11;</code>
+     */
+    public static final int SEP_SPACE_VALUE = 11;
+    /**
+     * <pre>
+     * Address types 
+     * </pre>
+     *
+     * <code>BASE_NETMASK = 12;</code>
+     */
+    public static final int BASE_NETMASK_VALUE = 12;
+    /**
+     * <pre>
+     * Port types 
+     * </pre>
+     *
+     * <code>BASE_PT_UDP = 13;</code>
+     */
+    public static final int BASE_PT_UDP_VALUE = 13;
+    /**
+     * <pre>
+     **&lt; TCP port 
+     * </pre>
+     *
+     * <code>BASE_PT_TCP = 14;</code>
+     */
+    public static final int BASE_PT_TCP_VALUE = 14;
+    /**
+     * <pre>
+     **&lt; DCCP port 
+     * </pre>
+     *
+     * <code>BASE_PT_DCCP = 15;</code>
+     */
+    public static final int BASE_PT_DCCP_VALUE = 15;
+    /**
+     * <pre>
+     **&lt; SCTP port 
+     * </pre>
+     *
+     * <code>BASE_PT_SCTP = 16;</code>
+     */
+    public static final int BASE_PT_SCTP_VALUE = 16;
+    /**
+     * <pre>
+     * OUI types 
+     * </pre>
+     *
+     * <code>BASE_OUI = 17;</code>
+     */
+    public static final int BASE_OUI_VALUE = 17;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static FieldDisplay valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static FieldDisplay forNumber(int value) {
+      switch (value) {
+        case 0: return BASE_NONE;
+        case 1: return BASE_DEC;
+        case 2: return BASE_HEX;
+        case 3: return BASE_OCT;
+        case 4: return BASE_DEC_HEX;
+        case 5: return BASE_HEX_DEC;
+        case 6: return BASE_CUSTOM;
+        case 7: return STR_UNICODE;
+        case 8: return SEP_DOT;
+        case 9: return SEP_DASH;
+        case 10: return SEP_COLON;
+        case 11: return SEP_SPACE;
+        case 12: return BASE_NETMASK;
+        case 13: return BASE_PT_UDP;
+        case 14: return BASE_PT_TCP;
+        case 15: return BASE_PT_DCCP;
+        case 16: return BASE_PT_SCTP;
+        case 17: return BASE_OUI;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<FieldDisplay>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        FieldDisplay> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<FieldDisplay>() {
+            public FieldDisplay findValueByNumber(int number) {
+              return FieldDisplay.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return org.ndx.model.PacketModel.getDescriptor().getEnumTypes().get(1);
+    }
+
+    private static final FieldDisplay[] VALUES = values();
+
+    public static FieldDisplay valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private FieldDisplay(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:ndx.model.FieldDisplay)
+  }
+
   public interface FrameOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ndx.model.Frame)
       com.google.protobuf.MessageOrBuilder {
@@ -1353,52 +2402,62 @@ public final class PacketModel {
     boolean getBoolValue();
 
     /**
-     * <code>int32 Int32Value = 2;</code>
+     * <code>sint32 Int32Value = 2;</code>
      */
     int getInt32Value();
 
     /**
-     * <code>int64 Int64Value = 3;</code>
+     * <code>sint64 Int64Value = 3;</code>
      */
     long getInt64Value();
 
     /**
-     * <code>float FloatValue = 4;</code>
+     * <code>uint32 UInt32Value = 4;</code>
+     */
+    int getUInt32Value();
+
+    /**
+     * <code>uint64 UInt64Value = 5;</code>
+     */
+    long getUInt64Value();
+
+    /**
+     * <code>float FloatValue = 6;</code>
      */
     float getFloatValue();
 
     /**
-     * <code>double DoubleValue = 5;</code>
+     * <code>double DoubleValue = 7;</code>
      */
     double getDoubleValue();
 
     /**
-     * <code>string StringValue = 6;</code>
+     * <code>string StringValue = 8;</code>
      */
     java.lang.String getStringValue();
     /**
-     * <code>string StringValue = 6;</code>
+     * <code>string StringValue = 8;</code>
      */
     com.google.protobuf.ByteString
         getStringValueBytes();
 
     /**
-     * <code>bytes BytesValue = 7;</code>
+     * <code>bytes BytesValue = 9;</code>
      */
     com.google.protobuf.ByteString getBytesValue();
 
     /**
-     * <code>string DecimalValue = 8;</code>
+     * <code>string IpAddressValue = 10;</code>
      */
-    java.lang.String getDecimalValue();
+    java.lang.String getIpAddressValue();
     /**
-     * <code>string DecimalValue = 8;</code>
+     * <code>string IpAddressValue = 10;</code>
      */
     com.google.protobuf.ByteString
-        getDecimalValueBytes();
+        getIpAddressValueBytes();
 
     /**
-     * <code>int64 DateTimeValue = 9;</code>
+     * <code>int64 DateTimeValue = 11;</code>
      */
     long getDateTimeValue();
 
@@ -1450,33 +2509,32 @@ public final class PacketModel {
             }
             case 16: {
               valueCase_ = 2;
-              value_ = input.readInt32();
+              value_ = input.readSInt32();
               break;
             }
             case 24: {
               valueCase_ = 3;
-              value_ = input.readInt64();
+              value_ = input.readSInt64();
               break;
             }
-            case 37: {
+            case 32: {
               valueCase_ = 4;
+              value_ = input.readUInt32();
+              break;
+            }
+            case 40: {
+              valueCase_ = 5;
+              value_ = input.readUInt64();
+              break;
+            }
+            case 53: {
+              valueCase_ = 6;
               value_ = input.readFloat();
               break;
             }
-            case 41: {
-              valueCase_ = 5;
-              value_ = input.readDouble();
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-              valueCase_ = 6;
-              value_ = s;
-              break;
-            }
-            case 58: {
+            case 57: {
               valueCase_ = 7;
-              value_ = input.readBytes();
+              value_ = input.readDouble();
               break;
             }
             case 66: {
@@ -1485,8 +2543,19 @@ public final class PacketModel {
               value_ = s;
               break;
             }
-            case 72: {
+            case 74: {
               valueCase_ = 9;
+              value_ = input.readBytes();
+              break;
+            }
+            case 82: {
+              java.lang.String s = input.readStringRequireUtf8();
+              valueCase_ = 10;
+              value_ = s;
+              break;
+            }
+            case 88: {
+              valueCase_ = 11;
               value_ = input.readInt64();
               break;
             }
@@ -1520,12 +2589,14 @@ public final class PacketModel {
       BOOLVALUE(1),
       INT32VALUE(2),
       INT64VALUE(3),
-      FLOATVALUE(4),
-      DOUBLEVALUE(5),
-      STRINGVALUE(6),
-      BYTESVALUE(7),
-      DECIMALVALUE(8),
-      DATETIMEVALUE(9),
+      UINT32VALUE(4),
+      UINT64VALUE(5),
+      FLOATVALUE(6),
+      DOUBLEVALUE(7),
+      STRINGVALUE(8),
+      BYTESVALUE(9),
+      IPADDRESSVALUE(10),
+      DATETIMEVALUE(11),
       VALUE_NOT_SET(0);
       private final int value;
       private ValueCase(int value) {
@@ -1544,12 +2615,14 @@ public final class PacketModel {
           case 1: return BOOLVALUE;
           case 2: return INT32VALUE;
           case 3: return INT64VALUE;
-          case 4: return FLOATVALUE;
-          case 5: return DOUBLEVALUE;
-          case 6: return STRINGVALUE;
-          case 7: return BYTESVALUE;
-          case 8: return DECIMALVALUE;
-          case 9: return DATETIMEVALUE;
+          case 4: return UINT32VALUE;
+          case 5: return UINT64VALUE;
+          case 6: return FLOATVALUE;
+          case 7: return DOUBLEVALUE;
+          case 8: return STRINGVALUE;
+          case 9: return BYTESVALUE;
+          case 10: return IPADDRESSVALUE;
+          case 11: return DATETIMEVALUE;
           case 0: return VALUE_NOT_SET;
           default: return null;
         }
@@ -1578,7 +2651,7 @@ public final class PacketModel {
 
     public static final int INT32VALUE_FIELD_NUMBER = 2;
     /**
-     * <code>int32 Int32Value = 2;</code>
+     * <code>sint32 Int32Value = 2;</code>
      */
     public int getInt32Value() {
       if (valueCase_ == 2) {
@@ -1589,7 +2662,7 @@ public final class PacketModel {
 
     public static final int INT64VALUE_FIELD_NUMBER = 3;
     /**
-     * <code>int64 Int64Value = 3;</code>
+     * <code>sint64 Int64Value = 3;</code>
      */
     public long getInt64Value() {
       if (valueCase_ == 3) {
@@ -1598,35 +2671,57 @@ public final class PacketModel {
       return 0L;
     }
 
-    public static final int FLOATVALUE_FIELD_NUMBER = 4;
+    public static final int UINT32VALUE_FIELD_NUMBER = 4;
     /**
-     * <code>float FloatValue = 4;</code>
+     * <code>uint32 UInt32Value = 4;</code>
+     */
+    public int getUInt32Value() {
+      if (valueCase_ == 4) {
+        return (java.lang.Integer) value_;
+      }
+      return 0;
+    }
+
+    public static final int UINT64VALUE_FIELD_NUMBER = 5;
+    /**
+     * <code>uint64 UInt64Value = 5;</code>
+     */
+    public long getUInt64Value() {
+      if (valueCase_ == 5) {
+        return (java.lang.Long) value_;
+      }
+      return 0L;
+    }
+
+    public static final int FLOATVALUE_FIELD_NUMBER = 6;
+    /**
+     * <code>float FloatValue = 6;</code>
      */
     public float getFloatValue() {
-      if (valueCase_ == 4) {
+      if (valueCase_ == 6) {
         return (java.lang.Float) value_;
       }
       return 0F;
     }
 
-    public static final int DOUBLEVALUE_FIELD_NUMBER = 5;
+    public static final int DOUBLEVALUE_FIELD_NUMBER = 7;
     /**
-     * <code>double DoubleValue = 5;</code>
+     * <code>double DoubleValue = 7;</code>
      */
     public double getDoubleValue() {
-      if (valueCase_ == 5) {
+      if (valueCase_ == 7) {
         return (java.lang.Double) value_;
       }
       return 0D;
     }
 
-    public static final int STRINGVALUE_FIELD_NUMBER = 6;
+    public static final int STRINGVALUE_FIELD_NUMBER = 8;
     /**
-     * <code>string StringValue = 6;</code>
+     * <code>string StringValue = 8;</code>
      */
     public java.lang.String getStringValue() {
       java.lang.Object ref = "";
-      if (valueCase_ == 6) {
+      if (valueCase_ == 8) {
         ref = value_;
       }
       if (ref instanceof java.lang.String) {
@@ -1635,26 +2730,26 @@ public final class PacketModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (valueCase_ == 6) {
+        if (valueCase_ == 8) {
           value_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>string StringValue = 6;</code>
+     * <code>string StringValue = 8;</code>
      */
     public com.google.protobuf.ByteString
         getStringValueBytes() {
       java.lang.Object ref = "";
-      if (valueCase_ == 6) {
+      if (valueCase_ == 8) {
         ref = value_;
       }
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        if (valueCase_ == 6) {
+        if (valueCase_ == 8) {
           value_ = b;
         }
         return b;
@@ -1663,24 +2758,24 @@ public final class PacketModel {
       }
     }
 
-    public static final int BYTESVALUE_FIELD_NUMBER = 7;
+    public static final int BYTESVALUE_FIELD_NUMBER = 9;
     /**
-     * <code>bytes BytesValue = 7;</code>
+     * <code>bytes BytesValue = 9;</code>
      */
     public com.google.protobuf.ByteString getBytesValue() {
-      if (valueCase_ == 7) {
+      if (valueCase_ == 9) {
         return (com.google.protobuf.ByteString) value_;
       }
       return com.google.protobuf.ByteString.EMPTY;
     }
 
-    public static final int DECIMALVALUE_FIELD_NUMBER = 8;
+    public static final int IPADDRESSVALUE_FIELD_NUMBER = 10;
     /**
-     * <code>string DecimalValue = 8;</code>
+     * <code>string IpAddressValue = 10;</code>
      */
-    public java.lang.String getDecimalValue() {
+    public java.lang.String getIpAddressValue() {
       java.lang.Object ref = "";
-      if (valueCase_ == 8) {
+      if (valueCase_ == 10) {
         ref = value_;
       }
       if (ref instanceof java.lang.String) {
@@ -1689,26 +2784,26 @@ public final class PacketModel {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (valueCase_ == 8) {
+        if (valueCase_ == 10) {
           value_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>string DecimalValue = 8;</code>
+     * <code>string IpAddressValue = 10;</code>
      */
     public com.google.protobuf.ByteString
-        getDecimalValueBytes() {
+        getIpAddressValueBytes() {
       java.lang.Object ref = "";
-      if (valueCase_ == 8) {
+      if (valueCase_ == 10) {
         ref = value_;
       }
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        if (valueCase_ == 8) {
+        if (valueCase_ == 10) {
           value_ = b;
         }
         return b;
@@ -1717,12 +2812,12 @@ public final class PacketModel {
       }
     }
 
-    public static final int DATETIMEVALUE_FIELD_NUMBER = 9;
+    public static final int DATETIMEVALUE_FIELD_NUMBER = 11;
     /**
-     * <code>int64 DateTimeValue = 9;</code>
+     * <code>int64 DateTimeValue = 11;</code>
      */
     public long getDateTimeValue() {
-      if (valueCase_ == 9) {
+      if (valueCase_ == 11) {
         return (java.lang.Long) value_;
       }
       return 0L;
@@ -1745,34 +2840,42 @@ public final class PacketModel {
             1, (boolean)((java.lang.Boolean) value_));
       }
       if (valueCase_ == 2) {
-        output.writeInt32(
+        output.writeSInt32(
             2, (int)((java.lang.Integer) value_));
       }
       if (valueCase_ == 3) {
-        output.writeInt64(
+        output.writeSInt64(
             3, (long)((java.lang.Long) value_));
       }
       if (valueCase_ == 4) {
-        output.writeFloat(
-            4, (float)((java.lang.Float) value_));
+        output.writeUInt32(
+            4, (int)((java.lang.Integer) value_));
       }
       if (valueCase_ == 5) {
-        output.writeDouble(
-            5, (double)((java.lang.Double) value_));
+        output.writeUInt64(
+            5, (long)((java.lang.Long) value_));
       }
       if (valueCase_ == 6) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, value_);
+        output.writeFloat(
+            6, (float)((java.lang.Float) value_));
       }
       if (valueCase_ == 7) {
-        output.writeBytes(
-            7, (com.google.protobuf.ByteString) value_);
+        output.writeDouble(
+            7, (double)((java.lang.Double) value_));
       }
       if (valueCase_ == 8) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 8, value_);
       }
       if (valueCase_ == 9) {
+        output.writeBytes(
+            9, (com.google.protobuf.ByteString) value_);
+      }
+      if (valueCase_ == 10) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, value_);
+      }
+      if (valueCase_ == 11) {
         output.writeInt64(
-            9, (long)((java.lang.Long) value_));
+            11, (long)((java.lang.Long) value_));
       }
     }
 
@@ -1788,39 +2891,49 @@ public final class PacketModel {
       }
       if (valueCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(
+          .computeSInt32Size(
               2, (int)((java.lang.Integer) value_));
       }
       if (valueCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(
+          .computeSInt64Size(
               3, (long)((java.lang.Long) value_));
       }
       if (valueCase_ == 4) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(
-              4, (float)((java.lang.Float) value_));
+          .computeUInt32Size(
+              4, (int)((java.lang.Integer) value_));
       }
       if (valueCase_ == 5) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(
-              5, (double)((java.lang.Double) value_));
+          .computeUInt64Size(
+              5, (long)((java.lang.Long) value_));
       }
       if (valueCase_ == 6) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, value_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(
+              6, (float)((java.lang.Float) value_));
       }
       if (valueCase_ == 7) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(
-              7, (com.google.protobuf.ByteString) value_);
+          .computeDoubleSize(
+              7, (double)((java.lang.Double) value_));
       }
       if (valueCase_ == 8) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, value_);
       }
       if (valueCase_ == 9) {
         size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(
+              9, (com.google.protobuf.ByteString) value_);
+      }
+      if (valueCase_ == 10) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, value_);
+      }
+      if (valueCase_ == 11) {
+        size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(
-              9, (long)((java.lang.Long) value_));
+              11, (long)((java.lang.Long) value_));
       }
       memoizedSize = size;
       return size;
@@ -1855,30 +2968,38 @@ public final class PacketModel {
               == other.getInt64Value());
           break;
         case 4:
+          result = result && (getUInt32Value()
+              == other.getUInt32Value());
+          break;
+        case 5:
+          result = result && (getUInt64Value()
+              == other.getUInt64Value());
+          break;
+        case 6:
           result = result && (
               java.lang.Float.floatToIntBits(getFloatValue())
               == java.lang.Float.floatToIntBits(
                   other.getFloatValue()));
           break;
-        case 5:
+        case 7:
           result = result && (
               java.lang.Double.doubleToLongBits(getDoubleValue())
               == java.lang.Double.doubleToLongBits(
                   other.getDoubleValue()));
           break;
-        case 6:
+        case 8:
           result = result && getStringValue()
               .equals(other.getStringValue());
           break;
-        case 7:
+        case 9:
           result = result && getBytesValue()
               .equals(other.getBytesValue());
           break;
-        case 8:
-          result = result && getDecimalValue()
-              .equals(other.getDecimalValue());
+        case 10:
+          result = result && getIpAddressValue()
+              .equals(other.getIpAddressValue());
           break;
-        case 9:
+        case 11:
           result = result && (getDateTimeValue()
               == other.getDateTimeValue());
           break;
@@ -1911,28 +3032,37 @@ public final class PacketModel {
               getInt64Value());
           break;
         case 4:
+          hash = (37 * hash) + UINT32VALUE_FIELD_NUMBER;
+          hash = (53 * hash) + getUInt32Value();
+          break;
+        case 5:
+          hash = (37 * hash) + UINT64VALUE_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getUInt64Value());
+          break;
+        case 6:
           hash = (37 * hash) + FLOATVALUE_FIELD_NUMBER;
           hash = (53 * hash) + java.lang.Float.floatToIntBits(
               getFloatValue());
           break;
-        case 5:
+        case 7:
           hash = (37 * hash) + DOUBLEVALUE_FIELD_NUMBER;
           hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
               java.lang.Double.doubleToLongBits(getDoubleValue()));
           break;
-        case 6:
+        case 8:
           hash = (37 * hash) + STRINGVALUE_FIELD_NUMBER;
           hash = (53 * hash) + getStringValue().hashCode();
           break;
-        case 7:
+        case 9:
           hash = (37 * hash) + BYTESVALUE_FIELD_NUMBER;
           hash = (53 * hash) + getBytesValue().hashCode();
           break;
-        case 8:
-          hash = (37 * hash) + DECIMALVALUE_FIELD_NUMBER;
-          hash = (53 * hash) + getDecimalValue().hashCode();
+        case 10:
+          hash = (37 * hash) + IPADDRESSVALUE_FIELD_NUMBER;
+          hash = (53 * hash) + getIpAddressValue().hashCode();
           break;
-        case 9:
+        case 11:
           hash = (37 * hash) + DATETIMEVALUE_FIELD_NUMBER;
           hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
               getDateTimeValue());
@@ -2120,6 +3250,12 @@ public final class PacketModel {
         if (valueCase_ == 9) {
           result.value_ = value_;
         }
+        if (valueCase_ == 10) {
+          result.value_ = value_;
+        }
+        if (valueCase_ == 11) {
+          result.value_ = value_;
+        }
         result.valueCase_ = valueCase_;
         onBuilt();
         return result;
@@ -2175,6 +3311,14 @@ public final class PacketModel {
             setInt64Value(other.getInt64Value());
             break;
           }
+          case UINT32VALUE: {
+            setUInt32Value(other.getUInt32Value());
+            break;
+          }
+          case UINT64VALUE: {
+            setUInt64Value(other.getUInt64Value());
+            break;
+          }
           case FLOATVALUE: {
             setFloatValue(other.getFloatValue());
             break;
@@ -2184,7 +3328,7 @@ public final class PacketModel {
             break;
           }
           case STRINGVALUE: {
-            valueCase_ = 6;
+            valueCase_ = 8;
             value_ = other.value_;
             onChanged();
             break;
@@ -2193,8 +3337,8 @@ public final class PacketModel {
             setBytesValue(other.getBytesValue());
             break;
           }
-          case DECIMALVALUE: {
-            valueCase_ = 8;
+          case IPADDRESSVALUE: {
+            valueCase_ = 10;
             value_ = other.value_;
             onChanged();
             break;
@@ -2279,7 +3423,7 @@ public final class PacketModel {
       }
 
       /**
-       * <code>int32 Int32Value = 2;</code>
+       * <code>sint32 Int32Value = 2;</code>
        */
       public int getInt32Value() {
         if (valueCase_ == 2) {
@@ -2288,7 +3432,7 @@ public final class PacketModel {
         return 0;
       }
       /**
-       * <code>int32 Int32Value = 2;</code>
+       * <code>sint32 Int32Value = 2;</code>
        */
       public Builder setInt32Value(int value) {
         valueCase_ = 2;
@@ -2297,7 +3441,7 @@ public final class PacketModel {
         return this;
       }
       /**
-       * <code>int32 Int32Value = 2;</code>
+       * <code>sint32 Int32Value = 2;</code>
        */
       public Builder clearInt32Value() {
         if (valueCase_ == 2) {
@@ -2309,7 +3453,7 @@ public final class PacketModel {
       }
 
       /**
-       * <code>int64 Int64Value = 3;</code>
+       * <code>sint64 Int64Value = 3;</code>
        */
       public long getInt64Value() {
         if (valueCase_ == 3) {
@@ -2318,7 +3462,7 @@ public final class PacketModel {
         return 0L;
       }
       /**
-       * <code>int64 Int64Value = 3;</code>
+       * <code>sint64 Int64Value = 3;</code>
        */
       public Builder setInt64Value(long value) {
         valueCase_ = 3;
@@ -2327,7 +3471,7 @@ public final class PacketModel {
         return this;
       }
       /**
-       * <code>int64 Int64Value = 3;</code>
+       * <code>sint64 Int64Value = 3;</code>
        */
       public Builder clearInt64Value() {
         if (valueCase_ == 3) {
@@ -2339,27 +3483,27 @@ public final class PacketModel {
       }
 
       /**
-       * <code>float FloatValue = 4;</code>
+       * <code>uint32 UInt32Value = 4;</code>
        */
-      public float getFloatValue() {
+      public int getUInt32Value() {
         if (valueCase_ == 4) {
-          return (java.lang.Float) value_;
+          return (java.lang.Integer) value_;
         }
-        return 0F;
+        return 0;
       }
       /**
-       * <code>float FloatValue = 4;</code>
+       * <code>uint32 UInt32Value = 4;</code>
        */
-      public Builder setFloatValue(float value) {
+      public Builder setUInt32Value(int value) {
         valueCase_ = 4;
         value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>float FloatValue = 4;</code>
+       * <code>uint32 UInt32Value = 4;</code>
        */
-      public Builder clearFloatValue() {
+      public Builder clearUInt32Value() {
         if (valueCase_ == 4) {
           valueCase_ = 0;
           value_ = null;
@@ -2369,27 +3513,27 @@ public final class PacketModel {
       }
 
       /**
-       * <code>double DoubleValue = 5;</code>
+       * <code>uint64 UInt64Value = 5;</code>
        */
-      public double getDoubleValue() {
+      public long getUInt64Value() {
         if (valueCase_ == 5) {
-          return (java.lang.Double) value_;
+          return (java.lang.Long) value_;
         }
-        return 0D;
+        return 0L;
       }
       /**
-       * <code>double DoubleValue = 5;</code>
+       * <code>uint64 UInt64Value = 5;</code>
        */
-      public Builder setDoubleValue(double value) {
+      public Builder setUInt64Value(long value) {
         valueCase_ = 5;
         value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>double DoubleValue = 5;</code>
+       * <code>uint64 UInt64Value = 5;</code>
        */
-      public Builder clearDoubleValue() {
+      public Builder clearUInt64Value() {
         if (valueCase_ == 5) {
           valueCase_ = 0;
           value_ = null;
@@ -2399,110 +3543,57 @@ public final class PacketModel {
       }
 
       /**
-       * <code>string StringValue = 6;</code>
+       * <code>float FloatValue = 6;</code>
        */
-      public java.lang.String getStringValue() {
-        java.lang.Object ref = "";
+      public float getFloatValue() {
         if (valueCase_ == 6) {
-          ref = value_;
+          return (java.lang.Float) value_;
         }
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (valueCase_ == 6) {
-            value_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+        return 0F;
       }
       /**
-       * <code>string StringValue = 6;</code>
+       * <code>float FloatValue = 6;</code>
        */
-      public com.google.protobuf.ByteString
-          getStringValueBytes() {
-        java.lang.Object ref = "";
-        if (valueCase_ == 6) {
-          ref = value_;
-        }
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (valueCase_ == 6) {
-            value_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string StringValue = 6;</code>
-       */
-      public Builder setStringValue(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  valueCase_ = 6;
-        value_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string StringValue = 6;</code>
-       */
-      public Builder clearStringValue() {
-        if (valueCase_ == 6) {
-          valueCase_ = 0;
-          value_ = null;
-          onChanged();
-        }
-        return this;
-      }
-      /**
-       * <code>string StringValue = 6;</code>
-       */
-      public Builder setStringValueBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+      public Builder setFloatValue(float value) {
         valueCase_ = 6;
         value_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>float FloatValue = 6;</code>
+       */
+      public Builder clearFloatValue() {
+        if (valueCase_ == 6) {
+          valueCase_ = 0;
+          value_ = null;
+          onChanged();
+        }
+        return this;
+      }
 
       /**
-       * <code>bytes BytesValue = 7;</code>
+       * <code>double DoubleValue = 7;</code>
        */
-      public com.google.protobuf.ByteString getBytesValue() {
+      public double getDoubleValue() {
         if (valueCase_ == 7) {
-          return (com.google.protobuf.ByteString) value_;
+          return (java.lang.Double) value_;
         }
-        return com.google.protobuf.ByteString.EMPTY;
+        return 0D;
       }
       /**
-       * <code>bytes BytesValue = 7;</code>
+       * <code>double DoubleValue = 7;</code>
        */
-      public Builder setBytesValue(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  valueCase_ = 7;
+      public Builder setDoubleValue(double value) {
+        valueCase_ = 7;
         value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>bytes BytesValue = 7;</code>
+       * <code>double DoubleValue = 7;</code>
        */
-      public Builder clearBytesValue() {
+      public Builder clearDoubleValue() {
         if (valueCase_ == 7) {
           valueCase_ = 0;
           value_ = null;
@@ -2512,9 +3603,9 @@ public final class PacketModel {
       }
 
       /**
-       * <code>string DecimalValue = 8;</code>
+       * <code>string StringValue = 8;</code>
        */
-      public java.lang.String getDecimalValue() {
+      public java.lang.String getStringValue() {
         java.lang.Object ref = "";
         if (valueCase_ == 8) {
           ref = value_;
@@ -2532,10 +3623,10 @@ public final class PacketModel {
         }
       }
       /**
-       * <code>string DecimalValue = 8;</code>
+       * <code>string StringValue = 8;</code>
        */
       public com.google.protobuf.ByteString
-          getDecimalValueBytes() {
+          getStringValueBytes() {
         java.lang.Object ref = "";
         if (valueCase_ == 8) {
           ref = value_;
@@ -2553,9 +3644,9 @@ public final class PacketModel {
         }
       }
       /**
-       * <code>string DecimalValue = 8;</code>
+       * <code>string StringValue = 8;</code>
        */
-      public Builder setDecimalValue(
+      public Builder setStringValue(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
@@ -2566,9 +3657,9 @@ public final class PacketModel {
         return this;
       }
       /**
-       * <code>string DecimalValue = 8;</code>
+       * <code>string StringValue = 8;</code>
        */
-      public Builder clearDecimalValue() {
+      public Builder clearStringValue() {
         if (valueCase_ == 8) {
           valueCase_ = 0;
           value_ = null;
@@ -2577,9 +3668,9 @@ public final class PacketModel {
         return this;
       }
       /**
-       * <code>string DecimalValue = 8;</code>
+       * <code>string StringValue = 8;</code>
        */
-      public Builder setDecimalValueBytes(
+      public Builder setStringValueBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
@@ -2592,28 +3683,141 @@ public final class PacketModel {
       }
 
       /**
-       * <code>int64 DateTimeValue = 9;</code>
+       * <code>bytes BytesValue = 9;</code>
        */
-      public long getDateTimeValue() {
+      public com.google.protobuf.ByteString getBytesValue() {
         if (valueCase_ == 9) {
-          return (java.lang.Long) value_;
+          return (com.google.protobuf.ByteString) value_;
         }
-        return 0L;
+        return com.google.protobuf.ByteString.EMPTY;
       }
       /**
-       * <code>int64 DateTimeValue = 9;</code>
+       * <code>bytes BytesValue = 9;</code>
        */
-      public Builder setDateTimeValue(long value) {
-        valueCase_ = 9;
+      public Builder setBytesValue(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  valueCase_ = 9;
         value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int64 DateTimeValue = 9;</code>
+       * <code>bytes BytesValue = 9;</code>
+       */
+      public Builder clearBytesValue() {
+        if (valueCase_ == 9) {
+          valueCase_ = 0;
+          value_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>string IpAddressValue = 10;</code>
+       */
+      public java.lang.String getIpAddressValue() {
+        java.lang.Object ref = "";
+        if (valueCase_ == 10) {
+          ref = value_;
+        }
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (valueCase_ == 10) {
+            value_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string IpAddressValue = 10;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIpAddressValueBytes() {
+        java.lang.Object ref = "";
+        if (valueCase_ == 10) {
+          ref = value_;
+        }
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (valueCase_ == 10) {
+            value_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string IpAddressValue = 10;</code>
+       */
+      public Builder setIpAddressValue(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  valueCase_ = 10;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string IpAddressValue = 10;</code>
+       */
+      public Builder clearIpAddressValue() {
+        if (valueCase_ == 10) {
+          valueCase_ = 0;
+          value_ = null;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>string IpAddressValue = 10;</code>
+       */
+      public Builder setIpAddressValueBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        valueCase_ = 10;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>int64 DateTimeValue = 11;</code>
+       */
+      public long getDateTimeValue() {
+        if (valueCase_ == 11) {
+          return (java.lang.Long) value_;
+        }
+        return 0L;
+      }
+      /**
+       * <code>int64 DateTimeValue = 11;</code>
+       */
+      public Builder setDateTimeValue(long value) {
+        valueCase_ = 11;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 DateTimeValue = 11;</code>
        */
       public Builder clearDateTimeValue() {
-        if (valueCase_ == 9) {
+        if (valueCase_ == 11) {
           valueCase_ = 0;
           value_ = null;
           onChanged();
@@ -6386,6 +7590,1069 @@ public final class PacketModel {
 
   }
 
+  public interface FieldDefinitionOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ndx.model.FieldDefinition)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     *&#47; &lt;summary&gt;
+     * / Full name of this field.
+     * / &lt;/summary&gt;
+     * </pre>
+     *
+     * <code>string Name = 1;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <pre>
+     *&#47; &lt;summary&gt;
+     * / Full name of this field.
+     * / &lt;/summary&gt;
+     * </pre>
+     *
+     * <code>string Name = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <pre>
+     *&#47; &lt;summary&gt;
+     * /	Field type, one of FT_  value.
+     * /	&lt;/summary&gt;
+     * </pre>
+     *
+     * <code>.ndx.model.FieldType Type = 2;</code>
+     */
+    int getTypeValue();
+    /**
+     * <pre>
+     *&#47; &lt;summary&gt;
+     * /	Field type, one of FT_  value.
+     * /	&lt;/summary&gt;
+     * </pre>
+     *
+     * <code>.ndx.model.FieldType Type = 2;</code>
+     */
+    org.ndx.model.PacketModel.FieldType getType();
+
+    /**
+     * <pre>
+     *&#47;	&lt;summary&gt;
+     * /	One of BASE_, or field bit-width if FT_BOOLEAN 
+     * /	&lt;/summary&gt;
+     * </pre>
+     *
+     * <code>.ndx.model.FieldDisplay Display = 3;</code>
+     */
+    int getDisplayValue();
+    /**
+     * <pre>
+     *&#47;	&lt;summary&gt;
+     * /	One of BASE_, or field bit-width if FT_BOOLEAN 
+     * /	&lt;/summary&gt;
+     * </pre>
+     *
+     * <code>.ndx.model.FieldDisplay Display = 3;</code>
+     */
+    org.ndx.model.PacketModel.FieldDisplay getDisplay();
+
+    /**
+     * <pre>
+     *&#47;	&lt;summary&gt;
+     * / Brief description of field.
+     * /	&lt;/summary&gt;
+     * </pre>
+     *
+     * <code>string Info = 4;</code>
+     */
+    java.lang.String getInfo();
+    /**
+     * <pre>
+     *&#47;	&lt;summary&gt;
+     * / Brief description of field.
+     * /	&lt;/summary&gt;
+     * </pre>
+     *
+     * <code>string Info = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getInfoBytes();
+  }
+  /**
+   * <pre>
+   *&#47; &lt;summary&gt; 
+   * /	Information describing a header field.
+   * /	&lt;/summary&gt;
+   * </pre>
+   *
+   * Protobuf type {@code ndx.model.FieldDefinition}
+   */
+  public  static final class FieldDefinition extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ndx.model.FieldDefinition)
+      FieldDefinitionOrBuilder {
+    // Use FieldDefinition.newBuilder() to construct.
+    private FieldDefinition(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FieldDefinition() {
+      name_ = "";
+      type_ = 0;
+      display_ = 0;
+      info_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private FieldDefinition(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+            case 16: {
+              int rawValue = input.readEnum();
+
+              type_ = rawValue;
+              break;
+            }
+            case 24: {
+              int rawValue = input.readEnum();
+
+              display_ = rawValue;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              info_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.ndx.model.PacketModel.internal_static_ndx_model_FieldDefinition_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.ndx.model.PacketModel.internal_static_ndx_model_FieldDefinition_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.ndx.model.PacketModel.FieldDefinition.class, org.ndx.model.PacketModel.FieldDefinition.Builder.class);
+    }
+
+    public static final int NAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object name_;
+    /**
+     * <pre>
+     *&#47; &lt;summary&gt;
+     * / Full name of this field.
+     * / &lt;/summary&gt;
+     * </pre>
+     *
+     * <code>string Name = 1;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *&#47; &lt;summary&gt;
+     * / Full name of this field.
+     * / &lt;/summary&gt;
+     * </pre>
+     *
+     * <code>string Name = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 2;
+    private int type_;
+    /**
+     * <pre>
+     *&#47; &lt;summary&gt;
+     * /	Field type, one of FT_  value.
+     * /	&lt;/summary&gt;
+     * </pre>
+     *
+     * <code>.ndx.model.FieldType Type = 2;</code>
+     */
+    public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <pre>
+     *&#47; &lt;summary&gt;
+     * /	Field type, one of FT_  value.
+     * /	&lt;/summary&gt;
+     * </pre>
+     *
+     * <code>.ndx.model.FieldType Type = 2;</code>
+     */
+    public org.ndx.model.PacketModel.FieldType getType() {
+      org.ndx.model.PacketModel.FieldType result = org.ndx.model.PacketModel.FieldType.valueOf(type_);
+      return result == null ? org.ndx.model.PacketModel.FieldType.UNRECOGNIZED : result;
+    }
+
+    public static final int DISPLAY_FIELD_NUMBER = 3;
+    private int display_;
+    /**
+     * <pre>
+     *&#47;	&lt;summary&gt;
+     * /	One of BASE_, or field bit-width if FT_BOOLEAN 
+     * /	&lt;/summary&gt;
+     * </pre>
+     *
+     * <code>.ndx.model.FieldDisplay Display = 3;</code>
+     */
+    public int getDisplayValue() {
+      return display_;
+    }
+    /**
+     * <pre>
+     *&#47;	&lt;summary&gt;
+     * /	One of BASE_, or field bit-width if FT_BOOLEAN 
+     * /	&lt;/summary&gt;
+     * </pre>
+     *
+     * <code>.ndx.model.FieldDisplay Display = 3;</code>
+     */
+    public org.ndx.model.PacketModel.FieldDisplay getDisplay() {
+      org.ndx.model.PacketModel.FieldDisplay result = org.ndx.model.PacketModel.FieldDisplay.valueOf(display_);
+      return result == null ? org.ndx.model.PacketModel.FieldDisplay.UNRECOGNIZED : result;
+    }
+
+    public static final int INFO_FIELD_NUMBER = 4;
+    private volatile java.lang.Object info_;
+    /**
+     * <pre>
+     *&#47;	&lt;summary&gt;
+     * / Brief description of field.
+     * /	&lt;/summary&gt;
+     * </pre>
+     *
+     * <code>string Info = 4;</code>
+     */
+    public java.lang.String getInfo() {
+      java.lang.Object ref = info_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        info_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *&#47;	&lt;summary&gt;
+     * / Brief description of field.
+     * /	&lt;/summary&gt;
+     * </pre>
+     *
+     * <code>string Info = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getInfoBytes() {
+      java.lang.Object ref = info_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        info_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+      }
+      if (type_ != org.ndx.model.PacketModel.FieldType.FT_NONE.getNumber()) {
+        output.writeEnum(2, type_);
+      }
+      if (display_ != org.ndx.model.PacketModel.FieldDisplay.BASE_NONE.getNumber()) {
+        output.writeEnum(3, display_);
+      }
+      if (!getInfoBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, info_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      }
+      if (type_ != org.ndx.model.PacketModel.FieldType.FT_NONE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, type_);
+      }
+      if (display_ != org.ndx.model.PacketModel.FieldDisplay.BASE_NONE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, display_);
+      }
+      if (!getInfoBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, info_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.ndx.model.PacketModel.FieldDefinition)) {
+        return super.equals(obj);
+      }
+      org.ndx.model.PacketModel.FieldDefinition other = (org.ndx.model.PacketModel.FieldDefinition) obj;
+
+      boolean result = true;
+      result = result && getName()
+          .equals(other.getName());
+      result = result && type_ == other.type_;
+      result = result && display_ == other.display_;
+      result = result && getInfo()
+          .equals(other.getInfo());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + type_;
+      hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
+      hash = (53 * hash) + display_;
+      hash = (37 * hash) + INFO_FIELD_NUMBER;
+      hash = (53 * hash) + getInfo().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.ndx.model.PacketModel.FieldDefinition parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.ndx.model.PacketModel.FieldDefinition parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.ndx.model.PacketModel.FieldDefinition parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.ndx.model.PacketModel.FieldDefinition parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.ndx.model.PacketModel.FieldDefinition parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.ndx.model.PacketModel.FieldDefinition parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.ndx.model.PacketModel.FieldDefinition parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.ndx.model.PacketModel.FieldDefinition parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.ndx.model.PacketModel.FieldDefinition parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.ndx.model.PacketModel.FieldDefinition parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.ndx.model.PacketModel.FieldDefinition parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.ndx.model.PacketModel.FieldDefinition parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.ndx.model.PacketModel.FieldDefinition prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     *&#47; &lt;summary&gt; 
+     * /	Information describing a header field.
+     * /	&lt;/summary&gt;
+     * </pre>
+     *
+     * Protobuf type {@code ndx.model.FieldDefinition}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ndx.model.FieldDefinition)
+        org.ndx.model.PacketModel.FieldDefinitionOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.ndx.model.PacketModel.internal_static_ndx_model_FieldDefinition_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.ndx.model.PacketModel.internal_static_ndx_model_FieldDefinition_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.ndx.model.PacketModel.FieldDefinition.class, org.ndx.model.PacketModel.FieldDefinition.Builder.class);
+      }
+
+      // Construct using org.ndx.model.PacketModel.FieldDefinition.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        name_ = "";
+
+        type_ = 0;
+
+        display_ = 0;
+
+        info_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.ndx.model.PacketModel.internal_static_ndx_model_FieldDefinition_descriptor;
+      }
+
+      public org.ndx.model.PacketModel.FieldDefinition getDefaultInstanceForType() {
+        return org.ndx.model.PacketModel.FieldDefinition.getDefaultInstance();
+      }
+
+      public org.ndx.model.PacketModel.FieldDefinition build() {
+        org.ndx.model.PacketModel.FieldDefinition result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.ndx.model.PacketModel.FieldDefinition buildPartial() {
+        org.ndx.model.PacketModel.FieldDefinition result = new org.ndx.model.PacketModel.FieldDefinition(this);
+        result.name_ = name_;
+        result.type_ = type_;
+        result.display_ = display_;
+        result.info_ = info_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.ndx.model.PacketModel.FieldDefinition) {
+          return mergeFrom((org.ndx.model.PacketModel.FieldDefinition)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.ndx.model.PacketModel.FieldDefinition other) {
+        if (other == org.ndx.model.PacketModel.FieldDefinition.getDefaultInstance()) return this;
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        if (other.type_ != 0) {
+          setTypeValue(other.getTypeValue());
+        }
+        if (other.display_ != 0) {
+          setDisplayValue(other.getDisplayValue());
+        }
+        if (!other.getInfo().isEmpty()) {
+          info_ = other.info_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.ndx.model.PacketModel.FieldDefinition parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.ndx.model.PacketModel.FieldDefinition) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <pre>
+       *&#47; &lt;summary&gt;
+       * / Full name of this field.
+       * / &lt;/summary&gt;
+       * </pre>
+       *
+       * <code>string Name = 1;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *&#47; &lt;summary&gt;
+       * / Full name of this field.
+       * / &lt;/summary&gt;
+       * </pre>
+       *
+       * <code>string Name = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *&#47; &lt;summary&gt;
+       * / Full name of this field.
+       * / &lt;/summary&gt;
+       * </pre>
+       *
+       * <code>string Name = 1;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *&#47; &lt;summary&gt;
+       * / Full name of this field.
+       * / &lt;/summary&gt;
+       * </pre>
+       *
+       * <code>string Name = 1;</code>
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *&#47; &lt;summary&gt;
+       * / Full name of this field.
+       * / &lt;/summary&gt;
+       * </pre>
+       *
+       * <code>string Name = 1;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int type_ = 0;
+      /**
+       * <pre>
+       *&#47; &lt;summary&gt;
+       * /	Field type, one of FT_  value.
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>.ndx.model.FieldType Type = 2;</code>
+       */
+      public int getTypeValue() {
+        return type_;
+      }
+      /**
+       * <pre>
+       *&#47; &lt;summary&gt;
+       * /	Field type, one of FT_  value.
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>.ndx.model.FieldType Type = 2;</code>
+       */
+      public Builder setTypeValue(int value) {
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *&#47; &lt;summary&gt;
+       * /	Field type, one of FT_  value.
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>.ndx.model.FieldType Type = 2;</code>
+       */
+      public org.ndx.model.PacketModel.FieldType getType() {
+        org.ndx.model.PacketModel.FieldType result = org.ndx.model.PacketModel.FieldType.valueOf(type_);
+        return result == null ? org.ndx.model.PacketModel.FieldType.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       *&#47; &lt;summary&gt;
+       * /	Field type, one of FT_  value.
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>.ndx.model.FieldType Type = 2;</code>
+       */
+      public Builder setType(org.ndx.model.PacketModel.FieldType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *&#47; &lt;summary&gt;
+       * /	Field type, one of FT_  value.
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>.ndx.model.FieldType Type = 2;</code>
+       */
+      public Builder clearType() {
+        
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int display_ = 0;
+      /**
+       * <pre>
+       *&#47;	&lt;summary&gt;
+       * /	One of BASE_, or field bit-width if FT_BOOLEAN 
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>.ndx.model.FieldDisplay Display = 3;</code>
+       */
+      public int getDisplayValue() {
+        return display_;
+      }
+      /**
+       * <pre>
+       *&#47;	&lt;summary&gt;
+       * /	One of BASE_, or field bit-width if FT_BOOLEAN 
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>.ndx.model.FieldDisplay Display = 3;</code>
+       */
+      public Builder setDisplayValue(int value) {
+        display_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *&#47;	&lt;summary&gt;
+       * /	One of BASE_, or field bit-width if FT_BOOLEAN 
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>.ndx.model.FieldDisplay Display = 3;</code>
+       */
+      public org.ndx.model.PacketModel.FieldDisplay getDisplay() {
+        org.ndx.model.PacketModel.FieldDisplay result = org.ndx.model.PacketModel.FieldDisplay.valueOf(display_);
+        return result == null ? org.ndx.model.PacketModel.FieldDisplay.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       *&#47;	&lt;summary&gt;
+       * /	One of BASE_, or field bit-width if FT_BOOLEAN 
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>.ndx.model.FieldDisplay Display = 3;</code>
+       */
+      public Builder setDisplay(org.ndx.model.PacketModel.FieldDisplay value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        display_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *&#47;	&lt;summary&gt;
+       * /	One of BASE_, or field bit-width if FT_BOOLEAN 
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>.ndx.model.FieldDisplay Display = 3;</code>
+       */
+      public Builder clearDisplay() {
+        
+        display_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object info_ = "";
+      /**
+       * <pre>
+       *&#47;	&lt;summary&gt;
+       * / Brief description of field.
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>string Info = 4;</code>
+       */
+      public java.lang.String getInfo() {
+        java.lang.Object ref = info_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          info_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *&#47;	&lt;summary&gt;
+       * / Brief description of field.
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>string Info = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getInfoBytes() {
+        java.lang.Object ref = info_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          info_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *&#47;	&lt;summary&gt;
+       * / Brief description of field.
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>string Info = 4;</code>
+       */
+      public Builder setInfo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        info_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *&#47;	&lt;summary&gt;
+       * / Brief description of field.
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>string Info = 4;</code>
+       */
+      public Builder clearInfo() {
+        
+        info_ = getDefaultInstance().getInfo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *&#47;	&lt;summary&gt;
+       * / Brief description of field.
+       * /	&lt;/summary&gt;
+       * </pre>
+       *
+       * <code>string Info = 4;</code>
+       */
+      public Builder setInfoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        info_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ndx.model.FieldDefinition)
+    }
+
+    // @@protoc_insertion_point(class_scope:ndx.model.FieldDefinition)
+    private static final org.ndx.model.PacketModel.FieldDefinition DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.ndx.model.PacketModel.FieldDefinition();
+    }
+
+    public static org.ndx.model.PacketModel.FieldDefinition getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FieldDefinition>
+        PARSER = new com.google.protobuf.AbstractParser<FieldDefinition>() {
+      public FieldDefinition parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new FieldDefinition(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<FieldDefinition> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FieldDefinition> getParserForType() {
+      return PARSER;
+    }
+
+    public org.ndx.model.PacketModel.FieldDefinition getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ndx_model_Frame_descriptor;
   private static final 
@@ -6431,6 +8698,11 @@ public final class PacketModel {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ndx_model_Event_ItemsEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ndx_model_FieldDefinition_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ndx_model_FieldDefinition_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -6446,30 +8718,61 @@ public final class PacketModel {
       "\005\022\023\n\013FrameLength\030\003 \001(\005\022\023\n\013FrameOffset\030\004 " +
       "\001(\003\022\021\n\tTimeStamp\030\005 \001(\003\022\021\n\tProcessId\030\006 \001(" +
       "\003\022\023\n\013ProcessName\030\007 \001(\t\022\014\n\004Data\030\n \001(\014\022\026\n\016" +
-      "ConversationId\030\013 \001(\005\"\336\001\n\007Variant\022\023\n\tBool" +
-      "Value\030\001 \001(\010H\000\022\024\n\nInt32Value\030\002 \001(\005H\000\022\024\n\nI" +
-      "nt64Value\030\003 \001(\003H\000\022\024\n\nFloatValue\030\004 \001(\002H\000\022" +
-      "\025\n\013DoubleValue\030\005 \001(\001H\000\022\025\n\013StringValue\030\006 ",
-      "\001(\tH\000\022\024\n\nBytesValue\030\007 \001(\014H\000\022\026\n\014DecimalVa" +
-      "lue\030\010 \001(\tH\000\022\027\n\rDateTimeValue\030\t \001(\003H\000B\007\n\005" +
-      "Value\"\306\001\n\014DecodedFrame\022\023\n\013FrameNumber\030\001 " +
-      "\001(\003\022\026\n\016FrameProtocols\030\002 \001(\t\022\021\n\tTimestamp" +
-      "\030\003 \001(\003\0223\n\006Fields\030\n \003(\0132#.ndx.model.Decod" +
-      "edFrame.FieldsEntry\032A\n\013FieldsEntry\022\013\n\003ke" +
-      "y\030\001 \001(\t\022!\n\005value\030\002 \001(\0132\022.ndx.model.Varia" +
-      "nt:\0028\001\"\232\001\n\tParameter\022\014\n\004Name\030\001 \001(\t\0228\n\nPr" +
-      "operties\030\002 \003(\0132$.ndx.model.Parameter.Pro" +
-      "pertiesEntry\032E\n\017PropertiesEntry\022\013\n\003key\030\001",
-      " \001(\t\022!\n\005value\030\002 \001(\0132\022.ndx.model.Variant:" +
-      "\0028\001\"\307\002\n\005Event\022\014\n\004Name\030\001 \001(\t\022\021\n\tTimestamp" +
-      "\030\002 \001(\003\022*\n\005Items\030\003 \003(\0132\033.ndx.model.Event." +
-      "ItemsEntry\032\245\001\n\nEventValue\022*\n\014VariantValu" +
-      "e\030\001 \001(\0132\022.ndx.model.VariantH\000\022.\n\013PacketV" +
-      "alue\030\002 \001(\0132\027.ndx.model.DecodedFrameH\000\022.\n" +
-      "\016ParameterValue\030\004 \001(\0132\024.ndx.model.Parame" +
-      "terH\000B\013\n\tValueType\032I\n\nItemsEntry\022\013\n\003key\030" +
-      "\001 \001(\t\022*\n\005value\030\002 \001(\0132\033.ndx.model.Event.E" +
-      "ventValue:\0028\001B\017\n\rorg.ndx.modelb\006proto3"
+      "ConversationId\030\013 \001(\005\"\216\002\n\007Variant\022\023\n\tBool" +
+      "Value\030\001 \001(\010H\000\022\024\n\nInt32Value\030\002 \001(\021H\000\022\024\n\nI" +
+      "nt64Value\030\003 \001(\022H\000\022\025\n\013UInt32Value\030\004 \001(\rH\000" +
+      "\022\025\n\013UInt64Value\030\005 \001(\004H\000\022\024\n\nFloatValue\030\006 ",
+      "\001(\002H\000\022\025\n\013DoubleValue\030\007 \001(\001H\000\022\025\n\013StringVa" +
+      "lue\030\010 \001(\tH\000\022\024\n\nBytesValue\030\t \001(\014H\000\022\030\n\016IpA" +
+      "ddressValue\030\n \001(\tH\000\022\027\n\rDateTimeValue\030\013 \001" +
+      "(\003H\000B\007\n\005Value\"\306\001\n\014DecodedFrame\022\023\n\013FrameN" +
+      "umber\030\001 \001(\003\022\026\n\016FrameProtocols\030\002 \001(\t\022\021\n\tT" +
+      "imestamp\030\003 \001(\003\0223\n\006Fields\030\n \003(\0132#.ndx.mod" +
+      "el.DecodedFrame.FieldsEntry\032A\n\013FieldsEnt" +
+      "ry\022\013\n\003key\030\001 \001(\t\022!\n\005value\030\002 \001(\0132\022.ndx.mod" +
+      "el.Variant:\0028\001\"\232\001\n\tParameter\022\014\n\004Name\030\001 \001" +
+      "(\t\0228\n\nProperties\030\002 \003(\0132$.ndx.model.Param",
+      "eter.PropertiesEntry\032E\n\017PropertiesEntry\022" +
+      "\013\n\003key\030\001 \001(\t\022!\n\005value\030\002 \001(\0132\022.ndx.model." +
+      "Variant:\0028\001\"\307\002\n\005Event\022\014\n\004Name\030\001 \001(\t\022\021\n\tT" +
+      "imestamp\030\002 \001(\003\022*\n\005Items\030\003 \003(\0132\033.ndx.mode" +
+      "l.Event.ItemsEntry\032\245\001\n\nEventValue\022*\n\014Var" +
+      "iantValue\030\001 \001(\0132\022.ndx.model.VariantH\000\022.\n" +
+      "\013PacketValue\030\002 \001(\0132\027.ndx.model.DecodedFr" +
+      "ameH\000\022.\n\016ParameterValue\030\004 \001(\0132\024.ndx.mode" +
+      "l.ParameterH\000B\013\n\tValueType\032I\n\nItemsEntry" +
+      "\022\013\n\003key\030\001 \001(\t\022*\n\005value\030\002 \001(\0132\033.ndx.model",
+      ".Event.EventValue:\0028\001\"{\n\017FieldDefinition" +
+      "\022\014\n\004Name\030\001 \001(\t\022\"\n\004Type\030\002 \001(\0162\024.ndx.model" +
+      ".FieldType\022(\n\007Display\030\003 \001(\0162\027.ndx.model." +
+      "FieldDisplay\022\014\n\004Info\030\004 \001(\t*\350\005\n\tFieldType" +
+      "\022\013\n\007FT_NONE\020\000\022\017\n\013FT_PROTOCOL\020\001\022\016\n\nFT_BOO" +
+      "LEAN\020\002\022\013\n\007FT_CHAR\020\003\022\014\n\010FT_UINT8\020\004\022\r\n\tFT_" +
+      "UINT16\020\005\022\r\n\tFT_UINT24\020\006\022\r\n\tFT_UINT32\020\007\022\r" +
+      "\n\tFT_UINT40\020\010\022\r\n\tFT_UINT48\020\t\022\r\n\tFT_UINT5" +
+      "6\020\n\022\r\n\tFT_UINT64\020\013\022\013\n\007FT_INT8\020\014\022\014\n\010FT_IN" +
+      "T16\020\r\022\014\n\010FT_INT24\020\016\022\014\n\010FT_INT32\020\017\022\014\n\010FT_",
+      "INT40\020\020\022\014\n\010FT_INT48\020\021\022\014\n\010FT_INT56\020\022\022\014\n\010F" +
+      "T_INT64\020\023\022\030\n\024FT_IEEE_11073_SFLOAT\020\024\022\027\n\023F" +
+      "T_IEEE_11073_FLOAT\020\025\022\014\n\010FT_FLOAT\020\026\022\r\n\tFT" +
+      "_DOUBLE\020\027\022\024\n\020FT_ABSOLUTE_TIME\020\030\022\024\n\020FT_RE" +
+      "LATIVE_TIME\020\031\022\r\n\tFT_STRING\020\032\022\016\n\nFT_STRIN" +
+      "GZ\020\033\022\022\n\016FT_UINT_STRING\020\034\022\014\n\010FT_ETHER\020\035\022\014" +
+      "\n\010FT_BYTES\020\036\022\021\n\rFT_UINT_BYTES\020\037\022\013\n\007FT_IP" +
+      "v4\020 \022\013\n\007FT_IPv6\020!\022\r\n\tFT_IPXNET\020\"\022\017\n\013FT_F" +
+      "RAMENUM\020#\022\013\n\007FT_PCRE\020$\022\013\n\007FT_GUID\020%\022\n\n\006F" +
+      "T_OID\020&\022\014\n\010FT_EUI64\020\'\022\013\n\007FT_AX25\020(\022\014\n\010FT",
+      "_VINES\020)\022\016\n\nFT_REL_OID\020*\022\020\n\014FT_SYSTEM_ID" +
+      "\020+\022\021\n\rFT_STRINGZPAD\020,\022\014\n\010FT_FCWWN\020-\022\020\n\014F" +
+      "T_NUM_TYPES\020.*\254\002\n\014FieldDisplay\022\r\n\tBASE_N" +
+      "ONE\020\000\022\014\n\010BASE_DEC\020\001\022\014\n\010BASE_HEX\020\002\022\014\n\010BAS" +
+      "E_OCT\020\003\022\020\n\014BASE_DEC_HEX\020\004\022\020\n\014BASE_HEX_DE" +
+      "C\020\005\022\017\n\013BASE_CUSTOM\020\006\022\017\n\013STR_UNICODE\020\007\022\013\n" +
+      "\007SEP_DOT\020\010\022\014\n\010SEP_DASH\020\t\022\r\n\tSEP_COLON\020\n\022" +
+      "\r\n\tSEP_SPACE\020\013\022\020\n\014BASE_NETMASK\020\014\022\017\n\013BASE" +
+      "_PT_UDP\020\r\022\017\n\013BASE_PT_TCP\020\016\022\020\n\014BASE_PT_DC" +
+      "CP\020\017\022\020\n\014BASE_PT_SCTP\020\020\022\014\n\010BASE_OUI\020\021B\017\n\r",
+      "org.ndx.modelb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6495,7 +8798,7 @@ public final class PacketModel {
     internal_static_ndx_model_Variant_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ndx_model_Variant_descriptor,
-        new java.lang.String[] { "BoolValue", "Int32Value", "Int64Value", "FloatValue", "DoubleValue", "StringValue", "BytesValue", "DecimalValue", "DateTimeValue", "Value", });
+        new java.lang.String[] { "BoolValue", "Int32Value", "Int64Value", "UInt32Value", "UInt64Value", "FloatValue", "DoubleValue", "StringValue", "BytesValue", "IpAddressValue", "DateTimeValue", "Value", });
     internal_static_ndx_model_DecodedFrame_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_ndx_model_DecodedFrame_fieldAccessorTable = new
@@ -6538,6 +8841,12 @@ public final class PacketModel {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ndx_model_Event_ItemsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
+    internal_static_ndx_model_FieldDefinition_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_ndx_model_FieldDefinition_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ndx_model_FieldDefinition_descriptor,
+        new java.lang.String[] { "Name", "Type", "Display", "Info", });
     org.ndx.model.Constants.getDescriptor();
   }
 

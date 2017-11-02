@@ -3,8 +3,6 @@
 #pragma warning disable 1591, 0612, 3021
 #region Designer generated code
 
-using System;
-using System.Net;
 using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
@@ -29,42 +27,258 @@ namespace Ndx.Model {
             "dGFMaW5rVHlwZRITCgtGcmFtZU51bWJlchgCIAEoBRITCgtGcmFtZUxlbmd0",
             "aBgDIAEoBRITCgtGcmFtZU9mZnNldBgEIAEoAxIRCglUaW1lU3RhbXAYBSAB",
             "KAMSEQoJUHJvY2Vzc0lkGAYgASgDEhMKC1Byb2Nlc3NOYW1lGAcgASgJEgwK",
-            "BERhdGEYCiABKAwSFgoOQ29udmVyc2F0aW9uSWQYCyABKAUi3gEKB1Zhcmlh",
-            "bnQSEwoJQm9vbFZhbHVlGAEgASgISAASFAoKSW50MzJWYWx1ZRgCIAEoBUgA",
-            "EhQKCkludDY0VmFsdWUYAyABKANIABIUCgpGbG9hdFZhbHVlGAQgASgCSAAS",
-            "FQoLRG91YmxlVmFsdWUYBSABKAFIABIVCgtTdHJpbmdWYWx1ZRgGIAEoCUgA",
-            "EhQKCkJ5dGVzVmFsdWUYByABKAxIABIWCgxEZWNpbWFsVmFsdWUYCCABKAlI",
-            "ABIXCg1EYXRlVGltZVZhbHVlGAkgASgDSABCBwoFVmFsdWUixgEKDERlY29k",
-            "ZWRGcmFtZRITCgtGcmFtZU51bWJlchgBIAEoAxIWCg5GcmFtZVByb3RvY29s",
-            "cxgCIAEoCRIRCglUaW1lc3RhbXAYAyABKAMSMwoGRmllbGRzGAogAygLMiMu",
-            "bmR4Lm1vZGVsLkRlY29kZWRGcmFtZS5GaWVsZHNFbnRyeRpBCgtGaWVsZHNF",
-            "bnRyeRILCgNrZXkYASABKAkSIQoFdmFsdWUYAiABKAsyEi5uZHgubW9kZWwu",
-            "VmFyaWFudDoCOAEimgEKCVBhcmFtZXRlchIMCgROYW1lGAEgASgJEjgKClBy",
-            "b3BlcnRpZXMYAiADKAsyJC5uZHgubW9kZWwuUGFyYW1ldGVyLlByb3BlcnRp",
-            "ZXNFbnRyeRpFCg9Qcm9wZXJ0aWVzRW50cnkSCwoDa2V5GAEgASgJEiEKBXZh",
-            "bHVlGAIgASgLMhIubmR4Lm1vZGVsLlZhcmlhbnQ6AjgBIscCCgVFdmVudBIM",
-            "CgROYW1lGAEgASgJEhEKCVRpbWVzdGFtcBgCIAEoAxIqCgVJdGVtcxgDIAMo",
-            "CzIbLm5keC5tb2RlbC5FdmVudC5JdGVtc0VudHJ5GqUBCgpFdmVudFZhbHVl",
-            "EioKDFZhcmlhbnRWYWx1ZRgBIAEoCzISLm5keC5tb2RlbC5WYXJpYW50SAAS",
-            "LgoLUGFja2V0VmFsdWUYAiABKAsyFy5uZHgubW9kZWwuRGVjb2RlZEZyYW1l",
-            "SAASLgoOUGFyYW1ldGVyVmFsdWUYBCABKAsyFC5uZHgubW9kZWwuUGFyYW1l",
-            "dGVySABCCwoJVmFsdWVUeXBlGkkKCkl0ZW1zRW50cnkSCwoDa2V5GAEgASgJ",
-            "EioKBXZhbHVlGAIgASgLMhsubmR4Lm1vZGVsLkV2ZW50LkV2ZW50VmFsdWU6",
-            "AjgBQg8KDW9yZy5uZHgubW9kZWxiBnByb3RvMw=="));
+            "BERhdGEYCiABKAwSFgoOQ29udmVyc2F0aW9uSWQYCyABKAUijgIKB1Zhcmlh",
+            "bnQSEwoJQm9vbFZhbHVlGAEgASgISAASFAoKSW50MzJWYWx1ZRgCIAEoEUgA",
+            "EhQKCkludDY0VmFsdWUYAyABKBJIABIVCgtVSW50MzJWYWx1ZRgEIAEoDUgA",
+            "EhUKC1VJbnQ2NFZhbHVlGAUgASgESAASFAoKRmxvYXRWYWx1ZRgGIAEoAkgA",
+            "EhUKC0RvdWJsZVZhbHVlGAcgASgBSAASFQoLU3RyaW5nVmFsdWUYCCABKAlI",
+            "ABIUCgpCeXRlc1ZhbHVlGAkgASgMSAASGAoOSXBBZGRyZXNzVmFsdWUYCiAB",
+            "KAlIABIXCg1EYXRlVGltZVZhbHVlGAsgASgDSABCBwoFVmFsdWUixgEKDERl",
+            "Y29kZWRGcmFtZRITCgtGcmFtZU51bWJlchgBIAEoAxIWCg5GcmFtZVByb3Rv",
+            "Y29scxgCIAEoCRIRCglUaW1lc3RhbXAYAyABKAMSMwoGRmllbGRzGAogAygL",
+            "MiMubmR4Lm1vZGVsLkRlY29kZWRGcmFtZS5GaWVsZHNFbnRyeRpBCgtGaWVs",
+            "ZHNFbnRyeRILCgNrZXkYASABKAkSIQoFdmFsdWUYAiABKAsyEi5uZHgubW9k",
+            "ZWwuVmFyaWFudDoCOAEimgEKCVBhcmFtZXRlchIMCgROYW1lGAEgASgJEjgK",
+            "ClByb3BlcnRpZXMYAiADKAsyJC5uZHgubW9kZWwuUGFyYW1ldGVyLlByb3Bl",
+            "cnRpZXNFbnRyeRpFCg9Qcm9wZXJ0aWVzRW50cnkSCwoDa2V5GAEgASgJEiEK",
+            "BXZhbHVlGAIgASgLMhIubmR4Lm1vZGVsLlZhcmlhbnQ6AjgBIscCCgVFdmVu",
+            "dBIMCgROYW1lGAEgASgJEhEKCVRpbWVzdGFtcBgCIAEoAxIqCgVJdGVtcxgD",
+            "IAMoCzIbLm5keC5tb2RlbC5FdmVudC5JdGVtc0VudHJ5GqUBCgpFdmVudFZh",
+            "bHVlEioKDFZhcmlhbnRWYWx1ZRgBIAEoCzISLm5keC5tb2RlbC5WYXJpYW50",
+            "SAASLgoLUGFja2V0VmFsdWUYAiABKAsyFy5uZHgubW9kZWwuRGVjb2RlZEZy",
+            "YW1lSAASLgoOUGFyYW1ldGVyVmFsdWUYBCABKAsyFC5uZHgubW9kZWwuUGFy",
+            "YW1ldGVySABCCwoJVmFsdWVUeXBlGkkKCkl0ZW1zRW50cnkSCwoDa2V5GAEg",
+            "ASgJEioKBXZhbHVlGAIgASgLMhsubmR4Lm1vZGVsLkV2ZW50LkV2ZW50VmFs",
+            "dWU6AjgBInsKD0ZpZWxkRGVmaW5pdGlvbhIMCgROYW1lGAEgASgJEiIKBFR5",
+            "cGUYAiABKA4yFC5uZHgubW9kZWwuRmllbGRUeXBlEigKB0Rpc3BsYXkYAyAB",
+            "KA4yFy5uZHgubW9kZWwuRmllbGREaXNwbGF5EgwKBEluZm8YBCABKAkq6AUK",
+            "CUZpZWxkVHlwZRILCgdGVF9OT05FEAASDwoLRlRfUFJPVE9DT0wQARIOCgpG",
+            "VF9CT09MRUFOEAISCwoHRlRfQ0hBUhADEgwKCEZUX1VJTlQ4EAQSDQoJRlRf",
+            "VUlOVDE2EAUSDQoJRlRfVUlOVDI0EAYSDQoJRlRfVUlOVDMyEAcSDQoJRlRf",
+            "VUlOVDQwEAgSDQoJRlRfVUlOVDQ4EAkSDQoJRlRfVUlOVDU2EAoSDQoJRlRf",
+            "VUlOVDY0EAsSCwoHRlRfSU5UOBAMEgwKCEZUX0lOVDE2EA0SDAoIRlRfSU5U",
+            "MjQQDhIMCghGVF9JTlQzMhAPEgwKCEZUX0lOVDQwEBASDAoIRlRfSU5UNDgQ",
+            "ERIMCghGVF9JTlQ1NhASEgwKCEZUX0lOVDY0EBMSGAoURlRfSUVFRV8xMTA3",
+            "M19TRkxPQVQQFBIXChNGVF9JRUVFXzExMDczX0ZMT0FUEBUSDAoIRlRfRkxP",
+            "QVQQFhINCglGVF9ET1VCTEUQFxIUChBGVF9BQlNPTFVURV9USU1FEBgSFAoQ",
+            "RlRfUkVMQVRJVkVfVElNRRAZEg0KCUZUX1NUUklORxAaEg4KCkZUX1NUUklO",
+            "R1oQGxISCg5GVF9VSU5UX1NUUklORxAcEgwKCEZUX0VUSEVSEB0SDAoIRlRf",
+            "QllURVMQHhIRCg1GVF9VSU5UX0JZVEVTEB8SCwoHRlRfSVB2NBAgEgsKB0ZU",
+            "X0lQdjYQIRINCglGVF9JUFhORVQQIhIPCgtGVF9GUkFNRU5VTRAjEgsKB0ZU",
+            "X1BDUkUQJBILCgdGVF9HVUlEECUSCgoGRlRfT0lEECYSDAoIRlRfRVVJNjQQ",
+            "JxILCgdGVF9BWDI1ECgSDAoIRlRfVklORVMQKRIOCgpGVF9SRUxfT0lEECoS",
+            "EAoMRlRfU1lTVEVNX0lEECsSEQoNRlRfU1RSSU5HWlBBRBAsEgwKCEZUX0ZD",
+            "V1dOEC0SEAoMRlRfTlVNX1RZUEVTEC4qrAIKDEZpZWxkRGlzcGxheRINCglC",
+            "QVNFX05PTkUQABIMCghCQVNFX0RFQxABEgwKCEJBU0VfSEVYEAISDAoIQkFT",
+            "RV9PQ1QQAxIQCgxCQVNFX0RFQ19IRVgQBBIQCgxCQVNFX0hFWF9ERUMQBRIP",
+            "CgtCQVNFX0NVU1RPTRAGEg8KC1NUUl9VTklDT0RFEAcSCwoHU0VQX0RPVBAI",
+            "EgwKCFNFUF9EQVNIEAkSDQoJU0VQX0NPTE9OEAoSDQoJU0VQX1NQQUNFEAsS",
+            "EAoMQkFTRV9ORVRNQVNLEAwSDwoLQkFTRV9QVF9VRFAQDRIPCgtCQVNFX1BU",
+            "X1RDUBAOEhAKDEJBU0VfUFRfRENDUBAPEhAKDEJBU0VfUFRfU0NUUBAQEgwK",
+            "CEJBU0VfT1VJEBFCDwoNb3JnLm5keC5tb2RlbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Model.ConstantsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Ndx.Model.FieldType), typeof(global::Ndx.Model.FieldDisplay), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Frame), global::Ndx.Model.Frame.Parser, new[]{ "LinkType", "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "ProcessId", "ProcessName", "Data", "ConversationId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Variant), global::Ndx.Model.Variant.Parser, new[]{ "BoolValue", "Int32Value", "Int64Value", "FloatValue", "DoubleValue", "StringValue", "BytesValue", "DecimalValue", "DateTimeValue" }, new[]{ "Value" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Variant), global::Ndx.Model.Variant.Parser, new[]{ "BoolValue", "Int32Value", "Int64Value", "UInt32Value", "UInt64Value", "FloatValue", "DoubleValue", "StringValue", "BytesValue", "IpAddressValue", "DateTimeValue" }, new[]{ "Value" }, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.DecodedFrame), global::Ndx.Model.DecodedFrame.Parser, new[]{ "FrameNumber", "FrameProtocols", "Timestamp", "Fields" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Parameter), global::Ndx.Model.Parameter.Parser, new[]{ "Name", "Properties" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Event), global::Ndx.Model.Event.Parser, new[]{ "Name", "Timestamp", "Items" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Event.Types.EventValue), global::Ndx.Model.Event.Types.EventValue.Parser, new[]{ "VariantValue", "PacketValue", "ParameterValue" }, new[]{ "ValueType" }, null, null),
-            null, })
+            null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.FieldDefinition), global::Ndx.Model.FieldDefinition.Parser, new[]{ "Name", "Type", "Display", "Info" }, null, null, null)
           }));
     }
     #endregion
 
   }
+  #region Enums
+  public enum FieldType {
+    /// <summary>
+    /// used for text labels with no value 
+    /// </summary>
+    [pbr::OriginalName("FT_NONE")] FtNone = 0,
+    [pbr::OriginalName("FT_PROTOCOL")] FtProtocol = 1,
+    /// <summary>
+    /// TRUE and FALSE come from &lt;glib.h> 
+    /// </summary>
+    [pbr::OriginalName("FT_BOOLEAN")] FtBoolean = 2,
+    /// <summary>
+    /// 1-octet character as 0-255 
+    /// </summary>
+    [pbr::OriginalName("FT_CHAR")] FtChar = 3,
+    [pbr::OriginalName("FT_UINT8")] FtUint8 = 4,
+    [pbr::OriginalName("FT_UINT16")] FtUint16 = 5,
+    /// <summary>
+    /// really a UINT32, but displayed as 6 hex-digits if FD_HEX
+    /// </summary>
+    [pbr::OriginalName("FT_UINT24")] FtUint24 = 6,
+    [pbr::OriginalName("FT_UINT32")] FtUint32 = 7,
+    /// <summary>
+    /// really a UINT64, but displayed as 10 hex-digits if FD_HEX
+    /// </summary>
+    [pbr::OriginalName("FT_UINT40")] FtUint40 = 8,
+    /// <summary>
+    /// really a UINT64, but displayed as 12 hex-digits if FD_HEX
+    /// </summary>
+    [pbr::OriginalName("FT_UINT48")] FtUint48 = 9,
+    /// <summary>
+    /// really a UINT64, but displayed as 14 hex-digits if FD_HEX
+    /// </summary>
+    [pbr::OriginalName("FT_UINT56")] FtUint56 = 10,
+    [pbr::OriginalName("FT_UINT64")] FtUint64 = 11,
+    [pbr::OriginalName("FT_INT8")] FtInt8 = 12,
+    [pbr::OriginalName("FT_INT16")] FtInt16 = 13,
+    /// <summary>
+    /// same as for UINT24 
+    /// </summary>
+    [pbr::OriginalName("FT_INT24")] FtInt24 = 14,
+    [pbr::OriginalName("FT_INT32")] FtInt32 = 15,
+    /// <summary>
+    /// same as for UINT40 
+    /// </summary>
+    [pbr::OriginalName("FT_INT40")] FtInt40 = 16,
+    /// <summary>
+    /// same as for UINT48 
+    /// </summary>
+    [pbr::OriginalName("FT_INT48")] FtInt48 = 17,
+    /// <summary>
+    /// same as for UINT56 
+    /// </summary>
+    [pbr::OriginalName("FT_INT56")] FtInt56 = 18,
+    [pbr::OriginalName("FT_INT64")] FtInt64 = 19,
+    [pbr::OriginalName("FT_IEEE_11073_SFLOAT")] FtIeee11073Sfloat = 20,
+    [pbr::OriginalName("FT_IEEE_11073_FLOAT")] FtIeee11073Float = 21,
+    [pbr::OriginalName("FT_FLOAT")] FtFloat = 22,
+    [pbr::OriginalName("FT_DOUBLE")] FtDouble = 23,
+    [pbr::OriginalName("FT_ABSOLUTE_TIME")] FtAbsoluteTime = 24,
+    [pbr::OriginalName("FT_RELATIVE_TIME")] FtRelativeTime = 25,
+    [pbr::OriginalName("FT_STRING")] FtString = 26,
+    /// <summary>
+    /// for use with proto_tree_add_item() 
+    /// </summary>
+    [pbr::OriginalName("FT_STRINGZ")] FtStringz = 27,
+    /// <summary>
+    /// for use with proto_tree_add_item() 
+    /// </summary>
+    [pbr::OriginalName("FT_UINT_STRING")] FtUintString = 28,
+    [pbr::OriginalName("FT_ETHER")] FtEther = 29,
+    [pbr::OriginalName("FT_BYTES")] FtBytes = 30,
+    [pbr::OriginalName("FT_UINT_BYTES")] FtUintBytes = 31,
+    [pbr::OriginalName("FT_IPv4")] FtIpv4 = 32,
+    [pbr::OriginalName("FT_IPv6")] FtIpv6 = 33,
+    [pbr::OriginalName("FT_IPXNET")] FtIpxnet = 34,
+    /// <summary>
+    /// a UINT32, but if selected lets you go to frame with that number 
+    /// </summary>
+    [pbr::OriginalName("FT_FRAMENUM")] FtFramenum = 35,
+    /// <summary>
+    /// a compiled Perl-Compatible Regular Expression object 
+    /// </summary>
+    [pbr::OriginalName("FT_PCRE")] FtPcre = 36,
+    /// <summary>
+    /// GUID, UUID 
+    /// </summary>
+    [pbr::OriginalName("FT_GUID")] FtGuid = 37,
+    /// <summary>
+    /// OBJECT IDENTIFIER 
+    /// </summary>
+    [pbr::OriginalName("FT_OID")] FtOid = 38,
+    [pbr::OriginalName("FT_EUI64")] FtEui64 = 39,
+    [pbr::OriginalName("FT_AX25")] FtAx25 = 40,
+    [pbr::OriginalName("FT_VINES")] FtVines = 41,
+    /// <summary>
+    /// RELATIVE-OID 
+    /// </summary>
+    [pbr::OriginalName("FT_REL_OID")] FtRelOid = 42,
+    [pbr::OriginalName("FT_SYSTEM_ID")] FtSystemId = 43,
+    /// <summary>
+    /// for use with proto_tree_add_item() 
+    /// </summary>
+    [pbr::OriginalName("FT_STRINGZPAD")] FtStringzpad = 44,
+    [pbr::OriginalName("FT_FCWWN")] FtFcwwn = 45,
+    /// <summary>
+    /// last item number plus one 
+    /// </summary>
+    [pbr::OriginalName("FT_NUM_TYPES")] FtNumTypes = 46,
+  }
+
+  public enum FieldDisplay {
+    /// <summary>
+    ///*&lt; none 
+    /// </summary>
+    [pbr::OriginalName("BASE_NONE")] BaseNone = 0,
+    /// <summary>
+    ///*&lt; decimal 
+    /// </summary>
+    [pbr::OriginalName("BASE_DEC")] BaseDec = 1,
+    /// <summary>
+    ///*&lt; hexadecimal 
+    /// </summary>
+    [pbr::OriginalName("BASE_HEX")] BaseHex = 2,
+    /// <summary>
+    ///*&lt; octal 
+    /// </summary>
+    [pbr::OriginalName("BASE_OCT")] BaseOct = 3,
+    /// <summary>
+    ///*&lt; decimal (hexadecimal) 
+    /// </summary>
+    [pbr::OriginalName("BASE_DEC_HEX")] BaseDecHex = 4,
+    /// <summary>
+    ///*&lt; hexadecimal (decimal) 
+    /// </summary>
+    [pbr::OriginalName("BASE_HEX_DEC")] BaseHexDec = 5,
+    /// <summary>
+    ///*&lt; call custom routine (in ->strings) to format 
+    /// </summary>
+    [pbr::OriginalName("BASE_CUSTOM")] BaseCustom = 6,
+    /// <summary>
+    ///*&lt; shows non-printable UNICODE characters as \\uXXXX (XXX for now non-printable characters display depends on UI) 
+    /// </summary>
+    [pbr::OriginalName("STR_UNICODE")] StrUnicode = 7,
+    /// <summary>
+    ///*&lt; hexadecimal bytes with a period (.) between each byte 
+    /// </summary>
+    [pbr::OriginalName("SEP_DOT")] SepDot = 8,
+    /// <summary>
+    ///*&lt; hexadecimal bytes with a dash (-) between each byte 
+    /// </summary>
+    [pbr::OriginalName("SEP_DASH")] SepDash = 9,
+    /// <summary>
+    ///*&lt; hexadecimal bytes with a colon (:) between each byte 
+    /// </summary>
+    [pbr::OriginalName("SEP_COLON")] SepColon = 10,
+    /// <summary>
+    ///*&lt; hexadecimal bytes with a space between each byte 
+    /// </summary>
+    [pbr::OriginalName("SEP_SPACE")] SepSpace = 11,
+    /// <summary>
+    /// Address types 
+    /// </summary>
+    [pbr::OriginalName("BASE_NETMASK")] BaseNetmask = 12,
+    /// <summary>
+    /// Port types 
+    /// </summary>
+    [pbr::OriginalName("BASE_PT_UDP")] BasePtUdp = 13,
+    /// <summary>
+    ///*&lt; TCP port 
+    /// </summary>
+    [pbr::OriginalName("BASE_PT_TCP")] BasePtTcp = 14,
+    /// <summary>
+    ///*&lt; DCCP port 
+    /// </summary>
+    [pbr::OriginalName("BASE_PT_DCCP")] BasePtDccp = 15,
+    /// <summary>
+    ///*&lt; SCTP port 
+    /// </summary>
+    [pbr::OriginalName("BASE_PT_SCTP")] BasePtSctp = 16,
+    /// <summary>
+    /// OUI types 
+    /// </summary>
+    [pbr::OriginalName("BASE_OUI")] BaseOui = 17,
+  }
+
+  #endregion
+
   #region Messages
   /// <summary>
   //// &lt;summary>
@@ -486,6 +700,12 @@ namespace Ndx.Model {
         case ValueOneofCase.Int64Value:
           Int64Value = other.Int64Value;
           break;
+        case ValueOneofCase.UInt32Value:
+          UInt32Value = other.UInt32Value;
+          break;
+        case ValueOneofCase.UInt64Value:
+          UInt64Value = other.UInt64Value;
+          break;
         case ValueOneofCase.FloatValue:
           FloatValue = other.FloatValue;
           break;
@@ -498,8 +718,8 @@ namespace Ndx.Model {
         case ValueOneofCase.BytesValue:
           BytesValue = other.BytesValue;
           break;
-        case ValueOneofCase.DecimalValue:
-          DecimalValue = other.DecimalValue;
+        case ValueOneofCase.IpAddressValue:
+          IpAddressValue = other.IpAddressValue;
           break;
         case ValueOneofCase.DateTimeValue:
           DateTimeValue = other.DateTimeValue;
@@ -546,8 +766,30 @@ namespace Ndx.Model {
       }
     }
 
+    /// <summary>Field number for the "UInt32Value" field.</summary>
+    public const int UInt32ValueFieldNumber = 4;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint UInt32Value {
+      get { return valueCase_ == ValueOneofCase.UInt32Value ? (uint) value_ : 0; }
+      set {
+        value_ = value;
+        valueCase_ = ValueOneofCase.UInt32Value;
+      }
+    }
+
+    /// <summary>Field number for the "UInt64Value" field.</summary>
+    public const int UInt64ValueFieldNumber = 5;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ulong UInt64Value {
+      get { return valueCase_ == ValueOneofCase.UInt64Value ? (ulong) value_ : 0UL; }
+      set {
+        value_ = value;
+        valueCase_ = ValueOneofCase.UInt64Value;
+      }
+    }
+
     /// <summary>Field number for the "FloatValue" field.</summary>
-    public const int FloatValueFieldNumber = 4;
+    public const int FloatValueFieldNumber = 6;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float FloatValue {
       get { return valueCase_ == ValueOneofCase.FloatValue ? (float) value_ : 0F; }
@@ -558,7 +800,7 @@ namespace Ndx.Model {
     }
 
     /// <summary>Field number for the "DoubleValue" field.</summary>
-    public const int DoubleValueFieldNumber = 5;
+    public const int DoubleValueFieldNumber = 7;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public double DoubleValue {
       get { return valueCase_ == ValueOneofCase.DoubleValue ? (double) value_ : 0D; }
@@ -569,7 +811,7 @@ namespace Ndx.Model {
     }
 
     /// <summary>Field number for the "StringValue" field.</summary>
-    public const int StringValueFieldNumber = 6;
+    public const int StringValueFieldNumber = 8;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string StringValue {
       get { return valueCase_ == ValueOneofCase.StringValue ? (string) value_ : ""; }
@@ -580,7 +822,7 @@ namespace Ndx.Model {
     }
 
     /// <summary>Field number for the "BytesValue" field.</summary>
-    public const int BytesValueFieldNumber = 7;
+    public const int BytesValueFieldNumber = 9;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pb::ByteString BytesValue {
       get { return valueCase_ == ValueOneofCase.BytesValue ? (pb::ByteString) value_ : pb::ByteString.Empty; }
@@ -590,19 +832,19 @@ namespace Ndx.Model {
       }
     }
 
-    /// <summary>Field number for the "DecimalValue" field.</summary>
-    public const int DecimalValueFieldNumber = 8;
+    /// <summary>Field number for the "IpAddressValue" field.</summary>
+    public const int IpAddressValueFieldNumber = 10;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DecimalValue {
-      get { return valueCase_ == ValueOneofCase.DecimalValue ? (string) value_ : ""; }
+    public string IpAddressValue {
+      get { return valueCase_ == ValueOneofCase.IpAddressValue ? (string) value_ : ""; }
       set {
         value_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-        valueCase_ = ValueOneofCase.DecimalValue;
+        valueCase_ = ValueOneofCase.IpAddressValue;
       }
     }
 
     /// <summary>Field number for the "DateTimeValue" field.</summary>
-    public const int DateTimeValueFieldNumber = 9;
+    public const int DateTimeValueFieldNumber = 11;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public long DateTimeValue {
       get { return valueCase_ == ValueOneofCase.DateTimeValue ? (long) value_ : 0L; }
@@ -619,12 +861,14 @@ namespace Ndx.Model {
       BoolValue = 1,
       Int32Value = 2,
       Int64Value = 3,
-      FloatValue = 4,
-      DoubleValue = 5,
-      StringValue = 6,
-      BytesValue = 7,
-      DecimalValue = 8,
-      DateTimeValue = 9,
+      UInt32Value = 4,
+      UInt64Value = 5,
+      FloatValue = 6,
+      DoubleValue = 7,
+      StringValue = 8,
+      BytesValue = 9,
+      IpAddressValue = 10,
+      DateTimeValue = 11,
     }
     private ValueOneofCase valueCase_ = ValueOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -632,9 +876,7 @@ namespace Ndx.Model {
       get { return valueCase_; }
     }
 
-        
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void ClearValue() {
       valueCase_ = ValueOneofCase.None;
       value_ = null;
@@ -656,11 +898,13 @@ namespace Ndx.Model {
       if (BoolValue != other.BoolValue) return false;
       if (Int32Value != other.Int32Value) return false;
       if (Int64Value != other.Int64Value) return false;
+      if (UInt32Value != other.UInt32Value) return false;
+      if (UInt64Value != other.UInt64Value) return false;
       if (FloatValue != other.FloatValue) return false;
       if (DoubleValue != other.DoubleValue) return false;
       if (StringValue != other.StringValue) return false;
       if (BytesValue != other.BytesValue) return false;
-      if (DecimalValue != other.DecimalValue) return false;
+      if (IpAddressValue != other.IpAddressValue) return false;
       if (DateTimeValue != other.DateTimeValue) return false;
       if (ValueCase != other.ValueCase) return false;
       return true;
@@ -672,11 +916,13 @@ namespace Ndx.Model {
       if (valueCase_ == ValueOneofCase.BoolValue) hash ^= BoolValue.GetHashCode();
       if (valueCase_ == ValueOneofCase.Int32Value) hash ^= Int32Value.GetHashCode();
       if (valueCase_ == ValueOneofCase.Int64Value) hash ^= Int64Value.GetHashCode();
+      if (valueCase_ == ValueOneofCase.UInt32Value) hash ^= UInt32Value.GetHashCode();
+      if (valueCase_ == ValueOneofCase.UInt64Value) hash ^= UInt64Value.GetHashCode();
       if (valueCase_ == ValueOneofCase.FloatValue) hash ^= FloatValue.GetHashCode();
       if (valueCase_ == ValueOneofCase.DoubleValue) hash ^= DoubleValue.GetHashCode();
       if (valueCase_ == ValueOneofCase.StringValue) hash ^= StringValue.GetHashCode();
       if (valueCase_ == ValueOneofCase.BytesValue) hash ^= BytesValue.GetHashCode();
-      if (valueCase_ == ValueOneofCase.DecimalValue) hash ^= DecimalValue.GetHashCode();
+      if (valueCase_ == ValueOneofCase.IpAddressValue) hash ^= IpAddressValue.GetHashCode();
       if (valueCase_ == ValueOneofCase.DateTimeValue) hash ^= DateTimeValue.GetHashCode();
       hash ^= (int) valueCase_;
       return hash;
@@ -695,34 +941,42 @@ namespace Ndx.Model {
       }
       if (valueCase_ == ValueOneofCase.Int32Value) {
         output.WriteRawTag(16);
-        output.WriteInt32(Int32Value);
+        output.WriteSInt32(Int32Value);
       }
       if (valueCase_ == ValueOneofCase.Int64Value) {
         output.WriteRawTag(24);
-        output.WriteInt64(Int64Value);
+        output.WriteSInt64(Int64Value);
+      }
+      if (valueCase_ == ValueOneofCase.UInt32Value) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(UInt32Value);
+      }
+      if (valueCase_ == ValueOneofCase.UInt64Value) {
+        output.WriteRawTag(40);
+        output.WriteUInt64(UInt64Value);
       }
       if (valueCase_ == ValueOneofCase.FloatValue) {
-        output.WriteRawTag(37);
+        output.WriteRawTag(53);
         output.WriteFloat(FloatValue);
       }
       if (valueCase_ == ValueOneofCase.DoubleValue) {
-        output.WriteRawTag(41);
+        output.WriteRawTag(57);
         output.WriteDouble(DoubleValue);
       }
       if (valueCase_ == ValueOneofCase.StringValue) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(66);
         output.WriteString(StringValue);
       }
       if (valueCase_ == ValueOneofCase.BytesValue) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(74);
         output.WriteBytes(BytesValue);
       }
-      if (valueCase_ == ValueOneofCase.DecimalValue) {
-        output.WriteRawTag(66);
-        output.WriteString(DecimalValue);
+      if (valueCase_ == ValueOneofCase.IpAddressValue) {
+        output.WriteRawTag(82);
+        output.WriteString(IpAddressValue);
       }
       if (valueCase_ == ValueOneofCase.DateTimeValue) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(88);
         output.WriteInt64(DateTimeValue);
       }
     }
@@ -734,10 +988,16 @@ namespace Ndx.Model {
         size += 1 + 1;
       }
       if (valueCase_ == ValueOneofCase.Int32Value) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Int32Value);
+        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(Int32Value);
       }
       if (valueCase_ == ValueOneofCase.Int64Value) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Int64Value);
+        size += 1 + pb::CodedOutputStream.ComputeSInt64Size(Int64Value);
+      }
+      if (valueCase_ == ValueOneofCase.UInt32Value) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UInt32Value);
+      }
+      if (valueCase_ == ValueOneofCase.UInt64Value) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(UInt64Value);
       }
       if (valueCase_ == ValueOneofCase.FloatValue) {
         size += 1 + 4;
@@ -751,8 +1011,8 @@ namespace Ndx.Model {
       if (valueCase_ == ValueOneofCase.BytesValue) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(BytesValue);
       }
-      if (valueCase_ == ValueOneofCase.DecimalValue) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(DecimalValue);
+      if (valueCase_ == ValueOneofCase.IpAddressValue) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(IpAddressValue);
       }
       if (valueCase_ == ValueOneofCase.DateTimeValue) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(DateTimeValue);
@@ -775,6 +1035,12 @@ namespace Ndx.Model {
         case ValueOneofCase.Int64Value:
           Int64Value = other.Int64Value;
           break;
+        case ValueOneofCase.UInt32Value:
+          UInt32Value = other.UInt32Value;
+          break;
+        case ValueOneofCase.UInt64Value:
+          UInt64Value = other.UInt64Value;
+          break;
         case ValueOneofCase.FloatValue:
           FloatValue = other.FloatValue;
           break;
@@ -787,8 +1053,8 @@ namespace Ndx.Model {
         case ValueOneofCase.BytesValue:
           BytesValue = other.BytesValue;
           break;
-        case ValueOneofCase.DecimalValue:
-          DecimalValue = other.DecimalValue;
+        case ValueOneofCase.IpAddressValue:
+          IpAddressValue = other.IpAddressValue;
           break;
         case ValueOneofCase.DateTimeValue:
           DateTimeValue = other.DateTimeValue;
@@ -810,34 +1076,42 @@ namespace Ndx.Model {
             break;
           }
           case 16: {
-            Int32Value = input.ReadInt32();
+            Int32Value = input.ReadSInt32();
             break;
           }
           case 24: {
-            Int64Value = input.ReadInt64();
+            Int64Value = input.ReadSInt64();
             break;
           }
-          case 37: {
+          case 32: {
+            UInt32Value = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            UInt64Value = input.ReadUInt64();
+            break;
+          }
+          case 53: {
             FloatValue = input.ReadFloat();
             break;
           }
-          case 41: {
+          case 57: {
             DoubleValue = input.ReadDouble();
             break;
           }
-          case 50: {
+          case 66: {
             StringValue = input.ReadString();
             break;
           }
-          case 58: {
+          case 74: {
             BytesValue = input.ReadBytes();
             break;
           }
-          case 66: {
-            DecimalValue = input.ReadString();
+          case 82: {
+            IpAddressValue = input.ReadString();
             break;
           }
-          case 72: {
+          case 88: {
             DateTimeValue = input.ReadInt64();
             break;
           }
@@ -845,8 +1119,7 @@ namespace Ndx.Model {
       }
     }
 
-
-    }
+  }
 
   public sealed partial class DecodedFrame : pb::IMessage<DecodedFrame> {
     private static readonly pb::MessageParser<DecodedFrame> _parser = new pb::MessageParser<DecodedFrame>(() => new DecodedFrame());
@@ -1569,6 +1842,232 @@ namespace Ndx.Model {
 
     }
     #endregion
+
+  }
+
+  /// <summary>
+  //// &lt;summary> 
+  ////	Information describing a header field.
+  ////	&lt;/summary>
+  /// </summary>
+  public sealed partial class FieldDefinition : pb::IMessage<FieldDefinition> {
+    private static readonly pb::MessageParser<FieldDefinition> _parser = new pb::MessageParser<FieldDefinition>(() => new FieldDefinition());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<FieldDefinition> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public FieldDefinition() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public FieldDefinition(FieldDefinition other) : this() {
+      name_ = other.name_;
+      type_ = other.type_;
+      display_ = other.display_;
+      info_ = other.info_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public FieldDefinition Clone() {
+      return new FieldDefinition(this);
+    }
+
+    /// <summary>Field number for the "Name" field.</summary>
+    public const int NameFieldNumber = 1;
+    private string name_ = "";
+    /// <summary>
+    //// &lt;summary>
+    //// Full name of this field.
+    //// &lt;/summary>
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Type" field.</summary>
+    public const int TypeFieldNumber = 2;
+    private global::Ndx.Model.FieldType type_ = 0;
+    /// <summary>
+    //// &lt;summary>
+    ////	Field type, one of FT_  value.
+    ////	&lt;/summary>
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Ndx.Model.FieldType Type {
+      get { return type_; }
+      set {
+        type_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Display" field.</summary>
+    public const int DisplayFieldNumber = 3;
+    private global::Ndx.Model.FieldDisplay display_ = 0;
+    /// <summary>
+    ////	&lt;summary>
+    ////	One of BASE_, or field bit-width if FT_BOOLEAN 
+    ////	&lt;/summary>
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Ndx.Model.FieldDisplay Display {
+      get { return display_; }
+      set {
+        display_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Info" field.</summary>
+    public const int InfoFieldNumber = 4;
+    private string info_ = "";
+    /// <summary>
+    ////	&lt;summary>
+    //// Brief description of field.
+    ////	&lt;/summary>
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Info {
+      get { return info_; }
+      set {
+        info_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as FieldDefinition);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(FieldDefinition other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Name != other.Name) return false;
+      if (Type != other.Type) return false;
+      if (Display != other.Display) return false;
+      if (Info != other.Info) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Type != 0) hash ^= Type.GetHashCode();
+      if (Display != 0) hash ^= Display.GetHashCode();
+      if (Info.Length != 0) hash ^= Info.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Type != 0) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Type);
+      }
+      if (Display != 0) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) Display);
+      }
+      if (Info.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Info);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Type != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
+      }
+      if (Display != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Display);
+      }
+      if (Info.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Info);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(FieldDefinition other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.Type != 0) {
+        Type = other.Type;
+      }
+      if (other.Display != 0) {
+        Display = other.Display;
+      }
+      if (other.Info.Length != 0) {
+        Info = other.Info;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 16: {
+            type_ = (global::Ndx.Model.FieldType) input.ReadEnum();
+            break;
+          }
+          case 24: {
+            display_ = (global::Ndx.Model.FieldDisplay) input.ReadEnum();
+            break;
+          }
+          case 34: {
+            Info = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
 
   }
 

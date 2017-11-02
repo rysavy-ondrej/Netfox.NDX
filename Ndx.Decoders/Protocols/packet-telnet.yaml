@@ -1,0 +1,185 @@
+---
+telnet.cmd:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Command
+telnet.subcmd:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Subcommand
+telnet.auth.name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Name
+telnet.auth.cmd:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Auth Cmd
+telnet.auth.type:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Auth Type
+telnet.auth.mod.cred_fwd:
+  type: FT_BOOLEAN
+  base: 8
+  info: Cred Fwd
+telnet.auth.mod.who:
+  type: FT_BOOLEAN
+  base: 8
+  info: Who
+telnet.auth.mod.how:
+  type: FT_BOOLEAN
+  base: 8
+  info: How
+telnet.auth.mod.enc:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Encrypt
+telnet.auth.krb5.cmd:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Command
+telnet.string_subopt.value:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Value
+telnet.naws_subopt.width:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Width
+telnet.naws_subopt.height:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Height
+telnet.outmark_subopt.cmd:
+  type: FT_CHAR
+  base: BASE_HEX
+  info: Command
+telnet.outmark_subopt.banner:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Banner
+telnet.comport_subopt.signature:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Signature
+telnet.comport_subopt.baud_rate:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Baud Rate
+telnet.comport_subopt.data_size:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Data Size
+telnet.comport_subopt.parity:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Parity
+telnet.comport_subopt.stop:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Stop Bits
+telnet.comport_subopt.control:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Control
+telnet.comport_subopt.linestate:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Linestate
+telnet.comport_subopt.set_linestate_mask:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Set Linestate Mask
+telnet.comport_subopt.modemstate:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Modemstate
+telnet.comport_subopt.set_modemstate_mask:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Set Modemstate Mask
+telnet.comport_subopt.flow_control_suspend:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Flow Control Suspend
+telnet.comport_subopt.flow_control_resume:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Flow Control Resume
+telnet.comport_subopt.purge:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Purge
+telnet.rfc_subopt.cmd:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Command
+telnet.tabstop:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Tabstop value
+telnet.enc.cmd:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Enc Cmd
+telnet.enc.type:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Enc Type
+telnet.enc.type_data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Type-specific data
+telnet.enc.key_id:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Key ID
+telnet.data:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Data
+telnet.option_data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Option data
+telnet.subcommand_data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Subcommand data
+telnet.tn3270.subopt:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Suboption
+telnet.tn3270.connect:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Connect
+telnet.tn3270.is:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Is
+telnet.tn3270.request_string:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Request
+telnet.tn3270.reason:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Reason
+telnet.tn3270.request:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Request
+telnet.tn3270.regime_subopt.value:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Value
+telnet.regime_cmd:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Cmd
+telnet.starttls:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Follows

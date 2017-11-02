@@ -1,0 +1,1773 @@
+---
+smb2.cmd:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Command
+smb2.response_to:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Response to
+smb2.response_in:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Response in
+smb2.time:
+  type: FT_RELATIVE_TIME
+  base: BASE_NONE
+  info: Time from request
+smb2.header_len:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Header Length
+smb2.nt_status:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: NT Status
+smb2.msg_id:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Message ID
+smb2.tid:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Tree Id
+smb2.aid:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Async Id
+smb2.sesid:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Session Id
+smb2.previous_sesid:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Previous Session Id
+smb2.chain_offset:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Chain Offset
+smb2.eof:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: End Of File
+smb2.nlinks:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Number of Links
+smb2.file_id:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: File Id
+smb2.allocation_size:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Allocation Size
+smb2.max_response_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Max Response Size
+smb2.getinfo_input_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Getinfo Input Size
+smb2.getinfo_input_offset:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Getinfo Input Offset
+smb2.getinfo_additional:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Additional Info
+smb2.getinfo_flags:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Flags
+smb2.setinfo_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Setinfo Size
+smb2.setinfo_offset:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Setinfo Offset
+smb2.max_ioctl_out_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Max Ioctl Out Size
+smb2.max_ioctl_in_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Max Ioctl In Size
+smb2.required_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Required Buffer Size
+smb2.pid:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Process Id
+smb2.flags:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Flags
+smb2.flags.response:
+  type: FT_BOOLEAN
+  base: 32
+  info: Response
+smb2.flags.async:
+  type: FT_BOOLEAN
+  base: 32
+  info: Async command
+smb2.flags.dfs:
+  type: FT_BOOLEAN
+  base: 32
+  info: DFS operation
+smb2.flags.chained:
+  type: FT_BOOLEAN
+  base: 32
+  info: Chained
+smb2.flags.signature:
+  type: FT_BOOLEAN
+  base: 32
+  info: Signing
+smb2.flags.replay:
+  type: FT_BOOLEAN
+  base: 32
+  info: Replay operation
+smb2.flags.priority_mask:
+  type: FT_BOOLEAN
+  base: 32
+  info: Priority
+smb2.tree:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Tree
+smb2.filename:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Filename
+smb2.filename.len:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Filename Length
+smb2.rename.replace_if:
+  type: FT_BOOLEAN
+  base: 8
+  info: Replace If
+smb2.data_offset:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Data Offset
+smb2.find.infolevel:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Info Level
+smb2.find.flags:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Find Flags
+smb2.find.pattern:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Search Pattern
+smb2.find.info_blob:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Info
+smb2.ea_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: EA Size
+smb2.position_info:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Position Information
+smb2.mode_info:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Mode Information
+smb2.mode.file_write_through:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: FILE_WRITE_THROUGH
+smb2.mode.file_sequential_only:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: FILE_SEQUENTIAL_ONLY
+smb2.mode.file_no_intermediate_buffering:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: FILE_NO_INTERMEDIATE_BUFFERING
+smb2.mode.file_synchronous_io_alert:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: FILE_SYNCHRONOUS_IO_ALERT
+smb2.mode.file_synchronous_io_nonalert:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: FILE_SYNCHRONOUS_IO_NONALERT
+smb2.mode.file_delete_on_close:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: FILE_DELETE_ON_CLOSE
+smb2.alignment_info:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Alignment Information
+smb2.class:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Class
+smb2.infolevel:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: InfoLevel
+smb2.file_info.infolevel:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: InfoLevel
+smb2.fs_info.infolevel:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: InfoLevel
+smb2.sec_info.infolevel:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: InfoLevel
+smb2.posix_info.infolevel:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: InfoLevel
+smb2.write_length:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Write Length
+smb2.read_length:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Read Length
+smb2.read_remaining:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Read Remaining
+smb2.create_flags:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Create Flags
+smb2.file_offset:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: File Offset
+smb2.fsctl.range_offset:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: File Offset
+smb2.fsctl.range_length:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Length
+smb2.qfr_length:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Length
+smb2.qfr_usage:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Desired Usage
+smb2.qfr_flags:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Flags
+smb2.qfr_tot_region_entry_count:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Total Region Entry Count
+smb2.qfr_region_entry_count:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Region Entry Count
+smb2.security_blob:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Security Blob
+smb2.ioctl.out:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Out Data
+smb2.ioctl.in:
+  type: FT_NONE
+  base: BASE_NONE
+  info: In Data
+smb2.server_guid:
+  type: FT_GUID
+  base: BASE_NONE
+  info: Server Guid
+smb2.client_guid:
+  type: FT_GUID
+  base: BASE_NONE
+  info: Client Guid
+smb2.object_id:
+  type: FT_GUID
+  base: BASE_NONE
+  info: ObjectId
+smb2.birth_volume_id:
+  type: FT_GUID
+  base: BASE_NONE
+  info: BirthVolumeId
+smb2.birth_object_id:
+  type: FT_GUID
+  base: BASE_NONE
+  info: BirthObjectId
+smb2.domain_id:
+  type: FT_GUID
+  base: BASE_NONE
+  info: DomainId
+smb2.create.time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Create
+smb2.fid:
+  type: FT_GUID
+  base: BASE_NONE
+  info: File Id
+smb2.write_data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Write Data
+smb2.write.flags:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Write Flags
+smb2.write.flags.write_through:
+  type: FT_BOOLEAN
+  base: 32
+  info: Write through
+smb2.write.count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Write Count
+smb2.write.remaining:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Write Remaining
+smb2.read_data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Read Data
+smb2.last_access.time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Last Access
+smb2.last_write.time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Last Write
+smb2.last_change.time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Last Change
+smb2.file_all_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_ALL_INFO
+smb2.file_allocation_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_ALLOCATION_INFO
+smb2.file_endoffile_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_ENDOFFILE_INFO
+smb2.file_alternate_name_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_ALTERNATE_NAME_INFO
+smb2.file_stream_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_STREAM_INFO
+smb2.file_pipe_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_PIPE_INFO
+smb2.file_compression_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_COMPRESSION_INFO
+smb2.file_basic_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_BASIC_INFO
+smb2.file_standard_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_STANDARD_INFO
+smb2.file_internal_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_INTERNAL_INFO
+smb2.file_mode_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_MODE_INFO
+smb2.file_alignment_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_ALIGNMENT_INFO
+smb2.file_position_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_POSITION_INFO
+smb2.file_access_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_ACCESS_INFO
+smb2.file_ea_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_EA_INFO
+smb2.file_network_open_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_NETWORK_OPEN_INFO
+smb2.file_attribute_tag_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_ATTRIBUTE_TAG_INFO
+smb2.file_disposition_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_DISPOSITION_INFO
+smb2.file_full_ea_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_FULL_EA_INFO
+smb2.file_rename_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FILE_RENAME_INFO
+smb2.fs_info_01:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FS_INFO_01
+smb2.fs_info_03:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FS_INFO_03
+smb2.fs_info_04:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FS_INFO_04
+smb2.fs_info_05:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FS_INFO_05
+smb2.fs_info_06:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FS_INFO_06
+smb2.fs_info_07:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FS_INFO_07
+smb2.fs_objectid_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_FS_OBJECTID_INFO
+smb2.sec_info_00:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_SEC_INFO_00
+smb2.quota_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_QUOTA_INFO
+smb2.query_quota_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SMB2_QUERY_QUOTA_INFO
+smb2.query_quota_info.single:
+  type: FT_BOOLEAN
+  base: 8
+  info: ReturnSingle
+smb2.query_quota_info.restart:
+  type: FT_BOOLEAN
+  base: 8
+  info: RestartScan
+smb2.query_quota_info.sidlistlen:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: SidListLength
+smb2.query_quota_info.startsidlen:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: StartSidLength
+smb2.query_quota_info.startsidoffset:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: StartSidOffset
+smb2.disposition.delete_on_close:
+  type: FT_BOOLEAN
+  base: 8
+  info: Delete on close
+smb2.create.disposition:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Disposition
+smb2.create.action:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Create Action
+smb2.create.rep_flags:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Response Flags
+smb2.create.rep_flags.reparse_point:
+  type: FT_BOOLEAN
+  base: 8
+  info: ReparsePoint
+smb2.create.extrainfo:
+  type: FT_NONE
+  base: BASE_NONE
+  info: ExtraInfo
+smb2.create.chain_offset:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Chain Offset
+smb2.create.chain_data:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Data
+smb2.FILE_OBJECTID_BUFFER:
+  type: FT_NONE
+  base: BASE_NONE
+  info: FILE_OBJECTID_BUFFER
+smb2.lease.lease_key:
+  type: FT_GUID
+  base: BASE_NONE
+  info: Lease Key
+smb2.lease.lease_state:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Lease State
+smb2.lease.lease_state.read_caching:
+  type: FT_BOOLEAN
+  base: 32
+  info: Read Caching
+smb2.lease.lease_state.handle_caching:
+  type: FT_BOOLEAN
+  base: 32
+  info: Handle Caching
+smb2.lease.lease_state.write_caching:
+  type: FT_BOOLEAN
+  base: 32
+  info: Write Caching
+smb2.lease.lease_flags:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Lease Flags
+smb2.lease.lease_state.break_ack_required:
+  type: FT_BOOLEAN
+  base: 32
+  info: Break Ack Required
+smb2.lease.lease_state.break_in_progress:
+  type: FT_BOOLEAN
+  base: 32
+  info: Break In Progress
+smb2.lease.lease_state.parent_lease_key_set:
+  type: FT_BOOLEAN
+  base: 32
+  info: Parent Lease Key Set
+smb2.lease.lease_duration:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Lease Duration
+smb2.lease.parent_lease_key:
+  type: FT_GUID
+  base: BASE_NONE
+  info: Parent Lease Key
+smb2.lease.lease_oplock:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Lease Epoch
+smb2.lease.lease_reserved:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Lease Reserved
+smb2.lease.lease_break_reason:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Lease Break Reason
+smb2.lease.access_mask_hint:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Access Mask Hint
+smb2.lease.share_mask_hint:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Share Mask Hint
+smb2.next_offset:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Next Offset
+smb2.negotiate_context.type:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Type
+smb2.negotiate_context.data_length:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: DataLength
+smb2.negotiate_context.offset:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: NegotiateContextOffset
+smb2.negotiate_context.count:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: NegotiateContextCount
+smb2.negotiate_context.hash_alg_count:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: HashAlgorithmCount
+smb2.negotiate_context.hash_algorithm:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: HashAlgorithm
+smb2.negotiate_context.salt_length:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: SaltLength
+smb2.negotiate_context.salt:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Salt
+smb2.negotiate_context.cipher_count:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: CipherCount
+smb2.negotiate_context.cipher_id:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: CipherId
+smb2.current_time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Current Time
+smb2.boot_time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Boot Time
+smb2.ea.flags:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: EA Flags
+smb2.ea.name_len:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: EA Name Length
+smb2.ea.data_len:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: EA Data Length
+smb2.delete_pending:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Delete Pending
+smb2.is_directory:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Is Directory
+smb2.create.oplock:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Oplock
+smb2.close.flags:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Close Flags
+smb2.notify.flags:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Notify Flags
+smb2.buffer_code:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: StructureSize
+smb2.buffer_code.length:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Fixed Part Length
+smb2.olb.length:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Blob Length
+smb2.olb.offset:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Blob Offset
+smb2.buffer_code.dynamic:
+  type: FT_BOOLEAN
+  base: 16
+  info: Dynamic Part
+smb2.ea.data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: EA Data
+smb2.ea.name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: EA Name
+smb2.impersonation.level:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Impersonation level
+smb2.ioctl.function:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Function
+smb2.ioctl.function.device:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Device
+smb2.ioctl.function.access:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Access
+smb2.ioctl.function.function:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Function
+smb2.ioctl.function.method:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Method
+smb2.fsctl.wait.timeout:
+  type: FT_INT64
+  base: BASE_DEC
+  info: Timeout
+smb2.fsctl.wait.name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Name
+smb2.fsctl.odx.token.type:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: TokenType
+smb2.fsctl.odx.token.idlen:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: TokenIdLength
+smb2.fsctl.odx.token.id:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: TokenId
+smb2.fsctl.odx.token_ttl:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: TokenTimeToLive
+smb2.fsctl.odx.size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Size
+smb2.fsctl.odx.flags:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Flags
+smb2.fsctl.odx.file_offset:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: FileOffset
+smb2.fsctl.odx.copy_length:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: CopyLength
+smb2.fsctl.odx.xfer_length:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: TransferLength
+smb2.fsctl.odx.token_offset:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: TokenOffset
+smb2.fsctl.set_sparse:
+  type: FT_BOOLEAN
+  base: 8
+  info: SetSparse
+smb2.ioctl.resiliency.timeout:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Timeout
+smb2.ioctl.resiliency.reserved:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Reserved
+smb2.ioctl.shared_virtual_disk.support:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: SharedVirtualDiskSupport
+smb2.ioctl.shared_virtual_disk.handle_state:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: SharedVirtualDiskHandleState
+smb2.ioctl.sqos.protocol_version:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: ProtocolVersion
+smb2.ioctl.sqos.reserved:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Reserved
+smb2.ioctl.sqos.operations:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Operations
+smb2.ioctl.sqos.operations.set_logical_flow_id:
+  type: FT_BOOLEAN
+  base: 32
+  info: Set Logical Flow ID
+smb2.ioctl.sqos.operations.set_policy:
+  type: FT_BOOLEAN
+  base: 32
+  info: Set Policy
+smb2.ioctl.sqos.operations.probe_policy:
+  type: FT_BOOLEAN
+  base: 32
+  info: Probe Policy
+smb2.ioctl.sqos.operations.get_status:
+  type: FT_BOOLEAN
+  base: 32
+  info: Get Status
+smb2.ioctl.sqos.operations.update_counters:
+  type: FT_BOOLEAN
+  base: 32
+  info: Update Counters
+smb2.ioctl.sqos.logical_flow_id:
+  type: FT_GUID
+  base: BASE_NONE
+  info: LogicalFlowID
+smb2.ioctl.sqos.policy_id:
+  type: FT_GUID
+  base: BASE_NONE
+  info: PolicyID
+smb2.ioctl.sqos.initiator_id:
+  type: FT_GUID
+  base: BASE_NONE
+  info: InitiatorID
+smb2.ioctl.sqos.limit:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Limit
+smb2.ioctl.sqos.reservation:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Reservation
+smb2.ioctl.sqos.initiator_name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: InitiatorName
+smb2.ioctl.sqos.initiator_node_name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: InitiatorNodeName
+smb2.ioctl.sqos.io_count_increment:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: IoCountIncrement
+smb2.ioctl.sqos.normalized_io_count_increment:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: NormalizedIoCountIncrement
+smb2.ioctl.sqos.latency_increment:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: LatencyIncrement
+smb2.ioctl.sqos.lower_latency_increment:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: LowerLatencyIncrement
+smb2.ioctl.sqos.bandwidth_limit:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: BandwidthLimit
+smb2.ioctl.sqos.kilobyte_count_increment:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: KilobyteCountIncrement
+smb2.ioctl.sqos.time_to_live:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: TimeToLive
+smb2.ioctl.sqos.status:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Status
+smb2.ioctl.sqos.maximum_io_rate:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: MaximumIoRate
+smb2.ioctl.sqos.minimum_io_rate:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: MinimumIoRate
+smb2.ioctl.sqos.base_io_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: BaseIoSize
+smb2.ioctl.sqos.reserved2:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Reserved
+smb2.ioctl.sqos.maximum_bandwidth:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: MaximumBandwidth
+smb2.windows.sockaddr.family:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Socket Family
+smb2.windows.sockaddr.port:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Socket Port
+smb2.windows.sockaddr.in.addr:
+  type: FT_IPv4
+  base: BASE_NONE
+  info: Socket IPv4
+smb2.windows.sockaddr.in6.flow_info:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: IPv6 Flow Info
+smb2.windows.sockaddr.in6.addr:
+  type: FT_IPv6
+  base: BASE_NONE
+  info: Socket IPv6
+smb2.windows.sockaddr.in6.scope_id:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: IPv6 Scope ID
+smb2.ioctl.network_interfaces.next_offset:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Next Offset
+smb2.ioctl.network_interfaces.index:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Interface Index
+smb2.ioctl.network_interfaces.rss_queue_count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: RSS Queue Count
+smb2.ioctl.network_interfaces.capabilities:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Interface Cababilities
+smb2.ioctl.network_interfaces.capabilities.rss:
+  type: FT_BOOLEAN
+  base: 32
+  info: RSS
+smb2.ioctl.network_interfaces.capabilities.rdma:
+  type: FT_BOOLEAN
+  base: 32
+  info: RDMA
+smb2.ioctl.network_interfaces.link_speed:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Link Speed
+smb2.ioctl.shadow_copy.num_volumes:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Num Volumes
+smb2.ioctl.shadow_copy.num_labels:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Num Labels
+smb2.ioctl.shadow_copy.label:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Label
+smb2.compression_format:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Compression Format
+smb2.checksum_algorithm:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Checksum Algorithm
+smb2.integrity_reserved:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Reserved
+smb2.integrity_flags:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Flags
+smb2.integrity_flags_enforcement:
+  type: FT_BOOLEAN
+  base: 32
+  info: FSCTL_INTEGRITY_FLAG_CHECKSUM_ENFORCEMENT_OFF
+smb2.share_type:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Share Type
+smb2.credit.charge:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Credit Charge
+smb2.credits.requested:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Credits requested
+smb2.credits.granted:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Credits granted
+smb2.channel_sequence:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Channel Sequence
+smb2.dialect_count:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Dialect count
+smb2.dialect:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Dialect
+smb2.sec_mode:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Security mode
+smb2.session_flags:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Session Flags
+smb2.lock_count:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Lock Count
+smb2.capabilities:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Capabilities
+smb2.ioctl.shadow_copy.count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Count
+smb2.auth_frame:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Authenticated in Frame
+smb2.tcon_frame:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Connected in Frame
+smb2.tag:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Tag
+smb2.acct:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Account
+smb2.domain:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Domain
+smb2.host:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Host
+smb2.signature:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Signature
+smb2.unknown:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Unknown
+smb2.twrp_timestamp:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Timestamp
+smb2.mxac_timestamp:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Timestamp
+smb2.mxac_status:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Query Status
+smb2.qfid_fid:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Opaque File ID
+smb2.ses_flags.guest:
+  type: FT_BOOLEAN
+  base: 16
+  info: Guest
+smb2.ses_flags.null:
+  type: FT_BOOLEAN
+  base: 16
+  info: Null
+smb2.ses_flags.encrypt:
+  type: FT_BOOLEAN
+  base: 16
+  info: Encrypt
+smb2.sec_mode.sign_required:
+  type: FT_BOOLEAN
+  base: 8
+  info: Signing required
+smb2.sec_mode.sign_enabled:
+  type: FT_BOOLEAN
+  base: 8
+  info: Signing enabled
+smb2.ses_req_flags:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Flags
+smb2.ses_req_flags.session_binding:
+  type: FT_BOOLEAN
+  base: 8
+  info: Session Binding Request
+smb2.capabilities.dfs:
+  type: FT_BOOLEAN
+  base: 32
+  info: DFS
+smb2.capabilities.leasing:
+  type: FT_BOOLEAN
+  base: 32
+  info: LEASING
+smb2.capabilities.large_mtu:
+  type: FT_BOOLEAN
+  base: 32
+  info: LARGE MTU
+smb2.capabilities.multi_channel:
+  type: FT_BOOLEAN
+  base: 32
+  info: MULTI CHANNEL
+smb2.capabilities.persistent_handles:
+  type: FT_BOOLEAN
+  base: 32
+  info: PERSISTENT HANDLES
+smb2.capabilities.directory_leasing:
+  type: FT_BOOLEAN
+  base: 32
+  info: DIRECTORY LEASING
+smb2.capabilities.encryption:
+  type: FT_BOOLEAN
+  base: 32
+  info: ENCRYPTION
+smb2.max_trans_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Max Transaction Size
+smb2.max_read_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Max Read Size
+smb2.max_write_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Max Write Size
+smb2.channel:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Channel
+smb2.buffer_descriptor.offset:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Offset
+smb2.buffer_descriptor.token:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Token
+smb2.buffer_descriptor.length:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Length
+smb2.share_flags:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Share flags
+smb2.share_flags.dfs:
+  type: FT_BOOLEAN
+  base: 32
+  info: DFS
+smb2.share_flags.dfs_root:
+  type: FT_BOOLEAN
+  base: 32
+  info: DFS root
+smb2.share_flags.restrict_exclusive_opens:
+  type: FT_BOOLEAN
+  base: 32
+  info: Restrict exclusive opens
+smb2.share_flags.force_shared_delete:
+  type: FT_BOOLEAN
+  base: 32
+  info: Force shared delete
+smb2.share_flags.allow_namespace_caching:
+  type: FT_BOOLEAN
+  base: 32
+  info: Allow namepsace caching
+smb2.share_flags.access_based_dir_enum:
+  type: FT_BOOLEAN
+  base: 32
+  info: Access based directory enum
+smb2.share_flags.force_levelii_oplock:
+  type: FT_BOOLEAN
+  base: 32
+  info: Force level II oplock
+smb2.share_flags.enable_hash_v1:
+  type: FT_BOOLEAN
+  base: 32
+  info: Enable hash V1
+smb2.share_flags.enable_hash_v2:
+  type: FT_BOOLEAN
+  base: 32
+  info: Enable hash V2
+smb2.share_flags.encrypt_data:
+  type: FT_BOOLEAN
+  base: 32
+  info: Encrypted data required
+smb2.share.caching:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Caching policy
+smb2.share_caps:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Share Capabilities
+smb2.share_caps.dfs:
+  type: FT_BOOLEAN
+  base: 32
+  info: DFS
+smb2.share_caps.continuous_availability:
+  type: FT_BOOLEAN
+  base: 32
+  info: CONTINUOUS AVAILABILITY
+smb2.share_caps.scaleout:
+  type: FT_BOOLEAN
+  base: 32
+  info: SCALEOUT
+smb2.share_caps.cluster:
+  type: FT_BOOLEAN
+  base: 32
+  info: CLUSTER
+smb2.ioctl.flags:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Flags
+smb2.min_count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Min Count
+smb2.remaining_bytes:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Remaining Bytes
+smb2.channel_info_offset:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Channel Info Offset
+smb2.channel_info_length:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Channel Info Length
+smb2.channel_info_blob:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Channel Info Blob
+smb2.ioctl.is_fsctl:
+  type: FT_BOOLEAN
+  base: 32
+  info: Is FSCTL
+smb2.output_buffer_len:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Output Buffer Length
+smb2.close.pq_attrib:
+  type: FT_BOOLEAN
+  base: 16
+  info: PostQuery Attrib
+smb2.notify.watch_tree:
+  type: FT_BOOLEAN
+  base: 16
+  info: Watch Tree
+smb2.notify.out:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Out Data
+smb2.notify.info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Notify Info
+smb2.notify.next_offset:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Next Offset
+smb2.notify.action:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Action
+smb2.find.restart_scans:
+  type: FT_BOOLEAN
+  base: 8
+  info: Restart Scans
+smb2.find.single_entry:
+  type: FT_BOOLEAN
+  base: 8
+  info: Single Entry
+smb2.find.index_specified:
+  type: FT_BOOLEAN
+  base: 8
+  info: Index Specified
+smb2.find.reopen:
+  type: FT_BOOLEAN
+  base: 8
+  info: Reopen
+smb2.file_index:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: File Index
+smb2.find.file_directory_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: FileDirectoryInfo
+smb2.find.full_directory_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: FullDirectoryInfo
+smb2.find.both_directory_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: FileBothDirectoryInfo
+smb2.find.id_both_directory_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: FileIdBothDirectoryInfo
+smb2.short_name_len:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Short Name Length
+smb2.shortname:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Short Name
+smb2.lock_info:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Lock Info
+smb2.lock_length:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Length
+smb2.lock_flags:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Flags
+smb2.lock_flags.shared:
+  type: FT_BOOLEAN
+  base: 32
+  info: Shared
+smb2.lock_flags.exclusive:
+  type: FT_BOOLEAN
+  base: 32
+  info: Exclusive
+smb2.lock_flags.unlock:
+  type: FT_BOOLEAN
+  base: 32
+  info: Unlock
+smb2.lock_flags.fail_immediately:
+  type: FT_BOOLEAN
+  base: 32
+  info: Fail Immediately
+smb2.error.context_count:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Error Context Count
+smb2.error.reserved:
+  type: FT_UINT8
+  base: BASE_HEX
+  info: Reserved
+smb2.error.byte_count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Byte Count
+smb2.error.data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Error Data
+smb2.reserved:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Reserved
+smb2.reserved.random:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Reserved (Random)
+smb2.root_directory:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Root Dir Handle (MBZ)
+smb2.dhnq_buffer_reserved:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Reserved
+smb2.dh2x.timeout:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Timeout
+smb2.dh2x.flags:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Flags
+smb2.dh2x.flags.persistent_handle:
+  type: FT_BOOLEAN
+  base: 32
+  info: Persistent Handle
+smb2.dh2x.reserved:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Reserved
+smb2.dh2x.create_guid:
+  type: FT_GUID
+  base: BASE_NONE
+  info: Create Guid
+smb2.app_instance.struct_size:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Struct Size
+smb2.app_instance.reserved:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Reserved
+smb2.app_instance.app_guid:
+  type: FT_GUID
+  base: BASE_NONE
+  info: Application Guid
+smb2.svhdx_open_device_context.version:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Version
+smb2.svhdx_open_device_context.initiator_has_id:
+  type: FT_BOOLEAN
+  base: 8
+  info: HasInitiatorId
+smb2.svhdx_open_device_context.reserved:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Reserved
+smb2.svhdx_open_device_context.initiator_id:
+  type: FT_GUID
+  base: BASE_NONE
+  info: InitiatorId
+smb2.svhdx_open_device_context.flags:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Flags
+smb2.svhdx_open_device_context.originator_flags:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: OriginatorFlags
+smb2.svhxd_open_device_context.open_request_id:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: OpenRequestId
+smb2.svhxd_open_device_context.initiator_host_name_len:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: HostNameLength
+smb2.svhdx_open_device_context.host_name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: HostName
+smb2.svhdx_open_device_context.virtual_disk_properties_initialized:
+  type: FT_BOOLEAN
+  base: 32
+  info: VirtualDiskPropertiesInitialized
+smb2.svhdx_open_device_context.server_service_version:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: ServerServiceVersion
+smb2.svhdx_open_device_context.virtual_sector_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: VirtualSectorSize
+smb2.svhdx_open_device_context.physical_sector_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: PhysicalSectorSize
+smb2.svhdx_open_device_context.virtual_size:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: VirtualSize
+smb2.posix_v1_version:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Version
+smb2.posix_request:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Request
+smb2.posix_case_sensitive:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Posix Case Sensitive File Names
+smb2.posix_locks:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Posix Byte-Range Locks
+smb2.posix_file_semantics:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Posix File Semantics
+smb2.posix_utf8_paths:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Posix UTF8 Paths
+smb2.will_convert_NTACLs:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Posix Will Convert NT ACLs
+smb2.posix_fileinfo:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Posix Fileinfo
+smb2.posix_acls:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Posix ACLs
+smb2.rich_acls:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Rich ACLs
+smb2.posix_supported_features:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Supported Features
+smb2.aapl.command_code:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Command code
+smb2.aapl.reserved:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Reserved
+smb2.aapl.query_bitmask:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Query bitmask
+smb2.aapl.bitmask.server_caps:
+  type: FT_BOOLEAN
+  base: 64
+  info: Server capabilities
+smb2.aapl.bitmask.volume_caps:
+  type: FT_BOOLEAN
+  base: 64
+  info: Volume capabilities
+smb2.aapl.bitmask.model_info:
+  type: FT_BOOLEAN
+  base: 64
+  info: Model information
+smb2.aapl.caps:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Client/Server capabilities
+smb2.aapl.caps.supports_read_dir_addr:
+  type: FT_BOOLEAN
+  base: 64
+  info: Supports READDIRATTR
+smb2.aapl.caps.supports_osx_copyfile:
+  type: FT_BOOLEAN
+  base: 64
+  info: Supports macOS copyfile
+smb2.aapl.caps.unix_based:
+  type: FT_BOOLEAN
+  base: 64
+  info: UNIX-based
+smb2.aapl.supports_nfs_ace:
+  type: FT_BOOLEAN
+  base: 64
+  info: Supports NFS ACE
+smb2.aapl.volume_caps:
+  type: FT_UINT64
+  base: BASE_HEX
+  info: Volume capabilities
+smb2.aapl.volume_caps.supports_resolve_id:
+  type: FT_BOOLEAN
+  base: 64
+  info: Supports Resolve ID
+smb2.aapl.volume_caps.case_sensitive:
+  type: FT_BOOLEAN
+  base: 64
+  info: Case sensitive
+smb2.aapl.volume_caps.supports_full_sync:
+  type: FT_BOOLEAN
+  base: 64
+  info: Supports full sync
+smb2.aapl.model_string:
+  type: FT_UINT_STRING
+  base: STR_UNICODE
+  info: Model string
+smb2.aapl.server_path:
+  type: FT_UINT_STRING
+  base: STR_UNICODE
+  info: Server path
+smb2.header.transform.signature:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Signature
+smb2.header.transform.nonce:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Nonce
+smb2.header.transform.msg_size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Message size
+smb2.header.transform.reserved:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Reserved
+smb2.header.transform.encryption_alg:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Encryption ALG
+smb2.header.transform.enc_aes128_ccm:
+  type: FT_BOOLEAN
+  base: 16
+  info: SMB2_ENCRYPTION_AES128_CCM
+smb2.header.transform.enc_data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Data
+smb2.server_component_smb2:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Server Component: SMB2
+smb2.server_component_smb2_transform:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Server Component: SMB2_TRANSFORM
+smb2.truncated:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Truncated...
+smb2.pipe.fragment.overlap:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Fragment overlap
+smb2.pipe.fragment.overlap.conflict:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Conflicting data in fragment overlap
+smb2.pipe.fragment.multipletails:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Multiple tail fragments found
+smb2.pipe.fragment.toolongfragment:
+  type: FT_BOOLEAN
+  base: BASE_NONE
+  info: Fragment too long
+smb2.pipe.fragment.error:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Defragmentation error
+smb2.pipe.fragment.count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Fragment count
+smb2.pipe.fragment:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Fragment SMB2 Named Pipe
+smb2.pipe.fragments:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Reassembled SMB2 Named Pipe fragments
+smb2.pipe.reassembled_in:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: This SMB2 Named Pipe payload is reassembled in frame
+smb2.pipe.reassembled.length:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Reassembled SMB2 Named Pipe length
+smb2.pipe.reassembled.data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Reassembled SMB2 Named Pipe Data
+smb2.fsctl.cchunk.resume_key:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: ResumeKey
+smb2.fsctl.cchunk.count:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Chunk Count
+smb2.fsctl.cchunk.src_offset:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Source Offset
+smb2.fsctl.cchunk.dst_offset:
+  type: FT_UINT64
+  base: BASE_DEC
+  info: Target Offset
+smb2.fsctl.cchunk.xfer_len:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Transfer Length
+smb2.fsctl.cchunk.chunks_written:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Chunks Written
+smb2.fsctl.cchunk.bytes_written:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Chunk Bytes Written
+smb2.fsctl.cchunk.total_written:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Total Bytes Written
+smb2.symlink_error_response:
+  type: FT_NONE
+  base: BASE_NONE
+  info: Symbolic Link Error Response
+smb2.symlink.length:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: SymLink Length
+smb2.symlink.error_tag:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: SymLink Error Tag
+smb2.SYMBOLIC_LINK_REPARSE_DATA_BUFFER:
+  type: FT_NONE
+  base: BASE_NONE
+  info: SYMBOLIC_LINK_REPARSE_DATA_BUFFER
+smb2.symlink.reparse_tag:
+  type: FT_UINT32
+  base: BASE_HEX
+  info: Reparse Tag
+smb2.symlink.reparse_data_length:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Reparse Data Length
+smb2.symlink.unparsed_path_length:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Unparsed Path Length
+smb2.symlink.substitute_name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Substitute Name
+smb2.symlink.print_name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Print Name
+smb2.symlink.flags:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Flags

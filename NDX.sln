@@ -60,7 +60,33 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PPA", "PPA", "{AA3303A3-FAA
 		TestData\PPA\nowebaccess1.pcap = TestData\PPA\nowebaccess1.pcap
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "didlgen", "didlgen\didlgen.csproj", "{44525072-2D7C-4AF4-8FBF-648998F391B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "didlgen", "Tools\didlgen\didlgen.csproj", "{44525072-2D7C-4AF4-8FBF-648998F391B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "proto-yaml", "proto-yaml", "{9CB30C58-A7F0-4F32-A612-B47C18287BC6}"
+	ProjectSection(SolutionItems) = preProject
+		TestData\Proto-yaml\packet-arp.yaml = TestData\Proto-yaml\packet-arp.yaml
+		TestData\Proto-yaml\packet-bootp.yaml = TestData\Proto-yaml\packet-bootp.yaml
+		TestData\Proto-yaml\packet-dns.yaml = TestData\Proto-yaml\packet-dns.yaml
+		TestData\Proto-yaml\packet-eth.yaml = TestData\Proto-yaml\packet-eth.yaml
+		TestData\Proto-yaml\packet-ftp.yaml = TestData\Proto-yaml\packet-ftp.yaml
+		TestData\Proto-yaml\packet-http.yaml = TestData\Proto-yaml\packet-http.yaml
+		TestData\Proto-yaml\packet-icmp.yaml = TestData\Proto-yaml\packet-icmp.yaml
+		TestData\Proto-yaml\packet-imap.yaml = TestData\Proto-yaml\packet-imap.yaml
+		TestData\Proto-yaml\packet-ip.yaml = TestData\Proto-yaml\packet-ip.yaml
+		TestData\Proto-yaml\packet-ipsec.yaml = TestData\Proto-yaml\packet-ipsec.yaml
+		TestData\Proto-yaml\packet-isakmp.yaml = TestData\Proto-yaml\packet-isakmp.yaml
+		TestData\Proto-yaml\packet-pop.yaml = TestData\Proto-yaml\packet-pop.yaml
+		TestData\Proto-yaml\packet-raw.yaml = TestData\Proto-yaml\packet-raw.yaml
+		TestData\Proto-yaml\packet-sip.yaml = TestData\Proto-yaml\packet-sip.yaml
+		TestData\Proto-yaml\packet-smb.yaml = TestData\Proto-yaml\packet-smb.yaml
+		TestData\Proto-yaml\packet-smb2.yaml = TestData\Proto-yaml\packet-smb2.yaml
+		TestData\Proto-yaml\packet-smtp.yaml = TestData\Proto-yaml\packet-smtp.yaml
+		TestData\Proto-yaml\packet-ssh.yaml = TestData\Proto-yaml\packet-ssh.yaml
+		TestData\Proto-yaml\packet-ssl.yaml = TestData\Proto-yaml\packet-ssl.yaml
+		TestData\Proto-yaml\packet-tcp.yaml = TestData\Proto-yaml\packet-tcp.yaml
+		TestData\Proto-yaml\packet-telnet.yaml = TestData\Proto-yaml\packet-telnet.yaml
+		TestData\Proto-yaml\packet-udp.yaml = TestData\Proto-yaml\packet-udp.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -249,6 +275,7 @@ Global
 		{347DCEE4-292E-4FC6-BD73-85706985A0E1} = {D88F88ED-6A2A-4EA8-9B67-725FBF2B4BC9}
 		{AA3303A3-FAAA-4F6E-972C-270D0953888D} = {76D3A5B1-53A8-4105-9671-82FAAE2A7F05}
 		{44525072-2D7C-4AF4-8FBF-648998F391B3} = {D88F88ED-6A2A-4EA8-9B67-725FBF2B4BC9}
+		{9CB30C58-A7F0-4F32-A612-B47C18287BC6} = {76D3A5B1-53A8-4105-9671-82FAAE2A7F05}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81AAAA90-A87F-4CCD-BD2A-A99FA97609F3}

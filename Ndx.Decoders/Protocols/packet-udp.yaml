@@ -1,0 +1,73 @@
+---
+udp.srcport:
+  type: FT_UINT16
+  base: BASE_PT_UDP
+  info: Source Port
+udp.dstport:
+  type: FT_UINT16
+  base: BASE_PT_UDP
+  info: Destination Port
+udp.port:
+  type: FT_UINT16
+  base: BASE_PT_UDP
+  info: Source or Destination Port
+udp.stream:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Stream index
+udp.length:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Length
+udp.checksum:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Checksum
+udp.checksum_calculated:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Calculated Checksum
+udp.checksum.status:
+  type: FT_UINT8
+  base: BASE_NONE
+  info: Checksum Status
+udp.proc.srcuid:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Source process user ID
+udp.proc.srcpid:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Source process ID
+udp.proc.srcuname:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Source process user name
+udp.proc.srccmd:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Source process name
+udp.proc.dstuid:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Destination process user ID
+udp.proc.dstpid:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Destination process ID
+udp.proc.dstuname:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Destination process user name
+udp.proc.dstcmd:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Destination process name
+udp.pdu.size:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: PDU Size
+udp.checksum_coverage:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Checksum coverage

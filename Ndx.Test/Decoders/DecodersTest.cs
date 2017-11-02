@@ -16,7 +16,7 @@ namespace Ndx.Test
         [Test]
         public void SshDecoderTest_FieldDecoder()
         {
-            var tsharkProcess = new TSharkFieldDecoderProcess(SSH.Fields);            
+            var tsharkProcess = new TSharkFieldDecoderProcess(); // SSH.Fields);            
             var frames = PcapFile.ReadFile(source);
             var packets = frames.Decode(tsharkProcess).Where(x=>x.FrameProtocols.Contains("ssh"));
 

@@ -1,0 +1,309 @@
+---
+icmp.type:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Type
+icmp.code:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Code
+icmp.checksum:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Checksum
+icmp.checksum.status:
+  type: FT_UINT8
+  base: BASE_NONE
+  info: Checksum Status
+icmp.unused:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Unused
+icmp.reserved:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Reserved
+icmp.ident:
+  type: FT_UINT16
+  base: BASE_DEC_HEX
+  info: Identifier (BE)
+icmp.ident:
+  type: FT_UINT16
+  base: BASE_DEC_HEX
+  info: Identifier (LE)
+icmp.seq:
+  type: FT_UINT16
+  base: BASE_DEC_HEX
+  info: Sequence number (BE)
+icmp.seq_le:
+  type: FT_UINT16
+  base: BASE_DEC_HEX
+  info: Sequence number (LE)
+icmp.mtu:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: MTU of next hop
+icmp.num_addrs:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Number of addresses
+icmp.addr_entry_size:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Address entry size
+icmp.lifetime:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Lifetime
+icmp.pointer:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Pointer
+icmp.router_address:
+  type: FT_IPv4
+  base: BASE_NONE
+  info: Router address
+icmp.pref_level:
+  type: FT_INT32
+  base: BASE_DEC
+  info: Preference level
+icmp.originate_timestamp:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Originate timestamp
+icmp.receive_timestamp:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Receive timestamp
+icmp.transmit_timestamp:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Transmit timestamp
+icmp.address_mask:
+  type: FT_IPv4
+  base: BASE_NONE
+  info: Address Mask
+icmp.redir_gw:
+  type: FT_IPv4
+  base: BASE_NONE
+  info: Gateway address
+icmp.mip.type:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Extension Type
+icmp.mip.length:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Length
+icmp.mip.prefixlength:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Prefix Length
+icmp.mip.seq:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Sequence Number
+icmp.mip.life:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Registration Lifetime
+icmp.mip.flags:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Flags
+icmp.mip.r:
+  type: FT_BOOLEAN
+  base: 16
+  info: Registration Required
+icmp.mip.b:
+  type: FT_BOOLEAN
+  base: 16
+  info: Busy
+icmp.mip.h:
+  type: FT_BOOLEAN
+  base: 16
+  info: Home Agent
+icmp.mip.f:
+  type: FT_BOOLEAN
+  base: 16
+  info: Foreign Agent
+icmp.mip.m:
+  type: FT_BOOLEAN
+  base: 16
+  info: Minimal Encapsulation
+icmp.mip.g:
+  type: FT_BOOLEAN
+  base: 16
+  info: GRE
+icmp.mip.v:
+  type: FT_BOOLEAN
+  base: 16
+  info: VJ Comp
+icmp.mip.rt:
+  type: FT_BOOLEAN
+  base: 16
+  info: Reverse tunneling
+icmp.mip.u:
+  type: FT_BOOLEAN
+  base: 16
+  info: UDP tunneling
+icmp.mip.x:
+  type: FT_BOOLEAN
+  base: 16
+  info: Revocation support
+icmp.mip.reserved:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Reserved
+icmp.mip.coa:
+  type: FT_IPv4
+  base: BASE_NONE
+  info: Care-Of-Address
+icmp.mip.challenge:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Challenge
+icmp.mip.content:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Content
+icmp.ext:
+  type: FT_NONE
+  base: BASE_NONE
+  info: ICMP Extensions
+icmp.ext.version:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Version
+icmp.ext.res:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Reserved
+icmp.ext.checksum:
+  type: FT_UINT16
+  base: BASE_HEX
+  info: Checksum
+icmp.ext.checksum.status:
+  type: FT_UINT8
+  base: BASE_NONE
+  info: Checksum Status
+icmp.ext.length:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Length
+icmp.ext.class:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Class
+icmp.ext.ctype:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: C-Type
+icmp.ext.data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Data
+icmp.mpls.label:
+  type: FT_UINT24
+  base: BASE_DEC
+  info: Label
+icmp.mpls.exp:
+  type: FT_UINT24
+  base: BASE_DEC
+  info: Experimental
+icmp.mpls.s:
+  type: FT_BOOLEAN
+  base: 24
+  info: Stack bit
+icmp.mpls.ttl:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Time to live
+icmp.mpls.data:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Data
+icmp.resp_in:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Response frame
+icmp.no_resp:
+  type: FT_NONE
+  base: BASE_NONE
+  info: No response seen
+icmp.resp_to:
+  type: FT_FRAMENUM
+  base: BASE_NONE
+  info: Request frame
+icmp.resptime:
+  type: FT_DOUBLE
+  base: BASE_NONE
+  info: Response time
+icmp.data_time:
+  type: FT_ABSOLUTE_TIME
+  base: ABSOLUTE_TIME_LOCAL
+  info: Timestamp from icmp data
+icmp.data_time_relative:
+  type: FT_RELATIVE_TIME
+  base: BASE_NONE
+  info: Timestamp from icmp data (relative)
+icmp.length:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Length
+icmp.length.original_datagram:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Length of original datagram
+icmp.int_info.role:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Interface Role
+icmp.int_info.reserved:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Reserved
+icmp.int_info.ifindex:
+  type: FT_BOOLEAN
+  base: 8
+  info: ifIndex
+icmp.int_info.ipaddr:
+  type: FT_BOOLEAN
+  base: 8
+  info: IP Address
+icmp.int_info.name_present:
+  type: FT_BOOLEAN
+  base: 8
+  info: Interface Name
+icmp.int_info.mtu:
+  type: FT_BOOLEAN
+  base: 8
+  info: MTU
+icmp.int_info.index:
+  type: FT_UINT32
+  base: BASE_DEC
+  info: Interface Index
+icmp.int_info.afi:
+  type: FT_UINT16
+  base: BASE_DEC
+  info: Address Family Identifier
+icmp.int_info.ipv4:
+  type: FT_IPv4
+  base: BASE_NONE
+  info: Source
+icmp.int_info.ipv6:
+  type: FT_IPv6
+  base: BASE_NONE
+  info: Source
+icmp.int_info.ipunknown:
+  type: FT_BYTES
+  base: BASE_NONE
+  info: Source
+icmp.int_info.name_length:
+  type: FT_UINT8
+  base: BASE_DEC
+  info: Name Length
+icmp.int_info.name:
+  type: FT_STRING
+  base: BASE_NONE
+  info: Name

@@ -35,11 +35,12 @@ namespace Ndx.Model
 
             switch (value.ValueCase)
             {
+                case Variant.ValueOneofCase.UInt32Value: return value;
+                case Variant.ValueOneofCase.UInt64Value: return value;
                 case Variant.ValueOneofCase.Int32Value: return new Variant(Math.Abs(value.Int32Value));
                 case Variant.ValueOneofCase.Int64Value: return new Variant(Math.Abs(value.Int64Value));
                 case Variant.ValueOneofCase.FloatValue: return new Variant(Math.Abs(value.FloatValue));
                 case Variant.ValueOneofCase.DoubleValue: return new Variant(Math.Abs(value.DoubleValue));
-                case Variant.ValueOneofCase.DecimalValue: return new Variant(Math.Abs(value.ToDecimal()));
             }
             return Variant.None;
         }
@@ -69,10 +70,6 @@ namespace Ndx.Model
                 return Variant.None;
             }
 
-            if (left.ValueCase == Variant.ValueOneofCase.DecimalValue || right.ValueCase == Variant.ValueOneofCase.DecimalValue)
-            {
-                return new Variant(left.ToDecimal() + right.ToDecimal());
-            }
             if (left.ValueCase == Variant.ValueOneofCase.DoubleValue || right.ValueCase == Variant.ValueOneofCase.DoubleValue)
             {
                 return new Variant(left.ToDouble() + right.ToDouble());
@@ -81,9 +78,18 @@ namespace Ndx.Model
             {
                 return new Variant(left.ToFloat() + right.ToFloat());
             }
+
+            if (left.ValueCase == Variant.ValueOneofCase.UInt64Value || right.ValueCase == Variant.ValueOneofCase.UInt64Value)
+            {
+                return new Variant(left.ToUInt64() + right.ToUInt64());
+            }
             if (left.ValueCase == Variant.ValueOneofCase.Int64Value || right.ValueCase == Variant.ValueOneofCase.Int64Value)
             {
                 return new Variant(left.ToInt64() + right.ToInt64());
+            }
+            if (left.ValueCase == Variant.ValueOneofCase.UInt32Value || right.ValueCase == Variant.ValueOneofCase.UInt32Value)
+            {
+                return new Variant(left.ToUInt32() + right.ToUInt32());
             }
             if (left.ValueCase == Variant.ValueOneofCase.Int32Value || right.ValueCase == Variant.ValueOneofCase.Int32Value)
             {
@@ -107,10 +113,7 @@ namespace Ndx.Model
                 return Variant.None;
             }
 
-            if (left.ValueCase == Variant.ValueOneofCase.DecimalValue || right.ValueCase == Variant.ValueOneofCase.DecimalValue)
-            {
-                return new Variant(left.ToDecimal() - right.ToDecimal());
-            }
+
             if (left.ValueCase == Variant.ValueOneofCase.DoubleValue || right.ValueCase == Variant.ValueOneofCase.DoubleValue)
             {
                 return new Variant(left.ToDouble() - right.ToDouble());
@@ -119,14 +122,25 @@ namespace Ndx.Model
             {
                 return new Variant(left.ToFloat() - right.ToFloat());
             }
+
+            if (left.ValueCase == Variant.ValueOneofCase.UInt64Value || right.ValueCase == Variant.ValueOneofCase.UInt64Value)
+            {
+                return new Variant(left.ToUInt64() - right.ToUInt64());
+            }
             if (left.ValueCase == Variant.ValueOneofCase.Int64Value || right.ValueCase == Variant.ValueOneofCase.Int64Value)
             {
                 return new Variant(left.ToInt64() - right.ToInt64());
             }
+            if (left.ValueCase == Variant.ValueOneofCase.UInt32Value || right.ValueCase == Variant.ValueOneofCase.UInt32Value)
+            {
+                return new Variant(left.ToUInt32() - right.ToUInt32());
+            }
+
             if (left.ValueCase == Variant.ValueOneofCase.Int32Value || right.ValueCase == Variant.ValueOneofCase.Int32Value)
             {
                 return new Variant(left.ToInt32() - right.ToInt32());
             }
+
             return Variant.None;
         }
 
@@ -153,9 +167,18 @@ namespace Ndx.Model
             {
                 return Variant.None;
             }
+            if (left.ValueCase == Variant.ValueOneofCase.UInt64Value || right.ValueCase == Variant.ValueOneofCase.UInt64Value)
+            {
+                return new Variant(left.ToUInt64() & right.ToUInt64());
+            }
             if (left.ValueCase == Variant.ValueOneofCase.Int64Value || right.ValueCase == Variant.ValueOneofCase.Int64Value)
             {
                 return new Variant(left.ToInt64() & right.ToInt64());
+            }
+
+            if (left.ValueCase == Variant.ValueOneofCase.UInt32Value || right.ValueCase == Variant.ValueOneofCase.UInt32Value)
+            {
+                return new Variant(left.ToUInt32() & right.ToUInt32());
             }
             if (left.ValueCase == Variant.ValueOneofCase.Int32Value || right.ValueCase == Variant.ValueOneofCase.Int32Value)
             {
@@ -185,9 +208,17 @@ namespace Ndx.Model
             {
                 return Variant.None;
             }
+            if (left.ValueCase == Variant.ValueOneofCase.UInt64Value || right.ValueCase == Variant.ValueOneofCase.UInt64Value)
+            {
+                return new Variant(left.ToUInt64() | right.ToUInt64());
+            }
             if (left.ValueCase == Variant.ValueOneofCase.Int64Value || right.ValueCase == Variant.ValueOneofCase.Int64Value)
             {
                 return new Variant(left.ToInt64() | right.ToInt64());
+            }
+            if (left.ValueCase == Variant.ValueOneofCase.UInt32Value || right.ValueCase == Variant.ValueOneofCase.UInt32Value)
+            {
+                return new Variant(left.ToUInt32() | right.ToUInt32());
             }
             if (left.ValueCase == Variant.ValueOneofCase.Int32Value || right.ValueCase == Variant.ValueOneofCase.Int32Value)
             {
@@ -213,9 +244,17 @@ namespace Ndx.Model
             {
                 return new Variant(!value.ToBoolean());
             }
-            if (value.ValueCase == Variant.ValueOneofCase.Int64Value )
+            if (value.ValueCase == Variant.ValueOneofCase.UInt64Value )
             {
-                return new Variant(~ value.Int64Value );
+                return new Variant(~ value.UInt64Value );
+            }
+            if (value.ValueCase == Variant.ValueOneofCase.Int64Value)
+            {
+                return new Variant(~value.Int64Value);
+            }
+            if (value.ValueCase == Variant.ValueOneofCase.UInt32Value)
+            {
+                return new Variant(~value.UInt32Value);
             }
             if (value.ValueCase == Variant.ValueOneofCase.Int32Value )
             {
@@ -276,10 +315,6 @@ namespace Ndx.Model
                 return Variant.None;
             }
 
-            if (left.ValueCase == Variant.ValueOneofCase.DecimalValue || right.ValueCase == Variant.ValueOneofCase.DecimalValue)
-            {
-                return new Variant(left.ToDecimal() * right.ToDecimal());
-            }
             if (left.ValueCase == Variant.ValueOneofCase.DoubleValue || right.ValueCase == Variant.ValueOneofCase.DoubleValue)
             {
                 return new Variant(left.ToDouble() * right.ToDouble());
@@ -288,9 +323,17 @@ namespace Ndx.Model
             {
                 return new Variant(left.ToFloat() * right.ToFloat());
             }
+            if (left.ValueCase == Variant.ValueOneofCase.UInt64Value || right.ValueCase == Variant.ValueOneofCase.UInt64Value)
+            {
+                return new Variant(left.ToUInt64() * right.ToUInt64());
+            }
             if (left.ValueCase == Variant.ValueOneofCase.Int64Value || right.ValueCase == Variant.ValueOneofCase.Int64Value)
             {
                 return new Variant(left.ToInt64() * right.ToInt64());
+            }
+            if (left.ValueCase == Variant.ValueOneofCase.UInt32Value || right.ValueCase == Variant.ValueOneofCase.UInt32Value)
+            {
+                return new Variant(left.ToUInt32() * right.ToUInt32());
             }
             if (left.ValueCase == Variant.ValueOneofCase.Int32Value || right.ValueCase == Variant.ValueOneofCase.Int32Value)
             {
@@ -340,10 +383,6 @@ namespace Ndx.Model
                 return Variant.None;
             }
 
-            if (left.ValueCase == Variant.ValueOneofCase.DecimalValue || right.ValueCase == Variant.ValueOneofCase.DecimalValue)
-            {
-                return new Variant(left.ToDecimal() % right.ToDecimal());
-            }
             if (left.ValueCase == Variant.ValueOneofCase.DoubleValue || right.ValueCase == Variant.ValueOneofCase.DoubleValue)
             {
                 return new Variant(left.ToDouble() % right.ToDouble());
@@ -352,9 +391,17 @@ namespace Ndx.Model
             {
                 return new Variant(left.ToFloat() % right.ToFloat());
             }
+            if (left.ValueCase == Variant.ValueOneofCase.UInt64Value || right.ValueCase == Variant.ValueOneofCase.UInt64Value)
+            {
+                return new Variant(left.ToUInt64() % right.ToUInt64());
+            }
             if (left.ValueCase == Variant.ValueOneofCase.Int64Value || right.ValueCase == Variant.ValueOneofCase.Int64Value)
             {
                 return new Variant(left.ToInt64() % right.ToInt64());
+            }
+            if (left.ValueCase == Variant.ValueOneofCase.UInt32Value || right.ValueCase == Variant.ValueOneofCase.UInt32Value)
+            {
+                return new Variant(left.ToUInt32() % right.ToUInt32());
             }
             if (left.ValueCase == Variant.ValueOneofCase.Int32Value || right.ValueCase == Variant.ValueOneofCase.Int32Value)
             {
@@ -419,10 +466,6 @@ namespace Ndx.Model
                 return null;
             }
 
-            if (left.ValueCase == Variant.ValueOneofCase.DecimalValue || right.ValueCase == Variant.ValueOneofCase.DecimalValue)
-            {
-                return Decimal.Compare(left.ToDecimal(),right.ToDecimal());
-            }
             if (left.ValueCase == Variant.ValueOneofCase.DoubleValue || right.ValueCase == Variant.ValueOneofCase.DoubleValue)
             {
                 return left.ToDouble().CompareTo(right.ToDouble());
@@ -431,9 +474,17 @@ namespace Ndx.Model
             {
                 return left.ToFloat().CompareTo(right.ToFloat());
             }
+            if (left.ValueCase == Variant.ValueOneofCase.UInt64Value || right.ValueCase == Variant.ValueOneofCase.UInt64Value)
+            {
+                return left.ToUInt64().CompareTo(right.ToUInt64());
+            }
             if (left.ValueCase == Variant.ValueOneofCase.Int64Value || right.ValueCase == Variant.ValueOneofCase.Int64Value)
             {
                 return left.ToInt64().CompareTo(right.ToInt64());
+            }
+            if (left.ValueCase == Variant.ValueOneofCase.UInt32Value || right.ValueCase == Variant.ValueOneofCase.UInt32Value)
+            {
+                return left.ToUInt32().CompareTo(right.ToUInt32());
             }
             if (left.ValueCase == Variant.ValueOneofCase.Int32Value || right.ValueCase == Variant.ValueOneofCase.Int32Value)
             {
