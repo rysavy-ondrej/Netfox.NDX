@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Ndx.Shell.Commands
 {
-    internal class DefaultCommandRuntime : ICommandRuntime
+    public class DefaultCommandRuntime<TYPE> : ICommandRuntime<TYPE>
     {
-        private ArrayList m_output;
+        private IList<TYPE> m_output;
 
-
-        public DefaultCommandRuntime(ArrayList outputArrayList)
+        public DefaultCommandRuntime(IList<TYPE> outputArrayList)
         {
-            if (outputArrayList == null)
-            {
-                throw new ArgumentNullException("outputArrayList");
-            }
-            this.m_output = outputArrayList;
+            m_output = outputArrayList ?? throw new ArgumentNullException("outputArrayList");
         }
 
         public void WriteDebug(string text)
@@ -27,7 +22,7 @@ namespace Ndx.Shell.Commands
             Console.Error.WriteLine($"{message}: {exception.Message}");
         }
 
-        public void WriteObject(object sendToPipeline)
+        public void WriteObject(TYPE sendToPipeline)
         {
             this.m_output.Add(sendToPipeline);
         }

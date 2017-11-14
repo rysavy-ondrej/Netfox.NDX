@@ -7,10 +7,10 @@ namespace Ndx.Shell.Commands
     /// </summary>
     /// <remarks>
     /// All calls to the command APIs are routed through to an instance of this interface. 
-    /// Commands invoked directly from the command line uses uses the default implementation of the interface. 
+    /// Commands invoked directly from the command line uses the default implementation of the interface. 
     /// Custom implementation of this interface allows you to change the behavior of the methods called by the command you are invoking.
     /// </remarks>
-    public interface ICommandRuntime
+    public interface ICommandRuntime<TYPE>
     {
         /// <summary>
         /// Writes a debug message that can be displayed.
@@ -27,7 +27,7 @@ namespace Ndx.Shell.Commands
         /// Processes a single object written by the command to the output pipeline.
         /// </summary>
         /// <param name="sendToPipeline"></param>
-        void WriteObject(object sendToPipeline);
+        void WriteObject(TYPE sendToPipeline);
         /// <summary>
         /// Process a progress message, provided by the command.
         /// </summary>

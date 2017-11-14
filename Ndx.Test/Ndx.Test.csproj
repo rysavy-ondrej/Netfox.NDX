@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Google.Protobuf, Version=3.3.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed" />
     <Reference Include="NFX, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NFX.3.5.0.2\lib\NFX.dll</HintPath>
     </Reference>
@@ -73,6 +74,7 @@
     <Compile Include="Captures\ReadFiles.cs" />
     <Compile Include="Console\ConversationsTest.cs" />
     <Compile Include="Decoders\DecodersTest.cs" />
+    <Compile Include="Decoders\DnsDecoderTest.cs" />
     <Compile Include="Diagnostics\RuleTest.cs" />
     <Compile Include="Diagnostics\ExpressionTest.cs" />
     <Compile Include="Diagnostics\NoWebAccess1.cs" />

@@ -1,35 +1,20 @@
-﻿using System;
+﻿using Ndx.Model;
+using PacketDotNet;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
-using Ndx.Model;
-using Ndx.Shell.Commands;
-using PacketDotNet;
 
 namespace ExportIec104
 {
-    internal class ExportIecCommand : Command
+    internal class ExportIecCommand 
     {
-        [Parameter(Mandatory = true)]
-        public string InputPath { get; set; }
-        [Parameter(Mandatory = true)]
+        private int m_count;
+
         public string OutputPath { get; set; }
-
-        protected override void BeginProcessing()
-        {
-            
-        }
-
-
-
-        protected override void EndProcessing()
-        {
-            
-        }
-
-
-        protected override void ProcessRecord()
+         
+        public void Execute(string InputPath)
         {
             IEnumerable<byte[]> ExtractIefPdus(Frame frame)
             {
@@ -71,9 +56,15 @@ namespace ExportIec104
             {
                 var path = Path.Combine(OutputPath, $"{(pdu.Item1 + 1).ToString("D4")}-{(pdu.Item2 + 1).ToString("D2")}.raw");
                 File.WriteAllBytes(path, pdu.Item3);
-                this.WriteObject(path);
+                m_count++;
+                Console.WriteLine(path);
             });
             task.Wait();
+        }
+
+        internal int Count()
+        {
+            return m_count;
         }
     }
 }

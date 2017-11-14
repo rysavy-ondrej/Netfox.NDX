@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{347DCEE4-292E-4FC6-BD73-85706985A0E1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>netdx</RootNamespace>
+    <RootNamespace>Netdx</RootNamespace>
     <AssemblyName>netdx</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.Protobuf, Version=3.3.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604" />
     <Reference Include="Microsoft.Extensions.CommandLineUtils, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Extensions.CommandLineUtils.1.1.1\lib\net451\Microsoft.Extensions.CommandLineUtils.dll</HintPath>
     </Reference>
@@ -44,9 +45,15 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="YamlDotNet, Version=4.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\YamlDotNet.4.2.2\lib\net35\YamlDotNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckTrace.cs" />
+    <Compile Include="Commands\Check-Trace.cs" />
+    <Compile Include="Commands\Generate-Proto.cs" />
+    <Compile Include="Commands\Generate-TypeInfo.cs" />
+    <Compile Include="Commands\Prepare-Trace.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,10 +69,6 @@
     <ProjectReference Include="..\..\Ndx.Model\Ndx.Model.csproj">
       <Project>{6c85ca82-04e3-4600-80ab-12b53f6ae4b3}</Project>
       <Name>Ndx.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Ndx.Shell.Commands\Ndx.Shell.Commands.csproj">
-      <Project>{96565D54-4EAB-455A-85FE-AE5EA02B4EFE}</Project>
-      <Name>Ndx.Shell.Commands</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

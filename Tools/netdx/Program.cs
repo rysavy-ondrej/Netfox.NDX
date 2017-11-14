@@ -1,45 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.CommandLineUtils;
-namespace netdx
+﻿using Microsoft.Extensions.CommandLineUtils;
+
+namespace Netdx
 {
     class Program
     {
         static void Main(string[] args)
-        {
-            var commandLineApplication = new CommandLineApplication(throwOnUnexpectedArg: false);
+        {            
+            var commandLineApplication = new CommandLineApplication(true);
 
-            commandLineApplication.Command("Check-Trace", (target) =>
-            {
-                target.Arguments.Add(target.Argument("-i | --input", "Input trace in JSON format produces with 'TShark -T ek' command."));
-                target.Arguments.Add(target.Argument("-r | --rules", "Rule file that represents the rules to be evaulated."));
-                target.Description = "Evaluates rule based for the passed input trace.";
-                target.HelpOption("-?|-h|--help");
-                target.OnExecute(() =>
-                {
-                    var cmd = new CheckTrace();
-                    var results = cmd.Invoke().Cast<string>();
-                    foreach(var result in results)
-                    {
-                        Console.WriteLine(result);
-                    }
-                    return 0;
-                });
-            });
-
+            commandLineApplication.Command(GenerateProto.Name, GenerateProto.Register());
+            commandLineApplication.Command(GenerateTypeInfo.Name, GenerateTypeInfo.Register());
+            commandLineApplication.Command(PrepareTrace.Name, PrepareTrace.Register());
             commandLineApplication.HelpOption("-? | -h | --help");
-            commandLineApplication.FullName = "netdx";
-            commandLineApplication.Description = "Rule-based diagnostics of network communication.";
+            commandLineApplication.Name = typeof(Program).Assembly.GetName().Name;
+            commandLineApplication.FullName = $"NDX Command Line Tools ({typeof(Program).Assembly.GetName().Version})";
 
             commandLineApplication.OnExecute(() =>
             {
+                commandLineApplication.Error.WriteLine();
                 commandLineApplication.ShowHelp();
-                return 0;
+                return -1;
             });
-            commandLineApplication.Execute(args);
+            try
+            {
+                commandLineApplication.Execute(args);
+            }
+            catch(CommandParsingException e)
+            {
+                commandLineApplication.Error.WriteLine(e.Message);
+            }
         }
     }
 }

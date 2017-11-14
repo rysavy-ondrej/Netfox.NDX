@@ -22,7 +22,7 @@ namespace Ndx.Decoders
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static byte[] StringToBytes(string str)
+        public static Google.Protobuf.ByteString StringToBytes(string str)
         {
             var bstrArr = str.Split(':');
             var byteArray = new byte[bstrArr.Length];
@@ -30,7 +30,7 @@ namespace Ndx.Decoders
             {
                 byteArray[i] = Convert.ToByte(bstrArr[i], 16);
             }
-            return byteArray;
+            return Google.Protobuf.ByteString.CopyFrom( byteArray );
         }
         public static Dictionary<string, Func<string, Variant>> decoders =
             new Dictionary<string, Func<string, Variant>>()
@@ -98,7 +98,7 @@ namespace Ndx.Decoders
                 { "FT_STRING:BASE_NONE", (string x) => new Variant(x) },
                 { "FT_BYTES:BASE_NONE", (string x) => new Variant(StringToBytes(x)) },
 
-                { "FT_ETHER:BASE_NONE", (string x) => new Variant(x) },
+                { "FT_ETHER:BASE_NONE", (string x) => new Variant(x) },     
                 { "FT_IPv4:BASE_NONE", (string x) => new Variant(IPAddress.Parse(x)) },
                 { "FT_IPv6:BASE_NONE", (string x) => new Variant(IPAddress.Parse(x)) },
             };

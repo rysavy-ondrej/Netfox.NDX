@@ -27,15 +27,13 @@ namespace ExportIec104
 
                     var cmd = new ExportIecCommand()
                     {
-                        InputPath = infile.Value(),
                         OutputPath = outfile.Value(),
                     };
                     // execute command
-                    var results = cmd.Invoke().Cast<string>();
-                   
-                    var count = results.Count();
-                    Console.WriteLine("$Exported {count} IEC104 PDUs.");
-                    return count;
+                    cmd.Execute(infile.Value());
+
+                    Console.WriteLine("$Exported {cmd.Count()} IEC104 PDUs.");
+                    return cmd.Count();
                 });
             });                         
            

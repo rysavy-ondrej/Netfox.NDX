@@ -57,10 +57,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Ndx.Shell.Commands\Ndx.Shell.Commands.csproj">
-      <Project>{96565D54-4EAB-455A-85FE-AE5EA02B4EFE}</Project>
-      <Name>Ndx.Shell.Commands</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Ndx.Captures\Ndx.Captures.csproj">
       <Project>{F7893DF7-5638-43BC-91E5-E612E4D0AD53}</Project>
       <Name>Ndx.Captures</Name>

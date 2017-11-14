@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.CommandLineUtils;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -80,20 +81,23 @@ namespace Ndx.Shell.Commands
     /// <summary>
     /// Serves as a base class for derived commands. 
     /// </summary>
-    public abstract class Command
+    public abstract class Command<INPUT,OUTPUT>
     {
-        private ICommandRuntime m_commandRuntime;
+        private ICommandRuntime<OUTPUT> m_commandRuntime;
 
         /// <summary>
         /// Invokes a command object and returns a collection of results.
         /// </summary>
         /// <returns>A collection that contains the results of the command call.</returns>
-        public IEnumerable Invoke()
+        public IEnumerable<OUTPUT> Invoke(IEnumerable<INPUT> input)
         {            
-            var arrayList = new ArrayList();
-            m_commandRuntime = new DefaultCommandRuntime(arrayList);
+            var arrayList = new List<OUTPUT>();
+            m_commandRuntime = new DefaultCommandRuntime<OUTPUT>(arrayList);
             this.BeginProcessing();
-            this.ProcessRecord();
+            foreach (var obj in input)
+            {
+                this.ProcessRecord(obj);
+            }
             this.EndProcessing();
 
             for (int i = 0; i < arrayList.Count; i++)
@@ -102,32 +106,33 @@ namespace Ndx.Shell.Commands
             }
         }
 
+        public IEnumerable<OUTPUT> Invoke(params INPUT[] input)
+        {
+            return Invoke((IEnumerable<INPUT>)input);
+        }
 
-        public void Execute(ICommandRuntime runtime)
+        public void Execute(ICommandRuntime<OUTPUT> runtime, IEnumerable<INPUT> input)
         {
             m_commandRuntime = runtime;
             this.BeginProcessing();
-            this.ProcessRecord();
+
+            foreach (var value in input)
+            {
+                this.ProcessRecord(value);
+            }
             this.EndProcessing();
         }
 
-
-        public Task ExecuteAsync(ICommandRuntime runtime)
+        public void Execute(ICommandRuntime<OUTPUT> runtime, params INPUT[] input)
         {
-            m_commandRuntime = runtime;
-            return Task.Run(() =>
-            {
-                this.BeginProcessing();
-                this.ProcessRecord();
-                this.EndProcessing();
-            });
+            Execute(runtime, (IEnumerable<INPUT>)input);
         }
 
         /// <summary>
         /// Writes a single object to the output pipeline.
         /// </summary>
         /// <param name="sendToPipeline">The object to be written to the output pipeline.</param>
-        public void WriteObject(object result)
+        public void WriteObject(OUTPUT result)
         {
             m_commandRuntime.WriteObject(result);    
         }
@@ -175,6 +180,7 @@ namespace Ndx.Shell.Commands
         /// <summary>
         /// Provides a record-by-record processing functionality for the Command.
         /// </summary>
-        protected virtual void ProcessRecord() { }
+        protected virtual void ProcessRecord(INPUT value) { }
+
     }
 }
