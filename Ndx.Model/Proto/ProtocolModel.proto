@@ -104,8 +104,11 @@ message ProtocolField {
 	/// Brief description of field.
 	///	</summary>
 	string Info = 4;
+	/// Defines the name of the field as appeared in the JSON output.
+	string JsonName = 5;
 } 
 
+/// Represents a protocol type specification. 
 message Protocol {
 	string Name = 1;
 	map<string,ProtocolField> Fields = 2;

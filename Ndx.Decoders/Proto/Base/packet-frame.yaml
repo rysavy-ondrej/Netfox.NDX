@@ -1,0 +1,208 @@
+Name: frame
+Fields:
+  frame.time:
+    Name: frame.time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Arrival Time
+    JsonName: frame_frame_time
+  frame.offset_shift:
+    Name: frame.offset_shift
+    Type: FtRelativeTime
+    Info: Time shift for this packet
+    JsonName: frame_frame_offset_shift
+  frame.time_epoch:
+    Name: frame.time_epoch
+    Type: FtRelativeTime
+    Info: Epoch Time
+    JsonName: frame_frame_time_epoch
+  frame.time_delta:
+    Name: frame.time_delta
+    Type: FtRelativeTime
+    Info: Time delta from previous captured frame
+    JsonName: frame_frame_time_delta
+  frame.time_delta_displayed:
+    Name: frame.time_delta_displayed
+    Type: FtRelativeTime
+    Info: Time delta from previous displayed frame
+    JsonName: frame_frame_time_delta_displayed
+  frame.time_relative:
+    Name: frame.time_relative
+    Type: FtRelativeTime
+    Info: Time since reference or first frame
+    JsonName: frame_frame_time_relative
+  frame.ref_time:
+    Name: frame.ref_time
+    Info: This is a Time Reference frame
+    JsonName: frame_frame_ref_time
+  frame.number:
+    Name: frame.number
+    Type: FtUint32
+    Display: BaseDec
+    Info: Frame Number
+    JsonName: frame_frame_number
+  frame.len:
+    Name: frame.len
+    Type: FtUint32
+    Display: BaseDec
+    Info: Frame length on the wire
+    JsonName: frame_frame_len
+  frame.cap_len:
+    Name: frame.cap_len
+    Type: FtUint32
+    Display: BaseDec
+    Info: Frame length stored into the capture file
+    JsonName: frame_frame_cap_len
+  frame.md5_hash:
+    Name: frame.md5_hash
+    Type: FtString
+    Info: Frame MD5 Hash
+    JsonName: frame_frame_md5_hash
+  frame.p2p_dir:
+    Name: frame.p2p_dir
+    Type: FtInt8
+    Display: BaseDec
+    Info: Point-to-Point Direction
+    JsonName: frame_frame_p2p_dir
+  frame.link_nr:
+    Name: frame.link_nr
+    Type: FtUint16
+    Display: BaseDec
+    Info: Link Number
+    JsonName: frame_frame_link_nr
+  frame.file_off:
+    Name: frame.file_off
+    Type: FtInt64
+    Display: BaseDec
+    Info: File Offset
+    JsonName: frame_frame_file_off
+  frame.marked:
+    Name: frame.marked
+    Type: FtBoolean
+    Info: Frame is marked
+    JsonName: frame_frame_marked
+  frame.ignored:
+    Name: frame.ignored
+    Type: FtBoolean
+    Info: Frame is ignored
+    JsonName: frame_frame_ignored
+  frame.protocols:
+    Name: frame.protocols
+    Type: FtString
+    Info: Protocols in frame
+    JsonName: frame_frame_protocols
+  frame.coloring_rule.name:
+    Name: frame.coloring_rule.name
+    Type: FtString
+    Info: Coloring Rule Name
+    JsonName: frame_frame_coloring_rule_name
+  frame.coloring_rule.string:
+    Name: frame.coloring_rule.string
+    Type: FtString
+    Info: Coloring Rule String
+    JsonName: frame_frame_coloring_rule_string
+  frame.interface_id:
+    Name: frame.interface_id
+    Type: FtUint32
+    Display: BaseDec
+    Info: Interface id
+    JsonName: frame_frame_interface_id
+  frame.interface_name:
+    Name: frame.interface_name
+    Type: FtString
+    Info: Interface name
+    JsonName: frame_frame_interface_name
+  frame.interface_description:
+    Name: frame.interface_description
+    Type: FtString
+    Info: Interface description
+    JsonName: frame_frame_interface_description
+  frame.packet_flags:
+    Name: frame.packet_flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Packet flags
+    JsonName: frame_frame_packet_flags
+  frame.packet_flags_direction:
+    Name: frame.packet_flags_direction
+    Type: FtUint32
+    Display: BaseHex
+    Info: Direction
+    JsonName: frame_frame_packet_flags_direction
+  frame.packet_flags_reception_type:
+    Name: frame.packet_flags_reception_type
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reception type
+    JsonName: frame_frame_packet_flags_reception_type
+  frame.packet_flags_fcs_length:
+    Name: frame.packet_flags_fcs_length
+    Type: FtUint32
+    Display: BaseDec
+    Info: FCS length
+    JsonName: frame_frame_packet_flags_fcs_length
+  frame.packet_flags_reserved:
+    Name: frame.packet_flags_reserved
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reserved
+    JsonName: frame_frame_packet_flags_reserved
+  frame.packet_flags_crc_error:
+    Name: frame.packet_flags_crc_error
+    Type: FtBoolean
+    Display: 32
+    Info: CRC error
+    JsonName: frame_frame_packet_flags_crc_error
+  frame.packet_flags_packet_too_error:
+    Name: frame.packet_flags_packet_too_error
+    Type: FtBoolean
+    Display: 32
+    Info: Packet too long error
+    JsonName: frame_frame_packet_flags_packet_too_error
+  frame.packet_flags_packet_too_short_error:
+    Name: frame.packet_flags_packet_too_short_error
+    Type: FtBoolean
+    Display: 32
+    Info: Packet too short error
+    JsonName: frame_frame_packet_flags_packet_too_short_error
+  frame.packet_flags_wrong_inter_frame_gap_error:
+    Name: frame.packet_flags_wrong_inter_frame_gap_error
+    Type: FtBoolean
+    Display: 32
+    Info: Wrong interframe gap error
+    JsonName: frame_frame_packet_flags_wrong_inter_frame_gap_error
+  frame.packet_flags_unaligned_frame_error:
+    Name: frame.packet_flags_unaligned_frame_error
+    Type: FtBoolean
+    Display: 32
+    Info: Unaligned frame error
+    JsonName: frame_frame_packet_flags_unaligned_frame_error
+  frame.packet_flags_start_frame_delimiter_error:
+    Name: frame.packet_flags_start_frame_delimiter_error
+    Type: FtBoolean
+    Display: 32
+    Info: Start frame delimiter error
+    JsonName: frame_frame_packet_flags_start_frame_delimiter_error
+  frame.packet_flags_preamble_error:
+    Name: frame.packet_flags_preamble_error
+    Type: FtBoolean
+    Display: 32
+    Info: Preamble error
+    JsonName: frame_frame_packet_flags_preamble_error
+  frame.packet_flags_symbol_error:
+    Name: frame.packet_flags_symbol_error
+    Type: FtBoolean
+    Display: 32
+    Info: Symbol error
+    JsonName: frame_frame_packet_flags_symbol_error
+  frame.comment:
+    Name: frame.comment
+    Type: FtString
+    Info: Comment
+    JsonName: frame_frame_comment
+  frame.encap_type:
+    Name: frame.encap_type
+    Type: FtInt16
+    Display: BaseDec
+    Info: Encapsulation type
+    JsonName: frame_frame_encap_type

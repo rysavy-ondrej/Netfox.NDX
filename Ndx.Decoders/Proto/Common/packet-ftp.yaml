@@ -1,0 +1,155 @@
+Name: ftp
+Fields:
+  ftp.current-working-directory:
+    Name: ftp.current-working-directory
+    Type: FtString
+    Info: Current working directory
+    JsonName: ftp_ftp_current-working-directory
+  ftp.response:
+    Name: ftp.response
+    Type: FtBoolean
+    Info: Response
+    JsonName: ftp_ftp_response
+  ftp.request:
+    Name: ftp.request
+    Type: FtBoolean
+    Info: Request
+    JsonName: ftp_ftp_request
+  ftp.request.command:
+    Name: ftp.request.command
+    Type: FtString
+    Info: Request command
+    JsonName: ftp_request_ftp_request_command
+  ftp.request.arg:
+    Name: ftp.request.arg
+    Type: FtString
+    Info: Request arg
+    JsonName: ftp_request_ftp_request_arg
+  ftp.response.code:
+    Name: ftp.response.code
+    Type: FtUint32
+    Display: BaseDec
+    Info: Response code
+    JsonName: ftp_response_ftp_response_code
+  ftp.response.arg:
+    Name: ftp.response.arg
+    Type: FtString
+    Info: Response arg
+    JsonName: ftp_response_ftp_response_arg
+  ftp.passive.ip:
+    Name: ftp.passive.ip
+    Type: FtIpv4
+    Info: Passive IP address
+    JsonName: ftp_ftp_passive_ip
+  ftp.passive.port:
+    Name: ftp.passive.port
+    Type: FtUint16
+    Display: BaseDec
+    Info: Passive port
+    JsonName: ftp_ftp_passive_port
+  ftp.passive.nat:
+    Name: ftp.passive.nat
+    Type: FtBoolean
+    Info: Passive IP NAT
+    JsonName: ftp_ftp_passive_nat
+  ftp.active.cip:
+    Name: ftp.active.cip
+    Type: FtIpv4
+    Info: Active IP address
+    JsonName: ftp_ftp_active_cip
+  ftp.active.port:
+    Name: ftp.active.port
+    Type: FtUint16
+    Display: BaseDec
+    Info: Active port
+    JsonName: ftp_ftp_active_port
+  ftp.active.nat:
+    Name: ftp.active.nat
+    Type: FtBoolean
+    Info: Active IP NAT
+    JsonName: ftp_ftp_active_nat
+  ftp.eprt.af:
+    Name: ftp.eprt.af
+    Type: FtUint8
+    Display: BaseDec
+    Info: Extended active address family
+    JsonName: ftp_ftp_eprt_af
+  ftp.eprt.ip:
+    Name: ftp.eprt.ip
+    Type: FtIpv4
+    Info: Extended active IP address
+    JsonName: ftp_ftp_eprt_ip
+  ftp.eprt.ipv6:
+    Name: ftp.eprt.ipv6
+    Type: FtIpv6
+    Info: Extended active IPv6 address
+    JsonName: ftp_ftp_eprt_ipv6
+  ftp.eprt.port:
+    Name: ftp.eprt.port
+    Type: FtUint16
+    Display: BaseDec
+    Info: Extended active port
+    JsonName: ftp_ftp_eprt_port
+  ftp.epsv.ip:
+    Name: ftp.epsv.ip
+    Type: FtIpv4
+    Info: Extended passive IPv4 address
+    JsonName: ftp_ftp_epsv_ip
+  ftp.epsv.ipv6:
+    Name: ftp.epsv.ipv6
+    Type: FtIpv6
+    Info: Extended passive IPv6 address
+    JsonName: ftp_ftp_epsv_ipv6
+  ftp.epsv.port:
+    Name: ftp.epsv.port
+    Type: FtUint16
+    Display: BaseDec
+    Info: Extended passive port
+    JsonName: ftp_ftp_epsv_port
+  ftp.command-response.first-frame-num:
+    Name: ftp.command-response.first-frame-num
+    Type: FtFramenum
+    Info: Command response first frame
+    JsonName: ftp_ftp_command-response_first-frame-num
+  ftp.command-response.last-frame-num:
+    Name: ftp.command-response.last-frame-num
+    Type: FtFramenum
+    Info: Command response last frame
+    JsonName: ftp_ftp_command-response_last-frame-num
+  ftp.command-response.duration:
+    Name: ftp.command-response.duration
+    Type: FtUint32
+    Display: BaseDec
+    Info: Response duration
+    JsonName: ftp_ftp_command-response_duration
+  ftp.command-response.frames:
+    Name: ftp.command-response.frames
+    Type: FtUint32
+    Display: BaseDec
+    Info: Command response frames
+    JsonName: ftp_ftp_command-response_frames
+  ftp-data.setup-frame:
+    Name: ftp-data.setup-frame
+    Type: FtFramenum
+    Info: Setup frame
+    JsonName: ftp_ftp-data_setup-frame
+  ftp-data.setup-method:
+    Name: ftp-data.setup-method
+    Type: FtString
+    Info: Setup method
+    JsonName: ftp_ftp-data_setup-method
+  ftp-data.command:
+    Name: ftp-data.command
+    Type: FtString
+    Info: Command
+    JsonName: ftp_ftp-data_command
+  ftp-data.command-frame:
+    Name: ftp-data.command-frame
+    Type: FtFramenum
+    Info: Command frame
+    JsonName: ftp_ftp-data_command-frame
+  ftp-data.current-working-directory:
+    Name: ftp-data.current-working-directory
+    Type: FtString
+    Info: Current working directory
+    JsonName: ftp_ftp-data_current-working-directory

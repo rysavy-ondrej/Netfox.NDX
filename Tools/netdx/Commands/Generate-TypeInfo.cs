@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using Ndx.Model;
 using YamlDotNet.Serialization;
+using System.Linq;
 
 namespace Netdx
 {
@@ -40,8 +41,17 @@ namespace Netdx
                               var outfile = Path.ChangeExtension(outdir.HasValue() ? Path.Combine(outdir.Value(), Path.GetFileName(infile)) : infile, "yaml");
 
                               Console.Write($"{infile} -> {outfile}: protocol = {prefix}, ");
-                              var fields = cmd.Execute(prefix, infile, outfile);
-                              Console.WriteLine($" {fields} fields.");
+                              try
+                              {
+                                  var fields = cmd.Execute(prefix, infile, outfile);
+                                  Console.WriteLine($" {fields} fields.");
+                              }
+                              catch(Exception e)
+                              {
+                                  target.Error.WriteLine();
+                                  target.Error.WriteLine($"ERROR: {e.Message}");
+                                  target.Error.WriteLine("Use switch -d to see details about this error.");
+                              }
                           }
                           else
                           {
@@ -55,15 +65,16 @@ namespace Netdx
         
         static Regex m_rx = new Regex("{\\s*\"(?<Description>[^\"]*)\"\\s*,\\s*\"(?<Name>[^\"]*)\"\\s*,\\s*(?<Type>\\w+)\\s*,\\s*(?<Radix>\\w+)");
 
-        public int Execute(string prefix, string inpath, string outpath)
+        public int Execute(string protocolName, string inpath, string outpath)
         {
             var content = File.ReadAllText(inpath);
             var ms = m_rx.Matches(content);
             var protocol = new Protocol()
             {
-                Name = prefix
+                Name = protocolName
             };
 
+            // first iteration: collect all available fields:
             foreach (Match m in ms)
             {
                 var info = m.Groups["Description"].Value;
@@ -71,7 +82,7 @@ namespace Netdx
                 var type = m.Groups["Type"].Value;
                 var radix = m.Groups["Radix"].Value;
 
-                if (name.StartsWith(prefix))
+                if (name.StartsWith(protocolName))
                 {
                     var field = new ProtocolField()
                     {
@@ -85,12 +96,33 @@ namespace Netdx
                 }
             }
 
+            // second iteration: Supply JSON names:
+            foreach(var f in protocol.Fields)
+            {
+                var prefix = GetPrefix(f.Key);
+                if (protocol.Fields.TryGetValue(prefix, out var value))
+                {
+                    f.Value.JsonName = $"{value.Name}.{f.Value.Name}".Replace('.', '_');
+                }
+                else
+                {   // no other field is a parent of this field, just use protocol prefix for name:
+                    f.Value.JsonName = $"{protocolName}.{f.Value.Name}".Replace('.', '_');
+                }
+            }
+
+
             var serializer = new Serializer();
             using (var outstream = new StreamWriter(File.OpenWrite(outpath)))
             {
                 serializer.Serialize(outstream, protocol);
             }
             return ms.Count;    
+        }
+
+        private string GetPrefix(string key)
+        {
+            var parts = key.Split('.');
+            return String.Join(".", parts.Take(parts.Length - 1));
         }
 
         private FieldType GetFieldType(string type)

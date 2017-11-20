@@ -1,0 +1,12 @@
+Name: nntp
+Fields:
+  nntp.response:
+    Name: nntp.response
+    Type: FtBoolean
+    Info: Response
+    JsonName: nntp_nntp_response
+  nntp.request:
+    Name: nntp.request
+    Type: FtBoolean
+    Info: Request
+    JsonName: nntp_nntp_request

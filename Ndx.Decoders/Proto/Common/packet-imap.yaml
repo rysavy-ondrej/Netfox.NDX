@@ -1,0 +1,52 @@
+Name: imap
+Fields:
+  imap.isrequest:
+    Name: imap.isrequest
+    Type: FtBoolean
+    Info: Request
+    JsonName: imap_imap_isrequest
+  imap.line:
+    Name: imap.line
+    Type: FtStringz
+    Info: Line
+    JsonName: imap_imap_line
+  imap.request:
+    Name: imap.request
+    Type: FtStringz
+    Info: Request
+    JsonName: imap_imap_request
+  imap.request_tag:
+    Name: imap.request_tag
+    Type: FtStringz
+    Info: Request Tag
+    JsonName: imap_imap_request_tag
+  imap.response:
+    Name: imap.response
+    Type: FtStringz
+    Info: Response
+    JsonName: imap_imap_response
+  imap.response_tag:
+    Name: imap.response_tag
+    Type: FtStringz
+    Info: Response Tag
+    JsonName: imap_imap_response_tag
+  imap.request.command:
+    Name: imap.request.command
+    Type: FtStringz
+    Info: Request Command
+    JsonName: imap_request_imap_request_command
+  imap.response.status:
+    Name: imap.response.status
+    Type: FtStringz
+    Info: Response Status
+    JsonName: imap_response_imap_response_status
+  imap.request.folder:
+    Name: imap.request.folder
+    Type: FtStringz
+    Info: Request Folder
+    JsonName: imap_request_imap_request_folder
+  imap.request.command.uid:
+    Name: imap.request.command.uid
+    Type: FtBoolean
+    Info: Request isUID
+    JsonName: imap_request_command_imap_request_command_uid

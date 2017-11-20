@@ -1,0 +1,3593 @@
+Name: nfs
+Fields:
+  nfs.procedure_v2:
+    Name: nfs.procedure_v2
+    Type: FtUint32
+    Display: BaseDec
+    Info: V2 Procedure
+    JsonName: nfs_nfs_procedure_v2
+  nfs.procedure_v3:
+    Name: nfs.procedure_v3
+    Type: FtUint32
+    Display: BaseDec
+    Info: V3 Procedure
+    JsonName: nfs_nfs_procedure_v3
+  nfs.procedure_v4:
+    Name: nfs.procedure_v4
+    Type: FtUint32
+    Display: BaseDec
+    Info: V4 Procedure
+    JsonName: nfs_nfs_procedure_v4
+  nfs.impl_id4.length:
+    Name: nfs.impl_id4.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Implementation ID length
+    JsonName: nfs_nfs_impl_id4_length
+  nfs.fh.length:
+    Name: nfs.fh.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: length
+    JsonName: nfs_nfs_fh_length
+  nfs.fh.hash:
+    Name: nfs.fh.hash
+    Type: FtUint32
+    Display: BaseHex
+    Info: hash (CRC-32)
+    JsonName: nfs_nfs_fh_hash
+  nfs.fh.mount.fileid:
+    Name: nfs.fh.mount.fileid
+    Type: FtUint32
+    Display: BaseDec
+    Info: fileid
+    JsonName: nfs_nfs_fh_mount_fileid
+  nfs.fh.mount.generation:
+    Name: nfs.fh.mount.generation
+    Type: FtUint32
+    Display: BaseHex
+    Info: generation
+    JsonName: nfs_nfs_fh_mount_generation
+  nfs.fh.flags:
+    Name: nfs.fh.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: nfs_nfs_fh_flags
+  nfs.fh.snapid:
+    Name: nfs.fh.snapid
+    Type: FtUint8
+    Display: BaseDec
+    Info: snapid
+    JsonName: nfs_nfs_fh_snapid
+  nfs.fh.unused:
+    Name: nfs.fh.unused
+    Type: FtUint8
+    Display: BaseDec
+    Info: unused
+    JsonName: nfs_nfs_fh_unused
+  nfs.fh.fileid:
+    Name: nfs.fh.fileid
+    Type: FtUint32
+    Display: BaseDec
+    Info: fileid
+    JsonName: nfs_nfs_fh_fileid
+  nfs.fh.generation:
+    Name: nfs.fh.generation
+    Type: FtUint32
+    Display: BaseHex
+    Info: generation
+    JsonName: nfs_nfs_fh_generation
+  nfs.fh.fsid:
+    Name: nfs.fh.fsid
+    Type: FtUint32
+    Display: BaseCustom
+    Info: file system ID
+    JsonName: nfs_nfs_fh_fsid
+  nfs.fh.export.fileid:
+    Name: nfs.fh.export.fileid
+    Type: FtUint32
+    Display: BaseDec
+    Info: fileid
+    JsonName: nfs_nfs_fh_export_fileid
+  nfs.fh.export.generation:
+    Name: nfs.fh.export.generation
+    Type: FtUint32
+    Display: BaseHex
+    Info: generation
+    JsonName: nfs_nfs_fh_export_generation
+  nfs.fh.export.snapid:
+    Name: nfs.fh.export.snapid
+    Type: FtUint8
+    Display: BaseDec
+    Info: snapid
+    JsonName: nfs_nfs_fh_export_snapid
+  nfs.fh.exportid:
+    Name: nfs.fh.exportid
+    Type: FtGuid
+    Info: exportid
+    JsonName: nfs_nfs_fh_exportid
+  nfs.fh.handletype:
+    Name: nfs.fh.handletype
+    Type: FtUint32
+    Display: BaseDec
+    Info: Handle type
+    JsonName: nfs_nfs_fh_handletype
+  nfs.fh.file.flag.mntpoint:
+    Name: nfs.fh.file.flag.mntpoint
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: mount point
+    JsonName: nfs_nfs_fh_file_flag_mntpoint
+  nfs.fh.file.flag.snapdir:
+    Name: nfs.fh.file.flag.snapdir
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: snapdir
+    JsonName: nfs_nfs_fh_file_flag_snapdir
+  nfs.fh.file.flag.snadir_ent:
+    Name: nfs.fh.file.flag.snadir_ent
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: snapdir_ent
+    JsonName: nfs_nfs_fh_file_flag_snadir_ent
+  nfs.fh.file.flag.empty:
+    Name: nfs.fh.file.flag.empty
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: empty
+    JsonName: nfs_nfs_fh_file_flag_empty
+  nfs.fh.file.flag.vbn_access:
+    Name: nfs.fh.file.flag.vbn_access
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: vbn_access
+    JsonName: nfs_nfs_fh_file_flag_vbn_access
+  nfs.fh.file.flag.multivolume:
+    Name: nfs.fh.file.flag.multivolume
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: multivolume
+    JsonName: nfs_nfs_fh_file_flag_multivolume
+  nfs.fh.file.flag.metadata:
+    Name: nfs.fh.file.flag.metadata
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: metadata
+    JsonName: nfs_nfs_fh_file_flag_metadata
+  nfs.fh.file.flag.orphan:
+    Name: nfs.fh.file.flag.orphan
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: orphan
+    JsonName: nfs_nfs_fh_file_flag_orphan
+  nfs.fh.file.flag.foster:
+    Name: nfs.fh.file.flag.foster
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: foster
+    JsonName: nfs_nfs_fh_file_flag_foster
+  nfs.fh.file.flag.named_attr:
+    Name: nfs.fh.file.flag.named_attr
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: named_attr
+    JsonName: nfs_nfs_fh_file_flag_named_attr
+  nfs.fh.file.flag.exp_snapdir:
+    Name: nfs.fh.file.flag.exp_snapdir
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: exp_snapdir
+    JsonName: nfs_nfs_fh_file_flag_exp_snapdir
+  nfs.fh.file.flag.vfiler:
+    Name: nfs.fh.file.flag.vfiler
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: vfiler
+    JsonName: nfs_nfs_fh_file_flag_vfiler
+  nfs.fh.file.flag.aggr:
+    Name: nfs.fh.file.flag.aggr
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: aggr
+    JsonName: nfs_nfs_fh_file_flag_aggr
+  nfs.fh.file.flag.striped:
+    Name: nfs.fh.file.flag.striped
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: striped
+    JsonName: nfs_nfs_fh_file_flag_striped
+  nfs.fh.file.flag.private:
+    Name: nfs.fh.file.flag.private
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: private
+    JsonName: nfs_nfs_fh_file_flag_private
+  nfs.fh.file.flag.next_gen:
+    Name: nfs.fh.file.flag.next_gen
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: next_gen
+    JsonName: nfs_nfs_fh_file_flag_next_gen
+  nfs.fh.fsid.major:
+    Name: nfs.fh.fsid.major
+    Type: FtUint16
+    Display: BaseDec
+    Info: major
+    JsonName: nfs_fh_fsid_nfs_fh_fsid_major
+  nfs.fh.fsid.minor:
+    Name: nfs.fh.fsid.minor
+    Type: FtUint16
+    Display: BaseDec
+    Info: minor
+    JsonName: nfs_fh_fsid_nfs_fh_fsid_minor
+  nfs.fh.fsid.inode:
+    Name: nfs.fh.fsid.inode
+    Type: FtUint32
+    Display: BaseDec
+    Info: inode
+    JsonName: nfs_fh_fsid_nfs_fh_fsid_inode
+  nfs.fh.gfid:
+    Name: nfs.fh.gfid
+    Type: FtGuid
+    Info: gfid
+    JsonName: nfs_nfs_fh_gfid
+  nfs.fh.xfsid.major:
+    Name: nfs.fh.xfsid.major
+    Type: FtUint16
+    Display: BaseDec
+    Info: exported major
+    JsonName: nfs_nfs_fh_xfsid_major
+  nfs.fh.xfsid.minor:
+    Name: nfs.fh.xfsid.minor
+    Type: FtUint16
+    Display: BaseDec
+    Info: exported minor
+    JsonName: nfs_nfs_fh_xfsid_minor
+  nfs.fh.fstype:
+    Name: nfs.fh.fstype
+    Type: FtUint32
+    Display: BaseDec
+    Info: file system type
+    JsonName: nfs_nfs_fh_fstype
+  nfs.fh.fn:
+    Name: nfs.fh.fn
+    Type: FtUint32
+    Display: BaseDec
+    Info: file number
+    JsonName: nfs_nfs_fh_fn
+  nfs.fh.fn.len:
+    Name: nfs.fh.fn.len
+    Type: FtUint32
+    Display: BaseDec
+    Info: length
+    JsonName: nfs_fh_fn_nfs_fh_fn_len
+  nfs.fh.fn.inode:
+    Name: nfs.fh.fn.inode
+    Type: FtUint32
+    Display: BaseDec
+    Info: inode
+    JsonName: nfs_fh_fn_nfs_fh_fn_inode
+  nfs.fh.fn.generation:
+    Name: nfs.fh.fn.generation
+    Type: FtUint32
+    Display: BaseDec
+    Info: generation
+    JsonName: nfs_fh_fn_nfs_fh_fn_generation
+  nfs.fh.xfn:
+    Name: nfs.fh.xfn
+    Type: FtUint32
+    Display: BaseDec
+    Info: exported file number
+    JsonName: nfs_nfs_fh_xfn
+  nfs.fh.xfn.len:
+    Name: nfs.fh.xfn.len
+    Type: FtUint32
+    Display: BaseDec
+    Info: length
+    JsonName: nfs_fh_xfn_nfs_fh_xfn_len
+  nfs.fh.xfn.inode:
+    Name: nfs.fh.xfn.inode
+    Type: FtUint32
+    Display: BaseDec
+    Info: exported inode
+    JsonName: nfs_fh_xfn_nfs_fh_xfn_inode
+  nfs.fh.xfn.generation:
+    Name: nfs.fh.xfn.generation
+    Type: FtUint32
+    Display: BaseDec
+    Info: generation
+    JsonName: nfs_fh_xfn_nfs_fh_xfn_generation
+  nfs.fh.dentry:
+    Name: nfs.fh.dentry
+    Type: FtUint32
+    Display: BaseHex
+    Info: dentry
+    JsonName: nfs_nfs_fh_dentry
+  nfs.fh.dev:
+    Name: nfs.fh.dev
+    Type: FtUint32
+    Display: BaseDec
+    Info: device
+    JsonName: nfs_nfs_fh_dev
+  nfs.fh.xdev:
+    Name: nfs.fh.xdev
+    Type: FtUint32
+    Display: BaseDec
+    Info: exported device
+    JsonName: nfs_nfs_fh_xdev
+  nfs.fh.dirinode:
+    Name: nfs.fh.dirinode
+    Type: FtUint32
+    Display: BaseDec
+    Info: directory inode
+    JsonName: nfs_nfs_fh_dirinode
+  nfs.fh.pinode:
+    Name: nfs.fh.pinode
+    Type: FtUint32
+    Display: BaseHex
+    Info: pseudo inode
+    JsonName: nfs_nfs_fh_pinode
+  nfs.fh.hp.len:
+    Name: nfs.fh.hp.len
+    Type: FtUint32
+    Display: BaseDec
+    Info: length
+    JsonName: nfs_nfs_fh_hp_len
+  nfs.fh.hp.key:
+    Name: nfs.fh.hp.key
+    Type: FtBytes
+    Info: key
+    JsonName: nfs_nfs_fh_hp_key
+  nfs.fh.version:
+    Name: nfs.fh.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: version
+    JsonName: nfs_nfs_fh_version
+  nfs.fh.auth_type:
+    Name: nfs.fh.auth_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: auth_type
+    JsonName: nfs_nfs_fh_auth_type
+  nfs.fh.fsid_type:
+    Name: nfs.fh.fsid_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: fsid_type
+    JsonName: nfs_nfs_fh_fsid_type
+  nfs.fh.fileid_type:
+    Name: nfs.fh.fileid_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: fileid_type
+    JsonName: nfs_nfs_fh_fileid_type
+  nfs.fh.obj.id:
+    Name: nfs.fh.obj.id
+    Type: FtUint32
+    Display: BaseDec
+    Info: Object type
+    JsonName: nfs_nfs_fh_obj_id
+  nfs.fh.ro.node:
+    Name: nfs.fh.ro.node
+    Type: FtBoolean
+    Info: RO_node
+    JsonName: nfs_nfs_fh_ro_node
+  nfs.fh.obj.info:
+    Name: nfs.fh.obj.info
+    Type: FtBytes
+    Info: Object info
+    JsonName: nfs_nfs_fh_obj_info
+  nfs.fh.obj.fsid:
+    Name: nfs.fh.obj.fsid
+    Type: FtUint32
+    Display: BaseDec
+    Info: obj_fsid
+    JsonName: nfs_nfs_fh_obj_fsid
+  nfs.fh.obj.kindid:
+    Name: nfs.fh.obj.kindid
+    Type: FtUint16
+    Display: BaseDec
+    Info: obj_kindid
+    JsonName: nfs_nfs_fh_obj_kindid
+  nfs.fh.obj.treeid:
+    Name: nfs.fh.obj.treeid
+    Type: FtUint16
+    Display: BaseDec
+    Info: obj_treeid
+    JsonName: nfs_nfs_fh_obj_treeid
+  nfs.fh.obj.inode:
+    Name: nfs.fh.obj.inode
+    Type: FtUint32
+    Display: BaseDec
+    Info: obj_inode
+    JsonName: nfs_nfs_fh_obj_inode
+  nfs.fh.obj.gen:
+    Name: nfs.fh.obj.gen
+    Type: FtUint32
+    Display: BaseDec
+    Info: obj_gen
+    JsonName: nfs_nfs_fh_obj_gen
+  nfs.fh.ex.info:
+    Name: nfs.fh.ex.info
+    Type: FtBytes
+    Info: Export info
+    JsonName: nfs_nfs_fh_ex_info
+  nfs.fh.ex.fsid:
+    Name: nfs.fh.ex.fsid
+    Type: FtUint32
+    Display: BaseDec
+    Info: ex_fsid
+    JsonName: nfs_nfs_fh_ex_fsid
+  nfs.fh.ex.kindid:
+    Name: nfs.fh.ex.kindid
+    Type: FtUint16
+    Display: BaseDec
+    Info: ex_kindid
+    JsonName: nfs_nfs_fh_ex_kindid
+  nfs.fh.ex.treeid:
+    Name: nfs.fh.ex.treeid
+    Type: FtUint16
+    Display: BaseDec
+    Info: ex_treeid
+    JsonName: nfs_nfs_fh_ex_treeid
+  nfs.fh.ex.inode:
+    Name: nfs.fh.ex.inode
+    Type: FtUint32
+    Display: BaseDec
+    Info: ex_inode
+    JsonName: nfs_nfs_fh_ex_inode
+  nfs.fh.ex.gen:
+    Name: nfs.fh.ex.gen
+    Type: FtUint32
+    Display: BaseDec
+    Info: ex_gen
+    JsonName: nfs_nfs_fh_ex_gen
+  nfs.fh.flag:
+    Name: nfs.fh.flag
+    Type: FtUint32
+    Display: BaseHex
+    Info: flag
+    JsonName: nfs_nfs_fh_flag
+  nfs.fh.endianness:
+    Name: nfs.fh.endianness
+    Type: FtBoolean
+    Info: endianness
+    JsonName: nfs_nfs_fh_endianness
+  nfs.fh.dc.opaque:
+    Name: nfs.fh.dc.opaque
+    Type: FtBytes
+    Info: fh opaque data
+    JsonName: nfs_nfs_fh_dc_opaque
+  nfs.fh.dc.exportid:
+    Name: nfs.fh.dc.exportid
+    Type: FtUint32
+    Display: BaseHex
+    Info: export_id
+    JsonName: nfs_nfs_fh_dc_exportid
+  nfs.fh.dc.type:
+    Name: nfs.fh.dc.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: fh type
+    JsonName: nfs_nfs_fh_dc_type
+  nfs.fh.pd.shareid:
+    Name: nfs.fh.pd.shareid
+    Type: FtUint32
+    Display: BaseDec
+    Info: shareid
+    JsonName: nfs_nfs_fh_pd_shareid
+  nfs.fh.pd.flags:
+    Name: nfs.fh.pd.flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: flags
+    JsonName: nfs_nfs_fh_pd_flags
+  nfs.fh.pd.flags.reserved:
+    Name: nfs.fh.pd.flags.reserved
+    Type: FtUint32
+    Display: BaseHex
+    Info: reserved
+    JsonName: nfs_fh_pd_flags_nfs_fh_pd_flags_reserved
+  nfs.fh.pd.flags.version:
+    Name: nfs.fh.pd.flags.version
+    Type: FtUint32
+    Display: BaseDec
+    Info: version
+    JsonName: nfs_fh_pd_flags_nfs_fh_pd_flags_version
+  nfs.fh.pd.inum:
+    Name: nfs.fh.pd.inum
+    Type: FtUint64
+    Display: BaseDec
+    Info: inum
+    JsonName: nfs_nfs_fh_pd_inum
+  nfs.status2:
+    Name: nfs.status2
+    Type: FtUint32
+    Display: BaseDec
+    Info: Status
+    JsonName: nfs_nfs_status2
+  nfs.full_name:
+    Name: nfs.full_name
+    Type: FtString
+    Info: Full Name
+    JsonName: nfs_nfs_full_name
+  nfs.name:
+    Name: nfs.name
+    Type: FtString
+    Info: Name
+    JsonName: nfs_nfs_name
+  nfs.readlink.data:
+    Name: nfs.readlink.data
+    Type: FtString
+    Info: Data
+    JsonName: nfs_nfs_readlink_data
+  nfs.read.offset:
+    Name: nfs.read.offset
+    Type: FtUint32
+    Display: BaseDec
+    Info: Offset
+    JsonName: nfs_nfs_read_offset
+  nfs.read.count:
+    Name: nfs.read.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Count
+    JsonName: nfs_nfs_read_count
+  nfs.read.totalcount:
+    Name: nfs.read.totalcount
+    Type: FtUint32
+    Display: BaseDec
+    Info: Total Count
+    JsonName: nfs_nfs_read_totalcount
+  nfs.data:
+    Name: nfs.data
+    Type: FtBytes
+    Info: Data
+    JsonName: nfs_nfs_data
+  nfs.read.data_length:
+    Name: nfs.read.data_length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Read length
+    JsonName: nfs_nfs_read_data_length
+  nfs.write.data_length:
+    Name: nfs.write.data_length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Write length
+    JsonName: nfs_nfs_write_data_length
+  nfs.write.beginoffset:
+    Name: nfs.write.beginoffset
+    Type: FtUint32
+    Display: BaseDec
+    Info: Begin Offset
+    JsonName: nfs_nfs_write_beginoffset
+  nfs.write.offset:
+    Name: nfs.write.offset
+    Type: FtUint32
+    Display: BaseDec
+    Info: Offset
+    JsonName: nfs_nfs_write_offset
+  nfs.write.totalcount:
+    Name: nfs.write.totalcount
+    Type: FtUint32
+    Display: BaseDec
+    Info: Total Count
+    JsonName: nfs_nfs_write_totalcount
+  nfs.symlink.to:
+    Name: nfs.symlink.to
+    Type: FtString
+    Info: To
+    JsonName: nfs_nfs_symlink_to
+  nfs.readdir.cookie:
+    Name: nfs.readdir.cookie
+    Type: FtUint32
+    Display: BaseDec
+    Info: Cookie
+    JsonName: nfs_nfs_readdir_cookie
+  nfs.readdir.count:
+    Name: nfs.readdir.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Count
+    JsonName: nfs_nfs_readdir_count
+  nfs.readdir.entry:
+    Name: nfs.readdir.entry
+    Info: Entry
+    JsonName: nfs_nfs_readdir_entry
+  nfs.readdir.entry.fileid:
+    Name: nfs.readdir.entry.fileid
+    Type: FtUint32
+    Display: BaseDec
+    Info: File ID
+    JsonName: nfs_readdir_entry_nfs_readdir_entry_fileid
+  nfs.readdir.entry.name:
+    Name: nfs.readdir.entry.name
+    Type: FtString
+    Info: Name
+    JsonName: nfs_readdir_entry_nfs_readdir_entry_name
+  nfs.readdir.entry.cookie:
+    Name: nfs.readdir.entry.cookie
+    Type: FtUint32
+    Display: BaseDec
+    Info: Cookie
+    JsonName: nfs_readdir_entry_nfs_readdir_entry_cookie
+  nfs.readdir.entry3.fileid:
+    Name: nfs.readdir.entry3.fileid
+    Type: FtUint64
+    Display: BaseDec
+    Info: File ID
+    JsonName: nfs_nfs_readdir_entry3_fileid
+  nfs.readdir.entry3.name:
+    Name: nfs.readdir.entry3.name
+    Type: FtString
+    Info: Name
+    JsonName: nfs_nfs_readdir_entry3_name
+  nfs.readdir.entry3.cookie:
+    Name: nfs.readdir.entry3.cookie
+    Type: FtUint64
+    Display: BaseDec
+    Info: Cookie
+    JsonName: nfs_nfs_readdir_entry3_cookie
+  nfs.readdirplus.entry.fileid:
+    Name: nfs.readdirplus.entry.fileid
+    Type: FtUint64
+    Display: BaseDec
+    Info: File ID
+    JsonName: nfs_nfs_readdirplus_entry_fileid
+  nfs.readdirplus.entry.name:
+    Name: nfs.readdirplus.entry.name
+    Type: FtString
+    Info: Name
+    JsonName: nfs_nfs_readdirplus_entry_name
+  nfs.readdirplus.entry.cookie:
+    Name: nfs.readdirplus.entry.cookie
+    Type: FtUint64
+    Display: BaseDec
+    Info: Cookie
+    JsonName: nfs_nfs_readdirplus_entry_cookie
+  nfs.readdir.eof:
+    Name: nfs.readdir.eof
+    Type: FtUint32
+    Display: BaseDec
+    Info: EOF
+    JsonName: nfs_nfs_readdir_eof
+  nfs.statfs.tsize:
+    Name: nfs.statfs.tsize
+    Type: FtUint32
+    Display: BaseDec
+    Info: Transfer Size
+    JsonName: nfs_nfs_statfs_tsize
+  nfs.statfs.bsize:
+    Name: nfs.statfs.bsize
+    Type: FtUint32
+    Display: BaseDec
+    Info: Block Size
+    JsonName: nfs_nfs_statfs_bsize
+  nfs.statfs.blocks:
+    Name: nfs.statfs.blocks
+    Type: FtUint32
+    Display: BaseDec
+    Info: Total Blocks
+    JsonName: nfs_nfs_statfs_blocks
+  nfs.statfs.bfree:
+    Name: nfs.statfs.bfree
+    Type: FtUint32
+    Display: BaseDec
+    Info: Free Blocks
+    JsonName: nfs_nfs_statfs_bfree
+  nfs.statfs.bavail:
+    Name: nfs.statfs.bavail
+    Type: FtUint32
+    Display: BaseDec
+    Info: Available Blocks
+    JsonName: nfs_nfs_statfs_bavail
+  nfs.type:
+    Name: nfs.type
+    Type: FtUint32
+    Display: BaseDec
+    Info: Type
+    JsonName: nfs_nfs_type
+  nfs.status3:
+    Name: nfs.status3
+    Type: FtUint32
+    Display: BaseDec
+    Info: Status
+    JsonName: nfs_nfs_status3
+  nfs.read.eof:
+    Name: nfs.read.eof
+    Type: FtBoolean
+    Info: EOF
+    JsonName: nfs_nfs_read_eof
+  nfs.write.stable:
+    Name: nfs.write.stable
+    Type: FtUint32
+    Display: BaseDec
+    Info: Stable
+    JsonName: nfs_nfs_write_stable
+  nfs.write.committed:
+    Name: nfs.write.committed
+    Type: FtUint32
+    Display: BaseDec
+    Info: Committed
+    JsonName: nfs_nfs_write_committed
+  nfs.createmode:
+    Name: nfs.createmode
+    Type: FtUint32
+    Display: BaseDec
+    Info: Create Mode
+    JsonName: nfs_nfs_createmode
+  nfs.fsstat.invarsec:
+    Name: nfs.fsstat.invarsec
+    Type: FtUint32
+    Display: BaseDec
+    Info: invarsec
+    JsonName: nfs_nfs_fsstat_invarsec
+  nfs.fsinfo.rtmax:
+    Name: nfs.fsinfo.rtmax
+    Type: FtUint32
+    Display: BaseDec
+    Info: rtmax
+    JsonName: nfs_nfs_fsinfo_rtmax
+  nfs.fsinfo.rtpref:
+    Name: nfs.fsinfo.rtpref
+    Type: FtUint32
+    Display: BaseDec
+    Info: rtpref
+    JsonName: nfs_nfs_fsinfo_rtpref
+  nfs.fsinfo.rtmult:
+    Name: nfs.fsinfo.rtmult
+    Type: FtUint32
+    Display: BaseDec
+    Info: rtmult
+    JsonName: nfs_nfs_fsinfo_rtmult
+  nfs.fsinfo.wtmax:
+    Name: nfs.fsinfo.wtmax
+    Type: FtUint32
+    Display: BaseDec
+    Info: wtmax
+    JsonName: nfs_nfs_fsinfo_wtmax
+  nfs.fsinfo.wtpref:
+    Name: nfs.fsinfo.wtpref
+    Type: FtUint32
+    Display: BaseDec
+    Info: wtpref
+    JsonName: nfs_nfs_fsinfo_wtpref
+  nfs.fsinfo.wtmult:
+    Name: nfs.fsinfo.wtmult
+    Type: FtUint32
+    Display: BaseDec
+    Info: wtmult
+    JsonName: nfs_nfs_fsinfo_wtmult
+  nfs.fsinfo.dtpref:
+    Name: nfs.fsinfo.dtpref
+    Type: FtUint32
+    Display: BaseDec
+    Info: dtpref
+    JsonName: nfs_nfs_fsinfo_dtpref
+  nfs.fsinfo.maxfilesize:
+    Name: nfs.fsinfo.maxfilesize
+    Type: FtUint64
+    Display: BaseDec
+    Info: maxfilesize
+    JsonName: nfs_nfs_fsinfo_maxfilesize
+  nfs.fsinfo.properties:
+    Name: nfs.fsinfo.properties
+    Type: FtUint32
+    Display: BaseHex
+    Info: Properties
+    JsonName: nfs_nfs_fsinfo_properties
+  nfs.fsinfo.properties.setattr:
+    Name: nfs.fsinfo.properties.setattr
+    Type: FtBoolean
+    Display: 32
+    Info: SETATTR can set time on server
+    JsonName: nfs_fsinfo_properties_nfs_fsinfo_properties_setattr
+  nfs.fsinfo.properties.pathconf:
+    Name: nfs.fsinfo.properties.pathconf
+    Type: FtBoolean
+    Display: 32
+    Info: PATHCONF
+    JsonName: nfs_fsinfo_properties_nfs_fsinfo_properties_pathconf
+  nfs.fsinfo.properties.symlinks:
+    Name: nfs.fsinfo.properties.symlinks
+    Type: FtBoolean
+    Display: 32
+    Info: File System supports symbolic links
+    JsonName: nfs_fsinfo_properties_nfs_fsinfo_properties_symlinks
+  nfs.fsinfo.properties.hardlinks:
+    Name: nfs.fsinfo.properties.hardlinks
+    Type: FtBoolean
+    Display: 32
+    Info: File System supports hard links
+    JsonName: nfs_fsinfo_properties_nfs_fsinfo_properties_hardlinks
+  nfs.pathconf.linkmax:
+    Name: nfs.pathconf.linkmax
+    Type: FtUint32
+    Display: BaseDec
+    Info: linkmax
+    JsonName: nfs_nfs_pathconf_linkmax
+  nfs.pathconf.name_max:
+    Name: nfs.pathconf.name_max
+    Type: FtUint32
+    Display: BaseDec
+    Info: name_max
+    JsonName: nfs_nfs_pathconf_name_max
+  nfs.pathconf.no_trunc:
+    Name: nfs.pathconf.no_trunc
+    Type: FtBoolean
+    Info: no_trunc
+    JsonName: nfs_nfs_pathconf_no_trunc
+  nfs.pathconf.chown_restricted:
+    Name: nfs.pathconf.chown_restricted
+    Type: FtBoolean
+    Info: chown_restricted
+    JsonName: nfs_nfs_pathconf_chown_restricted
+  nfs.pathconf.case_insensitive:
+    Name: nfs.pathconf.case_insensitive
+    Type: FtBoolean
+    Info: case_insensitive
+    JsonName: nfs_nfs_pathconf_case_insensitive
+  nfs.pathconf.case_preserving:
+    Name: nfs.pathconf.case_preserving
+    Type: FtBoolean
+    Info: case_preserving
+    JsonName: nfs_nfs_pathconf_case_preserving
+  nfs.fattr.type:
+    Name: nfs.fattr.type
+    Type: FtUint32
+    Display: BaseDec
+    Info: type
+    JsonName: nfs_nfs_fattr_type
+  nfs.fattr.nlink:
+    Name: nfs.fattr.nlink
+    Type: FtUint32
+    Display: BaseDec
+    Info: nlink
+    JsonName: nfs_nfs_fattr_nlink
+  nfs.fattr.uid:
+    Name: nfs.fattr.uid
+    Type: FtUint32
+    Display: BaseDec
+    Info: uid
+    JsonName: nfs_nfs_fattr_uid
+  nfs.fattr.gid:
+    Name: nfs.fattr.gid
+    Type: FtUint32
+    Display: BaseDec
+    Info: gid
+    JsonName: nfs_nfs_fattr_gid
+  nfs.fattr.size:
+    Name: nfs.fattr.size
+    Type: FtUint32
+    Display: BaseDec
+    Info: size
+    JsonName: nfs_nfs_fattr_size
+  nfs.fattr.blocksize:
+    Name: nfs.fattr.blocksize
+    Type: FtUint32
+    Display: BaseDec
+    Info: blocksize
+    JsonName: nfs_nfs_fattr_blocksize
+  nfs.fattr.rdev:
+    Name: nfs.fattr.rdev
+    Type: FtUint32
+    Display: BaseDec
+    Info: rdev
+    JsonName: nfs_nfs_fattr_rdev
+  nfs.fattr.blocks:
+    Name: nfs.fattr.blocks
+    Type: FtUint32
+    Display: BaseDec
+    Info: blocks
+    JsonName: nfs_nfs_fattr_blocks
+  nfs.fattr.fsid:
+    Name: nfs.fattr.fsid
+    Type: FtUint32
+    Display: BaseHex
+    Info: fsid
+    JsonName: nfs_nfs_fattr_fsid
+  nfs.fattr.fileid:
+    Name: nfs.fattr.fileid
+    Type: FtUint32
+    Display: BaseDec
+    Info: fileid
+    JsonName: nfs_nfs_fattr_fileid
+  nfs.fattr3.type:
+    Name: nfs.fattr3.type
+    Type: FtUint32
+    Display: BaseDec
+    Info: Type
+    JsonName: nfs_nfs_fattr3_type
+  nfs.fattr3.nlink:
+    Name: nfs.fattr3.nlink
+    Type: FtUint32
+    Display: BaseDec
+    Info: nlink
+    JsonName: nfs_nfs_fattr3_nlink
+  nfs.fattr3.uid:
+    Name: nfs.fattr3.uid
+    Type: FtUint32
+    Display: BaseDec
+    Info: uid
+    JsonName: nfs_nfs_fattr3_uid
+  nfs.fattr3.gid:
+    Name: nfs.fattr3.gid
+    Type: FtUint32
+    Display: BaseDec
+    Info: gid
+    JsonName: nfs_nfs_fattr3_gid
+  nfs.fattr3.size:
+    Name: nfs.fattr3.size
+    Type: FtUint64
+    Display: BaseDec
+    Info: size
+    JsonName: nfs_nfs_fattr3_size
+  nfs.fattr3.used:
+    Name: nfs.fattr3.used
+    Type: FtUint64
+    Display: BaseDec
+    Info: used
+    JsonName: nfs_nfs_fattr3_used
+  nfs.fattr3.rdev:
+    Name: nfs.fattr3.rdev
+    Type: FtUint32
+    Display: BaseDec
+    Info: rdev
+    JsonName: nfs_nfs_fattr3_rdev
+  nfs.fattr3.fsid:
+    Name: nfs.fattr3.fsid
+    Type: FtUint64
+    Display: BaseHexDec
+    Info: fsid
+    JsonName: nfs_nfs_fattr3_fsid
+  nfs.fattr3.fileid:
+    Name: nfs.fattr3.fileid
+    Type: FtUint64
+    Display: BaseDec
+    Info: fileid
+    JsonName: nfs_nfs_fattr3_fileid
+  nfs.wcc_attr.size:
+    Name: nfs.wcc_attr.size
+    Type: FtUint64
+    Display: BaseDec
+    Info: size
+    JsonName: nfs_nfs_wcc_attr_size
+  nfs.set_size:
+    Name: nfs.set_size
+    Type: FtUint64
+    Display: BaseDec
+    Info: size
+    JsonName: nfs_nfs_set_size
+  nfs.uid3:
+    Name: nfs.uid3
+    Type: FtUint32
+    Display: BaseDec
+    Info: uid
+    JsonName: nfs_nfs_uid3
+  nfs.gid3:
+    Name: nfs.gid3
+    Type: FtUint32
+    Display: BaseDec
+    Info: gid
+    JsonName: nfs_nfs_gid3
+  nfs.cookie3:
+    Name: nfs.cookie3
+    Type: FtUint64
+    Display: BaseDec
+    Info: cookie
+    JsonName: nfs_nfs_cookie3
+  nfs.offset3:
+    Name: nfs.offset3
+    Type: FtUint64
+    Display: BaseDec
+    Info: offset
+    JsonName: nfs_nfs_offset3
+  nfs.count3:
+    Name: nfs.count3
+    Type: FtUint32
+    Display: BaseDec
+    Info: count
+    JsonName: nfs_nfs_count3
+  nfs.count3_maxcount:
+    Name: nfs.count3_maxcount
+    Type: FtUint32
+    Display: BaseDec
+    Info: maxcount
+    JsonName: nfs_nfs_count3_maxcount
+  nfs.count3_dircount:
+    Name: nfs.count3_dircount
+    Type: FtUint32
+    Display: BaseDec
+    Info: dircount
+    JsonName: nfs_nfs_count3_dircount
+  nfs.fsstat3_resok.tbytes:
+    Name: nfs.fsstat3_resok.tbytes
+    Type: FtUint64
+    Display: BaseDec
+    Info: Total bytes
+    JsonName: nfs_nfs_fsstat3_resok_tbytes
+  nfs.fsstat3_resok.fbytes:
+    Name: nfs.fsstat3_resok.fbytes
+    Type: FtUint64
+    Display: BaseDec
+    Info: Free bytes
+    JsonName: nfs_nfs_fsstat3_resok_fbytes
+  nfs.fsstat3_resok.abytes:
+    Name: nfs.fsstat3_resok.abytes
+    Type: FtUint64
+    Display: BaseDec
+    Info: Available free bytes
+    JsonName: nfs_nfs_fsstat3_resok_abytes
+  nfs.fsstat3_resok.tfiles:
+    Name: nfs.fsstat3_resok.tfiles
+    Type: FtUint64
+    Display: BaseDec
+    Info: Total file slots
+    JsonName: nfs_nfs_fsstat3_resok_tfiles
+  nfs.fsstat3_resok.ffiles:
+    Name: nfs.fsstat3_resok.ffiles
+    Type: FtUint64
+    Display: BaseDec
+    Info: Free file slots
+    JsonName: nfs_nfs_fsstat3_resok_ffiles
+  nfs.fsstat3_resok.afiles:
+    Name: nfs.fsstat3_resok.afiles
+    Type: FtUint64
+    Display: BaseDec
+    Info: Available free file slots
+    JsonName: nfs_nfs_fsstat3_resok_afiles
+  nfs.nfsstat4:
+    Name: nfs.nfsstat4
+    Type: FtUint32
+    Display: BaseDec
+    Info: Status
+    JsonName: nfs_nfs_nfsstat4
+  nfs.opcode:
+    Name: nfs.opcode
+    Type: FtUint32
+    Display: BaseDec
+    Info: Opcode
+    JsonName: nfs_nfs_opcode
+  nfs.main_opcode:
+    Name: nfs.main_opcode
+    Type: FtUint32
+    Display: BaseDec
+    Info: Main Opcode
+    JsonName: nfs_nfs_main_opcode
+  nfs.symlink.linktext:
+    Name: nfs.symlink.linktext
+    Type: FtString
+    Info: Link Contents
+    JsonName: nfs_nfs_symlink_linktext
+  nfs.entry_name:
+    Name: nfs.entry_name
+    Type: FtString
+    Info: Name
+    JsonName: nfs_nfs_entry_name
+  nfs.pathname.component.count:
+    Name: nfs.pathname.component.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: pathname components
+    JsonName: nfs_pathname_component_nfs_pathname_component_count
+  nfs.pathname.component:
+    Name: nfs.pathname.component
+    Type: FtString
+    Info: Name
+    JsonName: nfs_nfs_pathname_component
+  nfs.tag:
+    Name: nfs.tag
+    Type: FtString
+    Info: Tag
+    JsonName: nfs_nfs_tag
+  nfs.ops.count:
+    Name: nfs.ops.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Operations
+    JsonName: nfs_nfs_ops_count
+  nfs.clientid:
+    Name: nfs.clientid
+    Type: FtUint64
+    Display: BaseHex
+    Info: clientid
+    JsonName: nfs_nfs_clientid
+  nfs.ace:
+    Name: nfs.ace
+    Type: FtString
+    Info: ace
+    JsonName: nfs_nfs_ace
+  nfs.recall:
+    Name: nfs.recall
+    Type: FtBoolean
+    Info: Recall
+    JsonName: nfs_nfs_recall
+  nfs.open.claim_type:
+    Name: nfs.open.claim_type
+    Type: FtUint32
+    Display: BaseDec
+    Info: Claim Type
+    JsonName: nfs_nfs_open_claim_type
+  nfs.open.opentype:
+    Name: nfs.open.opentype
+    Type: FtUint32
+    Display: BaseDec
+    Info: Open Type
+    JsonName: nfs_nfs_open_opentype
+  nfs.exchange_id.state_protect:
+    Name: nfs.exchange_id.state_protect
+    Type: FtUint32
+    Display: BaseDec
+    Info: eia_state_protect
+    JsonName: nfs_nfs_exchange_id_state_protect
+  nfs.open.limit_by:
+    Name: nfs.open.limit_by
+    Type: FtUint32
+    Display: BaseDec
+    Info: Space Limit
+    JsonName: nfs_nfs_open_limit_by
+  nfs.open.delegation_type:
+    Name: nfs.open.delegation_type
+    Type: FtUint32
+    Display: BaseDec
+    Info: Delegation Type
+    JsonName: nfs_nfs_open_delegation_type
+  nfs.open.why_no_delegation:
+    Name: nfs.open.why_no_delegation
+    Type: FtUint32
+    Display: BaseDec
+    Info: why no delegation
+    JsonName: nfs_nfs_open_why_no_delegation
+  nfs.secinfo.style:
+    Name: nfs.secinfo.style
+    Type: FtUint32
+    Display: BaseDec
+    Info: Secinfo Style
+    JsonName: nfs_nfs_secinfo_style
+  nfs.nfs_ftype4:
+    Name: nfs.nfs_ftype4
+    Type: FtUint32
+    Display: BaseDec
+    Info: ftype4
+    JsonName: nfs_nfs_nfs_ftype4
+  nfs.change_info.atomic:
+    Name: nfs.change_info.atomic
+    Type: FtBoolean
+    Info: Atomic
+    JsonName: nfs_nfs_change_info_atomic
+  nfs.open4.share_access:
+    Name: nfs.open4.share_access
+    Type: FtUint32
+    Display: BaseDec
+    Info: share_access
+    JsonName: nfs_nfs_open4_share_access
+  nfs.open4.share_deny:
+    Name: nfs.open4.share_deny
+    Type: FtUint32
+    Display: BaseDec
+    Info: share_deny
+    JsonName: nfs_nfs_open4_share_deny
+  nfs.want:
+    Name: nfs.want
+    Type: FtUint32
+    Display: BaseHex
+    Info: wants
+    JsonName: nfs_nfs_want
+  nfs.want_notification:
+    Name: nfs.want_notification
+    Type: FtUint32
+    Display: BaseHex
+    Info: want notification
+    JsonName: nfs_nfs_want_notification
+  nfs.want_notification.when_resrc_avail:
+    Name: nfs.want_notification.when_resrc_avail
+    Type: FtBoolean
+    Display: 32
+    Info: want_signal_deleg_when_resrc_avail
+    JsonName: nfs_want_notification_nfs_want_notification_when_resrc_avail
+  nfs.want_push_deleg_when_uncontended:
+    Name: nfs.want_push_deleg_when_uncontended
+    Type: FtBoolean
+    Display: 32
+    Info: want_push_deleg_when_uncontended
+    JsonName: nfs_nfs_want_push_deleg_when_uncontended
+  nfs.seqid:
+    Name: nfs.seqid
+    Type: FtUint32
+    Display: BaseHex
+    Info: seqid
+    JsonName: nfs_nfs_seqid
+  nfs.lock_seqid:
+    Name: nfs.lock_seqid
+    Type: FtUint32
+    Display: BaseHex
+    Info: lock_seqid
+    JsonName: nfs_nfs_lock_seqid
+  nfs.attr:
+    Name: nfs.attr
+    Type: FtUint32
+    Display: BaseDec
+    Info: reqd_attr
+    JsonName: nfs_nfs_attr
+  nfs.attr_mask:
+    Name: nfs.attr_mask
+    Type: FtUint32
+    Display: BaseHex
+    Info: Attr mask
+    JsonName: nfs_nfs_attr_mask
+  nfs.attr_count:
+    Name: nfs.attr_count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Attr count
+    JsonName: nfs_nfs_attr_count
+  nfs.set_it:
+    Name: nfs.set_it
+    Type: FtUint32
+    Display: BaseDec
+    Info: set_it
+    JsonName: nfs_nfs_set_it
+  nfs.fattr4_link_support:
+    Name: nfs.fattr4_link_support
+    Type: FtBoolean
+    Info: fattr4_link_support
+    JsonName: nfs_nfs_fattr4_link_support
+  nfs.fattr4_symlink_support:
+    Name: nfs.fattr4_symlink_support
+    Type: FtBoolean
+    Info: fattr4_symlink_support
+    JsonName: nfs_nfs_fattr4_symlink_support
+  nfs.fattr4_named_attr:
+    Name: nfs.fattr4_named_attr
+    Type: FtBoolean
+    Info: fattr4_named_attr
+    JsonName: nfs_nfs_fattr4_named_attr
+  nfs.fattr4_unique_handles:
+    Name: nfs.fattr4_unique_handles
+    Type: FtBoolean
+    Info: fattr4_unique_handles
+    JsonName: nfs_nfs_fattr4_unique_handles
+  nfs.fattr4_archive:
+    Name: nfs.fattr4_archive
+    Type: FtBoolean
+    Info: fattr4_archive
+    JsonName: nfs_nfs_fattr4_archive
+  nfs.fattr4_cansettime:
+    Name: nfs.fattr4_cansettime
+    Type: FtBoolean
+    Info: fattr4_cansettime
+    JsonName: nfs_nfs_fattr4_cansettime
+  nfs.fattr4_case_insensitive:
+    Name: nfs.fattr4_case_insensitive
+    Type: FtBoolean
+    Info: fattr4_case_insensitive
+    JsonName: nfs_nfs_fattr4_case_insensitive
+  nfs.fattr4_case_preserving:
+    Name: nfs.fattr4_case_preserving
+    Type: FtBoolean
+    Info: fattr4_case_preserving
+    JsonName: nfs_nfs_fattr4_case_preserving
+  nfs.fattr4_chown_restricted:
+    Name: nfs.fattr4_chown_restricted
+    Type: FtBoolean
+    Info: fattr4_chown_restricted
+    JsonName: nfs_nfs_fattr4_chown_restricted
+  nfs.fattr4_fh_expire_type:
+    Name: nfs.fattr4_fh_expire_type
+    Type: FtUint32
+    Display: BaseHex
+    Info: fattr4_fh_expire_type
+    JsonName: nfs_nfs_fattr4_fh_expire_type
+  nfs.fattr4_fh_expire_type.noexpire_with_open:
+    Name: nfs.fattr4_fh_expire_type.noexpire_with_open
+    Type: FtBoolean
+    Display: 32
+    Info: noexpire_with_open
+    JsonName: nfs_fattr4_fh_expire_type_nfs_fattr4_fh_expire_type_noexpire_with_open
+  nfs.fattr4_fh_expire_type.volatile_any:
+    Name: nfs.fattr4_fh_expire_type.volatile_any
+    Type: FtBoolean
+    Display: 32
+    Info: volatile_any
+    JsonName: nfs_fattr4_fh_expire_type_nfs_fattr4_fh_expire_type_volatile_any
+  nfs.fattr4_fh_expire_type.vol_migration:
+    Name: nfs.fattr4_fh_expire_type.vol_migration
+    Type: FtBoolean
+    Display: 32
+    Info: vol_migration
+    JsonName: nfs_fattr4_fh_expire_type_nfs_fattr4_fh_expire_type_vol_migration
+  nfs.fattr4_fh_expire_type.vol_rename:
+    Name: nfs.fattr4_fh_expire_type.vol_rename
+    Type: FtBoolean
+    Display: 32
+    Info: vol_rename
+    JsonName: nfs_fattr4_fh_expire_type_nfs_fattr4_fh_expire_type_vol_rename
+  nfs.fattr4_hidden:
+    Name: nfs.fattr4_hidden
+    Type: FtBoolean
+    Info: fattr4_hidden
+    JsonName: nfs_nfs_fattr4_hidden
+  nfs.fattr4_homogeneous:
+    Name: nfs.fattr4_homogeneous
+    Type: FtBoolean
+    Info: fattr4_homogeneous
+    JsonName: nfs_nfs_fattr4_homogeneous
+  nfs.fattr4_mimetype:
+    Name: nfs.fattr4_mimetype
+    Type: FtString
+    Info: fattr4_mimetype
+    JsonName: nfs_nfs_fattr4_mimetype
+  nfs.fattr4_no_trunc:
+    Name: nfs.fattr4_no_trunc
+    Type: FtBoolean
+    Info: fattr4_no_trunc
+    JsonName: nfs_nfs_fattr4_no_trunc
+  nfs.fattr4_system:
+    Name: nfs.fattr4_system
+    Type: FtBoolean
+    Info: fattr4_system
+    JsonName: nfs_nfs_fattr4_system
+  nfs.who:
+    Name: nfs.who
+    Type: FtString
+    Info: Who
+    JsonName: nfs_nfs_who
+  nfs.server:
+    Name: nfs.server
+    Type: FtString
+    Info: server
+    JsonName: nfs_nfs_server
+  nfs.fattr4.fs_location:
+    Name: nfs.fattr4.fs_location
+    Type: FtString
+    Info: fs_location4
+    JsonName: nfs_nfs_fattr4_fs_location
+  nfs.fattr4_owner:
+    Name: nfs.fattr4_owner
+    Type: FtString
+    Info: fattr4_owner
+    JsonName: nfs_nfs_fattr4_owner
+  nfs.fattr4_owner_group:
+    Name: nfs.fattr4_owner_group
+    Type: FtString
+    Info: fattr4_owner_group
+    JsonName: nfs_nfs_fattr4_owner_group
+  nfs.stable_how4:
+    Name: nfs.stable_how4
+    Type: FtUint32
+    Display: BaseDec
+    Info: stable_how4
+    JsonName: nfs_nfs_stable_how4
+  nfs.dirlist4.eof:
+    Name: nfs.dirlist4.eof
+    Type: FtBoolean
+    Info: EOF
+    JsonName: nfs_nfs_dirlist4_eof
+  nfs.stateid4:
+    Name: nfs.stateid4
+    Type: FtUint64
+    Display: BaseDec
+    Info: stateid
+    JsonName: nfs_nfs_stateid4
+  nfs.offset4:
+    Name: nfs.offset4
+    Type: FtUint64
+    Display: BaseDec
+    Info: offset
+    JsonName: nfs_nfs_offset4
+  nfs.specdata1:
+    Name: nfs.specdata1
+    Type: FtUint32
+    Display: BaseDec
+    Info: specdata1
+    JsonName: nfs_nfs_specdata1
+  nfs.specdata2:
+    Name: nfs.specdata2
+    Type: FtUint32
+    Display: BaseDec
+    Info: specdata2
+    JsonName: nfs_nfs_specdata2
+  nfs.locktype4:
+    Name: nfs.locktype4
+    Type: FtUint32
+    Display: BaseDec
+    Info: locktype
+    JsonName: nfs_nfs_locktype4
+  nfs.open_rflags:
+    Name: nfs.open_rflags
+    Type: FtUint32
+    Display: BaseHex
+    Info: result flags
+    JsonName: nfs_nfs_open_rflags
+  nfs.open_rflags.confirm:
+    Name: nfs.open_rflags.confirm
+    Type: FtBoolean
+    Display: 32
+    Info: confirm
+    JsonName: nfs_open_rflags_nfs_open_rflags_confirm
+  nfs.open_rflags.locktype_posix:
+    Name: nfs.open_rflags.locktype_posix
+    Type: FtBoolean
+    Display: 32
+    Info: locktype posix
+    JsonName: nfs_open_rflags_nfs_open_rflags_locktype_posix
+  nfs.open_rflags.preserve_unlinked:
+    Name: nfs.open_rflags.preserve_unlinked
+    Type: FtBoolean
+    Display: 32
+    Info: preserve unlinked
+    JsonName: nfs_open_rflags_nfs_open_rflags_preserve_unlinked
+  nfs.open_rflags.may_notify_lock:
+    Name: nfs.open_rflags.may_notify_lock
+    Type: FtBoolean
+    Display: 32
+    Info: may notify lock
+    JsonName: nfs_open_rflags_nfs_open_rflags_may_notify_lock
+  nfs.reclaim4:
+    Name: nfs.reclaim4
+    Type: FtBoolean
+    Info: reclaim
+    JsonName: nfs_nfs_reclaim4
+  nfs.length4:
+    Name: nfs.length4
+    Type: FtUint64
+    Display: BaseDec
+    Info: length
+    JsonName: nfs_nfs_length4
+  nfs.changeid4:
+    Name: nfs.changeid4
+    Type: FtUint64
+    Display: BaseDec
+    Info: changeid
+    JsonName: nfs_nfs_changeid4
+  nfs.changeid4.before:
+    Name: nfs.changeid4.before
+    Type: FtUint64
+    Display: BaseDec
+    Info: changeid (before)
+    JsonName: nfs_changeid4_nfs_changeid4_before
+  nfs.changeid4.after:
+    Name: nfs.changeid4.after
+    Type: FtUint64
+    Display: BaseDec
+    Info: changeid (after)
+    JsonName: nfs_changeid4_nfs_changeid4_after
+  nfs.nfstime4.seconds:
+    Name: nfs.nfstime4.seconds
+    Type: FtUint64
+    Display: BaseDec
+    Info: seconds
+    JsonName: nfs_nfs_nfstime4_seconds
+  nfs.nfstime4.nseconds:
+    Name: nfs.nfstime4.nseconds
+    Type: FtUint32
+    Display: BaseDec
+    Info: nseconds
+    JsonName: nfs_nfs_nfstime4_nseconds
+  nfs.fsid4.major:
+    Name: nfs.fsid4.major
+    Type: FtUint64
+    Display: BaseDec
+    Info: fsid4.major
+    JsonName: nfs_nfs_fsid4_major
+  nfs.fsid4.minor:
+    Name: nfs.fsid4.minor
+    Type: FtUint64
+    Display: BaseDec
+    Info: fsid4.minor
+    JsonName: nfs_nfs_fsid4_minor
+  nfs.acetype4:
+    Name: nfs.acetype4
+    Type: FtUint32
+    Display: BaseDec
+    Info: acetype
+    JsonName: nfs_nfs_acetype4
+  nfs.aceflags4:
+    Name: nfs.aceflags4
+    Type: FtUint32
+    Display: BaseHex
+    Info: ACE flags
+    JsonName: nfs_nfs_aceflags4
+  nfs.aceflag4.file_inherit:
+    Name: nfs.aceflag4.file_inherit
+    Type: FtBoolean
+    Display: 32
+    Info: File_Inherit
+    JsonName: nfs_nfs_aceflag4_file_inherit
+  nfs.aceflag4.dir_inherit:
+    Name: nfs.aceflag4.dir_inherit
+    Type: FtBoolean
+    Display: 32
+    Info: Directory_Inherit
+    JsonName: nfs_nfs_aceflag4_dir_inherit
+  nfs.aceflag4.no_prop_inherit:
+    Name: nfs.aceflag4.no_prop_inherit
+    Type: FtBoolean
+    Display: 32
+    Info: No_Propagate_Inherit
+    JsonName: nfs_nfs_aceflag4_no_prop_inherit
+  nfs.aceflag4.inherit_only:
+    Name: nfs.aceflag4.inherit_only
+    Type: FtBoolean
+    Display: 32
+    Info: Inherit_Only
+    JsonName: nfs_nfs_aceflag4_inherit_only
+  nfs.aceflag4.successful_access:
+    Name: nfs.aceflag4.successful_access
+    Type: FtBoolean
+    Display: 32
+    Info: Successful_Access
+    JsonName: nfs_nfs_aceflag4_successful_access
+  nfs.aceflag4.failed_access:
+    Name: nfs.aceflag4.failed_access
+    Type: FtBoolean
+    Display: 32
+    Info: Failed_access
+    JsonName: nfs_nfs_aceflag4_failed_access
+  nfs.aceflag4.id_group:
+    Name: nfs.aceflag4.id_group
+    Type: FtBoolean
+    Display: 32
+    Info: Identifier_Group
+    JsonName: nfs_nfs_aceflag4_id_group
+  nfs.aceflag4.inherited_ace:
+    Name: nfs.aceflag4.inherited_ace
+    Type: FtBoolean
+    Display: 32
+    Info: Inherited_ACE
+    JsonName: nfs_nfs_aceflag4_inherited_ace
+  nfs.acemask4:
+    Name: nfs.acemask4
+    Type: FtUint32
+    Display: BaseHex
+    Info: ACE mask
+    JsonName: nfs_nfs_acemask4
+  nfs.ace_perm4:
+    Name: nfs.ace_perm4
+    Type: FtUint32
+    Display: BaseHex
+    Info: perm
+    JsonName: nfs_nfs_ace_perm4
+  nfs.fattr4.size:
+    Name: nfs.fattr4.size
+    Type: FtUint64
+    Display: BaseDec
+    Info: size
+    JsonName: nfs_nfs_fattr4_size
+  nfs.fattr4.lease_time:
+    Name: nfs.fattr4.lease_time
+    Type: FtUint32
+    Display: BaseDec
+    Info: lease_time
+    JsonName: nfs_nfs_fattr4_lease_time
+  nfs.fattr4.aclsupport:
+    Name: nfs.fattr4.aclsupport
+    Type: FtUint32
+    Display: BaseDec
+    Info: aclsupport
+    JsonName: nfs_nfs_fattr4_aclsupport
+  nfs.fattr4.aclsupport.allow_acl:
+    Name: nfs.fattr4.aclsupport.allow_acl
+    Type: FtBoolean
+    Display: 32
+    Info: ALLOW
+    JsonName: nfs_fattr4_aclsupport_nfs_fattr4_aclsupport_allow_acl
+  nfs.fattr4.aclsupport.deny_acl:
+    Name: nfs.fattr4.aclsupport.deny_acl
+    Type: FtBoolean
+    Display: 32
+    Info: DENY
+    JsonName: nfs_fattr4_aclsupport_nfs_fattr4_aclsupport_deny_acl
+  nfs.fattr4.aclsupport.audit_acl:
+    Name: nfs.fattr4.aclsupport.audit_acl
+    Type: FtBoolean
+    Display: 32
+    Info: AUDIT
+    JsonName: nfs_fattr4_aclsupport_nfs_fattr4_aclsupport_audit_acl
+  nfs.fattr4.aclsupport.alarm_acl:
+    Name: nfs.fattr4.aclsupport.alarm_acl
+    Type: FtBoolean
+    Display: 32
+    Info: ALARM
+    JsonName: nfs_fattr4_aclsupport_nfs_fattr4_aclsupport_alarm_acl
+  nfs.fattr4.fileid:
+    Name: nfs.fattr4.fileid
+    Type: FtUint64
+    Display: BaseDec
+    Info: fileid
+    JsonName: nfs_nfs_fattr4_fileid
+  nfs.fattr4.files_avail:
+    Name: nfs.fattr4.files_avail
+    Type: FtUint64
+    Display: BaseDec
+    Info: files_avail
+    JsonName: nfs_nfs_fattr4_files_avail
+  nfs.fattr4.files_free:
+    Name: nfs.fattr4.files_free
+    Type: FtUint64
+    Display: BaseDec
+    Info: files_free
+    JsonName: nfs_nfs_fattr4_files_free
+  nfs.fattr4.files_total:
+    Name: nfs.fattr4.files_total
+    Type: FtUint64
+    Display: BaseDec
+    Info: files_total
+    JsonName: nfs_nfs_fattr4_files_total
+  nfs.fattr4.maxfilesize:
+    Name: nfs.fattr4.maxfilesize
+    Type: FtUint64
+    Display: BaseDec
+    Info: maxfilesize
+    JsonName: nfs_nfs_fattr4_maxfilesize
+  nfs.fattr4.maxlink:
+    Name: nfs.fattr4.maxlink
+    Type: FtUint32
+    Display: BaseDec
+    Info: maxlink
+    JsonName: nfs_nfs_fattr4_maxlink
+  nfs.fattr4.maxname:
+    Name: nfs.fattr4.maxname
+    Type: FtUint32
+    Display: BaseDec
+    Info: maxname
+    JsonName: nfs_nfs_fattr4_maxname
+  nfs.fattr4.numlinks:
+    Name: nfs.fattr4.numlinks
+    Type: FtUint32
+    Display: BaseDec
+    Info: numlinks
+    JsonName: nfs_nfs_fattr4_numlinks
+  nfs.delegate_type:
+    Name: nfs.delegate_type
+    Type: FtUint32
+    Display: BaseDec
+    Info: delegate_type
+    JsonName: nfs_nfs_delegate_type
+  nfs.secinfo.flavor:
+    Name: nfs.secinfo.flavor
+    Type: FtUint32
+    Display: BaseDec
+    Info: flavor
+    JsonName: nfs_nfs_secinfo_flavor
+  nfs.num_blocks:
+    Name: nfs.num_blocks
+    Type: FtUint32
+    Display: BaseDec
+    Info: num_blocks
+    JsonName: nfs_nfs_num_blocks
+  nfs.bytes_per_block:
+    Name: nfs.bytes_per_block
+    Type: FtUint32
+    Display: BaseDec
+    Info: bytes_per_block
+    JsonName: nfs_nfs_bytes_per_block
+  nfs.eof:
+    Name: nfs.eof
+    Type: FtUint32
+    Display: BaseDec
+    Info: eof
+    JsonName: nfs_nfs_eof
+  nfs.fattr4.maxread:
+    Name: nfs.fattr4.maxread
+    Type: FtUint64
+    Display: BaseDec
+    Info: maxread
+    JsonName: nfs_nfs_fattr4_maxread
+  nfs.fattr4.maxwrite:
+    Name: nfs.fattr4.maxwrite
+    Type: FtUint64
+    Display: BaseDec
+    Info: maxwrite
+    JsonName: nfs_nfs_fattr4_maxwrite
+  nfs.fattr4.quota_hard:
+    Name: nfs.fattr4.quota_hard
+    Type: FtUint64
+    Display: BaseDec
+    Info: quota_hard
+    JsonName: nfs_nfs_fattr4_quota_hard
+  nfs.fattr4.quota_soft:
+    Name: nfs.fattr4.quota_soft
+    Type: FtUint64
+    Display: BaseDec
+    Info: quota_soft
+    JsonName: nfs_nfs_fattr4_quota_soft
+  nfs.fattr4.quota_used:
+    Name: nfs.fattr4.quota_used
+    Type: FtUint64
+    Display: BaseDec
+    Info: quota_used
+    JsonName: nfs_nfs_fattr4_quota_used
+  nfs.fattr4.space_avail:
+    Name: nfs.fattr4.space_avail
+    Type: FtUint64
+    Display: BaseDec
+    Info: space_avail
+    JsonName: nfs_nfs_fattr4_space_avail
+  nfs.fattr4.space_free:
+    Name: nfs.fattr4.space_free
+    Type: FtUint64
+    Display: BaseDec
+    Info: space_free
+    JsonName: nfs_nfs_fattr4_space_free
+  nfs.fattr4.space_total:
+    Name: nfs.fattr4.space_total
+    Type: FtUint64
+    Display: BaseDec
+    Info: space_total
+    JsonName: nfs_nfs_fattr4_space_total
+  nfs.fattr4.space_used:
+    Name: nfs.fattr4.space_used
+    Type: FtUint64
+    Display: BaseDec
+    Info: space_used
+    JsonName: nfs_nfs_fattr4_space_used
+  nfs.fattr4.mounted_on_fileid:
+    Name: nfs.fattr4.mounted_on_fileid
+    Type: FtUint64
+    Display: BaseHex
+    Info: fileid
+    JsonName: nfs_nfs_fattr4_mounted_on_fileid
+  nfs.fattr4.layout_blksize:
+    Name: nfs.fattr4.layout_blksize
+    Type: FtUint32
+    Display: BaseDec
+    Info: blksize
+    JsonName: nfs_nfs_fattr4_layout_blksize
+  nfs.fattr4.security_label.lfs:
+    Name: nfs.fattr4.security_label.lfs
+    Type: FtUint32
+    Display: BaseDec
+    Info: label_format
+    JsonName: nfs_nfs_fattr4_security_label_lfs
+  nfs.fattr4.umask:
+    Name: nfs.fattr4.umask
+    Type: FtUint32
+    Display: BaseOct
+    Info: umask
+    JsonName: nfs_nfs_fattr4_umask
+  nfs.fattr4_xattr_support:
+    Name: nfs.fattr4_xattr_support
+    Type: FtBoolean
+    Info: fattr4_xattr_support
+    JsonName: nfs_nfs_fattr4_xattr_support
+  nfs.fattr4.security_label.pi:
+    Name: nfs.fattr4.security_label.pi
+    Type: FtUint32
+    Display: BaseDec
+    Info: policy_id
+    JsonName: nfs_nfs_fattr4_security_label_pi
+  nfs.fattr4.security_label.context:
+    Name: nfs.fattr4.security_label.context
+    Type: FtString
+    Info: context
+    JsonName: nfs_nfs_fattr4_security_label_context
+  nfs.verifier4:
+    Name: nfs.verifier4
+    Type: FtUint64
+    Display: BaseHex
+    Info: verifier
+    JsonName: nfs_nfs_verifier4
+  nfs.value_follows:
+    Name: nfs.value_follows
+    Type: FtBoolean
+    Info: Value Follows
+    JsonName: nfs_nfs_value_follows
+  nfs.cookie4:
+    Name: nfs.cookie4
+    Type: FtUint64
+    Display: BaseDec
+    Info: cookie
+    JsonName: nfs_nfs_cookie4
+  nfs.cookie_verf4:
+    Name: nfs.cookie_verf4
+    Type: FtUint64
+    Display: BaseDec
+    Info: cookie_verf
+    JsonName: nfs_nfs_cookie_verf4
+  nfs.cb_location:
+    Name: nfs.cb_location
+    Type: FtUint32
+    Display: BaseDec
+    Info: cb_location
+    JsonName: nfs_nfs_cb_location
+  nfs.cb_program:
+    Name: nfs.cb_program
+    Type: FtUint32
+    Display: BaseHex
+    Info: cb_program
+    JsonName: nfs_nfs_cb_program
+  nfs.recall4:
+    Name: nfs.recall4
+    Type: FtBoolean
+    Info: recall
+    JsonName: nfs_nfs_recall4
+  nfs.filesize:
+    Name: nfs.filesize
+    Type: FtUint64
+    Display: BaseDec
+    Info: filesize
+    JsonName: nfs_nfs_filesize
+  nfs.count4:
+    Name: nfs.count4
+    Type: FtUint32
+    Display: BaseDec
+    Info: count
+    JsonName: nfs_nfs_count4
+  nfs.dircount:
+    Name: nfs.dircount
+    Type: FtUint32
+    Display: BaseDec
+    Info: dircount
+    JsonName: nfs_nfs_dircount
+  nfs.maxcount:
+    Name: nfs.maxcount
+    Type: FtUint32
+    Display: BaseDec
+    Info: maxcount
+    JsonName: nfs_nfs_maxcount
+  nfs.minorversion:
+    Name: nfs.minorversion
+    Type: FtUint32
+    Display: BaseDec
+    Info: minorversion
+    JsonName: nfs_nfs_minorversion
+  nfs.atime:
+    Name: nfs.atime
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: atime
+    JsonName: nfs_nfs_atime
+  nfs.atime.sec:
+    Name: nfs.atime.sec
+    Type: FtUint32
+    Display: BaseDec
+    Info: seconds
+    JsonName: nfs_atime_nfs_atime_sec
+  nfs.atime.nsec:
+    Name: nfs.atime.nsec
+    Type: FtUint32
+    Display: BaseDec
+    Info: nano seconds
+    JsonName: nfs_atime_nfs_atime_nsec
+  nfs.atime.usec:
+    Name: nfs.atime.usec
+    Type: FtUint32
+    Display: BaseDec
+    Info: micro seconds
+    JsonName: nfs_atime_nfs_atime_usec
+  nfs.mtime:
+    Name: nfs.mtime
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: mtime
+    JsonName: nfs_nfs_mtime
+  nfs.mtime.sec:
+    Name: nfs.mtime.sec
+    Type: FtUint32
+    Display: BaseDec
+    Info: seconds
+    JsonName: nfs_mtime_nfs_mtime_sec
+  nfs.mtime.nsec:
+    Name: nfs.mtime.nsec
+    Type: FtUint32
+    Display: BaseDec
+    Info: nano seconds
+    JsonName: nfs_mtime_nfs_mtime_nsec
+  nfs.mtime.usec:
+    Name: nfs.mtime.usec
+    Type: FtUint32
+    Display: BaseDec
+    Info: micro seconds
+    JsonName: nfs_mtime_nfs_mtime_usec
+  nfs.ctime:
+    Name: nfs.ctime
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: ctime
+    JsonName: nfs_nfs_ctime
+  nfs.ctime.sec:
+    Name: nfs.ctime.sec
+    Type: FtUint32
+    Display: BaseDec
+    Info: seconds
+    JsonName: nfs_ctime_nfs_ctime_sec
+  nfs.ctime.nsec:
+    Name: nfs.ctime.nsec
+    Type: FtUint32
+    Display: BaseDec
+    Info: nano seconds
+    JsonName: nfs_ctime_nfs_ctime_nsec
+  nfs.ctime.usec:
+    Name: nfs.ctime.usec
+    Type: FtUint32
+    Display: BaseDec
+    Info: micro seconds
+    JsonName: nfs_ctime_nfs_ctime_usec
+  nfs.dtime:
+    Name: nfs.dtime
+    Type: FtRelativeTime
+    Info: time delta
+    JsonName: nfs_nfs_dtime
+  nfs.dtime.sec:
+    Name: nfs.dtime.sec
+    Type: FtUint32
+    Display: BaseDec
+    Info: seconds
+    JsonName: nfs_dtime_nfs_dtime_sec
+  nfs.dtime.nsec:
+    Name: nfs.dtime.nsec
+    Type: FtUint32
+    Display: BaseDec
+    Info: nano seconds
+    JsonName: nfs_dtime_nfs_dtime_nsec
+  nfs.open_owner4:
+    Name: nfs.open_owner4
+    Type: FtBytes
+    Info: owner
+    JsonName: nfs_nfs_open_owner4
+  nfs.lock_owner4:
+    Name: nfs.lock_owner4
+    Type: FtBytes
+    Info: owner
+    JsonName: nfs_nfs_lock_owner4
+  nfs.createmode4:
+    Name: nfs.createmode4
+    Type: FtUint32
+    Display: BaseDec
+    Info: Create Mode
+    JsonName: nfs_nfs_createmode4
+  nfs.secinfo.rpcsec_gss_info.service:
+    Name: nfs.secinfo.rpcsec_gss_info.service
+    Type: FtUint32
+    Display: BaseDec
+    Info: service
+    JsonName: nfs_nfs_secinfo_rpcsec_gss_info_service
+  nfs.openattr4.createdir:
+    Name: nfs.openattr4.createdir
+    Type: FtBoolean
+    Info: attribute dir create
+    JsonName: nfs_nfs_openattr4_createdir
+  nfs.lock.locker.new_lock_owner:
+    Name: nfs.lock.locker.new_lock_owner
+    Type: FtBoolean
+    Info: new lock owner?
+    JsonName: nfs_nfs_lock_locker_new_lock_owner
+  nfs.lock.reclaim:
+    Name: nfs.lock.reclaim
+    Type: FtBoolean
+    Info: reclaim?
+    JsonName: nfs_nfs_lock_reclaim
+  nfs.secinfo.flavor_info.rpcsec_gss_info.oid:
+    Name: nfs.secinfo.flavor_info.rpcsec_gss_info.oid
+    Type: FtBytes
+    Info: oid
+    JsonName: nfs_nfs_secinfo_flavor_info_rpcsec_gss_info_oid
+  nfs.secinfo.flavor_info.rpcsec_gss_info.qop:
+    Name: nfs.secinfo.flavor_info.rpcsec_gss_info.qop
+    Type: FtUint32
+    Display: BaseDec
+    Info: qop
+    JsonName: nfs_nfs_secinfo_flavor_info_rpcsec_gss_info_qop
+  nfs.nfs_client_id4.id:
+    Name: nfs.nfs_client_id4.id
+    Type: FtBytes
+    Info: id
+    JsonName: nfs_nfs_nfs_client_id4_id
+  nfs.stateid4.other:
+    Name: nfs.stateid4.other
+    Type: FtBytes
+    Info: Data
+    JsonName: nfs_stateid4_nfs_stateid4_other
+  nfs.stateid4.hash:
+    Name: nfs.stateid4.hash
+    Type: FtUint16
+    Display: BaseHex
+    Info: StateID Hash
+    JsonName: nfs_stateid4_nfs_stateid4_hash
+  nfs.stateid4.other.hash:
+    Name: nfs.stateid4.other.hash
+    Type: FtUint32
+    Display: BaseHex
+    Info: Data hash (CRC-32)
+    JsonName: nfs_stateid4_other_nfs_stateid4_other_hash
+  nfs.acl.flags:
+    Name: nfs.acl.flags
+    Type: FtUint32
+    Display: BaseDec
+    Info: ACL flags
+    JsonName: nfs_nfs_acl_flags
+  nfs.acl.flags.auto_inherit:
+    Name: nfs.acl.flags.auto_inherit
+    Type: FtBoolean
+    Display: 32
+    Info: AUTO_INHERIT
+    JsonName: nfs_acl_flags_nfs_acl_flags_auto_inherit
+  nfs.acl.flags.protected:
+    Name: nfs.acl.flags.protected
+    Type: FtBoolean
+    Display: 32
+    Info: PROTECTED
+    JsonName: nfs_acl_flags_nfs_acl_flags_protected
+  nfs.acl.flags.defaulted:
+    Name: nfs.acl.flags.defaulted
+    Type: FtBoolean
+    Display: 32
+    Info: DEFAULTED
+    JsonName: nfs_acl_flags_nfs_acl_flags_defaulted
+  nfs.num_aces:
+    Name: nfs.num_aces
+    Type: FtUint32
+    Display: BaseDec
+    Info: ACE count
+    JsonName: nfs_nfs_num_aces
+  nfs.callback.ident:
+    Name: nfs.callback.ident
+    Type: FtUint32
+    Display: BaseHex
+    Info: callback_ident
+    JsonName: nfs_nfs_callback_ident
+  nfs.gsshandle4:
+    Name: nfs.gsshandle4
+    Type: FtBytes
+    Info: gsshandle4
+    JsonName: nfs_nfs_gsshandle4
+  nfs.r_netid:
+    Name: nfs.r_netid
+    Type: FtString
+    Info: r_netid
+    JsonName: nfs_nfs_r_netid
+  nfs.r_addr:
+    Name: nfs.r_addr
+    Type: FtString
+    Info: r_addr
+    JsonName: nfs_nfs_r_addr
+  nfs.fhandle:
+    Name: nfs.fhandle
+    Type: FtBytes
+    Info: FileHandle
+    JsonName: nfs_nfs_fhandle
+  nfs.flavors.info:
+    Name: nfs.flavors.info
+    Info: Flavors Info
+    JsonName: nfs_nfs_flavors_info
+  nfs.gxfh3.utility:
+    Name: nfs.gxfh3.utility
+    Type: FtUint8
+    Display: BaseHex
+    Info: utility
+    JsonName: nfs_nfs_gxfh3_utility
+  nfs.gxfh3.utlfield.tree:
+    Name: nfs.gxfh3.utlfield.tree
+    Type: FtBoolean
+    Display: SepDot
+    Info: tree R/W
+    JsonName: nfs_nfs_gxfh3_utlfield_tree
+  nfs.gxfh3.utlfield.junction:
+    Name: nfs.gxfh3.utlfield.junction
+    Type: FtBoolean
+    Display: SepDot
+    Info: broken junction
+    JsonName: nfs_nfs_gxfh3_utlfield_junction
+  nfs.gxfh3.utlfield.version:
+    Name: nfs.gxfh3.utlfield.version
+    Type: FtUint8
+    Display: BaseHex
+    Info: file handle version
+    JsonName: nfs_nfs_gxfh3_utlfield_version
+  nfs.gxfh3.volcnt:
+    Name: nfs.gxfh3.volcnt
+    Type: FtUint8
+    Display: BaseHexDec
+    Info: volume count
+    JsonName: nfs_nfs_gxfh3_volcnt
+  nfs.gxfh3.epoch:
+    Name: nfs.gxfh3.epoch
+    Type: FtUint16
+    Display: BaseHexDec
+    Info: epoch
+    JsonName: nfs_nfs_gxfh3_epoch
+  nfs.gxfh3.ldsid:
+    Name: nfs.gxfh3.ldsid
+    Type: FtUint32
+    Display: BaseHexDec
+    Info: local dsid
+    JsonName: nfs_nfs_gxfh3_ldsid
+  nfs.gxfh3.cid:
+    Name: nfs.gxfh3.cid
+    Type: FtUint16
+    Display: BaseHexDec
+    Info: cluster id
+    JsonName: nfs_nfs_gxfh3_cid
+  nfs.gxfh3.reserved:
+    Name: nfs.gxfh3.reserved
+    Type: FtUint16
+    Display: BaseHexDec
+    Info: reserved
+    JsonName: nfs_nfs_gxfh3_reserved
+  nfs.gxfh3.sfhflags:
+    Name: nfs.gxfh3.sfhflags
+    Type: FtUint8
+    Display: BaseHex
+    Info: flags
+    JsonName: nfs_nfs_gxfh3_sfhflags
+  nfs.gxfh3.sfhflags.reserve1:
+    Name: nfs.gxfh3.sfhflags.reserve1
+    Type: FtUint8
+    Display: BaseHex
+    Info: reserved
+    JsonName: nfs_gxfh3_sfhflags_nfs_gxfh3_sfhflags_reserve1
+  nfs.gxfh3.sfhflags.reserv2:
+    Name: nfs.gxfh3.sfhflags.reserv2
+    Type: FtUint8
+    Display: BaseHex
+    Info: reserved
+    JsonName: nfs_gxfh3_sfhflags_nfs_gxfh3_sfhflags_reserv2
+  nfs.gxfh3.sfhflags.ontap7g:
+    Name: nfs.gxfh3.sfhflags.ontap7g
+    Type: FtUint8
+    Display: BaseHex
+    Info: ontap-7g
+    JsonName: nfs_gxfh3_sfhflags_nfs_gxfh3_sfhflags_ontap7g
+  nfs.gxfh3.sfhflags.ontapgx:
+    Name: nfs.gxfh3.sfhflags.ontapgx
+    Type: FtUint8
+    Display: BaseHex
+    Info: ontap-gx
+    JsonName: nfs_gxfh3_sfhflags_nfs_gxfh3_sfhflags_ontapgx
+  nfs.gxfh3.sfhflags.striped:
+    Name: nfs.gxfh3.sfhflags.striped
+    Type: FtBoolean
+    Display: SepDot
+    Info: striped
+    JsonName: nfs_gxfh3_sfhflags_nfs_gxfh3_sfhflags_striped
+  nfs.gxfh3.sfhflags.empty:
+    Name: nfs.gxfh3.sfhflags.empty
+    Type: FtBoolean
+    Display: SepDot
+    Info: empty
+    JsonName: nfs_gxfh3_sfhflags_nfs_gxfh3_sfhflags_empty
+  nfs.gxfh3.sfhflags.snapdirent:
+    Name: nfs.gxfh3.sfhflags.snapdirent
+    Type: FtBoolean
+    Display: SepDot
+    Info: snap dir ent
+    JsonName: nfs_gxfh3_sfhflags_nfs_gxfh3_sfhflags_snapdirent
+  nfs.gxfh3.sfhflags.snapdir:
+    Name: nfs.gxfh3.sfhflags.snapdir
+    Type: FtBoolean
+    Display: SepDot
+    Info: snap dir
+    JsonName: nfs_gxfh3_sfhflags_nfs_gxfh3_sfhflags_snapdir
+  nfs.gxfh3.sfhflags.streamdir:
+    Name: nfs.gxfh3.sfhflags.streamdir
+    Type: FtBoolean
+    Display: SepDot
+    Info: stream dir
+    JsonName: nfs_gxfh3_sfhflags_nfs_gxfh3_sfhflags_streamdir
+  nfs.gxfh3.spinfid:
+    Name: nfs.gxfh3.spinfid
+    Type: FtUint32
+    Display: BaseHexDec
+    Info: spin file id
+    JsonName: nfs_nfs_gxfh3_spinfid
+  nfs.gxfh3.spinfuid:
+    Name: nfs.gxfh3.spinfuid
+    Type: FtUint32
+    Display: BaseHexDec
+    Info: spin file unique id
+    JsonName: nfs_nfs_gxfh3_spinfuid
+  nfs.gxfh3.exportptid:
+    Name: nfs.gxfh3.exportptid
+    Type: FtUint32
+    Display: BaseHexDec
+    Info: export point id
+    JsonName: nfs_nfs_gxfh3_exportptid
+  nfs.gxfh3.exportptuid:
+    Name: nfs.gxfh3.exportptuid
+    Type: FtUint32
+    Display: BaseHexDec
+    Info: export point unique id
+    JsonName: nfs_nfs_gxfh3_exportptuid
+  nfs.verifier:
+    Name: nfs.verifier
+    Type: FtBytes
+    Info: Verifier
+    JsonName: nfs_nfs_verifier
+  nfs.attributes_follow:
+    Name: nfs.attributes_follow
+    Type: FtUint32
+    Display: BaseDec
+    Info: attributes_follow
+    JsonName: nfs_nfs_attributes_follow
+  nfs.handle_follow:
+    Name: nfs.handle_follow
+    Type: FtUint32
+    Display: BaseDec
+    Info: handle_follow
+    JsonName: nfs_nfs_handle_follow
+  nfs.sattrguard3:
+    Name: nfs.sattrguard3
+    Type: FtUint32
+    Display: BaseDec
+    Info: check
+    JsonName: nfs_nfs_sattrguard3
+  nfs.minlength4:
+    Name: nfs.minlength4
+    Type: FtUint64
+    Display: BaseDec
+    Info: min length
+    JsonName: nfs_nfs_minlength4
+  nfs.layouttype:
+    Name: nfs.layouttype
+    Type: FtUint32
+    Display: BaseDec
+    Info: layout type
+    JsonName: nfs_nfs_layouttype
+  nfs.returntype:
+    Name: nfs.returntype
+    Type: FtUint32
+    Display: BaseDec
+    Info: return type
+    JsonName: nfs_nfs_returntype
+  nfs.lrf_body_content:
+    Name: nfs.lrf_body_content
+    Type: FtBytes
+    Info: lrf_body_content
+    JsonName: nfs_nfs_lrf_body_content
+  nfs.iomode:
+    Name: nfs.iomode
+    Type: FtUint32
+    Display: BaseDec
+    Info: IO mode
+    JsonName: nfs_nfs_iomode
+  nfs.stripetype:
+    Name: nfs.stripetype
+    Type: FtUint32
+    Display: BaseDec
+    Info: stripe type
+    JsonName: nfs_nfs_stripetype
+  nfs.stripeunit:
+    Name: nfs.stripeunit
+    Type: FtUint64
+    Display: BaseDec
+    Info: stripe unit
+    JsonName: nfs_nfs_stripeunit
+  nfs.util:
+    Name: nfs.util
+    Type: FtUint32
+    Display: BaseDec
+    Info: util
+    JsonName: nfs_nfs_util
+  nfs.stripeindex:
+    Name: nfs.stripeindex
+    Type: FtUint32
+    Display: BaseDec
+    Info: first stripe index
+    JsonName: nfs_nfs_stripeindex
+  nfs.patternoffset:
+    Name: nfs.patternoffset
+    Type: FtUint64
+    Display: BaseDec
+    Info: layout pattern offset
+    JsonName: nfs_nfs_patternoffset
+  nfs.notificationbitmap:
+    Name: nfs.notificationbitmap
+    Type: FtUint32
+    Display: BaseDec
+    Info: notification bitmap
+    JsonName: nfs_nfs_notificationbitmap
+  nfs.newtime:
+    Name: nfs.newtime
+    Type: FtBoolean
+    Info: new time?
+    JsonName: nfs_nfs_newtime
+  nfs.newoffset:
+    Name: nfs.newoffset
+    Type: FtBoolean
+    Info: new offset?
+    JsonName: nfs_nfs_newoffset
+  nfs.newsize:
+    Name: nfs.newsize
+    Type: FtBoolean
+    Info: new size?
+    JsonName: nfs_nfs_newsize
+  nfs.layoutavail:
+    Name: nfs.layoutavail
+    Type: FtBoolean
+    Info: layout available?
+    JsonName: nfs_nfs_layoutavail
+  nfs.mdscommit:
+    Name: nfs.mdscommit
+    Type: FtBoolean
+    Info: MDS commit?
+    JsonName: nfs_nfs_mdscommit
+  nfs.layoutupdate:
+    Name: nfs.layoutupdate
+    Type: FtBytes
+    Info: layout update
+    JsonName: nfs_nfs_layoutupdate
+  nfs.deviceid:
+    Name: nfs.deviceid
+    Type: FtBytes
+    Info: device ID
+    JsonName: nfs_nfs_deviceid
+  nfs.devicenum4:
+    Name: nfs.devicenum4
+    Type: FtUint32
+    Display: BaseDec
+    Info: num devices
+    JsonName: nfs_nfs_devicenum4
+  nfs.deviceidx:
+    Name: nfs.deviceidx
+    Type: FtUint32
+    Display: BaseDec
+    Info: device index
+    JsonName: nfs_nfs_deviceidx
+  nfs.layout:
+    Name: nfs.layout
+    Type: FtBytes
+    Info: layout
+    JsonName: nfs_nfs_layout
+  nfs.layoutcount:
+    Name: nfs.layoutcount
+    Type: FtUint32
+    Display: BaseDec
+    Info: layout
+    JsonName: nfs_nfs_layoutcount
+  nfs.stripedevs:
+    Name: nfs.stripedevs
+    Type: FtUint32
+    Display: BaseDec
+    Info: stripe devs
+    JsonName: nfs_nfs_stripedevs
+  nfs.devaddr:
+    Name: nfs.devaddr
+    Type: FtBytes
+    Info: device addr
+    JsonName: nfs_nfs_devaddr
+  nfs.devaddr.ssv_start:
+    Name: nfs.devaddr.ssv_start
+    Type: FtUint32
+    Display: BaseDec
+    Info: slice start
+    JsonName: nfs_devaddr_nfs_devaddr_ssv_start
+  nfs.devaddr.ssv_length:
+    Name: nfs.devaddr.ssv_length
+    Type: FtUint32
+    Display: BaseDec
+    Info: slice length
+    JsonName: nfs_devaddr_nfs_devaddr_ssv_length
+  nfs.devaddr.scsi_volume_type:
+    Name: nfs.devaddr.scsi_volume_type
+    Type: FtUint32
+    Display: BaseDec
+    Info: SCSI volume type
+    JsonName: nfs_devaddr_nfs_devaddr_scsi_volume_type
+  nfs.devaddr.scsi_volume_index:
+    Name: nfs.devaddr.scsi_volume_index
+    Type: FtUint32
+    Display: BaseDec
+    Info: volume index
+    JsonName: nfs_devaddr_nfs_devaddr_scsi_volume_index
+  nfs.devaddr.scsi_volume_ref_index:
+    Name: nfs.devaddr.scsi_volume_ref_index
+    Type: FtUint32
+    Display: BaseDec
+    Info: volume index ref
+    JsonName: nfs_devaddr_nfs_devaddr_scsi_volume_ref_index
+  nfs.devaddr.ssv_stripe_unit:
+    Name: nfs.devaddr.ssv_stripe_unit
+    Type: FtUint32
+    Display: BaseDec
+    Info: stripe size
+    JsonName: nfs_devaddr_nfs_devaddr_ssv_stripe_unit
+  nfs.devaddr.scsi_vpd_code_set:
+    Name: nfs.devaddr.scsi_vpd_code_set
+    Type: FtUint32
+    Display: BaseDec
+    Info: VPD code set
+    JsonName: nfs_devaddr_nfs_devaddr_scsi_vpd_code_set
+  nfs.devaddr.scsi_vpd_designator_type:
+    Name: nfs.devaddr.scsi_vpd_designator_type
+    Type: FtUint32
+    Display: BaseDec
+    Info: VPD designator type
+    JsonName: nfs_devaddr_nfs_devaddr_scsi_vpd_designator_type
+  nfs.devaddr.scsi_vpd_designator:
+    Name: nfs.devaddr.scsi_vpd_designator
+    Type: FtBytes
+    Info: VPD designator
+    JsonName: nfs_devaddr_nfs_devaddr_scsi_vpd_designator
+  nfs.devaddr.scsi_private_key:
+    Name: nfs.devaddr.scsi_private_key
+    Type: FtBytes
+    Info: private key
+    JsonName: nfs_devaddr_nfs_devaddr_scsi_private_key
+  nfs.scsil_ext_file_offset:
+    Name: nfs.scsil_ext_file_offset
+    Type: FtUint64
+    Display: BaseDec
+    Info: file offset
+    JsonName: nfs_nfs_scsil_ext_file_offset
+  nfs.scsil_ext_length:
+    Name: nfs.scsil_ext_length
+    Type: FtUint64
+    Display: BaseDec
+    Info: length
+    JsonName: nfs_nfs_scsil_ext_length
+  nfs.scsill_ext_vol_offset:
+    Name: nfs.scsill_ext_vol_offset
+    Type: FtUint64
+    Display: BaseDec
+    Info: volume offset
+    JsonName: nfs_nfs_scsill_ext_vol_offset
+  nfs.scsil_ext_state:
+    Name: nfs.scsil_ext_state
+    Type: FtUint32
+    Display: BaseDec
+    Info: extent state
+    JsonName: nfs_nfs_scsil_ext_state
+  nfs.retclose4:
+    Name: nfs.retclose4
+    Type: FtBoolean
+    Info: return on close?
+    JsonName: nfs_nfs_retclose4
+  nfs.nfl_mirrors:
+    Name: nfs.nfl_mirrors
+    Type: FtUint32
+    Display: BaseDec
+    Info: Mirror
+    JsonName: nfs_nfs_nfl_mirrors
+  nfs.nfl_util:
+    Name: nfs.nfl_util
+    Type: FtUint32
+    Display: BaseHex
+    Info: nfl_util
+    JsonName: nfs_nfs_nfl_util
+  nfs.nfl_fhs:
+    Name: nfs.nfl_fhs
+    Type: FtUint32
+    Display: BaseHex
+    Info: file handles
+    JsonName: nfs_nfs_nfl_fhs
+  nfs.nff_mirror_eff:
+    Name: nfs.nff_mirror_eff
+    Type: FtUint32
+    Display: BaseHex
+    Info: mirror efficiency
+    JsonName: nfs_nfs_nff_mirror_eff
+  nfs.nfl_first_stripe_index:
+    Name: nfs.nfl_first_stripe_index
+    Type: FtUint32
+    Display: BaseDec
+    Info: first stripe to use index
+    JsonName: nfs_nfs_nfl_first_stripe_index
+  nfs.slotid:
+    Name: nfs.slotid
+    Type: FtUint32
+    Display: BaseDec
+    Info: slot id
+    JsonName: nfs_nfs_slotid
+  nfs.high_slotid:
+    Name: nfs.high_slotid
+    Type: FtUint32
+    Display: BaseDec
+    Info: high slot id
+    JsonName: nfs_nfs_high_slotid
+  nfs.target_high_slotid:
+    Name: nfs.target_high_slotid
+    Type: FtUint32
+    Display: BaseDec
+    Info: target high slot id
+    JsonName: nfs_nfs_target_high_slotid
+  nfs.scope:
+    Name: nfs.scope
+    Type: FtBytes
+    Info: server scope
+    JsonName: nfs_nfs_scope
+  nfs.minorid4:
+    Name: nfs.minorid4
+    Type: FtUint64
+    Display: BaseDec
+    Info: minor ID
+    JsonName: nfs_nfs_minorid4
+  nfs.majorid4:
+    Name: nfs.majorid4
+    Type: FtBytes
+    Info: major ID
+    JsonName: nfs_nfs_majorid4
+  nfs.padsize4:
+    Name: nfs.padsize4
+    Type: FtUint32
+    Display: BaseDec
+    Info: hdr pad size
+    JsonName: nfs_nfs_padsize4
+  nfs.cbrenforce4:
+    Name: nfs.cbrenforce4
+    Type: FtBoolean
+    Info: binding enforce?
+    JsonName: nfs_nfs_cbrenforce4
+  nfs.hashalg4:
+    Name: nfs.hashalg4
+    Type: FtUint32
+    Display: BaseDec
+    Info: hash alg
+    JsonName: nfs_nfs_hashalg4
+  nfs.ssvlen4:
+    Name: nfs.ssvlen4
+    Type: FtUint32
+    Display: BaseDec
+    Info: ssv len
+    JsonName: nfs_nfs_ssvlen4
+  nfs.maxreqsize4:
+    Name: nfs.maxreqsize4
+    Type: FtUint32
+    Display: BaseDec
+    Info: max req size
+    JsonName: nfs_nfs_maxreqsize4
+  nfs.maxrespsize4:
+    Name: nfs.maxrespsize4
+    Type: FtUint32
+    Display: BaseDec
+    Info: max resp size
+    JsonName: nfs_nfs_maxrespsize4
+  nfs.maxrespsizecached4:
+    Name: nfs.maxrespsizecached4
+    Type: FtUint32
+    Display: BaseDec
+    Info: max resp size cached
+    JsonName: nfs_nfs_maxrespsizecached4
+  nfs.maxops4:
+    Name: nfs.maxops4
+    Type: FtUint32
+    Display: BaseDec
+    Info: max ops
+    JsonName: nfs_nfs_maxops4
+  nfs.maxreqs4:
+    Name: nfs.maxreqs4
+    Type: FtUint32
+    Display: BaseDec
+    Info: max reqs
+    JsonName: nfs_nfs_maxreqs4
+  nfs.rdmachanattrs4:
+    Name: nfs.rdmachanattrs4
+    Type: FtUint32
+    Display: BaseDec
+    Info: RDMA chan attrs
+    JsonName: nfs_nfs_rdmachanattrs4
+  nfs.machinename4:
+    Name: nfs.machinename4
+    Type: FtString
+    Info: machine name
+    JsonName: nfs_nfs_machinename4
+  nfs.flavor4:
+    Name: nfs.flavor4
+    Type: FtUint32
+    Display: BaseDec
+    Info: flavor
+    JsonName: nfs_nfs_flavor4
+  nfs.stamp4:
+    Name: nfs.stamp4
+    Type: FtUint32
+    Display: BaseDec
+    Info: stamp
+    JsonName: nfs_nfs_stamp4
+  nfs.uid4:
+    Name: nfs.uid4
+    Type: FtUint32
+    Display: BaseDec
+    Info: uid
+    JsonName: nfs_nfs_uid4
+  nfs.gid4:
+    Name: nfs.gid4
+    Type: FtUint32
+    Display: BaseDec
+    Info: gid
+    JsonName: nfs_nfs_gid4
+  nfs.service4:
+    Name: nfs.service4
+    Type: FtUint32
+    Display: BaseDec
+    Info: gid
+    JsonName: nfs_nfs_service4
+  nfs.access_check:
+    Name: nfs.access_check
+    Type: FtUint8
+    Display: BaseHex
+    Info: Check access
+    JsonName: nfs_nfs_access_check
+  nfs.access_supported:
+    Name: nfs.access_supported
+    Type: FtUint8
+    Display: BaseHex
+    Info: Supported types (of requested)
+    JsonName: nfs_nfs_access_supported
+  nfs.access_rights:
+    Name: nfs.access_rights
+    Type: FtUint8
+    Display: BaseHex
+    Info: Access rights (of requested)
+    JsonName: nfs_nfs_access_rights
+  nfs.access_supp_read:
+    Name: nfs.access_supp_read
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x001 READ
+    JsonName: nfs_nfs_access_supp_read
+  nfs.access_supp_lookup:
+    Name: nfs.access_supp_lookup
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x002 LOOKUP
+    JsonName: nfs_nfs_access_supp_lookup
+  nfs.access_supp_modify:
+    Name: nfs.access_supp_modify
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x004 MODIFY
+    JsonName: nfs_nfs_access_supp_modify
+  nfs.access_supp_extend:
+    Name: nfs.access_supp_extend
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x008 EXTEND
+    JsonName: nfs_nfs_access_supp_extend
+  nfs.access_supp_delete:
+    Name: nfs.access_supp_delete
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x010 DELETE
+    JsonName: nfs_nfs_access_supp_delete
+  nfs.access_supp_execute:
+    Name: nfs.access_supp_execute
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x020 EXECUTE
+    JsonName: nfs_nfs_access_supp_execute
+  nfs.access_supp_xattr_read:
+    Name: nfs.access_supp_xattr_read
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x040 XATTR READ
+    JsonName: nfs_nfs_access_supp_xattr_read
+  nfs.access_supp_xattr_write:
+    Name: nfs.access_supp_xattr_write
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x080 XATTR WRITE
+    JsonName: nfs_nfs_access_supp_xattr_write
+  nfs.access_supp_xattr_list:
+    Name: nfs.access_supp_xattr_list
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x100 XATTR LIST
+    JsonName: nfs_nfs_access_supp_xattr_list
+  nfs.access_read:
+    Name: nfs.access_read
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x001 READ
+    JsonName: nfs_nfs_access_read
+  nfs.access_lookup:
+    Name: nfs.access_lookup
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x002 LOOKUP
+    JsonName: nfs_nfs_access_lookup
+  nfs.access_modify:
+    Name: nfs.access_modify
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x004 MODIFY
+    JsonName: nfs_nfs_access_modify
+  nfs.access_extend:
+    Name: nfs.access_extend
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x008 EXTEND
+    JsonName: nfs_nfs_access_extend
+  nfs.access_delete:
+    Name: nfs.access_delete
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x010 DELETE
+    JsonName: nfs_nfs_access_delete
+  nfs.access_execute:
+    Name: nfs.access_execute
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x020 EXECUTE
+    JsonName: nfs_nfs_access_execute
+  nfs.access_xattr_read:
+    Name: nfs.access_xattr_read
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x040 XATTR READ
+    JsonName: nfs_nfs_access_xattr_read
+  nfs.access_xattr_write:
+    Name: nfs.access_xattr_write
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x080 XATTR WRITE
+    JsonName: nfs_nfs_access_xattr_write
+  nfs.access_xattr_list:
+    Name: nfs.access_xattr_list
+    Type: FtBoolean
+    Display: SepDot
+    Info: 0x100 XATTR LIST
+    JsonName: nfs_nfs_access_xattr_list
+  nfs.access_denied:
+    Name: nfs.access_denied
+    Type: FtBoolean
+    Info: Access Denied
+    JsonName: nfs_nfs_access_denied
+  nfs.session_id4:
+    Name: nfs.session_id4
+    Type: FtBytes
+    Info: sessionid
+    JsonName: nfs_nfs_session_id4
+  nfs.exchange_id.call_flags:
+    Name: nfs.exchange_id.call_flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: flags
+    JsonName: nfs_nfs_exchange_id_call_flags
+  nfs.exchange_id.reply_flags:
+    Name: nfs.exchange_id.reply_flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: flags
+    JsonName: nfs_nfs_exchange_id_reply_flags
+  nfs.exchange_id.flags.moved_refer:
+    Name: nfs.exchange_id.flags.moved_refer
+    Type: FtBoolean
+    Display: 32
+    Info: EXCHGID4_FLAG_SUPP_MOVED_REFER
+    JsonName: nfs_nfs_exchange_id_flags_moved_refer
+  nfs.exchange_id.flags.moved_migr:
+    Name: nfs.exchange_id.flags.moved_migr
+    Type: FtBoolean
+    Display: 32
+    Info: EXCHGID4_FLAG_SUPP_MOVED_MIGR
+    JsonName: nfs_nfs_exchange_id_flags_moved_migr
+  nfs.exchange_id.flags.bind_princ:
+    Name: nfs.exchange_id.flags.bind_princ
+    Type: FtBoolean
+    Display: 32
+    Info: EXCHGID4_FLAG_BIND_PRINC_STATEID
+    JsonName: nfs_nfs_exchange_id_flags_bind_princ
+  nfs.exchange_id.flags.non_pnfs:
+    Name: nfs.exchange_id.flags.non_pnfs
+    Type: FtBoolean
+    Display: 32
+    Info: EXCHGID4_FLAG_USE_NON_PNFS
+    JsonName: nfs_nfs_exchange_id_flags_non_pnfs
+  nfs.exchange_id.flags.pnfs_mds:
+    Name: nfs.exchange_id.flags.pnfs_mds
+    Type: FtBoolean
+    Display: 32
+    Info: EXCHGID4_FLAG_USE_PNFS_MDS
+    JsonName: nfs_nfs_exchange_id_flags_pnfs_mds
+  nfs.exchange_id.flags.pnfs_ds:
+    Name: nfs.exchange_id.flags.pnfs_ds
+    Type: FtBoolean
+    Display: 32
+    Info: EXCHGID4_FLAG_USE_PNFS_DS
+    JsonName: nfs_nfs_exchange_id_flags_pnfs_ds
+  nfs.exchange_id.flags.confirmed_rec_a:
+    Name: nfs.exchange_id.flags.confirmed_rec_a
+    Type: FtBoolean
+    Display: 32
+    Info: EXCHGID4_FLAG_UPD_CONFIRMED_REC_A
+    JsonName: nfs_nfs_exchange_id_flags_confirmed_rec_a
+  nfs.exchange_id.flags.confirmed_r:
+    Name: nfs.exchange_id.flags.confirmed_r
+    Type: FtBoolean
+    Display: 32
+    Info: EXCHGID4_FLAG_CONFIRMED_R
+    JsonName: nfs_nfs_exchange_id_flags_confirmed_r
+  nfs.prot_info4_hash_alg:
+    Name: nfs.prot_info4_hash_alg
+    Type: FtUint32
+    Display: BaseHex
+    Info: Prot Info hash algorithm
+    JsonName: nfs_nfs_prot_info4_hash_alg
+  nfs.prot_info4_encr_alg:
+    Name: nfs.prot_info4_encr_alg
+    Type: FtUint32
+    Display: BaseHex
+    Info: Prot Info encryption algorithm
+    JsonName: nfs_nfs_prot_info4_encr_alg
+  nfs.prot_info4_svv_length:
+    Name: nfs.prot_info4_svv_length
+    Type: FtUint32
+    Display: BaseHex
+    Info: Prot Info svv_length
+    JsonName: nfs_nfs_prot_info4_svv_length
+  nfs.prot_info4_spi_window:
+    Name: nfs.prot_info4_spi_window
+    Type: FtUint32
+    Display: BaseHex
+    Info: Prot Info spi window
+    JsonName: nfs_nfs_prot_info4_spi_window
+  nfs.state_protect_window:
+    Name: nfs.state_protect_window
+    Type: FtUint32
+    Display: BaseHex
+    Info: State Protect window
+    JsonName: nfs_nfs_state_protect_window
+  nfs.state_protect_num_gss_handles:
+    Name: nfs.state_protect_num_gss_handles
+    Type: FtUint32
+    Display: BaseHex
+    Info: State Protect num gss handles
+    JsonName: nfs_nfs_state_protect_num_gss_handles
+  nfs.nii_domain4:
+    Name: nfs.nii_domain4
+    Type: FtString
+    Info: Implementor DNS domain name(nii_domain)
+    JsonName: nfs_nfs_nii_domain4
+  nfs.nii_name4:
+    Name: nfs.nii_name4
+    Type: FtString
+    Info: Implementation product name(nii_name)
+    JsonName: nfs_nfs_nii_name4
+  nfs.create_session_flags:
+    Name: nfs.create_session_flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: csa_flags
+    JsonName: nfs_nfs_create_session_flags
+  nfs.create_session.flags.persist:
+    Name: nfs.create_session.flags.persist
+    Type: FtBoolean
+    Display: 32
+    Info: CREATE_SESSION4_FLAG_PERSIST
+    JsonName: nfs_nfs_create_session_flags_persist
+  nfs.create_session.flags.conn_back_chan:
+    Name: nfs.create_session.flags.conn_back_chan
+    Type: FtBoolean
+    Display: 32
+    Info: CREATE_SESSION4_FLAG_CONN_BACK_CHAN
+    JsonName: nfs_nfs_create_session_flags_conn_back_chan
+  nfs.create_session.flags.conn_rdma:
+    Name: nfs.create_session.flags.conn_rdma
+    Type: FtBoolean
+    Display: 32
+    Info: CREATE_SESSION4_FLAG_CONN_RDMA
+    JsonName: nfs_nfs_create_session_flags_conn_rdma
+  nfs.cachethis4:
+    Name: nfs.cachethis4
+    Type: FtBoolean
+    Info: cache this?
+    JsonName: nfs_nfs_cachethis4
+  nfs.reclaim_one_fs4:
+    Name: nfs.reclaim_one_fs4
+    Type: FtBoolean
+    Info: reclaim one fs?
+    JsonName: nfs_nfs_reclaim_one_fs4
+  nfs.cb_procedure:
+    Name: nfs.cb_procedure
+    Type: FtUint32
+    Display: BaseDec
+    Info: CB Procedure
+    JsonName: nfs_nfs_cb_procedure
+  nfs.cb.operation:
+    Name: nfs.cb.operation
+    Type: FtUint32
+    Display: BaseDec
+    Info: Opcode
+    JsonName: nfs_nfs_cb_operation
+  nfs.lrs_present:
+    Name: nfs.lrs_present
+    Type: FtBoolean
+    Info: Stateid present?
+    JsonName: nfs_nfs_lrs_present
+  nfs.truncate:
+    Name: nfs.truncate
+    Type: FtBoolean
+    Info: Truncate?
+    JsonName: nfs_nfs_truncate
+  nfs.recalltype:
+    Name: nfs.recalltype
+    Type: FtUint32
+    Display: BaseDec
+    Info: recall type
+    JsonName: nfs_nfs_recalltype
+  nfs.clorachanged:
+    Name: nfs.clorachanged
+    Type: FtBoolean
+    Info: Clora changed
+    JsonName: nfs_nfs_clorachanged
+  nfs.bctsa_dir:
+    Name: nfs.bctsa_dir
+    Type: FtUint32
+    Display: BaseHex
+    Info: bctsa_dir
+    JsonName: nfs_nfs_bctsa_dir
+  nfs.bctsa_use_conn_in_rdma_mode:
+    Name: nfs.bctsa_use_conn_in_rdma_mode
+    Type: FtBoolean
+    Info: bctsa_use_conn_in_rdma_mode
+    JsonName: nfs_nfs_bctsa_use_conn_in_rdma_mode
+  nfs.bctsr_dir:
+    Name: nfs.bctsr_dir
+    Type: FtUint32
+    Display: BaseHex
+    Info: bctsr_dir
+    JsonName: nfs_nfs_bctsr_dir
+  nfs.bctsr_use_conn_in_rdma_mode:
+    Name: nfs.bctsr_use_conn_in_rdma_mode
+    Type: FtBoolean
+    Info: bctsr_use_conn_in_rdma_mode
+    JsonName: nfs_nfs_bctsr_use_conn_in_rdma_mode
+  nfs.mode3:
+    Name: nfs.mode3
+    Type: FtUint32
+    Display: BaseOct
+    Info: Mode
+    JsonName: nfs_nfs_mode3
+  nfs.mode3.suid:
+    Name: nfs.mode3.suid
+    Type: FtBoolean
+    Display: 32
+    Info: S_ISUID
+    JsonName: nfs_mode3_nfs_mode3_suid
+  nfs.mode3.sgid:
+    Name: nfs.mode3.sgid
+    Type: FtBoolean
+    Display: 32
+    Info: S_ISGID
+    JsonName: nfs_mode3_nfs_mode3_sgid
+  nfs.mode3.sticky:
+    Name: nfs.mode3.sticky
+    Type: FtBoolean
+    Display: 32
+    Info: S_ISVTX
+    JsonName: nfs_mode3_nfs_mode3_sticky
+  nfs.mode3.rusr:
+    Name: nfs.mode3.rusr
+    Type: FtBoolean
+    Display: 32
+    Info: S_IRUSR
+    JsonName: nfs_mode3_nfs_mode3_rusr
+  nfs.mode3.wusr:
+    Name: nfs.mode3.wusr
+    Type: FtBoolean
+    Display: 32
+    Info: S_IWUSR
+    JsonName: nfs_mode3_nfs_mode3_wusr
+  nfs.mode3.xusr:
+    Name: nfs.mode3.xusr
+    Type: FtBoolean
+    Display: 32
+    Info: S_IXUSR
+    JsonName: nfs_mode3_nfs_mode3_xusr
+  nfs.mode3.rgrp:
+    Name: nfs.mode3.rgrp
+    Type: FtBoolean
+    Display: 32
+    Info: S_IRGRP
+    JsonName: nfs_mode3_nfs_mode3_rgrp
+  nfs.mode3.wgrp:
+    Name: nfs.mode3.wgrp
+    Type: FtBoolean
+    Display: 32
+    Info: S_IWGRP
+    JsonName: nfs_mode3_nfs_mode3_wgrp
+  nfs.mode3.xgrp:
+    Name: nfs.mode3.xgrp
+    Type: FtBoolean
+    Display: 32
+    Info: S_IXGRP
+    JsonName: nfs_mode3_nfs_mode3_xgrp
+  nfs.mode3.roth:
+    Name: nfs.mode3.roth
+    Type: FtBoolean
+    Display: 32
+    Info: S_IROTH
+    JsonName: nfs_mode3_nfs_mode3_roth
+  nfs.mode3.woth:
+    Name: nfs.mode3.woth
+    Type: FtBoolean
+    Display: 32
+    Info: S_IWOTH
+    JsonName: nfs_mode3_nfs_mode3_woth
+  nfs.mode3.xoth:
+    Name: nfs.mode3.xoth
+    Type: FtBoolean
+    Display: 32
+    Info: S_IXOTH
+    JsonName: nfs_mode3_nfs_mode3_xoth
+  nfs.ftype:
+    Name: nfs.ftype
+    Type: FtUint32
+    Display: BaseDec
+    Info: type
+    JsonName: nfs_nfs_ftype
+  nfs.mode:
+    Name: nfs.mode
+    Type: FtUint32
+    Display: BaseOct
+    Info: mode
+    JsonName: nfs_nfs_mode
+  nfs.mode.name:
+    Name: nfs.mode.name
+    Type: FtUint32
+    Display: BaseDec
+    Info: Name
+    JsonName: nfs_mode_nfs_mode_name
+  nfs.mode.set_user_id:
+    Name: nfs.mode.set_user_id
+    Type: FtBoolean
+    Display: 32
+    Info: Set user id on exec
+    JsonName: nfs_mode_nfs_mode_set_user_id
+  nfs.mode.set_group_id:
+    Name: nfs.mode.set_group_id
+    Type: FtBoolean
+    Display: 32
+    Info: Set group id on exec
+    JsonName: nfs_mode_nfs_mode_set_group_id
+  nfs.mode.save_swap_text:
+    Name: nfs.mode.save_swap_text
+    Type: FtBoolean
+    Display: 32
+    Info: Save swapped text even after use
+    JsonName: nfs_mode_nfs_mode_save_swap_text
+  nfs.mode.read_owner:
+    Name: nfs.mode.read_owner
+    Type: FtBoolean
+    Display: 32
+    Info: Read permission for owner
+    JsonName: nfs_mode_nfs_mode_read_owner
+  nfs.mode.write_owner:
+    Name: nfs.mode.write_owner
+    Type: FtBoolean
+    Display: 32
+    Info: Write permission for owner
+    JsonName: nfs_mode_nfs_mode_write_owner
+  nfs.mode.exec_owner:
+    Name: nfs.mode.exec_owner
+    Type: FtBoolean
+    Display: 32
+    Info: Execute permission for owner
+    JsonName: nfs_mode_nfs_mode_exec_owner
+  nfs.mode.read_group:
+    Name: nfs.mode.read_group
+    Type: FtBoolean
+    Display: 32
+    Info: Read permission for group
+    JsonName: nfs_mode_nfs_mode_read_group
+  nfs.mode.write_group:
+    Name: nfs.mode.write_group
+    Type: FtBoolean
+    Display: 32
+    Info: Write permission for group
+    JsonName: nfs_mode_nfs_mode_write_group
+  nfs.mode.exec_group:
+    Name: nfs.mode.exec_group
+    Type: FtBoolean
+    Display: 32
+    Info: Execute permission for group
+    JsonName: nfs_mode_nfs_mode_exec_group
+  nfs.mode.read_other:
+    Name: nfs.mode.read_other
+    Type: FtBoolean
+    Display: 32
+    Info: Read permission for others
+    JsonName: nfs_mode_nfs_mode_read_other
+  nfs.mode.write_other:
+    Name: nfs.mode.write_other
+    Type: FtBoolean
+    Display: 32
+    Info: Write permission for others
+    JsonName: nfs_mode_nfs_mode_write_other
+  nfs.mode.exec_other:
+    Name: nfs.mode.exec_other
+    Type: FtBoolean
+    Display: 32
+    Info: Execute permission for others
+    JsonName: nfs_mode_nfs_mode_exec_other
+  nfs.op_mask:
+    Name: nfs.op_mask
+    Type: FtUint32
+    Display: BaseDec
+    Info: op_mask
+    JsonName: nfs_nfs_op_mask
+  nfs.sequence.flags:
+    Name: nfs.sequence.flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: status flags
+    JsonName: nfs_nfs_sequence_flags
+  nfs.sequence.flags.cb_path_down:
+    Name: nfs.sequence.flags.cb_path_down
+    Type: FtBoolean
+    Display: 32
+    Info: SEQ4_STATUS_CB_PATH_DOWN
+    JsonName: nfs_sequence_flags_nfs_sequence_flags_cb_path_down
+  nfs.sequence.flags.cb_gss_contexts_expiring:
+    Name: nfs.sequence.flags.cb_gss_contexts_expiring
+    Type: FtBoolean
+    Display: 32
+    Info: SEQ4_STATUS_CB_GSS_CONTEXTS_EXPIRING
+    JsonName: nfs_sequence_flags_nfs_sequence_flags_cb_gss_contexts_expiring
+  nfs.sequence.flags.cb_gss_contexts_expired:
+    Name: nfs.sequence.flags.cb_gss_contexts_expired
+    Type: FtBoolean
+    Display: 32
+    Info: SEQ4_STATUS_CB_GSS_CONTEXTS_EXPIRED
+    JsonName: nfs_sequence_flags_nfs_sequence_flags_cb_gss_contexts_expired
+  nfs.sequence.flags.expired_all_state_revoked:
+    Name: nfs.sequence.flags.expired_all_state_revoked
+    Type: FtBoolean
+    Display: 32
+    Info: SEQ4_STATUS_EXPIRED_ALL_STATE_REVOKED
+    JsonName: nfs_sequence_flags_nfs_sequence_flags_expired_all_state_revoked
+  nfs.sequence.flags.expired_some_state_revoked:
+    Name: nfs.sequence.flags.expired_some_state_revoked
+    Type: FtBoolean
+    Display: 32
+    Info: SEQ4_STATUS_EXPIRED_SOME_STATE_REVOKED
+    JsonName: nfs_sequence_flags_nfs_sequence_flags_expired_some_state_revoked
+  nfs.sequence.flags.admin_state_revoked:
+    Name: nfs.sequence.flags.admin_state_revoked
+    Type: FtBoolean
+    Display: 32
+    Info: SEQ4_STATUS_ADMIN_STATE_REVOKED
+    JsonName: nfs_sequence_flags_nfs_sequence_flags_admin_state_revoked
+  nfs.sequence.flags.recallable_state_revoked:
+    Name: nfs.sequence.flags.recallable_state_revoked
+    Type: FtBoolean
+    Display: 32
+    Info: SEQ4_STATUS_RECALLABLE_STATE_REVOKED
+    JsonName: nfs_sequence_flags_nfs_sequence_flags_recallable_state_revoked
+  nfs.sequence.flags.lease_moved:
+    Name: nfs.sequence.flags.lease_moved
+    Type: FtBoolean
+    Display: 32
+    Info: SEQ4_STATUS_LEASE_MOVED
+    JsonName: nfs_sequence_flags_nfs_sequence_flags_lease_moved
+  nfs.sequence.flags.restart_reclaim_needed:
+    Name: nfs.sequence.flags.restart_reclaim_needed
+    Type: FtBoolean
+    Display: 32
+    Info: SEQ4_STATUS_RESTART_RECLAIM_NEEDED
+    JsonName: nfs_sequence_flags_nfs_sequence_flags_restart_reclaim_needed
+  nfs.sequence.flags.cb_path_down_session:
+    Name: nfs.sequence.flags.cb_path_down_session
+    Type: FtBoolean
+    Display: 32
+    Info: SEQ4_STATUS_CB_PATH_DOWN_SESSION
+    JsonName: nfs_sequence_flags_nfs_sequence_flags_cb_path_down_session
+  nfs.sequence.flags.backchannel_fault:
+    Name: nfs.sequence.flags.backchannel_fault
+    Type: FtBoolean
+    Display: 32
+    Info: SEQ4_STATUS_BACKCHANNEL_FAULT
+    JsonName: nfs_sequence_flags_nfs_sequence_flags_backchannel_fault
+  nfs.sequence.flags.devid_changed:
+    Name: nfs.sequence.flags.devid_changed
+    Type: FtBoolean
+    Display: 32
+    Info: SEQ4_STATUS_DEVID_CHANGED
+    JsonName: nfs_sequence_flags_nfs_sequence_flags_devid_changed
+  nfs.sequence.flags.devid_deleted:
+    Name: nfs.sequence.flags.devid_deleted
+    Type: FtBoolean
+    Display: 32
+    Info: SEQ4_STATUS_DEVID_DELETED
+    JsonName: nfs_sequence_flags_nfs_sequence_flags_devid_deleted
+  nfs.test_stateid.stateids:
+    Name: nfs.test_stateid.stateids
+    Info: Stateid List
+    JsonName: nfs_nfs_test_stateid_stateids
+  nfs.test_stateid.results:
+    Name: nfs.test_stateid.results
+    Info: Stateid Result List
+    JsonName: nfs_nfs_test_stateid_results
+  nfs.data_content:
+    Name: nfs.data_content
+    Type: FtUint32
+    Display: BaseDec
+    Info: data content
+    JsonName: nfs_nfs_data_content
+  nfs.huge_bitmap_length:
+    Name: nfs.huge_bitmap_length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Huge bitmap length
+    JsonName: nfs_nfs_huge_bitmap_length
+  nfs.universal_address.ipv4:
+    Name: nfs.universal_address.ipv4
+    Type: FtIpv4
+    Info: universal_address
+    JsonName: nfs_nfs_universal_address_ipv4
+  nfs.universal_address.ipv6:
+    Name: nfs.universal_address.ipv6
+    Type: FtIpv6
+    Info: universal_address
+    JsonName: nfs_nfs_universal_address_ipv6
+  nfs.devinfo:
+    Name: nfs.devinfo
+    Type: FtBytes
+    Info: dev info
+    JsonName: nfs_nfs_devinfo
+  nfs.ff.version:
+    Name: nfs.ff.version
+    Type: FtUint32
+    Display: BaseDec
+    Info: version
+    JsonName: nfs_nfs_ff_version
+  nfs.ff.minorversion:
+    Name: nfs.ff.minorversion
+    Type: FtUint32
+    Display: BaseDec
+    Info: minorversion
+    JsonName: nfs_nfs_ff_minorversion
+  nfs.ff.rsize:
+    Name: nfs.ff.rsize
+    Type: FtUint32
+    Display: BaseDec
+    Info: max_rsize
+    JsonName: nfs_nfs_ff_rsize
+  nfs.ff.wsize:
+    Name: nfs.ff.wsize
+    Type: FtUint32
+    Display: BaseDec
+    Info: max_wsize
+    JsonName: nfs_nfs_ff_wsize
+  nfs.ff.tightly_coupled:
+    Name: nfs.ff.tightly_coupled
+    Type: FtBoolean
+    Info: tightly coupled
+    JsonName: nfs_nfs_ff_tightly_coupled
+  nfs.ff.layout_flags:
+    Name: nfs.ff.layout_flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: layout flags
+    JsonName: nfs_nfs_ff_layout_flags
+  nfs.ff.synthetic_owner:
+    Name: nfs.ff.synthetic_owner
+    Type: FtString
+    Info: synthetic owner
+    JsonName: nfs_nfs_ff_synthetic_owner
+  nfs.ff.synthetic_owner_group:
+    Name: nfs.ff.synthetic_owner_group
+    Type: FtString
+    Info: synthetic group
+    JsonName: nfs_nfs_ff_synthetic_owner_group
+  nfs.ff.layout_flags.no_layoutcommit:
+    Name: nfs.ff.layout_flags.no_layoutcommit
+    Type: FtBoolean
+    Display: 32
+    Info: FLAG_NO_LAYOUTCOMMIT
+    JsonName: nfs_ff_layout_flags_nfs_ff_layout_flags_no_layoutcommit
+  nfs.ff.layout_flags.no_io_thru_mds:
+    Name: nfs.ff.layout_flags.no_io_thru_mds
+    Type: FtBoolean
+    Display: 32
+    Info: FLAG_NO_IO_THRU_MDS
+    JsonName: nfs_ff_layout_flags_nfs_ff_layout_flags_no_io_thru_mds
+  nfs.ff.layout_flags.no_read_io:
+    Name: nfs.ff.layout_flags.no_read_io
+    Type: FtBoolean
+    Display: 32
+    Info: FLAG_NO_READ_IO
+    JsonName: nfs_ff_layout_flags_nfs_ff_layout_flags_no_read_io
+  nfs.ff.stats_collect_hint:
+    Name: nfs.ff.stats_collect_hint
+    Type: FtUint32
+    Display: BaseDec
+    Info: stats collect hint
+    JsonName: nfs_nfs_ff_stats_collect_hint
+  nfs.fattr4.clone_block_size:
+    Name: nfs.fattr4.clone_block_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: clone block size
+    JsonName: nfs_nfs_fattr4_clone_block_size
+  nfs.fattr4.space_freed:
+    Name: nfs.fattr4.space_freed
+    Type: FtUint64
+    Display: BaseDec
+    Info: space freed
+    JsonName: nfs_nfs_fattr4_space_freed
+  nfs.fattr4.change_attr_type:
+    Name: nfs.fattr4.change_attr_type
+    Type: FtUint32
+    Display: BaseDec
+    Info: change attr type
+    JsonName: nfs_nfs_fattr4_change_attr_type
+  nfs.callback_ids:
+    Name: nfs.callback_ids
+    Type: FtUint32
+    Display: BaseDec
+    Info: Callback StateIds
+    JsonName: nfs_nfs_callback_ids
+  nfs.ff.callback_id_index:
+    Name: nfs.ff.callback_id_index
+    Type: FtUint32
+    Display: BaseDec
+    Info: Callback Id
+    JsonName: nfs_nfs_ff_callback_id_index
+  nfs.num_offload_status:
+    Name: nfs.num_offload_status
+    Type: FtUint32
+    Display: BaseDec
+    Info: Number of offload status
+    JsonName: nfs_nfs_num_offload_status
+  nfs.offload_status:
+    Name: nfs.offload_status
+    Type: FtUint32
+    Display: BaseDec
+    Info: nfsstat4
+    JsonName: nfs_nfs_offload_status
+  nfs.consecutive:
+    Name: nfs.consecutive
+    Type: FtBoolean
+    Info: copy consecutively?
+    JsonName: nfs_nfs_consecutive
+  nfs.netloc:
+    Name: nfs.netloc
+    Type: FtBytes
+    Info: net loc
+    JsonName: nfs_nfs_netloc
+  nfs.netloctype:
+    Name: nfs.netloctype
+    Type: FtUint32
+    Display: BaseDec
+    Info: netloc type
+    JsonName: nfs_nfs_netloctype
+  nfs.nl_name:
+    Name: nfs.nl_name
+    Type: FtString
+    Info: net loc name
+    JsonName: nfs_nfs_nl_name
+  nfs.nl_url:
+    Name: nfs.nl_url
+    Type: FtString
+    Info: net loc url
+    JsonName: nfs_nfs_nl_url
+  nfs.source_servers:
+    Name: nfs.source_servers
+    Type: FtUint32
+    Display: BaseDec
+    Info: Source Server count
+    JsonName: nfs_nfs_source_servers
+  nfs.ff.source_server_index:
+    Name: nfs.ff.source_server_index
+    Type: FtUint32
+    Display: BaseDec
+    Info: Source Server
+    JsonName: nfs_nfs_ff_source_server_index
+  nfs.synchronous:
+    Name: nfs.synchronous
+    Type: FtBoolean
+    Info: copy synchronous?
+    JsonName: nfs_nfs_synchronous
+  nfs.hint.mask:
+    Name: nfs.hint.mask
+    Type: FtUint32
+    Display: BaseHex
+    Info: Hint mask
+    JsonName: nfs_nfs_hint_mask
+  nfs.hint.count:
+    Name: nfs.hint.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Hint count
+    JsonName: nfs_nfs_hint_count
+  nfs.hint.hint:
+    Name: nfs.hint.hint
+    Type: FtUint32
+    Display: BaseDec
+    Info: Hint
+    JsonName: nfs_nfs_hint_hint
+  nfs.bytes_copied:
+    Name: nfs.bytes_copied
+    Type: FtUint64
+    Display: BaseDec
+    Info: bytes copied
+    JsonName: nfs_nfs_bytes_copied
+  nfs.content.type:
+    Name: nfs.content.type
+    Type: FtUint32
+    Display: BaseDec
+    Info: Content Type
+    JsonName: nfs_nfs_content_type
+  nfs.content.count:
+    Name: nfs.content.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Content count
+    JsonName: nfs_nfs_content_count
+  nfs.content.index:
+    Name: nfs.content.index
+    Type: FtUint32
+    Display: BaseDec
+    Info: Content index
+    JsonName: nfs_nfs_content_index
+  nfs.adb.block.count:
+    Name: nfs.adb.block.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Number of Blocks
+    JsonName: nfs_nfs_adb_block_count
+  nfs.adb.block.reloff_num:
+    Name: nfs.adb.block.reloff_num
+    Type: FtUint32
+    Display: BaseDec
+    Info: Relative Offset Block Number
+    JsonName: nfs_nfs_adb_block_reloff_num
+  nfs.adb.block.num:
+    Name: nfs.adb.block.num
+    Type: FtUint32
+    Display: BaseDec
+    Info: Block Number
+    JsonName: nfs_nfs_adb_block_num
+  nfs.adb.pattern.reloff:
+    Name: nfs.adb.pattern.reloff
+    Type: FtUint32
+    Display: BaseDec
+    Info: Relative Offset Pattern
+    JsonName: nfs_nfs_adb_pattern_reloff
+  nfs.adb.pattern_hash:
+    Name: nfs.adb.pattern_hash
+    Type: FtUint32
+    Display: BaseHex
+    Info: hash (CRC-32)
+    JsonName: nfs_nfs_adb_pattern_hash
+  nfs.xattr.key:
+    Name: nfs.xattr.key
+    Type: FtString
+    Info: Name
+    JsonName: nfs_nfs_xattr_key
+  nfs.setxattr.options:
+    Name: nfs.setxattr.options
+    Type: FtUint32
+    Display: BaseDec
+    Info: setxattr options
+    JsonName: nfs_nfs_setxattr_options
+  nfs.lisxtattr.maxcount:
+    Name: nfs.lisxtattr.maxcount
+    Type: FtUint32
+    Display: BaseDec
+    Info: maxcount
+    JsonName: nfs_nfs_lisxtattr_maxcount
+  nfs.lisxtattr.cookie:
+    Name: nfs.lisxtattr.cookie
+    Type: FtUint64
+    Display: BaseDec
+    Info: cookie
+    JsonName: nfs_nfs_lisxtattr_cookie
+  nfs.listxattr.names.count:
+    Name: nfs.listxattr.names.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: xattr names count
+    JsonName: nfs_nfs_listxattr_names_count
+  nfs.lisxtattr.eof:
+    Name: nfs.lisxtattr.eof
+    Type: FtUint32
+    Display: BaseDec
+    Info: eof
+    JsonName: nfs_nfs_lisxtattr_eof
+  nfs.ff.local:
+    Name: nfs.ff.local
+    Type: FtBoolean
+    Info: client used cache?
+    JsonName: nfs_nfs_ff_local
+  nfs.io_count:
+    Name: nfs.io_count
+    Type: FtUint64
+    Display: BaseDec
+    Info: count
+    JsonName: nfs_nfs_io_count
+  nfs.io_bytes:
+    Name: nfs.io_bytes
+    Type: FtUint64
+    Display: BaseDec
+    Info: bytes
+    JsonName: nfs_nfs_io_bytes
+  nfs.ff.ops_requested:
+    Name: nfs.ff.ops_requested
+    Type: FtUint64
+    Display: BaseDec
+    Info: ops requested
+    JsonName: nfs_nfs_ff_ops_requested
+  nfs.ff.bytes_requested:
+    Name: nfs.ff.bytes_requested
+    Type: FtUint64
+    Display: BaseDec
+    Info: bytes requested
+    JsonName: nfs_nfs_ff_bytes_requested
+  nfs.ff.ops_completed:
+    Name: nfs.ff.ops_completed
+    Type: FtUint64
+    Display: BaseDec
+    Info: ops completed
+    JsonName: nfs_nfs_ff_ops_completed
+  nfs.ff.bytes_completed:
+    Name: nfs.ff.bytes_completed
+    Type: FtUint64
+    Display: BaseDec
+    Info: bytes completed
+    JsonName: nfs_nfs_ff_bytes_completed
+  nfs.ff.bytes_not_delivered:
+    Name: nfs.ff.bytes_not_delivered
+    Type: FtUint64
+    Display: BaseDec
+    Info: bytes not delivered
+    JsonName: nfs_nfs_ff_bytes_not_delivered
+  nfs.layoutstats:
+    Name: nfs.layoutstats
+    Type: FtBytes
+    Info: Layout Stats
+    JsonName: nfs_nfs_layoutstats
+  nfs.device_error_count:
+    Name: nfs.device_error_count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Device Error count
+    JsonName: nfs_nfs_device_error_count
+  nfs.device_errors_index:
+    Name: nfs.device_errors_index
+    Type: FtUint32
+    Display: BaseDec
+    Info: Device Error index
+    JsonName: nfs_nfs_device_errors_index
+  nfs.ff.ioerrs_count:
+    Name: nfs.ff.ioerrs_count
+    Type: FtUint32
+    Display: BaseDec
+    Info: IO Errors count
+    JsonName: nfs_nfs_ff_ioerrs_count
+  nfs.ff.ioerrs_index:
+    Name: nfs.ff.ioerrs_index
+    Type: FtUint32
+    Display: BaseDec
+    Info: IO Errors index
+    JsonName: nfs_nfs_ff_ioerrs_index
+  nfs.ff.ioerrs_length:
+    Name: nfs.ff.ioerrs_length
+    Type: FtUint64
+    Display: BaseDec
+    Info: length
+    JsonName: nfs_nfs_ff_ioerrs_length
+  nfs.ff.ioerrs_offset:
+    Name: nfs.ff.ioerrs_offset
+    Type: FtUint64
+    Display: BaseDec
+    Info: offset
+    JsonName: nfs_nfs_ff_ioerrs_offset
+  nfs.ff.iostats_count:
+    Name: nfs.ff.iostats_count
+    Type: FtUint32
+    Display: BaseDec
+    Info: IO Stats count
+    JsonName: nfs_nfs_ff_iostats_count
+  nfs.ff.iostats_index:
+    Name: nfs.ff.iostats_index
+    Type: FtUint32
+    Display: BaseDec
+    Info: IO Stats index
+    JsonName: nfs_nfs_ff_iostats_index
+  nfs.ff_ioerrs_op:
+    Name: nfs.ff_ioerrs_op
+    Type: FtUint32
+    Display: BaseDec
+    Info: OP
+    JsonName: nfs_nfs_ff_ioerrs_op
+  nfs.status:
+    Name: nfs.status
+    Type: FtUint32
+    Display: BaseDec
+    Info: Status
+    JsonName: nfs_nfs_status

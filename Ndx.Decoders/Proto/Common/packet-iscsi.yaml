@@ -1,0 +1,576 @@
+Name: iscsi
+Fields:
+  iscsi.request_frame:
+    Name: iscsi.request_frame
+    Type: FtFramenum
+    Info: Request in
+    JsonName: iscsi_iscsi_request_frame
+  iscsi.time:
+    Name: iscsi.time
+    Type: FtRelativeTime
+    Info: Time from request
+    JsonName: iscsi_iscsi_time
+  iscsi.data_in_frame:
+    Name: iscsi.data_in_frame
+    Type: FtFramenum
+    Info: Data In in
+    JsonName: iscsi_iscsi_data_in_frame
+  iscsi.data_out_frame:
+    Name: iscsi.data_out_frame
+    Type: FtFramenum
+    Info: Data Out in
+    JsonName: iscsi_iscsi_data_out_frame
+  iscsi.response_frame:
+    Name: iscsi.response_frame
+    Type: FtFramenum
+    Info: Response in
+    JsonName: iscsi_iscsi_response_frame
+  iscsi.ahs.length:
+    Name: iscsi.ahs.length
+    Type: FtUint16
+    Display: BaseDec
+    Info: AHS Length
+    JsonName: iscsi_iscsi_ahs_length
+  iscsi.ahs.bidir.length:
+    Name: iscsi.ahs.bidir.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Bidirectional Read Data Length
+    JsonName: iscsi_iscsi_ahs_bidir_length
+  iscsi.ahs.type:
+    Name: iscsi.ahs.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: AHS Type
+    JsonName: iscsi_iscsi_ahs_type
+  iscsi.ahs.extended_cdb:
+    Name: iscsi.ahs.extended_cdb
+    Type: FtBytes
+    Info: AHS Extended CDB
+    JsonName: iscsi_iscsi_ahs_extended_cdb
+  iscsi.ahs.unknown_blob:
+    Name: iscsi.ahs.unknown_blob
+    Type: FtBytes
+    Info: Unknown AHS blob
+    JsonName: iscsi_iscsi_ahs_unknown_blob
+  iscsi.padding:
+    Name: iscsi.padding
+    Type: FtBytes
+    Info: Padding
+    JsonName: iscsi_iscsi_padding
+  iscsi.pingdata:
+    Name: iscsi.pingdata
+    Type: FtBytes
+    Info: PingData
+    JsonName: iscsi_iscsi_pingdata
+  iscsi.immediatedata:
+    Name: iscsi.immediatedata
+    Type: FtBytes
+    Info: ImmediateData
+    JsonName: iscsi_iscsi_immediatedata
+  iscsi.asynceventdata:
+    Name: iscsi.asynceventdata
+    Type: FtBytes
+    Info: AsyncEventData
+    JsonName: iscsi_iscsi_asynceventdata
+  iscsi.vendorspecificdata:
+    Name: iscsi.vendorspecificdata
+    Type: FtBytes
+    Info: VendorSpecificData
+    JsonName: iscsi_iscsi_vendorspecificdata
+  iscsi.headerdigest32:
+    Name: iscsi.headerdigest32
+    Type: FtUint32
+    Display: BaseHex
+    Info: HeaderDigest
+    JsonName: iscsi_iscsi_headerdigest32
+  iscsi.datadigest32:
+    Name: iscsi.datadigest32
+    Type: FtUint32
+    Display: BaseHex
+    Info: DataDigest
+    JsonName: iscsi_iscsi_datadigest32
+  iscsi.opcode:
+    Name: iscsi.opcode
+    Type: FtUint8
+    Display: BaseHex
+    Info: Opcode
+    JsonName: iscsi_iscsi_opcode
+  iscsi.X:
+    Name: iscsi.X
+    Type: FtBoolean
+    Display: SepDot
+    Info: X
+    JsonName: iscsi_iscsi_X
+  iscsi.I:
+    Name: iscsi.I
+    Type: FtBoolean
+    Display: SepDot
+    Info: I
+    JsonName: iscsi_iscsi_I
+  iscsi.flags:
+    Name: iscsi.flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flags
+    JsonName: iscsi_iscsi_flags
+  iscsi.scsicommand.F:
+    Name: iscsi.scsicommand.F
+    Type: FtBoolean
+    Display: SepDot
+    Info: F
+    JsonName: iscsi_iscsi_scsicommand_F
+  iscsi.scsicommand.R:
+    Name: iscsi.scsicommand.R
+    Type: FtBoolean
+    Display: SepDot
+    Info: R
+    JsonName: iscsi_iscsi_scsicommand_R
+  iscsi.scsicommand.W:
+    Name: iscsi.scsicommand.W
+    Type: FtBoolean
+    Display: SepDot
+    Info: W
+    JsonName: iscsi_iscsi_scsicommand_W
+  iscsi.scsicommand.attr:
+    Name: iscsi.scsicommand.attr
+    Type: FtUint8
+    Display: BaseHex
+    Info: Attr
+    JsonName: iscsi_iscsi_scsicommand_attr
+  iscsi.scsicommand.crn:
+    Name: iscsi.scsicommand.crn
+    Type: FtUint8
+    Display: BaseHex
+    Info: CRN
+    JsonName: iscsi_iscsi_scsicommand_crn
+  iscsi.datasegmentlength:
+    Name: iscsi.datasegmentlength
+    Type: FtUint32
+    Display: BaseDecHex
+    Info: DataSegmentLength
+    JsonName: iscsi_iscsi_datasegmentlength
+  iscsi.totalahslength:
+    Name: iscsi.totalahslength
+    Type: FtUint8
+    Display: BaseHex
+    Info: TotalAHSLength
+    JsonName: iscsi_iscsi_totalahslength
+  iscsi.initiatortasktag:
+    Name: iscsi.initiatortasktag
+    Type: FtUint32
+    Display: BaseHex
+    Info: InitiatorTaskTag
+    JsonName: iscsi_iscsi_initiatortasktag
+  iscsi.scsicommand.expecteddatatransferlength:
+    Name: iscsi.scsicommand.expecteddatatransferlength
+    Type: FtUint32
+    Display: BaseHex
+    Info: ExpectedDataTransferLength
+    JsonName: iscsi_iscsi_scsicommand_expecteddatatransferlength
+  iscsi.cmdsn:
+    Name: iscsi.cmdsn
+    Type: FtUint32
+    Display: BaseHex
+    Info: CmdSN
+    JsonName: iscsi_iscsi_cmdsn
+  iscsi.expstatsn:
+    Name: iscsi.expstatsn
+    Type: FtUint32
+    Display: BaseHex
+    Info: ExpStatSN
+    JsonName: iscsi_iscsi_expstatsn
+  iscsi.scsiresponse.residualcount:
+    Name: iscsi.scsiresponse.residualcount
+    Type: FtUint32
+    Display: BaseHex
+    Info: ResidualCount
+    JsonName: iscsi_iscsi_scsiresponse_residualcount
+  iscsi.statsn:
+    Name: iscsi.statsn
+    Type: FtUint32
+    Display: BaseHex
+    Info: StatSN
+    JsonName: iscsi_iscsi_statsn
+  iscsi.expcmdsn:
+    Name: iscsi.expcmdsn
+    Type: FtUint32
+    Display: BaseHex
+    Info: ExpCmdSN
+    JsonName: iscsi_iscsi_expcmdsn
+  iscsi.maxcmdsn:
+    Name: iscsi.maxcmdsn
+    Type: FtUint32
+    Display: BaseHex
+    Info: MaxCmdSN
+    JsonName: iscsi_iscsi_maxcmdsn
+  iscsi.scsiresponse.o:
+    Name: iscsi.scsiresponse.o
+    Type: FtBoolean
+    Display: SepDot
+    Info: o
+    JsonName: iscsi_iscsi_scsiresponse_o
+  iscsi.scsiresponse.u:
+    Name: iscsi.scsiresponse.u
+    Type: FtBoolean
+    Display: SepDot
+    Info: u
+    JsonName: iscsi_iscsi_scsiresponse_u
+  iscsi.scsiresponse.O:
+    Name: iscsi.scsiresponse.O
+    Type: FtBoolean
+    Display: SepDot
+    Info: O
+    JsonName: iscsi_iscsi_scsiresponse_O
+  iscsi.scsiresponse.U:
+    Name: iscsi.scsiresponse.U
+    Type: FtBoolean
+    Display: SepDot
+    Info: U
+    JsonName: iscsi_iscsi_scsiresponse_U
+  iscsi.scsiresponse.status:
+    Name: iscsi.scsiresponse.status
+    Type: FtUint8
+    Display: BaseHex
+    Info: Status
+    JsonName: iscsi_iscsi_scsiresponse_status
+  iscsi.scsiresponse.response:
+    Name: iscsi.scsiresponse.response
+    Type: FtUint8
+    Display: BaseHex
+    Info: Response
+    JsonName: iscsi_iscsi_scsiresponse_response
+  iscsi.scsiresponse.bidireadresidualcount:
+    Name: iscsi.scsiresponse.bidireadresidualcount
+    Type: FtUint32
+    Display: BaseHex
+    Info: BidiReadResidualCount
+    JsonName: iscsi_iscsi_scsiresponse_bidireadresidualcount
+  iscsi.scsiresponse.senselength:
+    Name: iscsi.scsiresponse.senselength
+    Type: FtUint16
+    Display: BaseHex
+    Info: SenseLength
+    JsonName: iscsi_iscsi_scsiresponse_senselength
+  iscsi.scsidata.F:
+    Name: iscsi.scsidata.F
+    Type: FtBoolean
+    Display: SepDot
+    Info: F
+    JsonName: iscsi_iscsi_scsidata_F
+  iscsi.scsidata.A:
+    Name: iscsi.scsidata.A
+    Type: FtBoolean
+    Display: SepDot
+    Info: A
+    JsonName: iscsi_iscsi_scsidata_A
+  iscsi.scsidata.S:
+    Name: iscsi.scsidata.S
+    Type: FtBoolean
+    Display: SepDot
+    Info: S
+    JsonName: iscsi_iscsi_scsidata_S
+  iscsi.scsidata.U:
+    Name: iscsi.scsidata.U
+    Type: FtBoolean
+    Display: SepDot
+    Info: U
+    JsonName: iscsi_iscsi_scsidata_U
+  iscsi.scsidata.O:
+    Name: iscsi.scsidata.O
+    Type: FtBoolean
+    Display: SepDot
+    Info: O
+    JsonName: iscsi_iscsi_scsidata_O
+  iscsi.targettransfertag:
+    Name: iscsi.targettransfertag
+    Type: FtUint32
+    Display: BaseHex
+    Info: TargetTransferTag
+    JsonName: iscsi_iscsi_targettransfertag
+  iscsi.bufferOffset:
+    Name: iscsi.bufferOffset
+    Type: FtUint32
+    Display: BaseHex
+    Info: BufferOffset
+    JsonName: iscsi_iscsi_bufferOffset
+  iscsi.scsidata.readresidualcount:
+    Name: iscsi.scsidata.readresidualcount
+    Type: FtUint32
+    Display: BaseHex
+    Info: ResidualCount
+    JsonName: iscsi_iscsi_scsidata_readresidualcount
+  iscsi.datasn:
+    Name: iscsi.datasn
+    Type: FtUint32
+    Display: BaseHex
+    Info: DataSN
+    JsonName: iscsi_iscsi_datasn
+  iscsi.versionmax:
+    Name: iscsi.versionmax
+    Type: FtUint8
+    Display: BaseHex
+    Info: VersionMax
+    JsonName: iscsi_iscsi_versionmax
+  iscsi.versionmin:
+    Name: iscsi.versionmin
+    Type: FtUint8
+    Display: BaseHex
+    Info: VersionMin
+    JsonName: iscsi_iscsi_versionmin
+  iscsi.versionactive:
+    Name: iscsi.versionactive
+    Type: FtUint8
+    Display: BaseHex
+    Info: VersionActive
+    JsonName: iscsi_iscsi_versionactive
+  iscsi.cid:
+    Name: iscsi.cid
+    Type: FtUint16
+    Display: BaseHex
+    Info: CID
+    JsonName: iscsi_iscsi_cid
+  iscsi.isid8:
+    Name: iscsi.isid8
+    Type: FtUint16
+    Display: BaseHex
+    Info: ISID
+    JsonName: iscsi_iscsi_isid8
+  iscsi.isid:
+    Name: iscsi.isid
+    Type: FtBytes
+    Info: ISID
+    JsonName: iscsi_iscsi_isid
+  iscsi.isid.type:
+    Name: iscsi.isid.type
+    Type: FtUint8
+    Display: BaseHex
+    Info: ISID_Type
+    JsonName: iscsi_isid_iscsi_isid_type
+  iscsi.isid.namingauthority:
+    Name: iscsi.isid.namingauthority
+    Type: FtUint24
+    Display: BaseHex
+    Info: ISID_NamingAuthority
+    JsonName: iscsi_isid_iscsi_isid_namingauthority
+  iscsi.isid.qualifier:
+    Name: iscsi.isid.qualifier
+    Type: FtUint8
+    Display: BaseHex
+    Info: ISID_Qualifier
+    JsonName: iscsi_isid_iscsi_isid_qualifier
+  iscsi.isid.t:
+    Name: iscsi.isid.t
+    Type: FtUint8
+    Display: BaseHex
+    Info: ISID_t
+    JsonName: iscsi_isid_iscsi_isid_t
+  iscsi.isid.a:
+    Name: iscsi.isid.a
+    Type: FtUint8
+    Display: BaseHex
+    Info: ISID_a
+    JsonName: iscsi_isid_iscsi_isid_a
+  iscsi.isid.b:
+    Name: iscsi.isid.b
+    Type: FtUint16
+    Display: BaseHex
+    Info: ISID_b
+    JsonName: iscsi_isid_iscsi_isid_b
+  iscsi.isid.c:
+    Name: iscsi.isid.c
+    Type: FtUint8
+    Display: BaseHex
+    Info: ISID_c
+    JsonName: iscsi_isid_iscsi_isid_c
+  iscsi.isid.d:
+    Name: iscsi.isid.d
+    Type: FtUint16
+    Display: BaseHex
+    Info: ISID_d
+    JsonName: iscsi_isid_iscsi_isid_d
+  iscsi.tsid:
+    Name: iscsi.tsid
+    Type: FtUint16
+    Display: BaseHex
+    Info: TSID
+    JsonName: iscsi_iscsi_tsid
+  iscsi.tsih:
+    Name: iscsi.tsih
+    Type: FtUint16
+    Display: BaseHex
+    Info: TSIH
+    JsonName: iscsi_iscsi_tsih
+  iscsi.login.T:
+    Name: iscsi.login.T
+    Type: FtBoolean
+    Display: SepDot
+    Info: T
+    JsonName: iscsi_iscsi_login_T
+  iscsi.login.C:
+    Name: iscsi.login.C
+    Type: FtBoolean
+    Display: SepDot
+    Info: C
+    JsonName: iscsi_iscsi_login_C
+  iscsi.login.X:
+    Name: iscsi.login.X
+    Type: FtBoolean
+    Display: SepDot
+    Info: X
+    JsonName: iscsi_iscsi_login_X
+  iscsi.login.csg:
+    Name: iscsi.login.csg
+    Type: FtUint8
+    Display: BaseHex
+    Info: CSG
+    JsonName: iscsi_iscsi_login_csg
+  iscsi.login.nsg:
+    Name: iscsi.login.nsg
+    Type: FtUint8
+    Display: BaseHex
+    Info: NSG
+    JsonName: iscsi_iscsi_login_nsg
+  iscsi.login.status:
+    Name: iscsi.login.status
+    Type: FtUint16
+    Display: BaseHex
+    Info: Status
+    JsonName: iscsi_iscsi_login_status
+  iscsi.keyvalue:
+    Name: iscsi.keyvalue
+    Type: FtString
+    Info: KeyValue
+    JsonName: iscsi_iscsi_keyvalue
+  iscsi.text.F:
+    Name: iscsi.text.F
+    Type: FtBoolean
+    Display: SepDot
+    Info: F
+    JsonName: iscsi_iscsi_text_F
+  iscsi.text.C:
+    Name: iscsi.text.C
+    Type: FtBoolean
+    Display: SepDot
+    Info: C
+    JsonName: iscsi_iscsi_text_C
+  iscsi.expdatasn:
+    Name: iscsi.expdatasn
+    Type: FtUint32
+    Display: BaseHex
+    Info: ExpDataSN
+    JsonName: iscsi_iscsi_expdatasn
+  iscsi.r2tsn:
+    Name: iscsi.r2tsn
+    Type: FtUint32
+    Display: BaseHex
+    Info: R2TSN
+    JsonName: iscsi_iscsi_r2tsn
+  iscsi.taskmanfun.response:
+    Name: iscsi.taskmanfun.response
+    Type: FtUint8
+    Display: BaseHex
+    Info: Response
+    JsonName: iscsi_iscsi_taskmanfun_response
+  iscsi.taskmanfun.referencedtasktag:
+    Name: iscsi.taskmanfun.referencedtasktag
+    Type: FtUint32
+    Display: BaseHex
+    Info: ReferencedTaskTag
+    JsonName: iscsi_iscsi_taskmanfun_referencedtasktag
+  iscsi.refcmdsn:
+    Name: iscsi.refcmdsn
+    Type: FtUint32
+    Display: BaseHex
+    Info: RefCmdSN
+    JsonName: iscsi_iscsi_refcmdsn
+  iscsi.taskmanfun.function:
+    Name: iscsi.taskmanfun.function
+    Type: FtUint8
+    Display: BaseHex
+    Info: Function
+    JsonName: iscsi_iscsi_taskmanfun_function
+  iscsi.logout.reason:
+    Name: iscsi.logout.reason
+    Type: FtUint8
+    Display: BaseHex
+    Info: Reason
+    JsonName: iscsi_iscsi_logout_reason
+  iscsi.logout.response:
+    Name: iscsi.logout.response
+    Type: FtUint8
+    Display: BaseHex
+    Info: Response
+    JsonName: iscsi_iscsi_logout_response
+  iscsi.time2wait:
+    Name: iscsi.time2wait
+    Type: FtUint16
+    Display: BaseHex
+    Info: Time2Wait
+    JsonName: iscsi_iscsi_time2wait
+  iscsi.time2retain:
+    Name: iscsi.time2retain
+    Type: FtUint16
+    Display: BaseHex
+    Info: Time2Retain
+    JsonName: iscsi_iscsi_time2retain
+  iscsi.desireddatalength:
+    Name: iscsi.desireddatalength
+    Type: FtUint32
+    Display: BaseHex
+    Info: DesiredDataLength
+    JsonName: iscsi_iscsi_desireddatalength
+  iscsi.asyncevent:
+    Name: iscsi.asyncevent
+    Type: FtUint8
+    Display: BaseHex
+    Info: AsyncEvent
+    JsonName: iscsi_iscsi_asyncevent
+  iscsi.eventvendorcode:
+    Name: iscsi.eventvendorcode
+    Type: FtUint8
+    Display: BaseHex
+    Info: EventVendorCode
+    JsonName: iscsi_iscsi_eventvendorcode
+  iscsi.parameter1:
+    Name: iscsi.parameter1
+    Type: FtUint16
+    Display: BaseHex
+    Info: Parameter1
+    JsonName: iscsi_iscsi_parameter1
+  iscsi.parameter2:
+    Name: iscsi.parameter2
+    Type: FtUint16
+    Display: BaseHex
+    Info: Parameter2
+    JsonName: iscsi_iscsi_parameter2
+  iscsi.parameter3:
+    Name: iscsi.parameter3
+    Type: FtUint16
+    Display: BaseHex
+    Info: Parameter3
+    JsonName: iscsi_iscsi_parameter3
+  iscsi.reject.reason:
+    Name: iscsi.reject.reason
+    Type: FtUint8
+    Display: BaseHex
+    Info: Reason
+    JsonName: iscsi_iscsi_reject_reason
+  iscsi.snack.type:
+    Name: iscsi.snack.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: S
+    JsonName: iscsi_iscsi_snack_type
+  iscsi.snack.begrun:
+    Name: iscsi.snack.begrun
+    Type: FtUint32
+    Display: BaseHex
+    Info: BegRun
+    JsonName: iscsi_iscsi_snack_begrun
+  iscsi.snack.runlength:
+    Name: iscsi.snack.runlength
+    Type: FtUint32
+    Display: BaseHex
+    Info: RunLength
+    JsonName: iscsi_iscsi_snack_runlength

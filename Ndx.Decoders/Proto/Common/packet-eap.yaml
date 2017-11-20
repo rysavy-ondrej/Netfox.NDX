@@ -1,0 +1,370 @@
+Name: eap
+Fields:
+  eap.code:
+    Name: eap.code
+    Type: FtUint8
+    Display: BaseDec
+    Info: Code
+    JsonName: eap_eap_code
+  eap.id:
+    Name: eap.id
+    Type: FtUint8
+    Display: BaseDec
+    Info: Id
+    JsonName: eap_eap_id
+  eap.len:
+    Name: eap.len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length
+    JsonName: eap_eap_len
+  eap.type:
+    Name: eap.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Type
+    JsonName: eap_eap_type
+  eap.desired_type:
+    Name: eap.desired_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Desired Auth Type
+    JsonName: eap_eap_desired_type
+  eap.identity:
+    Name: eap.identity
+    Type: FtString
+    Info: Identity
+    JsonName: eap_eap_identity
+  eap.identity.wlan.prefix:
+    Name: eap.identity.wlan.prefix
+    Type: FtChar
+    Display: BaseHex
+    Info: WLAN Identity Prefix
+    JsonName: eap_eap_identity_wlan_prefix
+  eap.identity.wlan.mcc:
+    Name: eap.identity.wlan.mcc
+    Type: FtUint16
+    Display: BaseDec
+    Info: WLAN Identity Mobile Country Code
+    JsonName: eap_eap_identity_wlan_mcc
+  eap.identity.wlan.mnc:
+    Name: eap.identity.wlan.mnc
+    Type: FtUint16
+    Display: BaseDec
+    Info: WLAN Identity Mobile Network Code
+    JsonName: eap_eap_identity_wlan_mnc
+  eap.identity.actual_len:
+    Name: eap.identity.actual_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Identity Actual Length
+    JsonName: eap_identity_eap_identity_actual_len
+  eap.notification:
+    Name: eap.notification
+    Type: FtString
+    Info: Notification
+    JsonName: eap_eap_notification
+  eap.md5.value_size:
+    Name: eap.md5.value_size
+    Type: FtUint8
+    Display: BaseDec
+    Info: EAP-MD5 Value-Size
+    JsonName: eap_eap_md5_value_size
+  eap.md5.value:
+    Name: eap.md5.value
+    Type: FtBytes
+    Info: EAP-MD5 Value
+    JsonName: eap_eap_md5_value
+  eap.md5.extra_data:
+    Name: eap.md5.extra_data
+    Type: FtBytes
+    Info: EAP-MD5 Extra Data
+    JsonName: eap_eap_md5_extra_data
+  eap.tls.flags:
+    Name: eap.tls.flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: EAP-TLS Flags
+    JsonName: eap_eap_tls_flags
+  eap.tls.flags.len_included:
+    Name: eap.tls.flags.len_included
+    Type: FtBoolean
+    Display: SepDot
+    Info: Length Included
+    JsonName: eap_tls_flags_eap_tls_flags_len_included
+  eap.tls.flags.more_fragments:
+    Name: eap.tls.flags.more_fragments
+    Type: FtBoolean
+    Display: SepDot
+    Info: More Fragments
+    JsonName: eap_tls_flags_eap_tls_flags_more_fragments
+  eap.tls.flags.start:
+    Name: eap.tls.flags.start
+    Type: FtBoolean
+    Display: SepDot
+    Info: Start
+    JsonName: eap_tls_flags_eap_tls_flags_start
+  eap.tls.flags.version:
+    Name: eap.tls.flags.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: Version
+    JsonName: eap_tls_flags_eap_tls_flags_version
+  eap.tls.len:
+    Name: eap.tls.len
+    Type: FtUint32
+    Display: BaseDec
+    Info: EAP-TLS Length
+    JsonName: eap_eap_tls_len
+  eap.tls.fragment:
+    Name: eap.tls.fragment
+    Type: FtFramenum
+    Info: EAP-TLS Fragment
+    JsonName: eap_eap_tls_fragment
+  eap.tls.fragments:
+    Name: eap.tls.fragments
+    Info: EAP-TLS Fragments
+    JsonName: eap_eap_tls_fragments
+  eap.tls.fragment.overlap:
+    Name: eap.tls.fragment.overlap
+    Type: FtBoolean
+    Info: Fragment Overlap
+    JsonName: eap_tls_fragment_eap_tls_fragment_overlap
+  eap.tls.fragment.overlap_conflict:
+    Name: eap.tls.fragment.overlap_conflict
+    Type: FtBoolean
+    Info: Conflicting Data In Fragment Overlap
+    JsonName: eap_tls_fragment_eap_tls_fragment_overlap_conflict
+  eap.tls.fragment.multiple_tails:
+    Name: eap.tls.fragment.multiple_tails
+    Type: FtBoolean
+    Info: Multiple Tail Fragments Found
+    JsonName: eap_tls_fragment_eap_tls_fragment_multiple_tails
+  eap.tls.fragment.fragment.too_long:
+    Name: eap.tls.fragment.fragment.too_long
+    Type: FtBoolean
+    Info: Fragment Too Long
+    JsonName: eap_eap_tls_fragment_fragment_too_long
+  eap.tls.fragment.error:
+    Name: eap.tls.fragment.error
+    Type: FtFramenum
+    Info: Defragmentation Error
+    JsonName: eap_tls_fragment_eap_tls_fragment_error
+  eap.tls.fragment.count:
+    Name: eap.tls.fragment.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Fragment Count
+    JsonName: eap_tls_fragment_eap_tls_fragment_count
+  eap.tls.reassembled.len:
+    Name: eap.tls.reassembled.len
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reassembled EAP-TLS Length
+    JsonName: eap_eap_tls_reassembled_len
+  eap.sim.subtype:
+    Name: eap.sim.subtype
+    Type: FtUint8
+    Display: BaseDec
+    Info: EAP-SIM Subtype
+    JsonName: eap_eap_sim_subtype
+  eap.sim.reserved:
+    Name: eap.sim.reserved
+    Type: FtUint16
+    Display: BaseHex
+    Info: EAP-SIM Reserved
+    JsonName: eap_eap_sim_reserved
+  eap.sim.subtype.attribute:
+    Name: eap.sim.subtype.attribute
+    Info: EAP-SIM Attribute
+    JsonName: eap_sim_subtype_eap_sim_subtype_attribute
+  eap.sim.subtype.type:
+    Name: eap.sim.subtype.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: EAP-SIM Type
+    JsonName: eap_sim_subtype_eap_sim_subtype_type
+  eap.sim.subtype.len:
+    Name: eap.sim.subtype.len
+    Type: FtUint8
+    Display: BaseDec
+    Info: EAP-SIM Length
+    JsonName: eap_sim_subtype_eap_sim_subtype_len
+  eap.sim.subtype.value:
+    Name: eap.sim.subtype.value
+    Type: FtBytes
+    Info: EAP-SIM Value
+    JsonName: eap_sim_subtype_eap_sim_subtype_value
+  eap.aka.subtype:
+    Name: eap.aka.subtype
+    Type: FtUint8
+    Display: BaseDec
+    Info: EAP-AKA Subtype
+    JsonName: eap_eap_aka_subtype
+  eap.aka.reserved:
+    Name: eap.aka.reserved
+    Type: FtUint16
+    Display: BaseHex
+    Info: EAP-AKA Reserved
+    JsonName: eap_eap_aka_reserved
+  eap.aka.subtype.attribute:
+    Name: eap.aka.subtype.attribute
+    Info: EAP-AKA Attribute
+    JsonName: eap_aka_subtype_eap_aka_subtype_attribute
+  eap.aka.subtype.type:
+    Name: eap.aka.subtype.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: EAP-AKA Type
+    JsonName: eap_aka_subtype_eap_aka_subtype_type
+  eap.aka.subtype.len:
+    Name: eap.aka.subtype.len
+    Type: FtUint8
+    Display: BaseDec
+    Info: EAP-AKA Length
+    JsonName: eap_aka_subtype_eap_aka_subtype_len
+  eap.aka.subtype.value:
+    Name: eap.aka.subtype.value
+    Type: FtBytes
+    Info: EAP-AKA Value
+    JsonName: eap_aka_subtype_eap_aka_subtype_value
+  eap.leap.version:
+    Name: eap.leap.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: EAP-LEAP Version
+    JsonName: eap_eap_leap_version
+  eap.leap.reserved:
+    Name: eap.leap.reserved
+    Type: FtUint8
+    Display: BaseHex
+    Info: EAP-LEAP Reserved
+    JsonName: eap_eap_leap_reserved
+  eap.leap.count:
+    Name: eap.leap.count
+    Type: FtUint8
+    Display: BaseDec
+    Info: EAP-LEAP Count
+    JsonName: eap_eap_leap_count
+  eap.leap.peer_challenge:
+    Name: eap.leap.peer_challenge
+    Type: FtBytes
+    Info: EAP-LEAP Peer-Challenge
+    JsonName: eap_eap_leap_peer_challenge
+  eap.leap.peer_response:
+    Name: eap.leap.peer_response
+    Type: FtBytes
+    Info: EAP-LEAP Peer-Response
+    JsonName: eap_eap_leap_peer_response
+  eap.leap.ap_challenge:
+    Name: eap.leap.ap_challenge
+    Type: FtBytes
+    Info: EAP-LEAP AP-Challenge
+    JsonName: eap_eap_leap_ap_challenge
+  eap.leap.ap_response:
+    Name: eap.leap.ap_response
+    Type: FtBytes
+    Info: EAP-LEAP AP-Response
+    JsonName: eap_eap_leap_ap_response
+  eap.leap.data:
+    Name: eap.leap.data
+    Type: FtBytes
+    Info: EAP-LEAP Data
+    JsonName: eap_eap_leap_data
+  eap.leap.name:
+    Name: eap.leap.name
+    Type: FtString
+    Info: EAP-LEAP Name
+    JsonName: eap_eap_leap_name
+  eap.ms_chap_v2.opcode:
+    Name: eap.ms_chap_v2.opcode
+    Type: FtUint8
+    Display: BaseDec
+    Info: EAP-MS-CHAP-v2 OpCode
+    JsonName: eap_eap_ms_chap_v2_opcode
+  eap.ms_chap_v2.id:
+    Name: eap.ms_chap_v2.id
+    Type: FtUint8
+    Display: BaseDec
+    Info: EAP-MS-CHAP-v2 Id
+    JsonName: eap_eap_ms_chap_v2_id
+  eap.ms_chap_v2.length:
+    Name: eap.ms_chap_v2.length
+    Type: FtUint16
+    Display: BaseDec
+    Info: EAP-MS-CHAP-v2 Length
+    JsonName: eap_eap_ms_chap_v2_length
+  eap.ms_chap_v2.value_size:
+    Name: eap.ms_chap_v2.value_size
+    Type: FtUint8
+    Display: BaseDec
+    Info: EAP-MS-CHAP-v2 Value-Size
+    JsonName: eap_eap_ms_chap_v2_value_size
+  eap.ms_chap_v2.challenge:
+    Name: eap.ms_chap_v2.challenge
+    Type: FtBytes
+    Info: EAP-MS-CHAP-v2 Challenge
+    JsonName: eap_eap_ms_chap_v2_challenge
+  eap.ms_chap_v2.name:
+    Name: eap.ms_chap_v2.name
+    Type: FtString
+    Info: EAP-MS-CHAP-v2 Name
+    JsonName: eap_eap_ms_chap_v2_name
+  eap.ms_chap_v2.peer_challenge:
+    Name: eap.ms_chap_v2.peer_challenge
+    Type: FtBytes
+    Info: EAP-MS-CHAP-v2 Peer-Challenge
+    JsonName: eap_eap_ms_chap_v2_peer_challenge
+  eap.ms_chap_v2.reserved:
+    Name: eap.ms_chap_v2.reserved
+    Type: FtBytes
+    Info: EAP-MS-CHAP-v2 Reserved
+    JsonName: eap_eap_ms_chap_v2_reserved
+  eap.ms_chap_v2.nt_response:
+    Name: eap.ms_chap_v2.nt_response
+    Type: FtBytes
+    Info: EAP-MS-CHAP-v2 NT-Response
+    JsonName: eap_eap_ms_chap_v2_nt_response
+  eap.ms_chap_v2.flags:
+    Name: eap.ms_chap_v2.flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: EAP-MS-CHAP-v2 Flags
+    JsonName: eap_eap_ms_chap_v2_flags
+  eap.ms_chap_v2.response:
+    Name: eap.ms_chap_v2.response
+    Type: FtBytes
+    Info: EAP-MS-CHAP-v2 Response (Unknown Length)
+    JsonName: eap_eap_ms_chap_v2_response
+  eap.ms_chap_v2.message:
+    Name: eap.ms_chap_v2.message
+    Type: FtString
+    Info: EAP-MS-CHAP-v2 Message
+    JsonName: eap_eap_ms_chap_v2_message
+  eap.ms_chap_v2.failure_request:
+    Name: eap.ms_chap_v2.failure_request
+    Type: FtString
+    Info: EAP-MS-CHAP-v2 Failure-Request
+    JsonName: eap_eap_ms_chap_v2_failure_request
+  eap.ms_chap_v2.data:
+    Name: eap.ms_chap_v2.data
+    Type: FtBytes
+    Info: EAP-MS-CHAP-v2 Data
+    JsonName: eap_eap_ms_chap_v2_data
+  eap.data:
+    Name: eap.data
+    Type: FtBytes
+    Info: EAP Data
+    JsonName: eap_eap_data
+  eap.ext.vendor_id:
+    Name: eap.ext.vendor_id
+    Type: FtUint16
+    Display: BaseHex
+    Info: EAP-EXT Vendor Id
+    JsonName: eap_eap_ext_vendor_id
+  eap.ext.vendor_type:
+    Name: eap.ext.vendor_type
+    Type: FtUint8
+    Display: BaseHex
+    Info: EAP-EXT Vendor Type
+    JsonName: eap_eap_ext_vendor_type

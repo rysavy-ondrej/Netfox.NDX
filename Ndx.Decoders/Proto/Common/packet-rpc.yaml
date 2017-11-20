@@ -1,0 +1,434 @@
+Name: rpc
+Fields:
+  rpc.reqframe:
+    Name: rpc.reqframe
+    Type: FtFramenum
+    Info: Request Frame
+    JsonName: rpc_rpc_reqframe
+  rpc.repframe:
+    Name: rpc.repframe
+    Type: FtFramenum
+    Info: Reply Frame
+    JsonName: rpc_rpc_repframe
+  rpc.lastfrag:
+    Name: rpc.lastfrag
+    Type: FtBoolean
+    Display: 32
+    Info: Last Fragment
+    JsonName: rpc_rpc_lastfrag
+  rpc.fraglen:
+    Name: rpc.fraglen
+    Type: FtUint32
+    Display: BaseDec
+    Info: Fragment Length
+    JsonName: rpc_rpc_fraglen
+  rpc.xid:
+    Name: rpc.xid
+    Type: FtUint32
+    Display: BaseHexDec
+    Info: XID
+    JsonName: rpc_rpc_xid
+  rpc.msgtyp:
+    Name: rpc.msgtyp
+    Type: FtUint32
+    Display: BaseDec
+    Info: Message Type
+    JsonName: rpc_rpc_msgtyp
+  rpc.replystat:
+    Name: rpc.replystat
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reply State
+    JsonName: rpc_rpc_replystat
+  rpc.state_accept:
+    Name: rpc.state_accept
+    Type: FtUint32
+    Display: BaseDec
+    Info: Accept State
+    JsonName: rpc_rpc_state_accept
+  rpc.state_reject:
+    Name: rpc.state_reject
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reject State
+    JsonName: rpc_rpc_state_reject
+  rpc.state_auth:
+    Name: rpc.state_auth
+    Type: FtUint32
+    Display: BaseDec
+    Info: Auth State
+    JsonName: rpc_rpc_state_auth
+  rpc.version:
+    Name: rpc.version
+    Type: FtUint32
+    Display: BaseDec
+    Info: RPC Version
+    JsonName: rpc_rpc_version
+  rpc.version.min:
+    Name: rpc.version.min
+    Type: FtUint32
+    Display: BaseDec
+    Info: RPC Version (Minimum)
+    JsonName: rpc_version_rpc_version_min
+  rpc.version.max:
+    Name: rpc.version.max
+    Type: FtUint32
+    Display: BaseDec
+    Info: RPC Version (Maximum)
+    JsonName: rpc_version_rpc_version_max
+  rpc.program:
+    Name: rpc.program
+    Type: FtUint32
+    Display: BaseDec
+    Info: Program
+    JsonName: rpc_rpc_program
+  rpc.programversion:
+    Name: rpc.programversion
+    Type: FtUint32
+    Display: BaseDec
+    Info: Program Version
+    JsonName: rpc_rpc_programversion
+  rpc.programversion.min:
+    Name: rpc.programversion.min
+    Type: FtUint32
+    Display: BaseDec
+    Info: Program Version (Minimum)
+    JsonName: rpc_programversion_rpc_programversion_min
+  rpc.programversion.max:
+    Name: rpc.programversion.max
+    Type: FtUint32
+    Display: BaseDec
+    Info: Program Version (Maximum)
+    JsonName: rpc_programversion_rpc_programversion_max
+  rpc.procedure:
+    Name: rpc.procedure
+    Type: FtUint32
+    Display: BaseDec
+    Info: Procedure
+    JsonName: rpc_rpc_procedure
+  rpc.auth.flavor:
+    Name: rpc.auth.flavor
+    Type: FtUint32
+    Display: BaseDec
+    Info: Flavor
+    JsonName: rpc_rpc_auth_flavor
+  rpc.auth.length:
+    Name: rpc.auth.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Length
+    JsonName: rpc_rpc_auth_length
+  rpc.auth.stamp:
+    Name: rpc.auth.stamp
+    Type: FtUint32
+    Display: BaseHex
+    Info: Stamp
+    JsonName: rpc_rpc_auth_stamp
+  rpc.auth.lk_owner:
+    Name: rpc.auth.lk_owner
+    Type: FtBytes
+    Info: Lock Owner
+    JsonName: rpc_rpc_auth_lk_owner
+  rpc.auth.pid:
+    Name: rpc.auth.pid
+    Type: FtUint32
+    Display: BaseDec
+    Info: PID
+    JsonName: rpc_rpc_auth_pid
+  rpc.auth.uid:
+    Name: rpc.auth.uid
+    Type: FtUint32
+    Display: BaseDec
+    Info: UID
+    JsonName: rpc_rpc_auth_uid
+  rpc.auth.gid:
+    Name: rpc.auth.gid
+    Type: FtUint32
+    Display: BaseDec
+    Info: GID
+    JsonName: rpc_rpc_auth_gid
+  rpc.authgss.version:
+    Name: rpc.authgss.version
+    Type: FtUint32
+    Display: BaseDec
+    Info: GSS Version
+    JsonName: rpc_rpc_authgss_version
+  rpc.authgss.procedure:
+    Name: rpc.authgss.procedure
+    Type: FtUint32
+    Display: BaseDec
+    Info: GSS Procedure
+    JsonName: rpc_rpc_authgss_procedure
+  rpc.authgss.seqnum:
+    Name: rpc.authgss.seqnum
+    Type: FtUint32
+    Display: BaseDec
+    Info: GSS Sequence Number
+    JsonName: rpc_rpc_authgss_seqnum
+  rpc.authgss.service:
+    Name: rpc.authgss.service
+    Type: FtUint32
+    Display: BaseDec
+    Info: GSS Service
+    JsonName: rpc_rpc_authgss_service
+  rpc.authgss.context:
+    Name: rpc.authgss.context
+    Type: FtBytes
+    Info: GSS Context
+    JsonName: rpc_rpc_authgss_context
+  rpc.authgss.context.created_frame:
+    Name: rpc.authgss.context.created_frame
+    Type: FtFramenum
+    Info: Created in frame
+    JsonName: rpc_authgss_context_rpc_authgss_context_created_frame
+  rpc.authgss.context.destroyed_frame:
+    Name: rpc.authgss.context.destroyed_frame
+    Type: FtFramenum
+    Info: Destroyed in frame
+    JsonName: rpc_authgss_context_rpc_authgss_context_destroyed_frame
+  rpc.authgss.context.length:
+    Name: rpc.authgss.context.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: GSS Context Length
+    JsonName: rpc_authgss_context_rpc_authgss_context_length
+  rpc.authgss.major:
+    Name: rpc.authgss.major
+    Type: FtUint32
+    Display: BaseDec
+    Info: GSS Major Status
+    JsonName: rpc_rpc_authgss_major
+  rpc.authgss.minor:
+    Name: rpc.authgss.minor
+    Type: FtUint32
+    Display: BaseDec
+    Info: GSS Minor Status
+    JsonName: rpc_rpc_authgss_minor
+  rpc.authgss.window:
+    Name: rpc.authgss.window
+    Type: FtUint32
+    Display: BaseDec
+    Info: GSS Sequence Window
+    JsonName: rpc_rpc_authgss_window
+  rpc.authgss.token_length:
+    Name: rpc.authgss.token_length
+    Type: FtUint32
+    Display: BaseDec
+    Info: GSS Token Length
+    JsonName: rpc_rpc_authgss_token_length
+  rpc.authgss.data.length:
+    Name: rpc.authgss.data.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Length
+    JsonName: rpc_authgss_data_rpc_authgss_data_length
+  rpc.authgss.data:
+    Name: rpc.authgss.data
+    Type: FtBytes
+    Info: GSS Data
+    JsonName: rpc_rpc_authgss_data
+  rpc.authgss.checksum:
+    Name: rpc.authgss.checksum
+    Type: FtBytes
+    Info: GSS Checksum
+    JsonName: rpc_rpc_authgss_checksum
+  rpc.authgss.token:
+    Name: rpc.authgss.token
+    Type: FtBytes
+    Info: GSS Token
+    JsonName: rpc_rpc_authgss_token
+  rpc.authgssapi.version:
+    Name: rpc.authgssapi.version
+    Type: FtUint32
+    Display: BaseDec
+    Info: AUTH_GSSAPI Version
+    JsonName: rpc_rpc_authgssapi_version
+  rpc.authgssapi.message:
+    Name: rpc.authgssapi.message
+    Type: FtBoolean
+    Info: AUTH_GSSAPI Message
+    JsonName: rpc_rpc_authgssapi_message
+  rpc.authgssapi.msgversion:
+    Name: rpc.authgssapi.msgversion
+    Type: FtUint32
+    Display: BaseDec
+    Info: Msg Version
+    JsonName: rpc_rpc_authgssapi_msgversion
+  rpc.authgssapi.handle:
+    Name: rpc.authgssapi.handle
+    Type: FtBytes
+    Info: Client Handle
+    JsonName: rpc_rpc_authgssapi_handle
+  rpc.authgssapi.isn:
+    Name: rpc.authgssapi.isn
+    Type: FtBytes
+    Info: Signed ISN
+    JsonName: rpc_rpc_authgssapi_isn
+  rpc.authdes.namekind:
+    Name: rpc.authdes.namekind
+    Type: FtUint32
+    Display: BaseDec
+    Info: Namekind
+    JsonName: rpc_rpc_authdes_namekind
+  rpc.authdes.netname:
+    Name: rpc.authdes.netname
+    Type: FtString
+    Info: Netname
+    JsonName: rpc_rpc_authdes_netname
+  rpc.authdes.convkey:
+    Name: rpc.authdes.convkey
+    Type: FtUint64
+    Display: BaseHex
+    Info: Conversation Key (encrypted)
+    JsonName: rpc_rpc_authdes_convkey
+  rpc.authdes.window:
+    Name: rpc.authdes.window
+    Type: FtUint32
+    Display: BaseHex
+    Info: Window (encrypted)
+    JsonName: rpc_rpc_authdes_window
+  rpc.authdes.nickname:
+    Name: rpc.authdes.nickname
+    Type: FtUint32
+    Display: BaseHex
+    Info: Nickname
+    JsonName: rpc_rpc_authdes_nickname
+  rpc.authdes.timestamp:
+    Name: rpc.authdes.timestamp
+    Type: FtUint64
+    Display: BaseHex
+    Info: Timestamp (encrypted)
+    JsonName: rpc_rpc_authdes_timestamp
+  rpc.authdes.windowverf:
+    Name: rpc.authdes.windowverf
+    Type: FtUint32
+    Display: BaseHex
+    Info: Window verifier (encrypted)
+    JsonName: rpc_rpc_authdes_windowverf
+  rpc.authdes.timeverf:
+    Name: rpc.authdes.timeverf
+    Type: FtUint64
+    Display: BaseHex
+    Info: Timestamp verifier (encrypted)
+    JsonName: rpc_rpc_authdes_timeverf
+  rpc.auth.machinename:
+    Name: rpc.auth.machinename
+    Type: FtString
+    Info: Machine Name
+    JsonName: rpc_rpc_auth_machinename
+  rpc.dup:
+    Name: rpc.dup
+    Info: Duplicate Call/Reply
+    JsonName: rpc_rpc_dup
+  rpc.call.dup:
+    Name: rpc.call.dup
+    Type: FtFramenum
+    Info: Duplicate to the call in
+    JsonName: rpc_rpc_call_dup
+  rpc.reply.dup:
+    Name: rpc.reply.dup
+    Type: FtFramenum
+    Info: Duplicate to the reply in
+    JsonName: rpc_rpc_reply_dup
+  rpc.value_follows:
+    Name: rpc.value_follows
+    Type: FtBoolean
+    Info: Value Follows
+    JsonName: rpc_rpc_value_follows
+  rpc.array.len:
+    Name: rpc.array.len
+    Type: FtUint32
+    Display: BaseDec
+    Info: num
+    JsonName: rpc_rpc_array_len
+  rpc.opaque_length:
+    Name: rpc.opaque_length
+    Type: FtUint32
+    Display: BaseDec
+    Info: length
+    JsonName: rpc_rpc_opaque_length
+  rpc.fill_bytes:
+    Name: rpc.fill_bytes
+    Type: FtBytes
+    Info: fill bytes
+    JsonName: rpc_rpc_fill_bytes
+  rpc.array_no_values:
+    Name: rpc.array_no_values
+    Info: no values
+    JsonName: rpc_rpc_array_no_values
+  rpc.opaque_data:
+    Name: rpc.opaque_data
+    Type: FtBytes
+    Info: opaque data
+    JsonName: rpc_rpc_opaque_data
+  rpc.argument_length:
+    Name: rpc.argument_length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Argument length
+    JsonName: rpc_rpc_argument_length
+  rpc.continuation_data:
+    Name: rpc.continuation_data
+    Type: FtBytes
+    Info: Continuation data
+    JsonName: rpc_rpc_continuation_data
+  rpc.fragment_data:
+    Name: rpc.fragment_data
+    Type: FtBytes
+    Info: Fragment Data
+    JsonName: rpc_rpc_fragment_data
+  rpc.time:
+    Name: rpc.time
+    Type: FtRelativeTime
+    Info: Time from request
+    JsonName: rpc_rpc_time
+  rpc.fragment.overlap:
+    Name: rpc.fragment.overlap
+    Type: FtBoolean
+    Info: Fragment overlap
+    JsonName: rpc_fragment_rpc_fragment_overlap
+  rpc.fragment.overlap.conflict:
+    Name: rpc.fragment.overlap.conflict
+    Type: FtBoolean
+    Info: Conflicting data in fragment overlap
+    JsonName: rpc_fragment_overlap_rpc_fragment_overlap_conflict
+  rpc.fragment.multipletails:
+    Name: rpc.fragment.multipletails
+    Type: FtBoolean
+    Info: Multiple tail fragments found
+    JsonName: rpc_fragment_rpc_fragment_multipletails
+  rpc.fragment.toolongfragment:
+    Name: rpc.fragment.toolongfragment
+    Type: FtBoolean
+    Info: Fragment too long
+    JsonName: rpc_fragment_rpc_fragment_toolongfragment
+  rpc.fragment.error:
+    Name: rpc.fragment.error
+    Type: FtFramenum
+    Info: Defragmentation error
+    JsonName: rpc_fragment_rpc_fragment_error
+  rpc.fragment.count:
+    Name: rpc.fragment.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Fragment count
+    JsonName: rpc_fragment_rpc_fragment_count
+  rpc.fragment:
+    Name: rpc.fragment
+    Type: FtFramenum
+    Info: RPC Fragment
+    JsonName: rpc_rpc_fragment
+  rpc.fragments:
+    Name: rpc.fragments
+    Info: RPC Fragments
+    JsonName: rpc_rpc_fragments
+  rpc.reassembled.length:
+    Name: rpc.reassembled.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reassembled RPC length
+    JsonName: rpc_rpc_reassembled_length
+  rpc.unknown_body:
+    Name: rpc.unknown_body
+    Info: Unknown RPC call/reply body
+    JsonName: rpc_rpc_unknown_body

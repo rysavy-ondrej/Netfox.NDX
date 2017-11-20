@@ -43,8 +43,17 @@ namespace Netdx
                           var outfile = Path.ChangeExtension(outdir.HasValue() ? Path.Combine(outdir.Value(), Path.GetFileName(infile)) : infile, "proto");
                           Console.Write($"{infile} -> {outfile}: ");
 
-                          var fields = cmd.Execute(infile, outfile, jsonReader.HasValue());
-                          Console.WriteLine($" {fields} fields.");
+                          try
+                          {
+                              var fields = cmd.Execute(infile, outfile, jsonReader.HasValue());
+                              Console.WriteLine($" {fields} fields.");
+                          }
+                          catch (Exception e)
+                          {
+                              target.Error.WriteLine();
+                              target.Error.WriteLine($"ERROR: {e.Message}");
+                              target.Error.WriteLine("Use switch -d to see details about this error.");
+                          }
                       }
                       return count;
                   });
@@ -75,8 +84,8 @@ namespace Netdx
                 {
                     fcount++;
                     var fieldPbType = GetPbType(field.Value.Type);
-                    var fieldName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(field.Value.Name).Replace(".", "").Replace("_", "");
-                    var tsharkFieldName = protocolName.ToLowerInvariant() + "_" + field.Value.Name.Replace('.', '_');
+                    var fieldName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(field.Value.Name).Replace(".", "").Replace("_", "").Replace("-","");
+                    var tsharkFieldName = field.Value.JsonName;
                     outfile.WriteLine($"   // {field.Value.Info} ('{tsharkFieldName}')");
                     outfile.WriteLine($"   {fieldPbType.ToString().ToLowerInvariant()} {fieldName} = {fcount};");
                     outfile.WriteLine();
@@ -88,6 +97,7 @@ namespace Netdx
                 using (var outfile = new StreamWriter(File.Open(Path.ChangeExtension(outpath, ".Decode.cs"), FileMode.Create, FileAccess.Write)))
                 {
                     outfile.WriteLine("using Newtonsoft.Json.Linq;");
+                    outfile.WriteLine("using Google.Protobuf;");
                     outfile.WriteLine("using System;");
                     outfile.WriteLine($"namespace {PackageNamespace}");
                     outfile.WriteLine("{");
@@ -103,8 +113,8 @@ namespace Netdx
                     outfile.WriteLine($"      var obj = new {protocolName}();");
                     foreach (var field in protocol.Fields)
                     {
-                        var fieldName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(field.Value.Name).Replace(".", "").Replace("_","");
-                        var tsharkFieldName = protocolName.ToLowerInvariant() + "_" + field.Value.Name.Replace('.', '_');
+                        var fieldName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(field.Value.Name).Replace(".", "").Replace("_","").Replace("-", "");
+                        var tsharkFieldName = field.Value.JsonName;
                         var fieldPbType = GetPbType(field.Value.Type);
                         var fieldNativeType = GetNativeType(fieldPbType);
                         var convert = GetConvertFunc(field.Value.Type, field.Value.Display, $"default({fieldNativeType.Name})");
@@ -164,7 +174,7 @@ namespace Netdx
                 { _t(FieldType.FtInt48,FieldDisplay.BaseDec),      "Convert.ToInt64(val.Value<string>(), 10)"},
                 { _t(FieldType.FtInt56,FieldDisplay.BaseDec),      "Convert.ToInt64(val.Value<string>(), 10)"},
                 { _t(FieldType.FtInt64,FieldDisplay.BaseDec),      "Convert.ToInt64(val.Value<string>(), 10)"},
-
+                { _t(FieldType.FtUint16,FieldDisplay.BasePtUdp),     "Convert.ToUInt32(val.Value<string>(), 10)"},
                 { _t(FieldType.FtChar,FieldDisplay.BaseHex),       "Convert.ToUInt32(val.Value<string>(), 16)"},
                 { _t(FieldType.FtUint8,FieldDisplay.BaseHex),      "Convert.ToUInt32(val.Value<string>(), 16)"},
                 { _t(FieldType.FtUint16,FieldDisplay.BaseHex),     "Convert.ToUInt32(val.Value<string>(), 16)"},
@@ -207,7 +217,7 @@ namespace Netdx
                 { _t(FieldType.FtString,FieldDisplay.BaseNone),    "val.Value<string>()"},
                 { _t(FieldType.FtBytes,FieldDisplay.BaseNone),     "StringToBytes(val.Value<string>())"},
 
-                { _t(FieldType.FtEther,FieldDisplay.BaseNone),     "val.Value<string>()"},
+                { _t(FieldType.FtEther,FieldDisplay.BaseNone),     "Google.Protobuf.ByteString.CopyFrom(System.Net.NetworkInformation.PhysicalAddress.Parse(val.Value<string>().ToUpperInvariant().Replace(':','-')).GetAddressBytes())"},
                 { _t(FieldType.FtIpv4,FieldDisplay.BaseNone),      "Google.Protobuf.ByteString.CopyFrom(System.Net.IPAddress.Parse(val.Value<string>()).GetAddressBytes())"},
                 { _t(FieldType.FtIpv6,FieldDisplay.BaseNone),      "Google.Protobuf.ByteString.CopyFrom(System.Net.IPAddress.Parse(val.Value<string>()).GetAddressBytes())"},
             };
@@ -251,10 +261,10 @@ namespace Netdx
                 case FieldType.FtAx25: return PbTypes.Bytes;
                 case FieldType.FtBoolean: return PbTypes.Bool;
                 case FieldType.FtBytes: return PbTypes.Bytes;
-                case FieldType.FtChar: return PbTypes.Int32;
+                case FieldType.FtChar: return PbTypes.UInt32;
                 case FieldType.FtDouble: return PbTypes.Double;
-                case FieldType.FtEther: return PbTypes.UInt64;
-                case FieldType.FtEui64: return PbTypes.UInt64;
+                case FieldType.FtEther: return PbTypes.Bytes;
+                case FieldType.FtEui64: return PbTypes.Bytes;
                 case FieldType.FtFcwwn: return PbTypes.Bytes;
                 case FieldType.FtFloat: return PbTypes.Float;
                 case FieldType.FtFramenum: return PbTypes.Int64;

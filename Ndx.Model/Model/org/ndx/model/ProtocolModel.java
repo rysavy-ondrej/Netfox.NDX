@@ -1161,6 +1161,24 @@ public final class ProtocolModel {
      */
     com.google.protobuf.ByteString
         getInfoBytes();
+
+    /**
+     * <pre>
+     *&#47; Defines the name of the field as appeared in the JSON output.
+     * </pre>
+     *
+     * <code>string JsonName = 5;</code>
+     */
+    java.lang.String getJsonName();
+    /**
+     * <pre>
+     *&#47; Defines the name of the field as appeared in the JSON output.
+     * </pre>
+     *
+     * <code>string JsonName = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getJsonNameBytes();
   }
   /**
    * <pre>
@@ -1184,6 +1202,7 @@ public final class ProtocolModel {
       type_ = 0;
       display_ = 0;
       info_ = "";
+      jsonName_ = "";
     }
 
     @java.lang.Override
@@ -1233,6 +1252,12 @@ public final class ProtocolModel {
               java.lang.String s = input.readStringRequireUtf8();
 
               info_ = s;
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              jsonName_ = s;
               break;
             }
           }
@@ -1406,6 +1431,48 @@ public final class ProtocolModel {
       }
     }
 
+    public static final int JSONNAME_FIELD_NUMBER = 5;
+    private volatile java.lang.Object jsonName_;
+    /**
+     * <pre>
+     *&#47; Defines the name of the field as appeared in the JSON output.
+     * </pre>
+     *
+     * <code>string JsonName = 5;</code>
+     */
+    public java.lang.String getJsonName() {
+      java.lang.Object ref = jsonName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        jsonName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *&#47; Defines the name of the field as appeared in the JSON output.
+     * </pre>
+     *
+     * <code>string JsonName = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getJsonNameBytes() {
+      java.lang.Object ref = jsonName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        jsonName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1430,6 +1497,9 @@ public final class ProtocolModel {
       if (!getInfoBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, info_);
       }
+      if (!getJsonNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, jsonName_);
+      }
     }
 
     public int getSerializedSize() {
@@ -1450,6 +1520,9 @@ public final class ProtocolModel {
       }
       if (!getInfoBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, info_);
+      }
+      if (!getJsonNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, jsonName_);
       }
       memoizedSize = size;
       return size;
@@ -1473,6 +1546,8 @@ public final class ProtocolModel {
       result = result && display_ == other.display_;
       result = result && getInfo()
           .equals(other.getInfo());
+      result = result && getJsonName()
+          .equals(other.getJsonName());
       return result;
     }
 
@@ -1491,6 +1566,8 @@ public final class ProtocolModel {
       hash = (53 * hash) + display_;
       hash = (37 * hash) + INFO_FIELD_NUMBER;
       hash = (53 * hash) + getInfo().hashCode();
+      hash = (37 * hash) + JSONNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getJsonName().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1634,6 +1711,8 @@ public final class ProtocolModel {
 
         info_ = "";
 
+        jsonName_ = "";
+
         return this;
       }
 
@@ -1660,6 +1739,7 @@ public final class ProtocolModel {
         result.type_ = type_;
         result.display_ = display_;
         result.info_ = info_;
+        result.jsonName_ = jsonName_;
         onBuilt();
         return result;
       }
@@ -1713,6 +1793,10 @@ public final class ProtocolModel {
         }
         if (!other.getInfo().isEmpty()) {
           info_ = other.info_;
+          onChanged();
+        }
+        if (!other.getJsonName().isEmpty()) {
+          jsonName_ = other.jsonName_;
           onChanged();
         }
         onChanged();
@@ -2086,6 +2170,95 @@ public final class ProtocolModel {
         onChanged();
         return this;
       }
+
+      private java.lang.Object jsonName_ = "";
+      /**
+       * <pre>
+       *&#47; Defines the name of the field as appeared in the JSON output.
+       * </pre>
+       *
+       * <code>string JsonName = 5;</code>
+       */
+      public java.lang.String getJsonName() {
+        java.lang.Object ref = jsonName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          jsonName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *&#47; Defines the name of the field as appeared in the JSON output.
+       * </pre>
+       *
+       * <code>string JsonName = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getJsonNameBytes() {
+        java.lang.Object ref = jsonName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          jsonName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *&#47; Defines the name of the field as appeared in the JSON output.
+       * </pre>
+       *
+       * <code>string JsonName = 5;</code>
+       */
+      public Builder setJsonName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        jsonName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *&#47; Defines the name of the field as appeared in the JSON output.
+       * </pre>
+       *
+       * <code>string JsonName = 5;</code>
+       */
+      public Builder clearJsonName() {
+        
+        jsonName_ = getDefaultInstance().getJsonName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *&#47; Defines the name of the field as appeared in the JSON output.
+       * </pre>
+       *
+       * <code>string JsonName = 5;</code>
+       */
+      public Builder setJsonNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        jsonName_ = value;
+        onChanged();
+        return this;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -2184,6 +2357,10 @@ public final class ProtocolModel {
         java.lang.String key);
   }
   /**
+   * <pre>
+   *&#47; Represents a protocol type specification. 
+   * </pre>
+   *
    * Protobuf type {@code ndx.model.Protocol}
    */
   public  static final class Protocol extends
@@ -2558,6 +2735,10 @@ public final class ProtocolModel {
       return builder;
     }
     /**
+     * <pre>
+     *&#47; Represents a protocol type specification. 
+     * </pre>
+     *
      * Protobuf type {@code ndx.model.Protocol}
      */
     public static final class Builder extends
@@ -2985,41 +3166,41 @@ public final class ProtocolModel {
   static {
     java.lang.String[] descriptorData = {
       "\n\023ProtocolModel.proto\022\tndx.model\032\017Consta" +
-      "nts.proto\"y\n\rProtocolField\022\014\n\004Name\030\001 \001(\t" +
-      "\022\"\n\004Type\030\002 \001(\0162\024.ndx.model.FieldType\022(\n\007" +
-      "Display\030\003 \001(\0162\027.ndx.model.FieldDisplay\022\014" +
-      "\n\004Info\030\004 \001(\t\"\222\001\n\010Protocol\022\014\n\004Name\030\001 \001(\t\022" +
-      "/\n\006Fields\030\002 \003(\0132\037.ndx.model.Protocol.Fie" +
-      "ldsEntry\032G\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022\'\n\005" +
-      "value\030\002 \001(\0132\030.ndx.model.ProtocolField:\0028" +
-      "\001*\350\005\n\tFieldType\022\013\n\007FT_NONE\020\000\022\017\n\013FT_PROTO" +
-      "COL\020\001\022\016\n\nFT_BOOLEAN\020\002\022\013\n\007FT_CHAR\020\003\022\014\n\010FT",
-      "_UINT8\020\004\022\r\n\tFT_UINT16\020\005\022\r\n\tFT_UINT24\020\006\022\r" +
-      "\n\tFT_UINT32\020\007\022\r\n\tFT_UINT40\020\010\022\r\n\tFT_UINT4" +
-      "8\020\t\022\r\n\tFT_UINT56\020\n\022\r\n\tFT_UINT64\020\013\022\013\n\007FT_" +
-      "INT8\020\014\022\014\n\010FT_INT16\020\r\022\014\n\010FT_INT24\020\016\022\014\n\010FT" +
-      "_INT32\020\017\022\014\n\010FT_INT40\020\020\022\014\n\010FT_INT48\020\021\022\014\n\010" +
-      "FT_INT56\020\022\022\014\n\010FT_INT64\020\023\022\030\n\024FT_IEEE_1107" +
-      "3_SFLOAT\020\024\022\027\n\023FT_IEEE_11073_FLOAT\020\025\022\014\n\010F" +
-      "T_FLOAT\020\026\022\r\n\tFT_DOUBLE\020\027\022\024\n\020FT_ABSOLUTE_" +
-      "TIME\020\030\022\024\n\020FT_RELATIVE_TIME\020\031\022\r\n\tFT_STRIN" +
-      "G\020\032\022\016\n\nFT_STRINGZ\020\033\022\022\n\016FT_UINT_STRING\020\034\022",
-      "\014\n\010FT_ETHER\020\035\022\014\n\010FT_BYTES\020\036\022\021\n\rFT_UINT_B" +
-      "YTES\020\037\022\013\n\007FT_IPv4\020 \022\013\n\007FT_IPv6\020!\022\r\n\tFT_I" +
-      "PXNET\020\"\022\017\n\013FT_FRAMENUM\020#\022\013\n\007FT_PCRE\020$\022\013\n" +
-      "\007FT_GUID\020%\022\n\n\006FT_OID\020&\022\014\n\010FT_EUI64\020\'\022\013\n\007" +
-      "FT_AX25\020(\022\014\n\010FT_VINES\020)\022\016\n\nFT_REL_OID\020*\022" +
-      "\020\n\014FT_SYSTEM_ID\020+\022\021\n\rFT_STRINGZPAD\020,\022\014\n\010" +
-      "FT_FCWWN\020-\022\020\n\014FT_NUM_TYPES\020.*\305\002\n\014FieldDi" +
-      "splay\022\r\n\tBASE_NONE\020\000\022\014\n\010BASE_DEC\020\001\022\014\n\010BA" +
-      "SE_HEX\020\002\022\014\n\010BASE_OCT\020\003\022\020\n\014BASE_DEC_HEX\020\004" +
-      "\022\020\n\014BASE_HEX_DEC\020\005\022\017\n\013BASE_CUSTOM\020\006\022\017\n\013S",
-      "TR_UNICODE\020\007\022\013\n\007SEP_DOT\020\010\022\014\n\010SEP_DASH\020\t\022" +
-      "\r\n\tSEP_COLON\020\n\022\r\n\tSEP_SPACE\020\013\022\020\n\014BASE_NE" +
-      "TMASK\020\014\022\017\n\013BASE_PT_UDP\020\r\022\017\n\013BASE_PT_TCP\020" +
-      "\016\022\020\n\014BASE_PT_DCCP\020\017\022\020\n\014BASE_PT_SCTP\020\020\022\014\n" +
-      "\010BASE_OUI\020\021\022\027\n\023ABSOLUTE_TIME_LOCAL\020\024B\017\n\r" +
-      "org.ndx.modelb\006proto3"
+      "nts.proto\"\213\001\n\rProtocolField\022\014\n\004Name\030\001 \001(" +
+      "\t\022\"\n\004Type\030\002 \001(\0162\024.ndx.model.FieldType\022(\n" +
+      "\007Display\030\003 \001(\0162\027.ndx.model.FieldDisplay\022" +
+      "\014\n\004Info\030\004 \001(\t\022\020\n\010JsonName\030\005 \001(\t\"\222\001\n\010Prot" +
+      "ocol\022\014\n\004Name\030\001 \001(\t\022/\n\006Fields\030\002 \003(\0132\037.ndx" +
+      ".model.Protocol.FieldsEntry\032G\n\013FieldsEnt" +
+      "ry\022\013\n\003key\030\001 \001(\t\022\'\n\005value\030\002 \001(\0132\030.ndx.mod" +
+      "el.ProtocolField:\0028\001*\350\005\n\tFieldType\022\013\n\007FT" +
+      "_NONE\020\000\022\017\n\013FT_PROTOCOL\020\001\022\016\n\nFT_BOOLEAN\020\002",
+      "\022\013\n\007FT_CHAR\020\003\022\014\n\010FT_UINT8\020\004\022\r\n\tFT_UINT16" +
+      "\020\005\022\r\n\tFT_UINT24\020\006\022\r\n\tFT_UINT32\020\007\022\r\n\tFT_U" +
+      "INT40\020\010\022\r\n\tFT_UINT48\020\t\022\r\n\tFT_UINT56\020\n\022\r\n" +
+      "\tFT_UINT64\020\013\022\013\n\007FT_INT8\020\014\022\014\n\010FT_INT16\020\r\022" +
+      "\014\n\010FT_INT24\020\016\022\014\n\010FT_INT32\020\017\022\014\n\010FT_INT40\020" +
+      "\020\022\014\n\010FT_INT48\020\021\022\014\n\010FT_INT56\020\022\022\014\n\010FT_INT6" +
+      "4\020\023\022\030\n\024FT_IEEE_11073_SFLOAT\020\024\022\027\n\023FT_IEEE" +
+      "_11073_FLOAT\020\025\022\014\n\010FT_FLOAT\020\026\022\r\n\tFT_DOUBL" +
+      "E\020\027\022\024\n\020FT_ABSOLUTE_TIME\020\030\022\024\n\020FT_RELATIVE" +
+      "_TIME\020\031\022\r\n\tFT_STRING\020\032\022\016\n\nFT_STRINGZ\020\033\022\022",
+      "\n\016FT_UINT_STRING\020\034\022\014\n\010FT_ETHER\020\035\022\014\n\010FT_B" +
+      "YTES\020\036\022\021\n\rFT_UINT_BYTES\020\037\022\013\n\007FT_IPv4\020 \022\013" +
+      "\n\007FT_IPv6\020!\022\r\n\tFT_IPXNET\020\"\022\017\n\013FT_FRAMENU" +
+      "M\020#\022\013\n\007FT_PCRE\020$\022\013\n\007FT_GUID\020%\022\n\n\006FT_OID\020" +
+      "&\022\014\n\010FT_EUI64\020\'\022\013\n\007FT_AX25\020(\022\014\n\010FT_VINES" +
+      "\020)\022\016\n\nFT_REL_OID\020*\022\020\n\014FT_SYSTEM_ID\020+\022\021\n\r" +
+      "FT_STRINGZPAD\020,\022\014\n\010FT_FCWWN\020-\022\020\n\014FT_NUM_" +
+      "TYPES\020.*\305\002\n\014FieldDisplay\022\r\n\tBASE_NONE\020\000\022" +
+      "\014\n\010BASE_DEC\020\001\022\014\n\010BASE_HEX\020\002\022\014\n\010BASE_OCT\020" +
+      "\003\022\020\n\014BASE_DEC_HEX\020\004\022\020\n\014BASE_HEX_DEC\020\005\022\017\n",
+      "\013BASE_CUSTOM\020\006\022\017\n\013STR_UNICODE\020\007\022\013\n\007SEP_D" +
+      "OT\020\010\022\014\n\010SEP_DASH\020\t\022\r\n\tSEP_COLON\020\n\022\r\n\tSEP" +
+      "_SPACE\020\013\022\020\n\014BASE_NETMASK\020\014\022\017\n\013BASE_PT_UD" +
+      "P\020\r\022\017\n\013BASE_PT_TCP\020\016\022\020\n\014BASE_PT_DCCP\020\017\022\020" +
+      "\n\014BASE_PT_SCTP\020\020\022\014\n\010BASE_OUI\020\021\022\027\n\023ABSOLU" +
+      "TE_TIME_LOCAL\020\024B\017\n\rorg.ndx.modelb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3039,7 +3220,7 @@ public final class ProtocolModel {
     internal_static_ndx_model_ProtocolField_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ndx_model_ProtocolField_descriptor,
-        new java.lang.String[] { "Name", "Type", "Display", "Info", });
+        new java.lang.String[] { "Name", "Type", "Display", "Info", "JsonName", });
     internal_static_ndx_model_Protocol_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_ndx_model_Protocol_fieldAccessorTable = new

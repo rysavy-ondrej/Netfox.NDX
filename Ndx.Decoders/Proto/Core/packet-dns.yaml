@@ -1,0 +1,1598 @@
+Name: dns
+Fields:
+  dns.length:
+    Name: dns.length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length
+    JsonName: dns_dns_length
+  dns.flags:
+    Name: dns.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: dns_dns_flags
+  dns.flags.response:
+    Name: dns.flags.response
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Response
+    JsonName: dns_flags_dns_flags_response
+  dns.flags.opcode:
+    Name: dns.flags.opcode
+    Type: FtUint16
+    Display: BaseDec
+    Info: Opcode
+    JsonName: dns_flags_dns_flags_opcode
+  dns.flags.authoritative:
+    Name: dns.flags.authoritative
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Authoritative
+    JsonName: dns_flags_dns_flags_authoritative
+  dns.flags.conflict:
+    Name: dns.flags.conflict
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Conflict
+    JsonName: dns_flags_dns_flags_conflict
+  dns.flags.truncated:
+    Name: dns.flags.truncated
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Truncated
+    JsonName: dns_flags_dns_flags_truncated
+  dns.flags.recdesired:
+    Name: dns.flags.recdesired
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Recursion desired
+    JsonName: dns_flags_dns_flags_recdesired
+  dns.flags.tentative:
+    Name: dns.flags.tentative
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Tentative
+    JsonName: dns_flags_dns_flags_tentative
+  dns.flags.recavail:
+    Name: dns.flags.recavail
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Recursion available
+    JsonName: dns_flags_dns_flags_recavail
+  dns.flags.z:
+    Name: dns.flags.z
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Z
+    JsonName: dns_flags_dns_flags_z
+  dns.flags.authenticated:
+    Name: dns.flags.authenticated
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Answer authenticated
+    JsonName: dns_flags_dns_flags_authenticated
+  dns.flags.checkdisable:
+    Name: dns.flags.checkdisable
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Non-authenticated data
+    JsonName: dns_flags_dns_flags_checkdisable
+  dns.flags.rcode:
+    Name: dns.flags.rcode
+    Type: FtUint16
+    Display: BaseDec
+    Info: Reply code
+    JsonName: dns_flags_dns_flags_rcode
+  dns.id:
+    Name: dns.id
+    Type: FtUint16
+    Display: BaseHex
+    Info: Transaction ID
+    JsonName: dns_dns_id
+  dns.qry.type:
+    Name: dns.qry.type
+    Type: FtUint16
+    Display: BaseDec
+    Info: Type
+    JsonName: dns_dns_qry_type
+  dns.qry.class:
+    Name: dns.qry.class
+    Type: FtUint16
+    Display: BaseHex
+    Info: Class
+    JsonName: dns_dns_qry_class
+  dns.qry.name:
+    Name: dns.qry.name
+    Type: FtString
+    Info: Name
+    JsonName: dns_dns_qry_name
+  dns.qry.name.len:
+    Name: dns.qry.name.len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Name Length
+    JsonName: dns_qry_name_dns_qry_name_len
+  dns.count.labels:
+    Name: dns.count.labels
+    Type: FtUint16
+    Display: BaseDec
+    Info: Label Count
+    JsonName: dns_dns_count_labels
+  dns.resp.type:
+    Name: dns.resp.type
+    Type: FtUint16
+    Display: BaseDec
+    Info: Type
+    JsonName: dns_dns_resp_type
+  dns.resp.class:
+    Name: dns.resp.class
+    Type: FtUint16
+    Display: BaseHex
+    Info: Class
+    JsonName: dns_dns_resp_class
+  dns.resp.cache_flush:
+    Name: dns.resp.cache_flush
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Cache flush
+    JsonName: dns_dns_resp_cache_flush
+  dns.resp.ext_rcode:
+    Name: dns.resp.ext_rcode
+    Type: FtUint8
+    Display: BaseHex
+    Info: Higher bits in extended RCODE
+    JsonName: dns_dns_resp_ext_rcode
+  dns.resp.edns0_version:
+    Name: dns.resp.edns0_version
+    Type: FtUint8
+    Display: BaseDec
+    Info: EDNS0 version
+    JsonName: dns_dns_resp_edns0_version
+  dns.resp.z:
+    Name: dns.resp.z
+    Type: FtUint16
+    Display: BaseHex
+    Info: Z
+    JsonName: dns_dns_resp_z
+  dns.resp.z.do:
+    Name: dns.resp.z.do
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: DO bit
+    JsonName: dns_resp_z_dns_resp_z_do
+  dns.resp.z.reserved:
+    Name: dns.resp.z.reserved
+    Type: FtUint16
+    Display: BaseHex
+    Info: Reserved
+    JsonName: dns_resp_z_dns_resp_z_reserved
+  dns.srv.service:
+    Name: dns.srv.service
+    Type: FtString
+    Info: Service
+    JsonName: dns_dns_srv_service
+  dns.srv.proto:
+    Name: dns.srv.proto
+    Type: FtString
+    Info: Protocol
+    JsonName: dns_dns_srv_proto
+  dns.srv.name:
+    Name: dns.srv.name
+    Type: FtString
+    Info: Name
+    JsonName: dns_dns_srv_name
+  dns.srv.priority:
+    Name: dns.srv.priority
+    Type: FtUint16
+    Display: BaseDec
+    Info: Priority
+    JsonName: dns_dns_srv_priority
+  dns.srv.weight:
+    Name: dns.srv.weight
+    Type: FtUint16
+    Display: BaseDec
+    Info: Weight
+    JsonName: dns_dns_srv_weight
+  dns.srv.port:
+    Name: dns.srv.port
+    Type: FtUint16
+    Display: BaseDec
+    Info: Port
+    JsonName: dns_dns_srv_port
+  dns.srv.target:
+    Name: dns.srv.target
+    Type: FtString
+    Info: Target
+    JsonName: dns_dns_srv_target
+  dns.naptr.order:
+    Name: dns.naptr.order
+    Type: FtUint16
+    Display: BaseDec
+    Info: Order
+    JsonName: dns_dns_naptr_order
+  dns.naptr.preference:
+    Name: dns.naptr.preference
+    Type: FtUint16
+    Display: BaseDec
+    Info: Preference
+    JsonName: dns_dns_naptr_preference
+  dns.naptr.flags_length:
+    Name: dns.naptr.flags_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Flags Length
+    JsonName: dns_dns_naptr_flags_length
+  dns.naptr.flags:
+    Name: dns.naptr.flags
+    Type: FtString
+    Info: Flags
+    JsonName: dns_dns_naptr_flags
+  dns.naptr.service_length:
+    Name: dns.naptr.service_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Service Length
+    JsonName: dns_dns_naptr_service_length
+  dns.naptr.service:
+    Name: dns.naptr.service
+    Type: FtString
+    Info: Service
+    JsonName: dns_dns_naptr_service
+  dns.naptr.regex_length:
+    Name: dns.naptr.regex_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Regex Length
+    JsonName: dns_dns_naptr_regex_length
+  dns.naptr.regex:
+    Name: dns.naptr.regex
+    Type: FtString
+    Info: Regex
+    JsonName: dns_dns_naptr_regex
+  dns.naptr.replacement_length:
+    Name: dns.naptr.replacement_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Replacement Length
+    JsonName: dns_dns_naptr_replacement_length
+  dns.naptr.replacement:
+    Name: dns.naptr.replacement
+    Type: FtString
+    Info: Replacement
+    JsonName: dns_dns_naptr_replacement
+  dns.resp.name:
+    Name: dns.resp.name
+    Type: FtString
+    Info: Name
+    JsonName: dns_dns_resp_name
+  dns.resp.ttl:
+    Name: dns.resp.ttl
+    Type: FtInt32
+    Display: BaseDec
+    Info: Time to live
+    JsonName: dns_dns_resp_ttl
+  dns.resp.len:
+    Name: dns.resp.len
+    Type: FtUint32
+    Display: BaseDec
+    Info: Data length
+    JsonName: dns_dns_resp_len
+  dns.a:
+    Name: dns.a
+    Type: FtIpv4
+    Info: Address
+    JsonName: dns_dns_a
+  dns.md:
+    Name: dns.md
+    Type: FtString
+    Info: Mail Destination
+    JsonName: dns_dns_md
+  dns.mf:
+    Name: dns.mf
+    Type: FtString
+    Info: Mail Forwarder
+    JsonName: dns_dns_mf
+  dns.mb:
+    Name: dns.mb
+    Type: FtString
+    Info: MailBox Domaine
+    JsonName: dns_dns_mb
+  dns.mg:
+    Name: dns.mg
+    Type: FtString
+    Info: Mail Group member
+    JsonName: dns_dns_mg
+  dns.mr:
+    Name: dns.mr
+    Type: FtString
+    Info: Mail Rename domaine
+    JsonName: dns_dns_mr
+  dns.null:
+    Name: dns.null
+    Type: FtBytes
+    Info: Null (data)
+    JsonName: dns_dns_null
+  dns.aaaa:
+    Name: dns.aaaa
+    Type: FtIpv6
+    Info: AAAA Address
+    JsonName: dns_dns_aaaa
+  dns.cname:
+    Name: dns.cname
+    Type: FtString
+    Info: CNAME
+    JsonName: dns_dns_cname
+  dns.rr.udp_payload_size:
+    Name: dns.rr.udp_payload_size
+    Type: FtUint16
+    Display: BaseHex
+    Info: UDP payload size
+    JsonName: dns_dns_rr_udp_payload_size
+  dns.soa.mname:
+    Name: dns.soa.mname
+    Type: FtString
+    Info: Primary name server
+    JsonName: dns_dns_soa_mname
+  dns.soa.rname:
+    Name: dns.soa.rname
+    Type: FtString
+    Info: Responsible authority's mailbox
+    JsonName: dns_dns_soa_rname
+  dns.soa.serial_number:
+    Name: dns.soa.serial_number
+    Type: FtUint32
+    Display: BaseDec
+    Info: Serial Number
+    JsonName: dns_dns_soa_serial_number
+  dns.soa.refresh_interval:
+    Name: dns.soa.refresh_interval
+    Type: FtUint32
+    Display: BaseDec
+    Info: Refresh Interval
+    JsonName: dns_dns_soa_refresh_interval
+  dns.soa.retry_interval:
+    Name: dns.soa.retry_interval
+    Type: FtUint32
+    Display: BaseDec
+    Info: Retry Interval
+    JsonName: dns_dns_soa_retry_interval
+  dns.soa.expire_limit:
+    Name: dns.soa.expire_limit
+    Type: FtUint32
+    Display: BaseDec
+    Info: Expire limit
+    JsonName: dns_dns_soa_expire_limit
+  dns.soa.mininum_ttl:
+    Name: dns.soa.mininum_ttl
+    Type: FtUint32
+    Display: BaseDec
+    Info: Minimum TTL
+    JsonName: dns_dns_soa_mininum_ttl
+  dns.ptr.domain_name:
+    Name: dns.ptr.domain_name
+    Type: FtString
+    Info: Domain Name
+    JsonName: dns_dns_ptr_domain_name
+  dns.wks.address:
+    Name: dns.wks.address
+    Type: FtIpv4
+    Info: Address
+    JsonName: dns_dns_wks_address
+  dns.wks.protocol:
+    Name: dns.wks.protocol
+    Type: FtUint8
+    Display: BaseDec
+    Info: Protocol
+    JsonName: dns_dns_wks_protocol
+  dns.wks.bits:
+    Name: dns.wks.bits
+    Type: FtUint8
+    Display: BaseHex
+    Info: Bits
+    JsonName: dns_dns_wks_bits
+  dns.hinfo.cpu_length:
+    Name: dns.hinfo.cpu_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: CPU Length
+    JsonName: dns_dns_hinfo_cpu_length
+  dns.hinfo.cpu:
+    Name: dns.hinfo.cpu
+    Type: FtString
+    Info: CPU
+    JsonName: dns_dns_hinfo_cpu
+  dns.hinfo.os_length:
+    Name: dns.hinfo.os_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: OS Length
+    JsonName: dns_dns_hinfo_os_length
+  dns.hinfo.os:
+    Name: dns.hinfo.os
+    Type: FtString
+    Info: OS
+    JsonName: dns_dns_hinfo_os
+  dns.minfo.r:
+    Name: dns.minfo.r
+    Type: FtString
+    Info: Responsible Mailbox
+    JsonName: dns_dns_minfo_r
+  dns.minfo.e:
+    Name: dns.minfo.e
+    Type: FtString
+    Info: Error Mailbox
+    JsonName: dns_dns_minfo_e
+  dns.mx.preference:
+    Name: dns.mx.preference
+    Type: FtUint16
+    Display: BaseDec
+    Info: Preference
+    JsonName: dns_dns_mx_preference
+  dns.mx.mail_exchange:
+    Name: dns.mx.mail_exchange
+    Type: FtString
+    Info: Mail Exchange
+    JsonName: dns_dns_mx_mail_exchange
+  dns.txt.length:
+    Name: dns.txt.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: TXT Length
+    JsonName: dns_txt_dns_txt_length
+  dns.txt:
+    Name: dns.txt
+    Type: FtString
+    Info: TXT
+    JsonName: dns_dns_txt
+  dns.openpgpkey:
+    Name: dns.openpgpkey
+    Type: FtString
+    Info: OpenPGP Key
+    JsonName: dns_dns_openpgpkey
+  dns.csync.soa:
+    Name: dns.csync.soa
+    Type: FtUint32
+    Display: BaseDec
+    Info: SOA
+    JsonName: dns_dns_csync_soa
+  dns.csync.flags:
+    Name: dns.csync.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: dns_dns_csync_flags
+  dns.csync.flags.immediate:
+    Name: dns.csync.flags.immediate
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: immediate
+    JsonName: dns_csync_flags_dns_csync_flags_immediate
+  dns.csync.flags.soaminimum:
+    Name: dns.csync.flags.soaminimum
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: soaminimum
+    JsonName: dns_csync_flags_dns_csync_flags_soaminimum
+  dns.csync.type_bitmap:
+    Name: dns.csync.type_bitmap
+    Type: FtBytes
+    Info: Type Bitmap
+    JsonName: dns_dns_csync_type_bitmap
+  dns.spf.length:
+    Name: dns.spf.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: SPF Length
+    JsonName: dns_spf_dns_spf_length
+  dns.spf:
+    Name: dns.spf
+    Type: FtString
+    Info: SPF
+    JsonName: dns_dns_spf
+  dns.ilnp.nid.preference:
+    Name: dns.ilnp.nid.preference
+    Type: FtUint16
+    Display: BaseDec
+    Info: Preference
+    JsonName: dns_ilnp_nid_dns_ilnp_nid_preference
+  dns.ilnp.nid:
+    Name: dns.ilnp.nid
+    Type: FtBytes
+    Info: NodeID
+    JsonName: dns_dns_ilnp_nid
+  dns.ilnp.l32.preference:
+    Name: dns.ilnp.l32.preference
+    Type: FtUint16
+    Display: BaseDec
+    Info: Preference
+    JsonName: dns_ilnp_l32_dns_ilnp_l32_preference
+  dns.ilnp.l32:
+    Name: dns.ilnp.l32
+    Type: FtIpv4
+    Info: Locator32
+    JsonName: dns_dns_ilnp_l32
+  dns.ilnp.l64.preference:
+    Name: dns.ilnp.l64.preference
+    Type: FtUint16
+    Display: BaseDec
+    Info: Preference
+    JsonName: dns_ilnp_l64_dns_ilnp_l64_preference
+  dns.ilnp.l64:
+    Name: dns.ilnp.l64
+    Type: FtBytes
+    Info: Locator64
+    JsonName: dns_dns_ilnp_l64
+  dns.ilnp.lp.preference:
+    Name: dns.ilnp.lp.preference
+    Type: FtUint16
+    Display: BaseDec
+    Info: Preference
+    JsonName: dns_ilnp_lp_dns_ilnp_lp_preference
+  dns.ilnp.lp:
+    Name: dns.ilnp.lp
+    Type: FtString
+    Info: Locator FQDN
+    JsonName: dns_dns_ilnp_lp
+  dns.eui48:
+    Name: dns.eui48
+    Type: FtEther
+    Info: EUI48 Address
+    JsonName: dns_dns_eui48
+  dns.eui64:
+    Name: dns.eui64
+    Type: FtEui64
+    Info: EUI64 Address
+    JsonName: dns_dns_eui64
+  dns.rrsig.type_covered:
+    Name: dns.rrsig.type_covered
+    Type: FtUint16
+    Display: BaseDec
+    Info: Type Covered
+    JsonName: dns_dns_rrsig_type_covered
+  dns.rrsig.algorithm:
+    Name: dns.rrsig.algorithm
+    Type: FtUint8
+    Display: BaseDec
+    Info: Algorithm
+    JsonName: dns_dns_rrsig_algorithm
+  dns.rrsig.labels:
+    Name: dns.rrsig.labels
+    Type: FtUint8
+    Display: BaseDec
+    Info: Labels
+    JsonName: dns_dns_rrsig_labels
+  dns.rrsig.original_ttl:
+    Name: dns.rrsig.original_ttl
+    Type: FtUint32
+    Display: BaseDec
+    Info: Original TTL
+    JsonName: dns_dns_rrsig_original_ttl
+  dns.rrsig.signature_expiration:
+    Name: dns.rrsig.signature_expiration
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Signature Expiration
+    JsonName: dns_dns_rrsig_signature_expiration
+  dns.rrsig.signature_inception:
+    Name: dns.rrsig.signature_inception
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Signature Inception
+    JsonName: dns_dns_rrsig_signature_inception
+  dns.rrsig.key_tag:
+    Name: dns.rrsig.key_tag
+    Type: FtUint16
+    Display: BaseDec
+    Info: Key Tag
+    JsonName: dns_dns_rrsig_key_tag
+  dns.rrsig.signers_name:
+    Name: dns.rrsig.signers_name
+    Type: FtString
+    Info: Signer's name
+    JsonName: dns_dns_rrsig_signers_name
+  dns.rrsig.signature:
+    Name: dns.rrsig.signature
+    Type: FtBytes
+    Info: Signature
+    JsonName: dns_dns_rrsig_signature
+  dns.dnskey.flags:
+    Name: dns.dnskey.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: dns_dns_dnskey_flags
+  dns.dnskey.flags.zone_key:
+    Name: dns.dnskey.flags.zone_key
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Zone Key
+    JsonName: dns_dnskey_flags_dns_dnskey_flags_zone_key
+  dns.dnskey.flags.key_revoked:
+    Name: dns.dnskey.flags.key_revoked
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Key Revoked
+    JsonName: dns_dnskey_flags_dns_dnskey_flags_key_revoked
+  dns.dnskey.flags.secure_entry_point:
+    Name: dns.dnskey.flags.secure_entry_point
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Key Signing Key
+    JsonName: dns_dnskey_flags_dns_dnskey_flags_secure_entry_point
+  dns.dnskey.flags.reserved:
+    Name: dns.dnskey.flags.reserved
+    Type: FtUint16
+    Display: BaseHex
+    Info: Key Signing Key
+    JsonName: dns_dnskey_flags_dns_dnskey_flags_reserved
+  dns.dnskey.protocol:
+    Name: dns.dnskey.protocol
+    Type: FtUint8
+    Display: BaseDec
+    Info: Protocol
+    JsonName: dns_dns_dnskey_protocol
+  dns.dnskey.algorithm:
+    Name: dns.dnskey.algorithm
+    Type: FtUint8
+    Display: BaseDec
+    Info: Algorithm
+    JsonName: dns_dns_dnskey_algorithm
+  dns.dnskey.key_id:
+    Name: dns.dnskey.key_id
+    Type: FtUint16
+    Display: BaseDec
+    Info: Key id
+    JsonName: dns_dns_dnskey_key_id
+  dns.dnskey.public_key:
+    Name: dns.dnskey.public_key
+    Type: FtBytes
+    Info: Public Key
+    JsonName: dns_dns_dnskey_public_key
+  dns.key.flags:
+    Name: dns.key.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: dns_dns_key_flags
+  dns.key.flags.authentication:
+    Name: dns.key.flags.authentication
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Key allowed for authentication
+    JsonName: dns_key_flags_dns_key_flags_authentication
+  dns.key.flags.confidentiality:
+    Name: dns.key.flags.confidentiality
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Key allowed for confidentiality
+    JsonName: dns_key_flags_dns_key_flags_confidentiality
+  dns.key.flags.required:
+    Name: dns.key.flags.required
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Key required
+    JsonName: dns_key_flags_dns_key_flags_required
+  dns.key.flags.associated_user:
+    Name: dns.key.flags.associated_user
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Key is associated with a user
+    JsonName: dns_key_flags_dns_key_flags_associated_user
+  dns.key.flags.associated_named_entity:
+    Name: dns.key.flags.associated_named_entity
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Key is associated with the named entity
+    JsonName: dns_key_flags_dns_key_flags_associated_named_entity
+  dns.key.flags.ipsec:
+    Name: dns.key.flags.ipsec
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Key use with IPSEC
+    JsonName: dns_key_flags_dns_key_flags_ipsec
+  dns.key.flags.mime:
+    Name: dns.key.flags.mime
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Key use with MIME security multiparts
+    JsonName: dns_key_flags_dns_key_flags_mime
+  dns.key.flags.signatory:
+    Name: dns.key.flags.signatory
+    Type: FtUint16
+    Display: BaseDec
+    Info: Signatory
+    JsonName: dns_key_flags_dns_key_flags_signatory
+  dns.key.protocol:
+    Name: dns.key.protocol
+    Type: FtUint8
+    Display: BaseDec
+    Info: Protocol
+    JsonName: dns_dns_key_protocol
+  dns.key.algorithm:
+    Name: dns.key.algorithm
+    Type: FtUint8
+    Display: BaseDec
+    Info: Algorithm
+    JsonName: dns_dns_key_algorithm
+  dns.key.key_id:
+    Name: dns.key.key_id
+    Type: FtUint16
+    Display: BaseDec
+    Info: Key ID
+    JsonName: dns_dns_key_key_id
+  dns.key.public_key:
+    Name: dns.key.public_key
+    Type: FtBytes
+    Info: Public Key
+    JsonName: dns_dns_key_public_key
+  dns.px.preference:
+    Name: dns.px.preference
+    Type: FtUint8
+    Display: BaseDec
+    Info: Preference
+    JsonName: dns_dns_px_preference
+  dns.px.map822:
+    Name: dns.px.map822
+    Type: FtString
+    Info: MAP822
+    JsonName: dns_dns_px_map822
+  dns.px.map400:
+    Name: dns.px.map400
+    Type: FtString
+    Info: MAPX400
+    JsonName: dns_dns_px_map400
+  dns.tkey.algo_name:
+    Name: dns.tkey.algo_name
+    Type: FtString
+    Info: Algorithm name
+    JsonName: dns_dns_tkey_algo_name
+  dns.tkey.signature_expiration:
+    Name: dns.tkey.signature_expiration
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Signature Expiration
+    JsonName: dns_dns_tkey_signature_expiration
+  dns.tkey.signature_inception:
+    Name: dns.tkey.signature_inception
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Signature Inception
+    JsonName: dns_dns_tkey_signature_inception
+  dns.tkey.mode:
+    Name: dns.tkey.mode
+    Type: FtUint16
+    Display: BaseDec
+    Info: Mode
+    JsonName: dns_dns_tkey_mode
+  dns.tkey.error:
+    Name: dns.tkey.error
+    Type: FtUint16
+    Display: BaseDec
+    Info: Error
+    JsonName: dns_dns_tkey_error
+  dns.tkey.key_size:
+    Name: dns.tkey.key_size
+    Type: FtUint16
+    Display: BaseDec
+    Info: Key Size
+    JsonName: dns_dns_tkey_key_size
+  dns.tkey.key_data:
+    Name: dns.tkey.key_data
+    Type: FtBytes
+    Info: Key Data
+    JsonName: dns_dns_tkey_key_data
+  dns.tkey.other_size:
+    Name: dns.tkey.other_size
+    Type: FtUint16
+    Display: BaseDec
+    Info: Other Size
+    JsonName: dns_dns_tkey_other_size
+  dns.tkey.other_data:
+    Name: dns.tkey.other_data
+    Type: FtBytes
+    Info: Other Data
+    JsonName: dns_dns_tkey_other_data
+  dns.ipseckey.gateway_precedence:
+    Name: dns.ipseckey.gateway_precedence
+    Type: FtUint8
+    Display: BaseDec
+    Info: Gateway Precedence
+    JsonName: dns_dns_ipseckey_gateway_precedence
+  dns.ipseckey.gateway_algorithm:
+    Name: dns.ipseckey.gateway_algorithm
+    Type: FtUint8
+    Display: BaseDec
+    Info: Gateway Algorithm
+    JsonName: dns_dns_ipseckey_gateway_algorithm
+  dns.ipseckey.gateway_type:
+    Name: dns.ipseckey.gateway_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Gateway Type
+    JsonName: dns_dns_ipseckey_gateway_type
+  dns.ipseckey.gateway_ipv4:
+    Name: dns.ipseckey.gateway_ipv4
+    Type: FtIpv4
+    Info: IPv4 Gateway
+    JsonName: dns_dns_ipseckey_gateway_ipv4
+  dns.ipseckey.gateway_ipv6:
+    Name: dns.ipseckey.gateway_ipv6
+    Type: FtIpv6
+    Info: IPv6 Gateway
+    JsonName: dns_dns_ipseckey_gateway_ipv6
+  dns.ipseckey.gateway_dns:
+    Name: dns.ipseckey.gateway_dns
+    Type: FtString
+    Info: DNS Gateway
+    JsonName: dns_dns_ipseckey_gateway_dns
+  dns.ipseckey.public_key:
+    Name: dns.ipseckey.public_key
+    Type: FtBytes
+    Info: Public Key
+    JsonName: dns_dns_ipseckey_public_key
+  dns.xpf.ip_version:
+    Name: dns.xpf.ip_version
+    Type: FtUint16
+    Display: BaseDec
+    Info: IP Version
+    JsonName: dns_dns_xpf_ip_version
+  dns.xpf.protocol:
+    Name: dns.xpf.protocol
+    Type: FtUint8
+    Display: BaseDec
+    Info: Protocol
+    JsonName: dns_dns_xpf_protocol
+  dns.xpf.source_ipv4:
+    Name: dns.xpf.source_ipv4
+    Type: FtIpv4
+    Info: IPv4 Source
+    JsonName: dns_dns_xpf_source_ipv4
+  dns.xpf.destination_ipv4:
+    Name: dns.xpf.destination_ipv4
+    Type: FtIpv4
+    Info: IPv4 Destination
+    JsonName: dns_dns_xpf_destination_ipv4
+  dns.xpf.source_ipv6:
+    Name: dns.xpf.source_ipv6
+    Type: FtIpv6
+    Info: IPv6 Source
+    JsonName: dns_dns_xpf_source_ipv6
+  dns.xpf.destination_ipv6:
+    Name: dns.xpf.destination_ipv6
+    Type: FtIpv6
+    Info: IPv6 Destination
+    JsonName: dns_dns_xpf_destination_ipv6
+  dns.xpf.sport:
+    Name: dns.xpf.sport
+    Type: FtUint16
+    Display: BaseDec
+    Info: Source port
+    JsonName: dns_dns_xpf_sport
+  dns.xpf.dport:
+    Name: dns.xpf.dport
+    Type: FtUint16
+    Display: BaseDec
+    Info: Destination port
+    JsonName: dns_dns_xpf_dport
+  dns.a6.prefix_len:
+    Name: dns.a6.prefix_len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Prefix len
+    JsonName: dns_dns_a6_prefix_len
+  dns.a6.address_suffix:
+    Name: dns.a6.address_suffix
+    Type: FtIpv6
+    Info: Address Suffix
+    JsonName: dns_dns_a6_address_suffix
+  dns.a6.prefix_name:
+    Name: dns.a6.prefix_name
+    Type: FtString
+    Info: Prefix name
+    JsonName: dns_dns_a6_prefix_name
+  dns.dname:
+    Name: dns.dname
+    Type: FtString
+    Info: Dname
+    JsonName: dns_dns_dname
+  dns.loc.version:
+    Name: dns.loc.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: Version
+    JsonName: dns_dns_loc_version
+  dns.loc.size:
+    Name: dns.loc.size
+    Type: FtUint8
+    Display: BaseDec
+    Info: Size
+    JsonName: dns_dns_loc_size
+  dns.loc.horizontal_precision:
+    Name: dns.loc.horizontal_precision
+    Type: FtUint8
+    Display: BaseDec
+    Info: Horizontal Precision
+    JsonName: dns_dns_loc_horizontal_precision
+  dns.loc.vertical_precision:
+    Name: dns.loc.vertical_precision
+    Type: FtUint8
+    Display: BaseDec
+    Info: Vertical Precision
+    JsonName: dns_dns_loc_vertical_precision
+  dns.loc.latitude:
+    Name: dns.loc.latitude
+    Type: FtUint32
+    Display: BaseDec
+    Info: Latitude
+    JsonName: dns_dns_loc_latitude
+  dns.loc.longitude:
+    Name: dns.loc.longitude
+    Type: FtUint32
+    Display: BaseDec
+    Info: Longitude
+    JsonName: dns_dns_loc_longitude
+  dns.loc.altitude:
+    Name: dns.loc.altitude
+    Type: FtUint32
+    Display: BaseDec
+    Info: Altitude
+    JsonName: dns_dns_loc_altitude
+  dns.loc.unknown_data:
+    Name: dns.loc.unknown_data
+    Type: FtBytes
+    Info: Unknown data
+    JsonName: dns_dns_loc_unknown_data
+  dns.nxt.next_domain_name:
+    Name: dns.nxt.next_domain_name
+    Type: FtString
+    Info: Next Domain Name
+    JsonName: dns_dns_nxt_next_domain_name
+  dns.kx.preference:
+    Name: dns.kx.preference
+    Type: FtUint16
+    Display: BaseDec
+    Info: Preference
+    JsonName: dns_dns_kx_preference
+  dns.kx.key_exchange:
+    Name: dns.kx.key_exchange
+    Type: FtString
+    Info: Key Exchange
+    JsonName: dns_dns_kx_key_exchange
+  dns.cert.type:
+    Name: dns.cert.type
+    Type: FtUint16
+    Display: BaseDec
+    Info: Type
+    JsonName: dns_dns_cert_type
+  dns.cert.key_tag:
+    Name: dns.cert.key_tag
+    Type: FtUint16
+    Display: BaseHex
+    Info: Key Tag
+    JsonName: dns_dns_cert_key_tag
+  dns.cert.algorithm:
+    Name: dns.cert.algorithm
+    Type: FtUint8
+    Display: BaseDec
+    Info: Algorithm
+    JsonName: dns_dns_cert_algorithm
+  dns.cert.certificate:
+    Name: dns.cert.certificate
+    Type: FtBytes
+    Info: Certificate (or CRL)
+    JsonName: dns_dns_cert_certificate
+  dns.nsec.next_domain_name:
+    Name: dns.nsec.next_domain_name
+    Type: FtString
+    Info: Next Domain Name
+    JsonName: dns_dns_nsec_next_domain_name
+  dns.ns:
+    Name: dns.ns
+    Type: FtString
+    Info: Name Server
+    JsonName: dns_dns_ns
+  dns.opt:
+    Name: dns.opt
+    Info: Option
+    JsonName: dns_dns_opt
+  dns.opt.code:
+    Name: dns.opt.code
+    Type: FtUint16
+    Display: BaseDec
+    Info: Option Code
+    JsonName: dns_opt_dns_opt_code
+  dns.opt.len:
+    Name: dns.opt.len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Option Length
+    JsonName: dns_opt_dns_opt_len
+  dns.opt.data:
+    Name: dns.opt.data
+    Type: FtBytes
+    Info: Option Data
+    JsonName: dns_opt_dns_opt_data
+  dns.opt.dau:
+    Name: dns.opt.dau
+    Type: FtUint8
+    Display: BaseDec
+    Info: DAU
+    JsonName: dns_opt_dns_opt_dau
+  dns.opt.dhu:
+    Name: dns.opt.dhu
+    Type: FtUint8
+    Display: BaseDec
+    Info: DHU
+    JsonName: dns_opt_dns_opt_dhu
+  dns.opt.n3u:
+    Name: dns.opt.n3u
+    Type: FtUint8
+    Display: BaseDec
+    Info: N3U
+    JsonName: dns_opt_dns_opt_n3u
+  dns.opt.client.family:
+    Name: dns.opt.client.family
+    Type: FtUint16
+    Display: BaseDec
+    Info: Family
+    JsonName: dns_dns_opt_client_family
+  dns.opt.client.netmask:
+    Name: dns.opt.client.netmask
+    Type: FtUint8
+    Display: BaseDec
+    Info: Source Netmask
+    JsonName: dns_dns_opt_client_netmask
+  dns.opt.client.scope:
+    Name: dns.opt.client.scope
+    Type: FtUint8
+    Display: BaseDec
+    Info: Scope Netmask
+    JsonName: dns_dns_opt_client_scope
+  dns.opt.client.addr:
+    Name: dns.opt.client.addr
+    Type: FtBytes
+    Info: Client Subnet
+    JsonName: dns_dns_opt_client_addr
+  dns.opt.client.addr4:
+    Name: dns.opt.client.addr4
+    Type: FtIpv4
+    Info: Client Subnet
+    JsonName: dns_dns_opt_client_addr4
+  dns.opt.client.addr6:
+    Name: dns.opt.client.addr6
+    Type: FtIpv6
+    Info: Client Subnet
+    JsonName: dns_dns_opt_client_addr6
+  dns.opt.cookie.client:
+    Name: dns.opt.cookie.client
+    Type: FtBytes
+    Info: Client Cookie
+    JsonName: dns_dns_opt_cookie_client
+  dns.opt.cookie.server:
+    Name: dns.opt.cookie.server
+    Type: FtBytes
+    Info: Server Cookie
+    JsonName: dns_dns_opt_cookie_server
+  dns.opt.edns_tcp_keepalive.timeout:
+    Name: dns.opt.edns_tcp_keepalive.timeout
+    Type: FtUint16
+    Display: BaseDec
+    Info: Timeout
+    JsonName: dns_dns_opt_edns_tcp_keepalive_timeout
+  dns.opt.padding:
+    Name: dns.opt.padding
+    Type: FtBytes
+    Info: Padding
+    JsonName: dns_opt_dns_opt_padding
+  dns.opt.chain.fqdn:
+    Name: dns.opt.chain.fqdn
+    Type: FtString
+    Info: Closest Trust Point
+    JsonName: dns_dns_opt_chain_fqdn
+  dns.count.queries:
+    Name: dns.count.queries
+    Type: FtUint16
+    Display: BaseDec
+    Info: Questions
+    JsonName: dns_dns_count_queries
+  dns.count.zones:
+    Name: dns.count.zones
+    Type: FtUint16
+    Display: BaseDec
+    Info: Zones
+    JsonName: dns_dns_count_zones
+  dns.count.answers:
+    Name: dns.count.answers
+    Type: FtUint16
+    Display: BaseDec
+    Info: Answer RRs
+    JsonName: dns_dns_count_answers
+  dns.count.prerequisites:
+    Name: dns.count.prerequisites
+    Type: FtUint16
+    Display: BaseDec
+    Info: Prerequisites
+    JsonName: dns_dns_count_prerequisites
+  dns.count.auth_rr:
+    Name: dns.count.auth_rr
+    Type: FtUint16
+    Display: BaseDec
+    Info: Authority RRs
+    JsonName: dns_dns_count_auth_rr
+  dns.count.updates:
+    Name: dns.count.updates
+    Type: FtUint16
+    Display: BaseDec
+    Info: Updates
+    JsonName: dns_dns_count_updates
+  dns.nsec3.algo:
+    Name: dns.nsec3.algo
+    Type: FtUint8
+    Display: BaseDec
+    Info: Hash algorithm
+    JsonName: dns_dns_nsec3_algo
+  dns.nsec3.flags:
+    Name: dns.nsec3.flags
+    Type: FtUint8
+    Display: BaseDec
+    Info: NSEC3 flags
+    JsonName: dns_dns_nsec3_flags
+  dns.nsec3.flags.opt_out:
+    Name: dns.nsec3.flags.opt_out
+    Type: FtBoolean
+    Display: SepDot
+    Info: NSEC3 Opt-out flag
+    JsonName: dns_nsec3_flags_dns_nsec3_flags_opt_out
+  dns.nsec3.iterations:
+    Name: dns.nsec3.iterations
+    Type: FtUint16
+    Display: BaseDec
+    Info: NSEC3 iterations
+    JsonName: dns_dns_nsec3_iterations
+  dns.nsec3.salt_length:
+    Name: dns.nsec3.salt_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Salt length
+    JsonName: dns_dns_nsec3_salt_length
+  dns.nsec3.salt_value:
+    Name: dns.nsec3.salt_value
+    Type: FtBytes
+    Info: Salt value
+    JsonName: dns_dns_nsec3_salt_value
+  dns.nsec3.hash_length:
+    Name: dns.nsec3.hash_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Hash length
+    JsonName: dns_dns_nsec3_hash_length
+  dns.nsec3.hash_value:
+    Name: dns.nsec3.hash_value
+    Type: FtBytes
+    Info: Next hashed owner
+    JsonName: dns_dns_nsec3_hash_value
+  dns.tlsa.certificate_usage:
+    Name: dns.tlsa.certificate_usage
+    Type: FtUint8
+    Display: BaseDec
+    Info: Certificate Usage
+    JsonName: dns_dns_tlsa_certificate_usage
+  dns.tlsa.selector:
+    Name: dns.tlsa.selector
+    Type: FtUint8
+    Display: BaseDec
+    Info: Selector
+    JsonName: dns_dns_tlsa_selector
+  dns.tlsa.matching_type:
+    Name: dns.tlsa.matching_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Matching Type
+    JsonName: dns_dns_tlsa_matching_type
+  dns.tlsa.certificate_association_data:
+    Name: dns.tlsa.certificate_association_data
+    Type: FtBytes
+    Info: Certificate Association Data
+    JsonName: dns_dns_tlsa_certificate_association_data
+  dns.tsig.algorithm_name:
+    Name: dns.tsig.algorithm_name
+    Type: FtString
+    Info: Algorithm Name
+    JsonName: dns_dns_tsig_algorithm_name
+  dns.tsig.time_signed:
+    Name: dns.tsig.time_signed
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Time Signed
+    JsonName: dns_dns_tsig_time_signed
+  dns.tsig.original_id:
+    Name: dns.tsig.original_id
+    Type: FtUint16
+    Display: BaseDec
+    Info: Original Id
+    JsonName: dns_dns_tsig_original_id
+  dns.tsig.error:
+    Name: dns.tsig.error
+    Type: FtUint16
+    Display: BaseDec
+    Info: Error
+    JsonName: dns_dns_tsig_error
+  dns.tsig.fudge:
+    Name: dns.tsig.fudge
+    Type: FtUint16
+    Display: BaseDec
+    Info: Fudge
+    JsonName: dns_dns_tsig_fudge
+  dns.tsig.mac_size:
+    Name: dns.tsig.mac_size
+    Type: FtUint16
+    Display: BaseDec
+    Info: MAC Size
+    JsonName: dns_dns_tsig_mac_size
+  dns.tsig.other_len:
+    Name: dns.tsig.other_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Other Len
+    JsonName: dns_dns_tsig_other_len
+  dns.tsig.mac:
+    Name: dns.tsig.mac
+    Info: MAC
+    JsonName: dns_dns_tsig_mac
+  dns.tsig.other_data:
+    Name: dns.tsig.other_data
+    Type: FtBytes
+    Info: Other Data
+    JsonName: dns_dns_tsig_other_data
+  dns.response_in:
+    Name: dns.response_in
+    Type: FtFramenum
+    Info: Response In
+    JsonName: dns_dns_response_in
+  dns.response_to:
+    Name: dns.response_to
+    Type: FtFramenum
+    Info: Request In
+    JsonName: dns_dns_response_to
+  dns.time:
+    Name: dns.time
+    Type: FtRelativeTime
+    Info: Time
+    JsonName: dns_dns_time
+  dns.count.add_rr:
+    Name: dns.count.add_rr
+    Type: FtUint16
+    Display: BaseDec
+    Info: Additional RRs
+    JsonName: dns_dns_count_add_rr
+  dns.sshfp.algorithm:
+    Name: dns.sshfp.algorithm
+    Type: FtUint8
+    Display: BaseDec
+    Info: Algorithm
+    JsonName: dns_dns_sshfp_algorithm
+  dns.sshfp.fingerprint.type:
+    Name: dns.sshfp.fingerprint.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Fingerprint type
+    JsonName: dns_sshfp_fingerprint_dns_sshfp_fingerprint_type
+  dns.sshfp.fingerprint:
+    Name: dns.sshfp.fingerprint
+    Type: FtBytes
+    Info: Fingerprint
+    JsonName: dns_dns_sshfp_fingerprint
+  dns.hip.hit.length:
+    Name: dns.hip.hit.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: HIT length
+    JsonName: dns_hip_hit_dns_hip_hit_length
+  dns.hip.hit.pk.algo:
+    Name: dns.hip.hit.pk.algo
+    Type: FtUint8
+    Display: BaseDec
+    Info: HIT length
+    JsonName: dns_dns_hip_hit_pk_algo
+  dns.hip.pk.length:
+    Name: dns.hip.pk.length
+    Type: FtUint16
+    Display: BaseDec
+    Info: PK length
+    JsonName: dns_hip_pk_dns_hip_pk_length
+  dns.hip.hit:
+    Name: dns.hip.hit
+    Type: FtBytes
+    Info: Host Identity Tag
+    JsonName: dns_dns_hip_hit
+  dns.hip.pk:
+    Name: dns.hip.pk
+    Type: FtBytes
+    Info: HIP Public Key
+    JsonName: dns_dns_hip_pk
+  dns.hip.rendezvous_server:
+    Name: dns.hip.rendezvous_server
+    Type: FtString
+    Info: Rendezvous Server
+    JsonName: dns_dns_hip_rendezvous_server
+  dns.dhcid.rdata:
+    Name: dns.dhcid.rdata
+    Type: FtBytes
+    Info: DHCID Data
+    JsonName: dns_dns_dhcid_rdata
+  dns.ds.key_id:
+    Name: dns.ds.key_id
+    Type: FtUint16
+    Display: BaseHex
+    Info: Key id
+    JsonName: dns_dns_ds_key_id
+  dns.ds.algorithm:
+    Name: dns.ds.algorithm
+    Type: FtUint8
+    Display: BaseDec
+    Info: Algorithm
+    JsonName: dns_dns_ds_algorithm
+  dns.ds.digest_type:
+    Name: dns.ds.digest_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Digest Type
+    JsonName: dns_dns_ds_digest_type
+  dns.ds.digest:
+    Name: dns.ds.digest
+    Type: FtBytes
+    Info: Digest
+    JsonName: dns_dns_ds_digest
+  dns.apl.address_family:
+    Name: dns.apl.address_family
+    Type: FtUint16
+    Display: BaseDec
+    Info: Address Family
+    JsonName: dns_dns_apl_address_family
+  dns.apl.coded_prefix:
+    Name: dns.apl.coded_prefix
+    Type: FtUint8
+    Display: BaseDec
+    Info: Prefix Length
+    JsonName: dns_dns_apl_coded_prefix
+  dns.apl.negation:
+    Name: dns.apl.negation
+    Type: FtBoolean
+    Display: SepDot
+    Info: Negation Flag
+    JsonName: dns_dns_apl_negation
+  dns.apl.afdlength:
+    Name: dns.apl.afdlength
+    Type: FtUint8
+    Display: BaseDec
+    Info: Address Length
+    JsonName: dns_dns_apl_afdlength
+  dns.apl.afdpart.ipv4:
+    Name: dns.apl.afdpart.ipv4
+    Type: FtIpv4
+    Info: Address
+    JsonName: dns_dns_apl_afdpart_ipv4
+  dns.apl.afdpart.ipv6:
+    Name: dns.apl.afdpart.ipv6
+    Type: FtIpv6
+    Info: Address
+    JsonName: dns_dns_apl_afdpart_ipv6
+  dns.apl.afdpart.data:
+    Name: dns.apl.afdpart.data
+    Type: FtBytes
+    Info: Address
+    JsonName: dns_dns_apl_afdpart_data
+  dns.gpos.longitude_length:
+    Name: dns.gpos.longitude_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Longitude length
+    JsonName: dns_dns_gpos_longitude_length
+  dns.gpos.longitude:
+    Name: dns.gpos.longitude
+    Type: FtString
+    Info: Longitude
+    JsonName: dns_dns_gpos_longitude
+  dns.gpos.latitude_length:
+    Name: dns.gpos.latitude_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Latitude length
+    JsonName: dns_dns_gpos_latitude_length
+  dns.gpos.latitude:
+    Name: dns.gpos.latitude
+    Type: FtString
+    Info: Latitude
+    JsonName: dns_dns_gpos_latitude
+  dns.gpos.altitude_length:
+    Name: dns.gpos.altitude_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Altitude length
+    JsonName: dns_dns_gpos_altitude_length
+  dns.gpos.altitude:
+    Name: dns.gpos.altitude
+    Type: FtString
+    Info: Altitude
+    JsonName: dns_dns_gpos_altitude
+  dns.rp.mailbox:
+    Name: dns.rp.mailbox
+    Type: FtString
+    Info: Mailbox
+    JsonName: dns_dns_rp_mailbox
+  dns.rp.txt_rr:
+    Name: dns.rp.txt_rr
+    Type: FtString
+    Info: TXT RR
+    JsonName: dns_dns_rp_txt_rr
+  dns.afsdb.subtype:
+    Name: dns.afsdb.subtype
+    Type: FtUint16
+    Display: BaseDec
+    Info: Subtype
+    JsonName: dns_dns_afsdb_subtype
+  dns.afsdb.hostname:
+    Name: dns.afsdb.hostname
+    Type: FtString
+    Info: Hostname
+    JsonName: dns_dns_afsdb_hostname
+  dns.x25.length:
+    Name: dns.x25.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Length
+    JsonName: dns_dns_x25_length
+  dns.x25.psdn_address:
+    Name: dns.x25.psdn_address
+    Type: FtString
+    Info: PSDN-Address
+    JsonName: dns_dns_x25_psdn_address
+  dns.idsn.length:
+    Name: dns.idsn.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Length
+    JsonName: dns_dns_idsn_length
+  dns.idsn.address:
+    Name: dns.idsn.address
+    Type: FtString
+    Info: ISDN Address
+    JsonName: dns_dns_idsn_address
+  dns.idsn.sa.length:
+    Name: dns.idsn.sa.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Length
+    JsonName: dns_dns_idsn_sa_length
+  dns.idsn.sa.address:
+    Name: dns.idsn.sa.address
+    Type: FtString
+    Info: Sub Address
+    JsonName: dns_dns_idsn_sa_address
+  dns.rt.subtype:
+    Name: dns.rt.subtype
+    Type: FtUint16
+    Display: BaseDec
+    Info: Preference
+    JsonName: dns_dns_rt_subtype
+  dns.rt.intermediate_host:
+    Name: dns.rt.intermediate_host
+    Type: FtString
+    Info: Intermediate Hostname
+    JsonName: dns_dns_rt_intermediate_host
+  dns.nsap.rdata:
+    Name: dns.nsap.rdata
+    Type: FtBytes
+    Info: NSAP Data
+    JsonName: dns_dns_nsap_rdata
+  dns.nsap_ptr.owner:
+    Name: dns.nsap_ptr.owner
+    Type: FtString
+    Info: Owner
+    JsonName: dns_dns_nsap_ptr_owner
+  dns.caa.flags:
+    Name: dns.caa.flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: CAA Flags
+    JsonName: dns_dns_caa_flags
+  dns.caa.flags.issuer_critical:
+    Name: dns.caa.flags.issuer_critical
+    Type: FtBoolean
+    Display: SepDot
+    Info: Issuer Critical
+    JsonName: dns_caa_flags_dns_caa_flags_issuer_critical
+  dns.caa.issue:
+    Name: dns.caa.issue
+    Type: FtString
+    Info: Issue
+    JsonName: dns_dns_caa_issue
+  dns.caa.issuewild:
+    Name: dns.caa.issuewild
+    Type: FtString
+    Info: Issue Wildcard
+    JsonName: dns_dns_caa_issuewild
+  dns.caa.iodef:
+    Name: dns.caa.iodef
+    Type: FtString
+    Info: Report URL
+    JsonName: dns_dns_caa_iodef
+  dns.caa.unknown:
+    Name: dns.caa.unknown
+    Type: FtString
+    Info: Unknown tag
+    JsonName: dns_dns_caa_unknown
+  dns.caa.tag_length:
+    Name: dns.caa.tag_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Tag length
+    JsonName: dns_dns_caa_tag_length
+  dns.caa.tag:
+    Name: dns.caa.tag
+    Type: FtString
+    Info: Tag
+    JsonName: dns_dns_caa_tag
+  dns.caa.value:
+    Name: dns.caa.value
+    Type: FtString
+    Info: Value
+    JsonName: dns_dns_caa_value
+  dns.wins.local_flag:
+    Name: dns.wins.local_flag
+    Type: FtBoolean
+    Display: 32
+    Info: Local Flag
+    JsonName: dns_dns_wins_local_flag
+  dns.wins.lookup_timeout:
+    Name: dns.wins.lookup_timeout
+    Type: FtUint32
+    Display: BaseDec
+    Info: Lookup timeout
+    JsonName: dns_dns_wins_lookup_timeout
+  dns.wins.cache_timeout:
+    Name: dns.wins.cache_timeout
+    Type: FtUint32
+    Display: BaseDec
+    Info: Cache timeout
+    JsonName: dns_dns_wins_cache_timeout
+  dns.wins.nb_wins_servers:
+    Name: dns.wins.nb_wins_servers
+    Type: FtUint32
+    Display: BaseDec
+    Info: Number of WINS servers
+    JsonName: dns_dns_wins_nb_wins_servers
+  dns.wins.wins_server:
+    Name: dns.wins.wins_server
+    Type: FtIpv4
+    Info: WINS Server Address
+    JsonName: dns_dns_wins_wins_server
+  dns.winsr.local_flag:
+    Name: dns.winsr.local_flag
+    Type: FtBoolean
+    Display: 32
+    Info: Local Flag
+    JsonName: dns_dns_winsr_local_flag
+  dns.winsr.lookup_timeout:
+    Name: dns.winsr.lookup_timeout
+    Type: FtUint32
+    Display: BaseDec
+    Info: Lookup timeout
+    JsonName: dns_dns_winsr_lookup_timeout
+  dns.winsr.cache_timeout:
+    Name: dns.winsr.cache_timeout
+    Type: FtUint32
+    Display: BaseDec
+    Info: Cache timeout
+    JsonName: dns_dns_winsr_cache_timeout
+  dns.winsr.name_result_domain:
+    Name: dns.winsr.name_result_domain
+    Type: FtString
+    Info: Name Result Domain
+    JsonName: dns_dns_winsr_name_result_domain
+  dns.data:
+    Name: dns.data
+    Type: FtBytes
+    Info: Data
+    JsonName: dns_dns_data

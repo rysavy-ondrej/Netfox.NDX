@@ -1,0 +1,142 @@
+Name: ppp
+Fields:
+  ppp_hdlc.fragment:
+    Name: ppp_hdlc.fragment
+    Type: FtBytes
+    Info: PPP Fragment
+    JsonName: ppp_ppp_hdlc_fragment
+  ppp_hdlc.data:
+    Name: ppp_hdlc.data
+    Type: FtBytes
+    Info: PPP Data
+    JsonName: ppp_ppp_hdlc_data
+  ppp.direction:
+    Name: ppp.direction
+    Type: FtUint8
+    Display: BaseDec
+    Info: Direction
+    JsonName: ppp_ppp_direction
+  ppp.address:
+    Name: ppp.address
+    Type: FtUint8
+    Display: BaseHex
+    Info: Address
+    JsonName: ppp_ppp_address
+  ppp.control:
+    Name: ppp.control
+    Type: FtUint8
+    Display: BaseHex
+    Info: Control
+    JsonName: ppp_ppp_control
+  ppp.protocol:
+    Name: ppp.protocol
+    Type: FtUint16
+    Display: BaseHex
+    Info: Protocol
+    JsonName: ppp_ppp_protocol
+  ppp.code:
+    Name: ppp.code
+    Type: FtUint8
+    Display: BaseDec
+    Info: Code
+    JsonName: ppp_ppp_code
+  ppp.identifier:
+    Name: ppp.identifier
+    Type: FtUint8
+    Display: BaseDecHex
+    Info: Identifier
+    JsonName: ppp_ppp_identifier
+  ppp.length:
+    Name: ppp.length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length
+    JsonName: ppp_ppp_length
+  ppp.magic_number:
+    Name: ppp.magic_number
+    Type: FtUint32
+    Display: BaseHex
+    Info: Magic Number
+    JsonName: ppp_ppp_magic_number
+  ppp.oui:
+    Name: ppp.oui
+    Type: FtUint24
+    Display: BaseHex
+    Info: OUI
+    JsonName: ppp_ppp_oui
+  ppp.kind:
+    Name: ppp.kind
+    Type: FtUint8
+    Display: BaseDecHex
+    Info: Kind
+    JsonName: ppp_ppp_kind
+  ppp.data:
+    Name: ppp.data
+    Type: FtBytes
+    Info: Data
+    JsonName: ppp_ppp_data
+  ppp.fcs_16:
+    Name: ppp.fcs_16
+    Type: FtUint16
+    Display: BaseHex
+    Info: FCS 16
+    JsonName: ppp_ppp_fcs_16
+  ppp.fcs_32:
+    Name: ppp.fcs_32
+    Type: FtUint32
+    Display: BaseHex
+    Info: FCS 32
+    JsonName: ppp_ppp_fcs_32
+  ppp.fcs.status:
+    Name: ppp.fcs.status
+    Type: FtUint8
+    Info: FCS Status
+    JsonName: ppp_ppp_fcs_status
+  pppmuxcp.flags.pid:
+    Name: pppmuxcp.flags.pid
+    Type: FtBoolean
+    Display: SepDot
+    Info: PID
+    JsonName: pppmuxcp_flags_pppmuxcp_flags_pid
+  pppmuxcp.flags.field_length:
+    Name: pppmuxcp.flags.field_length
+    Type: FtBoolean
+    Display: SepDot
+    Info: Length field
+    JsonName: pppmuxcp_flags_pppmuxcp_flags_field_length
+  pppmuxcp.opt.type:
+    Name: pppmuxcp.opt.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Type
+    JsonName: ppp_pppmuxcp_opt_type
+  pppmuxcp.opt.length:
+    Name: pppmuxcp.opt.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Length
+    JsonName: ppp_pppmuxcp_opt_length
+  pppmuxcp.flags:
+    Name: pppmuxcp.flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: PFF/LXT
+    JsonName: ppp_pppmuxcp_flags
+  pppmuxcp.sub_frame_length:
+    Name: pppmuxcp.sub_frame_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Sub-frame Length
+    JsonName: ppp_pppmuxcp_sub_frame_length
+  pppmuxcp.def_prot_id:
+    Name: pppmuxcp.def_prot_id
+    Type: FtUint16
+    Display: BaseHex
+    Info: Default Protocol ID
+    JsonName: ppp_pppmuxcp_def_prot_id
+  pppmux.protocol:
+    Name: pppmux.protocol
+    Type: FtUint16
+    Display: BaseHex
+    Info: Protocol
+    JsonName: ppp_pppmux_protocol

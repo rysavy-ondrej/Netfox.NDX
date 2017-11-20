@@ -1,0 +1,133 @@
+syntax = "proto3";
+package Ndx.Decoders.Core;
+message Igmp {
+   // Type ('igmp_igmp_type')
+   uint32 IgmpType = 1;
+
+   // Reserved ('igmp_igmp_reserved')
+   bytes IgmpReserved = 2;
+
+   // IGMP Version ('igmp_igmp_version')
+   uint32 IgmpVersion = 3;
+
+   // Type Of Group ('igmp_igmp_group_type')
+   uint32 IgmpGroupType = 4;
+
+   // Reply ('igmp_igmp_reply')
+   uint32 IgmpReply = 5;
+
+   // Reply Pending ('igmp_reply_igmp_reply_pending')
+   uint32 IgmpReplyPending = 6;
+
+   // Checksum ('igmp_igmp_checksum')
+   uint32 IgmpChecksum = 7;
+
+   // Checksum Status ('igmp_checksum_igmp_checksum_status')
+   uint32 IgmpChecksumStatus = 8;
+
+   // Identifier ('igmp_igmp_identifier')
+   uint32 IgmpIdentifier = 9;
+
+   // Access Key ('igmp_igmp_access_key')
+   bytes IgmpAccessKey = 10;
+
+   // Max Resp Time ('igmp_igmp_max_resp')
+   uint32 IgmpMaxResp = 11;
+
+   // S ('igmp_igmp_s')
+   bool IgmpS = 12;
+
+   // QRV ('igmp_igmp_qrv')
+   uint32 IgmpQrv = 13;
+
+   // QQIC ('igmp_igmp_qqic')
+   uint32 IgmpQqic = 14;
+
+   // Num Src ('igmp_igmp_num_src')
+   uint32 IgmpNumSrc = 15;
+
+   // Source Address ('igmp_igmp_saddr')
+   bytes IgmpSaddr = 16;
+
+   // Num Group Records ('igmp_igmp_num_grp_recs')
+   uint32 IgmpNumGrpRecs = 17;
+
+   // Record Type ('igmp_igmp_record_type')
+   uint32 IgmpRecordType = 18;
+
+   // Aux Data Len ('igmp_igmp_aux_data_len')
+   uint32 IgmpAuxDataLen = 19;
+
+   // Multicast Address ('igmp_igmp_maddr')
+   bytes IgmpMaddr = 20;
+
+   // Aux Data ('igmp_igmp_aux_data')
+   bytes IgmpAuxData = 21;
+
+   // Data ('igmp_igmp_data')
+   bytes IgmpData = 22;
+
+   // Exponent ('igmp_max_resp_igmp_max_resp_exp')
+   uint32 IgmpMaxRespExp = 23;
+
+   // Mantissa ('igmp_max_resp_igmp_max_resp_mant')
+   uint32 IgmpMaxRespMant = 24;
+
+   // # hops ('igmp_igmp_mtrace_max_hops')
+   uint32 IgmpMtraceMaxHops = 25;
+
+   // Source Address ('igmp_igmp_mtrace_saddr')
+   bytes IgmpMtraceSaddr = 26;
+
+   // Receiver Address ('igmp_igmp_mtrace_raddr')
+   bytes IgmpMtraceRaddr = 27;
+
+   // Response Address ('igmp_igmp_mtrace_rspaddr')
+   bytes IgmpMtraceRspaddr = 28;
+
+   // Response TTL ('igmp_igmp_mtrace_resp_ttl')
+   uint32 IgmpMtraceRespTtl = 29;
+
+   // Query ID ('igmp_igmp_mtrace_q_id')
+   uint32 IgmpMtraceQId = 30;
+
+   // Query Arrival ('igmp_igmp_mtrace_q_arrival')
+   uint32 IgmpMtraceQArrival = 31;
+
+   // In itf addr ('igmp_igmp_mtrace_q_inaddr')
+   bytes IgmpMtraceQInaddr = 32;
+
+   // Out itf addr ('igmp_igmp_mtrace_q_outaddr')
+   bytes IgmpMtraceQOutaddr = 33;
+
+   // Previous rtr addr ('igmp_igmp_mtrace_q_prevrtr')
+   bytes IgmpMtraceQPrevrtr = 34;
+
+   // In pkts ('igmp_igmp_mtrace_q_inpkt')
+   uint32 IgmpMtraceQInpkt = 35;
+
+   // Out pkts ('igmp_igmp_mtrace_q_outpkt')
+   uint32 IgmpMtraceQOutpkt = 36;
+
+   // S,G pkt count ('igmp_igmp_mtrace_q_total')
+   uint32 IgmpMtraceQTotal = 37;
+
+   // Rtg Protocol ('igmp_igmp_mtrace_q_rtg_proto')
+   uint32 IgmpMtraceQRtgProto = 38;
+
+   // FwdTTL ('igmp_igmp_mtrace_q_fwd_ttl')
+   uint32 IgmpMtraceQFwdTtl = 39;
+
+   // MBZ ('igmp_igmp_mtrace_q_mbz')
+   uint32 IgmpMtraceQMbz = 40;
+
+   // S ('igmp_igmp_mtrace_q_s')
+   uint32 IgmpMtraceQS = 41;
+
+   // Src Mask ('igmp_igmp_mtrace_q_src_mask')
+   uint32 IgmpMtraceQSrcMask = 42;
+
+   // Forwarding Code ('igmp_igmp_mtrace_q_fwd_code')
+   uint32 IgmpMtraceQFwdCode = 43;
+
+}

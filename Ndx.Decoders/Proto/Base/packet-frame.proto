@@ -1,0 +1,115 @@
+syntax = "proto3";
+package Ndx.Decoders.Basic;
+message Frame {
+   // Arrival Time ('frame_frame_time')
+   int64 FrameTime = 1;
+
+   // Time shift for this packet ('frame_frame_offset_shift')
+   int64 FrameOffsetShift = 2;
+
+   // Epoch Time ('frame_frame_time_epoch')
+   int64 FrameTimeEpoch = 3;
+
+   // Time delta from previous captured frame ('frame_frame_time_delta')
+   int64 FrameTimeDelta = 4;
+
+   // Time delta from previous displayed frame ('frame_frame_time_delta_displayed')
+   int64 FrameTimeDeltaDisplayed = 5;
+
+   // Time since reference or first frame ('frame_frame_time_relative')
+   int64 FrameTimeRelative = 6;
+
+   // This is a Time Reference frame ('frame_frame_ref_time')
+   int32 FrameRefTime = 7;
+
+   // Frame Number ('frame_frame_number')
+   uint32 FrameNumber = 8;
+
+   // Frame length on the wire ('frame_frame_len')
+   uint32 FrameLen = 9;
+
+   // Frame length stored into the capture file ('frame_frame_cap_len')
+   uint32 FrameCapLen = 10;
+
+   // Frame MD5 Hash ('frame_frame_md5_hash')
+   string FrameMd5Hash = 11;
+
+   // Point-to-Point Direction ('frame_frame_p2p_dir')
+   int32 FrameP2pDir = 12;
+
+   // Link Number ('frame_frame_link_nr')
+   uint32 FrameLinkNr = 13;
+
+   // File Offset ('frame_frame_file_off')
+   int64 FrameFileOff = 14;
+
+   // Frame is marked ('frame_frame_marked')
+   bool FrameMarked = 15;
+
+   // Frame is ignored ('frame_frame_ignored')
+   bool FrameIgnored = 16;
+
+   // Protocols in frame ('frame_frame_protocols')
+   string FrameProtocols = 17;
+
+   // Coloring Rule Name ('frame_frame_coloring_rule_name')
+   string FrameColoringRuleName = 18;
+
+   // Coloring Rule String ('frame_frame_coloring_rule_string')
+   string FrameColoringRuleString = 19;
+
+   // Interface id ('frame_frame_interface_id')
+   uint32 FrameInterfaceId = 20;
+
+   // Interface name ('frame_frame_interface_name')
+   string FrameInterfaceName = 21;
+
+   // Interface description ('frame_frame_interface_description')
+   string FrameInterfaceDescription = 22;
+
+   // Packet flags ('frame_frame_packet_flags')
+   uint32 FramePacketFlags = 23;
+
+   // Direction ('frame_frame_packet_flags_direction')
+   uint32 FramePacketFlagsDirection = 24;
+
+   // Reception type ('frame_frame_packet_flags_reception_type')
+   uint32 FramePacketFlagsReceptionType = 25;
+
+   // FCS length ('frame_frame_packet_flags_fcs_length')
+   uint32 FramePacketFlagsFcsLength = 26;
+
+   // Reserved ('frame_frame_packet_flags_reserved')
+   uint32 FramePacketFlagsReserved = 27;
+
+   // CRC error ('frame_frame_packet_flags_crc_error')
+   bool FramePacketFlagsCrcError = 28;
+
+   // Packet too long error ('frame_frame_packet_flags_packet_too_error')
+   bool FramePacketFlagsPacketTooError = 29;
+
+   // Packet too short error ('frame_frame_packet_flags_packet_too_short_error')
+   bool FramePacketFlagsPacketTooShortError = 30;
+
+   // Wrong interframe gap error ('frame_frame_packet_flags_wrong_inter_frame_gap_error')
+   bool FramePacketFlagsWrongInterFrameGapError = 31;
+
+   // Unaligned frame error ('frame_frame_packet_flags_unaligned_frame_error')
+   bool FramePacketFlagsUnalignedFrameError = 32;
+
+   // Start frame delimiter error ('frame_frame_packet_flags_start_frame_delimiter_error')
+   bool FramePacketFlagsStartFrameDelimiterError = 33;
+
+   // Preamble error ('frame_frame_packet_flags_preamble_error')
+   bool FramePacketFlagsPreambleError = 34;
+
+   // Symbol error ('frame_frame_packet_flags_symbol_error')
+   bool FramePacketFlagsSymbolError = 35;
+
+   // Comment ('frame_frame_comment')
+   string FrameComment = 36;
+
+   // Encapsulation type ('frame_frame_encap_type')
+   int32 FrameEncapType = 37;
+
+}

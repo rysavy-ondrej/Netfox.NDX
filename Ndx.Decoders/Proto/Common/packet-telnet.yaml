@@ -1,0 +1,257 @@
+Name: telnet
+Fields:
+  telnet.cmd:
+    Name: telnet.cmd
+    Type: FtUint8
+    Display: BaseDec
+    Info: Command
+    JsonName: telnet_telnet_cmd
+  telnet.subcmd:
+    Name: telnet.subcmd
+    Type: FtUint8
+    Display: BaseDec
+    Info: Subcommand
+    JsonName: telnet_telnet_subcmd
+  telnet.auth.name:
+    Name: telnet.auth.name
+    Type: FtString
+    Info: Name
+    JsonName: telnet_telnet_auth_name
+  telnet.auth.cmd:
+    Name: telnet.auth.cmd
+    Type: FtUint8
+    Display: BaseDec
+    Info: Auth Cmd
+    JsonName: telnet_telnet_auth_cmd
+  telnet.auth.type:
+    Name: telnet.auth.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Auth Type
+    JsonName: telnet_telnet_auth_type
+  telnet.auth.mod.cred_fwd:
+    Name: telnet.auth.mod.cred_fwd
+    Type: FtBoolean
+    Display: SepDot
+    Info: Cred Fwd
+    JsonName: telnet_telnet_auth_mod_cred_fwd
+  telnet.auth.mod.who:
+    Name: telnet.auth.mod.who
+    Type: FtBoolean
+    Display: SepDot
+    Info: Who
+    JsonName: telnet_telnet_auth_mod_who
+  telnet.auth.mod.how:
+    Name: telnet.auth.mod.how
+    Type: FtBoolean
+    Display: SepDot
+    Info: How
+    JsonName: telnet_telnet_auth_mod_how
+  telnet.auth.mod.enc:
+    Name: telnet.auth.mod.enc
+    Type: FtUint8
+    Display: BaseDec
+    Info: Encrypt
+    JsonName: telnet_telnet_auth_mod_enc
+  telnet.auth.krb5.cmd:
+    Name: telnet.auth.krb5.cmd
+    Type: FtUint8
+    Display: BaseDec
+    Info: Command
+    JsonName: telnet_telnet_auth_krb5_cmd
+  telnet.string_subopt.value:
+    Name: telnet.string_subopt.value
+    Type: FtString
+    Info: Value
+    JsonName: telnet_telnet_string_subopt_value
+  telnet.naws_subopt.width:
+    Name: telnet.naws_subopt.width
+    Type: FtUint16
+    Display: BaseDec
+    Info: Width
+    JsonName: telnet_telnet_naws_subopt_width
+  telnet.naws_subopt.height:
+    Name: telnet.naws_subopt.height
+    Type: FtUint16
+    Display: BaseDec
+    Info: Height
+    JsonName: telnet_telnet_naws_subopt_height
+  telnet.outmark_subopt.cmd:
+    Name: telnet.outmark_subopt.cmd
+    Type: FtChar
+    Display: BaseHex
+    Info: Command
+    JsonName: telnet_telnet_outmark_subopt_cmd
+  telnet.outmark_subopt.banner:
+    Name: telnet.outmark_subopt.banner
+    Type: FtString
+    Info: Banner
+    JsonName: telnet_telnet_outmark_subopt_banner
+  telnet.comport_subopt.signature:
+    Name: telnet.comport_subopt.signature
+    Type: FtString
+    Info: Signature
+    JsonName: telnet_telnet_comport_subopt_signature
+  telnet.comport_subopt.baud_rate:
+    Name: telnet.comport_subopt.baud_rate
+    Type: FtUint32
+    Display: BaseDec
+    Info: Baud Rate
+    JsonName: telnet_telnet_comport_subopt_baud_rate
+  telnet.comport_subopt.data_size:
+    Name: telnet.comport_subopt.data_size
+    Type: FtUint8
+    Display: BaseDec
+    Info: Data Size
+    JsonName: telnet_telnet_comport_subopt_data_size
+  telnet.comport_subopt.parity:
+    Name: telnet.comport_subopt.parity
+    Type: FtUint8
+    Display: BaseDec
+    Info: Parity
+    JsonName: telnet_telnet_comport_subopt_parity
+  telnet.comport_subopt.stop:
+    Name: telnet.comport_subopt.stop
+    Type: FtUint8
+    Display: BaseDec
+    Info: Stop Bits
+    JsonName: telnet_telnet_comport_subopt_stop
+  telnet.comport_subopt.control:
+    Name: telnet.comport_subopt.control
+    Type: FtUint8
+    Display: BaseDec
+    Info: Control
+    JsonName: telnet_telnet_comport_subopt_control
+  telnet.comport_subopt.linestate:
+    Name: telnet.comport_subopt.linestate
+    Type: FtString
+    Info: Linestate
+    JsonName: telnet_telnet_comport_subopt_linestate
+  telnet.comport_subopt.set_linestate_mask:
+    Name: telnet.comport_subopt.set_linestate_mask
+    Type: FtString
+    Info: Set Linestate Mask
+    JsonName: telnet_telnet_comport_subopt_set_linestate_mask
+  telnet.comport_subopt.modemstate:
+    Name: telnet.comport_subopt.modemstate
+    Type: FtString
+    Info: Modemstate
+    JsonName: telnet_telnet_comport_subopt_modemstate
+  telnet.comport_subopt.set_modemstate_mask:
+    Name: telnet.comport_subopt.set_modemstate_mask
+    Type: FtString
+    Info: Set Modemstate Mask
+    JsonName: telnet_telnet_comport_subopt_set_modemstate_mask
+  telnet.comport_subopt.flow_control_suspend:
+    Name: telnet.comport_subopt.flow_control_suspend
+    Info: Flow Control Suspend
+    JsonName: telnet_telnet_comport_subopt_flow_control_suspend
+  telnet.comport_subopt.flow_control_resume:
+    Name: telnet.comport_subopt.flow_control_resume
+    Info: Flow Control Resume
+    JsonName: telnet_telnet_comport_subopt_flow_control_resume
+  telnet.comport_subopt.purge:
+    Name: telnet.comport_subopt.purge
+    Type: FtUint8
+    Display: BaseDec
+    Info: Purge
+    JsonName: telnet_telnet_comport_subopt_purge
+  telnet.rfc_subopt.cmd:
+    Name: telnet.rfc_subopt.cmd
+    Type: FtUint8
+    Display: BaseDec
+    Info: Command
+    JsonName: telnet_telnet_rfc_subopt_cmd
+  telnet.tabstop:
+    Name: telnet.tabstop
+    Type: FtUint8
+    Display: BaseDec
+    Info: Tabstop value
+    JsonName: telnet_telnet_tabstop
+  telnet.enc.cmd:
+    Name: telnet.enc.cmd
+    Type: FtUint8
+    Display: BaseDec
+    Info: Enc Cmd
+    JsonName: telnet_telnet_enc_cmd
+  telnet.enc.type:
+    Name: telnet.enc.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Enc Type
+    JsonName: telnet_telnet_enc_type
+  telnet.enc.type_data:
+    Name: telnet.enc.type_data
+    Type: FtBytes
+    Info: Type-specific data
+    JsonName: telnet_telnet_enc_type_data
+  telnet.enc.key_id:
+    Name: telnet.enc.key_id
+    Type: FtBytes
+    Info: Key ID
+    JsonName: telnet_telnet_enc_key_id
+  telnet.data:
+    Name: telnet.data
+    Type: FtString
+    Info: Data
+    JsonName: telnet_telnet_data
+  telnet.option_data:
+    Name: telnet.option_data
+    Type: FtBytes
+    Info: Option data
+    JsonName: telnet_telnet_option_data
+  telnet.subcommand_data:
+    Name: telnet.subcommand_data
+    Type: FtBytes
+    Info: Subcommand data
+    JsonName: telnet_telnet_subcommand_data
+  telnet.tn3270.subopt:
+    Name: telnet.tn3270.subopt
+    Type: FtUint8
+    Display: BaseDec
+    Info: Suboption
+    JsonName: telnet_telnet_tn3270_subopt
+  telnet.tn3270.connect:
+    Name: telnet.tn3270.connect
+    Type: FtString
+    Info: Connect
+    JsonName: telnet_telnet_tn3270_connect
+  telnet.tn3270.is:
+    Name: telnet.tn3270.is
+    Type: FtString
+    Info: Is
+    JsonName: telnet_telnet_tn3270_is
+  telnet.tn3270.request_string:
+    Name: telnet.tn3270.request_string
+    Type: FtString
+    Info: Request
+    JsonName: telnet_telnet_tn3270_request_string
+  telnet.tn3270.reason:
+    Name: telnet.tn3270.reason
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reason
+    JsonName: telnet_telnet_tn3270_reason
+  telnet.tn3270.request:
+    Name: telnet.tn3270.request
+    Type: FtUint8
+    Display: BaseDec
+    Info: Request
+    JsonName: telnet_telnet_tn3270_request
+  telnet.tn3270.regime_subopt.value:
+    Name: telnet.tn3270.regime_subopt.value
+    Type: FtString
+    Info: Value
+    JsonName: telnet_telnet_tn3270_regime_subopt_value
+  telnet.regime_cmd:
+    Name: telnet.regime_cmd
+    Type: FtUint8
+    Display: BaseDec
+    Info: Cmd
+    JsonName: telnet_telnet_regime_cmd
+  telnet.starttls:
+    Name: telnet.starttls
+    Type: FtUint8
+    Display: BaseDec
+    Info: Follows
+    JsonName: telnet_telnet_starttls

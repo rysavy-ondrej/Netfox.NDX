@@ -1,0 +1,419 @@
+Name: atm
+Fields:
+  atm.aal:
+    Name: atm.aal
+    Type: FtUint8
+    Display: BaseDec
+    Info: AAL
+    JsonName: atm_atm_aal
+  atm.GFC:
+    Name: atm.GFC
+    Type: FtUint8
+    Display: BaseDec
+    Info: GFC
+    JsonName: atm_atm_GFC
+  atm.vpi:
+    Name: atm.vpi
+    Type: FtUint8
+    Display: BaseDec
+    Info: VPI
+    JsonName: atm_atm_vpi
+  atm.vci:
+    Name: atm.vci
+    Type: FtUint16
+    Display: BaseDec
+    Info: VCI
+    JsonName: atm_atm_vci
+  atm.cid:
+    Name: atm.cid
+    Type: FtUint8
+    Display: BaseDec
+    Info: CID
+    JsonName: atm_atm_cid
+  atm.reserved:
+    Name: atm.reserved
+    Type: FtBytes
+    Info: Reserved
+    JsonName: atm_atm_reserved
+  atm.le_client.client:
+    Name: atm.le_client.client
+    Type: FtUint16
+    Display: BaseHex
+    Info: LE Client
+    JsonName: atm_atm_le_client_client
+  atm.lan_destination.tag:
+    Name: atm.lan_destination.tag
+    Type: FtUint16
+    Display: BaseHex
+    Info: Tag
+    JsonName: atm_atm_lan_destination_tag
+  atm.lan_destination.mac:
+    Name: atm.lan_destination.mac
+    Type: FtEther
+    Info: MAC address
+    JsonName: atm_atm_lan_destination_mac
+  atm.le_control.tlv_type:
+    Name: atm.le_control.tlv_type
+    Type: FtUint32
+    Display: BaseHex
+    Info: TLV Type
+    JsonName: atm_atm_le_control_tlv_type
+  atm.le_control.tlv_length:
+    Name: atm.le_control.tlv_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: TLV Length
+    JsonName: atm_atm_le_control_tlv_length
+  atm.lan_destination.route_desc:
+    Name: atm.lan_destination.route_desc
+    Type: FtUint16
+    Display: BaseHex
+    Info: Route descriptor
+    JsonName: atm_atm_lan_destination_route_desc
+  atm.lan_destination.lan_id:
+    Name: atm.lan_destination.lan_id
+    Type: FtUint16
+    Display: BaseDec
+    Info: LAN ID
+    JsonName: atm_atm_lan_destination_lan_id
+  atm.lan_destination.bridge_num:
+    Name: atm.lan_destination.bridge_num
+    Type: FtUint16
+    Display: BaseDec
+    Info: Bridge number
+    JsonName: atm_atm_lan_destination_bridge_num
+  atm.source_atm:
+    Name: atm.source_atm
+    Type: FtBytes
+    Info: Source ATM address
+    JsonName: atm_atm_source_atm
+  atm.target_atm:
+    Name: atm.target_atm
+    Type: FtBytes
+    Info: Target ATM address
+    JsonName: atm_atm_target_atm
+  atm.le_configure_join_frame.lan_type:
+    Name: atm.le_configure_join_frame.lan_type
+    Type: FtUint8
+    Display: BaseHex
+    Info: LAN type
+    JsonName: atm_atm_le_configure_join_frame_lan_type
+  atm.le_configure_join_frame.max_frame_size:
+    Name: atm.le_configure_join_frame.max_frame_size
+    Type: FtUint8
+    Display: BaseHex
+    Info: Maximum frame size
+    JsonName: atm_atm_le_configure_join_frame_max_frame_size
+  atm.le_configure_join_frame.num_tlvs:
+    Name: atm.le_configure_join_frame.num_tlvs
+    Type: FtUint8
+    Display: BaseDec
+    Info: Number of TLVs
+    JsonName: atm_atm_le_configure_join_frame_num_tlvs
+  atm.le_configure_join_frame.elan_name_size:
+    Name: atm.le_configure_join_frame.elan_name_size
+    Type: FtUint8
+    Display: BaseDec
+    Info: ELAN name size
+    JsonName: atm_atm_le_configure_join_frame_elan_name_size
+  atm.le_registration_frame.num_tlvs:
+    Name: atm.le_registration_frame.num_tlvs
+    Type: FtUint8
+    Display: BaseDec
+    Info: Number of TLVs
+    JsonName: atm_atm_le_registration_frame_num_tlvs
+  atm.le_arp_frame.num_tlvs:
+    Name: atm.le_arp_frame.num_tlvs
+    Type: FtUint8
+    Display: BaseDec
+    Info: Number of TLVs
+    JsonName: atm_atm_le_arp_frame_num_tlvs
+  atm.le_verify_frame.num_tlvs:
+    Name: atm.le_verify_frame.num_tlvs
+    Type: FtUint8
+    Display: BaseDec
+    Info: Number of TLVs
+    JsonName: atm_atm_le_verify_frame_num_tlvs
+  atm.le_configure_join_frame.elan_name:
+    Name: atm.le_configure_join_frame.elan_name
+    Type: FtBytes
+    Info: ELAN name
+    JsonName: atm_atm_le_configure_join_frame_elan_name
+  atm.le_control.marker:
+    Name: atm.le_control.marker
+    Type: FtUint16
+    Display: BaseHex
+    Info: Marker
+    JsonName: atm_atm_le_control_marker
+  atm.le_control.protocol:
+    Name: atm.le_control.protocol
+    Type: FtUint8
+    Display: BaseHex
+    Info: Protocol
+    JsonName: atm_atm_le_control_protocol
+  atm.le_control.version:
+    Name: atm.le_control.version
+    Type: FtUint8
+    Display: BaseHex
+    Info: Version
+    JsonName: atm_atm_le_control_version
+  atm.le_control.opcode:
+    Name: atm.le_control.opcode
+    Type: FtUint16
+    Display: BaseHex
+    Info: Opcode
+    JsonName: atm_atm_le_control_opcode
+  atm.le_control.status:
+    Name: atm.le_control.status
+    Type: FtUint16
+    Display: BaseHex
+    Info: Status
+    JsonName: atm_atm_le_control_status
+  atm.le_control.transaction_id:
+    Name: atm.le_control.transaction_id
+    Type: FtUint32
+    Display: BaseHex
+    Info: Transaction ID
+    JsonName: atm_atm_le_control_transaction_id
+  atm.le_control.requester_lecid:
+    Name: atm.le_control.requester_lecid
+    Type: FtUint16
+    Display: BaseHex
+    Info: Requester LECID
+    JsonName: atm_atm_le_control_requester_lecid
+  atm.le_control.flag:
+    Name: atm.le_control.flag
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: atm_atm_le_control_flag
+  atm.le_control.flag.v2_capable:
+    Name: atm.le_control.flag.v2_capable
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: V2 capable
+    JsonName: atm_le_control_flag_atm_le_control_flag_v2_capable
+  atm.le_control.flag.selective_multicast:
+    Name: atm.le_control.flag.selective_multicast
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Selective multicast
+    JsonName: atm_le_control_flag_atm_le_control_flag_selective_multicast
+  atm.le_control.flag.v2_required:
+    Name: atm.le_control.flag.v2_required
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: V2 required
+    JsonName: atm_le_control_flag_atm_le_control_flag_v2_required
+  atm.le_control.flag.flag_proxy:
+    Name: atm.le_control.flag.flag_proxy
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Proxy
+    JsonName: atm_le_control_flag_atm_le_control_flag_flag_proxy
+  atm.le_control.flag.exclude_explorer_frames:
+    Name: atm.le_control.flag.exclude_explorer_frames
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Exclude explorer frames
+    JsonName: atm_le_control_flag_atm_le_control_flag_exclude_explorer_frames
+  atm.le_control.flag.address:
+    Name: atm.le_control.flag.address
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Address
+    JsonName: atm_le_control_flag_atm_le_control_flag_address
+  atm.le_control.flag.topology_change:
+    Name: atm.le_control.flag.topology_change
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Topology change
+    JsonName: atm_le_control_flag_atm_le_control_flag_topology_change
+  atm.traffic_type:
+    Name: atm.traffic_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Traffic type
+    JsonName: atm_atm_traffic_type
+  atm.traffic.vcmx:
+    Name: atm.traffic.vcmx
+    Type: FtUint8
+    Display: BaseDec
+    Info: VC multiplexed traffic type
+    JsonName: atm_atm_traffic_vcmx
+  atm.traffic.lane:
+    Name: atm.traffic.lane
+    Type: FtUint8
+    Display: BaseDec
+    Info: LANE traffic type
+    JsonName: atm_atm_traffic_lane
+  atm.traffic.ipsilon:
+    Name: atm.traffic.ipsilon
+    Type: FtUint8
+    Display: BaseDec
+    Info: Ipsilon traffic type
+    JsonName: atm_atm_traffic_ipsilon
+  atm.cells:
+    Name: atm.cells
+    Type: FtUint16
+    Display: BaseDec
+    Info: Cells
+    JsonName: atm_atm_cells
+  atm.hf_atm.aal5t_uu:
+    Name: atm.hf_atm.aal5t_uu
+    Type: FtUint8
+    Display: BaseHex
+    Info: AAL5 UU
+    JsonName: atm_atm_hf_atm_aal5t_uu
+  atm.hf_atm.aal5t_cpi:
+    Name: atm.hf_atm.aal5T_cpi
+    Type: FtUint8
+    Display: BaseHex
+    Info: AAL5 CPI
+    JsonName: atm_atm_hf_atm_aal5t_cpi
+  atm.aal5t_len:
+    Name: atm.aal5T_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: AAL5 len
+    JsonName: atm_atm_aal5t_len
+  atm.aal5t_crc:
+    Name: atm.aal5T_crc
+    Type: FtUint32
+    Display: BaseHex
+    Info: AAL5 CRC
+    JsonName: atm_atm_aal5t_crc
+  atm.payload_type:
+    Name: atm.payload_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Payload Type
+    JsonName: atm_atm_payload_type
+  atm.cell_loss_priority:
+    Name: atm.cell_loss_priority
+    Type: FtBoolean
+    Display: SepDot
+    Info: Cell Loss Priority
+    JsonName: atm_atm_cell_loss_priority
+  atm.header_error_check:
+    Name: atm.header_error_check
+    Type: FtUint8
+    Display: BaseHex
+    Info: Header Error Check
+    JsonName: atm_atm_header_error_check
+  atm.channel:
+    Name: atm.channel
+    Type: FtUint16
+    Display: BaseDec
+    Info: Channel
+    JsonName: atm_atm_channel
+  atm.aa1.csi:
+    Name: atm.aa1.csi
+    Type: FtUint8
+    Display: BaseDec
+    Info: CSI
+    JsonName: atm_atm_aa1_csi
+  atm.aa1.seq_count:
+    Name: atm.aa1.seq_count
+    Type: FtUint8
+    Display: BaseDec
+    Info: Sequence Count
+    JsonName: atm_atm_aa1_seq_count
+  atm.aa1.crc:
+    Name: atm.aa1.crc
+    Type: FtUint8
+    Display: BaseDec
+    Info: CRC
+    JsonName: atm_atm_aa1_crc
+  atm.aa1.parity:
+    Name: atm.aa1.parity
+    Type: FtUint8
+    Display: BaseDec
+    Info: Parity
+    JsonName: atm_atm_aa1_parity
+  atm.aa1.payload:
+    Name: atm.aa1.payload
+    Type: FtBytes
+    Info: Payload
+    JsonName: atm_atm_aa1_payload
+  atm.aal3_4.seg_type:
+    Name: atm.aal3_4.seg_type
+    Type: FtUint16
+    Display: BaseDec
+    Info: Segment Type
+    JsonName: atm_atm_aal3_4_seg_type
+  atm.aal3_4.seq_num:
+    Name: atm.aal3_4.seq_num
+    Type: FtUint16
+    Display: BaseDec
+    Info: Sequence Number
+    JsonName: atm_atm_aal3_4_seq_num
+  atm.aal3_4.multiplex_id:
+    Name: atm.aal3_4.multiplex_id
+    Type: FtUint16
+    Display: BaseDec
+    Info: Multiplex ID
+    JsonName: atm_atm_aal3_4_multiplex_id
+  atm.aal3_4.information:
+    Name: atm.aal3_4.information
+    Type: FtBytes
+    Info: Information
+    JsonName: atm_atm_aal3_4_information
+  atm.aal3_4.length_indicator:
+    Name: atm.aal3_4.length_indicator
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length Indicator
+    JsonName: atm_atm_aal3_4_length_indicator
+  atm.aal3_4.crc:
+    Name: atm.aal3_4.crc
+    Type: FtUint16
+    Display: BaseDec
+    Info: CRC
+    JsonName: atm_atm_aal3_4_crc
+  atm.aal_oamcell.type:
+    Name: atm.aal_oamcell.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: OAM Type
+    JsonName: atm_atm_aal_oamcell_type
+  atm.aal_oamcell.type.fm:
+    Name: atm.aal_oamcell.type.fm
+    Type: FtUint8
+    Display: BaseDec
+    Info: Function Type
+    JsonName: atm_aal_oamcell_type_atm_aal_oamcell_type_fm
+  atm.aal_oamcell.type.pm:
+    Name: atm.aal_oamcell.type.pm
+    Type: FtUint8
+    Display: BaseDec
+    Info: Function Type
+    JsonName: atm_aal_oamcell_type_atm_aal_oamcell_type_pm
+  atm.aal_oamcell.type.ad:
+    Name: atm.aal_oamcell.type.ad
+    Type: FtUint8
+    Display: BaseDec
+    Info: Function Type
+    JsonName: atm_aal_oamcell_type_atm_aal_oamcell_type_ad
+  atm.aal_oamcell.type.ft:
+    Name: atm.aal_oamcell.type.ft
+    Type: FtUint8
+    Display: BaseDec
+    Info: Function Type
+    JsonName: atm_aal_oamcell_type_atm_aal_oamcell_type_ft
+  atm.aal_oamcell.func_spec:
+    Name: atm.aal_oamcell.func_spec
+    Type: FtBytes
+    Info: Function-specific information
+    JsonName: atm_atm_aal_oamcell_func_spec
+  atm.aal_oamcell.crc:
+    Name: atm.aal_oamcell.crc
+    Type: FtUint16
+    Display: BaseHex
+    Info: CRC-10
+    JsonName: atm_atm_aal_oamcell_crc
+  atm.padding:
+    Name: atm.padding
+    Type: FtBytes
+    Info: Padding
+    JsonName: atm_atm_padding

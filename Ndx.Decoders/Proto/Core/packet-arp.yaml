@@ -1,0 +1,255 @@
+Name: arp
+Fields:
+  arp.hw.type:
+    Name: arp.hw.type
+    Type: FtUint16
+    Display: BaseDec
+    Info: Hardware type
+    JsonName: arp_arp_hw_type
+  arp.proto.type:
+    Name: arp.proto.type
+    Type: FtUint16
+    Display: BaseHex
+    Info: Protocol type
+    JsonName: arp_arp_proto_type
+  arp.hw.size:
+    Name: arp.hw.size
+    Type: FtUint8
+    Display: BaseDec
+    Info: Hardware size
+    JsonName: arp_arp_hw_size
+  arp.src.htype:
+    Name: arp.src.htype
+    Type: FtBoolean
+    Display: SepDot
+    Info: Sender ATM number type
+    JsonName: arp_arp_src_htype
+  arp.src.hlen:
+    Name: arp.src.hlen
+    Type: FtUint8
+    Display: BaseDec
+    Info: Sender ATM number length
+    JsonName: arp_arp_src_hlen
+  arp.src.stype:
+    Name: arp.src.stype
+    Type: FtBoolean
+    Display: SepDot
+    Info: Sender ATM subaddress type
+    JsonName: arp_arp_src_stype
+  arp.src.slen:
+    Name: arp.src.slen
+    Type: FtUint8
+    Display: BaseDec
+    Info: Sender ATM subaddress length
+    JsonName: arp_arp_src_slen
+  arp.proto.size:
+    Name: arp.proto.size
+    Type: FtUint8
+    Display: BaseDec
+    Info: Protocol size
+    JsonName: arp_arp_proto_size
+  arp.opcode:
+    Name: arp.opcode
+    Type: FtUint16
+    Display: BaseDec
+    Info: Opcode
+    JsonName: arp_arp_opcode
+  arp.isgratuitous:
+    Name: arp.isgratuitous
+    Type: FtBoolean
+    Info: Is gratuitous
+    JsonName: arp_arp_isgratuitous
+  arp.src.pln:
+    Name: arp.src.pln
+    Type: FtUint8
+    Display: BaseDec
+    Info: Sender protocol size
+    JsonName: arp_arp_src_pln
+  arp.dst.htype:
+    Name: arp.dst.htype
+    Type: FtBoolean
+    Display: SepDot
+    Info: Target ATM number type
+    JsonName: arp_arp_dst_htype
+  arp.dst.hlen:
+    Name: arp.dst.hlen
+    Type: FtUint8
+    Display: BaseDec
+    Info: Target ATM number length
+    JsonName: arp_arp_dst_hlen
+  arp.dst.stype:
+    Name: arp.dst.stype
+    Type: FtBoolean
+    Display: SepDot
+    Info: Target ATM subaddress type
+    JsonName: arp_arp_dst_stype
+  arp.dst.slen:
+    Name: arp.dst.slen
+    Type: FtUint8
+    Display: BaseDec
+    Info: Target ATM subaddress length
+    JsonName: arp_arp_dst_slen
+  arp.dst.pln:
+    Name: arp.dst.pln
+    Type: FtUint8
+    Display: BaseDec
+    Info: Target protocol size
+    JsonName: arp_arp_dst_pln
+  arp.src.hw:
+    Name: arp.src.hw
+    Type: FtBytes
+    Info: Sender hardware address
+    JsonName: arp_arp_src_hw
+  arp.src.hw_mac:
+    Name: arp.src.hw_mac
+    Type: FtEther
+    Info: Sender MAC address
+    JsonName: arp_arp_src_hw_mac
+  arp.src.hw_ax25:
+    Name: arp.src.hw_ax25
+    Type: FtAx25
+    Info: Sender AX.25 address
+    JsonName: arp_arp_src_hw_ax25
+  arp.src.atm_num_e164:
+    Name: arp.src.atm_num_e164
+    Type: FtString
+    Info: Sender ATM number (E.164)
+    JsonName: arp_arp_src_atm_num_e164
+  arp.src.atm_num_nsap:
+    Name: arp.src.atm_num_nsap
+    Type: FtBytes
+    Info: Sender ATM number (NSAP)
+    JsonName: arp_arp_src_atm_num_nsap
+  arp.src.atm_subaddr:
+    Name: arp.src.atm_subaddr
+    Type: FtBytes
+    Info: Sender ATM subaddress
+    JsonName: arp_arp_src_atm_subaddr
+  arp.src.proto:
+    Name: arp.src.proto
+    Type: FtBytes
+    Info: Sender protocol address
+    JsonName: arp_arp_src_proto
+  arp.src.proto_ipv4:
+    Name: arp.src.proto_ipv4
+    Type: FtIpv4
+    Info: Sender IP address
+    JsonName: arp_arp_src_proto_ipv4
+  arp.dst.hw:
+    Name: arp.dst.hw
+    Type: FtBytes
+    Info: Target hardware address
+    JsonName: arp_arp_dst_hw
+  arp.dst.hw_mac:
+    Name: arp.dst.hw_mac
+    Type: FtEther
+    Info: Target MAC address
+    JsonName: arp_arp_dst_hw_mac
+  arp.dst.hw_ax25:
+    Name: arp.dst.hw_ax25
+    Type: FtAx25
+    Info: Target AX.25 address
+    JsonName: arp_arp_dst_hw_ax25
+  arp.dst.atm_num_e164:
+    Name: arp.dst.atm_num_e164
+    Type: FtString
+    Info: Target ATM number (E.164)
+    JsonName: arp_arp_dst_atm_num_e164
+  arp.dst.atm_num_nsap:
+    Name: arp.dst.atm_num_nsap
+    Type: FtBytes
+    Info: Target ATM number (NSAP)
+    JsonName: arp_arp_dst_atm_num_nsap
+  arp.dst.atm_subaddr:
+    Name: arp.dst.atm_subaddr
+    Type: FtBytes
+    Info: Target ATM subaddress
+    JsonName: arp_arp_dst_atm_subaddr
+  arp.dst.proto:
+    Name: arp.dst.proto
+    Type: FtBytes
+    Info: Target protocol address
+    JsonName: arp_arp_dst_proto
+  arp.dst.proto_ipv4:
+    Name: arp.dst.proto_ipv4
+    Type: FtIpv4
+    Info: Target IP address
+    JsonName: arp_arp_dst_proto_ipv4
+  arp.dst.drarp_error_status:
+    Name: arp.dst.drarp_error_status
+    Type: FtUint16
+    Display: BaseDec
+    Info: DRARP error status
+    JsonName: arp_arp_dst_drarp_error_status
+  arp.duplicate-address-frame:
+    Name: arp.duplicate-address-frame
+    Type: FtFramenum
+    Info: Frame showing earlier use of IP address
+    JsonName: arp_arp_duplicate-address-frame
+  arp.seconds-since-duplicate-address-frame:
+    Name: arp.seconds-since-duplicate-address-frame
+    Type: FtUint32
+    Display: BaseDec
+    Info: Seconds since earlier frame seen
+    JsonName: arp_arp_seconds-since-duplicate-address-frame
+  arp.src.atm_data_country_code:
+    Name: arp.src.atm_data_country_code
+    Type: FtUint16
+    Display: BaseHex
+    Info: Data Country Code
+    JsonName: arp_arp_src_atm_data_country_code
+  arp.src.atm_data_country_code_group:
+    Name: arp.src.atm_data_country_code_group
+    Type: FtUint16
+    Display: BaseHex
+    Info: Data Country Code (group)
+    JsonName: arp_arp_src_atm_data_country_code_group
+  arp.src.atm_high_order_dsp:
+    Name: arp.src.atm_high_order_dsp
+    Type: FtBytes
+    Info: High Order DSP
+    JsonName: arp_arp_src_atm_high_order_dsp
+  arp.src.atm_end_system_identifier:
+    Name: arp.src.atm_end_system_identifier
+    Type: FtBytes
+    Info: End System Identifier
+    JsonName: arp_arp_src_atm_end_system_identifier
+  arp.src.atm_selector:
+    Name: arp.src.atm_selector
+    Type: FtUint8
+    Display: BaseHex
+    Info: Selector
+    JsonName: arp_arp_src_atm_selector
+  arp.src.atm_international_code_designator:
+    Name: arp.src.atm_international_code_designator
+    Type: FtUint16
+    Display: BaseHex
+    Info: International Code Designator
+    JsonName: arp_arp_src_atm_international_code_designator
+  arp.src.atm_international_code_designator_group:
+    Name: arp.src.atm_international_code_designator_group
+    Type: FtUint16
+    Display: BaseHex
+    Info: International Code Designator (group)
+    JsonName: arp_arp_src_atm_international_code_designator_group
+  arp.src.atm_e.164_isdn:
+    Name: arp.src.atm_e.164_isdn
+    Type: FtBytes
+    Info: E.164 ISDN
+    JsonName: arp_arp_src_atm_e_164_isdn
+  arp.src.atm_e.164_isdn_group:
+    Name: arp.src.atm_e.164_isdn_group
+    Type: FtBytes
+    Info: E.164 ISDN
+    JsonName: arp_arp_src_atm_e_164_isdn_group
+  arp.src.atm_rest_of_address:
+    Name: arp.src.atm_rest_of_address
+    Type: FtBytes
+    Info: Rest of address
+    JsonName: arp_arp_src_atm_rest_of_address
+  arp.src.atm_afi:
+    Name: arp.src.atm_afi
+    Type: FtUint8
+    Display: BaseHex
+    Info: AFI
+    JsonName: arp_arp_src_atm_afi

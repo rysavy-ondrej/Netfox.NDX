@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.CommandLineUtils;
+using Ndx.Captures;
+using Ndx.Decoders;
 using Ndx.Model;
 using System;
 using System.Collections.Generic;
@@ -8,15 +10,21 @@ namespace Netdx
 {
     internal class PrepareTrace
     {
-        public string Input { get; set; }
-        public string Output { get; set; }
-
-        public void Execute()
+        public void Execute(string inpath, string outpath)
         {
-            using (var stream = File.OpenRead(Input))
+            var factory = new DecoderFactory();
+            using (var json = new PcapJsonStream(new StreamReader(File.OpenRead(inpath))))
             {
-                
-            }            
+                JsonPacket packet;
+                while((packet = json.ReadPacket()) != null)
+                {
+                    foreach(var proto in packet.Protocols)
+                    {
+                        var protoObj = packet.GetProtocol(proto);
+                        var message = factory.DecodeProtocol(proto, protoObj);
+                    }
+                }
+            }
         }
 
         internal static string Name = "Prepare-Trace";
@@ -27,32 +35,35 @@ namespace Netdx
             (CommandLineApplication target) =>
             {
                 var infiles = target.Argument("input", "Input trace in JSON format produces with 'TShark -T ek' command.", true);
-                var outdir = target.Option("-o|--outdir", "The output directory where to store the decoded packets.", CommandOptionType.SingleValue);
+                var outdir = target.Option("-o|--outdir", "The output directory were to put files with decoded packets.", CommandOptionType.SingleValue);
                 target.Description = "Prepares data for further processing by NDX tools.";
                 target.HelpOption("-?|-h|--help");
                 target.OnExecute(() =>
                 {
-                    if (infiles.Value == null)
+                    if (infiles.Values.Count == 0)
                     {
-                        target.Error.WriteLine("No input file specified!");
+                        target.Error.WriteLine("No input specified!");
                         target.ShowHelp(Name);
-                        return -1;
+                        return 0;
                     }
-                    var cmd = new PrepareTrace()
-                    {
-                    };
+                    var cmd = new PrepareTrace();
 
                     foreach (var file in infiles.Values)
                     {
                         var infile = file;
-                        var outfile = Path.ChangeExtension(outdir.HasValue() ? Path.Combine(outdir.Value(), Path.GetFileName(infile)) : infile, "dcap");
+                        var outfile = Path.ChangeExtension(outdir.HasValue() ? Path.Combine(outdir.Value(), Path.GetFileName(infile)) : infile, "zip");
                         Console.WriteLine($"{file}->{outfile}");
-                        if (File.Exists(infile))
+                        try
                         {
-                            cmd.Input = infile;
-                            cmd.Output = outfile;
-                            cmd.Execute();
+                            cmd.Execute(infile, outfile);
                         }
+                        catch (Exception e)
+                        {
+                            target.Error.WriteLine();
+                            target.Error.WriteLine($"ERROR: {e.Message}");
+                            target.Error.WriteLine("Use switch -d to see details about this error.");
+                        }
+
                     }
                     return 0;
                 });

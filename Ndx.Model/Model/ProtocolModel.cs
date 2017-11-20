@@ -23,41 +23,41 @@ namespace Ndx.Model {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChNQcm90b2NvbE1vZGVsLnByb3RvEgluZHgubW9kZWwaD0NvbnN0YW50cy5w",
-            "cm90byJ5Cg1Qcm90b2NvbEZpZWxkEgwKBE5hbWUYASABKAkSIgoEVHlwZRgC",
-            "IAEoDjIULm5keC5tb2RlbC5GaWVsZFR5cGUSKAoHRGlzcGxheRgDIAEoDjIX",
-            "Lm5keC5tb2RlbC5GaWVsZERpc3BsYXkSDAoESW5mbxgEIAEoCSKSAQoIUHJv",
-            "dG9jb2wSDAoETmFtZRgBIAEoCRIvCgZGaWVsZHMYAiADKAsyHy5uZHgubW9k",
-            "ZWwuUHJvdG9jb2wuRmllbGRzRW50cnkaRwoLRmllbGRzRW50cnkSCwoDa2V5",
-            "GAEgASgJEicKBXZhbHVlGAIgASgLMhgubmR4Lm1vZGVsLlByb3RvY29sRmll",
-            "bGQ6AjgBKugFCglGaWVsZFR5cGUSCwoHRlRfTk9ORRAAEg8KC0ZUX1BST1RP",
-            "Q09MEAESDgoKRlRfQk9PTEVBThACEgsKB0ZUX0NIQVIQAxIMCghGVF9VSU5U",
-            "OBAEEg0KCUZUX1VJTlQxNhAFEg0KCUZUX1VJTlQyNBAGEg0KCUZUX1VJTlQz",
-            "MhAHEg0KCUZUX1VJTlQ0MBAIEg0KCUZUX1VJTlQ0OBAJEg0KCUZUX1VJTlQ1",
-            "NhAKEg0KCUZUX1VJTlQ2NBALEgsKB0ZUX0lOVDgQDBIMCghGVF9JTlQxNhAN",
-            "EgwKCEZUX0lOVDI0EA4SDAoIRlRfSU5UMzIQDxIMCghGVF9JTlQ0MBAQEgwK",
-            "CEZUX0lOVDQ4EBESDAoIRlRfSU5UNTYQEhIMCghGVF9JTlQ2NBATEhgKFEZU",
-            "X0lFRUVfMTEwNzNfU0ZMT0FUEBQSFwoTRlRfSUVFRV8xMTA3M19GTE9BVBAV",
-            "EgwKCEZUX0ZMT0FUEBYSDQoJRlRfRE9VQkxFEBcSFAoQRlRfQUJTT0xVVEVf",
-            "VElNRRAYEhQKEEZUX1JFTEFUSVZFX1RJTUUQGRINCglGVF9TVFJJTkcQGhIO",
-            "CgpGVF9TVFJJTkdaEBsSEgoORlRfVUlOVF9TVFJJTkcQHBIMCghGVF9FVEhF",
-            "UhAdEgwKCEZUX0JZVEVTEB4SEQoNRlRfVUlOVF9CWVRFUxAfEgsKB0ZUX0lQ",
-            "djQQIBILCgdGVF9JUHY2ECESDQoJRlRfSVBYTkVUECISDwoLRlRfRlJBTUVO",
-            "VU0QIxILCgdGVF9QQ1JFECQSCwoHRlRfR1VJRBAlEgoKBkZUX09JRBAmEgwK",
-            "CEZUX0VVSTY0ECcSCwoHRlRfQVgyNRAoEgwKCEZUX1ZJTkVTECkSDgoKRlRf",
-            "UkVMX09JRBAqEhAKDEZUX1NZU1RFTV9JRBArEhEKDUZUX1NUUklOR1pQQUQQ",
-            "LBIMCghGVF9GQ1dXThAtEhAKDEZUX05VTV9UWVBFUxAuKsUCCgxGaWVsZERp",
-            "c3BsYXkSDQoJQkFTRV9OT05FEAASDAoIQkFTRV9ERUMQARIMCghCQVNFX0hF",
-            "WBACEgwKCEJBU0VfT0NUEAMSEAoMQkFTRV9ERUNfSEVYEAQSEAoMQkFTRV9I",
-            "RVhfREVDEAUSDwoLQkFTRV9DVVNUT00QBhIPCgtTVFJfVU5JQ09ERRAHEgsK",
-            "B1NFUF9ET1QQCBIMCghTRVBfREFTSBAJEg0KCVNFUF9DT0xPThAKEg0KCVNF",
-            "UF9TUEFDRRALEhAKDEJBU0VfTkVUTUFTSxAMEg8KC0JBU0VfUFRfVURQEA0S",
-            "DwoLQkFTRV9QVF9UQ1AQDhIQCgxCQVNFX1BUX0RDQ1AQDxIQCgxCQVNFX1BU",
-            "X1NDVFAQEBIMCghCQVNFX09VSRAREhcKE0FCU09MVVRFX1RJTUVfTE9DQUwQ",
-            "FEIPCg1vcmcubmR4Lm1vZGVsYgZwcm90bzM="));
+            "cm90byKLAQoNUHJvdG9jb2xGaWVsZBIMCgROYW1lGAEgASgJEiIKBFR5cGUY",
+            "AiABKA4yFC5uZHgubW9kZWwuRmllbGRUeXBlEigKB0Rpc3BsYXkYAyABKA4y",
+            "Fy5uZHgubW9kZWwuRmllbGREaXNwbGF5EgwKBEluZm8YBCABKAkSEAoISnNv",
+            "bk5hbWUYBSABKAkikgEKCFByb3RvY29sEgwKBE5hbWUYASABKAkSLwoGRmll",
+            "bGRzGAIgAygLMh8ubmR4Lm1vZGVsLlByb3RvY29sLkZpZWxkc0VudHJ5GkcK",
+            "C0ZpZWxkc0VudHJ5EgsKA2tleRgBIAEoCRInCgV2YWx1ZRgCIAEoCzIYLm5k",
+            "eC5tb2RlbC5Qcm90b2NvbEZpZWxkOgI4ASroBQoJRmllbGRUeXBlEgsKB0ZU",
+            "X05PTkUQABIPCgtGVF9QUk9UT0NPTBABEg4KCkZUX0JPT0xFQU4QAhILCgdG",
+            "VF9DSEFSEAMSDAoIRlRfVUlOVDgQBBINCglGVF9VSU5UMTYQBRINCglGVF9V",
+            "SU5UMjQQBhINCglGVF9VSU5UMzIQBxINCglGVF9VSU5UNDAQCBINCglGVF9V",
+            "SU5UNDgQCRINCglGVF9VSU5UNTYQChINCglGVF9VSU5UNjQQCxILCgdGVF9J",
+            "TlQ4EAwSDAoIRlRfSU5UMTYQDRIMCghGVF9JTlQyNBAOEgwKCEZUX0lOVDMy",
+            "EA8SDAoIRlRfSU5UNDAQEBIMCghGVF9JTlQ0OBAREgwKCEZUX0lOVDU2EBIS",
+            "DAoIRlRfSU5UNjQQExIYChRGVF9JRUVFXzExMDczX1NGTE9BVBAUEhcKE0ZU",
+            "X0lFRUVfMTEwNzNfRkxPQVQQFRIMCghGVF9GTE9BVBAWEg0KCUZUX0RPVUJM",
+            "RRAXEhQKEEZUX0FCU09MVVRFX1RJTUUQGBIUChBGVF9SRUxBVElWRV9USU1F",
+            "EBkSDQoJRlRfU1RSSU5HEBoSDgoKRlRfU1RSSU5HWhAbEhIKDkZUX1VJTlRf",
+            "U1RSSU5HEBwSDAoIRlRfRVRIRVIQHRIMCghGVF9CWVRFUxAeEhEKDUZUX1VJ",
+            "TlRfQllURVMQHxILCgdGVF9JUHY0ECASCwoHRlRfSVB2NhAhEg0KCUZUX0lQ",
+            "WE5FVBAiEg8KC0ZUX0ZSQU1FTlVNECMSCwoHRlRfUENSRRAkEgsKB0ZUX0dV",
+            "SUQQJRIKCgZGVF9PSUQQJhIMCghGVF9FVUk2NBAnEgsKB0ZUX0FYMjUQKBIM",
+            "CghGVF9WSU5FUxApEg4KCkZUX1JFTF9PSUQQKhIQCgxGVF9TWVNURU1fSUQQ",
+            "KxIRCg1GVF9TVFJJTkdaUEFEECwSDAoIRlRfRkNXV04QLRIQCgxGVF9OVU1f",
+            "VFlQRVMQLirFAgoMRmllbGREaXNwbGF5Eg0KCUJBU0VfTk9ORRAAEgwKCEJB",
+            "U0VfREVDEAESDAoIQkFTRV9IRVgQAhIMCghCQVNFX09DVBADEhAKDEJBU0Vf",
+            "REVDX0hFWBAEEhAKDEJBU0VfSEVYX0RFQxAFEg8KC0JBU0VfQ1VTVE9NEAYS",
+            "DwoLU1RSX1VOSUNPREUQBxILCgdTRVBfRE9UEAgSDAoIU0VQX0RBU0gQCRIN",
+            "CglTRVBfQ09MT04QChINCglTRVBfU1BBQ0UQCxIQCgxCQVNFX05FVE1BU0sQ",
+            "DBIPCgtCQVNFX1BUX1VEUBANEg8KC0JBU0VfUFRfVENQEA4SEAoMQkFTRV9Q",
+            "VF9EQ0NQEA8SEAoMQkFTRV9QVF9TQ1RQEBASDAoIQkFTRV9PVUkQERIXChNB",
+            "QlNPTFVURV9USU1FX0xPQ0FMEBRCDwoNb3JnLm5keC5tb2RlbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Model.ConstantsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Ndx.Model.FieldType), typeof(global::Ndx.Model.FieldDisplay), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.ProtocolField), global::Ndx.Model.ProtocolField.Parser, new[]{ "Name", "Type", "Display", "Info" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.ProtocolField), global::Ndx.Model.ProtocolField.Parser, new[]{ "Name", "Type", "Display", "Info", "JsonName" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Protocol), global::Ndx.Model.Protocol.Parser, new[]{ "Name", "Fields" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
@@ -287,6 +287,7 @@ namespace Ndx.Model {
       type_ = other.type_;
       display_ = other.display_;
       info_ = other.info_;
+      jsonName_ = other.jsonName_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -358,6 +359,20 @@ namespace Ndx.Model {
       }
     }
 
+    /// <summary>Field number for the "JsonName" field.</summary>
+    public const int JsonNameFieldNumber = 5;
+    private string jsonName_ = "";
+    /// <summary>
+    //// Defines the name of the field as appeared in the JSON output.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string JsonName {
+      get { return jsonName_; }
+      set {
+        jsonName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as ProtocolField);
@@ -375,6 +390,7 @@ namespace Ndx.Model {
       if (Type != other.Type) return false;
       if (Display != other.Display) return false;
       if (Info != other.Info) return false;
+      if (JsonName != other.JsonName) return false;
       return true;
     }
 
@@ -385,6 +401,7 @@ namespace Ndx.Model {
       if (Type != 0) hash ^= Type.GetHashCode();
       if (Display != 0) hash ^= Display.GetHashCode();
       if (Info.Length != 0) hash ^= Info.GetHashCode();
+      if (JsonName.Length != 0) hash ^= JsonName.GetHashCode();
       return hash;
     }
 
@@ -411,6 +428,10 @@ namespace Ndx.Model {
         output.WriteRawTag(34);
         output.WriteString(Info);
       }
+      if (JsonName.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(JsonName);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -427,6 +448,9 @@ namespace Ndx.Model {
       }
       if (Info.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Info);
+      }
+      if (JsonName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(JsonName);
       }
       return size;
     }
@@ -447,6 +471,9 @@ namespace Ndx.Model {
       }
       if (other.Info.Length != 0) {
         Info = other.Info;
+      }
+      if (other.JsonName.Length != 0) {
+        JsonName = other.JsonName;
       }
     }
 
@@ -474,12 +501,19 @@ namespace Ndx.Model {
             Info = input.ReadString();
             break;
           }
+          case 42: {
+            JsonName = input.ReadString();
+            break;
+          }
         }
       }
     }
 
   }
 
+  /// <summary>
+  //// Represents a protocol type specification. 
+  /// </summary>
   public sealed partial class Protocol : pb::IMessage<Protocol> {
     private static readonly pb::MessageParser<Protocol> _parser = new pb::MessageParser<Protocol>(() => new Protocol());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

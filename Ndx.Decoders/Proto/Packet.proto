@@ -1,0 +1,50 @@
+﻿//  
+// Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
+// Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
+//
+syntax = "proto3";
+package ndx.decoders;
+option java_package = "org.ndx.decoders";
+import "packet-eth.proto";
+import "packet-frame.proto";
+import "packet-ieee80211.proto";
+import "packet-ip.proto";
+import "packet-ipv6.proto";
+import "packet-llc.proto";
+import "packet-tcp.proto";
+import "packet-udp.proto";
+
+message LinkPacket {
+	oneof Link {
+		Ndx.Decoders.Basic.Eth Ethernet = 1;
+		Ndx.Decoders.Basic.Ieee80211 Wireless = 9;
+	}
+}
+
+message InternetPacket {
+	oneof Net {
+		Ndx.Decoders.Basic.Ip Ip = 1;
+		Ndx.Decoders.Basic.Ipv6 Ipv6 = 2;
+	}
+}
+
+message TransportPacket {
+	oneof Transport {
+		Ndx.Decoders.Basic.Tcp Tcp = 1;
+		Ndx.Decoders.Basic.Udp Udp = 2;
+	}
+}
+
+message ApplicationPacket {
+
+}
+
+message Packet {
+	int64 TimeStamp = 5;
+	int32 FrameNumber = 2;
+
+	LinkPacket Link = 10;
+	InternetPacket Network = 20;
+	TransportPacket Transport = 30;
+	ApplicationPacket Application = 40;
+}

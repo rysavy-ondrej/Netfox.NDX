@@ -1,0 +1,81 @@
+Name: eapol
+Fields:
+  eapol.version:
+    Name: eapol.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: Version
+    JsonName: eapol_eapol_version
+  eapol.type:
+    Name: eapol.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Type
+    JsonName: eapol_eapol_type
+  eapol.len:
+    Name: eapol.len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length
+    JsonName: eapol_eapol_len
+  eapol.keydes.type:
+    Name: eapol.keydes.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Key Descriptor Type
+    JsonName: eapol_eapol_keydes_type
+  eapol.keydes.body:
+    Name: eapol.keydes.body
+    Type: FtBytes
+    Info: Key Descriptor Body
+    JsonName: eapol_eapol_keydes_body
+  eapol.keydes.key_len:
+    Name: eapol.keydes.key_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Key Length
+    JsonName: eapol_eapol_keydes_key_len
+  eapol.keydes.replay_counter:
+    Name: eapol.keydes.replay_counter
+    Type: FtUint64
+    Display: BaseDec
+    Info: Replay Counter
+    JsonName: eapol_eapol_keydes_replay_counter
+  eapol.keydes.key_iv:
+    Name: eapol.keydes.key_iv
+    Type: FtBytes
+    Info: Key IV
+    JsonName: eapol_eapol_keydes_key_iv
+  eapol.keydes.key_index:
+    Name: eapol.keydes.key_index
+    Type: FtUint8
+    Display: BaseHex
+    Info: Key Index
+    JsonName: eapol_eapol_keydes_key_index
+  eapol.keydes.key_index.type:
+    Name: eapol.keydes.key_index.type
+    Type: FtBoolean
+    Display: SepDot
+    Info: Type
+    JsonName: eapol_keydes_key_index_eapol_keydes_key_index_type
+  eapol.keydes.key_index.number:
+    Name: eapol.keydes.key_index.number
+    Type: FtUint8
+    Display: BaseDec
+    Info: Number
+    JsonName: eapol_keydes_key_index_eapol_keydes_key_index_number
+  eapol.keydes.key_signature:
+    Name: eapol.keydes.key_signature
+    Type: FtBytes
+    Info: Key Signature
+    JsonName: eapol_eapol_keydes_key_signature
+  eapol.keydes.key:
+    Name: eapol.keydes.key
+    Type: FtBytes
+    Info: Key
+    JsonName: eapol_eapol_keydes_key
+  eapol.keydes.key.generated_locally:
+    Name: eapol.keydes.key.generated_locally
+    Type: FtBoolean
+    Info: Key Generated Locally
+    JsonName: eapol_keydes_key_eapol_keydes_key_generated_locally

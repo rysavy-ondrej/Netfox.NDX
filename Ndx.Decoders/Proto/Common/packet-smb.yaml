@@ -1,0 +1,3741 @@
+Name: smb
+Fields:
+  smb.cmd:
+    Name: smb.cmd
+    Type: FtUint8
+    Display: BaseHex
+    Info: SMB Command
+    JsonName: smb_smb_cmd
+  smb.trans2.cmd:
+    Name: smb.trans2.cmd
+    Type: FtUint16
+    Display: BaseHex
+    Info: Subcommand
+    JsonName: smb_smb_trans2_cmd
+  smb.nt.function:
+    Name: smb.nt.function
+    Type: FtUint16
+    Display: BaseDec
+    Info: Function
+    JsonName: smb_smb_nt_function
+  smb.wct:
+    Name: smb.wct
+    Type: FtUint8
+    Display: BaseDec
+    Info: Word Count (WCT)
+    JsonName: smb_smb_wct
+  smb.bcc:
+    Name: smb.bcc
+    Type: FtUint16
+    Display: BaseDec
+    Info: Byte Count (BCC)
+    JsonName: smb_smb_bcc
+  smb.response_to:
+    Name: smb.response_to
+    Type: FtFramenum
+    Info: Response to
+    JsonName: smb_smb_response_to
+  smb.time:
+    Name: smb.time
+    Type: FtRelativeTime
+    Info: Time from request
+    JsonName: smb_smb_time
+  smb.response_in:
+    Name: smb.response_in
+    Type: FtFramenum
+    Info: Response in
+    JsonName: smb_smb_response_in
+  smb.continuation_to:
+    Name: smb.continuation_to
+    Type: FtFramenum
+    Info: Continuation to
+    JsonName: smb_smb_continuation_to
+  smb.nt_status:
+    Name: smb.nt_status
+    Type: FtUint32
+    Display: BaseHex
+    Info: NT Status
+    JsonName: smb_smb_nt_status
+  smb.error_class:
+    Name: smb.error_class
+    Type: FtUint8
+    Display: BaseHex
+    Info: Error Class
+    JsonName: smb_smb_error_class
+  smb.error_code:
+    Name: smb.error_code
+    Type: FtUint16
+    Display: BaseHex
+    Info: Error Code
+    JsonName: smb_smb_error_code
+  smb.reserved:
+    Name: smb.reserved
+    Type: FtBytes
+    Info: Reserved
+    JsonName: smb_smb_reserved
+  smb.signature:
+    Name: smb.signature
+    Type: FtBytes
+    Info: Signature
+    JsonName: smb_smb_signature
+  smb.key:
+    Name: smb.key
+    Type: FtUint32
+    Display: BaseHex
+    Info: Key
+    JsonName: smb_smb_key
+  smb.sessid:
+    Name: smb.sessid
+    Type: FtUint16
+    Display: BaseDec
+    Info: Session ID
+    JsonName: smb_smb_sessid
+  smb.sequence_num:
+    Name: smb.sequence_num
+    Type: FtUint16
+    Display: BaseDec
+    Info: Sequence Number
+    JsonName: smb_smb_sequence_num
+  smb.group_id:
+    Name: smb.group_id
+    Type: FtUint16
+    Display: BaseDec
+    Info: Group ID
+    JsonName: smb_smb_group_id
+  smb.pid:
+    Name: smb.pid
+    Type: FtUint16
+    Display: BaseDec
+    Info: Process ID
+    JsonName: smb_smb_pid
+  smb.pid.high:
+    Name: smb.pid.high
+    Type: FtUint16
+    Display: BaseDec
+    Info: Process ID High
+    JsonName: smb_pid_smb_pid_high
+  smb.tid:
+    Name: smb.tid
+    Type: FtUint16
+    Display: BaseDec
+    Info: Tree ID
+    JsonName: smb_smb_tid
+  smb.uid:
+    Name: smb.uid
+    Type: FtUint16
+    Display: BaseDec
+    Info: User ID
+    JsonName: smb_smb_uid
+  smb.mid:
+    Name: smb.mid
+    Type: FtUint16
+    Display: BaseDec
+    Info: Multiplex ID
+    JsonName: smb_smb_mid
+  smb.flags:
+    Name: smb.flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb_smb_flags
+  smb.flags.lock:
+    Name: smb.flags.lock
+    Type: FtBoolean
+    Display: SepDot
+    Info: Lock and Read
+    JsonName: smb_flags_smb_flags_lock
+  smb.flags.receive_buffer:
+    Name: smb.flags.receive_buffer
+    Type: FtBoolean
+    Display: SepDot
+    Info: Receive Buffer Posted
+    JsonName: smb_flags_smb_flags_receive_buffer
+  smb.flags.caseless:
+    Name: smb.flags.caseless
+    Type: FtBoolean
+    Display: SepDot
+    Info: Case Sensitivity
+    JsonName: smb_flags_smb_flags_caseless
+  smb.flags.canon:
+    Name: smb.flags.canon
+    Type: FtBoolean
+    Display: SepDot
+    Info: Canonicalized Pathnames
+    JsonName: smb_flags_smb_flags_canon
+  smb.flags.oplock:
+    Name: smb.flags.oplock
+    Type: FtBoolean
+    Display: SepDot
+    Info: Oplocks
+    JsonName: smb_flags_smb_flags_oplock
+  smb.flags.notify:
+    Name: smb.flags.notify
+    Type: FtBoolean
+    Display: SepDot
+    Info: Notify
+    JsonName: smb_flags_smb_flags_notify
+  smb.flags.response:
+    Name: smb.flags.response
+    Type: FtBoolean
+    Display: SepDot
+    Info: Request/Response
+    JsonName: smb_flags_smb_flags_response
+  smb.flags2:
+    Name: smb.flags2
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags2
+    JsonName: smb_smb_flags2
+  smb.flags2.long_names_allowed:
+    Name: smb.flags2.long_names_allowed
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Long Names Allowed
+    JsonName: smb_flags2_smb_flags2_long_names_allowed
+  smb.flags2.ea:
+    Name: smb.flags2.ea
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Extended Attributes
+    JsonName: smb_flags2_smb_flags2_ea
+  smb.flags2.sec_sig:
+    Name: smb.flags2.sec_sig
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Security Signatures
+    JsonName: smb_flags2_smb_flags2_sec_sig
+  smb.flags2.compressed:
+    Name: smb.flags2.compressed
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Compressed
+    JsonName: smb_flags2_smb_flags2_compressed
+  smb.flags2.sec_sig_required:
+    Name: smb.flags2.sec_sig_required
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Security Signatures Required
+    JsonName: smb_flags2_smb_flags2_sec_sig_required
+  smb.flags2.long_names_used:
+    Name: smb.flags2.long_names_used
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Long Names Used
+    JsonName: smb_flags2_smb_flags2_long_names_used
+  smb.flags2.reparse_path:
+    Name: smb.flags2.reparse_path
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Reparse Path
+    JsonName: smb_flags2_smb_flags2_reparse_path
+  smb.flags2.esn:
+    Name: smb.flags2.esn
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Extended Security Negotiation
+    JsonName: smb_flags2_smb_flags2_esn
+  smb.flags2.dfs:
+    Name: smb.flags2.dfs
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Dfs
+    JsonName: smb_flags2_smb_flags2_dfs
+  smb.flags2.roe:
+    Name: smb.flags2.roe
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Execute-only Reads
+    JsonName: smb_flags2_smb_flags2_roe
+  smb.flags2.nt_error:
+    Name: smb.flags2.nt_error
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Error Code Type
+    JsonName: smb_flags2_smb_flags2_nt_error
+  smb.flags2.string:
+    Name: smb.flags2.string
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Unicode Strings
+    JsonName: smb_flags2_smb_flags2_string
+  smb.buffer_format:
+    Name: smb.buffer_format
+    Type: FtUint8
+    Display: BaseDec
+    Info: Buffer Format
+    JsonName: smb_smb_buffer_format
+  smb.dialect:
+    Name: smb.dialect
+    Type: FtString
+    Info: Dialect
+    JsonName: smb_smb_dialect
+  smb.dialect.name:
+    Name: smb.dialect.name
+    Type: FtString
+    Info: Name
+    JsonName: smb_dialect_smb_dialect_name
+  smb.dialect.index:
+    Name: smb.dialect.index
+    Type: FtUint16
+    Display: BaseDec
+    Info: Selected Index
+    JsonName: smb_dialect_smb_dialect_index
+  smb.max_bufsize:
+    Name: smb.max_bufsize
+    Type: FtUint32
+    Display: BaseDec
+    Info: Max Buffer Size
+    JsonName: smb_smb_max_bufsize
+  smb.max_mpx_count:
+    Name: smb.max_mpx_count
+    Type: FtUint16
+    Display: BaseDec
+    Info: Max Mpx Count
+    JsonName: smb_smb_max_mpx_count
+  smb.max_vcs:
+    Name: smb.max_vcs
+    Type: FtUint16
+    Display: BaseDec
+    Info: Max VCs
+    JsonName: smb_smb_max_vcs
+  smb.session_key:
+    Name: smb.session_key
+    Type: FtUint32
+    Display: BaseHex
+    Info: Session Key
+    JsonName: smb_smb_session_key
+  smb.server_timezone:
+    Name: smb.server_timezone
+    Type: FtInt16
+    Display: BaseDec
+    Info: Server Time Zone
+    JsonName: smb_smb_server_timezone
+  smb.challenge_length:
+    Name: smb.challenge_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Challenge Length
+    JsonName: smb_smb_challenge_length
+  smb.challenge:
+    Name: smb.challenge
+    Type: FtBytes
+    Info: Challenge
+    JsonName: smb_smb_challenge
+  smb.primary_domain:
+    Name: smb.primary_domain
+    Type: FtString
+    Info: Primary Domain
+    JsonName: smb_smb_primary_domain
+  smb.server:
+    Name: smb.server
+    Type: FtString
+    Info: Server
+    JsonName: smb_smb_server
+  smb.max_raw:
+    Name: smb.max_raw
+    Type: FtUint32
+    Display: BaseDec
+    Info: Max Raw Buffer
+    JsonName: smb_smb_max_raw
+  smb.server_guid:
+    Name: smb.server_guid
+    Type: FtGuid
+    Info: Server GUID
+    JsonName: smb_smb_server_guid
+  smb.volume_guid:
+    Name: smb.volume_guid
+    Type: FtGuid
+    Info: Volume GUID
+    JsonName: smb_smb_volume_guid
+  smb.security_blob_len:
+    Name: smb.security_blob_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Security Blob Length
+    JsonName: smb_smb_security_blob_len
+  smb.security_blob:
+    Name: smb.security_blob
+    Type: FtBytes
+    Info: Security Blob
+    JsonName: smb_smb_security_blob
+  smb.sm:
+    Name: smb.sm
+    Type: FtUint16
+    Display: BaseHex
+    Info: Security Mode
+    JsonName: smb_smb_sm
+  smb.sm.mode:
+    Name: smb.sm.mode
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Mode
+    JsonName: smb_sm_smb_sm_mode
+  smb.sm.password:
+    Name: smb.sm.password
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Password
+    JsonName: smb_sm_smb_sm_password
+  smb.sm.signatures:
+    Name: smb.sm.signatures
+    Type: FtBoolean
+    Display: SepDot
+    Info: Signatures
+    JsonName: smb_sm_smb_sm_signatures
+  smb.sm.sig_required:
+    Name: smb.sm.sig_required
+    Type: FtBoolean
+    Display: SepDot
+    Info: Sig Req
+    JsonName: smb_sm_smb_sm_sig_required
+  smb.rm:
+    Name: smb.rm
+    Type: FtUint16
+    Display: BaseHex
+    Info: Raw Mode
+    JsonName: smb_smb_rm
+  smb.rm.read:
+    Name: smb.rm.read
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Read Raw
+    JsonName: smb_rm_smb_rm_read
+  smb.rm.write:
+    Name: smb.rm.write
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Write Raw
+    JsonName: smb_rm_smb_rm_write
+  smb.server_date_time:
+    Name: smb.server_date_time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Server Date and Time
+    JsonName: smb_smb_server_date_time
+  smb.server_date_time.smb_date:
+    Name: smb.server_date_time.smb_date
+    Type: FtUint16
+    Display: BaseHex
+    Info: Server Date
+    JsonName: smb_server_date_time_smb_server_date_time_smb_date
+  smb.server_date_time.smb_time:
+    Name: smb.server_date_time.smb_time
+    Type: FtUint16
+    Display: BaseHex
+    Info: Server Time
+    JsonName: smb_server_date_time_smb_server_date_time_smb_time
+  smb.server_cap:
+    Name: smb.server_cap
+    Type: FtUint32
+    Display: BaseHex
+    Info: Capabilities
+    JsonName: smb_smb_server_cap
+  smb.server_cap.raw_mode:
+    Name: smb.server_cap.raw_mode
+    Type: FtBoolean
+    Display: 32
+    Info: Raw Mode
+    JsonName: smb_server_cap_smb_server_cap_raw_mode
+  smb.server_cap.mpx_mode:
+    Name: smb.server_cap.mpx_mode
+    Type: FtBoolean
+    Display: 32
+    Info: MPX Mode
+    JsonName: smb_server_cap_smb_server_cap_mpx_mode
+  smb.server_cap.unicode:
+    Name: smb.server_cap.unicode
+    Type: FtBoolean
+    Display: 32
+    Info: Unicode
+    JsonName: smb_server_cap_smb_server_cap_unicode
+  smb.server_cap.large_files:
+    Name: smb.server_cap.large_files
+    Type: FtBoolean
+    Display: 32
+    Info: Large Files
+    JsonName: smb_server_cap_smb_server_cap_large_files
+  smb.server_cap.nt_smbs:
+    Name: smb.server_cap.nt_smbs
+    Type: FtBoolean
+    Display: 32
+    Info: NT SMBs
+    JsonName: smb_server_cap_smb_server_cap_nt_smbs
+  smb.server_cap.rpc_remote_apis:
+    Name: smb.server_cap.rpc_remote_apis
+    Type: FtBoolean
+    Display: 32
+    Info: RPC Remote APIs
+    JsonName: smb_server_cap_smb_server_cap_rpc_remote_apis
+  smb.server_cap.nt_status:
+    Name: smb.server_cap.nt_status
+    Type: FtBoolean
+    Display: 32
+    Info: NT Status Codes
+    JsonName: smb_server_cap_smb_server_cap_nt_status
+  smb.server_cap.level_2_oplocks:
+    Name: smb.server_cap.level_2_oplocks
+    Type: FtBoolean
+    Display: 32
+    Info: Level 2 Oplocks
+    JsonName: smb_server_cap_smb_server_cap_level_2_oplocks
+  smb.server_cap.lock_and_read:
+    Name: smb.server_cap.lock_and_read
+    Type: FtBoolean
+    Display: 32
+    Info: Lock and Read
+    JsonName: smb_server_cap_smb_server_cap_lock_and_read
+  smb.server_cap.nt_find:
+    Name: smb.server_cap.nt_find
+    Type: FtBoolean
+    Display: 32
+    Info: NT Find
+    JsonName: smb_server_cap_smb_server_cap_nt_find
+  smb.server_cap.dfs:
+    Name: smb.server_cap.dfs
+    Type: FtBoolean
+    Display: 32
+    Info: Dfs
+    JsonName: smb_server_cap_smb_server_cap_dfs
+  smb.server_cap.infolevel_passthru:
+    Name: smb.server_cap.infolevel_passthru
+    Type: FtBoolean
+    Display: 32
+    Info: Infolevel Passthru
+    JsonName: smb_server_cap_smb_server_cap_infolevel_passthru
+  smb.server_cap.large_readx:
+    Name: smb.server_cap.large_readx
+    Type: FtBoolean
+    Display: 32
+    Info: Large ReadX
+    JsonName: smb_server_cap_smb_server_cap_large_readx
+  smb.server_cap.large_writex:
+    Name: smb.server_cap.large_writex
+    Type: FtBoolean
+    Display: 32
+    Info: Large WriteX
+    JsonName: smb_server_cap_smb_server_cap_large_writex
+  smb.server_cap.lwio:
+    Name: smb.server_cap.lwio
+    Type: FtBoolean
+    Display: 32
+    Info: LWIO
+    JsonName: smb_server_cap_smb_server_cap_lwio
+  smb.server_cap.unix:
+    Name: smb.server_cap.unix
+    Type: FtBoolean
+    Display: 32
+    Info: UNIX
+    JsonName: smb_server_cap_smb_server_cap_unix
+  smb.server_cap.compressed_data:
+    Name: smb.server_cap.compressed_data
+    Type: FtBoolean
+    Display: 32
+    Info: Compressed Data
+    JsonName: smb_server_cap_smb_server_cap_compressed_data
+  smb.server_cap.dynamic_reauth:
+    Name: smb.server_cap.dynamic_reauth
+    Type: FtBoolean
+    Display: 32
+    Info: Dynamic Reauth
+    JsonName: smb_server_cap_smb_server_cap_dynamic_reauth
+  smb.server_cap.extended_security:
+    Name: smb.server_cap.extended_security
+    Type: FtBoolean
+    Display: 32
+    Info: Extended Security
+    JsonName: smb_server_cap_smb_server_cap_extended_security
+  smb.system.time:
+    Name: smb.system.time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: System Time
+    JsonName: smb_smb_system_time
+  smb.unknown_data:
+    Name: smb.unknown_data
+    Type: FtBytes
+    Info: Unknown Data
+    JsonName: smb_smb_unknown_data
+  smb.dir_name:
+    Name: smb.dir_name
+    Type: FtString
+    Info: Directory
+    JsonName: smb_smb_dir_name
+  smb.echo.count:
+    Name: smb.echo.count
+    Type: FtUint16
+    Display: BaseDec
+    Info: Echo Count
+    JsonName: smb_smb_echo_count
+  smb.echo.data:
+    Name: smb.echo.data
+    Type: FtBytes
+    Info: Echo Data
+    JsonName: smb_smb_echo_data
+  smb.echo.seq_num:
+    Name: smb.echo.seq_num
+    Type: FtUint16
+    Display: BaseDec
+    Info: Echo Seq Num
+    JsonName: smb_smb_echo_seq_num
+  smb.max_buf:
+    Name: smb.max_buf
+    Type: FtUint16
+    Display: BaseDec
+    Info: Max Buffer
+    JsonName: smb_smb_max_buf
+  smb.path:
+    Name: smb.path
+    Type: FtString
+    Info: Path
+    JsonName: smb_smb_path
+  smb.service:
+    Name: smb.service
+    Type: FtString
+    Info: Service
+    JsonName: smb_smb_service
+  smb.password:
+    Name: smb.password
+    Type: FtBytes
+    Info: Password
+    JsonName: smb_smb_password
+  smb.ansi_password:
+    Name: smb.ansi_password
+    Type: FtBytes
+    Info: ANSI Password
+    JsonName: smb_smb_ansi_password
+  smb.unicode_password:
+    Name: smb.unicode_password
+    Type: FtBytes
+    Info: Unicode Password
+    JsonName: smb_smb_unicode_password
+  smb.move.flags:
+    Name: smb.move.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb_smb_move_flags
+  smb.move.flags.file:
+    Name: smb.move.flags.file
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Must be file
+    JsonName: smb_move_flags_smb_move_flags_file
+  smb.move.flags.dir:
+    Name: smb.move.flags.dir
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Must be directory
+    JsonName: smb_move_flags_smb_move_flags_dir
+  smb.move.flags.verify:
+    Name: smb.move.flags.verify
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Verify writes
+    JsonName: smb_move_flags_smb_move_flags_verify
+  smb.files_moved:
+    Name: smb.files_moved
+    Type: FtUint16
+    Display: BaseDec
+    Info: Files Moved
+    JsonName: smb_smb_files_moved
+  smb.copy.flags:
+    Name: smb.copy.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb_smb_copy_flags
+  smb.copy.flags.file:
+    Name: smb.copy.flags.file
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Must be file
+    JsonName: smb_copy_flags_smb_copy_flags_file
+  smb.copy.flags.dir:
+    Name: smb.copy.flags.dir
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Must be directory
+    JsonName: smb_copy_flags_smb_copy_flags_dir
+  smb.copy.flags.dest_mode:
+    Name: smb.copy.flags.dest_mode
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Destination mode
+    JsonName: smb_copy_flags_smb_copy_flags_dest_mode
+  smb.copy.flags.source_mode:
+    Name: smb.copy.flags.source_mode
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Source mode
+    JsonName: smb_copy_flags_smb_copy_flags_source_mode
+  smb.copy.flags.verify:
+    Name: smb.copy.flags.verify
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Verify writes
+    JsonName: smb_copy_flags_smb_copy_flags_verify
+  smb.copy.flags.tree_copy:
+    Name: smb.copy.flags.tree_copy
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Tree copy
+    JsonName: smb_copy_flags_smb_copy_flags_tree_copy
+  smb.copy.flags.ea_action:
+    Name: smb.copy.flags.ea_action
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: EA action if EAs not supported on dest
+    JsonName: smb_copy_flags_smb_copy_flags_ea_action
+  smb.count:
+    Name: smb.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Count
+    JsonName: smb_smb_count
+  smb.count_low:
+    Name: smb.count_low
+    Type: FtUint16
+    Display: BaseDec
+    Info: Count Low
+    JsonName: smb_smb_count_low
+  smb.count_high:
+    Name: smb.count_high
+    Type: FtUint16
+    Display: BaseDec
+    Info: Count High (multiply with 64K)
+    JsonName: smb_smb_count_high
+  smb.file:
+    Name: smb.file
+    Type: FtString
+    Info: File Name
+    JsonName: smb_smb_file
+  smb.open.function:
+    Name: smb.open.function
+    Type: FtUint16
+    Display: BaseHex
+    Info: Open Function
+    JsonName: smb_smb_open_function
+  smb.open.function.create:
+    Name: smb.open.function.create
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Create
+    JsonName: smb_open_function_smb_open_function_create
+  smb.open.function.open:
+    Name: smb.open.function.open
+    Type: FtUint16
+    Display: BaseDec
+    Info: Open
+    JsonName: smb_open_function_smb_open_function_open
+  smb.fid:
+    Name: smb.fid
+    Type: FtUint16
+    Display: BaseHex
+    Info: FID
+    JsonName: smb_smb_fid
+  smb.file_attribute:
+    Name: smb.file_attribute
+    Type: FtUint16
+    Display: BaseHex
+    Info: File Attributes
+    JsonName: smb_smb_file_attribute
+  smb.file_attribute.read_only:
+    Name: smb.file_attribute.read_only
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Read Only
+    JsonName: smb_file_attribute_smb_file_attribute_read_only
+  smb.file_attribute.hidden:
+    Name: smb.file_attribute.hidden
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Hidden
+    JsonName: smb_file_attribute_smb_file_attribute_hidden
+  smb.file_attribute.system:
+    Name: smb.file_attribute.system
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: System
+    JsonName: smb_file_attribute_smb_file_attribute_system
+  smb.file_attribute.volume:
+    Name: smb.file_attribute.volume
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Volume ID
+    JsonName: smb_file_attribute_smb_file_attribute_volume
+  smb.file_attribute.directory:
+    Name: smb.file_attribute.directory
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Directory
+    JsonName: smb_file_attribute_smb_file_attribute_directory
+  smb.file_attribute.archive:
+    Name: smb.file_attribute.archive
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Archive
+    JsonName: smb_file_attribute_smb_file_attribute_archive
+  smb.file_attribute.device:
+    Name: smb.file_attribute.device
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Device
+    JsonName: smb_file_attribute_smb_file_attribute_device
+  smb.file_attribute.normal:
+    Name: smb.file_attribute.normal
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Normal
+    JsonName: smb_file_attribute_smb_file_attribute_normal
+  smb.file_attribute.temporary:
+    Name: smb.file_attribute.temporary
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Temporary
+    JsonName: smb_file_attribute_smb_file_attribute_temporary
+  smb.file_attribute.sparse:
+    Name: smb.file_attribute.sparse
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Sparse
+    JsonName: smb_file_attribute_smb_file_attribute_sparse
+  smb.file_attribute.reparse:
+    Name: smb.file_attribute.reparse
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Reparse Point
+    JsonName: smb_file_attribute_smb_file_attribute_reparse
+  smb.file_attribute.compressed:
+    Name: smb.file_attribute.compressed
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Compressed
+    JsonName: smb_file_attribute_smb_file_attribute_compressed
+  smb.file_attribute.offline:
+    Name: smb.file_attribute.offline
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Offline
+    JsonName: smb_file_attribute_smb_file_attribute_offline
+  smb.file_attribute.not_content_indexed:
+    Name: smb.file_attribute.not_content_indexed
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Content Indexed
+    JsonName: smb_file_attribute_smb_file_attribute_not_content_indexed
+  smb.file_attribute.encrypted:
+    Name: smb.file_attribute.encrypted
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Encrypted
+    JsonName: smb_file_attribute_smb_file_attribute_encrypted
+  smb.file_size:
+    Name: smb.file_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: File Size
+    JsonName: smb_smb_file_size
+  smb.search.attribute:
+    Name: smb.search.attribute
+    Type: FtUint16
+    Display: BaseHex
+    Info: Search Attributes
+    JsonName: smb_smb_search_attribute
+  smb.search.attribute.read_only:
+    Name: smb.search.attribute.read_only
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Read Only
+    JsonName: smb_search_attribute_smb_search_attribute_read_only
+  smb.search.attribute.hidden:
+    Name: smb.search.attribute.hidden
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Hidden
+    JsonName: smb_search_attribute_smb_search_attribute_hidden
+  smb.search.attribute.system:
+    Name: smb.search.attribute.system
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: System
+    JsonName: smb_search_attribute_smb_search_attribute_system
+  smb.search.attribute.volume:
+    Name: smb.search.attribute.volume
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Volume ID
+    JsonName: smb_search_attribute_smb_search_attribute_volume
+  smb.search.attribute.directory:
+    Name: smb.search.attribute.directory
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Directory
+    JsonName: smb_search_attribute_smb_search_attribute_directory
+  smb.search.attribute.archive:
+    Name: smb.search.attribute.archive
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Archive
+    JsonName: smb_search_attribute_smb_search_attribute_archive
+  smb.access.mode:
+    Name: smb.access.mode
+    Type: FtUint16
+    Display: BaseDec
+    Info: Access Mode
+    JsonName: smb_smb_access_mode
+  smb.access.sharing:
+    Name: smb.access.sharing
+    Type: FtUint16
+    Display: BaseDec
+    Info: Sharing Mode
+    JsonName: smb_smb_access_sharing
+  smb.access.locality:
+    Name: smb.access.locality
+    Type: FtUint16
+    Display: BaseDec
+    Info: Locality
+    JsonName: smb_smb_access_locality
+  smb.access.caching:
+    Name: smb.access.caching
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Caching
+    JsonName: smb_smb_access_caching
+  smb.access.desired:
+    Name: smb.access.desired
+    Type: FtUint16
+    Display: BaseHex
+    Info: Desired Access
+    JsonName: smb_smb_access_desired
+  smb.access.granted:
+    Name: smb.access.granted
+    Type: FtUint16
+    Display: BaseHex
+    Info: Granted Access
+    JsonName: smb_smb_access_granted
+  smb.access.writethrough:
+    Name: smb.access.writethrough
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Writethrough
+    JsonName: smb_smb_access_writethrough
+  smb.create.time:
+    Name: smb.create.time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Created
+    JsonName: smb_smb_create_time
+  smb.modify.time:
+    Name: smb.modify.time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Modified
+    JsonName: smb_smb_modify_time
+  smb.backup.time:
+    Name: smb.backup.time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Backed-up
+    JsonName: smb_smb_backup_time
+  smb.alloc.count:
+    Name: smb.alloc.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Allocation Block Count
+    JsonName: smb_smb_alloc_count
+  smb.alloc.size:
+    Name: smb.alloc.size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Allocation Block Count
+    JsonName: smb_smb_alloc_size
+  smb.free_block.count:
+    Name: smb.free_block.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Free Block Count
+    JsonName: smb_smb_free_block_count
+  smb.root.file.count:
+    Name: smb.root.file.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Root File Count
+    JsonName: smb_smb_root_file_count
+  smb.root.dir.count:
+    Name: smb.root.dir.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Root Directory Count
+    JsonName: smb_smb_root_dir_count
+  smb.file.count:
+    Name: smb.file.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Root File Count
+    JsonName: smb_file_smb_file_count
+  smb.dir.count:
+    Name: smb.dir.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Root Directory Count
+    JsonName: smb_smb_dir_count
+  smb.mac:
+    Name: smb.mac
+    Type: FtUint32
+    Display: BaseHex
+    Info: Mac Support Flags
+    JsonName: smb_smb_mac
+  smb.mac.access_control:
+    Name: smb.mac.access_control
+    Type: FtBoolean
+    Display: 32
+    Info: Mac Access Control
+    JsonName: smb_mac_smb_mac_access_control
+  smb.mac.get_set_comments:
+    Name: smb.mac.get_set_comments
+    Type: FtBoolean
+    Display: 32
+    Info: Get Set Comments
+    JsonName: smb_mac_smb_mac_get_set_comments
+  smb.mac.desktop_db_calls:
+    Name: smb.mac.desktop_db_calls
+    Type: FtBoolean
+    Display: 32
+    Info: Desktop DB Calls
+    JsonName: smb_mac_smb_mac_desktop_db_calls
+  smb.mac.uids:
+    Name: smb.mac.uids
+    Type: FtBoolean
+    Display: 32
+    Info: Macintosh Unique IDs
+    JsonName: smb_mac_smb_mac_uids
+  smb.mac.streams_support:
+    Name: smb.mac.streams_support
+    Type: FtBoolean
+    Display: 32
+    Info: Mac Streams
+    JsonName: smb_mac_smb_mac_streams_support
+  smb.create.smb.date:
+    Name: smb.create.smb.date
+    Type: FtUint16
+    Display: BaseHex
+    Info: Create Date
+    JsonName: smb_smb_create_smb_date
+  smb.create.smb.time:
+    Name: smb.create.smb.time
+    Type: FtUint16
+    Display: BaseHex
+    Info: Create Time
+    JsonName: smb_smb_create_smb_time
+  smb.last_write.time:
+    Name: smb.last_write.time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Last Write
+    JsonName: smb_smb_last_write_time
+  smb.last_write.smb.date:
+    Name: smb.last_write.smb.date
+    Type: FtUint16
+    Display: BaseHex
+    Info: Last Write Date
+    JsonName: smb_smb_last_write_smb_date
+  smb.last_write.smb.time:
+    Name: smb.last_write.smb.time
+    Type: FtUint16
+    Display: BaseHex
+    Info: Last Write Time
+    JsonName: smb_smb_last_write_smb_time
+  smb.old_file:
+    Name: smb.old_file
+    Type: FtString
+    Info: Old File Name
+    JsonName: smb_smb_old_file
+  smb.offset:
+    Name: smb.offset
+    Type: FtUint32
+    Display: BaseDec
+    Info: Offset
+    JsonName: smb_smb_offset
+  smb.remaining:
+    Name: smb.remaining
+    Type: FtUint32
+    Display: BaseDec
+    Info: Remaining
+    JsonName: smb_smb_remaining
+  smb.padding:
+    Name: smb.padding
+    Type: FtBytes
+    Info: Padding
+    JsonName: smb_smb_padding
+  smb.file_data:
+    Name: smb.file_data
+    Type: FtBytes
+    Info: File Data
+    JsonName: smb_smb_file_data
+  smb.ea_data:
+    Name: smb.ea_data
+    Type: FtBytes
+    Info: EA Data
+    JsonName: smb_smb_ea_data
+  smb.mac.finderinfo:
+    Name: smb.mac.finderinfo
+    Type: FtBytes
+    Info: Finder Info
+    JsonName: smb_mac_smb_mac_finderinfo
+  smb.total_data_len:
+    Name: smb.total_data_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Total Data Length
+    JsonName: smb_smb_total_data_len
+  smb.data_len:
+    Name: smb.data_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Data Length
+    JsonName: smb_smb_data_len
+  smb.data_len_low:
+    Name: smb.data_len_low
+    Type: FtUint16
+    Display: BaseDec
+    Info: Data Length Low
+    JsonName: smb_smb_data_len_low
+  smb.data_len_high:
+    Name: smb.data_len_high
+    Type: FtUint16
+    Display: BaseDec
+    Info: Data Length High (multiply with 64K)
+    JsonName: smb_smb_data_len_high
+  smb.seek_mode:
+    Name: smb.seek_mode
+    Type: FtUint16
+    Display: BaseDec
+    Info: Seek Mode
+    JsonName: smb_smb_seek_mode
+  smb.access.time:
+    Name: smb.access.time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Last Access
+    JsonName: smb_smb_access_time
+  smb.access.smb.date:
+    Name: smb.access.smb.date
+    Type: FtUint16
+    Display: BaseHex
+    Info: Last Access Date
+    JsonName: smb_smb_access_smb_date
+  smb.access.smb.time:
+    Name: smb.access.smb.time
+    Type: FtUint16
+    Display: BaseHex
+    Info: Last Access Time
+    JsonName: smb_smb_access_smb_time
+  smb.data_size:
+    Name: smb.data_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Data Size
+    JsonName: smb_smb_data_size
+  smb.alloc_size:
+    Name: smb.alloc_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Allocation Size
+    JsonName: smb_smb_alloc_size
+  smb.maxcount:
+    Name: smb.maxcount
+    Type: FtUint16
+    Display: BaseDec
+    Info: Max Count
+    JsonName: smb_smb_maxcount
+  smb.maxcount_low:
+    Name: smb.maxcount_low
+    Type: FtUint16
+    Display: BaseDec
+    Info: Max Count Low
+    JsonName: smb_smb_maxcount_low
+  smb.maxcount_high:
+    Name: smb.maxcount_high
+    Type: FtUint16
+    Display: BaseDec
+    Info: Max Count High (multiply with 64K)
+    JsonName: smb_smb_maxcount_high
+  smb.mincount:
+    Name: smb.mincount
+    Type: FtUint16
+    Display: BaseDec
+    Info: Min Count
+    JsonName: smb_smb_mincount
+  smb.timeout:
+    Name: smb.timeout
+    Type: FtUint32
+    Display: BaseDec
+    Info: Timeout
+    JsonName: smb_smb_timeout
+  smb.offset_high:
+    Name: smb.offset_high
+    Type: FtUint32
+    Display: BaseDec
+    Info: High Offset
+    JsonName: smb_smb_offset_high
+  smb.units:
+    Name: smb.units
+    Type: FtUint16
+    Display: BaseDec
+    Info: Total Units
+    JsonName: smb_smb_units
+  smb.bpu:
+    Name: smb.bpu
+    Type: FtUint16
+    Display: BaseDec
+    Info: Blocks Per Unit
+    JsonName: smb_smb_bpu
+  smb.blocksize:
+    Name: smb.blocksize
+    Type: FtUint16
+    Display: BaseDec
+    Info: Block Size
+    JsonName: smb_smb_blocksize
+  smb.free_units:
+    Name: smb.free_units
+    Type: FtUint16
+    Display: BaseDec
+    Info: Free Units
+    JsonName: smb_smb_free_units
+  smb.data_offset:
+    Name: smb.data_offset
+    Type: FtUint16
+    Display: BaseDec
+    Info: Data Offset
+    JsonName: smb_smb_data_offset
+  smb.dcm:
+    Name: smb.dcm
+    Type: FtUint16
+    Display: BaseDec
+    Info: Data Compaction Mode
+    JsonName: smb_smb_dcm
+  smb.request.mask:
+    Name: smb.request.mask
+    Type: FtUint32
+    Display: BaseHex
+    Info: Request Mask
+    JsonName: smb_smb_request_mask
+  smb.response.mask:
+    Name: smb.response.mask
+    Type: FtUint32
+    Display: BaseHex
+    Info: Response Mask
+    JsonName: smb_smb_response_mask
+  smb.search_id:
+    Name: smb.search_id
+    Type: FtUint16
+    Display: BaseHex
+    Info: Search ID
+    JsonName: smb_smb_search_id
+  smb.write.mode:
+    Name: smb.write.mode
+    Type: FtUint16
+    Display: BaseHex
+    Info: Write Mode
+    JsonName: smb_smb_write_mode
+  smb.write.mode.write_through:
+    Name: smb.write.mode.write_through
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Write Through
+    JsonName: smb_write_mode_smb_write_mode_write_through
+  smb.write.mode.return_remaining:
+    Name: smb.write.mode.return_remaining
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Return Remaining
+    JsonName: smb_write_mode_smb_write_mode_return_remaining
+  smb.write.mode.raw:
+    Name: smb.write.mode.raw
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Write Raw
+    JsonName: smb_write_mode_smb_write_mode_raw
+  smb.write.mode.message_start:
+    Name: smb.write.mode.message_start
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Message Start
+    JsonName: smb_write_mode_smb_write_mode_message_start
+  smb.write.mode.connectionless:
+    Name: smb.write.mode.connectionless
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Connectionless
+    JsonName: smb_write_mode_smb_write_mode_connectionless
+  smb.resume.key_len:
+    Name: smb.resume.key_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Resume Key Length
+    JsonName: smb_resume_smb_resume_key_len
+  smb.resume.find_id:
+    Name: smb.resume.find_id
+    Type: FtUint8
+    Display: BaseHex
+    Info: Find ID
+    JsonName: smb_resume_smb_resume_find_id
+  smb.resume.server.cookie:
+    Name: smb.resume.server.cookie
+    Type: FtBytes
+    Info: Server Cookie
+    JsonName: smb_smb_resume_server_cookie
+  smb.resume.client.cookie:
+    Name: smb.resume.client.cookie
+    Type: FtBytes
+    Info: Client Cookie
+    JsonName: smb_smb_resume_client_cookie
+  smb.andxoffset:
+    Name: smb.andxoffset
+    Type: FtUint16
+    Display: BaseDec
+    Info: AndXOffset
+    JsonName: smb_smb_andxoffset
+  smb.lock.type:
+    Name: smb.lock.type
+    Type: FtUint8
+    Display: BaseHex
+    Info: Lock Type
+    JsonName: smb_smb_lock_type
+  smb.lock.type.large:
+    Name: smb.lock.type.large
+    Type: FtBoolean
+    Display: SepDot
+    Info: Large Files
+    JsonName: smb_lock_type_smb_lock_type_large
+  smb.lock.type.cancel:
+    Name: smb.lock.type.cancel
+    Type: FtBoolean
+    Display: SepDot
+    Info: Cancel
+    JsonName: smb_lock_type_smb_lock_type_cancel
+  smb.lock.type.change:
+    Name: smb.lock.type.change
+    Type: FtBoolean
+    Display: SepDot
+    Info: Change
+    JsonName: smb_lock_type_smb_lock_type_change
+  smb.lock.type.oplock_release:
+    Name: smb.lock.type.oplock_release
+    Type: FtBoolean
+    Display: SepDot
+    Info: Oplock Break
+    JsonName: smb_lock_type_smb_lock_type_oplock_release
+  smb.lock.type.shared:
+    Name: smb.lock.type.shared
+    Type: FtBoolean
+    Display: SepDot
+    Info: Shared
+    JsonName: smb_lock_type_smb_lock_type_shared
+  smb.locking.oplock.level:
+    Name: smb.locking.oplock.level
+    Type: FtUint8
+    Display: BaseDec
+    Info: Oplock Level
+    JsonName: smb_smb_locking_oplock_level
+  smb.locking.num_locks:
+    Name: smb.locking.num_locks
+    Type: FtUint16
+    Display: BaseDec
+    Info: Number of Locks
+    JsonName: smb_smb_locking_num_locks
+  smb.locking.num_unlocks:
+    Name: smb.locking.num_unlocks
+    Type: FtUint16
+    Display: BaseDec
+    Info: Number of Unlocks
+    JsonName: smb_smb_locking_num_unlocks
+  smb.lock.length:
+    Name: smb.lock.length
+    Type: FtUint64
+    Display: BaseDec
+    Info: Length
+    JsonName: smb_smb_lock_length
+  smb.lock.offset:
+    Name: smb.lock.offset
+    Type: FtUint64
+    Display: BaseDec
+    Info: Offset
+    JsonName: smb_smb_lock_offset
+  smb.file_type:
+    Name: smb.file_type
+    Type: FtUint16
+    Display: BaseDec
+    Info: File Type
+    JsonName: smb_smb_file_type
+  smb.ipc_state:
+    Name: smb.ipc_state
+    Type: FtUint16
+    Display: BaseHex
+    Info: IPC State
+    JsonName: smb_smb_ipc_state
+  smb.ipc_state.nonblocking:
+    Name: smb.ipc_state.nonblocking
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Nonblocking
+    JsonName: smb_ipc_state_smb_ipc_state_nonblocking
+  smb.ipc_state.endpoint:
+    Name: smb.ipc_state.endpoint
+    Type: FtUint16
+    Display: BaseDec
+    Info: Endpoint
+    JsonName: smb_ipc_state_smb_ipc_state_endpoint
+  smb.ipc_state.pipe_type:
+    Name: smb.ipc_state.pipe_type
+    Type: FtUint16
+    Display: BaseDec
+    Info: Pipe Type
+    JsonName: smb_ipc_state_smb_ipc_state_pipe_type
+  smb.ipc_state.read_mode:
+    Name: smb.ipc_state.read_mode
+    Type: FtUint16
+    Display: BaseDec
+    Info: Read Mode
+    JsonName: smb_ipc_state_smb_ipc_state_read_mode
+  smb.ipc_state.icount:
+    Name: smb.ipc_state.icount
+    Type: FtUint16
+    Display: BaseDec
+    Info: Icount
+    JsonName: smb_ipc_state_smb_ipc_state_icount
+  smb.server_fid:
+    Name: smb.server_fid
+    Type: FtUint32
+    Display: BaseHex
+    Info: Server FID
+    JsonName: smb_smb_server_fid
+  smb.open.flags:
+    Name: smb.open.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb_smb_open_flags
+  smb.open.flags.add_info:
+    Name: smb.open.flags.add_info
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Additional Info
+    JsonName: smb_open_flags_smb_open_flags_add_info
+  smb.open.flags.ex_oplock:
+    Name: smb.open.flags.ex_oplock
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Exclusive Oplock
+    JsonName: smb_open_flags_smb_open_flags_ex_oplock
+  smb.open.flags.batch_oplock:
+    Name: smb.open.flags.batch_oplock
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Batch Oplock
+    JsonName: smb_open_flags_smb_open_flags_batch_oplock
+  smb.open.flags.ealen:
+    Name: smb.open.flags.ealen
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Total EA Len
+    JsonName: smb_open_flags_smb_open_flags_ealen
+  smb.open.action:
+    Name: smb.open.action
+    Type: FtUint16
+    Display: BaseHex
+    Info: Action
+    JsonName: smb_smb_open_action
+  smb.open.action.open:
+    Name: smb.open.action.open
+    Type: FtUint16
+    Display: BaseDec
+    Info: Open Action
+    JsonName: smb_open_action_smb_open_action_open
+  smb.open.action.lock:
+    Name: smb.open.action.lock
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Exclusive Open
+    JsonName: smb_open_action_smb_open_action_lock
+  smb.vc:
+    Name: smb.vc
+    Type: FtUint16
+    Display: BaseDec
+    Info: VC Number
+    JsonName: smb_smb_vc
+  smb.pwlen:
+    Name: smb.pwlen
+    Type: FtUint16
+    Display: BaseDec
+    Info: Password Length
+    JsonName: smb_smb_pwlen
+  smb.ansi_pwlen:
+    Name: smb.ansi_pwlen
+    Type: FtUint16
+    Display: BaseDec
+    Info: ANSI Password Length
+    JsonName: smb_smb_ansi_pwlen
+  smb.unicode_pwlen:
+    Name: smb.unicode_pwlen
+    Type: FtUint16
+    Display: BaseDec
+    Info: Unicode Password Length
+    JsonName: smb_smb_unicode_pwlen
+  smb.account:
+    Name: smb.account
+    Type: FtString
+    Info: Account
+    JsonName: smb_smb_account
+  smb.native_os:
+    Name: smb.native_os
+    Type: FtString
+    Info: Native OS
+    JsonName: smb_smb_native_os
+  smb.native_lanman:
+    Name: smb.native_lanman
+    Type: FtString
+    Info: Native LAN Manager
+    JsonName: smb_smb_native_lanman
+  smb.setup.action:
+    Name: smb.setup.action
+    Type: FtUint16
+    Display: BaseHex
+    Info: Action
+    JsonName: smb_smb_setup_action
+  smb.setup.action.guest:
+    Name: smb.setup.action.guest
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Guest
+    JsonName: smb_setup_action_smb_setup_action_guest
+  smb.native_fs:
+    Name: smb.native_fs
+    Type: FtString
+    Info: Native File System
+    JsonName: smb_smb_native_fs
+  smb.connect.flags:
+    Name: smb.connect.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb_smb_connect_flags
+  smb.connect.flags.dtid:
+    Name: smb.connect.flags.dtid
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Disconnect TID
+    JsonName: smb_connect_flags_smb_connect_flags_dtid
+  smb.connect.flags.extendedsig:
+    Name: smb.connect.flags.extendedsig
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Extended Signature
+    JsonName: smb_connect_flags_smb_connect_flags_extendedsig
+  smb.connect.flags.extendedresp:
+    Name: smb.connect.flags.extendedresp
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Extended Response
+    JsonName: smb_connect_flags_smb_connect_flags_extendedresp
+  smb.connect.support:
+    Name: smb.connect.support
+    Type: FtUint16
+    Display: BaseHex
+    Info: Optional Support
+    JsonName: smb_smb_connect_support
+  smb.connect.support.search:
+    Name: smb.connect.support.search
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Search Bits
+    JsonName: smb_connect_support_smb_connect_support_search
+  smb.connect.support.dfs:
+    Name: smb.connect.support.dfs
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: In Dfs
+    JsonName: smb_connect_support_smb_connect_support_dfs
+  smb.connect.support.cscmask:
+    Name: smb.connect.support.cscmask
+    Type: FtUint16
+    Display: BaseDec
+    Info: CSC Mask
+    JsonName: smb_connect_support_smb_connect_support_cscmask
+  smb.connect.support.uniqfilename:
+    Name: smb.connect.support.uniqfilename
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Unique File Name
+    JsonName: smb_connect_support_smb_connect_support_uniqfilename
+  smb.connect.support.extendedsig:
+    Name: smb.connect.support.extendedsig
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Extended Signatures
+    JsonName: smb_connect_support_smb_connect_support_extendedsig
+  smb.msc:
+    Name: smb.msc
+    Type: FtUint8
+    Display: BaseDec
+    Info: Max Setup Count
+    JsonName: smb_smb_msc
+  smb.tpc:
+    Name: smb.tpc
+    Type: FtUint32
+    Display: BaseDec
+    Info: Total Parameter Count
+    JsonName: smb_smb_tpc
+  smb.tdc:
+    Name: smb.tdc
+    Type: FtUint32
+    Display: BaseDec
+    Info: Total Data Count
+    JsonName: smb_smb_tdc
+  smb.mpc:
+    Name: smb.mpc
+    Type: FtUint32
+    Display: BaseDec
+    Info: Max Parameter Count
+    JsonName: smb_smb_mpc
+  smb.mdc:
+    Name: smb.mdc
+    Type: FtUint32
+    Display: BaseDec
+    Info: Max Data Count
+    JsonName: smb_smb_mdc
+  smb.pd:
+    Name: smb.pd
+    Type: FtUint16
+    Display: BaseDec
+    Info: Parameter Displacement
+    JsonName: smb_smb_pd
+  smb.pc:
+    Name: smb.pc
+    Type: FtUint16
+    Display: BaseDec
+    Info: Parameter Count
+    JsonName: smb_smb_pc
+  smb.po:
+    Name: smb.po
+    Type: FtUint16
+    Display: BaseDec
+    Info: Parameter Offset
+    JsonName: smb_smb_po
+  smb.dc:
+    Name: smb.dc
+    Type: FtUint16
+    Display: BaseDec
+    Info: Data Count
+    JsonName: smb_smb_dc
+  smb.data_disp:
+    Name: smb.data_disp
+    Type: FtUint16
+    Display: BaseDec
+    Info: Data Displacement
+    JsonName: smb_smb_data_disp
+  smb.sc:
+    Name: smb.sc
+    Type: FtUint8
+    Display: BaseDec
+    Info: Setup Count
+    JsonName: smb_smb_sc
+  smb.nt.ioctl.isfsctl:
+    Name: smb.nt.ioctl.isfsctl
+    Type: FtUint8
+    Display: BaseDec
+    Info: IsFSctl
+    JsonName: smb_smb_nt_ioctl_isfsctl
+  smb.nt.ioctl.completion_filter:
+    Name: smb.nt.ioctl.completion_filter
+    Type: FtUint8
+    Display: BaseHex
+    Info: Completion Filter
+    JsonName: smb_smb_nt_ioctl_completion_filter
+  smb.nt.ioctl.flags.root_handle:
+    Name: smb.nt.ioctl.flags.root_handle
+    Type: FtBoolean
+    Display: SepDot
+    Info: Root Handle
+    JsonName: smb_smb_nt_ioctl_flags_root_handle
+  smb.nt.notify.action:
+    Name: smb.nt.notify.action
+    Type: FtUint32
+    Display: BaseDec
+    Info: Action
+    JsonName: smb_smb_nt_notify_action
+  smb.nt.notify.watch_tree:
+    Name: smb.nt.notify.watch_tree
+    Type: FtUint8
+    Display: BaseDec
+    Info: Watch Tree
+    JsonName: smb_smb_nt_notify_watch_tree
+  smb.nt.notify.completion_filter:
+    Name: smb.nt.notify.completion_filter
+    Type: FtUint32
+    Display: BaseHex
+    Info: Completion Filter
+    JsonName: smb_smb_nt_notify_completion_filter
+  smb.nt.notify.file_name:
+    Name: smb.nt.notify.file_name
+    Type: FtBoolean
+    Display: 32
+    Info: File Name Change
+    JsonName: smb_smb_nt_notify_file_name
+  smb.nt.notify.dir_name:
+    Name: smb.nt.notify.dir_name
+    Type: FtBoolean
+    Display: 32
+    Info: Directory Name Change
+    JsonName: smb_smb_nt_notify_dir_name
+  smb.nt.notify.attributes:
+    Name: smb.nt.notify.attributes
+    Type: FtBoolean
+    Display: 32
+    Info: Attribute Change
+    JsonName: smb_smb_nt_notify_attributes
+  smb.nt.notify.size:
+    Name: smb.nt.notify.size
+    Type: FtBoolean
+    Display: 32
+    Info: Size Change
+    JsonName: smb_smb_nt_notify_size
+  smb.nt.notify.last_write:
+    Name: smb.nt.notify.last_write
+    Type: FtBoolean
+    Display: 32
+    Info: Last Write Change
+    JsonName: smb_smb_nt_notify_last_write
+  smb.nt.notify.last_access:
+    Name: smb.nt.notify.last_access
+    Type: FtBoolean
+    Display: 32
+    Info: Last Access Change
+    JsonName: smb_smb_nt_notify_last_access
+  smb.nt.notify.creation:
+    Name: smb.nt.notify.creation
+    Type: FtBoolean
+    Display: 32
+    Info: Created Change
+    JsonName: smb_smb_nt_notify_creation
+  smb.nt.notify.ea:
+    Name: smb.nt.notify.ea
+    Type: FtBoolean
+    Display: 32
+    Info: EA Change
+    JsonName: smb_smb_nt_notify_ea
+  smb.nt.notify.security:
+    Name: smb.nt.notify.security
+    Type: FtBoolean
+    Display: 32
+    Info: Security Change
+    JsonName: smb_smb_nt_notify_security
+  smb.nt.notify.stream_name:
+    Name: smb.nt.notify.stream_name
+    Type: FtBoolean
+    Display: 32
+    Info: Stream Name Change
+    JsonName: smb_smb_nt_notify_stream_name
+  smb.nt.notify.stream_size:
+    Name: smb.nt.notify.stream_size
+    Type: FtBoolean
+    Display: 32
+    Info: Stream Size Change
+    JsonName: smb_smb_nt_notify_stream_size
+  smb.nt.notify.stream_write:
+    Name: smb.nt.notify.stream_write
+    Type: FtBoolean
+    Display: 32
+    Info: Stream Write
+    JsonName: smb_smb_nt_notify_stream_write
+  smb.rfid:
+    Name: smb.rfid
+    Type: FtUint32
+    Display: BaseHex
+    Info: Root FID
+    JsonName: smb_smb_rfid
+  smb.alloc_size64:
+    Name: smb.alloc_size64
+    Type: FtUint64
+    Display: BaseDec
+    Info: Allocation Size
+    JsonName: smb_smb_alloc_size64
+  smb.create.disposition:
+    Name: smb.create.disposition
+    Type: FtUint32
+    Display: BaseDec
+    Info: Disposition
+    JsonName: smb_smb_create_disposition
+  smb.sd.length:
+    Name: smb.sd.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: SD Length
+    JsonName: smb_smb_sd_length
+  smb.ea.list_length:
+    Name: smb.ea.list_length
+    Type: FtUint32
+    Display: BaseDec
+    Info: EA List Length
+    JsonName: smb_smb_ea_list_length
+  smb.ea.flags:
+    Name: smb.ea.flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: EA Flags
+    JsonName: smb_smb_ea_flags
+  smb.ea.name_length:
+    Name: smb.ea.name_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: EA Name Length
+    JsonName: smb_smb_ea_name_length
+  smb.ea.data_length:
+    Name: smb.ea.data_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: EA Data Length
+    JsonName: smb_smb_ea_data_length
+  smb.ea.name:
+    Name: smb.ea.name
+    Type: FtString
+    Info: EA Name
+    JsonName: smb_smb_ea_name
+  smb.ea.data:
+    Name: smb.ea.data
+    Type: FtBytes
+    Info: EA Data
+    JsonName: smb_smb_ea_data
+  smb.file_name_len:
+    Name: smb.file_name_len
+    Type: FtUint32
+    Display: BaseDec
+    Info: File Name Len
+    JsonName: smb_smb_file_name_len
+  smb.impersonation.level:
+    Name: smb.impersonation.level
+    Type: FtUint32
+    Display: BaseDec
+    Info: Impersonation
+    JsonName: smb_smb_impersonation_level
+  smb.security.flags:
+    Name: smb.security.flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: Security Flags
+    JsonName: smb_smb_security_flags
+  smb.security.flags.context_tracking:
+    Name: smb.security.flags.context_tracking
+    Type: FtBoolean
+    Display: SepDot
+    Info: Context Tracking
+    JsonName: smb_security_flags_smb_security_flags_context_tracking
+  smb.security.flags.effective_only:
+    Name: smb.security.flags.effective_only
+    Type: FtBoolean
+    Display: SepDot
+    Info: Effective Only
+    JsonName: smb_security_flags_smb_security_flags_effective_only
+  smb.access.generic_read:
+    Name: smb.access.generic_read
+    Type: FtBoolean
+    Display: 32
+    Info: Generic Read
+    JsonName: smb_smb_access_generic_read
+  smb.access.generic_write:
+    Name: smb.access.generic_write
+    Type: FtBoolean
+    Display: 32
+    Info: Generic Write
+    JsonName: smb_smb_access_generic_write
+  smb.access.generic_execute:
+    Name: smb.access.generic_execute
+    Type: FtBoolean
+    Display: 32
+    Info: Generic Execute
+    JsonName: smb_smb_access_generic_execute
+  smb.access.generic_all:
+    Name: smb.access.generic_all
+    Type: FtBoolean
+    Display: 32
+    Info: Generic All
+    JsonName: smb_smb_access_generic_all
+  smb.access.maximum_allowed:
+    Name: smb.access.maximum_allowed
+    Type: FtBoolean
+    Display: 32
+    Info: Maximum Allowed
+    JsonName: smb_smb_access_maximum_allowed
+  smb.access.system_security:
+    Name: smb.access.system_security
+    Type: FtBoolean
+    Display: 32
+    Info: System Security
+    JsonName: smb_smb_access_system_security
+  smb.access.synchronize:
+    Name: smb.access.synchronize
+    Type: FtBoolean
+    Display: 32
+    Info: Synchronize
+    JsonName: smb_smb_access_synchronize
+  smb.access.write_owner:
+    Name: smb.access.write_owner
+    Type: FtBoolean
+    Display: 32
+    Info: Write Owner
+    JsonName: smb_smb_access_write_owner
+  smb.access.write_dac:
+    Name: smb.access.write_dac
+    Type: FtBoolean
+    Display: 32
+    Info: Write DAC
+    JsonName: smb_smb_access_write_dac
+  smb.access.read_control:
+    Name: smb.access.read_control
+    Type: FtBoolean
+    Display: 32
+    Info: Read Control
+    JsonName: smb_smb_access_read_control
+  smb.access.delete:
+    Name: smb.access.delete
+    Type: FtBoolean
+    Display: 32
+    Info: Delete
+    JsonName: smb_smb_access_delete
+  smb.access.write_attributes:
+    Name: smb.access.write_attributes
+    Type: FtBoolean
+    Display: 32
+    Info: Write Attributes
+    JsonName: smb_smb_access_write_attributes
+  smb.access.read_attributes:
+    Name: smb.access.read_attributes
+    Type: FtBoolean
+    Display: 32
+    Info: Read Attributes
+    JsonName: smb_smb_access_read_attributes
+  smb.access.delete_child:
+    Name: smb.access.delete_child
+    Type: FtBoolean
+    Display: 32
+    Info: Delete Child
+    JsonName: smb_smb_access_delete_child
+  smb.access.execute:
+    Name: smb.access.execute
+    Type: FtBoolean
+    Display: 32
+    Info: Execute
+    JsonName: smb_smb_access_execute
+  smb.access.write_ea:
+    Name: smb.access.write_ea
+    Type: FtBoolean
+    Display: 32
+    Info: Write EA
+    JsonName: smb_smb_access_write_ea
+  smb.access.read_ea:
+    Name: smb.access.read_ea
+    Type: FtBoolean
+    Display: 32
+    Info: Read EA
+    JsonName: smb_smb_access_read_ea
+  smb.access.append:
+    Name: smb.access.append
+    Type: FtBoolean
+    Display: 32
+    Info: Append
+    JsonName: smb_smb_access_append
+  smb.access.write:
+    Name: smb.access.write
+    Type: FtBoolean
+    Display: 32
+    Info: Write
+    JsonName: smb_smb_access_write
+  smb.access.read:
+    Name: smb.access.read
+    Type: FtBoolean
+    Display: 32
+    Info: Read
+    JsonName: smb_smb_access_read
+  smb.nt.create.oplock:
+    Name: smb.nt.create.oplock
+    Type: FtBoolean
+    Display: 32
+    Info: Exclusive Oplock
+    JsonName: smb_smb_nt_create_oplock
+  smb.nt.create.batch_oplock:
+    Name: smb.nt.create.batch_oplock
+    Type: FtBoolean
+    Display: 32
+    Info: Batch Oplock
+    JsonName: smb_smb_nt_create_batch_oplock
+  smb.nt.create.dir:
+    Name: smb.nt.create.dir
+    Type: FtBoolean
+    Display: 32
+    Info: Create Directory
+    JsonName: smb_smb_nt_create_dir
+  smb.nt.create.ext:
+    Name: smb.nt.create.ext
+    Type: FtBoolean
+    Display: 32
+    Info: Extended Response
+    JsonName: smb_smb_nt_create_ext
+  smb.nt.create_options.directory:
+    Name: smb.nt.create_options.directory
+    Type: FtBoolean
+    Display: 32
+    Info: Directory
+    JsonName: smb_smb_nt_create_options_directory
+  smb.nt.create_options.write_through:
+    Name: smb.nt.create_options.write_through
+    Type: FtBoolean
+    Display: 32
+    Info: Write Through
+    JsonName: smb_smb_nt_create_options_write_through
+  smb.nt.create_options.sequential_only:
+    Name: smb.nt.create_options.sequential_only
+    Type: FtBoolean
+    Display: 32
+    Info: Sequential Only
+    JsonName: smb_smb_nt_create_options_sequential_only
+  smb.nt.create_options.intermediate_buffering:
+    Name: smb.nt.create_options.intermediate_buffering
+    Type: FtBoolean
+    Display: 32
+    Info: Intermediate Buffering
+    JsonName: smb_smb_nt_create_options_intermediate_buffering
+  smb.nt.create_options.sync_io_alert:
+    Name: smb.nt.create_options.sync_io_alert
+    Type: FtBoolean
+    Display: 32
+    Info: Sync I/O Alert
+    JsonName: smb_smb_nt_create_options_sync_io_alert
+  smb.nt.create_options.sync_io_nonalert:
+    Name: smb.nt.create_options.sync_io_nonalert
+    Type: FtBoolean
+    Display: 32
+    Info: Sync I/O Nonalert
+    JsonName: smb_smb_nt_create_options_sync_io_nonalert
+  smb.nt.create_options.non_directory:
+    Name: smb.nt.create_options.non_directory
+    Type: FtBoolean
+    Display: 32
+    Info: Non-Directory
+    JsonName: smb_smb_nt_create_options_non_directory
+  smb.nt.create_options.create_tree_connection:
+    Name: smb.nt.create_options.create_tree_connection
+    Type: FtBoolean
+    Display: 32
+    Info: Create Tree Connection
+    JsonName: smb_smb_nt_create_options_create_tree_connection
+  smb.nt.create_options.complete_if_oplocked:
+    Name: smb.nt.create_options.complete_if_oplocked
+    Type: FtBoolean
+    Display: 32
+    Info: Complete If Oplocked
+    JsonName: smb_smb_nt_create_options_complete_if_oplocked
+  smb.nt.create_options.no_ea_knowledge:
+    Name: smb.nt.create_options.no_ea_knowledge
+    Type: FtBoolean
+    Display: 32
+    Info: No EA Knowledge
+    JsonName: smb_smb_nt_create_options_no_ea_knowledge
+  smb.nt.create_options.eight_dot_three_only:
+    Name: smb.nt.create_options.eight_dot_three_only
+    Type: FtBoolean
+    Display: 32
+    Info: 8.3 Only
+    JsonName: smb_smb_nt_create_options_eight_dot_three_only
+  smb.nt.create_options.random_access:
+    Name: smb.nt.create_options.random_access
+    Type: FtBoolean
+    Display: 32
+    Info: Random Access
+    JsonName: smb_smb_nt_create_options_random_access
+  smb.nt.create_options.delete_on_close:
+    Name: smb.nt.create_options.delete_on_close
+    Type: FtBoolean
+    Display: 32
+    Info: Delete On Close
+    JsonName: smb_smb_nt_create_options_delete_on_close
+  smb.nt.create_options.open_by_fileid:
+    Name: smb.nt.create_options.open_by_fileid
+    Type: FtBoolean
+    Display: 32
+    Info: Open By FileID
+    JsonName: smb_smb_nt_create_options_open_by_fileid
+  smb.nt.create_options.backup_intent:
+    Name: smb.nt.create_options.backup_intent
+    Type: FtBoolean
+    Display: 32
+    Info: Backup Intent
+    JsonName: smb_smb_nt_create_options_backup_intent
+  smb.nt.create_options.no_compression:
+    Name: smb.nt.create_options.no_compression
+    Type: FtBoolean
+    Display: 32
+    Info: No Compression
+    JsonName: smb_smb_nt_create_options_no_compression
+  smb.nt.create_options.reserve_opfilter:
+    Name: smb.nt.create_options.reserve_opfilter
+    Type: FtBoolean
+    Display: 32
+    Info: Reserve Opfilter
+    JsonName: smb_smb_nt_create_options_reserve_opfilter
+  smb.nt.create_options.open_reparse_point:
+    Name: smb.nt.create_options.open_reparse_point
+    Type: FtBoolean
+    Display: 32
+    Info: Open Reparse Point
+    JsonName: smb_smb_nt_create_options_open_reparse_point
+  smb.nt.create_options.open_no_recall:
+    Name: smb.nt.create_options.open_no_recall
+    Type: FtBoolean
+    Display: 32
+    Info: Open No Recall
+    JsonName: smb_smb_nt_create_options_open_no_recall
+  smb.nt.create_options.open_for_free_space_query:
+    Name: smb.nt.create_options.open_for_free_space_query
+    Type: FtBoolean
+    Display: 32
+    Info: Open For Free Space query
+    JsonName: smb_smb_nt_create_options_open_for_free_space_query
+  smb.share.access.read:
+    Name: smb.share.access.read
+    Type: FtBoolean
+    Display: 32
+    Info: Read
+    JsonName: smb_smb_share_access_read
+  smb.share.access.write:
+    Name: smb.share.access.write
+    Type: FtBoolean
+    Display: 32
+    Info: Write
+    JsonName: smb_smb_share_access_write
+  smb.share.access.delete:
+    Name: smb.share.access.delete
+    Type: FtBoolean
+    Display: 32
+    Info: Delete
+    JsonName: smb_smb_share_access_delete
+  smb.size_returned_quota_data:
+    Name: smb.size_returned_quota_data
+    Type: FtUint32
+    Display: BaseDec
+    Info: Size of returned Quota data
+    JsonName: smb_smb_size_returned_quota_data
+  smb.sec_desc_len:
+    Name: smb.sec_desc_len
+    Type: FtUint32
+    Display: BaseDec
+    Info: NT Security Descriptor Length
+    JsonName: smb_smb_sec_desc_len
+  smb.nt_qsd:
+    Name: smb.nt_qsd
+    Type: FtUint32
+    Display: BaseHex
+    Info: Security Information
+    JsonName: smb_smb_nt_qsd
+  smb.nt_qsd.owner:
+    Name: smb.nt_qsd.owner
+    Type: FtBoolean
+    Display: 32
+    Info: Owner
+    JsonName: smb_nt_qsd_smb_nt_qsd_owner
+  smb.nt_qsd.group:
+    Name: smb.nt_qsd.group
+    Type: FtBoolean
+    Display: 32
+    Info: Group
+    JsonName: smb_nt_qsd_smb_nt_qsd_group
+  smb.nt_qsd.dacl:
+    Name: smb.nt_qsd.dacl
+    Type: FtBoolean
+    Display: 32
+    Info: DACL
+    JsonName: smb_nt_qsd_smb_nt_qsd_dacl
+  smb.nt_qsd.sacl:
+    Name: smb.nt_qsd.sacl
+    Type: FtBoolean
+    Display: 32
+    Info: SACL
+    JsonName: smb_nt_qsd_smb_nt_qsd_sacl
+  smb.ext_attr:
+    Name: smb.ext_attr
+    Type: FtBytes
+    Info: Extended Attributes
+    JsonName: smb_smb_ext_attr
+  smb.oplock.level:
+    Name: smb.oplock.level
+    Type: FtUint8
+    Display: BaseDec
+    Info: Oplock level
+    JsonName: smb_smb_oplock_level
+  smb.create.action:
+    Name: smb.create.action
+    Type: FtUint32
+    Display: BaseDec
+    Info: Create action
+    JsonName: smb_smb_create_action
+  smb.create.file_id:
+    Name: smb.create.file_id
+    Type: FtUint32
+    Display: BaseHex
+    Info: Server unique file ID
+    JsonName: smb_smb_create_file_id
+  smb.create.file_id_64b:
+    Name: smb.create.file_id_64b
+    Type: FtUint64
+    Display: BaseHex
+    Info: Server unique 64-bit file ID
+    JsonName: smb_smb_create_file_id_64b
+  smb.ea.error_offset:
+    Name: smb.ea.error_offset
+    Type: FtUint32
+    Display: BaseDec
+    Info: EA Error offset
+    JsonName: smb_smb_ea_error_offset
+  smb.end_of_file:
+    Name: smb.end_of_file
+    Type: FtUint64
+    Display: BaseDec
+    Info: End Of File
+    JsonName: smb_smb_end_of_file
+  smb.replace:
+    Name: smb.replace
+    Type: FtBoolean
+    Info: Replace
+    JsonName: smb_smb_replace
+  smb.root_dir_handle:
+    Name: smb.root_dir_handle
+    Type: FtUint32
+    Display: BaseHex
+    Info: Root Directory Handle
+    JsonName: smb_smb_root_dir_handle
+  smb.target_name_len:
+    Name: smb.target_name_len
+    Type: FtUint32
+    Display: BaseDec
+    Info: Target name length
+    JsonName: smb_smb_target_name_len
+  smb.target_name:
+    Name: smb.target_name
+    Type: FtString
+    Info: Target name
+    JsonName: smb_smb_target_name
+  smb.device.type:
+    Name: smb.device.type
+    Type: FtUint32
+    Display: BaseHex
+    Info: Device Type
+    JsonName: smb_device_smb_device_type
+  smb.is_directory:
+    Name: smb.is_directory
+    Type: FtUint8
+    Display: BaseDec
+    Info: Is Directory
+    JsonName: smb_smb_is_directory
+  smb.next_entry_offset:
+    Name: smb.next_entry_offset
+    Type: FtUint32
+    Display: BaseDec
+    Info: Next Entry Offset
+    JsonName: smb_smb_next_entry_offset
+  smb.change.time:
+    Name: smb.change.time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Change
+    JsonName: smb_smb_change_time
+  smb.print.setup.len:
+    Name: smb.print.setup.len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Setup Len
+    JsonName: smb_smb_print_setup_len
+  smb.print.mode:
+    Name: smb.print.mode
+    Type: FtUint16
+    Display: BaseDec
+    Info: Mode
+    JsonName: smb_smb_print_mode
+  smb.print.identifier:
+    Name: smb.print.identifier
+    Type: FtString
+    Info: Identifier
+    JsonName: smb_smb_print_identifier
+  smb.print.restart_index:
+    Name: smb.print.restart_index
+    Type: FtUint16
+    Display: BaseDec
+    Info: Restart Index
+    JsonName: smb_smb_print_restart_index
+  smb.print.queued.date:
+    Name: smb.print.queued.date
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Queued
+    JsonName: smb_smb_print_queued_date
+  smb.print.queued.smb.date:
+    Name: smb.print.queued.smb.date
+    Type: FtUint16
+    Display: BaseHex
+    Info: Queued Date
+    JsonName: smb_smb_print_queued_smb_date
+  smb.print.queued.smb.time:
+    Name: smb.print.queued.smb.time
+    Type: FtUint16
+    Display: BaseHex
+    Info: Queued Time
+    JsonName: smb_smb_print_queued_smb_time
+  smb.print.status:
+    Name: smb.print.status
+    Type: FtUint8
+    Display: BaseHex
+    Info: Status
+    JsonName: smb_smb_print_status
+  smb.print.spool.file_number:
+    Name: smb.print.spool.file_number
+    Type: FtUint16
+    Display: BaseDec
+    Info: Spool File Number
+    JsonName: smb_smb_print_spool_file_number
+  smb.print.spool.file_size:
+    Name: smb.print.spool.file_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Spool File Size
+    JsonName: smb_smb_print_spool_file_size
+  smb.print.spool.name:
+    Name: smb.print.spool.name
+    Type: FtStringz
+    Info: Name
+    JsonName: smb_smb_print_spool_name
+  smb.print.start_index:
+    Name: smb.print.start_index
+    Type: FtUint16
+    Display: BaseDec
+    Info: Start Index
+    JsonName: smb_smb_print_start_index
+  smb.originator_name:
+    Name: smb.originator_name
+    Type: FtStringz
+    Info: Originator Name
+    JsonName: smb_smb_originator_name
+  smb.destination_name:
+    Name: smb.destination_name
+    Type: FtStringz
+    Info: Destination Name
+    JsonName: smb_smb_destination_name
+  smb.message.len:
+    Name: smb.message.len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Message Len
+    JsonName: smb_message_smb_message_len
+  smb.message:
+    Name: smb.message
+    Type: FtString
+    Info: Message
+    JsonName: smb_smb_message
+  smb.mgid:
+    Name: smb.mgid
+    Type: FtUint16
+    Display: BaseDec
+    Info: Message Group ID
+    JsonName: smb_smb_mgid
+  smb.forwarded_name:
+    Name: smb.forwarded_name
+    Type: FtStringz
+    Info: Forwarded Name
+    JsonName: smb_smb_forwarded_name
+  smb.machine_name:
+    Name: smb.machine_name
+    Type: FtStringz
+    Info: Machine Name
+    JsonName: smb_smb_machine_name
+  smb.cancel_to:
+    Name: smb.cancel_to
+    Type: FtFramenum
+    Info: Cancel to
+    JsonName: smb_smb_cancel_to
+  smb.trans_name:
+    Name: smb.trans_name
+    Type: FtString
+    Info: Transaction Name
+    JsonName: smb_smb_trans_name
+  smb.transaction.flags:
+    Name: smb.transaction.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb_smb_transaction_flags
+  smb.transaction.flags.dtid:
+    Name: smb.transaction.flags.dtid
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Disconnect TID
+    JsonName: smb_transaction_flags_smb_transaction_flags_dtid
+  smb.transaction.flags.owt:
+    Name: smb.transaction.flags.owt
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: One Way Transaction
+    JsonName: smb_transaction_flags_smb_transaction_flags_owt
+  smb.search_count:
+    Name: smb.search_count
+    Type: FtUint16
+    Display: BaseDec
+    Info: Search Count
+    JsonName: smb_smb_search_count
+  smb.search_pattern:
+    Name: smb.search_pattern
+    Type: FtString
+    Info: Search Pattern
+    JsonName: smb_smb_search_pattern
+  smb.find_first2.flags:
+    Name: smb.find_first2.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb_smb_find_first2_flags
+  smb.find_first2.flags.backup:
+    Name: smb.find_first2.flags.backup
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Backup Intent
+    JsonName: smb_find_first2_flags_smb_find_first2_flags_backup
+  smb.find_first2.flags.continue:
+    Name: smb.find_first2.flags.continue
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Continue
+    JsonName: smb_find_first2_flags_smb_find_first2_flags_continue
+  smb.find_first2.flags.resume:
+    Name: smb.find_first2.flags.resume
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Resume
+    JsonName: smb_find_first2_flags_smb_find_first2_flags_resume
+  smb.find_first2.flags.eos:
+    Name: smb.find_first2.flags.eos
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Close on EOS
+    JsonName: smb_find_first2_flags_smb_find_first2_flags_eos
+  smb.find_first2.flags.close:
+    Name: smb.find_first2.flags.close
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Close
+    JsonName: smb_find_first2_flags_smb_find_first2_flags_close
+  smb.ff2_loi:
+    Name: smb.ff2_loi
+    Type: FtUint16
+    Display: BaseDec
+    Info: Level of Interest
+    JsonName: smb_smb_ff2_loi
+  smb.qpi_loi:
+    Name: smb.qpi_loi
+    Type: FtUint16
+    Display: BaseDec
+    Info: Level of Interest
+    JsonName: smb_smb_qpi_loi
+  smb.spi_loi:
+    Name: smb.spi_loi
+    Type: FtUint16
+    Display: BaseDec
+    Info: Level of Interest
+    JsonName: smb_smb_spi_loi
+  smb.sfi_flags:
+    Name: smb.sfi_flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: IO Flag
+    JsonName: smb_smb_sfi_flags
+  smb.sfi_writethrough:
+    Name: smb.sfi_writethrough
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Writethrough
+    JsonName: smb_smb_sfi_writethrough
+  smb.sfi_caching:
+    Name: smb.sfi_caching
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Caching
+    JsonName: smb_smb_sfi_caching
+  smb.storage_type:
+    Name: smb.storage_type
+    Type: FtUint32
+    Display: BaseDec
+    Info: Storage Type
+    JsonName: smb_smb_storage_type
+  smb.resume:
+    Name: smb.resume
+    Type: FtUint32
+    Display: BaseDec
+    Info: Resume Key
+    JsonName: smb_smb_resume
+  smb.max_referral_level:
+    Name: smb.max_referral_level
+    Type: FtUint16
+    Display: BaseDec
+    Info: Max Referral Level
+    JsonName: smb_smb_max_referral_level
+  smb.qfsi_loi:
+    Name: smb.qfsi_loi
+    Type: FtUint16
+    Display: BaseHex
+    Info: Level of Interest
+    JsonName: smb_smb_qfsi_loi
+  smb.sfsi_loi:
+    Name: smb.sfsi_loi
+    Type: FtUint16
+    Display: BaseHex
+    Info: Level of Interest
+    JsonName: smb_smb_sfsi_loi
+  smb.ntr_loi:
+    Name: smb.ntr_loi
+    Type: FtUint16
+    Display: BaseDec
+    Info: Level of Interest
+    JsonName: smb_smb_ntr_loi
+  smb.ntr_clu:
+    Name: smb.ntr_clu
+    Type: FtUint32
+    Display: BaseDec
+    Info: Cluster count
+    JsonName: smb_smb_ntr_clu
+  smb.link_count:
+    Name: smb.link_count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Link Count
+    JsonName: smb_smb_link_count
+  smb.delete_pending:
+    Name: smb.delete_pending
+    Type: FtUint16
+    Display: BaseDec
+    Info: Delete Pending
+    JsonName: smb_smb_delete_pending
+  smb.index_number:
+    Name: smb.index_number
+    Type: FtUint64
+    Display: BaseHex
+    Info: Index Number
+    JsonName: smb_smb_index_number
+  smb.position:
+    Name: smb.position
+    Type: FtUint64
+    Display: BaseDec
+    Info: Position
+    JsonName: smb_smb_position
+  smb.alignment:
+    Name: smb.alignment
+    Type: FtUint32
+    Display: BaseDec
+    Info: Alignment
+    JsonName: smb_smb_alignment
+  smb.stream_name_len:
+    Name: smb.stream_name_len
+    Type: FtUint32
+    Display: BaseDec
+    Info: Stream Name Length
+    JsonName: smb_smb_stream_name_len
+  smb.stream_size:
+    Name: smb.stream_size
+    Type: FtUint64
+    Display: BaseDec
+    Info: Stream Size
+    JsonName: smb_smb_stream_size
+  smb.stream_name:
+    Name: smb.stream_name
+    Type: FtString
+    Info: Stream Name
+    JsonName: smb_smb_stream_name
+  smb.compressed.file_size:
+    Name: smb.compressed.file_size
+    Type: FtUint64
+    Display: BaseDec
+    Info: Compressed Size
+    JsonName: smb_smb_compressed_file_size
+  smb.compressed.format:
+    Name: smb.compressed.format
+    Type: FtUint16
+    Display: BaseDec
+    Info: Compression Format
+    JsonName: smb_smb_compressed_format
+  smb.compressed.unit_shift:
+    Name: smb.compressed.unit_shift
+    Type: FtUint8
+    Display: BaseDec
+    Info: Unit Shift
+    JsonName: smb_smb_compressed_unit_shift
+  smb.compressed.chunk_shift:
+    Name: smb.compressed.chunk_shift
+    Type: FtUint8
+    Display: BaseDec
+    Info: Chunk Shift
+    JsonName: smb_smb_compressed_chunk_shift
+  smb.compressed.cluster_shift:
+    Name: smb.compressed.cluster_shift
+    Type: FtUint8
+    Display: BaseDec
+    Info: Cluster Shift
+    JsonName: smb_smb_compressed_cluster_shift
+  smb.marked_for_deletion:
+    Name: smb.marked_for_deletion
+    Type: FtBoolean
+    Info: Marked for Deletion
+    JsonName: smb_smb_marked_for_deletion
+  smb.dfs.path_consumed:
+    Name: smb.dfs.path_consumed
+    Type: FtUint16
+    Display: BaseDec
+    Info: Path Consumed
+    JsonName: smb_smb_dfs_path_consumed
+  smb.dfs.num_referrals:
+    Name: smb.dfs.num_referrals
+    Type: FtUint16
+    Display: BaseDec
+    Info: Num Referrals
+    JsonName: smb_smb_dfs_num_referrals
+  smb.dfs.flags:
+    Name: smb.dfs.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb_smb_dfs_flags
+  smb.dfs.flags.server_hold_storage:
+    Name: smb.dfs.flags.server_hold_storage
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Hold Storage
+    JsonName: smb_dfs_flags_smb_dfs_flags_server_hold_storage
+  smb.dfs.flags.fielding:
+    Name: smb.dfs.flags.fielding
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Fielding
+    JsonName: smb_dfs_flags_smb_dfs_flags_fielding
+  smb.dfs.referral.version:
+    Name: smb.dfs.referral.version
+    Type: FtUint16
+    Display: BaseDec
+    Info: Version
+    JsonName: smb_smb_dfs_referral_version
+  smb.dfs.referral.size:
+    Name: smb.dfs.referral.size
+    Type: FtUint16
+    Display: BaseDec
+    Info: Size
+    JsonName: smb_smb_dfs_referral_size
+  smb.dfs.referral.server.type:
+    Name: smb.dfs.referral.server.type
+    Type: FtUint16
+    Display: BaseDec
+    Info: Server Type
+    JsonName: smb_smb_dfs_referral_server_type
+  smb.dfs.referral.flags:
+    Name: smb.dfs.referral.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb_smb_dfs_referral_flags
+  smb.dfs.referral.flags.name_list_referral:
+    Name: smb.dfs.referral.flags.name_list_referral
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: NameListReferral
+    JsonName: smb_dfs_referral_flags_smb_dfs_referral_flags_name_list_referral
+  smb.dfs.referral.flags.target_set_boundary:
+    Name: smb.dfs.referral.flags.target_set_boundary
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: TargetSetBoundary
+    JsonName: smb_dfs_referral_flags_smb_dfs_referral_flags_target_set_boundary
+  smb.dfs.referral.node_offset:
+    Name: smb.dfs.referral.node_offset
+    Type: FtUint16
+    Display: BaseDec
+    Info: Node Offset
+    JsonName: smb_smb_dfs_referral_node_offset
+  smb.dfs.referral.node:
+    Name: smb.dfs.referral.node
+    Type: FtString
+    Info: Node
+    JsonName: smb_smb_dfs_referral_node
+  smb.dfs.referral.proximity:
+    Name: smb.dfs.referral.proximity
+    Type: FtUint32
+    Display: BaseDec
+    Info: Proximity
+    JsonName: smb_smb_dfs_referral_proximity
+  smb.dfs.referral.ttl:
+    Name: smb.dfs.referral.ttl
+    Type: FtUint32
+    Display: BaseDec
+    Info: TTL
+    JsonName: smb_smb_dfs_referral_ttl
+  smb.dfs.referral.path_offset:
+    Name: smb.dfs.referral.path_offset
+    Type: FtUint16
+    Display: BaseDec
+    Info: Path Offset
+    JsonName: smb_smb_dfs_referral_path_offset
+  smb.dfs.referral.path:
+    Name: smb.dfs.referral.path
+    Type: FtString
+    Info: Path
+    JsonName: smb_smb_dfs_referral_path
+  smb.dfs.referral.alt_path_offset:
+    Name: smb.dfs.referral.alt_path_offset
+    Type: FtUint16
+    Display: BaseDec
+    Info: Alt Path Offset
+    JsonName: smb_smb_dfs_referral_alt_path_offset
+  smb.dfs.referral.alt_path:
+    Name: smb.dfs.referral.alt_path
+    Type: FtString
+    Info: Alt Path
+    JsonName: smb_smb_dfs_referral_alt_path
+  smb.dfs.referral.domain_offset:
+    Name: smb.dfs.referral.domain_offset
+    Type: FtUint16
+    Display: BaseDec
+    Info: Domain Offset
+    JsonName: smb_smb_dfs_referral_domain_offset
+  smb.dfs.referral.number_of_expnames:
+    Name: smb.dfs.referral.number_of_expnames
+    Type: FtUint16
+    Display: BaseDec
+    Info: Number of Expanded Names
+    JsonName: smb_smb_dfs_referral_number_of_expnames
+  smb.dfs.referral.expnames_offset:
+    Name: smb.dfs.referral.expnames_offset
+    Type: FtUint16
+    Display: BaseDec
+    Info: Expanded Names Offset
+    JsonName: smb_smb_dfs_referral_expnames_offset
+  smb.dfs.referral.domain_name:
+    Name: smb.dfs.referral.domain_name
+    Type: FtString
+    Info: Domain Name
+    JsonName: smb_smb_dfs_referral_domain_name
+  smb.dfs.referral.expname:
+    Name: smb.dfs.referral.expname
+    Type: FtString
+    Info: Expanded Name
+    JsonName: smb_smb_dfs_referral_expname
+  smb.dfs.referral.server_guid:
+    Name: smb.dfs.referral.server_guid
+    Type: FtGuid
+    Info: Server GUID
+    JsonName: smb_smb_dfs_referral_server_guid
+  smb.end_of_search:
+    Name: smb.end_of_search
+    Type: FtUint16
+    Display: BaseDec
+    Info: End Of Search
+    JsonName: smb_smb_end_of_search
+  smb.last_name_offset:
+    Name: smb.last_name_offset
+    Type: FtUint16
+    Display: BaseDec
+    Info: Last Name Offset
+    JsonName: smb_smb_last_name_offset
+  smb.fn_loi:
+    Name: smb.fn_loi
+    Type: FtUint16
+    Display: BaseDec
+    Info: Level of Interest
+    JsonName: smb_smb_fn_loi
+  smb.monitor_handle:
+    Name: smb.monitor_handle
+    Type: FtUint16
+    Display: BaseHex
+    Info: Monitor Handle
+    JsonName: smb_smb_monitor_handle
+  smb.change_count:
+    Name: smb.change_count
+    Type: FtUint16
+    Display: BaseDec
+    Info: Change Count
+    JsonName: smb_smb_change_count
+  smb.file_index:
+    Name: smb.file_index
+    Type: FtUint32
+    Display: BaseDec
+    Info: File Index
+    JsonName: smb_smb_file_index
+  smb.short_file:
+    Name: smb.short_file
+    Type: FtString
+    Info: Short File Name
+    JsonName: smb_smb_short_file
+  smb.short_file_name_len:
+    Name: smb.short_file_name_len
+    Type: FtUint32
+    Display: BaseDec
+    Info: Short File Name Len
+    JsonName: smb_smb_short_file_name_len
+  smb.fs_id:
+    Name: smb.fs_id
+    Type: FtUint32
+    Display: BaseDec
+    Info: FS Id
+    JsonName: smb_smb_fs_id
+  smb.fs_sector_per_unit:
+    Name: smb.fs_sector_per_unit
+    Type: FtUint32
+    Display: BaseDec
+    Info: Sectors/Unit
+    JsonName: smb_smb_fs_sector_per_unit
+  smb.fs_units:
+    Name: smb.fs_units
+    Type: FtUint32
+    Display: BaseDec
+    Info: Total Units
+    JsonName: smb_smb_fs_units
+  smb.fs_bytes_per_sector:
+    Name: smb.fs_bytes_per_sector
+    Type: FtUint32
+    Display: BaseDec
+    Info: Bytes per Sector
+    JsonName: smb_smb_fs_bytes_per_sector
+  smb.avail.units:
+    Name: smb.avail.units
+    Type: FtUint32
+    Display: BaseDec
+    Info: Available Units
+    JsonName: smb_smb_avail_units
+  smb.volume.serial:
+    Name: smb.volume.serial
+    Type: FtUint32
+    Display: BaseHex
+    Info: Volume Serial Number
+    JsonName: smb_smb_volume_serial
+  smb.volume.label.len:
+    Name: smb.volume.label.len
+    Type: FtUint32
+    Display: BaseDec
+    Info: Label Length
+    JsonName: smb_volume_label_smb_volume_label_len
+  smb.volume.label:
+    Name: smb.volume.label
+    Type: FtString
+    Info: Label
+    JsonName: smb_smb_volume_label
+  smb.free_alloc_units:
+    Name: smb.free_alloc_units
+    Type: FtUint64
+    Display: BaseDec
+    Info: Free Units
+    JsonName: smb_smb_free_alloc_units
+  smb.caller_free_alloc_units:
+    Name: smb.caller_free_alloc_units
+    Type: FtUint64
+    Display: BaseDec
+    Info: Caller Free Units
+    JsonName: smb_smb_caller_free_alloc_units
+  smb.actual_free_alloc_units:
+    Name: smb.actual_free_alloc_units
+    Type: FtUint64
+    Display: BaseDec
+    Info: Actual Free Units
+    JsonName: smb_smb_actual_free_alloc_units
+  smb.quota.soft.default:
+    Name: smb.quota.soft.default
+    Type: FtUint64
+    Display: BaseDec
+    Info: (Soft) Quota Threshold
+    JsonName: smb_smb_quota_soft_default
+  smb.quota.hard.default:
+    Name: smb.quota.hard.default
+    Type: FtUint64
+    Display: BaseDec
+    Info: (Hard) Quota Limit
+    JsonName: smb_smb_quota_hard_default
+  smb.quota.used:
+    Name: smb.quota.used
+    Type: FtUint64
+    Display: BaseDec
+    Info: Quota Used
+    JsonName: smb_smb_quota_used
+  smb.fs_max_name_len:
+    Name: smb.fs_max_name_len
+    Type: FtUint32
+    Display: BaseDec
+    Info: Max name length
+    JsonName: smb_smb_fs_max_name_len
+  smb.fs_name.len:
+    Name: smb.fs_name.len
+    Type: FtUint32
+    Display: BaseDec
+    Info: Label Length
+    JsonName: smb_fs_name_smb_fs_name_len
+  smb.fs_name:
+    Name: smb.fs_name
+    Type: FtString
+    Info: FS Name
+    JsonName: smb_smb_fs_name
+  smb.device:
+    Name: smb.device
+    Type: FtUint32
+    Display: BaseHex
+    Info: Device Characteristics
+    JsonName: smb_smb_device
+  smb.device.removable:
+    Name: smb.device.removable
+    Type: FtBoolean
+    Display: 32
+    Info: Removable
+    JsonName: smb_device_smb_device_removable
+  smb.device.read_only:
+    Name: smb.device.read_only
+    Type: FtBoolean
+    Display: 32
+    Info: Read Only
+    JsonName: smb_device_smb_device_read_only
+  smb.device.floppy:
+    Name: smb.device.floppy
+    Type: FtBoolean
+    Display: 32
+    Info: Floppy
+    JsonName: smb_device_smb_device_floppy
+  smb.device.write_once:
+    Name: smb.device.write_once
+    Type: FtBoolean
+    Display: 32
+    Info: Write Once
+    JsonName: smb_device_smb_device_write_once
+  smb.device.remote:
+    Name: smb.device.remote
+    Type: FtBoolean
+    Display: 32
+    Info: Remote
+    JsonName: smb_device_smb_device_remote
+  smb.device.mounted:
+    Name: smb.device.mounted
+    Type: FtBoolean
+    Display: 32
+    Info: Mounted
+    JsonName: smb_device_smb_device_mounted
+  smb.device.virtual:
+    Name: smb.device.virtual
+    Type: FtBoolean
+    Display: 32
+    Info: Virtual
+    JsonName: smb_device_smb_device_virtual
+  smb.fs_attr:
+    Name: smb.fs_attr
+    Type: FtUint32
+    Display: BaseHex
+    Info: FS Attributes
+    JsonName: smb_smb_fs_attr
+  smb.fs_attr.css:
+    Name: smb.fs_attr.css
+    Type: FtBoolean
+    Display: 32
+    Info: Case Sensitive Search
+    JsonName: smb_fs_attr_smb_fs_attr_css
+  smb.fs_attr.cpn:
+    Name: smb.fs_attr.cpn
+    Type: FtBoolean
+    Display: 32
+    Info: Case Preserving
+    JsonName: smb_fs_attr_smb_fs_attr_cpn
+  smb.fs_attr.uod:
+    Name: smb.fs_attr.uod
+    Type: FtBoolean
+    Display: 32
+    Info: Unicode On Disk
+    JsonName: smb_fs_attr_smb_fs_attr_uod
+  smb.fs_attr.pacls:
+    Name: smb.fs_attr.pacls
+    Type: FtBoolean
+    Display: 32
+    Info: Persistent ACLs
+    JsonName: smb_fs_attr_smb_fs_attr_pacls
+  smb.fs_attr.fc:
+    Name: smb.fs_attr.fc
+    Type: FtBoolean
+    Display: 32
+    Info: Compression
+    JsonName: smb_fs_attr_smb_fs_attr_fc
+  smb.fs_attr.vq:
+    Name: smb.fs_attr.vq
+    Type: FtBoolean
+    Display: 32
+    Info: Volume Quotas
+    JsonName: smb_fs_attr_smb_fs_attr_vq
+  smb.fs_attr.ssf:
+    Name: smb.fs_attr.ssf
+    Type: FtBoolean
+    Display: 32
+    Info: Sparse Files
+    JsonName: smb_fs_attr_smb_fs_attr_ssf
+  smb.fs_attr.srp:
+    Name: smb.fs_attr.srp
+    Type: FtBoolean
+    Display: 32
+    Info: Reparse Points
+    JsonName: smb_fs_attr_smb_fs_attr_srp
+  smb.fs_attr.srs:
+    Name: smb.fs_attr.srs
+    Type: FtBoolean
+    Display: 32
+    Info: Remote Storage
+    JsonName: smb_fs_attr_smb_fs_attr_srs
+  smb.fs_attr.sla:
+    Name: smb.fs_attr.sla
+    Type: FtBoolean
+    Display: 32
+    Info: LFN APIs
+    JsonName: smb_fs_attr_smb_fs_attr_sla
+  smb.fs_attr.vis:
+    Name: smb.fs_attr.vis
+    Type: FtBoolean
+    Display: 32
+    Info: Volume Is Compressed
+    JsonName: smb_fs_attr_smb_fs_attr_vis
+  smb.fs_attr.soids:
+    Name: smb.fs_attr.soids
+    Type: FtBoolean
+    Display: 32
+    Info: Supports OIDs
+    JsonName: smb_fs_attr_smb_fs_attr_soids
+  smb.fs_attr.se:
+    Name: smb.fs_attr.se
+    Type: FtBoolean
+    Display: 32
+    Info: Supports Encryption
+    JsonName: smb_fs_attr_smb_fs_attr_se
+  smb.fs_attr.ns:
+    Name: smb.fs_attr.ns
+    Type: FtBoolean
+    Display: 32
+    Info: Named Streams
+    JsonName: smb_fs_attr_smb_fs_attr_ns
+  smb.fs_attr.rov:
+    Name: smb.fs_attr.rov
+    Type: FtBoolean
+    Display: 32
+    Info: Read Only Volume
+    JsonName: smb_fs_attr_smb_fs_attr_rov
+  smb.quota.user.change_time:
+    Name: smb.quota.user.change_time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Change Time
+    JsonName: smb_smb_quota_user_change_time
+  smb.length_of_sid:
+    Name: smb.length_of_sid
+    Type: FtUint32
+    Display: BaseDec
+    Info: Length of SID
+    JsonName: smb_smb_length_of_sid
+  smb.quota.user.offset:
+    Name: smb.quota.user.offset
+    Type: FtUint32
+    Display: BaseDec
+    Info: Next Offset
+    JsonName: smb_smb_quota_user_offset
+  smb.pipe.write_len:
+    Name: smb.pipe.write_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Pipe Write Len
+    JsonName: smb_smb_pipe_write_len
+  smb.quota.flags.deny_disk:
+    Name: smb.quota.flags.deny_disk
+    Type: FtBoolean
+    Display: SepDot
+    Info: Deny Disk
+    JsonName: smb_quota_flags_smb_quota_flags_deny_disk
+  smb.quota.flags.log_limit:
+    Name: smb.quota.flags.log_limit
+    Type: FtBoolean
+    Display: SepDot
+    Info: Log Limit
+    JsonName: smb_quota_flags_smb_quota_flags_log_limit
+  smb.quota.flags.log_warning:
+    Name: smb.quota.flags.log_warning
+    Type: FtBoolean
+    Display: SepDot
+    Info: Log Warning
+    JsonName: smb_quota_flags_smb_quota_flags_log_warning
+  smb.quota.flags:
+    Name: smb.quota.flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: Quota Flags
+    JsonName: smb_smb_quota_flags
+  smb.quota.flags.enabled:
+    Name: smb.quota.flags.enabled
+    Type: FtBoolean
+    Display: SepDot
+    Info: Enabled
+    JsonName: smb_quota_flags_smb_quota_flags_enabled
+  smb.segment.overlap:
+    Name: smb.segment.overlap
+    Type: FtBoolean
+    Info: Fragment overlap
+    JsonName: smb_segment_smb_segment_overlap
+  smb.segment.overlap.conflict:
+    Name: smb.segment.overlap.conflict
+    Type: FtBoolean
+    Info: Conflicting data in fragment overlap
+    JsonName: smb_segment_overlap_smb_segment_overlap_conflict
+  smb.segment.multipletails:
+    Name: smb.segment.multipletails
+    Type: FtBoolean
+    Info: Multiple tail fragments found
+    JsonName: smb_segment_smb_segment_multipletails
+  smb.segment.toolongfragment:
+    Name: smb.segment.toolongfragment
+    Type: FtBoolean
+    Info: Fragment too long
+    JsonName: smb_segment_smb_segment_toolongfragment
+  smb.segment.error:
+    Name: smb.segment.error
+    Type: FtFramenum
+    Info: Defragmentation error
+    JsonName: smb_segment_smb_segment_error
+  smb.fragment.count:
+    Name: smb.fragment.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Fragment count
+    JsonName: smb_smb_fragment_count
+  smb.reassembled.length:
+    Name: smb.reassembled.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reassembled SMB length
+    JsonName: smb_smb_reassembled_length
+  smb.fid.opened_in:
+    Name: smb.fid.opened_in
+    Type: FtFramenum
+    Info: Opened in
+    JsonName: smb_fid_smb_fid_opened_in
+  smb.fid.closed_in:
+    Name: smb.fid.closed_in
+    Type: FtFramenum
+    Info: Closed in
+    JsonName: smb_fid_smb_fid_closed_in
+  smb.fid.mapped_in:
+    Name: smb.fid.mapped_in
+    Type: FtFramenum
+    Info: Mapped in
+    JsonName: smb_fid_smb_fid_mapped_in
+  smb.fid.unmapped_in:
+    Name: smb.fid.unmapped_in
+    Type: FtFramenum
+    Info: Unmapped in
+    JsonName: smb_fid_smb_fid_unmapped_in
+  smb.segment:
+    Name: smb.segment
+    Type: FtFramenum
+    Info: SMB Segment
+    JsonName: smb_smb_segment
+  smb.segment.segments:
+    Name: smb.segment.segments
+    Info: SMB Segments
+    JsonName: smb_segment_smb_segment_segments
+  smb.unix.major_version:
+    Name: smb.unix.major_version
+    Type: FtUint16
+    Display: BaseDec
+    Info: Major Version
+    JsonName: smb_smb_unix_major_version
+  smb.unix.minor_version:
+    Name: smb.unix.minor_version
+    Type: FtUint16
+    Display: BaseDec
+    Info: Minor Version
+    JsonName: smb_smb_unix_minor_version
+  smb.unix.capability:
+    Name: smb.unix.capability
+    Type: FtUint64
+    Display: BaseHex
+    Info: Capabilities
+    JsonName: smb_smb_unix_capability
+  smb.unix.capability.fcntl:
+    Name: smb.unix.capability.fcntl
+    Type: FtBoolean
+    Display: 32
+    Info: FCNTL Capability
+    JsonName: smb_unix_capability_smb_unix_capability_fcntl
+  smb.unix.capability.posix_acl:
+    Name: smb.unix.capability.posix_acl
+    Type: FtBoolean
+    Display: 32
+    Info: POSIX ACL Capability
+    JsonName: smb_unix_capability_smb_unix_capability_posix_acl
+  smb.unix.capability.ea:
+    Name: smb.unix.capability.ea
+    Type: FtBoolean
+    Display: 32
+    Info: EA Capability
+    JsonName: smb_unix_capability_smb_unix_capability_ea
+  smb.unix.capability.attr:
+    Name: smb.unix.capability.attr
+    Type: FtBoolean
+    Display: 32
+    Info: Additional Attributes Capability
+    JsonName: smb_unix_capability_smb_unix_capability_attr
+  smb.unix.capability.posix_paths:
+    Name: smb.unix.capability.posix_paths
+    Type: FtBoolean
+    Display: 32
+    Info: POSIX Pathnames Capability
+    JsonName: smb_unix_capability_smb_unix_capability_posix_paths
+  smb.unix.capability.posix_path_ops:
+    Name: smb.unix.capability.posix_path_ops
+    Type: FtBoolean
+    Display: 32
+    Info: POSIX Path Operations Capability
+    JsonName: smb_unix_capability_smb_unix_capability_posix_path_ops
+  smb.unix.capability.large_read:
+    Name: smb.unix.capability.large_read
+    Type: FtBoolean
+    Display: 32
+    Info: Large Read Capability
+    JsonName: smb_unix_capability_smb_unix_capability_large_read
+  smb.unix.capability.large_write:
+    Name: smb.unix.capability.large_write
+    Type: FtBoolean
+    Display: 32
+    Info: Large Write Capability
+    JsonName: smb_unix_capability_smb_unix_capability_large_write
+  smb.unix.capability.encrpytion:
+    Name: smb.unix.capability.encrpytion
+    Type: FtBoolean
+    Display: 32
+    Info: Encryption Capability
+    JsonName: smb_unix_capability_smb_unix_capability_encrpytion
+  smb.unix.capability.mandatory_crypto:
+    Name: smb.unix.capability.mandatory_crypto
+    Type: FtBoolean
+    Display: 32
+    Info: Mandatory Encryption Capability
+    JsonName: smb_unix_capability_smb_unix_capability_mandatory_crypto
+  smb.unix.capability.proxy:
+    Name: smb.unix.capability.proxy
+    Type: FtBoolean
+    Display: 32
+    Info: Proxy Capability
+    JsonName: smb_unix_capability_smb_unix_capability_proxy
+  smb.file.accessmask.read_data:
+    Name: smb.file.accessmask.read_data
+    Type: FtBoolean
+    Display: 32
+    Info: Read Data
+    JsonName: smb_smb_file_accessmask_read_data
+  smb.file.accessmask.write_data:
+    Name: smb.file.accessmask.write_data
+    Type: FtBoolean
+    Display: 32
+    Info: Write Data
+    JsonName: smb_smb_file_accessmask_write_data
+  smb.file.accessmask.append_data:
+    Name: smb.file.accessmask.append_data
+    Type: FtBoolean
+    Display: 32
+    Info: Append Data
+    JsonName: smb_smb_file_accessmask_append_data
+  smb.file.accessmask.read_ea:
+    Name: smb.file.accessmask.read_ea
+    Type: FtBoolean
+    Display: 32
+    Info: Read EA
+    JsonName: smb_smb_file_accessmask_read_ea
+  smb.file.accessmask.write_ea:
+    Name: smb.file.accessmask.write_ea
+    Type: FtBoolean
+    Display: 32
+    Info: Write EA
+    JsonName: smb_smb_file_accessmask_write_ea
+  smb.file.accessmask.execute:
+    Name: smb.file.accessmask.execute
+    Type: FtBoolean
+    Display: 32
+    Info: Execute
+    JsonName: smb_smb_file_accessmask_execute
+  smb.file.accessmask.read_attribute:
+    Name: smb.file.accessmask.read_attribute
+    Type: FtBoolean
+    Display: 32
+    Info: Read Attribute
+    JsonName: smb_smb_file_accessmask_read_attribute
+  smb.file.accessmask.write_attribute:
+    Name: smb.file.accessmask.write_attribute
+    Type: FtBoolean
+    Display: 32
+    Info: Write Attribute
+    JsonName: smb_smb_file_accessmask_write_attribute
+  smb.dir.accessmask.list:
+    Name: smb.dir.accessmask.list
+    Type: FtBoolean
+    Display: 32
+    Info: List
+    JsonName: smb_smb_dir_accessmask_list
+  smb.dir.accessmask.add_file:
+    Name: smb.dir.accessmask.add_file
+    Type: FtBoolean
+    Display: 32
+    Info: Add File
+    JsonName: smb_smb_dir_accessmask_add_file
+  smb.dir.accessmask.add_subdir:
+    Name: smb.dir.accessmask.add_subdir
+    Type: FtBoolean
+    Display: 32
+    Info: Add Subdir
+    JsonName: smb_smb_dir_accessmask_add_subdir
+  smb.dir.accessmask.read_ea:
+    Name: smb.dir.accessmask.read_ea
+    Type: FtBoolean
+    Display: 32
+    Info: Read EA
+    JsonName: smb_smb_dir_accessmask_read_ea
+  smb.dir.accessmask.write_ea:
+    Name: smb.dir.accessmask.write_ea
+    Type: FtBoolean
+    Display: 32
+    Info: Write EA
+    JsonName: smb_smb_dir_accessmask_write_ea
+  smb.dir.accessmask.traverse:
+    Name: smb.dir.accessmask.traverse
+    Type: FtBoolean
+    Display: 32
+    Info: Traverse
+    JsonName: smb_smb_dir_accessmask_traverse
+  smb.dir.accessmask.delete_child:
+    Name: smb.dir.accessmask.delete_child
+    Type: FtBoolean
+    Display: 32
+    Info: Delete Child
+    JsonName: smb_smb_dir_accessmask_delete_child
+  smb.dir.accessmask.read_attribute:
+    Name: smb.dir.accessmask.read_attribute
+    Type: FtBoolean
+    Display: 32
+    Info: Read Attribute
+    JsonName: smb_smb_dir_accessmask_read_attribute
+  smb.dir.accessmask.write_attribute:
+    Name: smb.dir.accessmask.write_attribute
+    Type: FtBoolean
+    Display: 32
+    Info: Write Attribute
+    JsonName: smb_smb_dir_accessmask_write_attribute
+  smb.unix.file.link_dest:
+    Name: smb.unix.file.link_dest
+    Type: FtString
+    Info: Link destination
+    JsonName: smb_smb_unix_file_link_dest
+  smb.unix.file.size:
+    Name: smb.unix.file.size
+    Type: FtUint64
+    Display: BaseDec
+    Info: File size
+    JsonName: smb_smb_unix_file_size
+  smb.unix.file.num_bytes:
+    Name: smb.unix.file.num_bytes
+    Type: FtUint64
+    Display: BaseDec
+    Info: Number of bytes
+    JsonName: smb_smb_unix_file_num_bytes
+  smb.unix.file.stime:
+    Name: smb.unix.file.stime
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Last status change
+    JsonName: smb_smb_unix_file_stime
+  smb.unix.file.atime:
+    Name: smb.unix.file.atime
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Last access
+    JsonName: smb_smb_unix_file_atime
+  smb.unix.file.mtime:
+    Name: smb.unix.file.mtime
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Last modification
+    JsonName: smb_smb_unix_file_mtime
+  smb.unix.file.crtime:
+    Name: smb.unix.file.crtime
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Creation time
+    JsonName: smb_smb_unix_file_crtime
+  smb.unix.file.uid:
+    Name: smb.unix.file.uid
+    Type: FtUint64
+    Display: BaseDec
+    Info: UID
+    JsonName: smb_smb_unix_file_uid
+  smb.unix.file.gid:
+    Name: smb.unix.file.gid
+    Type: FtUint64
+    Display: BaseDec
+    Info: GID
+    JsonName: smb_smb_unix_file_gid
+  smb.unix.file.file_type:
+    Name: smb.unix.file.file_type
+    Type: FtUint32
+    Display: BaseDec
+    Info: File type
+    JsonName: smb_smb_unix_file_file_type
+  smb.unix.file.dev_major:
+    Name: smb.unix.file.dev_major
+    Type: FtUint64
+    Display: BaseHex
+    Info: Major device
+    JsonName: smb_smb_unix_file_dev_major
+  smb.unix.file.dev_minor:
+    Name: smb.unix.file.dev_minor
+    Type: FtUint64
+    Display: BaseHex
+    Info: Minor device
+    JsonName: smb_smb_unix_file_dev_minor
+  smb.unix.file.unique_id:
+    Name: smb.unix.file.unique_id
+    Type: FtUint64
+    Display: BaseHex
+    Info: Unique ID
+    JsonName: smb_smb_unix_file_unique_id
+  smb.unix.file.perms:
+    Name: smb.unix.file.perms
+    Type: FtUint64
+    Display: BaseHex
+    Info: File permissions
+    JsonName: smb_smb_unix_file_perms
+  smb.unix.file.num_links:
+    Name: smb.unix.file.num_links
+    Type: FtUint64
+    Display: BaseDec
+    Info: Num links
+    JsonName: smb_smb_unix_file_num_links
+  smb.unix_info2.file.flags:
+    Name: smb.unix_info2.file.flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb_smb_unix_info2_file_flags
+  smb.unix_info2.file.flags_mask:
+    Name: smb.unix_info2.file.flags_mask
+    Type: FtUint32
+    Display: BaseHex
+    Info: Flags mask
+    JsonName: smb_smb_unix_info2_file_flags_mask
+  smb.unix_info2.file.flags.secure_delete:
+    Name: smb.unix_info2.file.flags.secure_delete
+    Type: FtBoolean
+    Display: 32
+    Info: Secure delete
+    JsonName: smb_unix_info2_file_flags_smb_unix_info2_file_flags_secure_delete
+  smb.unix_info2.file.flags.enable_undelete:
+    Name: smb.unix_info2.file.flags.enable_undelete
+    Type: FtBoolean
+    Display: 32
+    Info: Enable undelete
+    JsonName: smb_unix_info2_file_flags_smb_unix_info2_file_flags_enable_undelete
+  smb.unix_info2.file.flags.synchronous:
+    Name: smb.unix_info2.file.flags.synchronous
+    Type: FtBoolean
+    Display: 32
+    Info: Synchronous
+    JsonName: smb_unix_info2_file_flags_smb_unix_info2_file_flags_synchronous
+  smb.unix_info2.file.flags.immutable:
+    Name: smb.unix_info2.file.flags.immutable
+    Type: FtBoolean
+    Display: 32
+    Info: Immutable
+    JsonName: smb_unix_info2_file_flags_smb_unix_info2_file_flags_immutable
+  smb.unix_info2.file.flags.append_only:
+    Name: smb.unix_info2.file.flags.append_only
+    Type: FtBoolean
+    Display: 32
+    Info: Append-only
+    JsonName: smb_unix_info2_file_flags_smb_unix_info2_file_flags_append_only
+  smb.unix_info2.file.flags.do_not_backup:
+    Name: smb.unix_info2.file.flags.do_not_backup
+    Type: FtBoolean
+    Display: 32
+    Info: Do not backup
+    JsonName: smb_unix_info2_file_flags_smb_unix_info2_file_flags_do_not_backup
+  smb.unix_info2.file.flags.no_update_atime:
+    Name: smb.unix_info2.file.flags.no_update_atime
+    Type: FtBoolean
+    Display: 32
+    Info: Don't update atime
+    JsonName: smb_unix_info2_file_flags_smb_unix_info2_file_flags_no_update_atime
+  smb.unix_info2.file.flags.hidden:
+    Name: smb.unix_info2.file.flags.hidden
+    Type: FtBoolean
+    Display: 32
+    Info: Hidden
+    JsonName: smb_unix_info2_file_flags_smb_unix_info2_file_flags_hidden
+  smb.unix.file.name_length:
+    Name: smb.unix.file.name_length
+    Type: FtUint32
+    Display: BaseDec
+    Info: File name length
+    JsonName: smb_smb_unix_file_name_length
+  smb.unix.file.name:
+    Name: smb.unix.file.name
+    Type: FtString
+    Info: File name
+    JsonName: smb_smb_unix_file_name
+  smb.unix.find_file.next_offset:
+    Name: smb.unix.find_file.next_offset
+    Type: FtUint32
+    Display: BaseDec
+    Info: Next entry offset
+    JsonName: smb_smb_unix_find_file_next_offset
+  smb.unix.find_file.resume_key:
+    Name: smb.unix.find_file.resume_key
+    Type: FtUint32
+    Display: BaseDec
+    Info: Resume key
+    JsonName: smb_smb_unix_find_file_resume_key
+  smb.unix.whoami.mapflags:
+    Name: smb.unix.whoami.mapflags
+    Type: FtUint32
+    Display: BaseDec
+    Info: UNIX whoami mapping flags
+    JsonName: smb_smb_unix_whoami_mapflags
+  smb.unix.whoami.mapflags_mask:
+    Name: smb.unix.whoami.mapflags_mask
+    Type: FtUint32
+    Display: BaseDec
+    Info: UNIX whoami mapping flags mask
+    JsonName: smb_smb_unix_whoami_mapflags_mask
+  smb.unix.whoami.num_gids:
+    Name: smb.unix.whoami.num_gids
+    Type: FtUint32
+    Display: BaseDec
+    Info: Number of supplementary UNIX GIDs
+    JsonName: smb_smb_unix_whoami_num_gids
+  smb.unix.whoami.num_sids:
+    Name: smb.unix.whoami.num_sids
+    Type: FtUint32
+    Display: BaseDec
+    Info: Number of supplementary SIDs
+    JsonName: smb_smb_unix_whoami_num_sids
+  smb.unix.whoami.sids_buflen:
+    Name: smb.unix.whoami.sids_buflen
+    Type: FtUint32
+    Display: BaseDec
+    Info: Supplementary SIDs buffer length
+    JsonName: smb_smb_unix_whoami_sids_buflen
+  smb.create_flags:
+    Name: smb.create_flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Create Flags
+    JsonName: smb_smb_create_flags
+  smb.create_options:
+    Name: smb.create_options
+    Type: FtUint32
+    Display: BaseHex
+    Info: Create Options
+    JsonName: smb_smb_create_options
+  smb.share_access:
+    Name: smb.share_access
+    Type: FtUint32
+    Display: BaseHex
+    Info: Share Access
+    JsonName: smb_smb_share_access
+  smb.access_mask:
+    Name: smb.access_mask
+    Type: FtUint32
+    Display: BaseHex
+    Info: Access Mask
+    JsonName: smb_smb_access_mask
+  smb.mode:
+    Name: smb.mode
+    Type: FtUint32
+    Display: BaseHex
+    Info: Mode
+    JsonName: smb_smb_mode
+  smb.attribute:
+    Name: smb.attribute
+    Type: FtUint32
+    Display: BaseHex
+    Info: Attribute
+    JsonName: smb_smb_attribute
+  smb.reparse_tag:
+    Name: smb.reparse_tag
+    Type: FtUint32
+    Display: BaseHex
+    Info: Reparse Tag
+    JsonName: smb_smb_reparse_tag
+  smb.disposition.delete_on_close:
+    Name: smb.disposition.delete_on_close
+    Type: FtBoolean
+    Display: SepDot
+    Info: Delete on close
+    JsonName: smb_smb_disposition_delete_on_close
+  smb.pipe_info_flag:
+    Name: smb.pipe_info_flag
+    Type: FtBoolean
+    Display: SepDot
+    Info: Pipe Info
+    JsonName: smb_smb_pipe_info_flag
+  smb.logged_in:
+    Name: smb.logged_in
+    Type: FtFramenum
+    Info: Logged In
+    JsonName: smb_smb_logged_in
+  smb.logged_out:
+    Name: smb.logged_out
+    Type: FtFramenum
+    Info: Logged Out
+    JsonName: smb_smb_logged_out
+  smb.file.rw.offset:
+    Name: smb.file.rw.offset
+    Type: FtUint64
+    Display: BaseDec
+    Info: File Offset
+    JsonName: smb_smb_file_rw_offset
+  smb.file.rw.length:
+    Name: smb.file.rw.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: File RW Length
+    JsonName: smb_smb_file_rw_length
+  smb.posix_acl.version:
+    Name: smb.posix_acl.version
+    Type: FtUint16
+    Display: BaseDec
+    Info: Posix ACL version
+    JsonName: smb_smb_posix_acl_version
+  smb.posix_acl.num_file_aces:
+    Name: smb.posix_acl.num_file_aces
+    Type: FtUint16
+    Display: BaseDec
+    Info: Number of file ACEs
+    JsonName: smb_smb_posix_acl_num_file_aces
+  smb.posix_acl.num_def_aces:
+    Name: smb.posix_acl.num_def_aces
+    Type: FtUint16
+    Display: BaseDec
+    Info: Number of default ACEs
+    JsonName: smb_smb_posix_acl_num_def_aces
+  smb.posix_acl.ace_type:
+    Name: smb.posix_acl.ace_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: ACE Type
+    JsonName: smb_smb_posix_acl_ace_type
+  smb.posix_acl.ace_perms:
+    Name: smb.posix_acl.ace_perms
+    Type: FtUint8
+    Display: BaseHex
+    Info: Permissions
+    JsonName: smb_smb_posix_acl_ace_perms
+  smb.posix_acl.ace_perms.read:
+    Name: smb.posix_acl.ace_perms.read
+    Type: FtBoolean
+    Display: SepDot
+    Info: READ
+    JsonName: smb_posix_acl_ace_perms_smb_posix_acl_ace_perms_read
+  smb.posix_acl.ace_perms.write:
+    Name: smb.posix_acl.ace_perms.write
+    Type: FtBoolean
+    Display: SepDot
+    Info: WRITE
+    JsonName: smb_posix_acl_ace_perms_smb_posix_acl_ace_perms_write
+  smb.posix_acl.ace_perms.execute:
+    Name: smb.posix_acl.ace_perms.execute
+    Type: FtBoolean
+    Display: SepDot
+    Info: EXECUTE
+    JsonName: smb_posix_acl_ace_perms_smb_posix_acl_ace_perms_execute
+  smb.posix_acl.ace_perms.owner_uid:
+    Name: smb.posix_acl.ace_perms.owner_uid
+    Type: FtUint32
+    Display: BaseDec
+    Info: Owner UID
+    JsonName: smb_posix_acl_ace_perms_smb_posix_acl_ace_perms_owner_uid
+  smb.posix_acl.ace_perms.owner_gid:
+    Name: smb.posix_acl.ace_perms.owner_gid
+    Type: FtUint32
+    Display: BaseDec
+    Info: Owner GID
+    JsonName: smb_posix_acl_ace_perms_smb_posix_acl_ace_perms_owner_gid
+  smb.posix_acl.ace_perms.uid:
+    Name: smb.posix_acl.ace_perms.uid
+    Type: FtUint32
+    Display: BaseDec
+    Info: UID
+    JsonName: smb_posix_acl_ace_perms_smb_posix_acl_ace_perms_uid
+  smb.posix_acl.ace_perms.gid:
+    Name: smb.posix_acl.ace_perms.gid
+    Type: FtUint32
+    Display: BaseDec
+    Info: GID
+    JsonName: smb_posix_acl_ace_perms_smb_posix_acl_ace_perms_gid
+  smb.trans_data.setup_word:
+    Name: smb.trans_data.setup_word
+    Type: FtUint16
+    Display: BaseHex
+    Info: Setup Word
+    JsonName: smb_trans_data_smb_trans_data_setup_word
+  smb.trans_data.parameters:
+    Name: smb.trans_data.parameters
+    Type: FtBytes
+    Info: Parameters
+    JsonName: smb_trans_data_smb_trans_data_parameters
+  smb.trans_data:
+    Name: smb.trans_data
+    Type: FtBytes
+    Info: Data
+    JsonName: smb_smb_trans_data
+  smb.extra_byte_parameters:
+    Name: smb.extra_byte_parameters
+    Type: FtBytes
+    Info: Extra byte parameters
+    JsonName: smb_smb_extra_byte_parameters
+  smb.file.accessmask.full_control:
+    Name: smb.file.accessmask.full_control
+    Type: FtUint32
+    Display: BaseHex
+    Info: FULL CONTROL
+    JsonName: smb_smb_file_accessmask_full_control
+  smb.dir.accessmask.full_control:
+    Name: smb.dir.accessmask.full_control
+    Type: FtUint32
+    Display: BaseHex
+    Info: FULL CONTROL
+    JsonName: smb_smb_dir_accessmask_full_control
+  smb.word_unk_response_format:
+    Name: smb.word_unk_response_format
+    Type: FtBytes
+    Info: Words for unknown response format
+    JsonName: smb_smb_word_unk_response_format
+  smb.nt_transaction_setup:
+    Name: smb.nt_transaction_setup
+    Type: FtBytes
+    Info: NT Transaction Setup
+    JsonName: smb_smb_nt_transaction_setup
+  smb.server_component:
+    Name: smb.server_component
+    Type: FtUint32
+    Display: BaseHex
+    Info: Server Component
+    JsonName: smb_smb_server_component
+  smb.byte_parameters:
+    Name: smb.byte_parameters
+    Type: FtBytes
+    Info: Byte parameters
+    JsonName: smb_smb_byte_parameters
+  smb.word_parameters:
+    Name: smb.word_parameters
+    Type: FtBytes
+    Info: Word parameters
+    JsonName: smb_smb_word_parameters

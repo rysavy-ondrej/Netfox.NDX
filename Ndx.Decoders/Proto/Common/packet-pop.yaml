@@ -1,0 +1,93 @@
+Name: pop
+Fields:
+  pop.response:
+    Name: pop.response
+    Type: FtString
+    Info: Response
+    JsonName: pop_pop_response
+  pop.response.indicator:
+    Name: pop.response.indicator
+    Type: FtString
+    Info: Response indicator
+    JsonName: pop_response_pop_response_indicator
+  pop.response.description:
+    Name: pop.response.description
+    Type: FtString
+    Info: Response description
+    JsonName: pop_response_pop_response_description
+  pop.response.data:
+    Name: pop.response.data
+    Type: FtString
+    Info: Data
+    JsonName: pop_response_pop_response_data
+  pop.request:
+    Name: pop.request
+    Type: FtString
+    Info: Request
+    JsonName: pop_pop_request
+  pop.request.command:
+    Name: pop.request.command
+    Type: FtString
+    Info: Request command
+    JsonName: pop_request_pop_request_command
+  pop.request.parameter:
+    Name: pop.request.parameter
+    Type: FtString
+    Info: Request parameter
+    JsonName: pop_request_pop_request_parameter
+  pop.request.data:
+    Name: pop.request.data
+    Type: FtString
+    Info: Data
+    JsonName: pop_request_pop_request_data
+  pop.data.fragments:
+    Name: pop.data.fragments
+    Info: DATA fragments
+    JsonName: pop_pop_data_fragments
+  pop.data.fragment:
+    Name: pop.data.fragment
+    Type: FtFramenum
+    Info: DATA fragment
+    JsonName: pop_pop_data_fragment
+  pop.data.fragment.overlap:
+    Name: pop.data.fragment.overlap
+    Type: FtBoolean
+    Info: DATA fragment overlap
+    JsonName: pop_data_fragment_pop_data_fragment_overlap
+  pop.data.fragment.overlap.conflicts:
+    Name: pop.data.fragment.overlap.conflicts
+    Type: FtBoolean
+    Info: DATA fragment overlapping with conflicting data
+    JsonName: pop_data_fragment_overlap_pop_data_fragment_overlap_conflicts
+  pop.data.fragment.multiple_tails:
+    Name: pop.data.fragment.multiple_tails
+    Type: FtBoolean
+    Info: DATA has multiple tail fragments
+    JsonName: pop_data_fragment_pop_data_fragment_multiple_tails
+  pop.data.fragment.too_long_fragment:
+    Name: pop.data.fragment.too_long_fragment
+    Type: FtBoolean
+    Info: DATA fragment too long
+    JsonName: pop_data_fragment_pop_data_fragment_too_long_fragment
+  pop.data.fragment.error:
+    Name: pop.data.fragment.error
+    Type: FtFramenum
+    Info: DATA defragmentation error
+    JsonName: pop_data_fragment_pop_data_fragment_error
+  pop.data.fragment.count:
+    Name: pop.data.fragment.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: DATA fragment count
+    JsonName: pop_data_fragment_pop_data_fragment_count
+  pop.data.reassembled.in:
+    Name: pop.data.reassembled.in
+    Type: FtFramenum
+    Info: Reassembled DATA in frame
+    JsonName: pop_pop_data_reassembled_in
+  pop.data.reassembled.length:
+    Name: pop.data.reassembled.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reassembled DATA length
+    JsonName: pop_pop_data_reassembled_length

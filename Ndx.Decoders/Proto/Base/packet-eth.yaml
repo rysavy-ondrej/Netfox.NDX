@@ -1,0 +1,39 @@
+#
+# Ethernet Packet Decoder
+#
+# Last edited by Ondrej Rysavy, 2017-11-15
+Name: eth 
+Fields:
+  eth.dst:
+    Name: eth.dst
+    Type: FtEther
+    Info: Destination
+    JsonName: eth_eth_dst
+  eth.dst_resolved:
+    Name: eth.dst_resolved
+    Type: FtString
+    Info: Destination (resolved)
+    JsonName: eth_dst_eth_dst_resolved
+  eth.src:
+    Name: eth.src
+    Type: FtEther
+    Info: Source
+    JsonName: eth_eth_src
+  eth.src_resolved:
+    Name: eth.src_resolved
+    Type: FtString
+    Info: Source (resolved)
+    JsonName: eth_src_eth_src_resolved
+  eth.len:
+    Name: eth.len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length
+    JsonName: eth_eth_len
+  eth.type:
+    Name: eth.type
+    Type: FtUint16
+    Display: BaseHex
+    Info: Type
+    JsonName: eth_eth_type
+

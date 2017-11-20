@@ -1,0 +1,83 @@
+Name: rtsp
+Fields:
+  rtsp.request:
+    Name: rtsp.request
+    Type: FtString
+    Info: Request
+    JsonName: rtsp_rtsp_request
+  rtsp.response:
+    Name: rtsp.response
+    Type: FtString
+    Info: Response
+    JsonName: rtsp_rtsp_response
+  rtsp.method:
+    Name: rtsp.method
+    Type: FtString
+    Info: Method
+    JsonName: rtsp_rtsp_method
+  rtsp.content-type:
+    Name: rtsp.content-type
+    Type: FtString
+    Info: Content-type
+    JsonName: rtsp_rtsp_content-type
+  rtsp.content-length:
+    Name: rtsp.content-length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Content-length
+    JsonName: rtsp_rtsp_content-length
+  rtsp.url:
+    Name: rtsp.url
+    Type: FtString
+    Info: URL
+    JsonName: rtsp_rtsp_url
+  rtsp.status:
+    Name: rtsp.status
+    Type: FtUint32
+    Display: BaseDec
+    Info: Status
+    JsonName: rtsp_rtsp_status
+  rtsp.session:
+    Name: rtsp.session
+    Type: FtString
+    Info: Session
+    JsonName: rtsp_rtsp_session
+  rtsp.transport:
+    Name: rtsp.transport
+    Type: FtString
+    Info: Transport
+    JsonName: rtsp_rtsp_transport
+  rtsp.rdt-feature-level:
+    Name: rtsp.rdt-feature-level
+    Type: FtUint32
+    Display: BaseDec
+    Info: RDTFeatureLevel
+    JsonName: rtsp_rtsp_rdt-feature-level
+  rtsp.X_Vig_Msisdn:
+    Name: rtsp.X_Vig_Msisdn
+    Type: FtString
+    Info: X-Vig-Msisdn
+    JsonName: rtsp_rtsp_X_Vig_Msisdn
+  rtsp.magic:
+    Name: rtsp.magic
+    Type: FtUint8
+    Display: BaseHex
+    Info: Magic
+    JsonName: rtsp_rtsp_magic
+  rtsp.channel:
+    Name: rtsp.channel
+    Type: FtUint8
+    Display: BaseHex
+    Info: Channel
+    JsonName: rtsp_rtsp_channel
+  rtsp.length:
+    Name: rtsp.length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length
+    JsonName: rtsp_rtsp_length
+  rtsp.data:
+    Name: rtsp.data
+    Type: FtBytes
+    Info: Data
+    JsonName: rtsp_rtsp_data

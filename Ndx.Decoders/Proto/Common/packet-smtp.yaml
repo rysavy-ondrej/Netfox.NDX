@@ -1,0 +1,118 @@
+Name: smtp
+Fields:
+  smtp.req:
+    Name: smtp.req
+    Type: FtBoolean
+    Info: Request
+    JsonName: smtp_smtp_req
+  smtp.rsp:
+    Name: smtp.rsp
+    Type: FtBoolean
+    Info: Response
+    JsonName: smtp_smtp_rsp
+  smtp.message:
+    Name: smtp.message
+    Type: FtString
+    Info: Message
+    JsonName: smtp_smtp_message
+  smtp.command_line:
+    Name: smtp.command_line
+    Type: FtString
+    Info: Command Line
+    JsonName: smtp_smtp_command_line
+  smtp.req.command:
+    Name: smtp.req.command
+    Type: FtString
+    Info: Command
+    JsonName: smtp_req_smtp_req_command
+  smtp.req.parameter:
+    Name: smtp.req.parameter
+    Type: FtString
+    Info: Request parameter
+    JsonName: smtp_req_smtp_req_parameter
+  smtp.response:
+    Name: smtp.response
+    Type: FtString
+    Info: Response
+    JsonName: smtp_smtp_response
+  smtp.response.code:
+    Name: smtp.response.code
+    Type: FtUint32
+    Display: BaseDec
+    Info: Response code
+    JsonName: smtp_response_smtp_response_code
+  smtp.rsp.parameter:
+    Name: smtp.rsp.parameter
+    Type: FtString
+    Info: Response parameter
+    JsonName: smtp_rsp_smtp_rsp_parameter
+  smtp.auth.username:
+    Name: smtp.auth.username
+    Type: FtString
+    Info: Username
+    JsonName: smtp_smtp_auth_username
+  smtp.auth.password:
+    Name: smtp.auth.password
+    Type: FtString
+    Info: Password
+    JsonName: smtp_smtp_auth_password
+  smtp.auth.username_password:
+    Name: smtp.auth.username_password
+    Type: FtString
+    Info: Username/Password
+    JsonName: smtp_smtp_auth_username_password
+  smtp.eom:
+    Name: smtp.eom
+    Info: EOM
+    JsonName: smtp_smtp_eom
+  smtp.data.fragments:
+    Name: smtp.data.fragments
+    Info: DATA fragments
+    JsonName: smtp_smtp_data_fragments
+  smtp.data.fragment:
+    Name: smtp.data.fragment
+    Type: FtFramenum
+    Info: DATA fragment
+    JsonName: smtp_smtp_data_fragment
+  smtp.data.fragment.overlap:
+    Name: smtp.data.fragment.overlap
+    Type: FtBoolean
+    Info: DATA fragment overlap
+    JsonName: smtp_data_fragment_smtp_data_fragment_overlap
+  smtp.data.fragment.overlap.conflicts:
+    Name: smtp.data.fragment.overlap.conflicts
+    Type: FtBoolean
+    Info: DATA fragment overlapping with conflicting data
+    JsonName: smtp_data_fragment_overlap_smtp_data_fragment_overlap_conflicts
+  smtp.data.fragment.multiple_tails:
+    Name: smtp.data.fragment.multiple_tails
+    Type: FtBoolean
+    Info: DATA has multiple tail fragments
+    JsonName: smtp_data_fragment_smtp_data_fragment_multiple_tails
+  smtp.data.fragment.too_long_fragment:
+    Name: smtp.data.fragment.too_long_fragment
+    Type: FtBoolean
+    Info: DATA fragment too long
+    JsonName: smtp_data_fragment_smtp_data_fragment_too_long_fragment
+  smtp.data.fragment.error:
+    Name: smtp.data.fragment.error
+    Type: FtFramenum
+    Info: DATA defragmentation error
+    JsonName: smtp_data_fragment_smtp_data_fragment_error
+  smtp.data.fragment.count:
+    Name: smtp.data.fragment.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: DATA fragment count
+    JsonName: smtp_data_fragment_smtp_data_fragment_count
+  smtp.data.reassembled.in:
+    Name: smtp.data.reassembled.in
+    Type: FtFramenum
+    Info: Reassembled DATA in frame
+    JsonName: smtp_smtp_data_reassembled_in
+  smtp.data.reassembled.length:
+    Name: smtp.data.reassembled.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reassembled DATA length
+    JsonName: smtp_smtp_data_reassembled_length

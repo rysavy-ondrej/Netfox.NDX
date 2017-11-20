@@ -1,0 +1,963 @@
+Name: ipv6
+Fields:
+  ipv6.version:
+    Name: ipv6.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: Version
+    JsonName: ipv6_ipv6_version
+  ipv6.tclass:
+    Name: ipv6.tclass
+    Type: FtUint32
+    Display: BaseHex
+    Info: Traffic Class
+    JsonName: ipv6_ipv6_tclass
+  ipv6.tclass.dscp:
+    Name: ipv6.tclass.dscp
+    Type: FtUint32
+    Display: BaseDec
+    Info: Differentiated Services Codepoint
+    JsonName: ipv6_tclass_ipv6_tclass_dscp
+  ipv6.tclass.ecn:
+    Name: ipv6.tclass.ecn
+    Type: FtUint32
+    Display: BaseDec
+    Info: Explicit Congestion Notification
+    JsonName: ipv6_tclass_ipv6_tclass_ecn
+  ipv6.flow:
+    Name: ipv6.flow
+    Type: FtUint32
+    Display: BaseHex
+    Info: Flow Label
+    JsonName: ipv6_ipv6_flow
+  ipv6.plen:
+    Name: ipv6.plen
+    Type: FtUint16
+    Display: BaseDec
+    Info: Payload Length
+    JsonName: ipv6_ipv6_plen
+  ipv6.nxt:
+    Name: ipv6.nxt
+    Type: FtUint8
+    Display: BaseDec
+    Info: Next Header
+    JsonName: ipv6_ipv6_nxt
+  ipv6.hlim:
+    Name: ipv6.hlim
+    Type: FtUint8
+    Display: BaseDec
+    Info: Hop Limit
+    JsonName: ipv6_ipv6_hlim
+  ipv6.src:
+    Name: ipv6.src
+    Type: FtIpv6
+    Info: Source
+    JsonName: ipv6_ipv6_src
+  ipv6.src_host:
+    Name: ipv6.src_host
+    Type: FtString
+    Info: Source Host
+    JsonName: ipv6_ipv6_src_host
+  ipv6.src_sa_mac:
+    Name: ipv6.src_sa_mac
+    Type: FtEther
+    Info: Source SA MAC
+    JsonName: ipv6_ipv6_src_sa_mac
+  ipv6.src_isatap_ipv4:
+    Name: ipv6.src_isatap_ipv4
+    Type: FtIpv4
+    Info: Source ISATAP IPv4
+    JsonName: ipv6_ipv6_src_isatap_ipv4
+  ipv6.src_6to4_gw_ipv4:
+    Name: ipv6.src_6to4_gw_ipv4
+    Type: FtIpv4
+    Info: Source 6to4 Gateway IPv4
+    JsonName: ipv6_ipv6_src_6to4_gw_ipv4
+  ipv6.src_6to4_sla_id:
+    Name: ipv6.src_6to4_sla_id
+    Type: FtUint16
+    Display: BaseDec
+    Info: Source 6to4 SLA ID
+    JsonName: ipv6_ipv6_src_6to4_sla_id
+  ipv6.src_ts_ipv4:
+    Name: ipv6.src_ts_ipv4
+    Type: FtIpv4
+    Info: Source Teredo Server IPv4
+    JsonName: ipv6_ipv6_src_ts_ipv4
+  ipv6.src_tc_port:
+    Name: ipv6.src_tc_port
+    Type: FtUint16
+    Display: BaseDec
+    Info: Source Teredo Port
+    JsonName: ipv6_ipv6_src_tc_port
+  ipv6.src_tc_ipv4:
+    Name: ipv6.src_tc_ipv4
+    Type: FtIpv4
+    Info: Source Teredo Client IPv4
+    JsonName: ipv6_ipv6_src_tc_ipv4
+  ipv6.src_embed_ipv4:
+    Name: ipv6.src_embed_ipv4
+    Type: FtIpv4
+    Info: Source Embedded IPv4
+    JsonName: ipv6_ipv6_src_embed_ipv4
+  ipv6.dst:
+    Name: ipv6.dst
+    Type: FtIpv6
+    Info: Destination
+    JsonName: ipv6_ipv6_dst
+  ipv6.dst_host:
+    Name: ipv6.dst_host
+    Type: FtString
+    Info: Destination Host
+    JsonName: ipv6_ipv6_dst_host
+  ipv6.dst_sa_mac:
+    Name: ipv6.dst_sa_mac
+    Type: FtEther
+    Info: Destination SA MAC
+    JsonName: ipv6_ipv6_dst_sa_mac
+  ipv6.dst_isatap_ipv4:
+    Name: ipv6.dst_isatap_ipv4
+    Type: FtIpv4
+    Info: Destination ISATAP IPv4
+    JsonName: ipv6_ipv6_dst_isatap_ipv4
+  ipv6.dst_6to4_gw_ipv4:
+    Name: ipv6.dst_6to4_gw_ipv4
+    Type: FtIpv4
+    Info: Destination 6to4 Gateway IPv4
+    JsonName: ipv6_ipv6_dst_6to4_gw_ipv4
+  ipv6.dst_6to4_sla_id:
+    Name: ipv6.dst_6to4_sla_id
+    Type: FtUint16
+    Display: BaseDec
+    Info: Destination 6to4 SLA ID
+    JsonName: ipv6_ipv6_dst_6to4_sla_id
+  ipv6.dst_ts_ipv4:
+    Name: ipv6.dst_ts_ipv4
+    Type: FtIpv4
+    Info: Destination Teredo Server IPv4
+    JsonName: ipv6_ipv6_dst_ts_ipv4
+  ipv6.dst_tc_port:
+    Name: ipv6.dst_tc_port
+    Type: FtUint16
+    Display: BaseDec
+    Info: Destination Teredo Port
+    JsonName: ipv6_ipv6_dst_tc_port
+  ipv6.dst_tc_ipv4:
+    Name: ipv6.dst_tc_ipv4
+    Type: FtIpv4
+    Info: Destination Teredo Client IPv4
+    JsonName: ipv6_ipv6_dst_tc_ipv4
+  ipv6.dst_embed_ipv4:
+    Name: ipv6.dst_embed_ipv4
+    Type: FtIpv4
+    Info: Destination Embedded IPv4
+    JsonName: ipv6_ipv6_dst_embed_ipv4
+  ipv6.addr:
+    Name: ipv6.addr
+    Type: FtIpv6
+    Info: Source or Destination Address
+    JsonName: ipv6_ipv6_addr
+  ipv6.host:
+    Name: ipv6.host
+    Type: FtString
+    Info: Source or Destination Host
+    JsonName: ipv6_ipv6_host
+  ipv6.sa_mac:
+    Name: ipv6.sa_mac
+    Type: FtEther
+    Info: SA MAC
+    JsonName: ipv6_ipv6_sa_mac
+  ipv6.isatap_ipv4:
+    Name: ipv6.isatap_ipv4
+    Type: FtIpv4
+    Info: ISATAP IPv4
+    JsonName: ipv6_ipv6_isatap_ipv4
+  ipv6.6to4_gw_ipv4:
+    Name: ipv6.6to4_gw_ipv4
+    Type: FtIpv4
+    Info: 6to4 Gateway IPv4
+    JsonName: ipv6_ipv6_6to4_gw_ipv4
+  ipv6.6to4_sla_id:
+    Name: ipv6.6to4_sla_id
+    Type: FtUint16
+    Display: BaseDec
+    Info: 6to4 SLA ID
+    JsonName: ipv6_ipv6_6to4_sla_id
+  ipv6.ts_ipv4:
+    Name: ipv6.ts_ipv4
+    Type: FtIpv4
+    Info: Teredo Server IPv4
+    JsonName: ipv6_ipv6_ts_ipv4
+  ipv6.tc_port:
+    Name: ipv6.tc_port
+    Type: FtUint16
+    Display: BaseDec
+    Info: Teredo Port
+    JsonName: ipv6_ipv6_tc_port
+  ipv6.tc_ipv4:
+    Name: ipv6.tc_ipv4
+    Type: FtIpv4
+    Info: Teredo Client IPv4
+    JsonName: ipv6_ipv6_tc_ipv4
+  ipv6.embed_ipv4:
+    Name: ipv6.embed_ipv4
+    Type: FtIpv4
+    Info: Embedded IPv4
+    JsonName: ipv6_ipv6_embed_ipv4
+  ipv6.geoip.country:
+    Name: ipv6.geoip.country
+    Type: FtString
+    Display: StrUnicode
+    Info: Source or Destination GeoIP Country
+    JsonName: ipv6_ipv6_geoip_country
+  ipv6.geoip.city:
+    Name: ipv6.geoip.city
+    Type: FtString
+    Display: StrUnicode
+    Info: Source or Destination GeoIP City
+    JsonName: ipv6_ipv6_geoip_city
+  ipv6.geoip.org:
+    Name: ipv6.geoip.org
+    Type: FtString
+    Display: StrUnicode
+    Info: Source or Destination GeoIP Organization
+    JsonName: ipv6_ipv6_geoip_org
+  ipv6.geoip.isp:
+    Name: ipv6.geoip.isp
+    Type: FtString
+    Display: StrUnicode
+    Info: Source or Destination GeoIP ISP
+    JsonName: ipv6_ipv6_geoip_isp
+  ipv6.geoip.asnum:
+    Name: ipv6.geoip.asnum
+    Type: FtString
+    Display: StrUnicode
+    Info: Source or Destination GeoIP AS Number
+    JsonName: ipv6_ipv6_geoip_asnum
+  ipv6.geoip.lat:
+    Name: ipv6.geoip.lat
+    Type: FtDouble
+    Info: Source or Destination GeoIP Latitude
+    JsonName: ipv6_ipv6_geoip_lat
+  ipv6.geoip.lon:
+    Name: ipv6.geoip.lon
+    Type: FtDouble
+    Info: Source or Destination GeoIP Longitude
+    JsonName: ipv6_ipv6_geoip_lon
+  ipv6.geoip.src_country:
+    Name: ipv6.geoip.src_country
+    Type: FtString
+    Display: StrUnicode
+    Info: Source GeoIP Country
+    JsonName: ipv6_ipv6_geoip_src_country
+  ipv6.geoip.src_city:
+    Name: ipv6.geoip.src_city
+    Type: FtString
+    Display: StrUnicode
+    Info: Source GeoIP City
+    JsonName: ipv6_ipv6_geoip_src_city
+  ipv6.geoip.src_org:
+    Name: ipv6.geoip.src_org
+    Type: FtString
+    Display: StrUnicode
+    Info: Source GeoIP Organization
+    JsonName: ipv6_ipv6_geoip_src_org
+  ipv6.geoip.src_isp:
+    Name: ipv6.geoip.src_isp
+    Type: FtString
+    Display: StrUnicode
+    Info: Source GeoIP ISP
+    JsonName: ipv6_ipv6_geoip_src_isp
+  ipv6.geoip.src_asnum:
+    Name: ipv6.geoip.src_asnum
+    Type: FtString
+    Display: StrUnicode
+    Info: Source GeoIP AS Number
+    JsonName: ipv6_ipv6_geoip_src_asnum
+  ipv6.geoip.src_lat:
+    Name: ipv6.geoip.src_lat
+    Type: FtDouble
+    Info: Source GeoIP Latitude
+    JsonName: ipv6_ipv6_geoip_src_lat
+  ipv6.geoip.src_lon:
+    Name: ipv6.geoip.src_lon
+    Type: FtDouble
+    Info: Source GeoIP Longitude
+    JsonName: ipv6_ipv6_geoip_src_lon
+  ipv6.geoip.dst_country:
+    Name: ipv6.geoip.dst_country
+    Type: FtString
+    Display: StrUnicode
+    Info: Destination GeoIP Country
+    JsonName: ipv6_ipv6_geoip_dst_country
+  ipv6.geoip.dst_city:
+    Name: ipv6.geoip.dst_city
+    Type: FtString
+    Display: StrUnicode
+    Info: Destination GeoIP City
+    JsonName: ipv6_ipv6_geoip_dst_city
+  ipv6.geoip.dst_org:
+    Name: ipv6.geoip.dst_org
+    Type: FtString
+    Display: StrUnicode
+    Info: Destination GeoIP Organization
+    JsonName: ipv6_ipv6_geoip_dst_org
+  ipv6.geoip.dst_isp:
+    Name: ipv6.geoip.dst_isp
+    Type: FtString
+    Display: StrUnicode
+    Info: Destination GeoIP ISP
+    JsonName: ipv6_ipv6_geoip_dst_isp
+  ipv6.geoip.dst_asnum:
+    Name: ipv6.geoip.dst_asnum
+    Type: FtString
+    Display: StrUnicode
+    Info: Destination GeoIP AS Number
+    JsonName: ipv6_ipv6_geoip_dst_asnum
+  ipv6.geoip.dst_lat:
+    Name: ipv6.geoip.dst_lat
+    Type: FtDouble
+    Info: Destination GeoIP Latitude
+    JsonName: ipv6_ipv6_geoip_dst_lat
+  ipv6.geoip.dst_lon:
+    Name: ipv6.geoip.dst_lon
+    Type: FtDouble
+    Info: Destination GeoIP Longitude
+    JsonName: ipv6_ipv6_geoip_dst_lon
+  ipv6.opt:
+    Name: ipv6.opt
+    Info: IPv6 Option
+    JsonName: ipv6_ipv6_opt
+  ipv6.opt.type:
+    Name: ipv6.opt.type
+    Type: FtUint8
+    Display: BaseHex
+    Info: Type
+    JsonName: ipv6_opt_ipv6_opt_type
+  ipv6.opt.type.action:
+    Name: ipv6.opt.type.action
+    Type: FtUint8
+    Display: BaseDec
+    Info: Action
+    JsonName: ipv6_opt_type_ipv6_opt_type_action
+  ipv6.opt.type.change:
+    Name: ipv6.opt.type.change
+    Type: FtBoolean
+    Display: SepDot
+    Info: May Change
+    JsonName: ipv6_opt_type_ipv6_opt_type_change
+  ipv6.opt.type.rest:
+    Name: ipv6.opt.type.rest
+    Type: FtUint8
+    Display: BaseHex
+    Info: Low-Order Bits
+    JsonName: ipv6_opt_type_ipv6_opt_type_rest
+  ipv6.opt.length:
+    Name: ipv6.opt.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Length
+    JsonName: ipv6_opt_ipv6_opt_length
+  ipv6.opt.pad1:
+    Name: ipv6.opt.pad1
+    Info: Pad1
+    JsonName: ipv6_opt_ipv6_opt_pad1
+  ipv6.opt.padn:
+    Name: ipv6.opt.padn
+    Type: FtBytes
+    Info: PadN
+    JsonName: ipv6_opt_ipv6_opt_padn
+  ipv6.opt.router_alert:
+    Name: ipv6.opt.router_alert
+    Type: FtUint16
+    Display: BaseDec
+    Info: Router Alert
+    JsonName: ipv6_opt_ipv6_opt_router_alert
+  ipv6.opt.tel:
+    Name: ipv6.opt.tel
+    Type: FtUint8
+    Display: BaseDec
+    Info: Tunnel Encapsulation Limit
+    JsonName: ipv6_opt_ipv6_opt_tel
+  ipv6.opt.jumbo:
+    Name: ipv6.opt.jumbo
+    Type: FtUint32
+    Display: BaseDec
+    Info: Payload Length
+    JsonName: ipv6_opt_ipv6_opt_jumbo
+  ipv6.opt.calipso.doi:
+    Name: ipv6.opt.calipso.doi
+    Type: FtUint8
+    Display: BaseDec
+    Info: CALIPSO Domain of Interpretation
+    JsonName: ipv6_ipv6_opt_calipso_doi
+  ipv6.opt.calipso.cmpt.length:
+    Name: ipv6.opt.calipso.cmpt.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Compartment Length
+    JsonName: ipv6_ipv6_opt_calipso_cmpt_length
+  ipv6.opt.calipso.sens_level:
+    Name: ipv6.opt.calipso.sens_level
+    Type: FtUint8
+    Display: BaseDec
+    Info: Sensitivity Level
+    JsonName: ipv6_ipv6_opt_calipso_sens_level
+  ipv6.opt.calipso.checksum:
+    Name: ipv6.opt.calipso.checksum
+    Type: FtUint16
+    Display: BaseHex
+    Info: Checksum
+    JsonName: ipv6_ipv6_opt_calipso_checksum
+  ipv6.opt.calipso.cmpt_bitmap:
+    Name: ipv6.opt.calipso.cmpt_bitmap
+    Type: FtBytes
+    Info: Compartment Bitmap
+    JsonName: ipv6_ipv6_opt_calipso_cmpt_bitmap
+  ipv6.opt.smf_dpd.hash_bit:
+    Name: ipv6.opt.smf_dpd.hash_bit
+    Type: FtBoolean
+    Display: SepDot
+    Info: H-bit
+    JsonName: ipv6_ipv6_opt_smf_dpd_hash_bit
+  ipv6.opt.smf_dpd.tid_type:
+    Name: ipv6.opt.smf_dpd.tid_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: TaggerID Type
+    JsonName: ipv6_ipv6_opt_smf_dpd_tid_type
+  ipv6.opt.smf_dpd.tid_len:
+    Name: ipv6.opt.smf_dpd.tid_len
+    Type: FtUint8
+    Display: BaseDec
+    Info: TaggerID Length
+    JsonName: ipv6_ipv6_opt_smf_dpd_tid_len
+  ipv6.opt.smf_dpd.tagger_id:
+    Name: ipv6.opt.smf_dpd.tagger_id
+    Type: FtBytes
+    Info: TaggerID
+    JsonName: ipv6_ipv6_opt_smf_dpd_tagger_id
+  ipv6.opt.smf_dpd.ident:
+    Name: ipv6.opt.smf_dpd.ident
+    Type: FtBytes
+    Info: Identifier
+    JsonName: ipv6_ipv6_opt_smf_dpd_ident
+  ipv6.opt.smf_dpd.hav:
+    Name: ipv6.opt.smf_dpd.hav
+    Type: FtBytes
+    Info: Hash Assist Value
+    JsonName: ipv6_ipv6_opt_smf_dpd_hav
+  ipv6.opt.pdm.scale_dtlr:
+    Name: ipv6.opt.pdm.scale_dtlr
+    Type: FtUint8
+    Display: BaseDec
+    Info: Scale DTLR
+    JsonName: ipv6_ipv6_opt_pdm_scale_dtlr
+  ipv6.opt.pdm.scale_dtls:
+    Name: ipv6.opt.pdm.scale_dtls
+    Type: FtUint8
+    Display: BaseDec
+    Info: Scale DTLS
+    JsonName: ipv6_ipv6_opt_pdm_scale_dtls
+  ipv6.opt.pdm.psn_this_pkt:
+    Name: ipv6.opt.pdm.psn_this_pkt
+    Type: FtUint16
+    Display: BaseDec
+    Info: PSN This Packet
+    JsonName: ipv6_ipv6_opt_pdm_psn_this_pkt
+  ipv6.opt.pdm.psn_last_recv:
+    Name: ipv6.opt.pdm.psn_last_recv
+    Type: FtUint16
+    Display: BaseDec
+    Info: PSN Last Received
+    JsonName: ipv6_ipv6_opt_pdm_psn_last_recv
+  ipv6.opt.pdm.delta_last_recv:
+    Name: ipv6.opt.pdm.delta_last_recv
+    Type: FtUint16
+    Display: BaseDec
+    Info: Delta Time Last Received
+    JsonName: ipv6_ipv6_opt_pdm_delta_last_recv
+  ipv6.opt.pdm.delta_last_sent:
+    Name: ipv6.opt.pdm.delta_last_sent
+    Type: FtUint16
+    Display: BaseDec
+    Info: Delta Time Last Sent
+    JsonName: ipv6_ipv6_opt_pdm_delta_last_sent
+  ipv6.opt.qs_func:
+    Name: ipv6.opt.qs_func
+    Type: FtUint8
+    Display: BaseDec
+    Info: Function
+    JsonName: ipv6_opt_ipv6_opt_qs_func
+  ipv6.opt.qs_rate:
+    Name: ipv6.opt.qs_rate
+    Type: FtUint8
+    Display: BaseDec
+    Info: Rate
+    JsonName: ipv6_opt_ipv6_opt_qs_rate
+  ipv6.opt.qs_ttl:
+    Name: ipv6.opt.qs_ttl
+    Type: FtUint8
+    Display: BaseDec
+    Info: QS TTL
+    JsonName: ipv6_opt_ipv6_opt_qs_ttl
+  ipv6.opt.qs_ttl_diff:
+    Name: ipv6.opt.qs_ttl_diff
+    Type: FtUint8
+    Display: BaseDec
+    Info: TTL Diff
+    JsonName: ipv6_opt_ipv6_opt_qs_ttl_diff
+  ipv6.opt.qs_unused:
+    Name: ipv6.opt.qs_unused
+    Type: FtUint8
+    Display: BaseDec
+    Info: Not Used
+    JsonName: ipv6_opt_ipv6_opt_qs_unused
+  ipv6.opt.qs_nonce:
+    Name: ipv6.opt.qs_nonce
+    Type: FtUint32
+    Display: BaseHex
+    Info: QS Nonce
+    JsonName: ipv6_opt_ipv6_opt_qs_nonce
+  ipv6.opt.qs_reserved:
+    Name: ipv6.opt.qs_reserved
+    Type: FtUint32
+    Display: BaseHex
+    Info: Reserved
+    JsonName: ipv6_opt_ipv6_opt_qs_reserved
+  ipv6.opt.mipv6.home_address:
+    Name: ipv6.opt.mipv6.home_address
+    Type: FtIpv6
+    Info: MIPv6 Home Address
+    JsonName: ipv6_ipv6_opt_mipv6_home_address
+  ipv6.opt.rpl.flag:
+    Name: ipv6.opt.rpl.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flag
+    JsonName: ipv6_ipv6_opt_rpl_flag
+  ipv6.opt.rpl.flag.o:
+    Name: ipv6.opt.rpl.flag.o
+    Type: FtBoolean
+    Display: SepDot
+    Info: Down
+    JsonName: ipv6_opt_rpl_flag_ipv6_opt_rpl_flag_o
+  ipv6.opt.rpl.flag.r:
+    Name: ipv6.opt.rpl.flag.r
+    Type: FtBoolean
+    Display: SepDot
+    Info: Rank Error
+    JsonName: ipv6_opt_rpl_flag_ipv6_opt_rpl_flag_r
+  ipv6.opt.rpl.flag.f:
+    Name: ipv6.opt.rpl.flag.f
+    Type: FtBoolean
+    Display: SepDot
+    Info: Forwarding Error
+    JsonName: ipv6_opt_rpl_flag_ipv6_opt_rpl_flag_f
+  ipv6.opt.rpl.flag.rsv:
+    Name: ipv6.opt.rpl.flag.rsv
+    Type: FtUint8
+    Display: BaseHex
+    Info: Reserved
+    JsonName: ipv6_opt_rpl_flag_ipv6_opt_rpl_flag_rsv
+  ipv6.opt.rpl.instance_id:
+    Name: ipv6.opt.rpl.instance_id
+    Type: FtUint8
+    Display: BaseHex
+    Info: RPLInstanceID
+    JsonName: ipv6_ipv6_opt_rpl_instance_id
+  ipv6.opt.rpl.sender_rank:
+    Name: ipv6.opt.rpl.sender_rank
+    Type: FtUint16
+    Display: BaseHex
+    Info: Sender Rank
+    JsonName: ipv6_ipv6_opt_rpl_sender_rank
+  ipv6.opt.ilnp_nonce:
+    Name: ipv6.opt.ilnp_nonce
+    Type: FtBytes
+    Info: ILNP Nonce
+    JsonName: ipv6_opt_ipv6_opt_ilnp_nonce
+  ipv6.opt.lio.length:
+    Name: ipv6.opt.lio.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: LineIDLen
+    JsonName: ipv6_ipv6_opt_lio_length
+  ipv6.opt.lio.line_id:
+    Name: ipv6.opt.lio.line_id
+    Type: FtString
+    Info: Line ID
+    JsonName: ipv6_ipv6_opt_lio_line_id
+  ipv6.opt.mpl.flag:
+    Name: ipv6.opt.mpl.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flag
+    JsonName: ipv6_ipv6_opt_mpl_flag
+  ipv6.opt.mpl.flag.s:
+    Name: ipv6.opt.mpl.flag.s
+    Type: FtUint8
+    Display: BaseDec
+    Info: Seed ID Length
+    JsonName: ipv6_opt_mpl_flag_ipv6_opt_mpl_flag_s
+  ipv6.opt.mpl.flag.m:
+    Name: ipv6.opt.mpl.flag.m
+    Type: FtBoolean
+    Display: SepDot
+    Info: Largest Sequence
+    JsonName: ipv6_opt_mpl_flag_ipv6_opt_mpl_flag_m
+  ipv6.opt.mpl.flag.v:
+    Name: ipv6.opt.mpl.flag.v
+    Type: FtBoolean
+    Display: SepDot
+    Info: Version
+    JsonName: ipv6_opt_mpl_flag_ipv6_opt_mpl_flag_v
+  ipv6.opt.mpl.flag.rsv:
+    Name: ipv6.opt.mpl.flag.rsv
+    Type: FtUint8
+    Display: BaseHex
+    Info: Reserved
+    JsonName: ipv6_opt_mpl_flag_ipv6_opt_mpl_flag_rsv
+  ipv6.opt.mpl.sequence:
+    Name: ipv6.opt.mpl.sequence
+    Type: FtUint8
+    Display: BaseHex
+    Info: Sequence
+    JsonName: ipv6_ipv6_opt_mpl_sequence
+  ipv6.opt.mpl.seed_id:
+    Name: ipv6.opt.mpl.seed_id
+    Type: FtBytes
+    Info: Seed ID
+    JsonName: ipv6_ipv6_opt_mpl_seed_id
+  ipv6.opt.dff.flags:
+    Name: ipv6.opt.dff.flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flags
+    JsonName: ipv6_ipv6_opt_dff_flags
+  ipv6.opt.dff.flag.ver:
+    Name: ipv6.opt.dff.flag.ver
+    Type: FtUint8
+    Display: BaseDec
+    Info: Version (VER)
+    JsonName: ipv6_ipv6_opt_dff_flag_ver
+  ipv6.opt.dff.flag.dup:
+    Name: ipv6.opt.dff.flag.dup
+    Type: FtBoolean
+    Display: SepDot
+    Info: Duplicate (DUP)
+    JsonName: ipv6_ipv6_opt_dff_flag_dup
+  ipv6.opt.dff.flag.ret:
+    Name: ipv6.opt.dff.flag.ret
+    Type: FtBoolean
+    Display: SepDot
+    Info: Return (RET)
+    JsonName: ipv6_ipv6_opt_dff_flag_ret
+  ipv6.opt.dff.flag.rsv:
+    Name: ipv6.opt.dff.flag.rsv
+    Type: FtUint8
+    Display: BaseHex
+    Info: Reserved
+    JsonName: ipv6_ipv6_opt_dff_flag_rsv
+  ipv6.opt.dff.sequence_number:
+    Name: ipv6.opt.dff.sequence_number
+    Type: FtUint16
+    Display: BaseDecHex
+    Info: Sequence Number
+    JsonName: ipv6_ipv6_opt_dff_sequence_number
+  ipv6.opt.experimental:
+    Name: ipv6.opt.experimental
+    Type: FtBytes
+    Info: Experimental Option
+    JsonName: ipv6_opt_ipv6_opt_experimental
+  ipv6.opt_unknown_data:
+    Name: ipv6.opt_unknown_data
+    Type: FtBytes
+    Info: Unknown Data
+    JsonName: ipv6_ipv6_opt_unknown_data
+  ipv6.opt.unknown:
+    Name: ipv6.opt.unknown
+    Type: FtBytes
+    Info: Unknown Option Payload
+    JsonName: ipv6_opt_ipv6_opt_unknown
+  ipv6.fragment:
+    Name: ipv6.fragment
+    Type: FtFramenum
+    Info: IPv6 Fragment
+    JsonName: ipv6_ipv6_fragment
+  ipv6.fragment.overlap:
+    Name: ipv6.fragment.overlap
+    Type: FtBoolean
+    Info: Fragment overlap
+    JsonName: ipv6_fragment_ipv6_fragment_overlap
+  ipv6.fragment.overlap.conflict:
+    Name: ipv6.fragment.overlap.conflict
+    Type: FtBoolean
+    Info: Conflicting data in fragment overlap
+    JsonName: ipv6_fragment_overlap_ipv6_fragment_overlap_conflict
+  ipv6.fragment.multipletails:
+    Name: ipv6.fragment.multipletails
+    Type: FtBoolean
+    Info: Multiple tail fragments found
+    JsonName: ipv6_fragment_ipv6_fragment_multipletails
+  ipv6.fragment.toolongfragment:
+    Name: ipv6.fragment.toolongfragment
+    Type: FtBoolean
+    Info: Fragment too long
+    JsonName: ipv6_fragment_ipv6_fragment_toolongfragment
+  ipv6.fragment.error:
+    Name: ipv6.fragment.error
+    Type: FtFramenum
+    Info: Defragmentation error
+    JsonName: ipv6_fragment_ipv6_fragment_error
+  ipv6.fragment.count:
+    Name: ipv6.fragment.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Fragment count
+    JsonName: ipv6_fragment_ipv6_fragment_count
+  ipv6.fragments:
+    Name: ipv6.fragments
+    Info: IPv6 Fragments
+    JsonName: ipv6_ipv6_fragments
+  ipv6.reassembled.in:
+    Name: ipv6.reassembled.in
+    Type: FtFramenum
+    Info: Reassembled IPv6 in frame
+    JsonName: ipv6_ipv6_reassembled_in
+  ipv6.reassembled.length:
+    Name: ipv6.reassembled.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reassembled IPv6 length
+    JsonName: ipv6_ipv6_reassembled_length
+  ipv6.reassembled.data:
+    Name: ipv6.reassembled.data
+    Type: FtBytes
+    Info: Reassembled IPv6 data
+    JsonName: ipv6_ipv6_reassembled_data
+  ipv6.hopopts.nxt:
+    Name: ipv6.hopopts.nxt
+    Type: FtUint8
+    Display: BaseDec
+    Info: Next Header
+    JsonName: ipv6_ipv6_hopopts_nxt
+  ipv6.hopopts.len:
+    Name: ipv6.hopopts.len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Length
+    JsonName: ipv6_ipv6_hopopts_len
+  ipv6.hopopts.len_oct:
+    Name: ipv6.hopopts.len_oct
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length
+    JsonName: ipv6_ipv6_hopopts_len_oct
+  ipv6.dstopts.nxt:
+    Name: ipv6.dstopts.nxt
+    Type: FtUint8
+    Display: BaseDec
+    Info: Next Header
+    JsonName: ipv6_ipv6_dstopts_nxt
+  ipv6.dstopts.len:
+    Name: ipv6.dstopts.len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Length
+    JsonName: ipv6_ipv6_dstopts_len
+  ipv6.dstopts.len_oct:
+    Name: ipv6.dstopts.len_oct
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length
+    JsonName: ipv6_ipv6_dstopts_len_oct
+  ipv6.routing.nxt:
+    Name: ipv6.routing.nxt
+    Type: FtUint8
+    Display: BaseDec
+    Info: Next Header
+    JsonName: ipv6_ipv6_routing_nxt
+  ipv6.routing.len:
+    Name: ipv6.routing.len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Length
+    JsonName: ipv6_ipv6_routing_len
+  ipv6.routing.len_oct:
+    Name: ipv6.routing.len_oct
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length
+    JsonName: ipv6_ipv6_routing_len_oct
+  ipv6.routing.type:
+    Name: ipv6.routing.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Type
+    JsonName: ipv6_ipv6_routing_type
+  ipv6.routing.segleft:
+    Name: ipv6.routing.segleft
+    Type: FtUint8
+    Display: BaseDec
+    Info: Segments Left
+    JsonName: ipv6_ipv6_routing_segleft
+  ipv6.routing.unknown_data:
+    Name: ipv6.routing.unknown_data
+    Type: FtBytes
+    Info: Type-Specific Data
+    JsonName: ipv6_ipv6_routing_unknown_data
+  ipv6.routing.src.reserved:
+    Name: ipv6.routing.src.reserved
+    Type: FtBytes
+    Info: Reserved
+    JsonName: ipv6_ipv6_routing_src_reserved
+  ipv6.routing.src.addr:
+    Name: ipv6.routing.src.addr
+    Type: FtIpv6
+    Info: Address
+    JsonName: ipv6_ipv6_routing_src_addr
+  ipv6.routing.mipv6.reserved:
+    Name: ipv6.routing.mipv6.reserved
+    Type: FtBytes
+    Info: Reserved
+    JsonName: ipv6_ipv6_routing_mipv6_reserved
+  ipv6.routing.mipv6.home_address:
+    Name: ipv6.routing.mipv6.home_address
+    Type: FtIpv6
+    Info: Home Address
+    JsonName: ipv6_ipv6_routing_mipv6_home_address
+  ipv6.routing.rpl.cmprI:
+    Name: ipv6.routing.rpl.cmprI
+    Type: FtUint32
+    Display: BaseDec
+    Info: Compressed Internal Octets (CmprI)
+    JsonName: ipv6_ipv6_routing_rpl_cmprI
+  ipv6.routing.rpl.cmprE:
+    Name: ipv6.routing.rpl.cmprE
+    Type: FtUint32
+    Display: BaseDec
+    Info: Compressed Final Octets (CmprE)
+    JsonName: ipv6_ipv6_routing_rpl_cmprE
+  ipv6.routing.rpl.pad:
+    Name: ipv6.routing.rpl.pad
+    Type: FtUint32
+    Display: BaseDec
+    Info: Padding Bytes
+    JsonName: ipv6_ipv6_routing_rpl_pad
+  ipv6.routing.rpl.reserved:
+    Name: ipv6.routing.rpl.reserved
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reserved
+    JsonName: ipv6_ipv6_routing_rpl_reserved
+  ipv6.routing.rpl.addr_count:
+    Name: ipv6.routing.rpl.addr_count
+    Type: FtInt32
+    Display: BaseDec
+    Info: Total Address Count
+    JsonName: ipv6_ipv6_routing_rpl_addr_count
+  ipv6.routing.rpl.address:
+    Name: ipv6.routing.rpl.address
+    Type: FtBytes
+    Info: Address
+    JsonName: ipv6_ipv6_routing_rpl_address
+  ipv6.routing.rpl.full_address:
+    Name: ipv6.routing.rpl.full_address
+    Type: FtIpv6
+    Info: Full Address
+    JsonName: ipv6_ipv6_routing_rpl_full_address
+  ipv6.routing.srh.first_segment:
+    Name: ipv6.routing.srh.first_segment
+    Type: FtUint8
+    Display: BaseDec
+    Info: First segment
+    JsonName: ipv6_ipv6_routing_srh_first_segment
+  ipv6.routing.srh.flags:
+    Name: ipv6.routing.srh.flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flags
+    JsonName: ipv6_ipv6_routing_srh_flags
+  ipv6.routing.srh.flag_unused1:
+    Name: ipv6.routing.srh.flag_unused1
+    Type: FtUint8
+    Display: BaseHex
+    Info: Unused
+    JsonName: ipv6_ipv6_routing_srh_flag_unused1
+  ipv6.routing.srh.flag_p:
+    Name: ipv6.routing.srh.flag_p
+    Type: FtBoolean
+    Display: SepDot
+    Info: Protected
+    JsonName: ipv6_ipv6_routing_srh_flag_p
+  ipv6.routing.srh.flag_o:
+    Name: ipv6.routing.srh.flag_o
+    Type: FtBoolean
+    Display: SepDot
+    Info: OAM
+    JsonName: ipv6_ipv6_routing_srh_flag_o
+  ipv6.routing.srh.flag_a:
+    Name: ipv6.routing.srh.flag_a
+    Type: FtBoolean
+    Display: SepDot
+    Info: Alert
+    JsonName: ipv6_ipv6_routing_srh_flag_a
+  ipv6.routing.srh.flag_h:
+    Name: ipv6.routing.srh.flag_h
+    Type: FtBoolean
+    Display: SepDot
+    Info: HMAC
+    JsonName: ipv6_ipv6_routing_srh_flag_h
+  ipv6.routing.srh.flag_unused2:
+    Name: ipv6.routing.srh.flag_unused2
+    Type: FtUint8
+    Display: BaseHex
+    Info: Unused
+    JsonName: ipv6_ipv6_routing_srh_flag_unused2
+  ipv6.routing.srh.reserved:
+    Name: ipv6.routing.srh.reserved
+    Type: FtBytes
+    Info: Reserved
+    JsonName: ipv6_ipv6_routing_srh_reserved
+  ipv6.routing.srh.addr:
+    Name: ipv6.routing.srh.addr
+    Type: FtIpv6
+    Info: Address
+    JsonName: ipv6_ipv6_routing_srh_addr
+  ipv6.fraghdr.nxt:
+    Name: ipv6.fraghdr.nxt
+    Type: FtUint8
+    Display: BaseDec
+    Info: Next header
+    JsonName: ipv6_ipv6_fraghdr_nxt
+  ipv6.fraghdr.reserved_octet:
+    Name: ipv6.fraghdr.reserved_octet
+    Type: FtUint8
+    Display: BaseHex
+    Info: Reserved octet
+    JsonName: ipv6_ipv6_fraghdr_reserved_octet
+  ipv6.fraghdr.offset:
+    Name: ipv6.fraghdr.offset
+    Type: FtUint16
+    Display: BaseDec
+    Info: Offset
+    JsonName: ipv6_ipv6_fraghdr_offset
+  ipv6.fraghdr.reserved_bits:
+    Name: ipv6.fraghdr.reserved_bits
+    Type: FtUint16
+    Display: BaseDec
+    Info: Reserved bits
+    JsonName: ipv6_ipv6_fraghdr_reserved_bits
+  ipv6.fraghdr.more:
+    Name: ipv6.fraghdr.more
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: More Fragments
+    JsonName: ipv6_ipv6_fraghdr_more
+  ipv6.fraghdr.ident:
+    Name: ipv6.fraghdr.ident
+    Type: FtUint32
+    Display: BaseHex
+    Info: Identification
+    JsonName: ipv6_ipv6_fraghdr_ident

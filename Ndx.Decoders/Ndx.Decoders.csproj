@@ -51,42 +51,133 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Basic\packet-dns.Decode.cs" />
-    <Compile Include="Basic\PacketDns.cs" />
+    <Compile Include="DecoderFactory.cs" />
+    <Compile Include="Decoders\Base\packet-eth.Decode.cs" />
+    <Compile Include="Decoders\Base\packet-frame.Decode.cs" />
+    <Compile Include="Decoders\Base\packet-ieee80211.Decode.cs" />
+    <Compile Include="Decoders\Base\packet-ip.Decode.cs" />
+    <Compile Include="Decoders\Base\packet-ipv6.Decode.cs" />
+    <Compile Include="Decoders\Base\packet-llc.Decode.cs" />
+    <Compile Include="Decoders\Base\packet-tcp.Decode.cs" />
+    <Compile Include="Decoders\Base\packet-udp.Decode.cs" />
+    <Compile Include="Decoders\Base\PacketEth.cs" />
+    <Compile Include="Decoders\Base\PacketFrame.cs" />
+    <Compile Include="Decoders\Base\PacketIeee80211.cs" />
+    <Compile Include="Decoders\Base\PacketIp.cs" />
+    <Compile Include="Decoders\Base\PacketIpv6.cs" />
+    <Compile Include="Decoders\Base\PacketLlc.cs" />
+    <Compile Include="Decoders\Base\PacketTcp.cs" />
+    <Compile Include="Decoders\Base\PacketUdp.cs" />
+    <Compile Include="Decoders\Core\packet-arp.Decode.cs" />
+    <Compile Include="Decoders\Core\packet-atm.Decode.cs" />
+    <Compile Include="Decoders\Core\packet-dns.Decode.cs" />
+    <Compile Include="Decoders\Core\packet-http.Decode.cs" />
+    <Compile Include="Decoders\Core\packet-http2.Decode.cs" />
+    <Compile Include="Decoders\Core\packet-icmp.Decode.cs" />
+    <Compile Include="Decoders\Core\packet-icmpv6.Decode.cs" />
+    <Compile Include="Decoders\Core\packet-igmp.Decode.cs" />
+    <Compile Include="Decoders\Core\packet-ipsec.Decode.cs" />
+    <Compile Include="Decoders\Core\packet-ipx.Decode.cs" />
+    <Compile Include="Decoders\Core\packet-nbipx.Decode.cs" />
+    <Compile Include="Decoders\Core\packet-nbt.Decode.cs" />
+    <Compile Include="Decoders\Core\packet-netbios.Decode.cs" />
+    <Compile Include="Decoders\Core\packet-ppp.Decode.cs" />
+    <Compile Include="Decoders\Core\PacketArp.cs" />
+    <Compile Include="Decoders\Core\PacketAtm.cs" />
+    <Compile Include="Decoders\Core\PacketDns.cs" />
+    <Compile Include="Decoders\Core\PacketHttp.cs" />
+    <Compile Include="Decoders\Core\PacketHttp2.cs" />
+    <Compile Include="Decoders\Core\PacketIcmp.cs" />
+    <Compile Include="Decoders\Core\PacketIcmpv6.cs" />
+    <Compile Include="Decoders\Core\PacketIgmp.cs" />
+    <Compile Include="Decoders\Core\PacketIpsec.cs" />
+    <Compile Include="Decoders\Core\PacketIpx.cs" />
+    <Compile Include="Decoders\Core\PacketNbipx.cs" />
+    <Compile Include="Decoders\Core\PacketNbt.cs" />
+    <Compile Include="Decoders\Core\PacketNetbios.cs" />
+    <Compile Include="Decoders\Core\PacketPpp.cs" />
+    <Compile Include="Decoders\Packet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProtocolDecoder.cs" />
-    <Compile Include="Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Parsers\Binary\BinaryProtocols.md" />
     <None Include="Parsers\Text\TextProtocols.md" />
-    <None Include="Protocols\packet-arp.yaml" />
-    <None Include="Protocols\packet-bootp.yaml" />
-    <None Include="Protocols\packet-dns.yaml" />
-    <None Include="Protocols\packet-eth.yaml" />
-    <None Include="Protocols\packet-ftp.yaml" />
-    <None Include="Protocols\packet-http.yaml" />
-    <None Include="Protocols\packet-icmp.yaml" />
-    <None Include="Protocols\packet-imap.yaml" />
-    <None Include="Protocols\packet-ip.yaml" />
-    <None Include="Protocols\packet-ipsec.yaml" />
-    <None Include="Protocols\packet-isakmp.yaml" />
-    <None Include="Protocols\packet-pop.yaml" />
-    <None Include="Protocols\packet-raw.yaml" />
-    <None Include="Protocols\packet-sip.yaml" />
-    <None Include="Protocols\packet-smb.yaml" />
-    <None Include="Protocols\packet-smb2.yaml" />
-    <None Include="Protocols\packet-smtp.yaml" />
-    <None Include="Protocols\packet-ssh.yaml" />
-    <None Include="Protocols\packet-ssl.yaml" />
-    <None Include="Protocols\packet-tcp.yaml" />
-    <None Include="Protocols\packet-telnet.yaml" />
-    <None Include="Protocols\packet-udp.yaml" />
+    <None Include="Proto\Base\generate-decoders.cmd" />
+    <None Include="Proto\Base\packet-eth.proto" />
+    <None Include="Proto\Base\packet-eth.yaml" />
+    <None Include="Proto\Base\packet-frame.proto" />
+    <None Include="Proto\Base\packet-frame.yaml" />
+    <None Include="Proto\Base\packet-ieee80211.proto" />
+    <None Include="Proto\Base\packet-ieee80211.yaml" />
+    <None Include="Proto\Base\packet-ip.proto" />
+    <None Include="Proto\Base\packet-ip.yaml" />
+    <None Include="Proto\Base\packet-ipv6.proto" />
+    <None Include="Proto\Base\packet-ipv6.yaml" />
+    <None Include="Proto\Base\packet-llc.proto" />
+    <None Include="Proto\Base\packet-llc.yaml" />
+    <None Include="Proto\Base\packet-tcp.proto" />
+    <None Include="Proto\Base\packet-tcp.yaml" />
+    <None Include="Proto\Base\packet-udp.proto" />
+    <None Include="Proto\Base\packet-udp.yaml" />
+    <None Include="Proto\Common\packet-eap.yaml" />
+    <None Include="Proto\Common\packet-eapol.yaml" />
+    <None Include="Proto\Common\packet-fddi.yaml" />
+    <None Include="Proto\Common\packet-ftp.yaml" />
+    <None Include="Proto\Common\packet-gre.yaml" />
+    <None Include="Proto\Common\packet-hsrp.yaml" />
+    <None Include="Proto\Common\packet-imap.yaml" />
+    <None Include="Proto\Common\packet-iscsi.yaml" />
+    <None Include="Proto\Common\packet-kerberos.yaml" />
+    <None Include="Proto\Common\packet-ldap.yaml" />
+    <None Include="Proto\Common\packet-lldp.yaml" />
+    <None Include="Proto\Common\packet-mime-encap.yaml" />
+    <None Include="Proto\Common\packet-nfs.yaml" />
+    <None Include="Proto\Common\packet-nntp.yaml" />
+    <None Include="Proto\Common\packet-pop.yaml" />
+    <None Include="Proto\Common\packet-pptp.yaml" />
+    <None Include="Proto\Common\packet-rip.yaml" />
+    <None Include="Proto\Common\packet-rpc.yaml" />
+    <None Include="Proto\Common\packet-rtp.yaml" />
+    <None Include="Proto\Common\packet-rtsp.yaml" />
+    <None Include="Proto\Common\packet-sdp.yaml" />
+    <None Include="Proto\Common\packet-smb.yaml" />
+    <None Include="Proto\Common\packet-smb2.yaml" />
+    <None Include="Proto\Common\packet-smtp.yaml" />
+    <None Include="Proto\Common\packet-socks.yaml" />
+    <None Include="Proto\Common\packet-ssl.yaml" />
+    <None Include="Proto\Common\packet-telnet.yaml" />
+    <None Include="Proto\Common\packet-teredo.yaml" />
+    <None Include="Proto\Common\packet-tftp.yaml" />
+    <None Include="Proto\Core\generate-decoders.cmd" />
+    <None Include="Proto\Core\packet-arp.proto" />
+    <None Include="Proto\Core\packet-arp.yaml" />
+    <None Include="Proto\Core\packet-atm.proto" />
+    <None Include="Proto\Core\packet-atm.yaml" />
+    <None Include="Proto\Core\packet-dns.proto" />
+    <None Include="Proto\Core\packet-dns.yaml" />
+    <None Include="Proto\Core\packet-http.proto" />
+    <None Include="Proto\Core\packet-http.yaml" />
+    <None Include="Proto\Core\packet-http2.proto" />
+    <None Include="Proto\Core\packet-http2.yaml" />
+    <None Include="Proto\Core\packet-icmp.yaml" />
+    <None Include="Proto\Core\packet-icmpv6.proto" />
+    <None Include="Proto\Core\packet-icmpv6.yaml" />
+    <None Include="Proto\Core\packet-igmp.proto" />
+    <None Include="Proto\Core\packet-igmp.yaml" />
+    <None Include="Proto\Core\packet-ipsec.proto" />
+    <None Include="Proto\Core\packet-ipsec.yaml" />
+    <None Include="Proto\Core\packet-ipx.proto" />
+    <None Include="Proto\Core\packet-ipx.yaml" />
+    <None Include="Proto\Core\packet-nbipx.proto" />
+    <None Include="Proto\Core\packet-nbipx.yaml" />
+    <None Include="Proto\Core\packet-nbt.proto" />
+    <None Include="Proto\Core\packet-nbt.yaml" />
+    <None Include="Proto\Core\packet-netbios.proto" />
+    <None Include="Proto\Core\packet-netbios.yaml" />
+    <None Include="Proto\Core\packet-ppp.proto" />
+    <None Include="Proto\Core\packet-ppp.yaml" />
+    <None Include="Proto\Packet.proto" />
     <None Include="Readme.md">
       <Generator>ResXFileCodeGenerator</Generator>
     </None>
@@ -98,10 +189,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Folder Include="Decoders\Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>$(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools\windows_x86\protoc  --proto_path $(ProjectDir)Proto --proto_path $(ProjectDir)Proto\Base --csharp_out=$(ProjectDir)Decoders $(ProjectDir)Proto\Packet.proto</PreBuildEvent>
+  </PropertyGroup>
 </Project>

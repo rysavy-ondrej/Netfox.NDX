@@ -1,0 +1,1004 @@
+Name: kerberos
+Fields:
+  kerberos.rm.reserved:
+    Name: kerberos.rm.reserved
+    Type: FtBoolean
+    Display: 32
+    Info: Reserved
+    JsonName: kerberos_kerberos_rm_reserved
+  kerberos.rm.length:
+    Name: kerberos.rm.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Record Length
+    JsonName: kerberos_kerberos_rm_length
+  kerberos.provsrv_location:
+    Name: kerberos.provsrv_location
+    Type: FtString
+    Info: PROVSRV Location
+    JsonName: kerberos_kerberos_provsrv_location
+  kerberos.smb.nt_status:
+    Name: kerberos.smb.nt_status
+    Type: FtUint32
+    Display: BaseHex
+    Info: NT Status
+    JsonName: kerberos_kerberos_smb_nt_status
+  kerberos.smb.unknown:
+    Name: kerberos.smb.unknown
+    Type: FtUint32
+    Display: BaseHex
+    Info: Unknown
+    JsonName: kerberos_kerberos_smb_unknown
+  kerberos.addr_ip:
+    Name: kerberos.addr_ip
+    Type: FtIpv4
+    Info: IP Address
+    JsonName: kerberos_kerberos_addr_ip
+  kerberos.addr_ipv6:
+    Name: kerberos.addr_ipv6
+    Type: FtIpv6
+    Info: IPv6 Address
+    JsonName: kerberos_kerberos_addr_ipv6
+  kerberos.addr_nb:
+    Name: kerberos.addr_nb
+    Type: FtString
+    Info: NetBIOS Address
+    JsonName: kerberos_kerberos_addr_nb
+  kerberos.gssapi.len:
+    Name: kerberos.gssapi.len
+    Type: FtUint32
+    Display: BaseDec
+    Info: Length
+    JsonName: kerberos_kerberos_gssapi_len
+  kerberos.gssapi.bdn:
+    Name: kerberos.gssapi.bdn
+    Type: FtBytes
+    Info: Bnd
+    JsonName: kerberos_kerberos_gssapi_bdn
+  kerberos.gssapi.checksum.flags.deleg:
+    Name: kerberos.gssapi.checksum.flags.deleg
+    Type: FtBoolean
+    Display: 32
+    Info: Deleg
+    JsonName: kerberos_kerberos_gssapi_checksum_flags_deleg
+  kerberos.gssapi.checksum.flags.mutual:
+    Name: kerberos.gssapi.checksum.flags.mutual
+    Type: FtBoolean
+    Display: 32
+    Info: Mutual
+    JsonName: kerberos_kerberos_gssapi_checksum_flags_mutual
+  kerberos.gssapi.checksum.flags.replay:
+    Name: kerberos.gssapi.checksum.flags.replay
+    Type: FtBoolean
+    Display: 32
+    Info: Replay
+    JsonName: kerberos_kerberos_gssapi_checksum_flags_replay
+  kerberos.gssapi.checksum.flags.sequence:
+    Name: kerberos.gssapi.checksum.flags.sequence
+    Type: FtBoolean
+    Display: 32
+    Info: Sequence
+    JsonName: kerberos_kerberos_gssapi_checksum_flags_sequence
+  kerberos.gssapi.checksum.flags.conf:
+    Name: kerberos.gssapi.checksum.flags.conf
+    Type: FtBoolean
+    Display: 32
+    Info: Conf
+    JsonName: kerberos_kerberos_gssapi_checksum_flags_conf
+  kerberos.gssapi.checksum.flags.integ:
+    Name: kerberos.gssapi.checksum.flags.integ
+    Type: FtBoolean
+    Display: 32
+    Info: Integ
+    JsonName: kerberos_kerberos_gssapi_checksum_flags_integ
+  kerberos.gssapi.checksum.flags.dce-style:
+    Name: kerberos.gssapi.checksum.flags.dce-style
+    Type: FtBoolean
+    Display: 32
+    Info: DCE-style
+    JsonName: kerberos_kerberos_gssapi_checksum_flags_dce-style
+  kerberos.gssapi.dlgopt:
+    Name: kerberos.gssapi.dlgopt
+    Type: FtUint16
+    Display: BaseDec
+    Info: DlgOpt
+    JsonName: kerberos_kerberos_gssapi_dlgopt
+  kerberos.gssapi.dlglen:
+    Name: kerberos.gssapi.dlglen
+    Type: FtUint16
+    Display: BaseDec
+    Info: DlgLen
+    JsonName: kerberos_kerberos_gssapi_dlglen
+  kerberos.midl_blob_len:
+    Name: kerberos.midl_blob_len
+    Type: FtUint64
+    Display: BaseDec
+    Info: Blob Length
+    JsonName: kerberos_kerberos_midl_blob_len
+  kerberos.midl.fill_bytes:
+    Name: kerberos.midl.fill_bytes
+    Type: FtUint32
+    Display: BaseHex
+    Info: Fill bytes
+    JsonName: kerberos_kerberos_midl_fill_bytes
+  kerberos.midl.version:
+    Name: kerberos.midl.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: Version
+    JsonName: kerberos_kerberos_midl_version
+  kerberos.midl.hdr_len:
+    Name: kerberos.midl.hdr_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: HDR Length
+    JsonName: kerberos_kerberos_midl_hdr_len
+  kerberos.pac.signature.type:
+    Name: kerberos.pac.signature.type
+    Type: FtInt32
+    Display: BaseDec
+    Info: Type
+    JsonName: kerberos_kerberos_pac_signature_type
+  kerberos.pac.signature.signature:
+    Name: kerberos.pac.signature.signature
+    Type: FtBytes
+    Info: Signature
+    JsonName: kerberos_kerberos_pac_signature_signature
+  kerberos.pac.entries:
+    Name: kerberos.pac.entries
+    Type: FtUint32
+    Display: BaseDec
+    Info: Num Entries
+    JsonName: kerberos_kerberos_pac_entries
+  kerberos.pac.version:
+    Name: kerberos.pac.version
+    Type: FtUint32
+    Display: BaseDec
+    Info: Version
+    JsonName: kerberos_kerberos_pac_version
+  kerberos.pac.type:
+    Name: kerberos.pac.type
+    Type: FtUint32
+    Display: BaseDec
+    Info: Type
+    JsonName: kerberos_kerberos_pac_type
+  kerberos.pac.size:
+    Name: kerberos.pac.size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Size
+    JsonName: kerberos_kerberos_pac_size
+  kerberos.pac.offset:
+    Name: kerberos.pac.offset
+    Type: FtUint32
+    Display: BaseDec
+    Info: Offset
+    JsonName: kerberos_kerberos_pac_offset
+  kerberos.pac.clientid:
+    Name: kerberos.pac.clientid
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: ClientID
+    JsonName: kerberos_kerberos_pac_clientid
+  kerberos.pac.namelen:
+    Name: kerberos.pac.namelen
+    Type: FtUint16
+    Display: BaseDec
+    Info: Name Length
+    JsonName: kerberos_kerberos_pac_namelen
+  kerberos.pac.name:
+    Name: kerberos.pac.name
+    Type: FtString
+    Info: Name
+    JsonName: kerberos_kerberos_pac_name
+  kerberos.pac_logon_info:
+    Name: kerberos.pac_logon_info
+    Type: FtBytes
+    Info: PAC_LOGON_INFO
+    JsonName: kerberos_kerberos_pac_logon_info
+  kerberos.pac_credential_type:
+    Name: kerberos.pac_credential_type
+    Type: FtBytes
+    Info: PAC_CREDENTIAL_TYPE
+    JsonName: kerberos_kerberos_pac_credential_type
+  kerberos.pac_server_checksum:
+    Name: kerberos.pac_server_checksum
+    Type: FtBytes
+    Info: PAC_SERVER_CHECKSUM
+    JsonName: kerberos_kerberos_pac_server_checksum
+  kerberos.pac_privsvr_checksum:
+    Name: kerberos.pac_privsvr_checksum
+    Type: FtBytes
+    Info: PAC_PRIVSVR_CHECKSUM
+    JsonName: kerberos_kerberos_pac_privsvr_checksum
+  kerberos.pac_client_info_type:
+    Name: kerberos.pac_client_info_type
+    Type: FtBytes
+    Info: PAC_CLIENT_INFO_TYPE
+    JsonName: kerberos_kerberos_pac_client_info_type
+  kerberos.pac_s4u_delegation_info:
+    Name: kerberos.pac_s4u_delegation_info
+    Type: FtBytes
+    Info: PAC_S4U_DELEGATION_INFO
+    JsonName: kerberos_kerberos_pac_s4u_delegation_info
+  kerberos.pac_upn_dns_info:
+    Name: kerberos.pac_upn_dns_info
+    Type: FtBytes
+    Info: UPN_DNS_INFO
+    JsonName: kerberos_kerberos_pac_upn_dns_info
+  kerberos.pac.upn.flags:
+    Name: kerberos.pac.upn.flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Flags
+    JsonName: kerberos_kerberos_pac_upn_flags
+  kerberos.pac.upn.dns_offset:
+    Name: kerberos.pac.upn.dns_offset
+    Type: FtUint16
+    Display: BaseDec
+    Info: DNS Offset
+    JsonName: kerberos_kerberos_pac_upn_dns_offset
+  kerberos.pac.upn.dns_len:
+    Name: kerberos.pac.upn.dns_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: DNS Len
+    JsonName: kerberos_kerberos_pac_upn_dns_len
+  kerberos.pac.upn.upn_offset:
+    Name: kerberos.pac.upn.upn_offset
+    Type: FtUint16
+    Display: BaseDec
+    Info: UPN Offset
+    JsonName: kerberos_kerberos_pac_upn_upn_offset
+  kerberos.pac.upn.upn_len:
+    Name: kerberos.pac.upn.upn_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: UPN Len
+    JsonName: kerberos_kerberos_pac_upn_upn_len
+  kerberos.pac.upn.upn_name:
+    Name: kerberos.pac.upn.upn_name
+    Type: FtString
+    Info: UPN Name
+    JsonName: kerberos_kerberos_pac_upn_upn_name
+  kerberos.pac.upn.dns_name:
+    Name: kerberos.pac.upn.dns_name
+    Type: FtString
+    Info: DNS Name
+    JsonName: kerberos_kerberos_pac_upn_dns_name
+  kerberos.ticket_element:
+    Name: kerberos.ticket_element
+    Info: ticket
+    JsonName: kerberos_kerberos_ticket_element
+  kerberos.authenticator_element:
+    Name: kerberos.authenticator_element
+    Info: authenticator
+    JsonName: kerberos_kerberos_authenticator_element
+  kerberos.encTicketPart_element:
+    Name: kerberos.encTicketPart_element
+    Info: encTicketPart
+    JsonName: kerberos_kerberos_encTicketPart_element
+  kerberos.as_req_element:
+    Name: kerberos.as_req_element
+    Info: as-req
+    JsonName: kerberos_kerberos_as_req_element
+  kerberos.as_rep_element:
+    Name: kerberos.as_rep_element
+    Info: as-rep
+    JsonName: kerberos_kerberos_as_rep_element
+  kerberos.tgs_req_element:
+    Name: kerberos.tgs_req_element
+    Info: tgs-req
+    JsonName: kerberos_kerberos_tgs_req_element
+  kerberos.tgs_rep_element:
+    Name: kerberos.tgs_rep_element
+    Info: tgs-rep
+    JsonName: kerberos_kerberos_tgs_rep_element
+  kerberos.ap_req_element:
+    Name: kerberos.ap_req_element
+    Info: ap-req
+    JsonName: kerberos_kerberos_ap_req_element
+  kerberos.ap_rep_element:
+    Name: kerberos.ap_rep_element
+    Info: ap-rep
+    JsonName: kerberos_kerberos_ap_rep_element
+  kerberos.krb_safe_element:
+    Name: kerberos.krb_safe_element
+    Info: krb-safe
+    JsonName: kerberos_kerberos_krb_safe_element
+  kerberos.krb_priv_element:
+    Name: kerberos.krb_priv_element
+    Info: krb-priv
+    JsonName: kerberos_kerberos_krb_priv_element
+  kerberos.krb_cred_element:
+    Name: kerberos.krb_cred_element
+    Info: krb-cred
+    JsonName: kerberos_kerberos_krb_cred_element
+  kerberos.encASRepPart_element:
+    Name: kerberos.encASRepPart_element
+    Info: encASRepPart
+    JsonName: kerberos_kerberos_encASRepPart_element
+  kerberos.encTGSRepPart_element:
+    Name: kerberos.encTGSRepPart_element
+    Info: encTGSRepPart
+    JsonName: kerberos_kerberos_encTGSRepPart_element
+  kerberos.encAPRepPart_element:
+    Name: kerberos.encAPRepPart_element
+    Info: encAPRepPart
+    JsonName: kerberos_kerberos_encAPRepPart_element
+  kerberos.encKrbPrivPart_element:
+    Name: kerberos.encKrbPrivPart_element
+    Info: encKrbPrivPart
+    JsonName: kerberos_kerberos_encKrbPrivPart_element
+  kerberos.encKrbCredPart_element:
+    Name: kerberos.encKrbCredPart_element
+    Info: encKrbCredPart
+    JsonName: kerberos_kerberos_encKrbCredPart_element
+  kerberos.krb_error_element:
+    Name: kerberos.krb_error_element
+    Info: krb-error
+    JsonName: kerberos_kerberos_krb_error_element
+  kerberos.name_type:
+    Name: kerberos.name_type
+    Type: FtInt32
+    Display: BaseDec
+    Info: name-type
+    JsonName: kerberos_kerberos_name_type
+  kerberos.name_string:
+    Name: kerberos.name_string
+    Type: FtUint32
+    Display: BaseDec
+    Info: name-string
+    JsonName: kerberos_kerberos_name_string
+  kerberos.KerberosString:
+    Name: kerberos.KerberosString
+    Type: FtString
+    Info: KerberosString
+    JsonName: kerberos_kerberos_KerberosString
+  kerberos.cname_string:
+    Name: kerberos.cname_string
+    Type: FtUint32
+    Display: BaseDec
+    Info: cname-string
+    JsonName: kerberos_kerberos_cname_string
+  kerberos.CNameString:
+    Name: kerberos.CNameString
+    Type: FtString
+    Info: CNameString
+    JsonName: kerberos_kerberos_CNameString
+  kerberos.sname_string:
+    Name: kerberos.sname_string
+    Type: FtUint32
+    Display: BaseDec
+    Info: sname-string
+    JsonName: kerberos_kerberos_sname_string
+  kerberos.SNameString:
+    Name: kerberos.SNameString
+    Type: FtString
+    Info: SNameString
+    JsonName: kerberos_kerberos_SNameString
+  kerberos.addr_type:
+    Name: kerberos.addr_type
+    Type: FtInt32
+    Display: BaseDec
+    Info: addr-type
+    JsonName: kerberos_kerberos_addr_type
+  kerberos.address:
+    Name: kerberos.address
+    Type: FtBytes
+    Info: address
+    JsonName: kerberos_kerberos_address
+  kerberos.HostAddress_element:
+    Name: kerberos.HostAddress_element
+    Info: HostAddress
+    JsonName: kerberos_kerberos_HostAddress_element
+  kerberos.AuthorizationData_item_element:
+    Name: kerberos.AuthorizationData_item_element
+    Info: AuthorizationData item
+    JsonName: kerberos_kerberos_AuthorizationData_item_element
+  kerberos.ad_type:
+    Name: kerberos.ad_type
+    Type: FtInt32
+    Display: BaseDec
+    Info: ad-type
+    JsonName: kerberos_kerberos_ad_type
+  kerberos.ad_data:
+    Name: kerberos.ad_data
+    Type: FtBytes
+    Info: ad-data
+    JsonName: kerberos_kerberos_ad_data
+  kerberos.padata_type:
+    Name: kerberos.padata_type
+    Type: FtInt32
+    Display: BaseDec
+    Info: padata-type
+    JsonName: kerberos_kerberos_padata_type
+  kerberos.padata_value:
+    Name: kerberos.padata_value
+    Type: FtBytes
+    Info: padata-value
+    JsonName: kerberos_kerberos_padata_value
+  kerberos.keytype:
+    Name: kerberos.keytype
+    Type: FtInt32
+    Display: BaseDec
+    Info: keytype
+    JsonName: kerberos_kerberos_keytype
+  kerberos.keyvalue:
+    Name: kerberos.keyvalue
+    Type: FtBytes
+    Info: keyvalue
+    JsonName: kerberos_kerberos_keyvalue
+  kerberos.cksumtype:
+    Name: kerberos.cksumtype
+    Type: FtInt32
+    Display: BaseDec
+    Info: cksumtype
+    JsonName: kerberos_kerberos_cksumtype
+  kerberos.checksum:
+    Name: kerberos.checksum
+    Type: FtBytes
+    Info: checksum
+    JsonName: kerberos_kerberos_checksum
+  kerberos.etype:
+    Name: kerberos.etype
+    Type: FtInt32
+    Display: BaseDec
+    Info: etype
+    JsonName: kerberos_kerberos_etype
+  kerberos.kvno:
+    Name: kerberos.kvno
+    Type: FtUint32
+    Display: BaseDec
+    Info: kvno
+    JsonName: kerberos_kerberos_kvno
+  kerberos.cipher:
+    Name: kerberos.cipher
+    Type: FtBytes
+    Info: cipher
+    JsonName: kerberos_kerberos_cipher
+  kerberos.tkt_vno:
+    Name: kerberos.tkt_vno
+    Type: FtUint32
+    Display: BaseDec
+    Info: tkt-vno
+    JsonName: kerberos_kerberos_tkt_vno
+  kerberos.realm:
+    Name: kerberos.realm
+    Type: FtString
+    Info: realm
+    JsonName: kerberos_kerberos_realm
+  kerberos.sname_element:
+    Name: kerberos.sname_element
+    Info: sname
+    JsonName: kerberos_kerberos_sname_element
+  kerberos.enc_part_element:
+    Name: kerberos.enc_part_element
+    Info: enc-part
+    JsonName: kerberos_kerberos_enc_part_element
+  kerberos.flags:
+    Name: kerberos.flags
+    Type: FtBytes
+    Info: flags
+    JsonName: kerberos_kerberos_flags
+  kerberos.key_element:
+    Name: kerberos.key_element
+    Info: key
+    JsonName: kerberos_kerberos_key_element
+  kerberos.crealm:
+    Name: kerberos.crealm
+    Type: FtString
+    Info: crealm
+    JsonName: kerberos_kerberos_crealm
+  kerberos.cname_element:
+    Name: kerberos.cname_element
+    Info: cname
+    JsonName: kerberos_kerberos_cname_element
+  kerberos.transited_element:
+    Name: kerberos.transited_element
+    Info: transited
+    JsonName: kerberos_kerberos_transited_element
+  kerberos.authtime:
+    Name: kerberos.authtime
+    Type: FtString
+    Info: authtime
+    JsonName: kerberos_kerberos_authtime
+  kerberos.starttime:
+    Name: kerberos.starttime
+    Type: FtString
+    Info: starttime
+    JsonName: kerberos_kerberos_starttime
+  kerberos.endtime:
+    Name: kerberos.endtime
+    Type: FtString
+    Info: endtime
+    JsonName: kerberos_kerberos_endtime
+  kerberos.renew_till:
+    Name: kerberos.renew_till
+    Type: FtString
+    Info: renew-till
+    JsonName: kerberos_kerberos_renew_till
+  kerberos.caddr:
+    Name: kerberos.caddr
+    Type: FtUint32
+    Display: BaseDec
+    Info: caddr
+    JsonName: kerberos_kerberos_caddr
+  kerberos.authorization_data:
+    Name: kerberos.authorization_data
+    Type: FtUint32
+    Display: BaseDec
+    Info: authorization-data
+    JsonName: kerberos_kerberos_authorization_data
+  kerberos.tr_type:
+    Name: kerberos.tr_type
+    Type: FtInt32
+    Display: BaseDec
+    Info: tr-type
+    JsonName: kerberos_kerberos_tr_type
+  kerberos.contents:
+    Name: kerberos.contents
+    Type: FtBytes
+    Info: contents
+    JsonName: kerberos_kerberos_contents
+  kerberos.pvno:
+    Name: kerberos.pvno
+    Type: FtUint32
+    Display: BaseDec
+    Info: pvno
+    JsonName: kerberos_kerberos_pvno
+  kerberos.msg_type:
+    Name: kerberos.msg_type
+    Type: FtInt32
+    Display: BaseDec
+    Info: msg-type
+    JsonName: kerberos_kerberos_msg_type
+  kerberos.padata:
+    Name: kerberos.padata
+    Type: FtUint32
+    Display: BaseDec
+    Info: padata
+    JsonName: kerberos_kerberos_padata
+  kerberos.PA_DATA_element:
+    Name: kerberos.PA_DATA_element
+    Info: PA-DATA
+    JsonName: kerberos_kerberos_PA_DATA_element
+  kerberos.req_body_element:
+    Name: kerberos.req_body_element
+    Info: req-body
+    JsonName: kerberos_kerberos_req_body_element
+  kerberos.kdc_options:
+    Name: kerberos.kdc_options
+    Type: FtBytes
+    Info: kdc-options
+    JsonName: kerberos_kerberos_kdc_options
+  kerberos.from:
+    Name: kerberos.from
+    Type: FtString
+    Info: from
+    JsonName: kerberos_kerberos_from
+  kerberos.till:
+    Name: kerberos.till
+    Type: FtString
+    Info: till
+    JsonName: kerberos_kerberos_till
+  kerberos.rtime:
+    Name: kerberos.rtime
+    Type: FtString
+    Info: rtime
+    JsonName: kerberos_kerberos_rtime
+  kerberos.nonce:
+    Name: kerberos.nonce
+    Type: FtUint32
+    Display: BaseDec
+    Info: nonce
+    JsonName: kerberos_kerberos_nonce
+  kerberos.ENCTYPE:
+    Name: kerberos.ENCTYPE
+    Type: FtInt32
+    Display: BaseDec
+    Info: ENCTYPE
+    JsonName: kerberos_kerberos_ENCTYPE
+  kerberos.addresses:
+    Name: kerberos.addresses
+    Type: FtUint32
+    Display: BaseDec
+    Info: addresses
+    JsonName: kerberos_kerberos_addresses
+  kerberos.enc_authorization_data_element:
+    Name: kerberos.enc_authorization_data_element
+    Info: enc-authorization-data
+    JsonName: kerberos_kerberos_enc_authorization_data_element
+  kerberos.additional_tickets:
+    Name: kerberos.additional_tickets
+    Type: FtUint32
+    Display: BaseDec
+    Info: additional-tickets
+    JsonName: kerberos_kerberos_additional_tickets
+  kerberos.Ticket_element:
+    Name: kerberos.Ticket_element
+    Info: Ticket
+    JsonName: kerberos_kerberos_Ticket_element
+  kerberos.last_req:
+    Name: kerberos.last_req
+    Type: FtUint32
+    Display: BaseDec
+    Info: last-req
+    JsonName: kerberos_kerberos_last_req
+  kerberos.key_expiration:
+    Name: kerberos.key_expiration
+    Type: FtString
+    Info: key-expiration
+    JsonName: kerberos_kerberos_key_expiration
+  kerberos.srealm:
+    Name: kerberos.srealm
+    Type: FtString
+    Info: srealm
+    JsonName: kerberos_kerberos_srealm
+  kerberos.encrypted_pa_data:
+    Name: kerberos.encrypted_pa_data
+    Type: FtUint32
+    Display: BaseDec
+    Info: encrypted-pa-data
+    JsonName: kerberos_kerberos_encrypted_pa_data
+  kerberos.LastReq_item_element:
+    Name: kerberos.LastReq_item_element
+    Info: LastReq item
+    JsonName: kerberos_kerberos_LastReq_item_element
+  kerberos.lr_type:
+    Name: kerberos.lr_type
+    Type: FtInt32
+    Display: BaseDec
+    Info: lr-type
+    JsonName: kerberos_kerberos_lr_type
+  kerberos.lr_value:
+    Name: kerberos.lr_value
+    Type: FtString
+    Info: lr-value
+    JsonName: kerberos_kerberos_lr_value
+  kerberos.ap_options:
+    Name: kerberos.ap_options
+    Type: FtBytes
+    Info: ap-options
+    JsonName: kerberos_kerberos_ap_options
+  kerberos.authenticator_vno:
+    Name: kerberos.authenticator_vno
+    Type: FtUint32
+    Display: BaseDec
+    Info: authenticator-vno
+    JsonName: kerberos_kerberos_authenticator_vno
+  kerberos.cksum_element:
+    Name: kerberos.cksum_element
+    Info: cksum
+    JsonName: kerberos_kerberos_cksum_element
+  kerberos.cusec:
+    Name: kerberos.cusec
+    Type: FtUint32
+    Display: BaseDec
+    Info: cusec
+    JsonName: kerberos_kerberos_cusec
+  kerberos.ctime:
+    Name: kerberos.ctime
+    Type: FtString
+    Info: ctime
+    JsonName: kerberos_kerberos_ctime
+  kerberos.subkey_element:
+    Name: kerberos.subkey_element
+    Info: subkey
+    JsonName: kerberos_kerberos_subkey_element
+  kerberos.seq_number:
+    Name: kerberos.seq_number
+    Type: FtUint32
+    Display: BaseDec
+    Info: seq-number
+    JsonName: kerberos_kerberos_seq_number
+  kerberos.safe_body_element:
+    Name: kerberos.safe_body_element
+    Info: safe-body
+    JsonName: kerberos_kerberos_safe_body_element
+  kerberos.user_data:
+    Name: kerberos.user_data
+    Type: FtBytes
+    Info: user-data
+    JsonName: kerberos_kerberos_user_data
+  kerberos.timestamp:
+    Name: kerberos.timestamp
+    Type: FtString
+    Info: timestamp
+    JsonName: kerberos_kerberos_timestamp
+  kerberos.usec:
+    Name: kerberos.usec
+    Type: FtUint32
+    Display: BaseDec
+    Info: usec
+    JsonName: kerberos_kerberos_usec
+  kerberos.s_address_element:
+    Name: kerberos.s_address_element
+    Info: s-address
+    JsonName: kerberos_kerberos_s_address_element
+  kerberos.r_address_element:
+    Name: kerberos.r_address_element
+    Info: r-address
+    JsonName: kerberos_kerberos_r_address_element
+  kerberos.tickets:
+    Name: kerberos.tickets
+    Type: FtUint32
+    Display: BaseDec
+    Info: tickets
+    JsonName: kerberos_kerberos_tickets
+  kerberos.ticket_info:
+    Name: kerberos.ticket_info
+    Type: FtUint32
+    Display: BaseDec
+    Info: ticket-info
+    JsonName: kerberos_kerberos_ticket_info
+  kerberos.KrbCredInfo_element:
+    Name: kerberos.KrbCredInfo_element
+    Info: KrbCredInfo
+    JsonName: kerberos_kerberos_KrbCredInfo_element
+  kerberos.prealm:
+    Name: kerberos.prealm
+    Type: FtString
+    Info: prealm
+    JsonName: kerberos_kerberos_prealm
+  kerberos.pname_element:
+    Name: kerberos.pname_element
+    Info: pname
+    JsonName: kerberos_kerberos_pname_element
+  kerberos.stime:
+    Name: kerberos.stime
+    Type: FtString
+    Info: stime
+    JsonName: kerberos_kerberos_stime
+  kerberos.susec:
+    Name: kerberos.susec
+    Type: FtUint32
+    Display: BaseDec
+    Info: susec
+    JsonName: kerberos_kerberos_susec
+  kerberos.error_code:
+    Name: kerberos.error_code
+    Type: FtInt32
+    Display: BaseDec
+    Info: error-code
+    JsonName: kerberos_kerberos_error_code
+  kerberos.e_text:
+    Name: kerberos.e_text
+    Type: FtString
+    Info: e-text
+    JsonName: kerberos_kerberos_e_text
+  kerberos.e_data:
+    Name: kerberos.e_data
+    Type: FtBytes
+    Info: e-data
+    JsonName: kerberos_kerberos_e_data
+  kerberos.e_checksum_element:
+    Name: kerberos.e_checksum_element
+    Info: e-checksum
+    JsonName: kerberos_kerberos_e_checksum_element
+  kerberos.salt:
+    Name: kerberos.salt
+    Type: FtBytes
+    Info: salt
+    JsonName: kerberos_kerberos_salt
+  kerberos.ETYPE_INFO_ENTRY_element:
+    Name: kerberos.ETYPE_INFO_ENTRY_element
+    Info: ETYPE-INFO-ENTRY
+    JsonName: kerberos_kerberos_ETYPE_INFO_ENTRY_element
+  kerberos.s2kparams:
+    Name: kerberos.s2kparams
+    Type: FtBytes
+    Info: s2kparams
+    JsonName: kerberos_kerberos_s2kparams
+  kerberos.ETYPE_INFO2_ENTRY_element:
+    Name: kerberos.ETYPE_INFO2_ENTRY_element
+    Info: ETYPE-INFO2-ENTRY
+    JsonName: kerberos_kerberos_ETYPE_INFO2_ENTRY_element
+  kerberos.name_element:
+    Name: kerberos.name_element
+    Info: name
+    JsonName: kerberos_kerberos_name_element
+  kerberos.auth:
+    Name: kerberos.auth
+    Type: FtString
+    Info: auth
+    JsonName: kerberos_kerberos_auth
+  kerberos.include_pac:
+    Name: kerberos.include_pac
+    Type: FtBoolean
+    Info: include-pac
+    JsonName: kerberos_kerberos_include_pac
+  kerberos.newpasswd:
+    Name: kerberos.newpasswd
+    Type: FtBytes
+    Info: newpasswd
+    JsonName: kerberos_kerberos_newpasswd
+  kerberos.targname_element:
+    Name: kerberos.targname_element
+    Info: targname
+    JsonName: kerberos_kerberos_targname_element
+  kerberos.targrealm:
+    Name: kerberos.targrealm
+    Type: FtString
+    Info: targrealm
+    JsonName: kerberos_kerberos_targrealm
+  kerberos.reserved:
+    Name: kerberos.reserved
+    Type: FtBoolean
+    Display: SepDot
+    Info: reserved
+    JsonName: kerberos_kerberos_reserved
+  kerberos.use-session-key:
+    Name: kerberos.use-session-key
+    Type: FtBoolean
+    Display: SepDot
+    Info: use-session-key
+    JsonName: kerberos_kerberos_use-session-key
+  kerberos.mutual-required:
+    Name: kerberos.mutual-required
+    Type: FtBoolean
+    Display: SepDot
+    Info: mutual-required
+    JsonName: kerberos_kerberos_mutual-required
+  kerberos.forwardable:
+    Name: kerberos.forwardable
+    Type: FtBoolean
+    Display: SepDot
+    Info: forwardable
+    JsonName: kerberos_kerberos_forwardable
+  kerberos.forwarded:
+    Name: kerberos.forwarded
+    Type: FtBoolean
+    Display: SepDot
+    Info: forwarded
+    JsonName: kerberos_kerberos_forwarded
+  kerberos.proxiable:
+    Name: kerberos.proxiable
+    Type: FtBoolean
+    Display: SepDot
+    Info: proxiable
+    JsonName: kerberos_kerberos_proxiable
+  kerberos.proxy:
+    Name: kerberos.proxy
+    Type: FtBoolean
+    Display: SepDot
+    Info: proxy
+    JsonName: kerberos_kerberos_proxy
+  kerberos.may-postdate:
+    Name: kerberos.may-postdate
+    Type: FtBoolean
+    Display: SepDot
+    Info: may-postdate
+    JsonName: kerberos_kerberos_may-postdate
+  kerberos.postdated:
+    Name: kerberos.postdated
+    Type: FtBoolean
+    Display: SepDot
+    Info: postdated
+    JsonName: kerberos_kerberos_postdated
+  kerberos.invalid:
+    Name: kerberos.invalid
+    Type: FtBoolean
+    Display: SepDot
+    Info: invalid
+    JsonName: kerberos_kerberos_invalid
+  kerberos.renewable:
+    Name: kerberos.renewable
+    Type: FtBoolean
+    Display: SepDot
+    Info: renewable
+    JsonName: kerberos_kerberos_renewable
+  kerberos.initial:
+    Name: kerberos.initial
+    Type: FtBoolean
+    Display: SepDot
+    Info: initial
+    JsonName: kerberos_kerberos_initial
+  kerberos.pre-authent:
+    Name: kerberos.pre-authent
+    Type: FtBoolean
+    Display: SepDot
+    Info: pre-authent
+    JsonName: kerberos_kerberos_pre-authent
+  kerberos.hw-authent:
+    Name: kerberos.hw-authent
+    Type: FtBoolean
+    Display: SepDot
+    Info: hw-authent
+    JsonName: kerberos_kerberos_hw-authent
+  kerberos.transited-policy-checked:
+    Name: kerberos.transited-policy-checked
+    Type: FtBoolean
+    Display: SepDot
+    Info: transited-policy-checked
+    JsonName: kerberos_kerberos_transited-policy-checked
+  kerberos.ok-as-delegate:
+    Name: kerberos.ok-as-delegate
+    Type: FtBoolean
+    Display: SepDot
+    Info: ok-as-delegate
+    JsonName: kerberos_kerberos_ok-as-delegate
+  kerberos.anonymous:
+    Name: kerberos.anonymous
+    Type: FtBoolean
+    Display: SepDot
+    Info: anonymous
+    JsonName: kerberos_kerberos_anonymous
+  kerberos.allow-postdate:
+    Name: kerberos.allow-postdate
+    Type: FtBoolean
+    Display: SepDot
+    Info: allow-postdate
+    JsonName: kerberos_kerberos_allow-postdate
+  kerberos.unused7:
+    Name: kerberos.unused7
+    Type: FtBoolean
+    Display: SepDot
+    Info: unused7
+    JsonName: kerberos_kerberos_unused7
+  kerberos.unused9:
+    Name: kerberos.unused9
+    Type: FtBoolean
+    Display: SepDot
+    Info: unused9
+    JsonName: kerberos_kerberos_unused9
+  kerberos.unused10:
+    Name: kerberos.unused10
+    Type: FtBoolean
+    Display: SepDot
+    Info: unused10
+    JsonName: kerberos_kerberos_unused10
+  kerberos.opt-hardware-auth:
+    Name: kerberos.opt-hardware-auth
+    Type: FtBoolean
+    Display: SepDot
+    Info: opt-hardware-auth
+    JsonName: kerberos_kerberos_opt-hardware-auth
+  kerberos.request-anonymous:
+    Name: kerberos.request-anonymous
+    Type: FtBoolean
+    Display: SepDot
+    Info: request-anonymous
+    JsonName: kerberos_kerberos_request-anonymous
+  kerberos.canonicalize:
+    Name: kerberos.canonicalize
+    Type: FtBoolean
+    Display: SepDot
+    Info: canonicalize
+    JsonName: kerberos_kerberos_canonicalize
+  kerberos.constrained-delegation:
+    Name: kerberos.constrained-delegation
+    Type: FtBoolean
+    Display: SepDot
+    Info: constrained-delegation
+    JsonName: kerberos_kerberos_constrained-delegation
+  kerberos.disable-transited-check:
+    Name: kerberos.disable-transited-check
+    Type: FtBoolean
+    Display: SepDot
+    Info: disable-transited-check
+    JsonName: kerberos_kerberos_disable-transited-check
+  kerberos.renewable-ok:
+    Name: kerberos.renewable-ok
+    Type: FtBoolean
+    Display: SepDot
+    Info: renewable-ok
+    JsonName: kerberos_kerberos_renewable-ok
+  kerberos.enc-tkt-in-skey:
+    Name: kerberos.enc-tkt-in-skey
+    Type: FtBoolean
+    Display: SepDot
+    Info: enc-tkt-in-skey
+    JsonName: kerberos_kerberos_enc-tkt-in-skey
+  kerberos.renew:
+    Name: kerberos.renew
+    Type: FtBoolean
+    Display: SepDot
+    Info: renew
+    JsonName: kerberos_kerberos_renew
+  kerberos.validate:
+    Name: kerberos.validate
+    Type: FtBoolean
+    Display: SepDot
+    Info: validate
+    JsonName: kerberos_kerberos_validate

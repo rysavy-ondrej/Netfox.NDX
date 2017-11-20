@@ -1,0 +1,859 @@
+syntax = "proto3";
+package Ndx.Decoders.Core;
+message Dns {
+   // Length ('dns_dns_length')
+   uint32 DnsLength = 1;
+
+   // Flags ('dns_dns_flags')
+   uint32 DnsFlags = 2;
+
+   // Response ('dns_flags_dns_flags_response')
+   bool DnsFlagsResponse = 3;
+
+   // Opcode ('dns_flags_dns_flags_opcode')
+   uint32 DnsFlagsOpcode = 4;
+
+   // Authoritative ('dns_flags_dns_flags_authoritative')
+   bool DnsFlagsAuthoritative = 5;
+
+   // Conflict ('dns_flags_dns_flags_conflict')
+   bool DnsFlagsConflict = 6;
+
+   // Truncated ('dns_flags_dns_flags_truncated')
+   bool DnsFlagsTruncated = 7;
+
+   // Recursion desired ('dns_flags_dns_flags_recdesired')
+   bool DnsFlagsRecdesired = 8;
+
+   // Tentative ('dns_flags_dns_flags_tentative')
+   bool DnsFlagsTentative = 9;
+
+   // Recursion available ('dns_flags_dns_flags_recavail')
+   bool DnsFlagsRecavail = 10;
+
+   // Z ('dns_flags_dns_flags_z')
+   bool DnsFlagsZ = 11;
+
+   // Answer authenticated ('dns_flags_dns_flags_authenticated')
+   bool DnsFlagsAuthenticated = 12;
+
+   // Non-authenticated data ('dns_flags_dns_flags_checkdisable')
+   bool DnsFlagsCheckdisable = 13;
+
+   // Reply code ('dns_flags_dns_flags_rcode')
+   uint32 DnsFlagsRcode = 14;
+
+   // Transaction ID ('dns_dns_id')
+   uint32 DnsId = 15;
+
+   // Type ('dns_dns_qry_type')
+   uint32 DnsQryType = 16;
+
+   // Class ('dns_dns_qry_class')
+   uint32 DnsQryClass = 17;
+
+   // Name ('dns_dns_qry_name')
+   string DnsQryName = 18;
+
+   // Name Length ('dns_qry_name_dns_qry_name_len')
+   uint32 DnsQryNameLen = 19;
+
+   // Label Count ('dns_dns_count_labels')
+   uint32 DnsCountLabels = 20;
+
+   // Type ('dns_dns_resp_type')
+   uint32 DnsRespType = 21;
+
+   // Class ('dns_dns_resp_class')
+   uint32 DnsRespClass = 22;
+
+   // Cache flush ('dns_dns_resp_cache_flush')
+   bool DnsRespCacheFlush = 23;
+
+   // Higher bits in extended RCODE ('dns_dns_resp_ext_rcode')
+   uint32 DnsRespExtRcode = 24;
+
+   // EDNS0 version ('dns_dns_resp_edns0_version')
+   uint32 DnsRespEdns0Version = 25;
+
+   // Z ('dns_dns_resp_z')
+   uint32 DnsRespZ = 26;
+
+   // DO bit ('dns_resp_z_dns_resp_z_do')
+   bool DnsRespZDo = 27;
+
+   // Reserved ('dns_resp_z_dns_resp_z_reserved')
+   uint32 DnsRespZReserved = 28;
+
+   // Service ('dns_dns_srv_service')
+   string DnsSrvService = 29;
+
+   // Protocol ('dns_dns_srv_proto')
+   string DnsSrvProto = 30;
+
+   // Name ('dns_dns_srv_name')
+   string DnsSrvName = 31;
+
+   // Priority ('dns_dns_srv_priority')
+   uint32 DnsSrvPriority = 32;
+
+   // Weight ('dns_dns_srv_weight')
+   uint32 DnsSrvWeight = 33;
+
+   // Port ('dns_dns_srv_port')
+   uint32 DnsSrvPort = 34;
+
+   // Target ('dns_dns_srv_target')
+   string DnsSrvTarget = 35;
+
+   // Order ('dns_dns_naptr_order')
+   uint32 DnsNaptrOrder = 36;
+
+   // Preference ('dns_dns_naptr_preference')
+   uint32 DnsNaptrPreference = 37;
+
+   // Flags Length ('dns_dns_naptr_flags_length')
+   uint32 DnsNaptrFlagsLength = 38;
+
+   // Flags ('dns_dns_naptr_flags')
+   string DnsNaptrFlags = 39;
+
+   // Service Length ('dns_dns_naptr_service_length')
+   uint32 DnsNaptrServiceLength = 40;
+
+   // Service ('dns_dns_naptr_service')
+   string DnsNaptrService = 41;
+
+   // Regex Length ('dns_dns_naptr_regex_length')
+   uint32 DnsNaptrRegexLength = 42;
+
+   // Regex ('dns_dns_naptr_regex')
+   string DnsNaptrRegex = 43;
+
+   // Replacement Length ('dns_dns_naptr_replacement_length')
+   uint32 DnsNaptrReplacementLength = 44;
+
+   // Replacement ('dns_dns_naptr_replacement')
+   string DnsNaptrReplacement = 45;
+
+   // Name ('dns_dns_resp_name')
+   string DnsRespName = 46;
+
+   // Time to live ('dns_dns_resp_ttl')
+   int32 DnsRespTtl = 47;
+
+   // Data length ('dns_dns_resp_len')
+   uint32 DnsRespLen = 48;
+
+   // Address ('dns_dns_a')
+   bytes DnsA = 49;
+
+   // Mail Destination ('dns_dns_md')
+   string DnsMd = 50;
+
+   // Mail Forwarder ('dns_dns_mf')
+   string DnsMf = 51;
+
+   // MailBox Domaine ('dns_dns_mb')
+   string DnsMb = 52;
+
+   // Mail Group member ('dns_dns_mg')
+   string DnsMg = 53;
+
+   // Mail Rename domaine ('dns_dns_mr')
+   string DnsMr = 54;
+
+   // Null (data) ('dns_dns_null')
+   bytes DnsNull = 55;
+
+   // AAAA Address ('dns_dns_aaaa')
+   bytes DnsAaaa = 56;
+
+   // CNAME ('dns_dns_cname')
+   string DnsCname = 57;
+
+   // UDP payload size ('dns_dns_rr_udp_payload_size')
+   uint32 DnsRrUdpPayloadSize = 58;
+
+   // Primary name server ('dns_dns_soa_mname')
+   string DnsSoaMname = 59;
+
+   // Responsible authority's mailbox ('dns_dns_soa_rname')
+   string DnsSoaRname = 60;
+
+   // Serial Number ('dns_dns_soa_serial_number')
+   uint32 DnsSoaSerialNumber = 61;
+
+   // Refresh Interval ('dns_dns_soa_refresh_interval')
+   uint32 DnsSoaRefreshInterval = 62;
+
+   // Retry Interval ('dns_dns_soa_retry_interval')
+   uint32 DnsSoaRetryInterval = 63;
+
+   // Expire limit ('dns_dns_soa_expire_limit')
+   uint32 DnsSoaExpireLimit = 64;
+
+   // Minimum TTL ('dns_dns_soa_mininum_ttl')
+   uint32 DnsSoaMininumTtl = 65;
+
+   // Domain Name ('dns_dns_ptr_domain_name')
+   string DnsPtrDomainName = 66;
+
+   // Address ('dns_dns_wks_address')
+   bytes DnsWksAddress = 67;
+
+   // Protocol ('dns_dns_wks_protocol')
+   uint32 DnsWksProtocol = 68;
+
+   // Bits ('dns_dns_wks_bits')
+   uint32 DnsWksBits = 69;
+
+   // CPU Length ('dns_dns_hinfo_cpu_length')
+   uint32 DnsHinfoCpuLength = 70;
+
+   // CPU ('dns_dns_hinfo_cpu')
+   string DnsHinfoCpu = 71;
+
+   // OS Length ('dns_dns_hinfo_os_length')
+   uint32 DnsHinfoOsLength = 72;
+
+   // OS ('dns_dns_hinfo_os')
+   string DnsHinfoOs = 73;
+
+   // Responsible Mailbox ('dns_dns_minfo_r')
+   string DnsMinfoR = 74;
+
+   // Error Mailbox ('dns_dns_minfo_e')
+   string DnsMinfoE = 75;
+
+   // Preference ('dns_dns_mx_preference')
+   uint32 DnsMxPreference = 76;
+
+   // Mail Exchange ('dns_dns_mx_mail_exchange')
+   string DnsMxMailExchange = 77;
+
+   // TXT Length ('dns_txt_dns_txt_length')
+   uint32 DnsTxtLength = 78;
+
+   // TXT ('dns_dns_txt')
+   string DnsTxt = 79;
+
+   // OpenPGP Key ('dns_dns_openpgpkey')
+   string DnsOpenpgpkey = 80;
+
+   // SOA ('dns_dns_csync_soa')
+   uint32 DnsCsyncSoa = 81;
+
+   // Flags ('dns_dns_csync_flags')
+   uint32 DnsCsyncFlags = 82;
+
+   // immediate ('dns_csync_flags_dns_csync_flags_immediate')
+   bool DnsCsyncFlagsImmediate = 83;
+
+   // soaminimum ('dns_csync_flags_dns_csync_flags_soaminimum')
+   bool DnsCsyncFlagsSoaminimum = 84;
+
+   // Type Bitmap ('dns_dns_csync_type_bitmap')
+   bytes DnsCsyncTypeBitmap = 85;
+
+   // SPF Length ('dns_spf_dns_spf_length')
+   uint32 DnsSpfLength = 86;
+
+   // SPF ('dns_dns_spf')
+   string DnsSpf = 87;
+
+   // Preference ('dns_ilnp_nid_dns_ilnp_nid_preference')
+   uint32 DnsIlnpNidPreference = 88;
+
+   // NodeID ('dns_dns_ilnp_nid')
+   bytes DnsIlnpNid = 89;
+
+   // Preference ('dns_ilnp_l32_dns_ilnp_l32_preference')
+   uint32 DnsIlnpL32Preference = 90;
+
+   // Locator32 ('dns_dns_ilnp_l32')
+   bytes DnsIlnpL32 = 91;
+
+   // Preference ('dns_ilnp_l64_dns_ilnp_l64_preference')
+   uint32 DnsIlnpL64Preference = 92;
+
+   // Locator64 ('dns_dns_ilnp_l64')
+   bytes DnsIlnpL64 = 93;
+
+   // Preference ('dns_ilnp_lp_dns_ilnp_lp_preference')
+   uint32 DnsIlnpLpPreference = 94;
+
+   // Locator FQDN ('dns_dns_ilnp_lp')
+   string DnsIlnpLp = 95;
+
+   // EUI48 Address ('dns_dns_eui48')
+   bytes DnsEui48 = 96;
+
+   // EUI64 Address ('dns_dns_eui64')
+   bytes DnsEui64 = 97;
+
+   // Type Covered ('dns_dns_rrsig_type_covered')
+   uint32 DnsRrsigTypeCovered = 98;
+
+   // Algorithm ('dns_dns_rrsig_algorithm')
+   uint32 DnsRrsigAlgorithm = 99;
+
+   // Labels ('dns_dns_rrsig_labels')
+   uint32 DnsRrsigLabels = 100;
+
+   // Original TTL ('dns_dns_rrsig_original_ttl')
+   uint32 DnsRrsigOriginalTtl = 101;
+
+   // Signature Expiration ('dns_dns_rrsig_signature_expiration')
+   int64 DnsRrsigSignatureExpiration = 102;
+
+   // Signature Inception ('dns_dns_rrsig_signature_inception')
+   int64 DnsRrsigSignatureInception = 103;
+
+   // Key Tag ('dns_dns_rrsig_key_tag')
+   uint32 DnsRrsigKeyTag = 104;
+
+   // Signer's name ('dns_dns_rrsig_signers_name')
+   string DnsRrsigSignersName = 105;
+
+   // Signature ('dns_dns_rrsig_signature')
+   bytes DnsRrsigSignature = 106;
+
+   // Flags ('dns_dns_dnskey_flags')
+   uint32 DnsDnskeyFlags = 107;
+
+   // Zone Key ('dns_dnskey_flags_dns_dnskey_flags_zone_key')
+   bool DnsDnskeyFlagsZoneKey = 108;
+
+   // Key Revoked ('dns_dnskey_flags_dns_dnskey_flags_key_revoked')
+   bool DnsDnskeyFlagsKeyRevoked = 109;
+
+   // Key Signing Key ('dns_dnskey_flags_dns_dnskey_flags_secure_entry_point')
+   bool DnsDnskeyFlagsSecureEntryPoint = 110;
+
+   // Key Signing Key ('dns_dnskey_flags_dns_dnskey_flags_reserved')
+   uint32 DnsDnskeyFlagsReserved = 111;
+
+   // Protocol ('dns_dns_dnskey_protocol')
+   uint32 DnsDnskeyProtocol = 112;
+
+   // Algorithm ('dns_dns_dnskey_algorithm')
+   uint32 DnsDnskeyAlgorithm = 113;
+
+   // Key id ('dns_dns_dnskey_key_id')
+   uint32 DnsDnskeyKeyId = 114;
+
+   // Public Key ('dns_dns_dnskey_public_key')
+   bytes DnsDnskeyPublicKey = 115;
+
+   // Flags ('dns_dns_key_flags')
+   uint32 DnsKeyFlags = 116;
+
+   // Key allowed for authentication ('dns_key_flags_dns_key_flags_authentication')
+   bool DnsKeyFlagsAuthentication = 117;
+
+   // Key allowed for confidentiality ('dns_key_flags_dns_key_flags_confidentiality')
+   bool DnsKeyFlagsConfidentiality = 118;
+
+   // Key required ('dns_key_flags_dns_key_flags_required')
+   bool DnsKeyFlagsRequired = 119;
+
+   // Key is associated with a user ('dns_key_flags_dns_key_flags_associated_user')
+   bool DnsKeyFlagsAssociatedUser = 120;
+
+   // Key is associated with the named entity ('dns_key_flags_dns_key_flags_associated_named_entity')
+   bool DnsKeyFlagsAssociatedNamedEntity = 121;
+
+   // Key use with IPSEC ('dns_key_flags_dns_key_flags_ipsec')
+   bool DnsKeyFlagsIpsec = 122;
+
+   // Key use with MIME security multiparts ('dns_key_flags_dns_key_flags_mime')
+   bool DnsKeyFlagsMime = 123;
+
+   // Signatory ('dns_key_flags_dns_key_flags_signatory')
+   uint32 DnsKeyFlagsSignatory = 124;
+
+   // Protocol ('dns_dns_key_protocol')
+   uint32 DnsKeyProtocol = 125;
+
+   // Algorithm ('dns_dns_key_algorithm')
+   uint32 DnsKeyAlgorithm = 126;
+
+   // Key ID ('dns_dns_key_key_id')
+   uint32 DnsKeyKeyId = 127;
+
+   // Public Key ('dns_dns_key_public_key')
+   bytes DnsKeyPublicKey = 128;
+
+   // Preference ('dns_dns_px_preference')
+   uint32 DnsPxPreference = 129;
+
+   // MAP822 ('dns_dns_px_map822')
+   string DnsPxMap822 = 130;
+
+   // MAPX400 ('dns_dns_px_map400')
+   string DnsPxMap400 = 131;
+
+   // Algorithm name ('dns_dns_tkey_algo_name')
+   string DnsTkeyAlgoName = 132;
+
+   // Signature Expiration ('dns_dns_tkey_signature_expiration')
+   int64 DnsTkeySignatureExpiration = 133;
+
+   // Signature Inception ('dns_dns_tkey_signature_inception')
+   int64 DnsTkeySignatureInception = 134;
+
+   // Mode ('dns_dns_tkey_mode')
+   uint32 DnsTkeyMode = 135;
+
+   // Error ('dns_dns_tkey_error')
+   uint32 DnsTkeyError = 136;
+
+   // Key Size ('dns_dns_tkey_key_size')
+   uint32 DnsTkeyKeySize = 137;
+
+   // Key Data ('dns_dns_tkey_key_data')
+   bytes DnsTkeyKeyData = 138;
+
+   // Other Size ('dns_dns_tkey_other_size')
+   uint32 DnsTkeyOtherSize = 139;
+
+   // Other Data ('dns_dns_tkey_other_data')
+   bytes DnsTkeyOtherData = 140;
+
+   // Gateway Precedence ('dns_dns_ipseckey_gateway_precedence')
+   uint32 DnsIpseckeyGatewayPrecedence = 141;
+
+   // Gateway Algorithm ('dns_dns_ipseckey_gateway_algorithm')
+   uint32 DnsIpseckeyGatewayAlgorithm = 142;
+
+   // Gateway Type ('dns_dns_ipseckey_gateway_type')
+   uint32 DnsIpseckeyGatewayType = 143;
+
+   // IPv4 Gateway ('dns_dns_ipseckey_gateway_ipv4')
+   bytes DnsIpseckeyGatewayIpv4 = 144;
+
+   // IPv6 Gateway ('dns_dns_ipseckey_gateway_ipv6')
+   bytes DnsIpseckeyGatewayIpv6 = 145;
+
+   // DNS Gateway ('dns_dns_ipseckey_gateway_dns')
+   string DnsIpseckeyGatewayDns = 146;
+
+   // Public Key ('dns_dns_ipseckey_public_key')
+   bytes DnsIpseckeyPublicKey = 147;
+
+   // IP Version ('dns_dns_xpf_ip_version')
+   uint32 DnsXpfIpVersion = 148;
+
+   // Protocol ('dns_dns_xpf_protocol')
+   uint32 DnsXpfProtocol = 149;
+
+   // IPv4 Source ('dns_dns_xpf_source_ipv4')
+   bytes DnsXpfSourceIpv4 = 150;
+
+   // IPv4 Destination ('dns_dns_xpf_destination_ipv4')
+   bytes DnsXpfDestinationIpv4 = 151;
+
+   // IPv6 Source ('dns_dns_xpf_source_ipv6')
+   bytes DnsXpfSourceIpv6 = 152;
+
+   // IPv6 Destination ('dns_dns_xpf_destination_ipv6')
+   bytes DnsXpfDestinationIpv6 = 153;
+
+   // Source port ('dns_dns_xpf_sport')
+   uint32 DnsXpfSport = 154;
+
+   // Destination port ('dns_dns_xpf_dport')
+   uint32 DnsXpfDport = 155;
+
+   // Prefix len ('dns_dns_a6_prefix_len')
+   uint32 DnsA6PrefixLen = 156;
+
+   // Address Suffix ('dns_dns_a6_address_suffix')
+   bytes DnsA6AddressSuffix = 157;
+
+   // Prefix name ('dns_dns_a6_prefix_name')
+   string DnsA6PrefixName = 158;
+
+   // Dname ('dns_dns_dname')
+   string DnsDname = 159;
+
+   // Version ('dns_dns_loc_version')
+   uint32 DnsLocVersion = 160;
+
+   // Size ('dns_dns_loc_size')
+   uint32 DnsLocSize = 161;
+
+   // Horizontal Precision ('dns_dns_loc_horizontal_precision')
+   uint32 DnsLocHorizontalPrecision = 162;
+
+   // Vertical Precision ('dns_dns_loc_vertical_precision')
+   uint32 DnsLocVerticalPrecision = 163;
+
+   // Latitude ('dns_dns_loc_latitude')
+   uint32 DnsLocLatitude = 164;
+
+   // Longitude ('dns_dns_loc_longitude')
+   uint32 DnsLocLongitude = 165;
+
+   // Altitude ('dns_dns_loc_altitude')
+   uint32 DnsLocAltitude = 166;
+
+   // Unknown data ('dns_dns_loc_unknown_data')
+   bytes DnsLocUnknownData = 167;
+
+   // Next Domain Name ('dns_dns_nxt_next_domain_name')
+   string DnsNxtNextDomainName = 168;
+
+   // Preference ('dns_dns_kx_preference')
+   uint32 DnsKxPreference = 169;
+
+   // Key Exchange ('dns_dns_kx_key_exchange')
+   string DnsKxKeyExchange = 170;
+
+   // Type ('dns_dns_cert_type')
+   uint32 DnsCertType = 171;
+
+   // Key Tag ('dns_dns_cert_key_tag')
+   uint32 DnsCertKeyTag = 172;
+
+   // Algorithm ('dns_dns_cert_algorithm')
+   uint32 DnsCertAlgorithm = 173;
+
+   // Certificate (or CRL) ('dns_dns_cert_certificate')
+   bytes DnsCertCertificate = 174;
+
+   // Next Domain Name ('dns_dns_nsec_next_domain_name')
+   string DnsNsecNextDomainName = 175;
+
+   // Name Server ('dns_dns_ns')
+   string DnsNs = 176;
+
+   // Option ('dns_dns_opt')
+   int32 DnsOpt = 177;
+
+   // Option Code ('dns_opt_dns_opt_code')
+   uint32 DnsOptCode = 178;
+
+   // Option Length ('dns_opt_dns_opt_len')
+   uint32 DnsOptLen = 179;
+
+   // Option Data ('dns_opt_dns_opt_data')
+   bytes DnsOptData = 180;
+
+   // DAU ('dns_opt_dns_opt_dau')
+   uint32 DnsOptDau = 181;
+
+   // DHU ('dns_opt_dns_opt_dhu')
+   uint32 DnsOptDhu = 182;
+
+   // N3U ('dns_opt_dns_opt_n3u')
+   uint32 DnsOptN3u = 183;
+
+   // Family ('dns_dns_opt_client_family')
+   uint32 DnsOptClientFamily = 184;
+
+   // Source Netmask ('dns_dns_opt_client_netmask')
+   uint32 DnsOptClientNetmask = 185;
+
+   // Scope Netmask ('dns_dns_opt_client_scope')
+   uint32 DnsOptClientScope = 186;
+
+   // Client Subnet ('dns_dns_opt_client_addr')
+   bytes DnsOptClientAddr = 187;
+
+   // Client Subnet ('dns_dns_opt_client_addr4')
+   bytes DnsOptClientAddr4 = 188;
+
+   // Client Subnet ('dns_dns_opt_client_addr6')
+   bytes DnsOptClientAddr6 = 189;
+
+   // Client Cookie ('dns_dns_opt_cookie_client')
+   bytes DnsOptCookieClient = 190;
+
+   // Server Cookie ('dns_dns_opt_cookie_server')
+   bytes DnsOptCookieServer = 191;
+
+   // Timeout ('dns_dns_opt_edns_tcp_keepalive_timeout')
+   uint32 DnsOptEdnsTcpKeepaliveTimeout = 192;
+
+   // Padding ('dns_opt_dns_opt_padding')
+   bytes DnsOptPadding = 193;
+
+   // Closest Trust Point ('dns_dns_opt_chain_fqdn')
+   string DnsOptChainFqdn = 194;
+
+   // Questions ('dns_dns_count_queries')
+   uint32 DnsCountQueries = 195;
+
+   // Zones ('dns_dns_count_zones')
+   uint32 DnsCountZones = 196;
+
+   // Answer RRs ('dns_dns_count_answers')
+   uint32 DnsCountAnswers = 197;
+
+   // Prerequisites ('dns_dns_count_prerequisites')
+   uint32 DnsCountPrerequisites = 198;
+
+   // Authority RRs ('dns_dns_count_auth_rr')
+   uint32 DnsCountAuthRr = 199;
+
+   // Updates ('dns_dns_count_updates')
+   uint32 DnsCountUpdates = 200;
+
+   // Hash algorithm ('dns_dns_nsec3_algo')
+   uint32 DnsNsec3Algo = 201;
+
+   // NSEC3 flags ('dns_dns_nsec3_flags')
+   uint32 DnsNsec3Flags = 202;
+
+   // NSEC3 Opt-out flag ('dns_nsec3_flags_dns_nsec3_flags_opt_out')
+   bool DnsNsec3FlagsOptOut = 203;
+
+   // NSEC3 iterations ('dns_dns_nsec3_iterations')
+   uint32 DnsNsec3Iterations = 204;
+
+   // Salt length ('dns_dns_nsec3_salt_length')
+   uint32 DnsNsec3SaltLength = 205;
+
+   // Salt value ('dns_dns_nsec3_salt_value')
+   bytes DnsNsec3SaltValue = 206;
+
+   // Hash length ('dns_dns_nsec3_hash_length')
+   uint32 DnsNsec3HashLength = 207;
+
+   // Next hashed owner ('dns_dns_nsec3_hash_value')
+   bytes DnsNsec3HashValue = 208;
+
+   // Certificate Usage ('dns_dns_tlsa_certificate_usage')
+   uint32 DnsTlsaCertificateUsage = 209;
+
+   // Selector ('dns_dns_tlsa_selector')
+   uint32 DnsTlsaSelector = 210;
+
+   // Matching Type ('dns_dns_tlsa_matching_type')
+   uint32 DnsTlsaMatchingType = 211;
+
+   // Certificate Association Data ('dns_dns_tlsa_certificate_association_data')
+   bytes DnsTlsaCertificateAssociationData = 212;
+
+   // Algorithm Name ('dns_dns_tsig_algorithm_name')
+   string DnsTsigAlgorithmName = 213;
+
+   // Time Signed ('dns_dns_tsig_time_signed')
+   int64 DnsTsigTimeSigned = 214;
+
+   // Original Id ('dns_dns_tsig_original_id')
+   uint32 DnsTsigOriginalId = 215;
+
+   // Error ('dns_dns_tsig_error')
+   uint32 DnsTsigError = 216;
+
+   // Fudge ('dns_dns_tsig_fudge')
+   uint32 DnsTsigFudge = 217;
+
+   // MAC Size ('dns_dns_tsig_mac_size')
+   uint32 DnsTsigMacSize = 218;
+
+   // Other Len ('dns_dns_tsig_other_len')
+   uint32 DnsTsigOtherLen = 219;
+
+   // MAC ('dns_dns_tsig_mac')
+   int32 DnsTsigMac = 220;
+
+   // Other Data ('dns_dns_tsig_other_data')
+   bytes DnsTsigOtherData = 221;
+
+   // Response In ('dns_dns_response_in')
+   int64 DnsResponseIn = 222;
+
+   // Request In ('dns_dns_response_to')
+   int64 DnsResponseTo = 223;
+
+   // Time ('dns_dns_time')
+   int64 DnsTime = 224;
+
+   // Additional RRs ('dns_dns_count_add_rr')
+   uint32 DnsCountAddRr = 225;
+
+   // Algorithm ('dns_dns_sshfp_algorithm')
+   uint32 DnsSshfpAlgorithm = 226;
+
+   // Fingerprint type ('dns_sshfp_fingerprint_dns_sshfp_fingerprint_type')
+   uint32 DnsSshfpFingerprintType = 227;
+
+   // Fingerprint ('dns_dns_sshfp_fingerprint')
+   bytes DnsSshfpFingerprint = 228;
+
+   // HIT length ('dns_hip_hit_dns_hip_hit_length')
+   uint32 DnsHipHitLength = 229;
+
+   // HIT length ('dns_dns_hip_hit_pk_algo')
+   uint32 DnsHipHitPkAlgo = 230;
+
+   // PK length ('dns_hip_pk_dns_hip_pk_length')
+   uint32 DnsHipPkLength = 231;
+
+   // Host Identity Tag ('dns_dns_hip_hit')
+   bytes DnsHipHit = 232;
+
+   // HIP Public Key ('dns_dns_hip_pk')
+   bytes DnsHipPk = 233;
+
+   // Rendezvous Server ('dns_dns_hip_rendezvous_server')
+   string DnsHipRendezvousServer = 234;
+
+   // DHCID Data ('dns_dns_dhcid_rdata')
+   bytes DnsDhcidRdata = 235;
+
+   // Key id ('dns_dns_ds_key_id')
+   uint32 DnsDsKeyId = 236;
+
+   // Algorithm ('dns_dns_ds_algorithm')
+   uint32 DnsDsAlgorithm = 237;
+
+   // Digest Type ('dns_dns_ds_digest_type')
+   uint32 DnsDsDigestType = 238;
+
+   // Digest ('dns_dns_ds_digest')
+   bytes DnsDsDigest = 239;
+
+   // Address Family ('dns_dns_apl_address_family')
+   uint32 DnsAplAddressFamily = 240;
+
+   // Prefix Length ('dns_dns_apl_coded_prefix')
+   uint32 DnsAplCodedPrefix = 241;
+
+   // Negation Flag ('dns_dns_apl_negation')
+   bool DnsAplNegation = 242;
+
+   // Address Length ('dns_dns_apl_afdlength')
+   uint32 DnsAplAfdlength = 243;
+
+   // Address ('dns_dns_apl_afdpart_ipv4')
+   bytes DnsAplAfdpartIpv4 = 244;
+
+   // Address ('dns_dns_apl_afdpart_ipv6')
+   bytes DnsAplAfdpartIpv6 = 245;
+
+   // Address ('dns_dns_apl_afdpart_data')
+   bytes DnsAplAfdpartData = 246;
+
+   // Longitude length ('dns_dns_gpos_longitude_length')
+   uint32 DnsGposLongitudeLength = 247;
+
+   // Longitude ('dns_dns_gpos_longitude')
+   string DnsGposLongitude = 248;
+
+   // Latitude length ('dns_dns_gpos_latitude_length')
+   uint32 DnsGposLatitudeLength = 249;
+
+   // Latitude ('dns_dns_gpos_latitude')
+   string DnsGposLatitude = 250;
+
+   // Altitude length ('dns_dns_gpos_altitude_length')
+   uint32 DnsGposAltitudeLength = 251;
+
+   // Altitude ('dns_dns_gpos_altitude')
+   string DnsGposAltitude = 252;
+
+   // Mailbox ('dns_dns_rp_mailbox')
+   string DnsRpMailbox = 253;
+
+   // TXT RR ('dns_dns_rp_txt_rr')
+   string DnsRpTxtRr = 254;
+
+   // Subtype ('dns_dns_afsdb_subtype')
+   uint32 DnsAfsdbSubtype = 255;
+
+   // Hostname ('dns_dns_afsdb_hostname')
+   string DnsAfsdbHostname = 256;
+
+   // Length ('dns_dns_x25_length')
+   uint32 DnsX25Length = 257;
+
+   // PSDN-Address ('dns_dns_x25_psdn_address')
+   string DnsX25PsdnAddress = 258;
+
+   // Length ('dns_dns_idsn_length')
+   uint32 DnsIdsnLength = 259;
+
+   // ISDN Address ('dns_dns_idsn_address')
+   string DnsIdsnAddress = 260;
+
+   // Length ('dns_dns_idsn_sa_length')
+   uint32 DnsIdsnSaLength = 261;
+
+   // Sub Address ('dns_dns_idsn_sa_address')
+   string DnsIdsnSaAddress = 262;
+
+   // Preference ('dns_dns_rt_subtype')
+   uint32 DnsRtSubtype = 263;
+
+   // Intermediate Hostname ('dns_dns_rt_intermediate_host')
+   string DnsRtIntermediateHost = 264;
+
+   // NSAP Data ('dns_dns_nsap_rdata')
+   bytes DnsNsapRdata = 265;
+
+   // Owner ('dns_dns_nsap_ptr_owner')
+   string DnsNsapPtrOwner = 266;
+
+   // CAA Flags ('dns_dns_caa_flags')
+   uint32 DnsCaaFlags = 267;
+
+   // Issuer Critical ('dns_caa_flags_dns_caa_flags_issuer_critical')
+   bool DnsCaaFlagsIssuerCritical = 268;
+
+   // Issue ('dns_dns_caa_issue')
+   string DnsCaaIssue = 269;
+
+   // Issue Wildcard ('dns_dns_caa_issuewild')
+   string DnsCaaIssuewild = 270;
+
+   // Report URL ('dns_dns_caa_iodef')
+   string DnsCaaIodef = 271;
+
+   // Unknown tag ('dns_dns_caa_unknown')
+   string DnsCaaUnknown = 272;
+
+   // Tag length ('dns_dns_caa_tag_length')
+   uint32 DnsCaaTagLength = 273;
+
+   // Tag ('dns_dns_caa_tag')
+   string DnsCaaTag = 274;
+
+   // Value ('dns_dns_caa_value')
+   string DnsCaaValue = 275;
+
+   // Local Flag ('dns_dns_wins_local_flag')
+   bool DnsWinsLocalFlag = 276;
+
+   // Lookup timeout ('dns_dns_wins_lookup_timeout')
+   uint32 DnsWinsLookupTimeout = 277;
+
+   // Cache timeout ('dns_dns_wins_cache_timeout')
+   uint32 DnsWinsCacheTimeout = 278;
+
+   // Number of WINS servers ('dns_dns_wins_nb_wins_servers')
+   uint32 DnsWinsNbWinsServers = 279;
+
+   // WINS Server Address ('dns_dns_wins_wins_server')
+   bytes DnsWinsWinsServer = 280;
+
+   // Local Flag ('dns_dns_winsr_local_flag')
+   bool DnsWinsrLocalFlag = 281;
+
+   // Lookup timeout ('dns_dns_winsr_lookup_timeout')
+   uint32 DnsWinsrLookupTimeout = 282;
+
+   // Cache timeout ('dns_dns_winsr_cache_timeout')
+   uint32 DnsWinsrCacheTimeout = 283;
+
+   // Name Result Domain ('dns_dns_winsr_name_result_domain')
+   string DnsWinsrNameResultDomain = 284;
+
+   // Data ('dns_dns_data')
+   bytes DnsData = 285;
+
+}

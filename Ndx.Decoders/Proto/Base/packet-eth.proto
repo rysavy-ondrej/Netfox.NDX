@@ -1,0 +1,22 @@
+syntax = "proto3";
+package Ndx.Decoders.Basic;
+message Eth {
+   // Destination ('eth_eth_dst')
+   bytes EthDst = 1;
+
+   // Destination (resolved) ('eth_dst_eth_dst_resolved')
+   string EthDstResolved = 2;
+
+   // Source ('eth_eth_src')
+   bytes EthSrc = 3;
+
+   // Source (resolved) ('eth_src_eth_src_resolved')
+   string EthSrcResolved = 4;
+
+   // Length ('eth_eth_len')
+   uint32 EthLen = 5;
+
+   // Type ('eth_eth_type')
+   uint32 EthType = 6;
+
+}

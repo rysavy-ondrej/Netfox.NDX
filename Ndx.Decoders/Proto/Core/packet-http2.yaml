@@ -1,0 +1,441 @@
+Name: http2
+Fields:
+  http2.stream:
+    Name: http2.stream
+    Info: Stream
+    JsonName: http2_http2_stream
+  http2.length:
+    Name: http2.length
+    Type: FtUint24
+    Display: BaseDec
+    Info: Length
+    JsonName: http2_http2_length
+  http2.type:
+    Name: http2.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Type
+    JsonName: http2_http2_type
+  http2.r:
+    Name: http2.r
+    Type: FtUint32
+    Display: BaseHex
+    Info: Reserved
+    JsonName: http2_http2_r
+  http2.headers.weight:
+    Name: http2.headers.weight
+    Type: FtUint8
+    Display: BaseDec
+    Info: Weight
+    JsonName: http2_headers_http2_headers_weight
+  http2.headers.weight_real:
+    Name: http2.headers.weight_real
+    Type: FtUint8
+    Display: BaseDec
+    Info: Weight real
+    JsonName: http2_headers_http2_headers_weight_real
+  http2.streamid:
+    Name: http2.streamid
+    Type: FtUint32
+    Display: BaseDec
+    Info: Stream Identifier
+    JsonName: http2_http2_streamid
+  http2.magic:
+    Name: http2.magic
+    Type: FtString
+    Info: Magic
+    JsonName: http2_http2_magic
+  http2.unknown:
+    Name: http2.unknown
+    Type: FtBytes
+    Info: Unknown
+    JsonName: http2_http2_unknown
+  http2.flags:
+    Name: http2.flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flags
+    JsonName: http2_http2_flags
+  http2.flags.end_stream:
+    Name: http2.flags.end_stream
+    Type: FtBoolean
+    Display: SepDot
+    Info: End Stream
+    JsonName: http2_flags_http2_flags_end_stream
+  http2.flags.eh:
+    Name: http2.flags.eh
+    Type: FtBoolean
+    Display: SepDot
+    Info: End Headers
+    JsonName: http2_flags_http2_flags_eh
+  http2.flags.padded:
+    Name: http2.flags.padded
+    Type: FtBoolean
+    Display: SepDot
+    Info: Padded
+    JsonName: http2_flags_http2_flags_padded
+  http2.flags.priority:
+    Name: http2.flags.priority
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority
+    JsonName: http2_flags_http2_flags_priority
+  http2.flags.ack.ping:
+    Name: http2.flags.ack.ping
+    Type: FtBoolean
+    Display: SepDot
+    Info: ACK
+    JsonName: http2_http2_flags_ack_ping
+  http2.flags.unused:
+    Name: http2.flags.unused
+    Type: FtUint8
+    Display: BaseHex
+    Info: Unused
+    JsonName: http2_flags_http2_flags_unused
+  http2.flags.unused_settings:
+    Name: http2.flags.unused_settings
+    Type: FtUint8
+    Display: BaseHex
+    Info: Unused
+    JsonName: http2_flags_http2_flags_unused_settings
+  http2.flags.unused_ping:
+    Name: http2.flags.unused_ping
+    Type: FtUint8
+    Display: BaseHex
+    Info: Unused
+    JsonName: http2_flags_http2_flags_unused_ping
+  http2.flags.unused_continuation:
+    Name: http2.flags.unused_continuation
+    Type: FtUint8
+    Display: BaseHex
+    Info: Unused
+    JsonName: http2_flags_http2_flags_unused_continuation
+  http2.flags.unused_push_promise:
+    Name: http2.flags.unused_push_promise
+    Type: FtUint8
+    Display: BaseHex
+    Info: Unused
+    JsonName: http2_flags_http2_flags_unused_push_promise
+  http2.flags.unused_data:
+    Name: http2.flags.unused_data
+    Type: FtUint8
+    Display: BaseHex
+    Info: Unused
+    JsonName: http2_flags_http2_flags_unused_data
+  http2.flags.unused_headers:
+    Name: http2.flags.unused_headers
+    Type: FtUint8
+    Display: BaseHex
+    Info: Unused
+    JsonName: http2_flags_http2_flags_unused_headers
+  http2.flags.ack.settings:
+    Name: http2.flags.ack.settings
+    Type: FtBoolean
+    Display: SepDot
+    Info: ACK
+    JsonName: http2_http2_flags_ack_settings
+  http2.padding:
+    Name: http2.padding
+    Type: FtUint8
+    Display: BaseHex
+    Info: Pad Length
+    JsonName: http2_http2_padding
+  http2.pad_length:
+    Name: http2.pad_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Pad Length
+    JsonName: http2_http2_pad_length
+  http2.exclusive:
+    Name: http2.exclusive
+    Type: FtBoolean
+    Display: 32
+    Info: Exclusive
+    JsonName: http2_http2_exclusive
+  http2.stream_dependency:
+    Name: http2.stream_dependency
+    Type: FtUint32
+    Display: BaseDec
+    Info: Stream Dependency
+    JsonName: http2_http2_stream_dependency
+  http2.data.data:
+    Name: http2.data.data
+    Type: FtBytes
+    Info: Data
+    JsonName: http2_http2_data_data
+  http2.data.padding:
+    Name: http2.data.padding
+    Type: FtBytes
+    Info: Padding
+    JsonName: http2_http2_data_padding
+  http2.body.fragments:
+    Name: http2.body.fragments
+    Info: Body fragments
+    JsonName: http2_http2_body_fragments
+  http2.body.fragment:
+    Name: http2.body.fragment
+    Type: FtFramenum
+    Info: Body fragment
+    JsonName: http2_http2_body_fragment
+  http2.body.fragment.overlap:
+    Name: http2.body.fragment.overlap
+    Type: FtBoolean
+    Info: Body fragment overlap
+    JsonName: http2_body_fragment_http2_body_fragment_overlap
+  http2.body.fragment.overlap.conflicts:
+    Name: http2.body.fragment.overlap.conflicts
+    Type: FtBoolean
+    Info: Body fragment overlapping with conflicting data
+    JsonName: http2_body_fragment_overlap_http2_body_fragment_overlap_conflicts
+  http2.body.fragment.multiple_tails:
+    Name: http2.body.fragment.multiple_tails
+    Type: FtBoolean
+    Info: Body has multiple tail fragments
+    JsonName: http2_body_fragment_http2_body_fragment_multiple_tails
+  http2.body.fragment.too_long_fragment:
+    Name: http2.body.fragment.too_long_fragment
+    Type: FtBoolean
+    Info: Body fragment too long
+    JsonName: http2_body_fragment_http2_body_fragment_too_long_fragment
+  http2.body.fragment.error:
+    Name: http2.body.fragment.error
+    Type: FtFramenum
+    Info: Body defragment error
+    JsonName: http2_body_fragment_http2_body_fragment_error
+  http2.body.fragment.count:
+    Name: http2.body.fragment.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Body fragment count
+    JsonName: http2_body_fragment_http2_body_fragment_count
+  http2.body.reassembled.in:
+    Name: http2.body.reassembled.in
+    Type: FtFramenum
+    Info: Reassembled body in frame
+    JsonName: http2_http2_body_reassembled_in
+  http2.body.reassembled.length:
+    Name: http2.body.reassembled.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reassembled body length
+    JsonName: http2_http2_body_reassembled_length
+  http2.headers:
+    Name: http2.headers
+    Type: FtBytes
+    Info: Header Block Fragment
+    JsonName: http2_http2_headers
+  http2.headers.padding:
+    Name: http2.headers.padding
+    Type: FtBytes
+    Info: Padding
+    JsonName: http2_headers_http2_headers_padding
+  http2.header:
+    Name: http2.header
+    Info: Header
+    JsonName: http2_http2_header
+  http2.header.length:
+    Name: http2.header.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Header Length
+    JsonName: http2_header_http2_header_length
+  http2.header.count:
+    Name: http2.header.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Header Count
+    JsonName: http2_header_http2_header_count
+  http2.header.name.length:
+    Name: http2.header.name.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Name Length
+    JsonName: http2_header_name_http2_header_name_length
+  http2.header.name:
+    Name: http2.header.name
+    Type: FtString
+    Info: Name
+    JsonName: http2_header_http2_header_name
+  http2.header.value.length:
+    Name: http2.header.value.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Value Length
+    JsonName: http2_header_value_http2_header_value_length
+  http2.header.value:
+    Name: http2.header.value
+    Type: FtString
+    Info: Value
+    JsonName: http2_header_http2_header_value
+  http2.header.repr:
+    Name: http2.header.repr
+    Type: FtString
+    Info: Representation
+    JsonName: http2_header_http2_header_repr
+  http2.header.index:
+    Name: http2.header.index
+    Type: FtUint32
+    Display: BaseDec
+    Info: Index
+    JsonName: http2_header_http2_header_index
+  http2.header_table_size_update:
+    Name: http2.header_table_size_update
+    Info: Header table size update
+    JsonName: http2_http2_header_table_size_update
+  http2.header_table_size_update.header_table_size:
+    Name: http2.header_table_size_update.header_table_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Header table size
+    JsonName: http2_header_table_size_update_http2_header_table_size_update_header_table_size
+  http2.rst_stream.error:
+    Name: http2.rst_stream.error
+    Type: FtUint32
+    Display: BaseDec
+    Info: Error
+    JsonName: http2_http2_rst_stream_error
+  http2.settings:
+    Name: http2.settings
+    Info: Settings
+    JsonName: http2_http2_settings
+  http2.settings.id:
+    Name: http2.settings.id
+    Type: FtUint16
+    Display: BaseDec
+    Info: Settings Identifier
+    JsonName: http2_settings_http2_settings_id
+  http2.settings.header_table_size:
+    Name: http2.settings.header_table_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Header table size
+    JsonName: http2_settings_http2_settings_header_table_size
+  http2.settings.enable_push:
+    Name: http2.settings.enable_push
+    Type: FtUint32
+    Display: BaseDec
+    Info: Enable PUSH
+    JsonName: http2_settings_http2_settings_enable_push
+  http2.settings.max_concurrent_streams:
+    Name: http2.settings.max_concurrent_streams
+    Type: FtUint32
+    Display: BaseDec
+    Info: Max concurrent streams
+    JsonName: http2_settings_http2_settings_max_concurrent_streams
+  http2.settings.initial_window_size:
+    Name: http2.settings.initial_window_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Initial Windows Size
+    JsonName: http2_settings_http2_settings_initial_window_size
+  http2.settings.max_frame_size:
+    Name: http2.settings.max_frame_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Max frame size
+    JsonName: http2_settings_http2_settings_max_frame_size
+  http2.settings.max_header_list_size:
+    Name: http2.settings.max_header_list_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Max header list size
+    JsonName: http2_settings_http2_settings_max_header_list_size
+  http2.settings.unknown:
+    Name: http2.settings.unknown
+    Type: FtUint32
+    Display: BaseDec
+    Info: Unknown Settings
+    JsonName: http2_settings_http2_settings_unknown
+  http2.push_promise.r:
+    Name: http2.push_promise.r
+    Type: FtUint32
+    Display: BaseHex
+    Info: Reserved
+    JsonName: http2_http2_push_promise_r
+  http2.push_promise.promised_stream_id:
+    Name: http2.push_promise.promised_stream_id
+    Type: FtUint32
+    Display: BaseDec
+    Info: Promised-Stream-ID
+    JsonName: http2_http2_push_promise_promised_stream_id
+  http2.push_promise.header:
+    Name: http2.push_promise.header
+    Type: FtBytes
+    Info: Header Block Fragment
+    JsonName: http2_http2_push_promise_header
+  http2.push_promise.padding:
+    Name: http2.push_promise.padding
+    Type: FtBytes
+    Info: Padding
+    JsonName: http2_http2_push_promise_padding
+  http2.ping:
+    Name: http2.ping
+    Type: FtBytes
+    Info: Ping
+    JsonName: http2_http2_ping
+  http2.pong:
+    Name: http2.pong
+    Type: FtBytes
+    Info: Pong
+    JsonName: http2_http2_pong
+  http2.goway.r:
+    Name: http2.goway.r
+    Type: FtUint32
+    Display: BaseHex
+    Info: Reserved
+    JsonName: http2_http2_goway_r
+  http2.goaway.last_stream_id:
+    Name: http2.goaway.last_stream_id
+    Type: FtUint32
+    Display: BaseDec
+    Info: Promised-Stream-ID
+    JsonName: http2_http2_goaway_last_stream_id
+  http2.goaway.error:
+    Name: http2.goaway.error
+    Type: FtUint32
+    Display: BaseDec
+    Info: Error
+    JsonName: http2_http2_goaway_error
+  http2.goaway.addata:
+    Name: http2.goaway.addata
+    Type: FtBytes
+    Info: Additional Debug Data
+    JsonName: http2_http2_goaway_addata
+  http2.window_update.r:
+    Name: http2.window_update.r
+    Type: FtUint32
+    Display: BaseHex
+    Info: Reserved
+    JsonName: http2_http2_window_update_r
+  http2.window_update.window_size_increment:
+    Name: http2.window_update.window_size_increment
+    Type: FtUint32
+    Display: BaseDec
+    Info: Window Size Increment
+    JsonName: http2_http2_window_update_window_size_increment
+  http2.continuation.header:
+    Name: http2.continuation.header
+    Type: FtString
+    Info: Continuation Header
+    JsonName: http2_http2_continuation_header
+  http2.continuation.padding:
+    Name: http2.continuation.padding
+    Type: FtBytes
+    Info: Padding
+    JsonName: http2_http2_continuation_padding
+  http2.altsvc.origin.len:
+    Name: http2.altsvc.origin.len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Origin Length
+    JsonName: http2_altsvc_origin_http2_altsvc_origin_len
+  http2.altsvc.origin:
+    Name: http2.altsvc.origin
+    Type: FtString
+    Info: Origin
+    JsonName: http2_http2_altsvc_origin
+  http2.altsvc.field_value:
+    Name: http2.altsvc.field_value
+    Type: FtString
+    Info: Field/Value
+    JsonName: http2_http2_altsvc_field_value

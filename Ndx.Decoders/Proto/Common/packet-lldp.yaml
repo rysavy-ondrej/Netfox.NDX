@@ -1,0 +1,1792 @@
+Name: lldp
+Fields:
+  lldp.tlv.type:
+    Name: lldp.tlv.type
+    Type: FtUint16
+    Display: BaseDec
+    Info: TLV Type
+    JsonName: lldp_lldp_tlv_type
+  lldp.tlv.len:
+    Name: lldp.tlv.len
+    Type: FtUint16
+    Display: BaseDec
+    Info: TLV Length
+    JsonName: lldp_lldp_tlv_len
+  lldp.tlv.system_cap:
+    Name: lldp.tlv.system_cap
+    Type: FtUint16
+    Display: BaseHex
+    Info: Capabilities
+    JsonName: lldp_lldp_tlv_system_cap
+  lldp.tlv.system_cap.other:
+    Name: lldp.tlv.system_cap.other
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Other
+    JsonName: lldp_tlv_system_cap_lldp_tlv_system_cap_other
+  lldp.tlv.system_cap.repeater:
+    Name: lldp.tlv.system_cap.repeater
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Repeater
+    JsonName: lldp_tlv_system_cap_lldp_tlv_system_cap_repeater
+  lldp.tlv.system_cap.bridge:
+    Name: lldp.tlv.system_cap.bridge
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Bridge
+    JsonName: lldp_tlv_system_cap_lldp_tlv_system_cap_bridge
+  lldp.tlv.system_cap.wlan_access_pt:
+    Name: lldp.tlv.system_cap.wlan_access_pt
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: WLAN access point
+    JsonName: lldp_tlv_system_cap_lldp_tlv_system_cap_wlan_access_pt
+  lldp.tlv.system_cap.router:
+    Name: lldp.tlv.system_cap.router
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Router
+    JsonName: lldp_tlv_system_cap_lldp_tlv_system_cap_router
+  lldp.tlv.system_cap.telephone:
+    Name: lldp.tlv.system_cap.telephone
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Telephone
+    JsonName: lldp_tlv_system_cap_lldp_tlv_system_cap_telephone
+  lldp.tlv.system_cap.docsis_cable_device:
+    Name: lldp.tlv.system_cap.docsis_cable_device
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: DOCSIS cable device
+    JsonName: lldp_tlv_system_cap_lldp_tlv_system_cap_docsis_cable_device
+  lldp.tlv.system_cap.station_only:
+    Name: lldp.tlv.system_cap.station_only
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Station only
+    JsonName: lldp_tlv_system_cap_lldp_tlv_system_cap_station_only
+  lldp.tlv.system.name:
+    Name: lldp.tlv.system.name
+    Type: FtString
+    Info: System Name
+    JsonName: lldp_lldp_tlv_system_name
+  lldp.tlv.system.desc:
+    Name: lldp.tlv.system.desc
+    Type: FtString
+    Info: System Description
+    JsonName: lldp_lldp_tlv_system_desc
+  lldp.tlv.enable_system_cap:
+    Name: lldp.tlv.enable_system_cap
+    Type: FtUint16
+    Display: BaseHex
+    Info: Enabled Capabilities
+    JsonName: lldp_lldp_tlv_enable_system_cap
+  lldp.tlv.enable_system_cap.other:
+    Name: lldp.tlv.enable_system_cap.other
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Other
+    JsonName: lldp_tlv_enable_system_cap_lldp_tlv_enable_system_cap_other
+  lldp.tlv.enable_system_cap.repeater:
+    Name: lldp.tlv.enable_system_cap.repeater
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Repeater
+    JsonName: lldp_tlv_enable_system_cap_lldp_tlv_enable_system_cap_repeater
+  lldp.tlv.enable_system_cap.bridge:
+    Name: lldp.tlv.enable_system_cap.bridge
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Bridge
+    JsonName: lldp_tlv_enable_system_cap_lldp_tlv_enable_system_cap_bridge
+  lldp.tlv.enable_system_cap.wlan_access_pt:
+    Name: lldp.tlv.enable_system_cap.wlan_access_pt
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: WLAN access point
+    JsonName: lldp_tlv_enable_system_cap_lldp_tlv_enable_system_cap_wlan_access_pt
+  lldp.tlv.enable_system_cap.router:
+    Name: lldp.tlv.enable_system_cap.router
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Router
+    JsonName: lldp_tlv_enable_system_cap_lldp_tlv_enable_system_cap_router
+  lldp.tlv.enable_system_cap.telephone:
+    Name: lldp.tlv.enable_system_cap.telephone
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Telephone
+    JsonName: lldp_tlv_enable_system_cap_lldp_tlv_enable_system_cap_telephone
+  lldp.tlv.enable_system_cap.docsis_cable_device:
+    Name: lldp.tlv.enable_system_cap.docsis_cable_device
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: DOCSIS cable device
+    JsonName: lldp_tlv_enable_system_cap_lldp_tlv_enable_system_cap_docsis_cable_device
+  lldp.tlv.enable_system_cap.station_only:
+    Name: lldp.tlv.enable_system_cap.station_only
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Station only
+    JsonName: lldp_tlv_enable_system_cap_lldp_tlv_enable_system_cap_station_only
+  lldp.chassis.subtype:
+    Name: lldp.chassis.subtype
+    Type: FtUint8
+    Display: BaseDec
+    Info: Chassis Id Subtype
+    JsonName: lldp_lldp_chassis_subtype
+  lldp.chassis.id:
+    Name: lldp.chassis.id
+    Type: FtBytes
+    Info: Chassis Id
+    JsonName: lldp_lldp_chassis_id
+  lldp.chassis.id.mac:
+    Name: lldp.chassis.id.mac
+    Type: FtEther
+    Info: Chassis Id
+    JsonName: lldp_chassis_id_lldp_chassis_id_mac
+  lldp.chassis.id.ip4:
+    Name: lldp.chassis.id.ip4
+    Type: FtIpv4
+    Info: Chassis Id
+    JsonName: lldp_chassis_id_lldp_chassis_id_ip4
+  lldp.chassis.id.ip6:
+    Name: lldp.chassis.id.ip6
+    Type: FtIpv6
+    Info: Chassis Id
+    JsonName: lldp_chassis_id_lldp_chassis_id_ip6
+  lldp.port.subtype:
+    Name: lldp.port.subtype
+    Type: FtUint8
+    Display: BaseDec
+    Info: Port Id Subtype
+    JsonName: lldp_lldp_port_subtype
+  lldp.port.id:
+    Name: lldp.port.id
+    Type: FtString
+    Info: Port Id
+    JsonName: lldp_lldp_port_id
+  lldp.port.desc:
+    Name: lldp.port.desc
+    Type: FtString
+    Info: Port Description
+    JsonName: lldp_lldp_port_desc
+  lldp.port.id.mac:
+    Name: lldp.port.id.mac
+    Type: FtEther
+    Info: Port Id
+    JsonName: lldp_port_id_lldp_port_id_mac
+  lldp.network_address.subtype:
+    Name: lldp.network_address.subtype
+    Type: FtUint8
+    Display: BaseDec
+    Info: Network Address family
+    JsonName: lldp_lldp_network_address_subtype
+  lldp.port.id.ip4:
+    Name: lldp.port.id.ip4
+    Type: FtIpv4
+    Info: Port Id
+    JsonName: lldp_port_id_lldp_port_id_ip4
+  lldp.port.id.ip6:
+    Name: lldp.port.id.ip6
+    Type: FtIpv6
+    Info: Port Id
+    JsonName: lldp_port_id_lldp_port_id_ip6
+  lldp.time_to_live:
+    Name: lldp.time_to_live
+    Type: FtUint16
+    Display: BaseDec
+    Info: Seconds
+    JsonName: lldp_lldp_time_to_live
+  lldp.mgn.address.len:
+    Name: lldp.mgn.address.len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Address String Length
+    JsonName: lldp_lldp_mgn_address_len
+  lldp.mgn.address.subtype:
+    Name: lldp.mgn.address.subtype
+    Type: FtUint8
+    Display: BaseDec
+    Info: Address Subtype
+    JsonName: lldp_lldp_mgn_address_subtype
+  lldp.mgn.addr.ip4:
+    Name: lldp.mgn.addr.ip4
+    Type: FtIpv4
+    Info: Management Address
+    JsonName: lldp_lldp_mgn_addr_ip4
+  lldp.mgn.addr.ip6:
+    Name: lldp.mgn.addr.ip6
+    Type: FtIpv6
+    Info: Management Address
+    JsonName: lldp_lldp_mgn_addr_ip6
+  lldp.mgn.addr.hex:
+    Name: lldp.mgn.addr.hex
+    Type: FtBytes
+    Info: Management Address
+    JsonName: lldp_lldp_mgn_addr_hex
+  lldp.mgn.interface.subtype:
+    Name: lldp.mgn.interface.subtype
+    Type: FtUint8
+    Display: BaseDec
+    Info: Interface Subtype
+    JsonName: lldp_lldp_mgn_interface_subtype
+  lldp.mgn.interface.number:
+    Name: lldp.mgn.interface.number
+    Type: FtUint32
+    Display: BaseDec
+    Info: Interface Number
+    JsonName: lldp_lldp_mgn_interface_number
+  lldp.mgn.obj.len:
+    Name: lldp.mgn.obj.len
+    Type: FtUint8
+    Display: BaseDec
+    Info: OID String Length
+    JsonName: lldp_lldp_mgn_obj_len
+  lldp.mgn.obj.id:
+    Name: lldp.mgn.obj.id
+    Type: FtOid
+    Info: Object Identifier
+    JsonName: lldp_lldp_mgn_obj_id
+  lldp.orgtlv.oui:
+    Name: lldp.orgtlv.oui
+    Type: FtUint24
+    Display: BaseHex
+    Info: Organization Unique Code
+    JsonName: lldp_lldp_orgtlv_oui
+  lldp.dcbx.proto:
+    Name: lldp.dcbx.proto
+    Type: FtUint8
+    Display: BaseHex
+    Info: DCBx Protocol
+    JsonName: lldp_lldp_dcbx_proto
+  lldp.dcbx.type:
+    Name: lldp.dcbx.type
+    Type: FtUint16
+    Display: BaseDec
+    Info: DCBx TLV Type
+    JsonName: lldp_lldp_dcbx_type
+  lldp.dcbx.len:
+    Name: lldp.dcbx.len
+    Type: FtUint16
+    Display: BaseDec
+    Info: DCBx TLV Length
+    JsonName: lldp_lldp_dcbx_len
+  lldp.dcbx.version:
+    Name: lldp.dcbx.version
+    Type: FtUint8
+    Display: BaseHex
+    Info: Operating Version
+    JsonName: lldp_lldp_dcbx_version
+  lldp.dcbx.max_version:
+    Name: lldp.dcbx.max_version
+    Type: FtUint8
+    Display: BaseHex
+    Info: Max Version
+    JsonName: lldp_lldp_dcbx_max_version
+  lldp.dcbx.contol.seq:
+    Name: lldp.dcbx.contol.seq
+    Type: FtUint32
+    Display: BaseDec
+    Info: Sequence No
+    JsonName: lldp_lldp_dcbx_contol_seq
+  lldp.dcbx.control.ack:
+    Name: lldp.dcbx.control.ack
+    Type: FtUint32
+    Display: BaseDec
+    Info: Ack No
+    JsonName: lldp_lldp_dcbx_control_ack
+  lldp.dcbx.feature.enabled:
+    Name: lldp.dcbx.feature.enabled
+    Type: FtBoolean
+    Display: SepDot
+    Info: Feature
+    JsonName: lldp_lldp_dcbx_feature_enabled
+  lldp.dcbx.feature.willing:
+    Name: lldp.dcbx.feature.willing
+    Type: FtBoolean
+    Display: SepDot
+    Info: Willing
+    JsonName: lldp_lldp_dcbx_feature_willing
+  lldp.dcbx.feature.error:
+    Name: lldp.dcbx.feature.error
+    Type: FtBoolean
+    Display: SepDot
+    Info: Error
+    JsonName: lldp_lldp_dcbx_feature_error
+  lldp.dcbx.feature.subtype:
+    Name: lldp.dcbx.feature.subtype
+    Type: FtUint8
+    Display: BaseHex
+    Info: Subtype
+    JsonName: lldp_lldp_dcbx_feature_subtype
+  lldp.dcbx.feature.pg.reserved:
+    Name: lldp.dcbx.feature.pg.reserved
+    Type: FtUint8
+    Display: BaseHex
+    Info: Reserved
+    JsonName: lldp_lldp_dcbx_feature_pg_reserved
+  lldp.dcbx.feature.pg.pgid_prio0:
+    Name: lldp.dcbx.feature.pg.pgid_prio0
+    Type: FtUint16
+    Display: BaseDec
+    Info: PGID for Prio 0
+    JsonName: lldp_lldp_dcbx_feature_pg_pgid_prio0
+  lldp.dcbx.feature.pg.pgid_prio1:
+    Name: lldp.dcbx.feature.pg.pgid_prio1
+    Type: FtUint16
+    Display: BaseDec
+    Info: PGID for Prio 1
+    JsonName: lldp_lldp_dcbx_feature_pg_pgid_prio1
+  lldp.dcbx.feature.pg.pgid_prio2:
+    Name: lldp.dcbx.feature.pg.pgid_prio2
+    Type: FtUint16
+    Display: BaseDec
+    Info: PGID for Prio 2
+    JsonName: lldp_lldp_dcbx_feature_pg_pgid_prio2
+  lldp.dcbx.feature.pg.pgid_prio3:
+    Name: lldp.dcbx.feature.pg.pgid_prio3
+    Type: FtUint16
+    Display: BaseDec
+    Info: PGID for Prio 3
+    JsonName: lldp_lldp_dcbx_feature_pg_pgid_prio3
+  lldp.dcbx.feature.pg.pgid_prio4:
+    Name: lldp.dcbx.feature.pg.pgid_prio4
+    Type: FtUint16
+    Display: BaseDec
+    Info: PGID for Prio 4
+    JsonName: lldp_lldp_dcbx_feature_pg_pgid_prio4
+  lldp.dcbx.feature.pg.pgid_prio5:
+    Name: lldp.dcbx.feature.pg.pgid_prio5
+    Type: FtUint16
+    Display: BaseDec
+    Info: PGID for Prio 5
+    JsonName: lldp_lldp_dcbx_feature_pg_pgid_prio5
+  lldp.dcbx.feature.pg.pgid_prio6:
+    Name: lldp.dcbx.feature.pg.pgid_prio6
+    Type: FtUint16
+    Display: BaseDec
+    Info: PGID for Prio 6
+    JsonName: lldp_lldp_dcbx_feature_pg_pgid_prio6
+  lldp.dcbx.feature.pg.pgid_prio7:
+    Name: lldp.dcbx.feature.pg.pgid_prio7
+    Type: FtUint16
+    Display: BaseDec
+    Info: PGID for Prio 7
+    JsonName: lldp_lldp_dcbx_feature_pg_pgid_prio7
+  lldp.dcbx.feature.pg.per0:
+    Name: lldp.dcbx.feature.pg.per0
+    Type: FtUint8
+    Display: BaseDec
+    Info: Bandwidth for PGID 0
+    JsonName: lldp_lldp_dcbx_feature_pg_per0
+  lldp.dcbx.feature.pg.per1:
+    Name: lldp.dcbx.feature.pg.per1
+    Type: FtUint8
+    Display: BaseDec
+    Info: Bandwidth for PGID 1
+    JsonName: lldp_lldp_dcbx_feature_pg_per1
+  lldp.dcbx.feature.pg.per2:
+    Name: lldp.dcbx.feature.pg.per2
+    Type: FtUint8
+    Display: BaseDec
+    Info: Bandwidth for PGID 2
+    JsonName: lldp_lldp_dcbx_feature_pg_per2
+  lldp.dcbx.feature.pg.per3:
+    Name: lldp.dcbx.feature.pg.per3
+    Type: FtUint8
+    Display: BaseDec
+    Info: Bandwidth for PGID 3
+    JsonName: lldp_lldp_dcbx_feature_pg_per3
+  lldp.dcbx.feature.pg.per4:
+    Name: lldp.dcbx.feature.pg.per4
+    Type: FtUint8
+    Display: BaseDec
+    Info: Bandwidth for PGID 4
+    JsonName: lldp_lldp_dcbx_feature_pg_per4
+  lldp.dcbx.feature.pg.per5:
+    Name: lldp.dcbx.feature.pg.per5
+    Type: FtUint8
+    Display: BaseDec
+    Info: Bandwidth for PGID 5
+    JsonName: lldp_lldp_dcbx_feature_pg_per5
+  lldp.dcbx.feature.pg.per6:
+    Name: lldp.dcbx.feature.pg.per6
+    Type: FtUint8
+    Display: BaseDec
+    Info: Bandwidth for PGID 6
+    JsonName: lldp_lldp_dcbx_feature_pg_per6
+  lldp.dcbx.feature.pg.per7:
+    Name: lldp.dcbx.feature.pg.per7
+    Type: FtUint8
+    Display: BaseDec
+    Info: Bandwidth for PGID 7
+    JsonName: lldp_lldp_dcbx_feature_pg_per7
+  lldp.dcbx.feature.pg.numtcs:
+    Name: lldp.dcbx.feature.pg.numtcs
+    Type: FtUint8
+    Display: BaseHex
+    Info: Number of Traffic Classes Supported
+    JsonName: lldp_lldp_dcbx_feature_pg_numtcs
+  lldp.dcbx.feature.pfc.prio0:
+    Name: lldp.dcbx.feature.pfc.prio0
+    Type: FtBoolean
+    Display: SepDot
+    Info: PFC for Priority 0
+    JsonName: lldp_lldp_dcbx_feature_pfc_prio0
+  lldp.dcbx.feature.pfc.prio1:
+    Name: lldp.dcbx.feature.pfc.prio1
+    Type: FtBoolean
+    Display: SepDot
+    Info: PFC for Priority 1
+    JsonName: lldp_lldp_dcbx_feature_pfc_prio1
+  lldp.dcbx.feature.pfc.prio2:
+    Name: lldp.dcbx.feature.pfc.prio2
+    Type: FtBoolean
+    Display: SepDot
+    Info: PFC for Priority 2
+    JsonName: lldp_lldp_dcbx_feature_pfc_prio2
+  lldp.dcbx.feature.pfc.prio3:
+    Name: lldp.dcbx.feature.pfc.prio3
+    Type: FtBoolean
+    Display: SepDot
+    Info: PFC for Priority 3
+    JsonName: lldp_lldp_dcbx_feature_pfc_prio3
+  lldp.dcbx.feature.pfc.prio4:
+    Name: lldp.dcbx.feature.pfc.prio4
+    Type: FtBoolean
+    Display: SepDot
+    Info: PFC for Priority 4
+    JsonName: lldp_lldp_dcbx_feature_pfc_prio4
+  lldp.dcbx.feature.pfc.prio5:
+    Name: lldp.dcbx.feature.pfc.prio5
+    Type: FtBoolean
+    Display: SepDot
+    Info: PFC for Priority 5
+    JsonName: lldp_lldp_dcbx_feature_pfc_prio5
+  lldp.dcbx.feature.pfc.prio6:
+    Name: lldp.dcbx.feature.pfc.prio6
+    Type: FtBoolean
+    Display: SepDot
+    Info: PFC for Priority 6
+    JsonName: lldp_lldp_dcbx_feature_pfc_prio6
+  lldp.dcbx.feature.pfc.prio7:
+    Name: lldp.dcbx.feature.pfc.prio7
+    Type: FtBoolean
+    Display: SepDot
+    Info: PFC for Priority 7
+    JsonName: lldp_lldp_dcbx_feature_pfc_prio7
+  lldp.dcbx.feature.pfc.numtcs:
+    Name: lldp.dcbx.feature.pfc.numtcs
+    Type: FtUint8
+    Display: BaseHex
+    Info: Number of Traffic Classes Supported
+    JsonName: lldp_lldp_dcbx_feature_pfc_numtcs
+  lldp.dcbx.feature.app.proto:
+    Name: lldp.dcbx.feature.app.proto
+    Type: FtUint16
+    Display: BaseHex
+    Info: Application Protocol Id
+    JsonName: lldp_lldp_dcbx_feature_app_proto
+  lldp.dcbx.feature.app.sf:
+    Name: lldp.dcbx.feature.app.sf
+    Type: FtUint24
+    Display: BaseDec
+    Info: Selector Field
+    JsonName: lldp_lldp_dcbx_feature_app_sf
+  lldp.dcbx.feature.app.oui:
+    Name: lldp.dcbx.feature.app.oui
+    Type: FtUint24
+    Display: BaseHex
+    Info: Application OUI
+    JsonName: lldp_lldp_dcbx_feature_app_oui
+  lldp.dcbx.feature.app.prio:
+    Name: lldp.dcbx.feature.app.prio
+    Type: FtUint8
+    Display: BaseDec
+    Info: Application Priority
+    JsonName: lldp_lldp_dcbx_feature_app_prio
+  lldp.dcbx.feature.llink.type:
+    Name: lldp.dcbx.feature.llink.type
+    Type: FtUint8
+    Display: BaseHex
+    Info: Logical Link Down Type
+    JsonName: lldp_lldp_dcbx_feature_llink_type
+  lldp.ieee.802_1.subtype:
+    Name: lldp.ieee.802_1.subtype
+    Type: FtUint8
+    Display: BaseHex
+    Info: IEEE 802.1 Subtype
+    JsonName: lldp_lldp_ieee_802_1_subtype
+  lldp.ieee.802_1.port_and_vlan_id_flag:
+    Name: lldp.ieee.802_1.port_and_vlan_id_flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flags
+    JsonName: lldp_lldp_ieee_802_1_port_and_vlan_id_flag
+  lldp.ieee.802_1.port_and_vlan_id_flag.supported:
+    Name: lldp.ieee.802_1.port_and_vlan_id_flag.supported
+    Type: FtBoolean
+    Display: SepDot
+    Info: Port and Protocol VLAN
+    JsonName: lldp_ieee_802_1_port_and_vlan_id_flag_lldp_ieee_802_1_port_and_vlan_id_flag_supported
+  lldp.ieee.802_1.port_and_vlan_id_flag.enabled:
+    Name: lldp.ieee.802_1.port_and_vlan_id_flag.enabled
+    Type: FtBoolean
+    Display: SepDot
+    Info: Port and Protocol VLAN
+    JsonName: lldp_ieee_802_1_port_and_vlan_id_flag_lldp_ieee_802_1_port_and_vlan_id_flag_enabled
+  lldp.ieee.802_1.port_vlan.id:
+    Name: lldp.ieee.802_1.port_vlan.id
+    Type: FtUint16
+    Display: BaseDecHex
+    Info: Port VLAN Identifier
+    JsonName: lldp_lldp_ieee_802_1_port_vlan_id
+  lldp.ieee.802_1.port_proto_vlan.id:
+    Name: lldp.ieee.802_1.port_proto_vlan.id
+    Type: FtUint16
+    Display: BaseDecHex
+    Info: Port and Protocol VLAN Identifier
+    JsonName: lldp_lldp_ieee_802_1_port_proto_vlan_id
+  lldp.ieee.802_1.vlan.id:
+    Name: lldp.ieee.802_1.vlan.id
+    Type: FtUint16
+    Display: BaseDecHex
+    Info: VLAN Identifier
+    JsonName: lldp_lldp_ieee_802_1_vlan_id
+  lldp.ieee.802_1.vlan.name_len:
+    Name: lldp.ieee.802_1.vlan.name_len
+    Type: FtUint8
+    Display: BaseDec
+    Info: VLAN Name Length
+    JsonName: lldp_lldp_ieee_802_1_vlan_name_len
+  lldp.ieee.802_1.vlan.name:
+    Name: lldp.ieee.802_1.vlan.name
+    Type: FtStringz
+    Info: VLAN Name
+    JsonName: lldp_lldp_ieee_802_1_vlan_name
+  lldp.ieee.802_1.proto.id_length:
+    Name: lldp.ieee.802_1.proto.id_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Protocol Identity Length
+    JsonName: lldp_lldp_ieee_802_1_proto_id_length
+  lldp.ieee.802_1.proto.id:
+    Name: lldp.ieee.802_1.proto.id
+    Type: FtStringz
+    Info: Protocol Identity
+    JsonName: lldp_lldp_ieee_802_1_proto_id
+  lldp.ieee.802_1.aggregation_status:
+    Name: lldp.ieee.802_1.aggregation_status
+    Type: FtUint8
+    Display: BaseHex
+    Info: Aggregation Status
+    JsonName: lldp_lldp_ieee_802_1_aggregation_status
+  lldp.ieee.802_1.aggregation_status.cap:
+    Name: lldp.ieee.802_1.aggregation_status.cap
+    Type: FtBoolean
+    Display: SepDot
+    Info: Aggregation Capability
+    JsonName: lldp_ieee_802_1_aggregation_status_lldp_ieee_802_1_aggregation_status_cap
+  lldp.ieee.802_1.aggregation_status.enabled:
+    Name: lldp.ieee.802_1.aggregation_status.enabled
+    Type: FtBoolean
+    Display: SepDot
+    Info: Aggregation Status
+    JsonName: lldp_ieee_802_1_aggregation_status_lldp_ieee_802_1_aggregation_status_enabled
+  lldp.ieee.802_1.aggregated_port_id:
+    Name: lldp.ieee.802_1.aggregated_port_id
+    Type: FtUint32
+    Display: BaseDec
+    Info: Aggregated Port Id
+    JsonName: lldp_lldp_ieee_802_1_aggregated_port_id
+  lldp.ieee.802_1qau.cnpv.prio0:
+    Name: lldp.ieee.802_1qau.cnpv.prio0
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 0 CNPV Capability
+    JsonName: lldp_lldp_ieee_802_1qau_cnpv_prio0
+  lldp.ieee.802_1qau.cnpv.prio1:
+    Name: lldp.ieee.802_1qau.cnpv.prio1
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 1 CNPV Capability
+    JsonName: lldp_lldp_ieee_802_1qau_cnpv_prio1
+  lldp.ieee.802_1qau.cnpv.prio2:
+    Name: lldp.ieee.802_1qau.cnpv.prio2
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 2 CNPV Capability
+    JsonName: lldp_lldp_ieee_802_1qau_cnpv_prio2
+  lldp.ieee.802_1qau.cnpv.prio3:
+    Name: lldp.ieee.802_1qau.cnpv.prio3
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 3 CNPV Capability
+    JsonName: lldp_lldp_ieee_802_1qau_cnpv_prio3
+  lldp.ieee.802_1qau.cnpv.prio4:
+    Name: lldp.ieee.802_1qau.cnpv.prio4
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 4 CNPV Capability
+    JsonName: lldp_lldp_ieee_802_1qau_cnpv_prio4
+  lldp.ieee.802_1qau.cnpv.prio5:
+    Name: lldp.ieee.802_1qau.cnpv.prio5
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 5 CNPV Capability
+    JsonName: lldp_lldp_ieee_802_1qau_cnpv_prio5
+  lldp.ieee.802_1qau.cnpv.prio6:
+    Name: lldp.ieee.802_1qau.cnpv.prio6
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 6 CNPV Capability
+    JsonName: lldp_lldp_ieee_802_1qau_cnpv_prio6
+  lldp.ieee.802_1qau.cnpv.prio7:
+    Name: lldp.ieee.802_1qau.cnpv.prio7
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 7 CNPV Capability
+    JsonName: lldp_lldp_ieee_802_1qau_cnpv_prio7
+  lldp.ieee.802_1qau.ready.prio0:
+    Name: lldp.ieee.802_1qau.ready.prio0
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 0 Ready Indicator
+    JsonName: lldp_lldp_ieee_802_1qau_ready_prio0
+  lldp.ieee.802_1qau.ready.prio1:
+    Name: lldp.ieee.802_1qau.ready.prio1
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 1 Ready Indicator
+    JsonName: lldp_lldp_ieee_802_1qau_ready_prio1
+  lldp.ieee.802_1qau.ready.prio2:
+    Name: lldp.ieee.802_1qau.ready.prio2
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 2 Ready Indicator
+    JsonName: lldp_lldp_ieee_802_1qau_ready_prio2
+  lldp.ieee.802_1qau.ready.prio3:
+    Name: lldp.ieee.802_1qau.ready.prio3
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 3 Ready Indicator
+    JsonName: lldp_lldp_ieee_802_1qau_ready_prio3
+  lldp.ieee.802_1qau.ready.prio4:
+    Name: lldp.ieee.802_1qau.ready.prio4
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 4 Ready Indicator
+    JsonName: lldp_lldp_ieee_802_1qau_ready_prio4
+  lldp.ieee.802_1qau.ready.prio5:
+    Name: lldp.ieee.802_1qau.ready.prio5
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 5 Ready Indicator
+    JsonName: lldp_lldp_ieee_802_1qau_ready_prio5
+  lldp.ieee.802_1qau.ready.prio6:
+    Name: lldp.ieee.802_1qau.ready.prio6
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 6 Ready Indicator
+    JsonName: lldp_lldp_ieee_802_1qau_ready_prio6
+  lldp.ieee.802_1qau.ready.prio7:
+    Name: lldp.ieee.802_1qau.ready.prio7
+    Type: FtBoolean
+    Display: SepDot
+    Info: Priority 7 Ready Indicator
+    JsonName: lldp_lldp_ieee_802_1qau_ready_prio7
+  lldp.dcbx.ieee.willing:
+    Name: lldp.dcbx.ieee.willing
+    Type: FtBoolean
+    Display: SepDot
+    Info: Willing
+    JsonName: lldp_lldp_dcbx_ieee_willing
+  lldp.dcbx.ieee.ets.cbs:
+    Name: lldp.dcbx.ieee.ets.cbs
+    Type: FtBoolean
+    Display: SepDot
+    Info: Credit-Based Shaper
+    JsonName: lldp_lldp_dcbx_ieee_ets_cbs
+  lldp.dcbx.ieee.ets.maxtcs:
+    Name: lldp.dcbx.ieee.ets.maxtcs
+    Type: FtUint8
+    Display: BaseDec
+    Info: Maximum Number of Traffic Classes
+    JsonName: lldp_lldp_dcbx_ieee_ets_maxtcs
+  lldp.dcbx.ieee.ets.tsa0:
+    Name: lldp.dcbx.ieee.ets.tsa0
+    Type: FtUint8
+    Display: BaseDec
+    Info: TSA for Traffic Class 0
+    JsonName: lldp_lldp_dcbx_ieee_ets_tsa0
+  lldp.dcbx.ieee.ets.tsa1:
+    Name: lldp.dcbx.ieee.ets.tsa1
+    Type: FtUint8
+    Display: BaseDec
+    Info: TSA for Traffic Class 1
+    JsonName: lldp_lldp_dcbx_ieee_ets_tsa1
+  lldp.dcbx.ieee.ets.tsa2:
+    Name: lldp.dcbx.ieee.ets.tsa2
+    Type: FtUint8
+    Display: BaseDec
+    Info: TSA for Traffic Class 2
+    JsonName: lldp_lldp_dcbx_ieee_ets_tsa2
+  lldp.dcbx.ieee.ets.tsa3:
+    Name: lldp.dcbx.ieee.ets.tsa3
+    Type: FtUint8
+    Display: BaseDec
+    Info: TSA for Traffic Class 3
+    JsonName: lldp_lldp_dcbx_ieee_ets_tsa3
+  lldp.dcbx.ieee.ets.tsa4:
+    Name: lldp.dcbx.ieee.ets.tsa4
+    Type: FtUint8
+    Display: BaseDec
+    Info: TSA for Traffic Class 4
+    JsonName: lldp_lldp_dcbx_ieee_ets_tsa4
+  lldp.dcbx.ieee.ets.tsa5:
+    Name: lldp.dcbx.ieee.ets.tsa5
+    Type: FtUint8
+    Display: BaseDec
+    Info: TSA for Traffic Class 5
+    JsonName: lldp_lldp_dcbx_ieee_ets_tsa5
+  lldp.dcbx.ieee.ets.tsa6:
+    Name: lldp.dcbx.ieee.ets.tsa6
+    Type: FtUint8
+    Display: BaseDec
+    Info: TSA for Traffic Class 6
+    JsonName: lldp_lldp_dcbx_ieee_ets_tsa6
+  lldp.dcbx.ieee.ets.tsa7:
+    Name: lldp.dcbx.ieee.ets.tsa7
+    Type: FtUint8
+    Display: BaseDec
+    Info: TSA for Traffic Class 7
+    JsonName: lldp_lldp_dcbx_ieee_ets_tsa7
+  lldp.dcbx.ieee.pfc.mbc:
+    Name: lldp.dcbx.ieee.pfc.mbc
+    Type: FtBoolean
+    Display: SepDot
+    Info: MACsec Bypass Capability
+    JsonName: lldp_lldp_dcbx_ieee_pfc_mbc
+  lldp.dcbx.ieee.pfc.numtcs:
+    Name: lldp.dcbx.ieee.pfc.numtcs
+    Type: FtUint8
+    Display: BaseDec
+    Info: Max PFC Enabled Traffic Classes
+    JsonName: lldp_lldp_dcbx_ieee_pfc_numtcs
+  lldp.dcbx.ieee.app.reserved:
+    Name: lldp.dcbx.ieee.app.reserved
+    Type: FtUint8
+    Display: BaseHex
+    Info: Reserved
+    JsonName: lldp_lldp_dcbx_ieee_app_reserved
+  lldp.dcbx.ieee.app.prio:
+    Name: lldp.dcbx.ieee.app.prio
+    Type: FtUint8
+    Display: BaseDec
+    Info: Application Priority
+    JsonName: lldp_lldp_dcbx_ieee_app_prio
+  lldp.dcbx.iee.app.sf:
+    Name: lldp.dcbx.iee.app.sf
+    Type: FtUint8
+    Display: BaseDec
+    Info: Application Selector
+    JsonName: lldp_lldp_dcbx_iee_app_sf
+  lldp.ieee.802_3.subtype:
+    Name: lldp.ieee.802_3.subtype
+    Type: FtUint8
+    Display: BaseHex
+    Info: IEEE 802.3 Subtype
+    JsonName: lldp_lldp_ieee_802_3_subtype
+  lldp.ieee.802_3.mac_phy_auto_neg_status:
+    Name: lldp.ieee.802_3.mac_phy_auto_neg_status
+    Type: FtUint8
+    Display: BaseHex
+    Info: Auto-Negotiation Support/Status
+    JsonName: lldp_lldp_ieee_802_3_mac_phy_auto_neg_status
+  lldp.ieee.802_3.mac_phy_auto_neg_status.supported:
+    Name: lldp.ieee.802_3.mac_phy_auto_neg_status.supported
+    Type: FtBoolean
+    Display: SepDot
+    Info: Auto-Negotiation
+    JsonName: lldp_ieee_802_3_mac_phy_auto_neg_status_lldp_ieee_802_3_mac_phy_auto_neg_status_supported
+  lldp.ieee.802_3.mac_phy_auto_neg_status.enabled:
+    Name: lldp.ieee.802_3.mac_phy_auto_neg_status.enabled
+    Type: FtBoolean
+    Display: SepDot
+    Info: Auto-Negotiation
+    JsonName: lldp_ieee_802_3_mac_phy_auto_neg_status_lldp_ieee_802_3_mac_phy_auto_neg_status_enabled
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps
+    Type: FtUint16
+    Display: BaseHex
+    Info: PMD Auto-Negotiation Advertised Capability
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.1000base_tfd:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.1000base_tfd
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 1000BASE-T (full duplex mode)
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_1000base_tfd
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.1000base_t:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.1000base_t
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 1000BASE-T (half duplex mode)
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_1000base_t
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.1000base_xfd:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.1000base_xfd
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 1000BASE-X (-LX, -SX, -CX full duplex mode)
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_1000base_xfd
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.1000base_x:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.1000base_x
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 1000BASE-X (-LX, -SX, -CX half duplex mode)
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_1000base_x
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.fdx_bpause:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.fdx_bpause
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Asymmetric and Symmetric PAUSE (for full-duplex links)
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_fdx_bpause
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.fdx_spause:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.fdx_spause
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Symmetric PAUSE (for full-duplex links)
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_fdx_spause
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.fdx_apause:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.fdx_apause
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Asymmetric PAUSE (for full-duplex links)
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_fdx_apause
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.fdx_pause:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.fdx_pause
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: PAUSE (for full-duplex links)
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_fdx_pause
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.100base_t2fd:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.100base_t2fd
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 100BASE-T2 (full duplex mode)
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_100base_t2fd
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.100base_t2:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.100base_t2
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 100BASE-T2 (half duplex mode)
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_100base_t2
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.100base_txfd:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.100base_txfd
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 100BASE-TX (full duplex mode)
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_100base_txfd
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.100base_tx:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.100base_tx
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 100BASE-TX (half duplex mode)
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_100base_tx
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.100base_t4:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.100base_t4
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 100BASE-T4
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_100base_t4
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.10base_tfd:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.10base_tfd
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 10BASE-T (full duplex mode)
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_10base_tfd
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.10base_t:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.10base_t
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 10BASE-T (half duplex mode)
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_10base_t
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps.other:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps.other
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Other or unknown
+    JsonName: lldp_ieee_802_3_pmd_auto_neg_advertised_caps_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_other
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.1000base_tfd:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.1000base_tfd
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 1000BASE-T (full duplex mode)
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_1000base_tfd
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.1000base_t:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.1000base_t
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 1000BASE-T (half duplex mode)
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_1000base_t
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.1000base_xfd:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.1000base_xfd
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 1000BASE-X (-LX, -SX, -CX full duplex mode)
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_1000base_xfd
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.1000base_x:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.1000base_x
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 1000BASE-X (-LX, -SX, -CX half duplex mode)
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_1000base_x
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.fdx_bpause:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.fdx_bpause
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Asymmetric and Symmetric PAUSE (for full-duplex links)
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_fdx_bpause
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.fdx_spause:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.fdx_spause
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Symmetric PAUSE (for full-duplex links)
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_fdx_spause
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.fdx_apause:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.fdx_apause
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Asymmetric PAUSE (for full-duplex links)
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_fdx_apause
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.fdx_pause:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.fdx_pause
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: PAUSE (for full-duplex links)
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_fdx_pause
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.100base_t2fd:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.100base_t2fd
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 100BASE-T2 (full duplex mode)
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_100base_t2fd
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.100base_t2:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.100base_t2
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 100BASE-T2 (half duplex mode)
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_100base_t2
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.100base_txfd:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.100base_txfd
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 100BASE-TX (full duplex mode)
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_100base_txfd
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.100base_tx:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.100base_tx
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 100BASE-TX (half duplex mode)
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_100base_tx
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.100base_t4:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.100base_t4
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 100BASE-T4
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_100base_t4
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.10base_tfd:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.10base_tfd
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 10BASE-T (full duplex mode)
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_10base_tfd
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.10base_t:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.10base_t
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: 10BASE-T (half duplex mode)
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_10base_t
+  lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.other:
+    Name: lldp.ieee.802_3.pmd_auto_neg_advertised_caps_inv.other
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Other or unknown
+    JsonName: lldp_lldp_ieee_802_3_pmd_auto_neg_advertised_caps_inv_other
+  lldp.ieee.802_3.pmd_mau_type:
+    Name: lldp.ieee.802_3.pmd_mau_type
+    Type: FtUint16
+    Display: BaseHex
+    Info: Operational MAU Type
+    JsonName: lldp_lldp_ieee_802_3_pmd_mau_type
+  lldp.ieee.802_3.mdi_power_support:
+    Name: lldp.ieee.802_3.mdi_power_support
+    Type: FtUint8
+    Display: BaseHex
+    Info: MDI Power Support
+    JsonName: lldp_lldp_ieee_802_3_mdi_power_support
+  lldp.ieee.802_3.mdi_power_support.port_class:
+    Name: lldp.ieee.802_3.mdi_power_support.port_class
+    Type: FtBoolean
+    Display: SepDot
+    Info: Port Class
+    JsonName: lldp_ieee_802_3_mdi_power_support_lldp_ieee_802_3_mdi_power_support_port_class
+  lldp.ieee.802_3.mdi_power_support.supported:
+    Name: lldp.ieee.802_3.mdi_power_support.supported
+    Type: FtBoolean
+    Display: SepDot
+    Info: PSE MDI Power
+    JsonName: lldp_ieee_802_3_mdi_power_support_lldp_ieee_802_3_mdi_power_support_supported
+  lldp.ieee.802_3.mdi_power_support.enabled:
+    Name: lldp.ieee.802_3.mdi_power_support.enabled
+    Type: FtBoolean
+    Display: SepDot
+    Info: PSE MDI Power
+    JsonName: lldp_ieee_802_3_mdi_power_support_lldp_ieee_802_3_mdi_power_support_enabled
+  lldp.ieee.802_3.mdi_power_support.pse_pairs:
+    Name: lldp.ieee.802_3.mdi_power_support.pse_pairs
+    Type: FtBoolean
+    Display: SepDot
+    Info: PSE Pairs Control Ability
+    JsonName: lldp_ieee_802_3_mdi_power_support_lldp_ieee_802_3_mdi_power_support_pse_pairs
+  lldp.ieee.802_3.mdi_pse_pair:
+    Name: lldp.ieee.802_3.mdi_pse_pair
+    Type: FtUint8
+    Display: BaseDec
+    Info: PSE Power Pair
+    JsonName: lldp_lldp_ieee_802_3_mdi_pse_pair
+  lldp.ieee.802_3.mdi_power_class:
+    Name: lldp.ieee.802_3.mdi_power_class
+    Type: FtUint8
+    Display: BaseDec
+    Info: Power Class
+    JsonName: lldp_lldp_ieee_802_3_mdi_power_class
+  lldp.ieee.802_3.mdi_power_type:
+    Name: lldp.ieee.802_3.mdi_power_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Power Type
+    JsonName: lldp_lldp_ieee_802_3_mdi_power_type
+  lldp.ieee.802_3.mdi_power_source:
+    Name: lldp.ieee.802_3.mdi_power_source
+    Type: FtUint8
+    Display: BaseDec
+    Info: Power Source
+    JsonName: lldp_lldp_ieee_802_3_mdi_power_source
+  lldp.ieee.802_3.mdi_power_priority:
+    Name: lldp.ieee.802_3.mdi_power_priority
+    Type: FtUint8
+    Display: BaseDec
+    Info: Power Priority
+    JsonName: lldp_lldp_ieee_802_3_mdi_power_priority
+  lldp.ieee.802_3.mdi_pde_requested:
+    Name: lldp.ieee.802_3.mdi_pde_requested
+    Type: FtUint16
+    Display: BaseCustom
+    Info: PD Requested Power Value
+    JsonName: lldp_lldp_ieee_802_3_mdi_pde_requested
+  lldp.ieee.802_3.mdi_pse_allocated:
+    Name: lldp.ieee.802_3.mdi_pse_allocated
+    Type: FtUint16
+    Display: BaseCustom
+    Info: PSE Allocated Power Value
+    JsonName: lldp_lldp_ieee_802_3_mdi_pse_allocated
+  lldp.ieee.802_3.aggregation_status:
+    Name: lldp.ieee.802_3.aggregation_status
+    Type: FtUint8
+    Display: BaseHex
+    Info: Aggregation Status
+    JsonName: lldp_lldp_ieee_802_3_aggregation_status
+  lldp.ieee.802_3.aggregation_status.cap:
+    Name: lldp.ieee.802_3.aggregation_status.cap
+    Type: FtBoolean
+    Display: SepDot
+    Info: Aggregation Capability
+    JsonName: lldp_ieee_802_3_aggregation_status_lldp_ieee_802_3_aggregation_status_cap
+  lldp.ieee.802_3.aggregation_status.enabled:
+    Name: lldp.ieee.802_3.aggregation_status.enabled
+    Type: FtBoolean
+    Display: SepDot
+    Info: Aggregation Status
+    JsonName: lldp_ieee_802_3_aggregation_status_lldp_ieee_802_3_aggregation_status_enabled
+  lldp.ieee.802_3.aggregated_port_id:
+    Name: lldp.ieee.802_3.aggregated_port_id
+    Type: FtUint32
+    Display: BaseDec
+    Info: Aggregated Port Id
+    JsonName: lldp_lldp_ieee_802_3_aggregated_port_id
+  lldp.ieee.802_3.max_frame_size:
+    Name: lldp.ieee.802_3.max_frame_size
+    Type: FtUint16
+    Display: BaseDec
+    Info: Maximum Frame Size
+    JsonName: lldp_lldp_ieee_802_3_max_frame_size
+  lldp.ieee.802_3.eee.transmit:
+    Name: lldp.ieee.802_3.eee.transmit
+    Type: FtUint16
+    Display: BaseDec
+    Info: Transmit
+    JsonName: lldp_lldp_ieee_802_3_eee_transmit
+  lldp.ieee.802_3.eee.receive:
+    Name: lldp.ieee.802_3.eee.receive
+    Type: FtUint16
+    Display: BaseDec
+    Info: Receive
+    JsonName: lldp_lldp_ieee_802_3_eee_receive
+  lldp.ieee.802_3.eee.fallback_receive:
+    Name: lldp.ieee.802_3.eee.fallback_receive
+    Type: FtUint16
+    Display: BaseDec
+    Info: Fallback Receive
+    JsonName: lldp_lldp_ieee_802_3_eee_fallback_receive
+  lldp.ieee.802_3.eee.echo_transmit:
+    Name: lldp.ieee.802_3.eee.echo_transmit
+    Type: FtUint16
+    Display: BaseDec
+    Info: Echo Transmit
+    JsonName: lldp_lldp_ieee_802_3_eee_echo_transmit
+  lldp.ieee.802_3.eee.echo_receive:
+    Name: lldp.ieee.802_3.eee.echo_receive
+    Type: FtUint16
+    Display: BaseDec
+    Info: Echo Receive
+    JsonName: lldp_lldp_ieee_802_3_eee_echo_receive
+  lldp.ieee.802_1qbg.subtype:
+    Name: lldp.ieee.802_1qbg.subtype
+    Type: FtUint8
+    Display: BaseHex
+    Info: IEEE 802.1Qbg Subtype
+    JsonName: lldp_lldp_ieee_802_1qbg_subtype
+  lldp.ieee.802_1qbg.evb_support_caps:
+    Name: lldp.ieee.802_1qbg.evb_support_caps
+    Type: FtUint16
+    Display: BaseHex
+    Info: Supported capabilities
+    JsonName: lldp_lldp_ieee_802_1qbg_evb_support_caps
+  lldp.ieee.802_1qbg.evb_support_caps.std:
+    Name: lldp.ieee.802_1qbg.evb_support_caps.std
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Standard bridging (STD)
+    JsonName: lldp_ieee_802_1qbg_evb_support_caps_lldp_ieee_802_1qbg_evb_support_caps_std
+  lldp.ieee.802_1qbg.evb_support_caps.rr:
+    Name: lldp.ieee.802_1qbg.evb_support_caps.rr
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Reflective relay (RR)
+    JsonName: lldp_ieee_802_1qbg_evb_support_caps_lldp_ieee_802_1qbg_evb_support_caps_rr
+  lldp.ieee.802_1qbg.evb_support_caps.rte:
+    Name: lldp.ieee.802_1qbg.evb_support_caps.rte
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Retransmission timer exponent (RTE)
+    JsonName: lldp_ieee_802_1qbg_evb_support_caps_lldp_ieee_802_1qbg_evb_support_caps_rte
+  lldp.ieee.802_1qbg.evb_support_caps.ecp:
+    Name: lldp.ieee.802_1qbg.evb_support_caps.ecp
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Edge control protocol (ECP)
+    JsonName: lldp_ieee_802_1qbg_evb_support_caps_lldp_ieee_802_1qbg_evb_support_caps_ecp
+  lldp.ieee.802_1qbg.evb_support_caps.vdp:
+    Name: lldp.ieee.802_1qbg.evb_support_caps.vdp
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: VSI discovery protocol (VDP)
+    JsonName: lldp_ieee_802_1qbg_evb_support_caps_lldp_ieee_802_1qbg_evb_support_caps_vdp
+  lldp.ieee.802_1qbg.evb_configure_caps:
+    Name: lldp.ieee.802_1qbg.evb_configure_caps
+    Type: FtUint16
+    Display: BaseHex
+    Info: Configured capabilities
+    JsonName: lldp_lldp_ieee_802_1qbg_evb_configure_caps
+  lldp.ieee.802_1qbg.evb_configure_caps.std:
+    Name: lldp.ieee.802_1qbg.evb_configure_caps.std
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Standard bridging (STD)
+    JsonName: lldp_ieee_802_1qbg_evb_configure_caps_lldp_ieee_802_1qbg_evb_configure_caps_std
+  lldp.ieee.802_1qbg.evb_configure_caps.rr:
+    Name: lldp.ieee.802_1qbg.evb_configure_caps.rr
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Reflective relay (RR)
+    JsonName: lldp_ieee_802_1qbg_evb_configure_caps_lldp_ieee_802_1qbg_evb_configure_caps_rr
+  lldp.ieee.802_1qbg.evb_configure_caps.rte:
+    Name: lldp.ieee.802_1qbg.evb_configure_caps.rte
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Retransmission timer exponent (RTE)
+    JsonName: lldp_ieee_802_1qbg_evb_configure_caps_lldp_ieee_802_1qbg_evb_configure_caps_rte
+  lldp.ieee.802_1qbg.evb_configure_caps.ecp:
+    Name: lldp.ieee.802_1qbg.evb_configure_caps.ecp
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Edge control protocol (ECP)
+    JsonName: lldp_ieee_802_1qbg_evb_configure_caps_lldp_ieee_802_1qbg_evb_configure_caps_ecp
+  lldp.ieee.802_1qbg.evb_configure_caps.vdp:
+    Name: lldp.ieee.802_1qbg.evb_configure_caps.vdp
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: VSI discovery protocol (VDP)
+    JsonName: lldp_ieee_802_1qbg_evb_configure_caps_lldp_ieee_802_1qbg_evb_configure_caps_vdp
+  lldp.ieee.802_1qbg.evb_supported_vsi:
+    Name: lldp.ieee.802_1qbg.evb_supported_vsi
+    Type: FtUint16
+    Display: BaseDec
+    Info: Supported No of VSIs
+    JsonName: lldp_lldp_ieee_802_1qbg_evb_supported_vsi
+  lldp.ieee.802_1qbg.evb_configured_vsi:
+    Name: lldp.ieee.802_1qbg.evb_configured_vsi
+    Type: FtUint16
+    Display: BaseDec
+    Info: Configured No of VSIs
+    JsonName: lldp_lldp_ieee_802_1qbg_evb_configured_vsi
+  lldp.ieee.802_1qbg.evb_retrans_timer:
+    Name: lldp.ieee.802_1qbg.evb_retrans_timer
+    Type: FtUint8
+    Display: BaseDec
+    Info: Retransmission timer exponent
+    JsonName: lldp_lldp_ieee_802_1qbg_evb_retrans_timer
+  lldp.media.subtype:
+    Name: lldp.media.subtype
+    Type: FtUint8
+    Display: BaseHex
+    Info: Media Subtype
+    JsonName: lldp_lldp_media_subtype
+  lldp.media.subtype.caps:
+    Name: lldp.media.subtype.caps
+    Type: FtUint16
+    Display: BaseHex
+    Info: Capabilities
+    JsonName: lldp_media_subtype_lldp_media_subtype_caps
+  lldp.media.subtype.caps.llpd:
+    Name: lldp.media.subtype.caps.llpd
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: LLDP-MED Capabilities
+    JsonName: lldp_media_subtype_caps_lldp_media_subtype_caps_llpd
+  lldp.media.subtype.caps.network_policy:
+    Name: lldp.media.subtype.caps.network_policy
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Network Policy
+    JsonName: lldp_media_subtype_caps_lldp_media_subtype_caps_network_policy
+  lldp.media.subtype.caps.location_id:
+    Name: lldp.media.subtype.caps.location_id
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Location Identification
+    JsonName: lldp_media_subtype_caps_lldp_media_subtype_caps_location_id
+  lldp.media.subtype.caps.mdi_pse:
+    Name: lldp.media.subtype.caps.mdi_pse
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Extended Power via MDI-PSE
+    JsonName: lldp_media_subtype_caps_lldp_media_subtype_caps_mdi_pse
+  lldp.media.subtype.caps.mid_pd:
+    Name: lldp.media.subtype.caps.mid_pd
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Extended Power via MDI-PD
+    JsonName: lldp_media_subtype_caps_lldp_media_subtype_caps_mid_pd
+  lldp.media.subtype.caps.inventory:
+    Name: lldp.media.subtype.caps.inventory
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Inventory
+    JsonName: lldp_media_subtype_caps_lldp_media_subtype_caps_inventory
+  lldp.media.subtype.class:
+    Name: lldp.media.subtype.class
+    Type: FtUint8
+    Display: BaseDec
+    Info: Class Type
+    JsonName: lldp_media_subtype_lldp_media_subtype_class
+  lldp.media.app_type:
+    Name: lldp.media.app_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Application Type
+    JsonName: lldp_lldp_media_app_type
+  lldp.media.policy_flag:
+    Name: lldp.media.policy_flag
+    Type: FtBoolean
+    Display: 24
+    Info: Policy
+    JsonName: lldp_lldp_media_policy_flag
+  lldp.media.tag_flag:
+    Name: lldp.media.tag_flag
+    Type: FtBoolean
+    Display: 24
+    Info: Tagged
+    JsonName: lldp_lldp_media_tag_flag
+  lldp.media.vlan_id:
+    Name: lldp.media.vlan_id
+    Type: FtUint24
+    Display: BaseDec
+    Info: VLAN Id
+    JsonName: lldp_lldp_media_vlan_id
+  lldp.media.l2_prio:
+    Name: lldp.media.l2_prio
+    Type: FtUint24
+    Display: BaseDec
+    Info: L2 Priority
+    JsonName: lldp_lldp_media_l2_prio
+  lldp.media.dscp:
+    Name: lldp.media.dscp
+    Type: FtUint24
+    Display: BaseDec
+    Info: DSCP Priority
+    JsonName: lldp_lldp_media_dscp
+  lldp.media.loc.data_format:
+    Name: lldp.media.loc.data_format
+    Type: FtUint8
+    Display: BaseDec
+    Info: Location Data Format
+    JsonName: lldp_lldp_media_loc_data_format
+  lldp.media.loc.lat_resolution:
+    Name: lldp.media.loc.lat_resolution
+    Type: FtUint8
+    Display: BaseDec
+    Info: Latitude Resolution
+    JsonName: lldp_lldp_media_loc_lat_resolution
+  lldp.media.loc.latitude:
+    Name: lldp.media.loc.latitude
+    Type: FtUint40
+    Display: BaseCustom
+    Info: Latitude
+    JsonName: lldp_lldp_media_loc_latitude
+  lldp.media.loc.long_resolution:
+    Name: lldp.media.loc.long_resolution
+    Type: FtUint8
+    Display: BaseDec
+    Info: Longitude Resolution
+    JsonName: lldp_lldp_media_loc_long_resolution
+  lldp.media.loc.longitude:
+    Name: lldp.media.loc.longitude
+    Type: FtUint40
+    Display: BaseCustom
+    Info: Longitude
+    JsonName: lldp_lldp_media_loc_longitude
+  lldp.media.loc.alt_type:
+    Name: lldp.media.loc.alt_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Altitude Type
+    JsonName: lldp_lldp_media_loc_alt_type
+  lldp.media.loc.alt_resolution:
+    Name: lldp.media.loc.alt_resolution
+    Type: FtUint16
+    Display: BaseDec
+    Info: Altitude Resolution
+    JsonName: lldp_lldp_media_loc_alt_resolution
+  lldp.media.loc.altitude:
+    Name: lldp.media.loc.altitude
+    Type: FtUint32
+    Display: BaseDec
+    Info: Altitude
+    JsonName: lldp_lldp_media_loc_altitude
+  lldp.media.loc.datum:
+    Name: lldp.media.loc.datum
+    Type: FtUint8
+    Display: BaseDec
+    Info: Datum
+    JsonName: lldp_lldp_media_loc_datum
+  lldp.media.civic.lenth:
+    Name: lldp.media.civic.lenth
+    Type: FtUint8
+    Display: BaseDec
+    Info: LCI Length
+    JsonName: lldp_lldp_media_civic_lenth
+  lldp.media.civic.what:
+    Name: lldp.media.civic.what
+    Type: FtUint8
+    Display: BaseDec
+    Info: What
+    JsonName: lldp_lldp_media_civic_what
+  lldp.media.civic.country:
+    Name: lldp.media.civic.country
+    Type: FtString
+    Info: Country
+    JsonName: lldp_lldp_media_civic_country
+  lldp.media.civic.type:
+    Name: lldp.media.civic.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: CA Type
+    JsonName: lldp_lldp_media_civic_type
+  lldp.media.civic.length:
+    Name: lldp.media.civic.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: CA Length
+    JsonName: lldp_lldp_media_civic_length
+  lldp.media.civic.value:
+    Name: lldp.media.civic.value
+    Type: FtStringz
+    Info: CA Value
+    JsonName: lldp_lldp_media_civic_value
+  lldp.media.ecs:
+    Name: lldp.media.ecs
+    Type: FtStringz
+    Info: ELIN
+    JsonName: lldp_lldp_media_ecs
+  lldp.media.power.type:
+    Name: lldp.media.power.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Power Type
+    JsonName: lldp_lldp_media_power_type
+  lldp.media.power.source:
+    Name: lldp.media.power.source
+    Type: FtUint8
+    Display: BaseDec
+    Info: Power Source
+    JsonName: lldp_lldp_media_power_source
+  lldp.media.power.prio:
+    Name: lldp.media.power.prio
+    Type: FtUint8
+    Display: BaseDec
+    Info: Power Priority
+    JsonName: lldp_lldp_media_power_prio
+  lldp.media.power.value:
+    Name: lldp.media.power.value
+    Type: FtUint16
+    Display: BaseCustom
+    Info: Power Value
+    JsonName: lldp_lldp_media_power_value
+  lldp.media.hardware:
+    Name: lldp.media.hardware
+    Type: FtStringzpad
+    Info: Hardware Revision
+    JsonName: lldp_lldp_media_hardware
+  lldp.media.firmware:
+    Name: lldp.media.firmware
+    Type: FtStringzpad
+    Info: Firmware Revision
+    JsonName: lldp_lldp_media_firmware
+  lldp.media.software:
+    Name: lldp.media.software
+    Type: FtStringzpad
+    Info: Software Revision
+    JsonName: lldp_lldp_media_software
+  lldp.media.sn:
+    Name: lldp.media.sn
+    Type: FtStringzpad
+    Info: Serial Number
+    JsonName: lldp_lldp_media_sn
+  lldp.media.manufacturer:
+    Name: lldp.media.manufacturer
+    Type: FtStringzpad
+    Info: Manufacturer Name
+    JsonName: lldp_lldp_media_manufacturer
+  lldp.media.model:
+    Name: lldp.media.model
+    Type: FtStringzpad
+    Info: Model Name
+    JsonName: lldp_lldp_media_model
+  lldp.media.asset:
+    Name: lldp.media.asset
+    Type: FtStringzpad
+    Info: Asset ID
+    JsonName: lldp_lldp_media_asset
+  lldp.profinet.subtype:
+    Name: lldp.profinet.subtype
+    Type: FtUint8
+    Display: BaseHex
+    Info: Subtype
+    JsonName: lldp_lldp_profinet_subtype
+  lldp.profinet.port_rx_delay_local:
+    Name: lldp.profinet.port_rx_delay_local
+    Type: FtUint32
+    Display: BaseDec
+    Info: Port RX Delay Local
+    JsonName: lldp_lldp_profinet_port_rx_delay_local
+  lldp.profinet.port_rx_delay_remote:
+    Name: lldp.profinet.port_rx_delay_remote
+    Type: FtUint32
+    Display: BaseDec
+    Info: Port RX Delay Remote
+    JsonName: lldp_lldp_profinet_port_rx_delay_remote
+  lldp.profinet.port_tx_delay_local:
+    Name: lldp.profinet.port_tx_delay_local
+    Type: FtUint32
+    Display: BaseDec
+    Info: Port TX Delay Local
+    JsonName: lldp_lldp_profinet_port_tx_delay_local
+  lldp.profinet.port_tx_delay_remote:
+    Name: lldp.profinet.port_tx_delay_remote
+    Type: FtUint32
+    Display: BaseDec
+    Info: Port TX Delay Remote
+    JsonName: lldp_lldp_profinet_port_tx_delay_remote
+  lldp.profinet.cable_delay_local:
+    Name: lldp.profinet.cable_delay_local
+    Type: FtUint32
+    Display: BaseDec
+    Info: Port Cable Delay Local
+    JsonName: lldp_lldp_profinet_cable_delay_local
+  lldp.profinet.rtc2_port_status:
+    Name: lldp.profinet.rtc2_port_status
+    Type: FtUint16
+    Display: BaseHex
+    Info: RTClass2 Port Status
+    JsonName: lldp_lldp_profinet_rtc2_port_status
+  lldp.profinet.rtc3_port_status:
+    Name: lldp.profinet.rtc3_port_status
+    Type: FtUint16
+    Display: BaseHex
+    Info: RTClass3 Port Status
+    JsonName: lldp_lldp_profinet_rtc3_port_status
+  lldp.profinet.rtc3_port_status.fragmentation:
+    Name: lldp.profinet.rtc3_port_status.fragmentation
+    Type: FtUint16
+    Display: BaseHex
+    Info: RTClass3_PortStatus.Fragmentation
+    JsonName: lldp_profinet_rtc3_port_status_lldp_profinet_rtc3_port_status_fragmentation
+  lldp.profinet.rtc3_port_status.reserved:
+    Name: lldp.profinet.rtc3_port_status.reserved
+    Type: FtUint16
+    Display: BaseHex
+    Info: RTClass3_PortStatus.reserved
+    JsonName: lldp_profinet_rtc3_port_status_lldp_profinet_rtc3_port_status_reserved
+  lldp.profinet.rtc3_port_status.preambleLength:
+    Name: lldp.profinet.rtc3_port_status.preambleLength
+    Type: FtUint16
+    Display: BaseHex
+    Info: RTClass3_PortStatus.PreambleLength
+    JsonName: lldp_profinet_rtc3_port_status_lldp_profinet_rtc3_port_status_preambleLength
+  lldp.profinet.mrp_domain_uuid:
+    Name: lldp.profinet.mrp_domain_uuid
+    Type: FtGuid
+    Info: MRP DomainUUID
+    JsonName: lldp_lldp_profinet_mrp_domain_uuid
+  lldp.profinet.mrrt_port_status:
+    Name: lldp.profinet.mrrt_port_status
+    Type: FtUint16
+    Display: BaseHex
+    Info: MRRT PortStatus
+    JsonName: lldp_lldp_profinet_mrrt_port_status
+  lldp.profinet.cm_mac_add:
+    Name: lldp.profinet.cm_mac_add
+    Type: FtEther
+    Info: CMMacAdd
+    JsonName: lldp_lldp_profinet_cm_mac_add
+  lldp.profinet.master_source_address:
+    Name: lldp.profinet.master_source_address
+    Type: FtEther
+    Info: MasterSourceAddress
+    JsonName: lldp_lldp_profinet_master_source_address
+  lldp.profinet.subdomain_uuid:
+    Name: lldp.profinet.subdomain_uuid
+    Type: FtGuid
+    Info: SubdomainUUID
+    JsonName: lldp_lldp_profinet_subdomain_uuid
+  lldp.profinet.ir_data_uuid:
+    Name: lldp.profinet.ir_data_uuid
+    Type: FtGuid
+    Info: IRDataUUID
+    JsonName: lldp_lldp_profinet_ir_data_uuid
+  lldp.profinet.length_of_period_valid:
+    Name: lldp.profinet.length_of_period_valid
+    Type: FtUint32
+    Display: BaseDec
+    Info: LengthOfPeriod.Valid
+    JsonName: lldp_lldp_profinet_length_of_period_valid
+  lldp.profinet.length_of_period_length:
+    Name: lldp.profinet.length_of_period_length
+    Type: FtUint32
+    Display: BaseDec
+    Info: LengthOfPeriod.Length
+    JsonName: lldp_lldp_profinet_length_of_period_length
+  lldp.profinet.red_period_begin_valid:
+    Name: lldp.profinet.red_period_begin_valid
+    Type: FtUint32
+    Display: BaseDec
+    Info: RedPeriodBegin.Valid
+    JsonName: lldp_lldp_profinet_red_period_begin_valid
+  lldp.profinet.red_period_begin_offset:
+    Name: lldp.profinet.red_period_begin_offset
+    Type: FtUint32
+    Display: BaseDec
+    Info: RedPeriodBegin.Offset
+    JsonName: lldp_lldp_profinet_red_period_begin_offset
+  lldp.profinet.orange_period_begin_valid:
+    Name: lldp.profinet.orange_period_begin_valid
+    Type: FtUint32
+    Display: BaseDec
+    Info: OrangePeriodBegin.Valid
+    JsonName: lldp_lldp_profinet_orange_period_begin_valid
+  lldp.profinet.orange_period_begin_offset:
+    Name: lldp.profinet.orange_period_begin_offset
+    Type: FtUint32
+    Display: BaseDec
+    Info: OrangePeriodBegin.Offset
+    JsonName: lldp_lldp_profinet_orange_period_begin_offset
+  lldp.profinet.green_period_begin_valid:
+    Name: lldp.profinet.green_period_begin_valid
+    Type: FtUint32
+    Display: BaseDec
+    Info: GreenPeriodBegin.Valid
+    JsonName: lldp_lldp_profinet_green_period_begin_valid
+  lldp.profinet.green_period_begin_offset:
+    Name: lldp.profinet.green_period_begin_offset
+    Type: FtUint32
+    Display: BaseDec
+    Info: GreenPeriodBegin.Offset
+    JsonName: lldp_lldp_profinet_green_period_begin_offset
+  lldp.cisco.subtype:
+    Name: lldp.cisco.subtype
+    Type: FtUint8
+    Display: BaseHex
+    Info: Cisco Subtype
+    JsonName: lldp_lldp_cisco_subtype
+  lldp.cisco.four_wire_power:
+    Name: lldp.cisco.four_wire_power
+    Type: FtUint8
+    Display: BaseHex
+    Info: Four-Wire Power-via-MDI
+    JsonName: lldp_lldp_cisco_four_wire_power
+  lldp.cisco.four_wire_power.poe:
+    Name: lldp.cisco.four_wire_power.poe
+    Type: FtBoolean
+    Display: SepDot
+    Info: PSE Four-Wire PoE
+    JsonName: lldp_cisco_four_wire_power_lldp_cisco_four_wire_power_poe
+  lldp.cisco.four_wire_power.spare_pair_arch:
+    Name: lldp.cisco.four_wire_power.spare_pair_arch
+    Type: FtBoolean
+    Display: SepDot
+    Info: PD Spare Pair Architecture
+    JsonName: lldp_cisco_four_wire_power_lldp_cisco_four_wire_power_spare_pair_arch
+  lldp.cisco.four_wire_power.req_spare_pair_poe:
+    Name: lldp.cisco.four_wire_power.req_spare_pair_poe
+    Type: FtBoolean
+    Display: SepDot
+    Info: PD Request Spare Pair PoE
+    JsonName: lldp_cisco_four_wire_power_lldp_cisco_four_wire_power_req_spare_pair_poe
+  lldp.cisco.four_wire_power.pse_spare_pair_poe:
+    Name: lldp.cisco.four_wire_power.pse_spare_pair_poe
+    Type: FtBoolean
+    Display: SepDot
+    Info: PSE Spare Pair PoE
+    JsonName: lldp_cisco_four_wire_power_lldp_cisco_four_wire_power_pse_spare_pair_poe
+  lldp.hytec.tlv_subtype:
+    Name: lldp.hytec.tlv_subtype
+    Type: FtUint8
+    Display: BaseDec
+    Info: Hytec Subtype
+    JsonName: lldp_lldp_hytec_tlv_subtype
+  lldp.hytec.group:
+    Name: lldp.hytec.group
+    Type: FtUint8
+    Display: BaseDec
+    Info: Group
+    JsonName: lldp_lldp_hytec_group
+  lldp.hytec.identifier:
+    Name: lldp.hytec.identifier
+    Type: FtUint8
+    Display: BaseDec
+    Info: Identifier
+    JsonName: lldp_lldp_hytec_identifier
+  lldp.hytec.trace_mac_address:
+    Name: lldp.hytec.trace_mac_address
+    Type: FtEther
+    Info: Trace MAC address
+    JsonName: lldp_lldp_hytec_trace_mac_address
+  lldp.hytec.requesters_mac_address:
+    Name: lldp.hytec.requesters_mac_address
+    Type: FtEther
+    Info: Requester's MAC address
+    JsonName: lldp_lldp_hytec_requesters_mac_address
+  lldp.hytec.maximum_depth:
+    Name: lldp.hytec.maximum_depth
+    Type: FtUint8
+    Display: BaseDec
+    Info: Maximum depth
+    JsonName: lldp_lldp_hytec_maximum_depth
+  lldp.hytec.answering_mac_address:
+    Name: lldp.hytec.answering_mac_address
+    Type: FtEther
+    Info: Answering MAC address
+    JsonName: lldp_lldp_hytec_answering_mac_address
+  lldp.hytec.actual_depth:
+    Name: lldp.hytec.actual_depth
+    Type: FtUint8
+    Display: BaseDec
+    Info: Actual depth
+    JsonName: lldp_lldp_hytec_actual_depth
+  lldp.hytec.invalid_object_data:
+    Name: lldp.hytec.invalid_object_data
+    Type: FtBytes
+    Info: Invalid object data
+    JsonName: lldp_lldp_hytec_invalid_object_data
+  lldp.hytec.unknown_identifier_content:
+    Name: lldp.hytec.unknown_identifier_content
+    Type: FtBytes
+    Info: Unknown Identifier Content
+    JsonName: lldp_lldp_hytec_unknown_identifier_content
+  lldp.avaya.subtype:
+    Name: lldp.avaya.subtype
+    Type: FtUint8
+    Display: BaseHex
+    Info: Avaya Subtype
+    JsonName: lldp_lldp_avaya_subtype
+  lldp.avaya.poe:
+    Name: lldp.avaya.poe
+    Type: FtBytes
+    Info: PoE Conservation Level Support
+    JsonName: lldp_lldp_avaya_poe
+  lldp.avaya.callserver:
+    Name: lldp.avaya.callserver
+    Type: FtIpv4
+    Info: Call Server IP Address
+    JsonName: lldp_lldp_avaya_callserver
+  lldp.avaya.cnaserver:
+    Name: lldp.avaya.cnaserver
+    Type: FtIpv4
+    Info: CNA Server IP Address
+    JsonName: lldp_lldp_avaya_cnaserver
+  lldp.avaya.fileserver:
+    Name: lldp.avaya.fileserver
+    Type: FtIpv4
+    Info: File Server
+    JsonName: lldp_lldp_avaya_fileserver
+  lldp.avaya.dot1q:
+    Name: lldp.avaya.dot1q
+    Type: FtUint8
+    Display: BaseHex
+    Info: 802.1Q Framing
+    JsonName: lldp_lldp_avaya_dot1q
+  lldp.avaya.ipphone:
+    Name: lldp.avaya.ipphone
+    Type: FtBytes
+    Info: IP Phone Addresses
+    JsonName: lldp_lldp_avaya_ipphone
+  lldp.avaya.ipphone.ip:
+    Name: lldp.avaya.ipphone.ip
+    Type: FtIpv4
+    Info: IP Address
+    JsonName: lldp_avaya_ipphone_lldp_avaya_ipphone_ip
+  lldp.avaya.ipphone.mask:
+    Name: lldp.avaya.ipphone.mask
+    Type: FtIpv4
+    Info: Subnet Mask
+    JsonName: lldp_avaya_ipphone_lldp_avaya_ipphone_mask
+  lldp.avaya.ipphone.gateway:
+    Name: lldp.avaya.ipphone.gateway
+    Type: FtIpv4
+    Info: Gateway IP
+    JsonName: lldp_avaya_ipphone_lldp_avaya_ipphone_gateway
+  lldp.unknown_subtype:
+    Name: lldp.unknown_subtype
+    Type: FtUint8
+    Display: BaseDec
+    Info: Unknown Subtype
+    JsonName: lldp_lldp_unknown_subtype
+  lldp.unknown_subtype.content:
+    Name: lldp.unknown_subtype.content
+    Type: FtBytes
+    Info: Unknown Subtype Content
+    JsonName: lldp_unknown_subtype_lldp_unknown_subtype_content

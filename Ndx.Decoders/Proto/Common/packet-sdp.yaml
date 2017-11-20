@@ -1,0 +1,417 @@
+Name: sdp
+Fields:
+  sdp.version:
+    Name: sdp.version
+    Type: FtString
+    Info: Session Description Protocol Version (v)
+    JsonName: sdp_sdp_version
+  sdp.owner:
+    Name: sdp.owner
+    Type: FtString
+    Info: Owner/Creator, Session Id (o)
+    JsonName: sdp_sdp_owner
+  sdp.session_name:
+    Name: sdp.session_name
+    Type: FtString
+    Info: Session Name (s)
+    JsonName: sdp_sdp_session_name
+  sdp.session_info:
+    Name: sdp.session_info
+    Type: FtString
+    Info: Session Information (i)
+    JsonName: sdp_sdp_session_info
+  sdp.uri:
+    Name: sdp.uri
+    Type: FtString
+    Info: URI of Description (u)
+    JsonName: sdp_sdp_uri
+  sdp.email:
+    Name: sdp.email
+    Type: FtString
+    Info: E-mail Address (e)
+    JsonName: sdp_sdp_email
+  sdp.phone:
+    Name: sdp.phone
+    Type: FtString
+    Info: Phone Number (p)
+    JsonName: sdp_sdp_phone
+  sdp.connection_info:
+    Name: sdp.connection_info
+    Type: FtString
+    Info: Connection Information (c)
+    JsonName: sdp_sdp_connection_info
+  sdp.bandwidth:
+    Name: sdp.bandwidth
+    Type: FtString
+    Info: Bandwidth Information (b)
+    JsonName: sdp_sdp_bandwidth
+  sdp.timezone:
+    Name: sdp.timezone
+    Type: FtString
+    Info: Time Zone Adjustments (z)
+    JsonName: sdp_sdp_timezone
+  sdp.encryption_key:
+    Name: sdp.encryption_key
+    Type: FtString
+    Info: Encryption Key (k)
+    JsonName: sdp_sdp_encryption_key
+  sdp.session_attr:
+    Name: sdp.session_attr
+    Type: FtString
+    Info: Session Attribute (a)
+    JsonName: sdp_sdp_session_attr
+  sdp.media_attr:
+    Name: sdp.media_attr
+    Type: FtString
+    Info: Media Attribute (a)
+    JsonName: sdp_sdp_media_attr
+  sdp.time:
+    Name: sdp.time
+    Type: FtString
+    Info: Time Description, active time (t)
+    JsonName: sdp_sdp_time
+  sdp.repeat_time:
+    Name: sdp.repeat_time
+    Type: FtString
+    Info: Repeat Time (r)
+    JsonName: sdp_sdp_repeat_time
+  sdp.media:
+    Name: sdp.media
+    Type: FtString
+    Info: Media Description, name and address (m)
+    JsonName: sdp_sdp_media
+  sdp.media_title:
+    Name: sdp.media_title
+    Type: FtString
+    Info: Media Title (i)
+    JsonName: sdp_sdp_media_title
+  sdp.unknown:
+    Name: sdp.unknown
+    Type: FtString
+    Info: Unknown
+    JsonName: sdp_sdp_unknown
+  sdp.invalid:
+    Name: sdp.invalid
+    Type: FtString
+    Info: Invalid line
+    JsonName: sdp_sdp_invalid
+  sdp.owner.username:
+    Name: sdp.owner.username
+    Type: FtString
+    Info: Owner Username
+    JsonName: sdp_owner_sdp_owner_username
+  sdp.owner.sessionid:
+    Name: sdp.owner.sessionid
+    Type: FtString
+    Info: Session ID
+    JsonName: sdp_owner_sdp_owner_sessionid
+  sdp.owner.version:
+    Name: sdp.owner.version
+    Type: FtString
+    Info: Session Version
+    JsonName: sdp_owner_sdp_owner_version
+  sdp.owner.network_type:
+    Name: sdp.owner.network_type
+    Type: FtString
+    Info: Owner Network Type
+    JsonName: sdp_owner_sdp_owner_network_type
+  sdp.owner.address_type:
+    Name: sdp.owner.address_type
+    Type: FtString
+    Info: Owner Address Type
+    JsonName: sdp_owner_sdp_owner_address_type
+  sdp.owner.address:
+    Name: sdp.owner.address
+    Type: FtString
+    Info: Owner Address
+    JsonName: sdp_owner_sdp_owner_address
+  sdp.connection_info.network_type:
+    Name: sdp.connection_info.network_type
+    Type: FtString
+    Info: Connection Network Type
+    JsonName: sdp_connection_info_sdp_connection_info_network_type
+  sdp.connection_info.address_type:
+    Name: sdp.connection_info.address_type
+    Type: FtString
+    Info: Connection Address Type
+    JsonName: sdp_connection_info_sdp_connection_info_address_type
+  sdp.connection_info.address:
+    Name: sdp.connection_info.address
+    Type: FtString
+    Info: Connection Address
+    JsonName: sdp_connection_info_sdp_connection_info_address
+  sdp.connection_info.ttl:
+    Name: sdp.connection_info.ttl
+    Type: FtString
+    Info: Connection TTL
+    JsonName: sdp_connection_info_sdp_connection_info_ttl
+  sdp.connection_info.num_addr:
+    Name: sdp.connection_info.num_addr
+    Type: FtString
+    Info: Connection Number of Addresses
+    JsonName: sdp_connection_info_sdp_connection_info_num_addr
+  sdp.bandwidth.modifier:
+    Name: sdp.bandwidth.modifier
+    Type: FtString
+    Info: Bandwidth Modifier
+    JsonName: sdp_bandwidth_sdp_bandwidth_modifier
+  sdp.bandwidth.value:
+    Name: sdp.bandwidth.value
+    Type: FtString
+    Info: Bandwidth Value
+    JsonName: sdp_bandwidth_sdp_bandwidth_value
+  sdp.time.start:
+    Name: sdp.time.start
+    Type: FtString
+    Info: Session Start Time
+    JsonName: sdp_time_sdp_time_start
+  sdp.time.stop:
+    Name: sdp.time.stop
+    Type: FtString
+    Info: Session Stop Time
+    JsonName: sdp_time_sdp_time_stop
+  sdp.repeat_time.interval:
+    Name: sdp.repeat_time.interval
+    Type: FtString
+    Info: Repeat Interval
+    JsonName: sdp_repeat_time_sdp_repeat_time_interval
+  sdp.repeat_time.duration:
+    Name: sdp.repeat_time.duration
+    Type: FtString
+    Info: Repeat Duration
+    JsonName: sdp_repeat_time_sdp_repeat_time_duration
+  sdp.repeat_time.offset:
+    Name: sdp.repeat_time.offset
+    Type: FtString
+    Info: Repeat Offset
+    JsonName: sdp_repeat_time_sdp_repeat_time_offset
+  sdp.timezone.time:
+    Name: sdp.timezone.time
+    Type: FtString
+    Info: Timezone Time
+    JsonName: sdp_timezone_sdp_timezone_time
+  sdp.timezone.offset:
+    Name: sdp.timezone.offset
+    Type: FtString
+    Info: Timezone Offset
+    JsonName: sdp_timezone_sdp_timezone_offset
+  sdp.encryption_key.type:
+    Name: sdp.encryption_key.type
+    Type: FtString
+    Info: Key Type
+    JsonName: sdp_encryption_key_sdp_encryption_key_type
+  sdp.encryption_key.data:
+    Name: sdp.encryption_key.data
+    Type: FtString
+    Info: Key Data
+    JsonName: sdp_encryption_key_sdp_encryption_key_data
+  sdp.session_attr.field:
+    Name: sdp.session_attr.field
+    Type: FtString
+    Info: Session Attribute Fieldname
+    JsonName: sdp_session_attr_sdp_session_attr_field
+  sdp.session_attr.value:
+    Name: sdp.session_attr.value
+    Type: FtString
+    Info: Session Attribute Value
+    JsonName: sdp_session_attr_sdp_session_attr_value
+  sdp.media.media:
+    Name: sdp.media.media
+    Type: FtString
+    Info: Media Type
+    JsonName: sdp_media_sdp_media_media
+  sdp.media.port:
+    Name: sdp.media.port
+    Type: FtUint16
+    Display: BaseDec
+    Info: Media Port
+    JsonName: sdp_media_sdp_media_port
+  sdp.media.port_string:
+    Name: sdp.media.port_string
+    Type: FtString
+    Info: Media Port
+    JsonName: sdp_media_sdp_media_port_string
+  sdp.media.portcount:
+    Name: sdp.media.portcount
+    Type: FtString
+    Info: Media Port Count
+    JsonName: sdp_media_sdp_media_portcount
+  sdp.media.proto:
+    Name: sdp.media.proto
+    Type: FtString
+    Info: Media Protocol
+    JsonName: sdp_media_sdp_media_proto
+  sdp.media.format:
+    Name: sdp.media.format
+    Type: FtString
+    Info: Media Format
+    JsonName: sdp_media_sdp_media_format
+  sdp.media_attribute.field:
+    Name: sdp.media_attribute.field
+    Type: FtString
+    Info: Media Attribute Fieldname
+    JsonName: sdp_sdp_media_attribute_field
+  sdp.media_attribute.value:
+    Name: sdp.media_attribute.value
+    Type: FtString
+    Info: Media Attribute Value
+    JsonName: sdp_sdp_media_attribute_value
+  sdp.mime.type:
+    Name: sdp.mime.type
+    Type: FtString
+    Info: MIME Type
+    JsonName: sdp_sdp_mime_type
+  sdp.sample_rate:
+    Name: sdp.sample_rate
+    Type: FtString
+    Info: Sample Rate
+    JsonName: sdp_sdp_sample_rate
+  sdp.fmtp.parameter:
+    Name: sdp.fmtp.parameter
+    Type: FtString
+    Info: Media format specific parameters
+    JsonName: sdp_sdp_fmtp_parameter
+  sdp.ipbcp.version:
+    Name: sdp.ipbcp.version
+    Type: FtString
+    Info: IPBCP Protocol Version
+    JsonName: sdp_sdp_ipbcp_version
+  sdp.ipbcp.command:
+    Name: sdp.ipbcp.command
+    Type: FtString
+    Info: IPBCP Command Type
+    JsonName: sdp_sdp_ipbcp_command
+  sdp.fmtp.profile_level_id:
+    Name: sdp.fmtp.profile_level_id
+    Type: FtUint32
+    Display: BaseDec
+    Info: Level Code
+    JsonName: sdp_sdp_fmtp_profile_level_id
+  sdp.fmtp.h263profile:
+    Name: sdp.fmtp.h263profile
+    Type: FtUint32
+    Display: BaseDec
+    Info: Profile
+    JsonName: sdp_sdp_fmtp_h263profile
+  sdp.fmtp.h263level:
+    Name: sdp.fmtp.h263level
+    Type: FtUint32
+    Display: BaseDec
+    Info: Level
+    JsonName: sdp_sdp_fmtp_h263level
+  sdp.fmtp.h264_packetization_mode:
+    Name: sdp.fmtp.h264_packetization_mode
+    Type: FtUint32
+    Display: BaseDec
+    Info: Packetization mode
+    JsonName: sdp_sdp_fmtp_h264_packetization_mode
+  sdp.h223LogicalChannelParameters:
+    Name: sdp.h223LogicalChannelParameters
+    Info: h223LogicalChannelParameters
+    JsonName: sdp_sdp_h223LogicalChannelParameters
+  sdp.key_mgmt:
+    Name: sdp.key_mgmt
+    Type: FtString
+    Info: Key Management
+    JsonName: sdp_sdp_key_mgmt
+  sdp.key_mgmt.kmpid:
+    Name: sdp.key_mgmt.kmpid
+    Type: FtString
+    Info: Key Management Protocol (kmpid)
+    JsonName: sdp_key_mgmt_sdp_key_mgmt_kmpid
+  sdp.key_mgmt.data:
+    Name: sdp.key_mgmt.data
+    Type: FtBytes
+    Info: Key Management Data
+    JsonName: sdp_key_mgmt_sdp_key_mgmt_data
+  sdp.crypto.tag:
+    Name: sdp.crypto.tag
+    Type: FtUint32
+    Display: BaseDec
+    Info: tag
+    JsonName: sdp_sdp_crypto_tag
+  sdp.crypto.crypto_suite:
+    Name: sdp.crypto.crypto_suite
+    Type: FtString
+    Info: Crypto suite
+    JsonName: sdp_sdp_crypto_crypto_suite
+  sdp.crypto.master_key:
+    Name: sdp.crypto.master_key
+    Type: FtBytes
+    Info: Master Key
+    JsonName: sdp_sdp_crypto_master_key
+  sdp.crypto.master_salt:
+    Name: sdp.crypto.master_salt
+    Type: FtBytes
+    Info: Master salt
+    JsonName: sdp_sdp_crypto_master_salt
+  sdp.crypto.lifetime:
+    Name: sdp.crypto.lifetime
+    Type: FtString
+    Info: Lifetime
+    JsonName: sdp_sdp_crypto_lifetime
+  sdp.crypto.mki-valu:
+    Name: sdp.crypto.mki-valu
+    Type: FtString
+    Info: mki-value
+    JsonName: sdp_sdp_crypto_mki-valu
+  sdp.crypto.mki_length:
+    Name: sdp.crypto.mki_length
+    Type: FtString
+    Info: mki_length
+    JsonName: sdp_sdp_crypto_mki_length
+  sdp.ice_candidate.foundation:
+    Name: sdp.ice_candidate.foundation
+    Type: FtString
+    Info: Foundation
+    JsonName: sdp_sdp_ice_candidate_foundation
+  sdp.ice_candidate.componentid:
+    Name: sdp.ice_candidate.componentid
+    Type: FtString
+    Info: Component ID
+    JsonName: sdp_sdp_ice_candidate_componentid
+  sdp.ice_candidate.transport:
+    Name: sdp.ice_candidate.transport
+    Type: FtString
+    Info: Transport
+    JsonName: sdp_sdp_ice_candidate_transport
+  sdp.ice_candidate.priority:
+    Name: sdp.ice_candidate.priority
+    Type: FtString
+    Info: Priority
+    JsonName: sdp_sdp_ice_candidate_priority
+  sdp.ice_candidate.address:
+    Name: sdp.ice_candidate.address
+    Type: FtString
+    Info: Connection Address
+    JsonName: sdp_sdp_ice_candidate_address
+  sdp.ice_candidate.port:
+    Name: sdp.ice_candidate.port
+    Type: FtString
+    Info: Candidate Port
+    JsonName: sdp_sdp_ice_candidate_port
+  sdp.ice_candidate.type:
+    Name: sdp.ice_candidate.type
+    Type: FtString
+    Info: Candidate Type
+    JsonName: sdp_sdp_ice_candidate_type
+  sdp.nal_unit_1_string:
+    Name: sdp.nal_unit_1_string
+    Type: FtString
+    Info: NAL unit 1 string
+    JsonName: sdp_sdp_nal_unit_1_string
+  sdp.nal_unit_2_string:
+    Name: sdp.nal_unit_2_string
+    Type: FtString
+    Info: NAL unit 2 string
+    JsonName: sdp_sdp_nal_unit_2_string
+  sdp.key_and_salt:
+    Name: sdp.key_and_salt
+    Type: FtBytes
+    Info: Key and Salt
+    JsonName: sdp_sdp_key_and_salt
+  sdp.data:
+    Name: sdp.data
+    Type: FtBytes
+    Info: Data
+    JsonName: sdp_sdp_data

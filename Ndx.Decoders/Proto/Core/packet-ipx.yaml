@@ -1,0 +1,183 @@
+Name: ipx
+Fields:
+  ipx.checksum:
+    Name: ipx.checksum
+    Type: FtUint16
+    Display: BaseHex
+    Info: Checksum
+    JsonName: ipx_ipx_checksum
+  ipx.src:
+    Name: ipx.src
+    Type: FtString
+    Info: Source Address
+    JsonName: ipx_ipx_src
+  ipx.dst:
+    Name: ipx.dst
+    Type: FtString
+    Info: Destination Address
+    JsonName: ipx_ipx_dst
+  ipx.addr:
+    Name: ipx.addr
+    Type: FtString
+    Info: Src/Dst Address
+    JsonName: ipx_ipx_addr
+  ipx.len:
+    Name: ipx.len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length
+    JsonName: ipx_ipx_len
+  ipx.hops:
+    Name: ipx.hops
+    Type: FtUint8
+    Display: BaseDec
+    Info: Transport Control (Hops)
+    JsonName: ipx_ipx_hops
+  ipx.packet_type:
+    Name: ipx.packet_type
+    Type: FtUint8
+    Display: BaseHex
+    Info: Packet Type
+    JsonName: ipx_ipx_packet_type
+  ipx.dst.net:
+    Name: ipx.dst.net
+    Type: FtIpxnet
+    Info: Destination Network
+    JsonName: ipx_dst_ipx_dst_net
+  ipx.dst.node:
+    Name: ipx.dst.node
+    Type: FtEther
+    Info: Destination Node
+    JsonName: ipx_dst_ipx_dst_node
+  ipx.dst.socket:
+    Name: ipx.dst.socket
+    Type: FtUint16
+    Display: BaseHex
+    Info: Destination Socket
+    JsonName: ipx_dst_ipx_dst_socket
+  ipx.src.net:
+    Name: ipx.src.net
+    Type: FtIpxnet
+    Info: Source Network
+    JsonName: ipx_src_ipx_src_net
+  ipx.src.node:
+    Name: ipx.src.node
+    Type: FtEther
+    Info: Source Node
+    JsonName: ipx_src_ipx_src_node
+  ipx.src.socket:
+    Name: ipx.src.socket
+    Type: FtUint16
+    Display: BaseHex
+    Info: Source Socket
+    JsonName: ipx_src_ipx_src_socket
+  ipx.net:
+    Name: ipx.net
+    Type: FtIpxnet
+    Info: Source or Destination Network
+    JsonName: ipx_ipx_net
+  ipx.node:
+    Name: ipx.node
+    Type: FtEther
+    Info: Source or Destination Node
+    JsonName: ipx_ipx_node
+  ipx.socket:
+    Name: ipx.socket
+    Type: FtUint16
+    Display: BaseHex
+    Info: Source or Destination Socket
+    JsonName: ipx_ipx_socket
+  ipxrip.request:
+    Name: ipxrip.request
+    Type: FtBoolean
+    Info: Request
+    JsonName: ipx_ipxrip_request
+  ipxrip.response:
+    Name: ipxrip.response
+    Type: FtBoolean
+    Info: Response
+    JsonName: ipx_ipxrip_response
+  ipxrip.packet_type:
+    Name: ipxrip.packet_type
+    Type: FtUint16
+    Display: BaseDec
+    Info: RIP packet type
+    JsonName: ipx_ipxrip_packet_type
+  ipxrip.route_vector:
+    Name: ipxrip.route_vector
+    Type: FtIpxnet
+    Info: Route Vector
+    JsonName: ipx_ipxrip_route_vector
+  ipxrip.hops:
+    Name: ipxrip.hops
+    Type: FtUint16
+    Display: BaseDec
+    Info: Hops
+    JsonName: ipx_ipxrip_hops
+  ipxrip.ticks:
+    Name: ipxrip.ticks
+    Type: FtUint16
+    Display: BaseDec
+    Info: Ticks
+    JsonName: ipx_ipxrip_ticks
+  ipxsap.request:
+    Name: ipxsap.request
+    Type: FtBoolean
+    Info: Request
+    JsonName: ipx_ipxsap_request
+  ipxsap.response:
+    Name: ipxsap.response
+    Type: FtBoolean
+    Info: Response
+    JsonName: ipx_ipxsap_response
+  ipxsap.packet_type:
+    Name: ipxsap.packet_type
+    Type: FtUint16
+    Display: BaseDec
+    Info: SAP packet type
+    JsonName: ipx_ipxsap_packet_type
+  ipxsap.server_name:
+    Name: ipxsap.server_name
+    Type: FtStringz
+    Info: Server Name
+    JsonName: ipx_ipxsap_server_name
+  ipxsap.server_type:
+    Name: ipxsap.server_type
+    Type: FtUint16
+    Display: BaseHex
+    Info: Server Type
+    JsonName: ipx_ipxsap_server_type
+  ipxsap.network:
+    Name: ipxsap.network
+    Type: FtIpxnet
+    Info: Network
+    JsonName: ipx_ipxsap_network
+  ipxsap.node:
+    Name: ipxsap.node
+    Type: FtEther
+    Info: Node
+    JsonName: ipx_ipxsap_node
+  ipxsap.socket:
+    Name: ipxsap.socket
+    Type: FtUint16
+    Display: BaseHex
+    Info: Socket
+    JsonName: ipx_ipxsap_socket
+  ipxsap.intermediate_networks:
+    Name: ipxsap.intermediate_networks
+    Type: FtUint16
+    Display: BaseDec
+    Info: Intermediate Networks
+    JsonName: ipx_ipxsap_intermediate_networks
+  ipxmsg.conn:
+    Name: ipxmsg.conn
+    Type: FtUint8
+    Display: BaseDec
+    Info: Connection Number
+    JsonName: ipx_ipxmsg_conn
+  ipxmsg.sigchar:
+    Name: ipxmsg.sigchar
+    Type: FtChar
+    Display: BaseHex
+    Info: Signature Char
+    JsonName: ipx_ipxmsg_sigchar

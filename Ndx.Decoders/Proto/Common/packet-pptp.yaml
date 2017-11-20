@@ -1,0 +1,288 @@
+Name: pptp
+Fields:
+  pptp.length:
+    Name: pptp.length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length
+    JsonName: pptp_pptp_length
+  pptp.type:
+    Name: pptp.type
+    Type: FtUint16
+    Display: BaseDec
+    Info: Message type
+    JsonName: pptp_pptp_type
+  pptp.magic_cookie:
+    Name: pptp.magic_cookie
+    Type: FtUint32
+    Display: BaseHex
+    Info: Magic Cookie
+    JsonName: pptp_pptp_magic_cookie
+  pptp.control_message_type:
+    Name: pptp.control_message_type
+    Type: FtUint16
+    Display: BaseDec
+    Info: Control Message Type
+    JsonName: pptp_pptp_control_message_type
+  pptp.reserved:
+    Name: pptp.reserved
+    Type: FtBytes
+    Info: Reserved
+    JsonName: pptp_pptp_reserved
+  pptp.protocol_version:
+    Name: pptp.protocol_version
+    Type: FtUint16
+    Display: BaseDec
+    Info: Protocol version
+    JsonName: pptp_pptp_protocol_version
+  pptp.framing_capabilities:
+    Name: pptp.framing_capabilities
+    Type: FtUint32
+    Display: BaseDec
+    Info: Framing Capabilities
+    JsonName: pptp_pptp_framing_capabilities
+  pptp.bearer_capabilities:
+    Name: pptp.bearer_capabilities
+    Type: FtUint32
+    Display: BaseDec
+    Info: Bearer Capabilities
+    JsonName: pptp_pptp_bearer_capabilities
+  pptp.maximum_channels:
+    Name: pptp.maximum_channels
+    Type: FtUint16
+    Display: BaseDec
+    Info: Maximum Channels
+    JsonName: pptp_pptp_maximum_channels
+  pptp.firmware_revision:
+    Name: pptp.firmware_revision
+    Type: FtUint16
+    Display: BaseDec
+    Info: Firmware Revision
+    JsonName: pptp_pptp_firmware_revision
+  pptp.host_name:
+    Name: pptp.host_name
+    Type: FtString
+    Info: Host Name
+    JsonName: pptp_pptp_host_name
+  pptp.vendor_name:
+    Name: pptp.vendor_name
+    Type: FtString
+    Info: Vendor Name
+    JsonName: pptp_pptp_vendor_name
+  pptp.control_result:
+    Name: pptp.control_result
+    Type: FtUint8
+    Display: BaseDec
+    Info: Result Code
+    JsonName: pptp_pptp_control_result
+  pptp.error:
+    Name: pptp.error
+    Type: FtUint8
+    Display: BaseDec
+    Info: Error Code
+    JsonName: pptp_pptp_error
+  pptp.reason:
+    Name: pptp.reason
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reason
+    JsonName: pptp_pptp_reason
+  pptp.stop_result:
+    Name: pptp.stop_result
+    Type: FtUint8
+    Display: BaseDec
+    Info: Result Code
+    JsonName: pptp_pptp_stop_result
+  pptp.identifier:
+    Name: pptp.identifier
+    Type: FtUint32
+    Display: BaseDec
+    Info: Identifier
+    JsonName: pptp_pptp_identifier
+  pptp.echo_result:
+    Name: pptp.echo_result
+    Type: FtUint8
+    Display: BaseDec
+    Info: Result Code
+    JsonName: pptp_pptp_echo_result
+  pptp.call_id:
+    Name: pptp.call_id
+    Type: FtUint16
+    Display: BaseDec
+    Info: Call ID
+    JsonName: pptp_pptp_call_id
+  pptp.call_serial_number:
+    Name: pptp.call_serial_number
+    Type: FtUint16
+    Display: BaseDec
+    Info: Call Serial Number
+    JsonName: pptp_pptp_call_serial_number
+  pptp.minimum_bps:
+    Name: pptp.minimum_bps
+    Type: FtUint32
+    Display: BaseDec
+    Info: Minimum BPS
+    JsonName: pptp_pptp_minimum_bps
+  pptp.maximum_bps:
+    Name: pptp.maximum_bps
+    Type: FtUint32
+    Display: BaseDec
+    Info: Maximum BPS
+    JsonName: pptp_pptp_maximum_bps
+  pptp.framing_type:
+    Name: pptp.framing_type
+    Type: FtUint32
+    Display: BaseDec
+    Info: Framing Type
+    JsonName: pptp_pptp_framing_type
+  pptp.bearer_type:
+    Name: pptp.bearer_type
+    Type: FtUint32
+    Display: BaseDec
+    Info: Bearer Type
+    JsonName: pptp_pptp_bearer_type
+  pptp.packet_receive_window_size:
+    Name: pptp.packet_receive_window_size
+    Type: FtUint16
+    Display: BaseDec
+    Info: Packet Receive Window Size
+    JsonName: pptp_pptp_packet_receive_window_size
+  pptp.packet_processing_delay:
+    Name: pptp.packet_processing_delay
+    Type: FtUint16
+    Display: BaseDec
+    Info: Packet Processing Delay
+    JsonName: pptp_pptp_packet_processing_delay
+  pptp.phone_number_length:
+    Name: pptp.phone_number_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Phone Number Length
+    JsonName: pptp_pptp_phone_number_length
+  pptp.phone_number:
+    Name: pptp.phone_number
+    Type: FtString
+    Info: Phone Number
+    JsonName: pptp_pptp_phone_number
+  pptp.subaddress:
+    Name: pptp.subaddress
+    Type: FtString
+    Info: Subaddress
+    JsonName: pptp_pptp_subaddress
+  pptp.peer_call_id:
+    Name: pptp.peer_call_id
+    Type: FtUint16
+    Display: BaseDec
+    Info: Peer Call ID
+    JsonName: pptp_pptp_peer_call_id
+  pptp.out_result:
+    Name: pptp.out_result
+    Type: FtUint8
+    Display: BaseDec
+    Info: Result Code
+    JsonName: pptp_pptp_out_result
+  pptp.cause:
+    Name: pptp.cause
+    Type: FtUint16
+    Display: BaseDec
+    Info: Cause Code
+    JsonName: pptp_pptp_cause
+  pptp.connect_speed:
+    Name: pptp.connect_speed
+    Type: FtUint32
+    Display: BaseDec
+    Info: Connect Speed
+    JsonName: pptp_pptp_connect_speed
+  pptp.physical_channel_id:
+    Name: pptp.physical_channel_id
+    Type: FtUint32
+    Display: BaseDec
+    Info: Physical Channel ID
+    JsonName: pptp_pptp_physical_channel_id
+  pptp.dialed_number_length:
+    Name: pptp.dialed_number_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Dialed Number Length
+    JsonName: pptp_pptp_dialed_number_length
+  pptp.dialed_number:
+    Name: pptp.dialed_number
+    Type: FtString
+    Info: Dialed Number
+    JsonName: pptp_pptp_dialed_number
+  pptp.dialing_number_length:
+    Name: pptp.dialing_number_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Dialing Number Length
+    JsonName: pptp_pptp_dialing_number_length
+  pptp.dialing_number:
+    Name: pptp.dialing_number
+    Type: FtString
+    Info: Dialing Number
+    JsonName: pptp_pptp_dialing_number
+  pptp.in_result:
+    Name: pptp.in_result
+    Type: FtUint8
+    Display: BaseDec
+    Info: Result Code
+    JsonName: pptp_pptp_in_result
+  pptp.disc_result:
+    Name: pptp.disc_result
+    Type: FtUint8
+    Display: BaseDec
+    Info: Result Code
+    JsonName: pptp_pptp_disc_result
+  pptp.call_Statistics:
+    Name: pptp.call_Statistics
+    Type: FtString
+    Info: Call Statistics
+    JsonName: pptp_pptp_call_Statistics
+  pptp.crc_errors:
+    Name: pptp.crc_errors
+    Type: FtUint32
+    Display: BaseDec
+    Info: CRC Errors
+    JsonName: pptp_pptp_crc_errors
+  pptp.framing_errors:
+    Name: pptp.framing_errors
+    Type: FtUint32
+    Display: BaseDec
+    Info: Framing Errors
+    JsonName: pptp_pptp_framing_errors
+  pptp.hardware_overruns:
+    Name: pptp.hardware_overruns
+    Type: FtUint32
+    Display: BaseDec
+    Info: Hardware overruns
+    JsonName: pptp_pptp_hardware_overruns
+  pptp.buffer_overruns:
+    Name: pptp.buffer_overruns
+    Type: FtUint32
+    Display: BaseDec
+    Info: Buffer overruns
+    JsonName: pptp_pptp_buffer_overruns
+  pptp.timeout_errors:
+    Name: pptp.timeout_errors
+    Type: FtUint32
+    Display: BaseDec
+    Info: Time-out Errors
+    JsonName: pptp_pptp_timeout_errors
+  pptp.alignment_errors:
+    Name: pptp.alignment_errors
+    Type: FtUint32
+    Display: BaseDec
+    Info: Alignment Errors
+    JsonName: pptp_pptp_alignment_errors
+  pptp.send_accm:
+    Name: pptp.send_accm
+    Type: FtUint32
+    Display: BaseHex
+    Info: Send ACCM
+    JsonName: pptp_pptp_send_accm
+  pptp.receive_accm:
+    Name: pptp.receive_accm
+    Type: FtUint32
+    Display: BaseHex
+    Info: Receive ACCM
+    JsonName: pptp_pptp_receive_accm

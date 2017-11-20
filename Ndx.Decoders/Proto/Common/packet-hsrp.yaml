@@ -1,0 +1,240 @@
+Name: hsrp
+Fields:
+  hsrp.version:
+    Name: hsrp.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: Version
+    JsonName: hsrp_hsrp_version
+  hsrp.opcode:
+    Name: hsrp.opcode
+    Type: FtUint8
+    Display: BaseDec
+    Info: Op Code
+    JsonName: hsrp_hsrp_opcode
+  hsrp.state:
+    Name: hsrp.state
+    Type: FtUint8
+    Display: BaseDec
+    Info: State
+    JsonName: hsrp_hsrp_state
+  hsrp.hellotime:
+    Name: hsrp.hellotime
+    Type: FtUint8
+    Display: BaseDec
+    Info: Hellotime
+    JsonName: hsrp_hsrp_hellotime
+  hsrp.holdtime:
+    Name: hsrp.holdtime
+    Type: FtUint8
+    Display: BaseDec
+    Info: Holdtime
+    JsonName: hsrp_hsrp_holdtime
+  hsrp.priority:
+    Name: hsrp.priority
+    Type: FtUint8
+    Display: BaseDec
+    Info: Priority
+    JsonName: hsrp_hsrp_priority
+  hsrp.group:
+    Name: hsrp.group
+    Type: FtUint8
+    Display: BaseDec
+    Info: Group
+    JsonName: hsrp_hsrp_group
+  hsrp.reserved:
+    Name: hsrp.reserved
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: hsrp_hsrp_reserved
+  hsrp.auth_data:
+    Name: hsrp.auth_data
+    Type: FtString
+    Info: Authentication Data
+    JsonName: hsrp_hsrp_auth_data
+  hsrp.virt_ip:
+    Name: hsrp.virt_ip
+    Type: FtIpv4
+    Info: Virtual IP Address
+    JsonName: hsrp_hsrp_virt_ip
+  hsrp.adv.tlvtype:
+    Name: hsrp.adv.tlvtype
+    Type: FtUint16
+    Display: BaseDec
+    Info: Adv type
+    JsonName: hsrp_hsrp_adv_tlvtype
+  hsrp.adv.tlvlength:
+    Name: hsrp.adv.tlvlength
+    Type: FtUint16
+    Display: BaseDec
+    Info: Adv length
+    JsonName: hsrp_hsrp_adv_tlvlength
+  hsrp.adv.state:
+    Name: hsrp.adv.state
+    Type: FtUint8
+    Display: BaseDec
+    Info: Adv state
+    JsonName: hsrp_hsrp_adv_state
+  hsrp.adv.reserved1:
+    Name: hsrp.adv.reserved1
+    Type: FtUint8
+    Display: BaseDec
+    Info: Adv reserved1
+    JsonName: hsrp_hsrp_adv_reserved1
+  hsrp.adv.activegrp:
+    Name: hsrp.adv.activegrp
+    Type: FtUint8
+    Display: BaseDec
+    Info: Adv active groups
+    JsonName: hsrp_hsrp_adv_activegrp
+  hsrp.adv.passivegrp:
+    Name: hsrp.adv.passivegrp
+    Type: FtUint8
+    Display: BaseDec
+    Info: Adv passive groups
+    JsonName: hsrp_hsrp_adv_passivegrp
+  hsrp.adv.reserved2:
+    Name: hsrp.adv.reserved2
+    Type: FtUint32
+    Display: BaseDec
+    Info: Adv reserved2
+    JsonName: hsrp_hsrp_adv_reserved2
+  hsrp2.version:
+    Name: hsrp2.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: Version
+    JsonName: hsrp_hsrp2_version
+  hsrp2.opcode:
+    Name: hsrp2.opcode
+    Type: FtUint8
+    Display: BaseDec
+    Info: Op Code
+    JsonName: hsrp_hsrp2_opcode
+  hsrp2.state:
+    Name: hsrp2.state
+    Type: FtUint8
+    Display: BaseDec
+    Info: State
+    JsonName: hsrp_hsrp2_state
+  hsrp2.group_state_tlv:
+    Name: hsrp2.group_state_tlv
+    Type: FtUint8
+    Display: BaseDec
+    Info: Group State TLV
+    JsonName: hsrp_hsrp2_group_state_tlv
+  hsrp2.interface_state_tlv:
+    Name: hsrp2.interface_state_tlv
+    Type: FtUint8
+    Display: BaseDec
+    Info: Interface State TLV
+    JsonName: hsrp_hsrp2_interface_state_tlv
+  hsrp2.text_auth_tlv:
+    Name: hsrp2.text_auth_tlv
+    Type: FtUint8
+    Display: BaseDec
+    Info: Text Authentication TLV
+    JsonName: hsrp_hsrp2_text_auth_tlv
+  hsrp2.md5_auth_tlv:
+    Name: hsrp2.md5_auth_tlv
+    Type: FtUint8
+    Display: BaseDec
+    Info: MD5 Authentication TLV
+    JsonName: hsrp_hsrp2_md5_auth_tlv
+  hsrp2.ipversion:
+    Name: hsrp2.ipversion
+    Type: FtUint8
+    Display: BaseDec
+    Info: IP Ver.
+    JsonName: hsrp_hsrp2_ipversion
+  hsrp2.group:
+    Name: hsrp2.group
+    Type: FtUint16
+    Display: BaseDec
+    Info: Group
+    JsonName: hsrp_hsrp2_group
+  hsrp2.identifier:
+    Name: hsrp2.identifier
+    Type: FtEther
+    Info: Identifier
+    JsonName: hsrp_hsrp2_identifier
+  hsrp2.hellotime:
+    Name: hsrp2.hellotime
+    Type: FtUint32
+    Display: BaseDec
+    Info: Hellotime
+    JsonName: hsrp_hsrp2_hellotime
+  hsrp2.holdtime:
+    Name: hsrp2.holdtime
+    Type: FtUint32
+    Display: BaseDec
+    Info: Holdtime
+    JsonName: hsrp_hsrp2_holdtime
+  hsrp2.priority:
+    Name: hsrp2.priority
+    Type: FtUint32
+    Display: BaseDec
+    Info: Priority
+    JsonName: hsrp_hsrp2_priority
+  hsrp2.auth_data:
+    Name: hsrp2.auth_data
+    Type: FtString
+    Info: Authentication Data
+    JsonName: hsrp_hsrp2_auth_data
+  hsrp2.virt_ip:
+    Name: hsrp2.virt_ip
+    Type: FtIpv4
+    Info: Virtual IP Address
+    JsonName: hsrp_hsrp2_virt_ip
+  hsrp2.virt_ip_v6:
+    Name: hsrp2.virt_ip_v6
+    Type: FtIpv6
+    Info: Virtual IPv6 Address
+    JsonName: hsrp_hsrp2_virt_ip_v6
+  hsrp2.active_groups:
+    Name: hsrp2.active_groups
+    Type: FtUint16
+    Display: BaseDec
+    Info: Active Groups
+    JsonName: hsrp_hsrp2_active_groups
+  hsrp2.passive_groups:
+    Name: hsrp2.passive_groups
+    Type: FtUint16
+    Display: BaseDec
+    Info: Passive Groups
+    JsonName: hsrp_hsrp2_passive_groups
+  hsrp2.md5_algorithm:
+    Name: hsrp2.md5_algorithm
+    Type: FtUint8
+    Display: BaseDec
+    Info: MD5 Algorithm
+    JsonName: hsrp_hsrp2_md5_algorithm
+  hsrp2.md5_padding:
+    Name: hsrp2.md5_padding
+    Type: FtUint8
+    Display: BaseHex
+    Info: Padding
+    JsonName: hsrp_hsrp2_md5_padding
+  hsrp2.md5_flags:
+    Name: hsrp2.md5_flags
+    Type: FtUint8
+    Display: BaseDec
+    Info: MD5 Flags
+    JsonName: hsrp_hsrp2_md5_flags
+  hsrp.md5_ip_address:
+    Name: hsrp.md5_ip_address
+    Type: FtIpv4
+    Info: Sender's IP Address
+    JsonName: hsrp_hsrp_md5_ip_address
+  hsrp2.md5_key_id:
+    Name: hsrp2.md5_key_id
+    Type: FtUint32
+    Display: BaseDec
+    Info: MD5 Key ID
+    JsonName: hsrp_hsrp2_md5_key_id
+  hsrp2.md5_auth_data:
+    Name: hsrp2.md5_auth_data
+    Type: FtBytes
+    Info: MD5 Authentication Data
+    JsonName: hsrp_hsrp2_md5_auth_data

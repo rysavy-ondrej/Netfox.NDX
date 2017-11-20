@@ -1,0 +1,110 @@
+Name: llc
+Fields:
+  llc.dsap:
+    Name: llc.dsap
+    Type: FtUint8
+    Display: BaseHex
+    Info: DSAP
+    JsonName: llc_llc_dsap
+  llc.dsap.sap:
+    Name: llc.dsap.sap
+    Type: FtUint8
+    Display: BaseCustom
+    Info: SAP
+    JsonName: llc_dsap_llc_dsap_sap
+  llc.dsap.ig:
+    Name: llc.dsap.ig
+    Type: FtBoolean
+    Display: SepDot
+    Info: IG Bit
+    JsonName: llc_dsap_llc_dsap_ig
+  llc.ssap:
+    Name: llc.ssap
+    Type: FtUint8
+    Display: BaseHex
+    Info: SSAP
+    JsonName: llc_llc_ssap
+  llc.ssap.sap:
+    Name: llc.ssap.sap
+    Type: FtUint8
+    Display: BaseCustom
+    Info: SAP
+    JsonName: llc_ssap_llc_ssap_sap
+  llc.ssap.cr:
+    Name: llc.ssap.cr
+    Type: FtBoolean
+    Display: SepDot
+    Info: CR Bit
+    JsonName: llc_ssap_llc_ssap_cr
+  llc.control:
+    Name: llc.control
+    Type: FtUint16
+    Display: BaseHex
+    Info: Control
+    JsonName: llc_llc_control
+  llc.control.n_r:
+    Name: llc.control.n_r
+    Type: FtUint16
+    Display: BaseDec
+    Info: N(R)
+    JsonName: llc_control_llc_control_n_r
+  llc.control.n_s:
+    Name: llc.control.n_s
+    Type: FtUint16
+    Display: BaseDec
+    Info: N(S)
+    JsonName: llc_control_llc_control_n_s
+  llc.control.p:
+    Name: llc.control.p
+    Type: FtBoolean
+    Display: SepDot
+    Info: Poll
+    JsonName: llc_control_llc_control_p
+  llc.control.f:
+    Name: llc.control.f
+    Type: FtBoolean
+    Display: SepDot
+    Info: Final
+    JsonName: llc_control_llc_control_f
+  llc.control.s_ftype:
+    Name: llc.control.s_ftype
+    Type: FtUint16
+    Display: BaseHex
+    Info: Supervisory frame type
+    JsonName: llc_control_llc_control_s_ftype
+  llc.control.u_modifier_cmd:
+    Name: llc.control.u_modifier_cmd
+    Type: FtUint8
+    Display: BaseHex
+    Info: Command
+    JsonName: llc_control_llc_control_u_modifier_cmd
+  llc.control.u_modifier_resp:
+    Name: llc.control.u_modifier_resp
+    Type: FtUint8
+    Display: BaseHex
+    Info: Response
+    JsonName: llc_control_llc_control_u_modifier_resp
+  llc.control.ftype:
+    Name: llc.control.ftype
+    Type: FtUint16
+    Display: BaseHex
+    Info: Frame type
+    JsonName: llc_control_llc_control_ftype
+  llc.type:
+    Name: llc.type
+    Type: FtUint16
+    Display: BaseHex
+    Info: Type
+    JsonName: llc_llc_type
+  llc.oui:
+    Name: llc.oui
+    Type: FtUint24
+    Display: BaseHex
+    Info: Organization Code
+    JsonName: llc_llc_oui
+  llc.pid:
+    Name: llc.pid
+    Type: FtUint16
+    Display: BaseHex
+    Info: Protocol ID
+    JsonName: llc_llc_pid

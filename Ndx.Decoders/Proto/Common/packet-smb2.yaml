@@ -1,0 +1,2498 @@
+Name: smb2
+Fields:
+  smb2.cmd:
+    Name: smb2.cmd
+    Type: FtUint16
+    Display: BaseDec
+    Info: Command
+    JsonName: smb2_smb2_cmd
+  smb2.response_to:
+    Name: smb2.response_to
+    Type: FtFramenum
+    Info: Response to
+    JsonName: smb2_smb2_response_to
+  smb2.response_in:
+    Name: smb2.response_in
+    Type: FtFramenum
+    Info: Response in
+    JsonName: smb2_smb2_response_in
+  smb2.time:
+    Name: smb2.time
+    Type: FtRelativeTime
+    Info: Time from request
+    JsonName: smb2_smb2_time
+  smb2.header_len:
+    Name: smb2.header_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Header Length
+    JsonName: smb2_smb2_header_len
+  smb2.nt_status:
+    Name: smb2.nt_status
+    Type: FtUint32
+    Display: BaseHex
+    Info: NT Status
+    JsonName: smb2_smb2_nt_status
+  smb2.msg_id:
+    Name: smb2.msg_id
+    Type: FtUint64
+    Display: BaseDec
+    Info: Message ID
+    JsonName: smb2_smb2_msg_id
+  smb2.tid:
+    Name: smb2.tid
+    Type: FtUint32
+    Display: BaseHex
+    Info: Tree Id
+    JsonName: smb2_smb2_tid
+  smb2.aid:
+    Name: smb2.aid
+    Type: FtUint64
+    Display: BaseHex
+    Info: Async Id
+    JsonName: smb2_smb2_aid
+  smb2.sesid:
+    Name: smb2.sesid
+    Type: FtUint64
+    Display: BaseHex
+    Info: Session Id
+    JsonName: smb2_smb2_sesid
+  smb2.previous_sesid:
+    Name: smb2.previous_sesid
+    Type: FtUint64
+    Display: BaseHex
+    Info: Previous Session Id
+    JsonName: smb2_smb2_previous_sesid
+  smb2.chain_offset:
+    Name: smb2.chain_offset
+    Type: FtUint32
+    Display: BaseHex
+    Info: Chain Offset
+    JsonName: smb2_smb2_chain_offset
+  smb2.eof:
+    Name: smb2.eof
+    Type: FtUint64
+    Display: BaseDec
+    Info: End Of File
+    JsonName: smb2_smb2_eof
+  smb2.nlinks:
+    Name: smb2.nlinks
+    Type: FtUint32
+    Display: BaseDec
+    Info: Number of Links
+    JsonName: smb2_smb2_nlinks
+  smb2.file_id:
+    Name: smb2.file_id
+    Type: FtUint64
+    Display: BaseHex
+    Info: File Id
+    JsonName: smb2_smb2_file_id
+  smb2.allocation_size:
+    Name: smb2.allocation_size
+    Type: FtUint64
+    Display: BaseDec
+    Info: Allocation Size
+    JsonName: smb2_smb2_allocation_size
+  smb2.max_response_size:
+    Name: smb2.max_response_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Max Response Size
+    JsonName: smb2_smb2_max_response_size
+  smb2.getinfo_input_size:
+    Name: smb2.getinfo_input_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Getinfo Input Size
+    JsonName: smb2_smb2_getinfo_input_size
+  smb2.getinfo_input_offset:
+    Name: smb2.getinfo_input_offset
+    Type: FtUint16
+    Display: BaseHex
+    Info: Getinfo Input Offset
+    JsonName: smb2_smb2_getinfo_input_offset
+  smb2.getinfo_additional:
+    Name: smb2.getinfo_additional
+    Type: FtUint32
+    Display: BaseHex
+    Info: Additional Info
+    JsonName: smb2_smb2_getinfo_additional
+  smb2.getinfo_flags:
+    Name: smb2.getinfo_flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb2_smb2_getinfo_flags
+  smb2.setinfo_size:
+    Name: smb2.setinfo_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Setinfo Size
+    JsonName: smb2_smb2_setinfo_size
+  smb2.setinfo_offset:
+    Name: smb2.setinfo_offset
+    Type: FtUint16
+    Display: BaseHex
+    Info: Setinfo Offset
+    JsonName: smb2_smb2_setinfo_offset
+  smb2.max_ioctl_out_size:
+    Name: smb2.max_ioctl_out_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Max Ioctl Out Size
+    JsonName: smb2_smb2_max_ioctl_out_size
+  smb2.max_ioctl_in_size:
+    Name: smb2.max_ioctl_in_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Max Ioctl In Size
+    JsonName: smb2_smb2_max_ioctl_in_size
+  smb2.required_size:
+    Name: smb2.required_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Required Buffer Size
+    JsonName: smb2_smb2_required_size
+  smb2.pid:
+    Name: smb2.pid
+    Type: FtUint32
+    Display: BaseHex
+    Info: Process Id
+    JsonName: smb2_smb2_pid
+  smb2.flags:
+    Name: smb2.flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb2_smb2_flags
+  smb2.flags.response:
+    Name: smb2.flags.response
+    Type: FtBoolean
+    Display: 32
+    Info: Response
+    JsonName: smb2_flags_smb2_flags_response
+  smb2.flags.async:
+    Name: smb2.flags.async
+    Type: FtBoolean
+    Display: 32
+    Info: Async command
+    JsonName: smb2_flags_smb2_flags_async
+  smb2.flags.dfs:
+    Name: smb2.flags.dfs
+    Type: FtBoolean
+    Display: 32
+    Info: DFS operation
+    JsonName: smb2_flags_smb2_flags_dfs
+  smb2.flags.chained:
+    Name: smb2.flags.chained
+    Type: FtBoolean
+    Display: 32
+    Info: Chained
+    JsonName: smb2_flags_smb2_flags_chained
+  smb2.flags.signature:
+    Name: smb2.flags.signature
+    Type: FtBoolean
+    Display: 32
+    Info: Signing
+    JsonName: smb2_flags_smb2_flags_signature
+  smb2.flags.replay:
+    Name: smb2.flags.replay
+    Type: FtBoolean
+    Display: 32
+    Info: Replay operation
+    JsonName: smb2_flags_smb2_flags_replay
+  smb2.flags.priority_mask:
+    Name: smb2.flags.priority_mask
+    Type: FtBoolean
+    Display: 32
+    Info: Priority
+    JsonName: smb2_flags_smb2_flags_priority_mask
+  smb2.tree:
+    Name: smb2.tree
+    Type: FtString
+    Info: Tree
+    JsonName: smb2_smb2_tree
+  smb2.filename:
+    Name: smb2.filename
+    Type: FtString
+    Info: Filename
+    JsonName: smb2_smb2_filename
+  smb2.filename.len:
+    Name: smb2.filename.len
+    Type: FtUint32
+    Display: BaseDec
+    Info: Filename Length
+    JsonName: smb2_filename_smb2_filename_len
+  smb2.rename.replace_if:
+    Name: smb2.rename.replace_if
+    Type: FtBoolean
+    Display: SepDot
+    Info: Replace If
+    JsonName: smb2_smb2_rename_replace_if
+  smb2.data_offset:
+    Name: smb2.data_offset
+    Type: FtUint16
+    Display: BaseHex
+    Info: Data Offset
+    JsonName: smb2_smb2_data_offset
+  smb2.find.infolevel:
+    Name: smb2.find.infolevel
+    Type: FtUint32
+    Display: BaseDec
+    Info: Info Level
+    JsonName: smb2_smb2_find_infolevel
+  smb2.find.flags:
+    Name: smb2.find.flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: Find Flags
+    JsonName: smb2_smb2_find_flags
+  smb2.find.pattern:
+    Name: smb2.find.pattern
+    Type: FtString
+    Info: Search Pattern
+    JsonName: smb2_smb2_find_pattern
+  smb2.find.info_blob:
+    Name: smb2.find.info_blob
+    Type: FtBytes
+    Info: Info
+    JsonName: smb2_smb2_find_info_blob
+  smb2.ea_size:
+    Name: smb2.ea_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: EA Size
+    JsonName: smb2_smb2_ea_size
+  smb2.position_info:
+    Name: smb2.position_info
+    Type: FtUint64
+    Display: BaseDec
+    Info: Position Information
+    JsonName: smb2_smb2_position_info
+  smb2.mode_info:
+    Name: smb2.mode_info
+    Type: FtUint32
+    Display: BaseHex
+    Info: Mode Information
+    JsonName: smb2_smb2_mode_info
+  smb2.mode.file_write_through:
+    Name: smb2.mode.file_write_through
+    Type: FtUint32
+    Display: BaseHex
+    Info: FILE_WRITE_THROUGH
+    JsonName: smb2_smb2_mode_file_write_through
+  smb2.mode.file_sequential_only:
+    Name: smb2.mode.file_sequential_only
+    Type: FtUint32
+    Display: BaseHex
+    Info: FILE_SEQUENTIAL_ONLY
+    JsonName: smb2_smb2_mode_file_sequential_only
+  smb2.mode.file_no_intermediate_buffering:
+    Name: smb2.mode.file_no_intermediate_buffering
+    Type: FtUint32
+    Display: BaseHex
+    Info: FILE_NO_INTERMEDIATE_BUFFERING
+    JsonName: smb2_smb2_mode_file_no_intermediate_buffering
+  smb2.mode.file_synchronous_io_alert:
+    Name: smb2.mode.file_synchronous_io_alert
+    Type: FtUint32
+    Display: BaseHex
+    Info: FILE_SYNCHRONOUS_IO_ALERT
+    JsonName: smb2_smb2_mode_file_synchronous_io_alert
+  smb2.mode.file_synchronous_io_nonalert:
+    Name: smb2.mode.file_synchronous_io_nonalert
+    Type: FtUint32
+    Display: BaseHex
+    Info: FILE_SYNCHRONOUS_IO_NONALERT
+    JsonName: smb2_smb2_mode_file_synchronous_io_nonalert
+  smb2.mode.file_delete_on_close:
+    Name: smb2.mode.file_delete_on_close
+    Type: FtUint32
+    Display: BaseHex
+    Info: FILE_DELETE_ON_CLOSE
+    JsonName: smb2_smb2_mode_file_delete_on_close
+  smb2.alignment_info:
+    Name: smb2.alignment_info
+    Type: FtUint32
+    Display: BaseHex
+    Info: Alignment Information
+    JsonName: smb2_smb2_alignment_info
+  smb2.class:
+    Name: smb2.class
+    Type: FtUint8
+    Display: BaseHex
+    Info: Class
+    JsonName: smb2_smb2_class
+  smb2.infolevel:
+    Name: smb2.infolevel
+    Type: FtUint8
+    Display: BaseHex
+    Info: InfoLevel
+    JsonName: smb2_smb2_infolevel
+  smb2.file_info.infolevel:
+    Name: smb2.file_info.infolevel
+    Type: FtUint8
+    Display: BaseHex
+    Info: InfoLevel
+    JsonName: smb2_smb2_file_info_infolevel
+  smb2.fs_info.infolevel:
+    Name: smb2.fs_info.infolevel
+    Type: FtUint8
+    Display: BaseHex
+    Info: InfoLevel
+    JsonName: smb2_smb2_fs_info_infolevel
+  smb2.sec_info.infolevel:
+    Name: smb2.sec_info.infolevel
+    Type: FtUint8
+    Display: BaseHex
+    Info: InfoLevel
+    JsonName: smb2_smb2_sec_info_infolevel
+  smb2.posix_info.infolevel:
+    Name: smb2.posix_info.infolevel
+    Type: FtUint8
+    Display: BaseHex
+    Info: InfoLevel
+    JsonName: smb2_smb2_posix_info_infolevel
+  smb2.write_length:
+    Name: smb2.write_length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Write Length
+    JsonName: smb2_smb2_write_length
+  smb2.read_length:
+    Name: smb2.read_length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Read Length
+    JsonName: smb2_smb2_read_length
+  smb2.read_remaining:
+    Name: smb2.read_remaining
+    Type: FtUint32
+    Display: BaseDec
+    Info: Read Remaining
+    JsonName: smb2_smb2_read_remaining
+  smb2.create_flags:
+    Name: smb2.create_flags
+    Type: FtUint64
+    Display: BaseHex
+    Info: Create Flags
+    JsonName: smb2_smb2_create_flags
+  smb2.file_offset:
+    Name: smb2.file_offset
+    Type: FtUint64
+    Display: BaseDec
+    Info: File Offset
+    JsonName: smb2_smb2_file_offset
+  smb2.fsctl.range_offset:
+    Name: smb2.fsctl.range_offset
+    Type: FtUint64
+    Display: BaseDec
+    Info: File Offset
+    JsonName: smb2_smb2_fsctl_range_offset
+  smb2.fsctl.range_length:
+    Name: smb2.fsctl.range_length
+    Type: FtUint64
+    Display: BaseDec
+    Info: Length
+    JsonName: smb2_smb2_fsctl_range_length
+  smb2.qfr_length:
+    Name: smb2.qfr_length
+    Type: FtUint64
+    Display: BaseDec
+    Info: Length
+    JsonName: smb2_smb2_qfr_length
+  smb2.qfr_usage:
+    Name: smb2.qfr_usage
+    Type: FtUint32
+    Display: BaseHex
+    Info: Desired Usage
+    JsonName: smb2_smb2_qfr_usage
+  smb2.qfr_flags:
+    Name: smb2.qfr_flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb2_smb2_qfr_flags
+  smb2.qfr_tot_region_entry_count:
+    Name: smb2.qfr_tot_region_entry_count
+    Type: FtUint32
+    Display: BaseHex
+    Info: Total Region Entry Count
+    JsonName: smb2_smb2_qfr_tot_region_entry_count
+  smb2.qfr_region_entry_count:
+    Name: smb2.qfr_region_entry_count
+    Type: FtUint32
+    Display: BaseHex
+    Info: Region Entry Count
+    JsonName: smb2_smb2_qfr_region_entry_count
+  smb2.security_blob:
+    Name: smb2.security_blob
+    Type: FtBytes
+    Info: Security Blob
+    JsonName: smb2_smb2_security_blob
+  smb2.ioctl.out:
+    Name: smb2.ioctl.out
+    Info: Out Data
+    JsonName: smb2_smb2_ioctl_out
+  smb2.ioctl.in:
+    Name: smb2.ioctl.in
+    Info: In Data
+    JsonName: smb2_smb2_ioctl_in
+  smb2.server_guid:
+    Name: smb2.server_guid
+    Type: FtGuid
+    Info: Server Guid
+    JsonName: smb2_smb2_server_guid
+  smb2.client_guid:
+    Name: smb2.client_guid
+    Type: FtGuid
+    Info: Client Guid
+    JsonName: smb2_smb2_client_guid
+  smb2.object_id:
+    Name: smb2.object_id
+    Type: FtGuid
+    Info: ObjectId
+    JsonName: smb2_smb2_object_id
+  smb2.birth_volume_id:
+    Name: smb2.birth_volume_id
+    Type: FtGuid
+    Info: BirthVolumeId
+    JsonName: smb2_smb2_birth_volume_id
+  smb2.birth_object_id:
+    Name: smb2.birth_object_id
+    Type: FtGuid
+    Info: BirthObjectId
+    JsonName: smb2_smb2_birth_object_id
+  smb2.domain_id:
+    Name: smb2.domain_id
+    Type: FtGuid
+    Info: DomainId
+    JsonName: smb2_smb2_domain_id
+  smb2.create.time:
+    Name: smb2.create.time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Create
+    JsonName: smb2_smb2_create_time
+  smb2.fid:
+    Name: smb2.fid
+    Type: FtGuid
+    Info: File Id
+    JsonName: smb2_smb2_fid
+  smb2.write_data:
+    Name: smb2.write_data
+    Type: FtBytes
+    Info: Write Data
+    JsonName: smb2_smb2_write_data
+  smb2.write.flags:
+    Name: smb2.write.flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Write Flags
+    JsonName: smb2_smb2_write_flags
+  smb2.write.flags.write_through:
+    Name: smb2.write.flags.write_through
+    Type: FtBoolean
+    Display: 32
+    Info: Write through
+    JsonName: smb2_write_flags_smb2_write_flags_write_through
+  smb2.write.count:
+    Name: smb2.write.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Write Count
+    JsonName: smb2_smb2_write_count
+  smb2.write.remaining:
+    Name: smb2.write.remaining
+    Type: FtUint32
+    Display: BaseDec
+    Info: Write Remaining
+    JsonName: smb2_smb2_write_remaining
+  smb2.read_data:
+    Name: smb2.read_data
+    Type: FtBytes
+    Info: Read Data
+    JsonName: smb2_smb2_read_data
+  smb2.last_access.time:
+    Name: smb2.last_access.time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Last Access
+    JsonName: smb2_smb2_last_access_time
+  smb2.last_write.time:
+    Name: smb2.last_write.time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Last Write
+    JsonName: smb2_smb2_last_write_time
+  smb2.last_change.time:
+    Name: smb2.last_change.time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Last Change
+    JsonName: smb2_smb2_last_change_time
+  smb2.file_all_info:
+    Name: smb2.file_all_info
+    Info: SMB2_FILE_ALL_INFO
+    JsonName: smb2_smb2_file_all_info
+  smb2.file_allocation_info:
+    Name: smb2.file_allocation_info
+    Info: SMB2_FILE_ALLOCATION_INFO
+    JsonName: smb2_smb2_file_allocation_info
+  smb2.file_endoffile_info:
+    Name: smb2.file_endoffile_info
+    Info: SMB2_FILE_ENDOFFILE_INFO
+    JsonName: smb2_smb2_file_endoffile_info
+  smb2.file_alternate_name_info:
+    Name: smb2.file_alternate_name_info
+    Info: SMB2_FILE_ALTERNATE_NAME_INFO
+    JsonName: smb2_smb2_file_alternate_name_info
+  smb2.file_stream_info:
+    Name: smb2.file_stream_info
+    Info: SMB2_FILE_STREAM_INFO
+    JsonName: smb2_smb2_file_stream_info
+  smb2.file_pipe_info:
+    Name: smb2.file_pipe_info
+    Info: SMB2_FILE_PIPE_INFO
+    JsonName: smb2_smb2_file_pipe_info
+  smb2.file_compression_info:
+    Name: smb2.file_compression_info
+    Info: SMB2_FILE_COMPRESSION_INFO
+    JsonName: smb2_smb2_file_compression_info
+  smb2.file_basic_info:
+    Name: smb2.file_basic_info
+    Info: SMB2_FILE_BASIC_INFO
+    JsonName: smb2_smb2_file_basic_info
+  smb2.file_standard_info:
+    Name: smb2.file_standard_info
+    Info: SMB2_FILE_STANDARD_INFO
+    JsonName: smb2_smb2_file_standard_info
+  smb2.file_internal_info:
+    Name: smb2.file_internal_info
+    Info: SMB2_FILE_INTERNAL_INFO
+    JsonName: smb2_smb2_file_internal_info
+  smb2.file_mode_info:
+    Name: smb2.file_mode_info
+    Info: SMB2_FILE_MODE_INFO
+    JsonName: smb2_smb2_file_mode_info
+  smb2.file_alignment_info:
+    Name: smb2.file_alignment_info
+    Info: SMB2_FILE_ALIGNMENT_INFO
+    JsonName: smb2_smb2_file_alignment_info
+  smb2.file_position_info:
+    Name: smb2.file_position_info
+    Info: SMB2_FILE_POSITION_INFO
+    JsonName: smb2_smb2_file_position_info
+  smb2.file_access_info:
+    Name: smb2.file_access_info
+    Info: SMB2_FILE_ACCESS_INFO
+    JsonName: smb2_smb2_file_access_info
+  smb2.file_ea_info:
+    Name: smb2.file_ea_info
+    Info: SMB2_FILE_EA_INFO
+    JsonName: smb2_smb2_file_ea_info
+  smb2.file_network_open_info:
+    Name: smb2.file_network_open_info
+    Info: SMB2_FILE_NETWORK_OPEN_INFO
+    JsonName: smb2_smb2_file_network_open_info
+  smb2.file_attribute_tag_info:
+    Name: smb2.file_attribute_tag_info
+    Info: SMB2_FILE_ATTRIBUTE_TAG_INFO
+    JsonName: smb2_smb2_file_attribute_tag_info
+  smb2.file_disposition_info:
+    Name: smb2.file_disposition_info
+    Info: SMB2_FILE_DISPOSITION_INFO
+    JsonName: smb2_smb2_file_disposition_info
+  smb2.file_full_ea_info:
+    Name: smb2.file_full_ea_info
+    Info: SMB2_FILE_FULL_EA_INFO
+    JsonName: smb2_smb2_file_full_ea_info
+  smb2.file_rename_info:
+    Name: smb2.file_rename_info
+    Info: SMB2_FILE_RENAME_INFO
+    JsonName: smb2_smb2_file_rename_info
+  smb2.fs_info_01:
+    Name: smb2.fs_info_01
+    Info: SMB2_FS_INFO_01
+    JsonName: smb2_smb2_fs_info_01
+  smb2.fs_info_03:
+    Name: smb2.fs_info_03
+    Info: SMB2_FS_INFO_03
+    JsonName: smb2_smb2_fs_info_03
+  smb2.fs_info_04:
+    Name: smb2.fs_info_04
+    Info: SMB2_FS_INFO_04
+    JsonName: smb2_smb2_fs_info_04
+  smb2.fs_info_05:
+    Name: smb2.fs_info_05
+    Info: SMB2_FS_INFO_05
+    JsonName: smb2_smb2_fs_info_05
+  smb2.fs_info_06:
+    Name: smb2.fs_info_06
+    Info: SMB2_FS_INFO_06
+    JsonName: smb2_smb2_fs_info_06
+  smb2.fs_info_07:
+    Name: smb2.fs_info_07
+    Info: SMB2_FS_INFO_07
+    JsonName: smb2_smb2_fs_info_07
+  smb2.fs_objectid_info:
+    Name: smb2.fs_objectid_info
+    Info: SMB2_FS_OBJECTID_INFO
+    JsonName: smb2_smb2_fs_objectid_info
+  smb2.sec_info_00:
+    Name: smb2.sec_info_00
+    Info: SMB2_SEC_INFO_00
+    JsonName: smb2_smb2_sec_info_00
+  smb2.quota_info:
+    Name: smb2.quota_info
+    Info: SMB2_QUOTA_INFO
+    JsonName: smb2_smb2_quota_info
+  smb2.query_quota_info:
+    Name: smb2.query_quota_info
+    Info: SMB2_QUERY_QUOTA_INFO
+    JsonName: smb2_smb2_query_quota_info
+  smb2.query_quota_info.single:
+    Name: smb2.query_quota_info.single
+    Type: FtBoolean
+    Display: SepDot
+    Info: ReturnSingle
+    JsonName: smb2_query_quota_info_smb2_query_quota_info_single
+  smb2.query_quota_info.restart:
+    Name: smb2.query_quota_info.restart
+    Type: FtBoolean
+    Display: SepDot
+    Info: RestartScan
+    JsonName: smb2_query_quota_info_smb2_query_quota_info_restart
+  smb2.query_quota_info.sidlistlen:
+    Name: smb2.query_quota_info.sidlistlen
+    Type: FtUint32
+    Display: BaseDec
+    Info: SidListLength
+    JsonName: smb2_query_quota_info_smb2_query_quota_info_sidlistlen
+  smb2.query_quota_info.startsidlen:
+    Name: smb2.query_quota_info.startsidlen
+    Type: FtUint32
+    Display: BaseDec
+    Info: StartSidLength
+    JsonName: smb2_query_quota_info_smb2_query_quota_info_startsidlen
+  smb2.query_quota_info.startsidoffset:
+    Name: smb2.query_quota_info.startsidoffset
+    Type: FtUint32
+    Display: BaseDec
+    Info: StartSidOffset
+    JsonName: smb2_query_quota_info_smb2_query_quota_info_startsidoffset
+  smb2.disposition.delete_on_close:
+    Name: smb2.disposition.delete_on_close
+    Type: FtBoolean
+    Display: SepDot
+    Info: Delete on close
+    JsonName: smb2_smb2_disposition_delete_on_close
+  smb2.create.disposition:
+    Name: smb2.create.disposition
+    Type: FtUint32
+    Display: BaseDec
+    Info: Disposition
+    JsonName: smb2_smb2_create_disposition
+  smb2.create.action:
+    Name: smb2.create.action
+    Type: FtUint32
+    Display: BaseDec
+    Info: Create Action
+    JsonName: smb2_smb2_create_action
+  smb2.create.rep_flags:
+    Name: smb2.create.rep_flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: Response Flags
+    JsonName: smb2_smb2_create_rep_flags
+  smb2.create.rep_flags.reparse_point:
+    Name: smb2.create.rep_flags.reparse_point
+    Type: FtBoolean
+    Display: SepDot
+    Info: ReparsePoint
+    JsonName: smb2_create_rep_flags_smb2_create_rep_flags_reparse_point
+  smb2.create.extrainfo:
+    Name: smb2.create.extrainfo
+    Info: ExtraInfo
+    JsonName: smb2_smb2_create_extrainfo
+  smb2.create.chain_offset:
+    Name: smb2.create.chain_offset
+    Type: FtUint32
+    Display: BaseHex
+    Info: Chain Offset
+    JsonName: smb2_smb2_create_chain_offset
+  smb2.create.chain_data:
+    Name: smb2.create.chain_data
+    Info: Data
+    JsonName: smb2_smb2_create_chain_data
+  smb2.FILE_OBJECTID_BUFFER:
+    Name: smb2.FILE_OBJECTID_BUFFER
+    Info: FILE_OBJECTID_BUFFER
+    JsonName: smb2_smb2_FILE_OBJECTID_BUFFER
+  smb2.lease.lease_key:
+    Name: smb2.lease.lease_key
+    Type: FtGuid
+    Info: Lease Key
+    JsonName: smb2_smb2_lease_lease_key
+  smb2.lease.lease_state:
+    Name: smb2.lease.lease_state
+    Type: FtUint32
+    Display: BaseHex
+    Info: Lease State
+    JsonName: smb2_smb2_lease_lease_state
+  smb2.lease.lease_state.read_caching:
+    Name: smb2.lease.lease_state.read_caching
+    Type: FtBoolean
+    Display: 32
+    Info: Read Caching
+    JsonName: smb2_lease_lease_state_smb2_lease_lease_state_read_caching
+  smb2.lease.lease_state.handle_caching:
+    Name: smb2.lease.lease_state.handle_caching
+    Type: FtBoolean
+    Display: 32
+    Info: Handle Caching
+    JsonName: smb2_lease_lease_state_smb2_lease_lease_state_handle_caching
+  smb2.lease.lease_state.write_caching:
+    Name: smb2.lease.lease_state.write_caching
+    Type: FtBoolean
+    Display: 32
+    Info: Write Caching
+    JsonName: smb2_lease_lease_state_smb2_lease_lease_state_write_caching
+  smb2.lease.lease_flags:
+    Name: smb2.lease.lease_flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Lease Flags
+    JsonName: smb2_smb2_lease_lease_flags
+  smb2.lease.lease_state.break_ack_required:
+    Name: smb2.lease.lease_state.break_ack_required
+    Type: FtBoolean
+    Display: 32
+    Info: Break Ack Required
+    JsonName: smb2_lease_lease_state_smb2_lease_lease_state_break_ack_required
+  smb2.lease.lease_state.break_in_progress:
+    Name: smb2.lease.lease_state.break_in_progress
+    Type: FtBoolean
+    Display: 32
+    Info: Break In Progress
+    JsonName: smb2_lease_lease_state_smb2_lease_lease_state_break_in_progress
+  smb2.lease.lease_state.parent_lease_key_set:
+    Name: smb2.lease.lease_state.parent_lease_key_set
+    Type: FtBoolean
+    Display: 32
+    Info: Parent Lease Key Set
+    JsonName: smb2_lease_lease_state_smb2_lease_lease_state_parent_lease_key_set
+  smb2.lease.lease_duration:
+    Name: smb2.lease.lease_duration
+    Type: FtUint64
+    Display: BaseHex
+    Info: Lease Duration
+    JsonName: smb2_smb2_lease_lease_duration
+  smb2.lease.parent_lease_key:
+    Name: smb2.lease.parent_lease_key
+    Type: FtGuid
+    Info: Parent Lease Key
+    JsonName: smb2_smb2_lease_parent_lease_key
+  smb2.lease.lease_oplock:
+    Name: smb2.lease.lease_oplock
+    Type: FtUint16
+    Display: BaseHex
+    Info: Lease Epoch
+    JsonName: smb2_smb2_lease_lease_oplock
+  smb2.lease.lease_reserved:
+    Name: smb2.lease.lease_reserved
+    Type: FtUint16
+    Display: BaseHex
+    Info: Lease Reserved
+    JsonName: smb2_smb2_lease_lease_reserved
+  smb2.lease.lease_break_reason:
+    Name: smb2.lease.lease_break_reason
+    Type: FtUint32
+    Display: BaseHex
+    Info: Lease Break Reason
+    JsonName: smb2_smb2_lease_lease_break_reason
+  smb2.lease.access_mask_hint:
+    Name: smb2.lease.access_mask_hint
+    Type: FtUint32
+    Display: BaseHex
+    Info: Access Mask Hint
+    JsonName: smb2_smb2_lease_access_mask_hint
+  smb2.lease.share_mask_hint:
+    Name: smb2.lease.share_mask_hint
+    Type: FtUint32
+    Display: BaseHex
+    Info: Share Mask Hint
+    JsonName: smb2_smb2_lease_share_mask_hint
+  smb2.next_offset:
+    Name: smb2.next_offset
+    Type: FtUint32
+    Display: BaseDec
+    Info: Next Offset
+    JsonName: smb2_smb2_next_offset
+  smb2.negotiate_context.type:
+    Name: smb2.negotiate_context.type
+    Type: FtUint16
+    Display: BaseHex
+    Info: Type
+    JsonName: smb2_smb2_negotiate_context_type
+  smb2.negotiate_context.data_length:
+    Name: smb2.negotiate_context.data_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: DataLength
+    JsonName: smb2_smb2_negotiate_context_data_length
+  smb2.negotiate_context.offset:
+    Name: smb2.negotiate_context.offset
+    Type: FtUint16
+    Display: BaseHex
+    Info: NegotiateContextOffset
+    JsonName: smb2_smb2_negotiate_context_offset
+  smb2.negotiate_context.count:
+    Name: smb2.negotiate_context.count
+    Type: FtUint16
+    Display: BaseDec
+    Info: NegotiateContextCount
+    JsonName: smb2_smb2_negotiate_context_count
+  smb2.negotiate_context.hash_alg_count:
+    Name: smb2.negotiate_context.hash_alg_count
+    Type: FtUint16
+    Display: BaseDec
+    Info: HashAlgorithmCount
+    JsonName: smb2_smb2_negotiate_context_hash_alg_count
+  smb2.negotiate_context.hash_algorithm:
+    Name: smb2.negotiate_context.hash_algorithm
+    Type: FtUint16
+    Display: BaseHex
+    Info: HashAlgorithm
+    JsonName: smb2_smb2_negotiate_context_hash_algorithm
+  smb2.negotiate_context.salt_length:
+    Name: smb2.negotiate_context.salt_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: SaltLength
+    JsonName: smb2_smb2_negotiate_context_salt_length
+  smb2.negotiate_context.salt:
+    Name: smb2.negotiate_context.salt
+    Type: FtBytes
+    Info: Salt
+    JsonName: smb2_smb2_negotiate_context_salt
+  smb2.negotiate_context.cipher_count:
+    Name: smb2.negotiate_context.cipher_count
+    Type: FtUint16
+    Display: BaseDec
+    Info: CipherCount
+    JsonName: smb2_smb2_negotiate_context_cipher_count
+  smb2.negotiate_context.cipher_id:
+    Name: smb2.negotiate_context.cipher_id
+    Type: FtUint16
+    Display: BaseHex
+    Info: CipherId
+    JsonName: smb2_smb2_negotiate_context_cipher_id
+  smb2.current_time:
+    Name: smb2.current_time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Current Time
+    JsonName: smb2_smb2_current_time
+  smb2.boot_time:
+    Name: smb2.boot_time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Boot Time
+    JsonName: smb2_smb2_boot_time
+  smb2.ea.flags:
+    Name: smb2.ea.flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: EA Flags
+    JsonName: smb2_smb2_ea_flags
+  smb2.ea.name_len:
+    Name: smb2.ea.name_len
+    Type: FtUint8
+    Display: BaseDec
+    Info: EA Name Length
+    JsonName: smb2_smb2_ea_name_len
+  smb2.ea.data_len:
+    Name: smb2.ea.data_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: EA Data Length
+    JsonName: smb2_smb2_ea_data_len
+  smb2.delete_pending:
+    Name: smb2.delete_pending
+    Type: FtUint8
+    Display: BaseDec
+    Info: Delete Pending
+    JsonName: smb2_smb2_delete_pending
+  smb2.is_directory:
+    Name: smb2.is_directory
+    Type: FtUint8
+    Display: BaseDec
+    Info: Is Directory
+    JsonName: smb2_smb2_is_directory
+  smb2.create.oplock:
+    Name: smb2.create.oplock
+    Type: FtUint8
+    Display: BaseHex
+    Info: Oplock
+    JsonName: smb2_smb2_create_oplock
+  smb2.close.flags:
+    Name: smb2.close.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Close Flags
+    JsonName: smb2_smb2_close_flags
+  smb2.notify.flags:
+    Name: smb2.notify.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Notify Flags
+    JsonName: smb2_smb2_notify_flags
+  smb2.buffer_code:
+    Name: smb2.buffer_code
+    Type: FtUint16
+    Display: BaseHex
+    Info: StructureSize
+    JsonName: smb2_smb2_buffer_code
+  smb2.buffer_code.length:
+    Name: smb2.buffer_code.length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Fixed Part Length
+    JsonName: smb2_buffer_code_smb2_buffer_code_length
+  smb2.olb.length:
+    Name: smb2.olb.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Blob Length
+    JsonName: smb2_smb2_olb_length
+  smb2.olb.offset:
+    Name: smb2.olb.offset
+    Type: FtUint32
+    Display: BaseHex
+    Info: Blob Offset
+    JsonName: smb2_smb2_olb_offset
+  smb2.buffer_code.dynamic:
+    Name: smb2.buffer_code.dynamic
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Dynamic Part
+    JsonName: smb2_buffer_code_smb2_buffer_code_dynamic
+  smb2.ea.data:
+    Name: smb2.ea.data
+    Type: FtBytes
+    Info: EA Data
+    JsonName: smb2_smb2_ea_data
+  smb2.ea.name:
+    Name: smb2.ea.name
+    Type: FtString
+    Info: EA Name
+    JsonName: smb2_smb2_ea_name
+  smb2.impersonation.level:
+    Name: smb2.impersonation.level
+    Type: FtUint32
+    Display: BaseDec
+    Info: Impersonation level
+    JsonName: smb2_smb2_impersonation_level
+  smb2.ioctl.function:
+    Name: smb2.ioctl.function
+    Type: FtUint32
+    Display: BaseHex
+    Info: Function
+    JsonName: smb2_smb2_ioctl_function
+  smb2.ioctl.function.device:
+    Name: smb2.ioctl.function.device
+    Type: FtUint32
+    Display: BaseHex
+    Info: Device
+    JsonName: smb2_ioctl_function_smb2_ioctl_function_device
+  smb2.ioctl.function.access:
+    Name: smb2.ioctl.function.access
+    Type: FtUint32
+    Display: BaseHex
+    Info: Access
+    JsonName: smb2_ioctl_function_smb2_ioctl_function_access
+  smb2.ioctl.function.function:
+    Name: smb2.ioctl.function.function
+    Type: FtUint32
+    Display: BaseHex
+    Info: Function
+    JsonName: smb2_ioctl_function_smb2_ioctl_function_function
+  smb2.ioctl.function.method:
+    Name: smb2.ioctl.function.method
+    Type: FtUint32
+    Display: BaseHex
+    Info: Method
+    JsonName: smb2_ioctl_function_smb2_ioctl_function_method
+  smb2.fsctl.wait.timeout:
+    Name: smb2.fsctl.wait.timeout
+    Type: FtInt64
+    Display: BaseDec
+    Info: Timeout
+    JsonName: smb2_smb2_fsctl_wait_timeout
+  smb2.fsctl.wait.name:
+    Name: smb2.fsctl.wait.name
+    Type: FtString
+    Info: Name
+    JsonName: smb2_smb2_fsctl_wait_name
+  smb2.fsctl.odx.token.type:
+    Name: smb2.fsctl.odx.token.type
+    Type: FtUint32
+    Display: BaseHex
+    Info: TokenType
+    JsonName: smb2_smb2_fsctl_odx_token_type
+  smb2.fsctl.odx.token.idlen:
+    Name: smb2.fsctl.odx.token.idlen
+    Type: FtUint16
+    Display: BaseDec
+    Info: TokenIdLength
+    JsonName: smb2_smb2_fsctl_odx_token_idlen
+  smb2.fsctl.odx.token.id:
+    Name: smb2.fsctl.odx.token.id
+    Type: FtBytes
+    Info: TokenId
+    JsonName: smb2_smb2_fsctl_odx_token_id
+  smb2.fsctl.odx.token_ttl:
+    Name: smb2.fsctl.odx.token_ttl
+    Type: FtUint32
+    Display: BaseDec
+    Info: TokenTimeToLive
+    JsonName: smb2_smb2_fsctl_odx_token_ttl
+  smb2.fsctl.odx.size:
+    Name: smb2.fsctl.odx.size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Size
+    JsonName: smb2_smb2_fsctl_odx_size
+  smb2.fsctl.odx.flags:
+    Name: smb2.fsctl.odx.flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb2_smb2_fsctl_odx_flags
+  smb2.fsctl.odx.file_offset:
+    Name: smb2.fsctl.odx.file_offset
+    Type: FtUint64
+    Display: BaseDec
+    Info: FileOffset
+    JsonName: smb2_smb2_fsctl_odx_file_offset
+  smb2.fsctl.odx.copy_length:
+    Name: smb2.fsctl.odx.copy_length
+    Type: FtUint64
+    Display: BaseDec
+    Info: CopyLength
+    JsonName: smb2_smb2_fsctl_odx_copy_length
+  smb2.fsctl.odx.xfer_length:
+    Name: smb2.fsctl.odx.xfer_length
+    Type: FtUint64
+    Display: BaseDec
+    Info: TransferLength
+    JsonName: smb2_smb2_fsctl_odx_xfer_length
+  smb2.fsctl.odx.token_offset:
+    Name: smb2.fsctl.odx.token_offset
+    Type: FtUint64
+    Display: BaseDec
+    Info: TokenOffset
+    JsonName: smb2_smb2_fsctl_odx_token_offset
+  smb2.fsctl.set_sparse:
+    Name: smb2.fsctl.set_sparse
+    Type: FtBoolean
+    Display: SepDot
+    Info: SetSparse
+    JsonName: smb2_smb2_fsctl_set_sparse
+  smb2.ioctl.resiliency.timeout:
+    Name: smb2.ioctl.resiliency.timeout
+    Type: FtUint32
+    Display: BaseDec
+    Info: Timeout
+    JsonName: smb2_smb2_ioctl_resiliency_timeout
+  smb2.ioctl.resiliency.reserved:
+    Name: smb2.ioctl.resiliency.reserved
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reserved
+    JsonName: smb2_smb2_ioctl_resiliency_reserved
+  smb2.ioctl.shared_virtual_disk.support:
+    Name: smb2.ioctl.shared_virtual_disk.support
+    Type: FtUint32
+    Display: BaseHex
+    Info: SharedVirtualDiskSupport
+    JsonName: smb2_smb2_ioctl_shared_virtual_disk_support
+  smb2.ioctl.shared_virtual_disk.handle_state:
+    Name: smb2.ioctl.shared_virtual_disk.handle_state
+    Type: FtUint32
+    Display: BaseHex
+    Info: SharedVirtualDiskHandleState
+    JsonName: smb2_smb2_ioctl_shared_virtual_disk_handle_state
+  smb2.ioctl.sqos.protocol_version:
+    Name: smb2.ioctl.sqos.protocol_version
+    Type: FtUint16
+    Display: BaseHex
+    Info: ProtocolVersion
+    JsonName: smb2_smb2_ioctl_sqos_protocol_version
+  smb2.ioctl.sqos.reserved:
+    Name: smb2.ioctl.sqos.reserved
+    Type: FtUint16
+    Display: BaseDec
+    Info: Reserved
+    JsonName: smb2_smb2_ioctl_sqos_reserved
+  smb2.ioctl.sqos.operations:
+    Name: smb2.ioctl.sqos.operations
+    Type: FtUint32
+    Display: BaseHex
+    Info: Operations
+    JsonName: smb2_smb2_ioctl_sqos_operations
+  smb2.ioctl.sqos.operations.set_logical_flow_id:
+    Name: smb2.ioctl.sqos.operations.set_logical_flow_id
+    Type: FtBoolean
+    Display: 32
+    Info: Set Logical Flow ID
+    JsonName: smb2_ioctl_sqos_operations_smb2_ioctl_sqos_operations_set_logical_flow_id
+  smb2.ioctl.sqos.operations.set_policy:
+    Name: smb2.ioctl.sqos.operations.set_policy
+    Type: FtBoolean
+    Display: 32
+    Info: Set Policy
+    JsonName: smb2_ioctl_sqos_operations_smb2_ioctl_sqos_operations_set_policy
+  smb2.ioctl.sqos.operations.probe_policy:
+    Name: smb2.ioctl.sqos.operations.probe_policy
+    Type: FtBoolean
+    Display: 32
+    Info: Probe Policy
+    JsonName: smb2_ioctl_sqos_operations_smb2_ioctl_sqos_operations_probe_policy
+  smb2.ioctl.sqos.operations.get_status:
+    Name: smb2.ioctl.sqos.operations.get_status
+    Type: FtBoolean
+    Display: 32
+    Info: Get Status
+    JsonName: smb2_ioctl_sqos_operations_smb2_ioctl_sqos_operations_get_status
+  smb2.ioctl.sqos.operations.update_counters:
+    Name: smb2.ioctl.sqos.operations.update_counters
+    Type: FtBoolean
+    Display: 32
+    Info: Update Counters
+    JsonName: smb2_ioctl_sqos_operations_smb2_ioctl_sqos_operations_update_counters
+  smb2.ioctl.sqos.logical_flow_id:
+    Name: smb2.ioctl.sqos.logical_flow_id
+    Type: FtGuid
+    Info: LogicalFlowID
+    JsonName: smb2_smb2_ioctl_sqos_logical_flow_id
+  smb2.ioctl.sqos.policy_id:
+    Name: smb2.ioctl.sqos.policy_id
+    Type: FtGuid
+    Info: PolicyID
+    JsonName: smb2_smb2_ioctl_sqos_policy_id
+  smb2.ioctl.sqos.initiator_id:
+    Name: smb2.ioctl.sqos.initiator_id
+    Type: FtGuid
+    Info: InitiatorID
+    JsonName: smb2_smb2_ioctl_sqos_initiator_id
+  smb2.ioctl.sqos.limit:
+    Name: smb2.ioctl.sqos.limit
+    Type: FtUint64
+    Display: BaseDec
+    Info: Limit
+    JsonName: smb2_smb2_ioctl_sqos_limit
+  smb2.ioctl.sqos.reservation:
+    Name: smb2.ioctl.sqos.reservation
+    Type: FtUint64
+    Display: BaseDec
+    Info: Reservation
+    JsonName: smb2_smb2_ioctl_sqos_reservation
+  smb2.ioctl.sqos.initiator_name:
+    Name: smb2.ioctl.sqos.initiator_name
+    Type: FtString
+    Info: InitiatorName
+    JsonName: smb2_smb2_ioctl_sqos_initiator_name
+  smb2.ioctl.sqos.initiator_node_name:
+    Name: smb2.ioctl.sqos.initiator_node_name
+    Type: FtString
+    Info: InitiatorNodeName
+    JsonName: smb2_smb2_ioctl_sqos_initiator_node_name
+  smb2.ioctl.sqos.io_count_increment:
+    Name: smb2.ioctl.sqos.io_count_increment
+    Type: FtUint64
+    Display: BaseDec
+    Info: IoCountIncrement
+    JsonName: smb2_smb2_ioctl_sqos_io_count_increment
+  smb2.ioctl.sqos.normalized_io_count_increment:
+    Name: smb2.ioctl.sqos.normalized_io_count_increment
+    Type: FtUint64
+    Display: BaseDec
+    Info: NormalizedIoCountIncrement
+    JsonName: smb2_smb2_ioctl_sqos_normalized_io_count_increment
+  smb2.ioctl.sqos.latency_increment:
+    Name: smb2.ioctl.sqos.latency_increment
+    Type: FtUint64
+    Display: BaseDec
+    Info: LatencyIncrement
+    JsonName: smb2_smb2_ioctl_sqos_latency_increment
+  smb2.ioctl.sqos.lower_latency_increment:
+    Name: smb2.ioctl.sqos.lower_latency_increment
+    Type: FtUint64
+    Display: BaseDec
+    Info: LowerLatencyIncrement
+    JsonName: smb2_smb2_ioctl_sqos_lower_latency_increment
+  smb2.ioctl.sqos.bandwidth_limit:
+    Name: smb2.ioctl.sqos.bandwidth_limit
+    Type: FtUint64
+    Display: BaseDec
+    Info: BandwidthLimit
+    JsonName: smb2_smb2_ioctl_sqos_bandwidth_limit
+  smb2.ioctl.sqos.kilobyte_count_increment:
+    Name: smb2.ioctl.sqos.kilobyte_count_increment
+    Type: FtUint64
+    Display: BaseDec
+    Info: KilobyteCountIncrement
+    JsonName: smb2_smb2_ioctl_sqos_kilobyte_count_increment
+  smb2.ioctl.sqos.time_to_live:
+    Name: smb2.ioctl.sqos.time_to_live
+    Type: FtUint32
+    Display: BaseDec
+    Info: TimeToLive
+    JsonName: smb2_smb2_ioctl_sqos_time_to_live
+  smb2.ioctl.sqos.status:
+    Name: smb2.ioctl.sqos.status
+    Type: FtUint32
+    Display: BaseHex
+    Info: Status
+    JsonName: smb2_smb2_ioctl_sqos_status
+  smb2.ioctl.sqos.maximum_io_rate:
+    Name: smb2.ioctl.sqos.maximum_io_rate
+    Type: FtUint64
+    Display: BaseDec
+    Info: MaximumIoRate
+    JsonName: smb2_smb2_ioctl_sqos_maximum_io_rate
+  smb2.ioctl.sqos.minimum_io_rate:
+    Name: smb2.ioctl.sqos.minimum_io_rate
+    Type: FtUint64
+    Display: BaseDec
+    Info: MinimumIoRate
+    JsonName: smb2_smb2_ioctl_sqos_minimum_io_rate
+  smb2.ioctl.sqos.base_io_size:
+    Name: smb2.ioctl.sqos.base_io_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: BaseIoSize
+    JsonName: smb2_smb2_ioctl_sqos_base_io_size
+  smb2.ioctl.sqos.reserved2:
+    Name: smb2.ioctl.sqos.reserved2
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reserved
+    JsonName: smb2_smb2_ioctl_sqos_reserved2
+  smb2.ioctl.sqos.maximum_bandwidth:
+    Name: smb2.ioctl.sqos.maximum_bandwidth
+    Type: FtUint64
+    Display: BaseDec
+    Info: MaximumBandwidth
+    JsonName: smb2_smb2_ioctl_sqos_maximum_bandwidth
+  smb2.windows.sockaddr.family:
+    Name: smb2.windows.sockaddr.family
+    Type: FtUint16
+    Display: BaseDec
+    Info: Socket Family
+    JsonName: smb2_smb2_windows_sockaddr_family
+  smb2.windows.sockaddr.port:
+    Name: smb2.windows.sockaddr.port
+    Type: FtUint16
+    Display: BaseDec
+    Info: Socket Port
+    JsonName: smb2_smb2_windows_sockaddr_port
+  smb2.windows.sockaddr.in.addr:
+    Name: smb2.windows.sockaddr.in.addr
+    Type: FtIpv4
+    Info: Socket IPv4
+    JsonName: smb2_smb2_windows_sockaddr_in_addr
+  smb2.windows.sockaddr.in6.flow_info:
+    Name: smb2.windows.sockaddr.in6.flow_info
+    Type: FtUint32
+    Display: BaseHex
+    Info: IPv6 Flow Info
+    JsonName: smb2_smb2_windows_sockaddr_in6_flow_info
+  smb2.windows.sockaddr.in6.addr:
+    Name: smb2.windows.sockaddr.in6.addr
+    Type: FtIpv6
+    Info: Socket IPv6
+    JsonName: smb2_smb2_windows_sockaddr_in6_addr
+  smb2.windows.sockaddr.in6.scope_id:
+    Name: smb2.windows.sockaddr.in6.scope_id
+    Type: FtUint32
+    Display: BaseDec
+    Info: IPv6 Scope ID
+    JsonName: smb2_smb2_windows_sockaddr_in6_scope_id
+  smb2.ioctl.network_interfaces.next_offset:
+    Name: smb2.ioctl.network_interfaces.next_offset
+    Type: FtUint32
+    Display: BaseHex
+    Info: Next Offset
+    JsonName: smb2_smb2_ioctl_network_interfaces_next_offset
+  smb2.ioctl.network_interfaces.index:
+    Name: smb2.ioctl.network_interfaces.index
+    Type: FtUint32
+    Display: BaseDec
+    Info: Interface Index
+    JsonName: smb2_smb2_ioctl_network_interfaces_index
+  smb2.ioctl.network_interfaces.rss_queue_count:
+    Name: smb2.ioctl.network_interfaces.rss_queue_count
+    Type: FtUint32
+    Display: BaseDec
+    Info: RSS Queue Count
+    JsonName: smb2_smb2_ioctl_network_interfaces_rss_queue_count
+  smb2.ioctl.network_interfaces.capabilities:
+    Name: smb2.ioctl.network_interfaces.capabilities
+    Type: FtUint32
+    Display: BaseHex
+    Info: Interface Cababilities
+    JsonName: smb2_smb2_ioctl_network_interfaces_capabilities
+  smb2.ioctl.network_interfaces.capabilities.rss:
+    Name: smb2.ioctl.network_interfaces.capabilities.rss
+    Type: FtBoolean
+    Display: 32
+    Info: RSS
+    JsonName: smb2_ioctl_network_interfaces_capabilities_smb2_ioctl_network_interfaces_capabilities_rss
+  smb2.ioctl.network_interfaces.capabilities.rdma:
+    Name: smb2.ioctl.network_interfaces.capabilities.rdma
+    Type: FtBoolean
+    Display: 32
+    Info: RDMA
+    JsonName: smb2_ioctl_network_interfaces_capabilities_smb2_ioctl_network_interfaces_capabilities_rdma
+  smb2.ioctl.network_interfaces.link_speed:
+    Name: smb2.ioctl.network_interfaces.link_speed
+    Type: FtUint64
+    Display: BaseDec
+    Info: Link Speed
+    JsonName: smb2_smb2_ioctl_network_interfaces_link_speed
+  smb2.ioctl.shadow_copy.num_volumes:
+    Name: smb2.ioctl.shadow_copy.num_volumes
+    Type: FtUint32
+    Display: BaseDec
+    Info: Num Volumes
+    JsonName: smb2_smb2_ioctl_shadow_copy_num_volumes
+  smb2.ioctl.shadow_copy.num_labels:
+    Name: smb2.ioctl.shadow_copy.num_labels
+    Type: FtUint32
+    Display: BaseDec
+    Info: Num Labels
+    JsonName: smb2_smb2_ioctl_shadow_copy_num_labels
+  smb2.ioctl.shadow_copy.label:
+    Name: smb2.ioctl.shadow_copy.label
+    Type: FtString
+    Info: Label
+    JsonName: smb2_smb2_ioctl_shadow_copy_label
+  smb2.compression_format:
+    Name: smb2.compression_format
+    Type: FtUint16
+    Display: BaseDec
+    Info: Compression Format
+    JsonName: smb2_smb2_compression_format
+  smb2.checksum_algorithm:
+    Name: smb2.checksum_algorithm
+    Type: FtUint16
+    Display: BaseHex
+    Info: Checksum Algorithm
+    JsonName: smb2_smb2_checksum_algorithm
+  smb2.integrity_reserved:
+    Name: smb2.integrity_reserved
+    Type: FtUint16
+    Display: BaseDec
+    Info: Reserved
+    JsonName: smb2_smb2_integrity_reserved
+  smb2.integrity_flags:
+    Name: smb2.integrity_flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb2_smb2_integrity_flags
+  smb2.integrity_flags_enforcement:
+    Name: smb2.integrity_flags_enforcement
+    Type: FtBoolean
+    Display: 32
+    Info: FSCTL_INTEGRITY_FLAG_CHECKSUM_ENFORCEMENT_OFF
+    JsonName: smb2_smb2_integrity_flags_enforcement
+  smb2.share_type:
+    Name: smb2.share_type
+    Type: FtUint8
+    Display: BaseHex
+    Info: Share Type
+    JsonName: smb2_smb2_share_type
+  smb2.credit.charge:
+    Name: smb2.credit.charge
+    Type: FtUint16
+    Display: BaseDec
+    Info: Credit Charge
+    JsonName: smb2_smb2_credit_charge
+  smb2.credits.requested:
+    Name: smb2.credits.requested
+    Type: FtUint16
+    Display: BaseDec
+    Info: Credits requested
+    JsonName: smb2_smb2_credits_requested
+  smb2.credits.granted:
+    Name: smb2.credits.granted
+    Type: FtUint16
+    Display: BaseDec
+    Info: Credits granted
+    JsonName: smb2_smb2_credits_granted
+  smb2.channel_sequence:
+    Name: smb2.channel_sequence
+    Type: FtUint16
+    Display: BaseDec
+    Info: Channel Sequence
+    JsonName: smb2_smb2_channel_sequence
+  smb2.dialect_count:
+    Name: smb2.dialect_count
+    Type: FtUint16
+    Display: BaseDec
+    Info: Dialect count
+    JsonName: smb2_smb2_dialect_count
+  smb2.dialect:
+    Name: smb2.dialect
+    Type: FtUint16
+    Display: BaseHex
+    Info: Dialect
+    JsonName: smb2_smb2_dialect
+  smb2.sec_mode:
+    Name: smb2.sec_mode
+    Type: FtUint8
+    Display: BaseHex
+    Info: Security mode
+    JsonName: smb2_smb2_sec_mode
+  smb2.session_flags:
+    Name: smb2.session_flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Session Flags
+    JsonName: smb2_smb2_session_flags
+  smb2.lock_count:
+    Name: smb2.lock_count
+    Type: FtUint16
+    Display: BaseDec
+    Info: Lock Count
+    JsonName: smb2_smb2_lock_count
+  smb2.capabilities:
+    Name: smb2.capabilities
+    Type: FtUint32
+    Display: BaseHex
+    Info: Capabilities
+    JsonName: smb2_smb2_capabilities
+  smb2.ioctl.shadow_copy.count:
+    Name: smb2.ioctl.shadow_copy.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Count
+    JsonName: smb2_smb2_ioctl_shadow_copy_count
+  smb2.auth_frame:
+    Name: smb2.auth_frame
+    Type: FtUint32
+    Display: BaseDec
+    Info: Authenticated in Frame
+    JsonName: smb2_smb2_auth_frame
+  smb2.tcon_frame:
+    Name: smb2.tcon_frame
+    Type: FtUint32
+    Display: BaseDec
+    Info: Connected in Frame
+    JsonName: smb2_smb2_tcon_frame
+  smb2.tag:
+    Name: smb2.tag
+    Type: FtString
+    Info: Tag
+    JsonName: smb2_smb2_tag
+  smb2.acct:
+    Name: smb2.acct
+    Type: FtString
+    Info: Account
+    JsonName: smb2_smb2_acct
+  smb2.domain:
+    Name: smb2.domain
+    Type: FtString
+    Info: Domain
+    JsonName: smb2_smb2_domain
+  smb2.host:
+    Name: smb2.host
+    Type: FtString
+    Info: Host
+    JsonName: smb2_smb2_host
+  smb2.signature:
+    Name: smb2.signature
+    Type: FtBytes
+    Info: Signature
+    JsonName: smb2_smb2_signature
+  smb2.unknown:
+    Name: smb2.unknown
+    Type: FtBytes
+    Info: Unknown
+    JsonName: smb2_smb2_unknown
+  smb2.twrp_timestamp:
+    Name: smb2.twrp_timestamp
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Timestamp
+    JsonName: smb2_smb2_twrp_timestamp
+  smb2.mxac_timestamp:
+    Name: smb2.mxac_timestamp
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Timestamp
+    JsonName: smb2_smb2_mxac_timestamp
+  smb2.mxac_status:
+    Name: smb2.mxac_status
+    Type: FtUint32
+    Display: BaseHex
+    Info: Query Status
+    JsonName: smb2_smb2_mxac_status
+  smb2.qfid_fid:
+    Name: smb2.qfid_fid
+    Type: FtBytes
+    Info: Opaque File ID
+    JsonName: smb2_smb2_qfid_fid
+  smb2.ses_flags.guest:
+    Name: smb2.ses_flags.guest
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Guest
+    JsonName: smb2_smb2_ses_flags_guest
+  smb2.ses_flags.null:
+    Name: smb2.ses_flags.null
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Null
+    JsonName: smb2_smb2_ses_flags_null
+  smb2.ses_flags.encrypt:
+    Name: smb2.ses_flags.encrypt
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Encrypt
+    JsonName: smb2_smb2_ses_flags_encrypt
+  smb2.sec_mode.sign_required:
+    Name: smb2.sec_mode.sign_required
+    Type: FtBoolean
+    Display: SepDot
+    Info: Signing required
+    JsonName: smb2_sec_mode_smb2_sec_mode_sign_required
+  smb2.sec_mode.sign_enabled:
+    Name: smb2.sec_mode.sign_enabled
+    Type: FtBoolean
+    Display: SepDot
+    Info: Signing enabled
+    JsonName: smb2_sec_mode_smb2_sec_mode_sign_enabled
+  smb2.ses_req_flags:
+    Name: smb2.ses_req_flags
+    Type: FtUint8
+    Display: BaseDec
+    Info: Flags
+    JsonName: smb2_smb2_ses_req_flags
+  smb2.ses_req_flags.session_binding:
+    Name: smb2.ses_req_flags.session_binding
+    Type: FtBoolean
+    Display: SepDot
+    Info: Session Binding Request
+    JsonName: smb2_ses_req_flags_smb2_ses_req_flags_session_binding
+  smb2.capabilities.dfs:
+    Name: smb2.capabilities.dfs
+    Type: FtBoolean
+    Display: 32
+    Info: DFS
+    JsonName: smb2_capabilities_smb2_capabilities_dfs
+  smb2.capabilities.leasing:
+    Name: smb2.capabilities.leasing
+    Type: FtBoolean
+    Display: 32
+    Info: LEASING
+    JsonName: smb2_capabilities_smb2_capabilities_leasing
+  smb2.capabilities.large_mtu:
+    Name: smb2.capabilities.large_mtu
+    Type: FtBoolean
+    Display: 32
+    Info: LARGE MTU
+    JsonName: smb2_capabilities_smb2_capabilities_large_mtu
+  smb2.capabilities.multi_channel:
+    Name: smb2.capabilities.multi_channel
+    Type: FtBoolean
+    Display: 32
+    Info: MULTI CHANNEL
+    JsonName: smb2_capabilities_smb2_capabilities_multi_channel
+  smb2.capabilities.persistent_handles:
+    Name: smb2.capabilities.persistent_handles
+    Type: FtBoolean
+    Display: 32
+    Info: PERSISTENT HANDLES
+    JsonName: smb2_capabilities_smb2_capabilities_persistent_handles
+  smb2.capabilities.directory_leasing:
+    Name: smb2.capabilities.directory_leasing
+    Type: FtBoolean
+    Display: 32
+    Info: DIRECTORY LEASING
+    JsonName: smb2_capabilities_smb2_capabilities_directory_leasing
+  smb2.capabilities.encryption:
+    Name: smb2.capabilities.encryption
+    Type: FtBoolean
+    Display: 32
+    Info: ENCRYPTION
+    JsonName: smb2_capabilities_smb2_capabilities_encryption
+  smb2.max_trans_size:
+    Name: smb2.max_trans_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Max Transaction Size
+    JsonName: smb2_smb2_max_trans_size
+  smb2.max_read_size:
+    Name: smb2.max_read_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Max Read Size
+    JsonName: smb2_smb2_max_read_size
+  smb2.max_write_size:
+    Name: smb2.max_write_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Max Write Size
+    JsonName: smb2_smb2_max_write_size
+  smb2.channel:
+    Name: smb2.channel
+    Type: FtUint32
+    Display: BaseHex
+    Info: Channel
+    JsonName: smb2_smb2_channel
+  smb2.buffer_descriptor.offset:
+    Name: smb2.buffer_descriptor.offset
+    Type: FtUint64
+    Display: BaseDec
+    Info: Offset
+    JsonName: smb2_smb2_buffer_descriptor_offset
+  smb2.buffer_descriptor.token:
+    Name: smb2.buffer_descriptor.token
+    Type: FtUint32
+    Display: BaseHex
+    Info: Token
+    JsonName: smb2_smb2_buffer_descriptor_token
+  smb2.buffer_descriptor.length:
+    Name: smb2.buffer_descriptor.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Length
+    JsonName: smb2_smb2_buffer_descriptor_length
+  smb2.share_flags:
+    Name: smb2.share_flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Share flags
+    JsonName: smb2_smb2_share_flags
+  smb2.share_flags.dfs:
+    Name: smb2.share_flags.dfs
+    Type: FtBoolean
+    Display: 32
+    Info: DFS
+    JsonName: smb2_share_flags_smb2_share_flags_dfs
+  smb2.share_flags.dfs_root:
+    Name: smb2.share_flags.dfs_root
+    Type: FtBoolean
+    Display: 32
+    Info: DFS root
+    JsonName: smb2_share_flags_smb2_share_flags_dfs_root
+  smb2.share_flags.restrict_exclusive_opens:
+    Name: smb2.share_flags.restrict_exclusive_opens
+    Type: FtBoolean
+    Display: 32
+    Info: Restrict exclusive opens
+    JsonName: smb2_share_flags_smb2_share_flags_restrict_exclusive_opens
+  smb2.share_flags.force_shared_delete:
+    Name: smb2.share_flags.force_shared_delete
+    Type: FtBoolean
+    Display: 32
+    Info: Force shared delete
+    JsonName: smb2_share_flags_smb2_share_flags_force_shared_delete
+  smb2.share_flags.allow_namespace_caching:
+    Name: smb2.share_flags.allow_namespace_caching
+    Type: FtBoolean
+    Display: 32
+    Info: Allow namepsace caching
+    JsonName: smb2_share_flags_smb2_share_flags_allow_namespace_caching
+  smb2.share_flags.access_based_dir_enum:
+    Name: smb2.share_flags.access_based_dir_enum
+    Type: FtBoolean
+    Display: 32
+    Info: Access based directory enum
+    JsonName: smb2_share_flags_smb2_share_flags_access_based_dir_enum
+  smb2.share_flags.force_levelii_oplock:
+    Name: smb2.share_flags.force_levelii_oplock
+    Type: FtBoolean
+    Display: 32
+    Info: Force level II oplock
+    JsonName: smb2_share_flags_smb2_share_flags_force_levelii_oplock
+  smb2.share_flags.enable_hash_v1:
+    Name: smb2.share_flags.enable_hash_v1
+    Type: FtBoolean
+    Display: 32
+    Info: Enable hash V1
+    JsonName: smb2_share_flags_smb2_share_flags_enable_hash_v1
+  smb2.share_flags.enable_hash_v2:
+    Name: smb2.share_flags.enable_hash_v2
+    Type: FtBoolean
+    Display: 32
+    Info: Enable hash V2
+    JsonName: smb2_share_flags_smb2_share_flags_enable_hash_v2
+  smb2.share_flags.encrypt_data:
+    Name: smb2.share_flags.encrypt_data
+    Type: FtBoolean
+    Display: 32
+    Info: Encrypted data required
+    JsonName: smb2_share_flags_smb2_share_flags_encrypt_data
+  smb2.share.caching:
+    Name: smb2.share.caching
+    Type: FtUint32
+    Display: BaseHex
+    Info: Caching policy
+    JsonName: smb2_smb2_share_caching
+  smb2.share_caps:
+    Name: smb2.share_caps
+    Type: FtUint32
+    Display: BaseHex
+    Info: Share Capabilities
+    JsonName: smb2_smb2_share_caps
+  smb2.share_caps.dfs:
+    Name: smb2.share_caps.dfs
+    Type: FtBoolean
+    Display: 32
+    Info: DFS
+    JsonName: smb2_share_caps_smb2_share_caps_dfs
+  smb2.share_caps.continuous_availability:
+    Name: smb2.share_caps.continuous_availability
+    Type: FtBoolean
+    Display: 32
+    Info: CONTINUOUS AVAILABILITY
+    JsonName: smb2_share_caps_smb2_share_caps_continuous_availability
+  smb2.share_caps.scaleout:
+    Name: smb2.share_caps.scaleout
+    Type: FtBoolean
+    Display: 32
+    Info: SCALEOUT
+    JsonName: smb2_share_caps_smb2_share_caps_scaleout
+  smb2.share_caps.cluster:
+    Name: smb2.share_caps.cluster
+    Type: FtBoolean
+    Display: 32
+    Info: CLUSTER
+    JsonName: smb2_share_caps_smb2_share_caps_cluster
+  smb2.ioctl.flags:
+    Name: smb2.ioctl.flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb2_smb2_ioctl_flags
+  smb2.min_count:
+    Name: smb2.min_count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Min Count
+    JsonName: smb2_smb2_min_count
+  smb2.remaining_bytes:
+    Name: smb2.remaining_bytes
+    Type: FtUint32
+    Display: BaseDec
+    Info: Remaining Bytes
+    JsonName: smb2_smb2_remaining_bytes
+  smb2.channel_info_offset:
+    Name: smb2.channel_info_offset
+    Type: FtUint16
+    Display: BaseDec
+    Info: Channel Info Offset
+    JsonName: smb2_smb2_channel_info_offset
+  smb2.channel_info_length:
+    Name: smb2.channel_info_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Channel Info Length
+    JsonName: smb2_smb2_channel_info_length
+  smb2.channel_info_blob:
+    Name: smb2.channel_info_blob
+    Info: Channel Info Blob
+    JsonName: smb2_smb2_channel_info_blob
+  smb2.ioctl.is_fsctl:
+    Name: smb2.ioctl.is_fsctl
+    Type: FtBoolean
+    Display: 32
+    Info: Is FSCTL
+    JsonName: smb2_smb2_ioctl_is_fsctl
+  smb2.output_buffer_len:
+    Name: smb2.output_buffer_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Output Buffer Length
+    JsonName: smb2_smb2_output_buffer_len
+  smb2.close.pq_attrib:
+    Name: smb2.close.pq_attrib
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: PostQuery Attrib
+    JsonName: smb2_smb2_close_pq_attrib
+  smb2.notify.watch_tree:
+    Name: smb2.notify.watch_tree
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Watch Tree
+    JsonName: smb2_smb2_notify_watch_tree
+  smb2.notify.out:
+    Name: smb2.notify.out
+    Info: Out Data
+    JsonName: smb2_smb2_notify_out
+  smb2.notify.info:
+    Name: smb2.notify.info
+    Info: Notify Info
+    JsonName: smb2_smb2_notify_info
+  smb2.notify.next_offset:
+    Name: smb2.notify.next_offset
+    Type: FtUint32
+    Display: BaseHex
+    Info: Next Offset
+    JsonName: smb2_smb2_notify_next_offset
+  smb2.notify.action:
+    Name: smb2.notify.action
+    Type: FtUint32
+    Display: BaseHex
+    Info: Action
+    JsonName: smb2_smb2_notify_action
+  smb2.find.restart_scans:
+    Name: smb2.find.restart_scans
+    Type: FtBoolean
+    Display: SepDot
+    Info: Restart Scans
+    JsonName: smb2_smb2_find_restart_scans
+  smb2.find.single_entry:
+    Name: smb2.find.single_entry
+    Type: FtBoolean
+    Display: SepDot
+    Info: Single Entry
+    JsonName: smb2_smb2_find_single_entry
+  smb2.find.index_specified:
+    Name: smb2.find.index_specified
+    Type: FtBoolean
+    Display: SepDot
+    Info: Index Specified
+    JsonName: smb2_smb2_find_index_specified
+  smb2.find.reopen:
+    Name: smb2.find.reopen
+    Type: FtBoolean
+    Display: SepDot
+    Info: Reopen
+    JsonName: smb2_smb2_find_reopen
+  smb2.file_index:
+    Name: smb2.file_index
+    Type: FtUint32
+    Display: BaseHex
+    Info: File Index
+    JsonName: smb2_smb2_file_index
+  smb2.find.file_directory_info:
+    Name: smb2.find.file_directory_info
+    Info: FileDirectoryInfo
+    JsonName: smb2_smb2_find_file_directory_info
+  smb2.find.full_directory_info:
+    Name: smb2.find.full_directory_info
+    Info: FullDirectoryInfo
+    JsonName: smb2_smb2_find_full_directory_info
+  smb2.find.both_directory_info:
+    Name: smb2.find.both_directory_info
+    Info: FileBothDirectoryInfo
+    JsonName: smb2_smb2_find_both_directory_info
+  smb2.find.id_both_directory_info:
+    Name: smb2.find.id_both_directory_info
+    Info: FileIdBothDirectoryInfo
+    JsonName: smb2_smb2_find_id_both_directory_info
+  smb2.short_name_len:
+    Name: smb2.short_name_len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Short Name Length
+    JsonName: smb2_smb2_short_name_len
+  smb2.shortname:
+    Name: smb2.shortname
+    Type: FtString
+    Info: Short Name
+    JsonName: smb2_smb2_shortname
+  smb2.lock_info:
+    Name: smb2.lock_info
+    Info: Lock Info
+    JsonName: smb2_smb2_lock_info
+  smb2.lock_length:
+    Name: smb2.lock_length
+    Type: FtUint64
+    Display: BaseDec
+    Info: Length
+    JsonName: smb2_smb2_lock_length
+  smb2.lock_flags:
+    Name: smb2.lock_flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb2_smb2_lock_flags
+  smb2.lock_flags.shared:
+    Name: smb2.lock_flags.shared
+    Type: FtBoolean
+    Display: 32
+    Info: Shared
+    JsonName: smb2_lock_flags_smb2_lock_flags_shared
+  smb2.lock_flags.exclusive:
+    Name: smb2.lock_flags.exclusive
+    Type: FtBoolean
+    Display: 32
+    Info: Exclusive
+    JsonName: smb2_lock_flags_smb2_lock_flags_exclusive
+  smb2.lock_flags.unlock:
+    Name: smb2.lock_flags.unlock
+    Type: FtBoolean
+    Display: 32
+    Info: Unlock
+    JsonName: smb2_lock_flags_smb2_lock_flags_unlock
+  smb2.lock_flags.fail_immediately:
+    Name: smb2.lock_flags.fail_immediately
+    Type: FtBoolean
+    Display: 32
+    Info: Fail Immediately
+    JsonName: smb2_lock_flags_smb2_lock_flags_fail_immediately
+  smb2.error.context_count:
+    Name: smb2.error.context_count
+    Type: FtUint8
+    Display: BaseDec
+    Info: Error Context Count
+    JsonName: smb2_smb2_error_context_count
+  smb2.error.reserved:
+    Name: smb2.error.reserved
+    Type: FtUint8
+    Display: BaseHex
+    Info: Reserved
+    JsonName: smb2_smb2_error_reserved
+  smb2.error.byte_count:
+    Name: smb2.error.byte_count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Byte Count
+    JsonName: smb2_smb2_error_byte_count
+  smb2.error.data:
+    Name: smb2.error.data
+    Type: FtBytes
+    Info: Error Data
+    JsonName: smb2_smb2_error_data
+  smb2.reserved:
+    Name: smb2.reserved
+    Type: FtBytes
+    Info: Reserved
+    JsonName: smb2_smb2_reserved
+  smb2.reserved.random:
+    Name: smb2.reserved.random
+    Type: FtBytes
+    Info: Reserved (Random)
+    JsonName: smb2_reserved_smb2_reserved_random
+  smb2.root_directory:
+    Name: smb2.root_directory
+    Type: FtBytes
+    Info: Root Dir Handle (MBZ)
+    JsonName: smb2_smb2_root_directory
+  smb2.dhnq_buffer_reserved:
+    Name: smb2.dhnq_buffer_reserved
+    Type: FtUint64
+    Display: BaseHex
+    Info: Reserved
+    JsonName: smb2_smb2_dhnq_buffer_reserved
+  smb2.dh2x.timeout:
+    Name: smb2.dh2x.timeout
+    Type: FtUint32
+    Display: BaseDec
+    Info: Timeout
+    JsonName: smb2_smb2_dh2x_timeout
+  smb2.dh2x.flags:
+    Name: smb2.dh2x.flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb2_smb2_dh2x_flags
+  smb2.dh2x.flags.persistent_handle:
+    Name: smb2.dh2x.flags.persistent_handle
+    Type: FtBoolean
+    Display: 32
+    Info: Persistent Handle
+    JsonName: smb2_dh2x_flags_smb2_dh2x_flags_persistent_handle
+  smb2.dh2x.reserved:
+    Name: smb2.dh2x.reserved
+    Type: FtUint64
+    Display: BaseHex
+    Info: Reserved
+    JsonName: smb2_smb2_dh2x_reserved
+  smb2.dh2x.create_guid:
+    Name: smb2.dh2x.create_guid
+    Type: FtGuid
+    Info: Create Guid
+    JsonName: smb2_smb2_dh2x_create_guid
+  smb2.app_instance.struct_size:
+    Name: smb2.app_instance.struct_size
+    Type: FtUint16
+    Display: BaseDec
+    Info: Struct Size
+    JsonName: smb2_smb2_app_instance_struct_size
+  smb2.app_instance.reserved:
+    Name: smb2.app_instance.reserved
+    Type: FtUint16
+    Display: BaseHex
+    Info: Reserved
+    JsonName: smb2_smb2_app_instance_reserved
+  smb2.app_instance.app_guid:
+    Name: smb2.app_instance.app_guid
+    Type: FtGuid
+    Info: Application Guid
+    JsonName: smb2_smb2_app_instance_app_guid
+  smb2.svhdx_open_device_context.version:
+    Name: smb2.svhdx_open_device_context.version
+    Type: FtUint32
+    Display: BaseDec
+    Info: Version
+    JsonName: smb2_smb2_svhdx_open_device_context_version
+  smb2.svhdx_open_device_context.initiator_has_id:
+    Name: smb2.svhdx_open_device_context.initiator_has_id
+    Type: FtBoolean
+    Display: SepDot
+    Info: HasInitiatorId
+    JsonName: smb2_smb2_svhdx_open_device_context_initiator_has_id
+  smb2.svhdx_open_device_context.reserved:
+    Name: smb2.svhdx_open_device_context.reserved
+    Type: FtBytes
+    Info: Reserved
+    JsonName: smb2_smb2_svhdx_open_device_context_reserved
+  smb2.svhdx_open_device_context.initiator_id:
+    Name: smb2.svhdx_open_device_context.initiator_id
+    Type: FtGuid
+    Info: InitiatorId
+    JsonName: smb2_smb2_svhdx_open_device_context_initiator_id
+  smb2.svhdx_open_device_context.flags:
+    Name: smb2.svhdx_open_device_context.flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: Flags
+    JsonName: smb2_smb2_svhdx_open_device_context_flags
+  smb2.svhdx_open_device_context.originator_flags:
+    Name: smb2.svhdx_open_device_context.originator_flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: OriginatorFlags
+    JsonName: smb2_smb2_svhdx_open_device_context_originator_flags
+  smb2.svhxd_open_device_context.open_request_id:
+    Name: smb2.svhxd_open_device_context.open_request_id
+    Type: FtUint64
+    Display: BaseHex
+    Info: OpenRequestId
+    JsonName: smb2_smb2_svhxd_open_device_context_open_request_id
+  smb2.svhxd_open_device_context.initiator_host_name_len:
+    Name: smb2.svhxd_open_device_context.initiator_host_name_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: HostNameLength
+    JsonName: smb2_smb2_svhxd_open_device_context_initiator_host_name_len
+  smb2.svhdx_open_device_context.host_name:
+    Name: smb2.svhdx_open_device_context.host_name
+    Type: FtString
+    Info: HostName
+    JsonName: smb2_smb2_svhdx_open_device_context_host_name
+  smb2.svhdx_open_device_context.virtual_disk_properties_initialized:
+    Name: smb2.svhdx_open_device_context.virtual_disk_properties_initialized
+    Type: FtBoolean
+    Display: 32
+    Info: VirtualDiskPropertiesInitialized
+    JsonName: smb2_smb2_svhdx_open_device_context_virtual_disk_properties_initialized
+  smb2.svhdx_open_device_context.server_service_version:
+    Name: smb2.svhdx_open_device_context.server_service_version
+    Type: FtUint32
+    Display: BaseDec
+    Info: ServerServiceVersion
+    JsonName: smb2_smb2_svhdx_open_device_context_server_service_version
+  smb2.svhdx_open_device_context.virtual_sector_size:
+    Name: smb2.svhdx_open_device_context.virtual_sector_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: VirtualSectorSize
+    JsonName: smb2_smb2_svhdx_open_device_context_virtual_sector_size
+  smb2.svhdx_open_device_context.physical_sector_size:
+    Name: smb2.svhdx_open_device_context.physical_sector_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: PhysicalSectorSize
+    JsonName: smb2_smb2_svhdx_open_device_context_physical_sector_size
+  smb2.svhdx_open_device_context.virtual_size:
+    Name: smb2.svhdx_open_device_context.virtual_size
+    Type: FtUint64
+    Display: BaseDec
+    Info: VirtualSize
+    JsonName: smb2_smb2_svhdx_open_device_context_virtual_size
+  smb2.posix_v1_version:
+    Name: smb2.posix_v1_version
+    Type: FtUint32
+    Display: BaseDec
+    Info: Version
+    JsonName: smb2_smb2_posix_v1_version
+  smb2.posix_request:
+    Name: smb2.posix_request
+    Type: FtUint32
+    Display: BaseHex
+    Info: Request
+    JsonName: smb2_smb2_posix_request
+  smb2.posix_case_sensitive:
+    Name: smb2.posix_case_sensitive
+    Type: FtUint32
+    Display: BaseHex
+    Info: Posix Case Sensitive File Names
+    JsonName: smb2_smb2_posix_case_sensitive
+  smb2.posix_locks:
+    Name: smb2.posix_locks
+    Type: FtUint32
+    Display: BaseHex
+    Info: Posix Byte-Range Locks
+    JsonName: smb2_smb2_posix_locks
+  smb2.posix_file_semantics:
+    Name: smb2.posix_file_semantics
+    Type: FtUint32
+    Display: BaseHex
+    Info: Posix File Semantics
+    JsonName: smb2_smb2_posix_file_semantics
+  smb2.posix_utf8_paths:
+    Name: smb2.posix_utf8_paths
+    Type: FtUint32
+    Display: BaseHex
+    Info: Posix UTF8 Paths
+    JsonName: smb2_smb2_posix_utf8_paths
+  smb2.will_convert_NTACLs:
+    Name: smb2.will_convert_NTACLs
+    Type: FtUint32
+    Display: BaseHex
+    Info: Posix Will Convert NT ACLs
+    JsonName: smb2_smb2_will_convert_NTACLs
+  smb2.posix_fileinfo:
+    Name: smb2.posix_fileinfo
+    Type: FtUint32
+    Display: BaseHex
+    Info: Posix Fileinfo
+    JsonName: smb2_smb2_posix_fileinfo
+  smb2.posix_acls:
+    Name: smb2.posix_acls
+    Type: FtUint32
+    Display: BaseHex
+    Info: Posix ACLs
+    JsonName: smb2_smb2_posix_acls
+  smb2.rich_acls:
+    Name: smb2.rich_acls
+    Type: FtUint32
+    Display: BaseHex
+    Info: Rich ACLs
+    JsonName: smb2_smb2_rich_acls
+  smb2.posix_supported_features:
+    Name: smb2.posix_supported_features
+    Type: FtUint32
+    Display: BaseHex
+    Info: Supported Features
+    JsonName: smb2_smb2_posix_supported_features
+  smb2.aapl.command_code:
+    Name: smb2.aapl.command_code
+    Type: FtUint32
+    Display: BaseDec
+    Info: Command code
+    JsonName: smb2_smb2_aapl_command_code
+  smb2.aapl.reserved:
+    Name: smb2.aapl.reserved
+    Type: FtUint32
+    Display: BaseHex
+    Info: Reserved
+    JsonName: smb2_smb2_aapl_reserved
+  smb2.aapl.query_bitmask:
+    Name: smb2.aapl.query_bitmask
+    Type: FtUint64
+    Display: BaseHex
+    Info: Query bitmask
+    JsonName: smb2_smb2_aapl_query_bitmask
+  smb2.aapl.bitmask.server_caps:
+    Name: smb2.aapl.bitmask.server_caps
+    Type: FtBoolean
+    Display: 64
+    Info: Server capabilities
+    JsonName: smb2_smb2_aapl_bitmask_server_caps
+  smb2.aapl.bitmask.volume_caps:
+    Name: smb2.aapl.bitmask.volume_caps
+    Type: FtBoolean
+    Display: 64
+    Info: Volume capabilities
+    JsonName: smb2_smb2_aapl_bitmask_volume_caps
+  smb2.aapl.bitmask.model_info:
+    Name: smb2.aapl.bitmask.model_info
+    Type: FtBoolean
+    Display: 64
+    Info: Model information
+    JsonName: smb2_smb2_aapl_bitmask_model_info
+  smb2.aapl.caps:
+    Name: smb2.aapl.caps
+    Type: FtUint64
+    Display: BaseHex
+    Info: Client/Server capabilities
+    JsonName: smb2_smb2_aapl_caps
+  smb2.aapl.caps.supports_read_dir_addr:
+    Name: smb2.aapl.caps.supports_read_dir_addr
+    Type: FtBoolean
+    Display: 64
+    Info: Supports READDIRATTR
+    JsonName: smb2_aapl_caps_smb2_aapl_caps_supports_read_dir_addr
+  smb2.aapl.caps.supports_osx_copyfile:
+    Name: smb2.aapl.caps.supports_osx_copyfile
+    Type: FtBoolean
+    Display: 64
+    Info: Supports macOS copyfile
+    JsonName: smb2_aapl_caps_smb2_aapl_caps_supports_osx_copyfile
+  smb2.aapl.caps.unix_based:
+    Name: smb2.aapl.caps.unix_based
+    Type: FtBoolean
+    Display: 64
+    Info: UNIX-based
+    JsonName: smb2_aapl_caps_smb2_aapl_caps_unix_based
+  smb2.aapl.supports_nfs_ace:
+    Name: smb2.aapl.supports_nfs_ace
+    Type: FtBoolean
+    Display: 64
+    Info: Supports NFS ACE
+    JsonName: smb2_smb2_aapl_supports_nfs_ace
+  smb2.aapl.volume_caps:
+    Name: smb2.aapl.volume_caps
+    Type: FtUint64
+    Display: BaseHex
+    Info: Volume capabilities
+    JsonName: smb2_smb2_aapl_volume_caps
+  smb2.aapl.volume_caps.supports_resolve_id:
+    Name: smb2.aapl.volume_caps.supports_resolve_id
+    Type: FtBoolean
+    Display: 64
+    Info: Supports Resolve ID
+    JsonName: smb2_aapl_volume_caps_smb2_aapl_volume_caps_supports_resolve_id
+  smb2.aapl.volume_caps.case_sensitive:
+    Name: smb2.aapl.volume_caps.case_sensitive
+    Type: FtBoolean
+    Display: 64
+    Info: Case sensitive
+    JsonName: smb2_aapl_volume_caps_smb2_aapl_volume_caps_case_sensitive
+  smb2.aapl.volume_caps.supports_full_sync:
+    Name: smb2.aapl.volume_caps.supports_full_sync
+    Type: FtBoolean
+    Display: 64
+    Info: Supports full sync
+    JsonName: smb2_aapl_volume_caps_smb2_aapl_volume_caps_supports_full_sync
+  smb2.aapl.model_string:
+    Name: smb2.aapl.model_string
+    Type: FtUintString
+    Display: StrUnicode
+    Info: Model string
+    JsonName: smb2_smb2_aapl_model_string
+  smb2.aapl.server_path:
+    Name: smb2.aapl.server_path
+    Type: FtUintString
+    Display: StrUnicode
+    Info: Server path
+    JsonName: smb2_smb2_aapl_server_path
+  smb2.header.transform.signature:
+    Name: smb2.header.transform.signature
+    Type: FtBytes
+    Info: Signature
+    JsonName: smb2_smb2_header_transform_signature
+  smb2.header.transform.nonce:
+    Name: smb2.header.transform.nonce
+    Type: FtBytes
+    Info: Nonce
+    JsonName: smb2_smb2_header_transform_nonce
+  smb2.header.transform.msg_size:
+    Name: smb2.header.transform.msg_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Message size
+    JsonName: smb2_smb2_header_transform_msg_size
+  smb2.header.transform.reserved:
+    Name: smb2.header.transform.reserved
+    Type: FtBytes
+    Info: Reserved
+    JsonName: smb2_smb2_header_transform_reserved
+  smb2.header.transform.encryption_alg:
+    Name: smb2.header.transform.encryption_alg
+    Type: FtUint16
+    Display: BaseHex
+    Info: Encryption ALG
+    JsonName: smb2_smb2_header_transform_encryption_alg
+  smb2.header.transform.enc_aes128_ccm:
+    Name: smb2.header.transform.enc_aes128_ccm
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: SMB2_ENCRYPTION_AES128_CCM
+    JsonName: smb2_smb2_header_transform_enc_aes128_ccm
+  smb2.header.transform.enc_data:
+    Name: smb2.header.transform.enc_data
+    Type: FtBytes
+    Info: Data
+    JsonName: smb2_smb2_header_transform_enc_data
+  smb2.server_component_smb2:
+    Name: smb2.server_component_smb2
+    Info: 'Server Component: SMB2'
+    JsonName: smb2_smb2_server_component_smb2
+  smb2.server_component_smb2_transform:
+    Name: smb2.server_component_smb2_transform
+    Info: 'Server Component: SMB2_TRANSFORM'
+    JsonName: smb2_smb2_server_component_smb2_transform
+  smb2.truncated:
+    Name: smb2.truncated
+    Info: Truncated...
+    JsonName: smb2_smb2_truncated
+  smb2.pipe.fragment.overlap:
+    Name: smb2.pipe.fragment.overlap
+    Type: FtBoolean
+    Info: Fragment overlap
+    JsonName: smb2_pipe_fragment_smb2_pipe_fragment_overlap
+  smb2.pipe.fragment.overlap.conflict:
+    Name: smb2.pipe.fragment.overlap.conflict
+    Type: FtBoolean
+    Info: Conflicting data in fragment overlap
+    JsonName: smb2_pipe_fragment_overlap_smb2_pipe_fragment_overlap_conflict
+  smb2.pipe.fragment.multipletails:
+    Name: smb2.pipe.fragment.multipletails
+    Type: FtBoolean
+    Info: Multiple tail fragments found
+    JsonName: smb2_pipe_fragment_smb2_pipe_fragment_multipletails
+  smb2.pipe.fragment.toolongfragment:
+    Name: smb2.pipe.fragment.toolongfragment
+    Type: FtBoolean
+    Info: Fragment too long
+    JsonName: smb2_pipe_fragment_smb2_pipe_fragment_toolongfragment
+  smb2.pipe.fragment.error:
+    Name: smb2.pipe.fragment.error
+    Type: FtFramenum
+    Info: Defragmentation error
+    JsonName: smb2_pipe_fragment_smb2_pipe_fragment_error
+  smb2.pipe.fragment.count:
+    Name: smb2.pipe.fragment.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Fragment count
+    JsonName: smb2_pipe_fragment_smb2_pipe_fragment_count
+  smb2.pipe.fragment:
+    Name: smb2.pipe.fragment
+    Type: FtFramenum
+    Info: Fragment SMB2 Named Pipe
+    JsonName: smb2_smb2_pipe_fragment
+  smb2.pipe.fragments:
+    Name: smb2.pipe.fragments
+    Info: Reassembled SMB2 Named Pipe fragments
+    JsonName: smb2_smb2_pipe_fragments
+  smb2.pipe.reassembled_in:
+    Name: smb2.pipe.reassembled_in
+    Type: FtFramenum
+    Info: This SMB2 Named Pipe payload is reassembled in frame
+    JsonName: smb2_smb2_pipe_reassembled_in
+  smb2.pipe.reassembled.length:
+    Name: smb2.pipe.reassembled.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reassembled SMB2 Named Pipe length
+    JsonName: smb2_smb2_pipe_reassembled_length
+  smb2.pipe.reassembled.data:
+    Name: smb2.pipe.reassembled.data
+    Type: FtBytes
+    Info: Reassembled SMB2 Named Pipe Data
+    JsonName: smb2_smb2_pipe_reassembled_data
+  smb2.fsctl.cchunk.resume_key:
+    Name: smb2.fsctl.cchunk.resume_key
+    Type: FtBytes
+    Info: ResumeKey
+    JsonName: smb2_smb2_fsctl_cchunk_resume_key
+  smb2.fsctl.cchunk.count:
+    Name: smb2.fsctl.cchunk.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Chunk Count
+    JsonName: smb2_smb2_fsctl_cchunk_count
+  smb2.fsctl.cchunk.src_offset:
+    Name: smb2.fsctl.cchunk.src_offset
+    Type: FtUint64
+    Display: BaseDec
+    Info: Source Offset
+    JsonName: smb2_smb2_fsctl_cchunk_src_offset
+  smb2.fsctl.cchunk.dst_offset:
+    Name: smb2.fsctl.cchunk.dst_offset
+    Type: FtUint64
+    Display: BaseDec
+    Info: Target Offset
+    JsonName: smb2_smb2_fsctl_cchunk_dst_offset
+  smb2.fsctl.cchunk.xfer_len:
+    Name: smb2.fsctl.cchunk.xfer_len
+    Type: FtUint32
+    Display: BaseDec
+    Info: Transfer Length
+    JsonName: smb2_smb2_fsctl_cchunk_xfer_len
+  smb2.fsctl.cchunk.chunks_written:
+    Name: smb2.fsctl.cchunk.chunks_written
+    Type: FtUint32
+    Display: BaseDec
+    Info: Chunks Written
+    JsonName: smb2_smb2_fsctl_cchunk_chunks_written
+  smb2.fsctl.cchunk.bytes_written:
+    Name: smb2.fsctl.cchunk.bytes_written
+    Type: FtUint32
+    Display: BaseDec
+    Info: Chunk Bytes Written
+    JsonName: smb2_smb2_fsctl_cchunk_bytes_written
+  smb2.fsctl.cchunk.total_written:
+    Name: smb2.fsctl.cchunk.total_written
+    Type: FtUint32
+    Display: BaseDec
+    Info: Total Bytes Written
+    JsonName: smb2_smb2_fsctl_cchunk_total_written
+  smb2.symlink_error_response:
+    Name: smb2.symlink_error_response
+    Info: Symbolic Link Error Response
+    JsonName: smb2_smb2_symlink_error_response
+  smb2.symlink.length:
+    Name: smb2.symlink.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: SymLink Length
+    JsonName: smb2_smb2_symlink_length
+  smb2.symlink.error_tag:
+    Name: smb2.symlink.error_tag
+    Type: FtUint32
+    Display: BaseHex
+    Info: SymLink Error Tag
+    JsonName: smb2_smb2_symlink_error_tag
+  smb2.SYMBOLIC_LINK_REPARSE_DATA_BUFFER:
+    Name: smb2.SYMBOLIC_LINK_REPARSE_DATA_BUFFER
+    Info: SYMBOLIC_LINK_REPARSE_DATA_BUFFER
+    JsonName: smb2_smb2_SYMBOLIC_LINK_REPARSE_DATA_BUFFER
+  smb2.symlink.reparse_tag:
+    Name: smb2.symlink.reparse_tag
+    Type: FtUint32
+    Display: BaseHex
+    Info: Reparse Tag
+    JsonName: smb2_smb2_symlink_reparse_tag
+  smb2.symlink.reparse_data_length:
+    Name: smb2.symlink.reparse_data_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Reparse Data Length
+    JsonName: smb2_smb2_symlink_reparse_data_length
+  smb2.symlink.unparsed_path_length:
+    Name: smb2.symlink.unparsed_path_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Unparsed Path Length
+    JsonName: smb2_smb2_symlink_unparsed_path_length
+  smb2.symlink.substitute_name:
+    Name: smb2.symlink.substitute_name
+    Type: FtString
+    Info: Substitute Name
+    JsonName: smb2_smb2_symlink_substitute_name
+  smb2.symlink.print_name:
+    Name: smb2.symlink.print_name
+    Type: FtString
+    Info: Print Name
+    JsonName: smb2_smb2_symlink_print_name
+  smb2.symlink.flags:
+    Name: smb2.symlink.flags
+    Type: FtUint32
+    Display: BaseDec
+    Info: Flags
+    JsonName: smb2_smb2_symlink_flags

@@ -1,0 +1,4 @@
+syntax = "proto3";
+package Ndx.Decoders.Basic;
+message Ieee80211 {
+}

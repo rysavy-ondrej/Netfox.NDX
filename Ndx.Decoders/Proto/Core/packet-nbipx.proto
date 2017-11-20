@@ -1,0 +1,4 @@
+syntax = "proto3";
+package Ndx.Decoders.Core;
+message Nbipx {
+}

@@ -1,0 +1,55 @@
+Name: tftp
+Fields:
+  tftp.opcode:
+    Name: tftp.opcode
+    Type: FtUint16
+    Display: BaseDec
+    Info: Opcode
+    JsonName: tftp_tftp_opcode
+  tftp.source_file:
+    Name: tftp.source_file
+    Type: FtStringz
+    Info: Source File
+    JsonName: tftp_tftp_source_file
+  tftp.destination_file:
+    Name: tftp.destination_file
+    Type: FtStringz
+    Info: DESTINATION File
+    JsonName: tftp_tftp_destination_file
+  tftp.type:
+    Name: tftp.type
+    Type: FtStringz
+    Info: Type
+    JsonName: tftp_tftp_type
+  tftp.block:
+    Name: tftp.block
+    Type: FtUint16
+    Display: BaseDec
+    Info: Block
+    JsonName: tftp_tftp_block
+  tftp.error.code:
+    Name: tftp.error.code
+    Type: FtUint16
+    Display: BaseDec
+    Info: Error code
+    JsonName: tftp_tftp_error_code
+  tftp.error.message:
+    Name: tftp.error.message
+    Type: FtStringz
+    Info: Error message
+    JsonName: tftp_tftp_error_message
+  tftp.option.name:
+    Name: tftp.option.name
+    Type: FtStringz
+    Info: Option name
+    JsonName: tftp_tftp_option_name
+  tftp.option.value:
+    Name: tftp.option.value
+    Type: FtStringz
+    Info: Option value
+    JsonName: tftp_tftp_option_value
+  tftp.data:
+    Name: tftp.data
+    Type: FtBytes
+    Info: Data
+    JsonName: tftp_tftp_data

@@ -11,6 +11,31 @@ using Newtonsoft.Json.Linq;
 
 namespace Ndx.Captures
 {
+
+    public class JsonPacket
+    {
+        long m_timestamp;
+        JToken m_layers;
+        string[] m_protocols;
+
+        internal JsonPacket(JToken rootToken)
+        {
+            m_layers = rootToken["layers"];
+            m_timestamp = ((long)rootToken["timestamp"]);
+            m_protocols = m_layers.Value<JToken>("frame")?.Value<string>("frame_frame_protocols")?.Split(':') ?? new String[0];
+        }
+
+        public long Timestamp => m_timestamp;
+        public long TimestampTicks => DateTimeOffset.FromUnixTimeMilliseconds(m_timestamp).Ticks;
+        public DateTimeOffset TimestampDateTime => DateTimeOffset.FromUnixTimeMilliseconds(m_timestamp);
+
+        public string[] Protocols => m_protocols;
+
+        public JToken GetProtocol(string name)
+        {
+            return m_layers[name];
+        }
+    }
     /// <summary>
     /// This class represents pcap file produced by TSHARK -T ek command. This is New-line delimited JSON file. 
     /// </summary>
@@ -23,20 +48,34 @@ namespace Ndx.Captures
         }
 
         /// <summary>
+        /// Reads next available packet from JSON source and provides it as <see cref="JsonPacket"/> object.
+        /// </summary>
+        /// <returns>New <see cref="JsonPacket"/> object or null if no more packets are available. </returns>
+        public JsonPacket ReadPacket()
+        {
+            return ReadInternal(line => new JsonPacket(JToken.Parse(line)));
+        }
+
+        protected T ReadInternal<T>(Func<string,T> decoder)
+        {
+            while (true)
+            {
+                var line = m_reader.ReadLine();
+                if (line == null) return default(T);
+                if (line.StartsWith("{\"timestamp\""))
+                {
+                    return decoder(line);
+                }
+            }
+        }
+
+        /// <summary>
         /// Reads the single packet from the source stream.
         /// </summary>
         /// <returns>Next <see cref="DecodedFrame"/> object or null if the end of source stream was reached.</returns>
         public DecodedFrame Read(Func<String, String, String,Tuple<String,Variant>> customDecoder = null)
         {
-            while (true)
-            {
-                var line = m_reader.ReadLine();
-                if (line == null) return null;
-                if (line.StartsWith("{\"timestamp\""))
-                {
-                    return DecodeJsonLine(line, customDecoder);
-                }
-            }
+            return ReadInternal<DecodedFrame>(line => DecodeJsonLine(line, customDecoder));
         }
 
         /// <summary>
@@ -57,7 +96,7 @@ namespace Ndx.Captures
             var frameLength = (int)frame["frame_frame_len"];
             var result = new DecodedFrame()
             {
-                Timestamp = EpochMsToTick(timestamp),
+                Timestamp = DateTimeOffset.FromUnixTimeMilliseconds(timestamp).Ticks,
                 FrameNumber = framenumber,
                 FrameProtocols = frameprotocols
             };
@@ -107,11 +146,6 @@ namespace Ndx.Captures
                 }
             }
             return result;
-        }
-
-        private static long EpochMsToTick(long epochms)
-        {
-            return DateTimeOffset.FromUnixTimeMilliseconds(epochms).Ticks;
         }
 
         public void Dispose()

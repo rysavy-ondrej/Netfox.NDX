@@ -1,0 +1,358 @@
+Name: http
+Fields:
+  http.notification:
+    Name: http.notification
+    Type: FtBoolean
+    Info: Notification
+    JsonName: http_http_notification
+  http.response:
+    Name: http.response
+    Type: FtBoolean
+    Info: Response
+    JsonName: http_http_response
+  http.request:
+    Name: http.request
+    Type: FtBoolean
+    Info: Request
+    JsonName: http_http_request
+  http.response_number:
+    Name: http.response_number
+    Type: FtUint32
+    Display: BaseDec
+    Info: Response number
+    JsonName: http_http_response_number
+  http.request_number:
+    Name: http.request_number
+    Type: FtUint32
+    Display: BaseDec
+    Info: Request number
+    JsonName: http_http_request_number
+  http.authbasic:
+    Name: http.authbasic
+    Type: FtString
+    Info: Credentials
+    JsonName: http_http_authbasic
+  http.authcitrix:
+    Name: http.authcitrix
+    Type: FtBoolean
+    Info: Citrix AG Auth
+    JsonName: http_http_authcitrix
+  http.authcitrix.user:
+    Name: http.authcitrix.user
+    Type: FtString
+    Info: Citrix AG Username
+    JsonName: http_authcitrix_http_authcitrix_user
+  http.authcitrix.domain:
+    Name: http.authcitrix.domain
+    Type: FtString
+    Info: Citrix AG Domain
+    JsonName: http_authcitrix_http_authcitrix_domain
+  http.authcitrix.password:
+    Name: http.authcitrix.password
+    Type: FtString
+    Info: Citrix AG Password
+    JsonName: http_authcitrix_http_authcitrix_password
+  http.authcitrix.session:
+    Name: http.authcitrix.session
+    Type: FtString
+    Info: Citrix AG Session ID
+    JsonName: http_authcitrix_http_authcitrix_session
+  http.response.line:
+    Name: http.response.line
+    Type: FtString
+    Info: Response line
+    JsonName: http_response_http_response_line
+  http.request.line:
+    Name: http.request.line
+    Type: FtString
+    Info: Request line
+    JsonName: http_request_http_request_line
+  http.request.method:
+    Name: http.request.method
+    Type: FtString
+    Info: Request Method
+    JsonName: http_request_http_request_method
+  http.request.uri:
+    Name: http.request.uri
+    Type: FtString
+    Display: StrUnicode
+    Info: Request URI
+    JsonName: http_request_http_request_uri
+  http.request.uri.path:
+    Name: http.request.uri.path
+    Type: FtString
+    Display: StrUnicode
+    Info: Request URI Path
+    JsonName: http_request_uri_http_request_uri_path
+  http.request.uri.query:
+    Name: http.request.uri.query
+    Type: FtString
+    Display: StrUnicode
+    Info: Request URI Query
+    JsonName: http_request_uri_http_request_uri_query
+  http.request.uri.query.parameter:
+    Name: http.request.uri.query.parameter
+    Type: FtString
+    Display: StrUnicode
+    Info: Request URI Query Parameter
+    JsonName: http_request_uri_query_http_request_uri_query_parameter
+  http.request.version:
+    Name: http.request.version
+    Type: FtString
+    Info: Request Version
+    JsonName: http_request_http_request_version
+  http.response.version:
+    Name: http.response.version
+    Type: FtString
+    Info: Response Version
+    JsonName: http_response_http_response_version
+  http.request.full_uri:
+    Name: http.request.full_uri
+    Type: FtString
+    Info: Full request URI
+    JsonName: http_request_http_request_full_uri
+  http.response.code:
+    Name: http.response.code
+    Type: FtUint16
+    Display: BaseDec
+    Info: Status Code
+    JsonName: http_response_http_response_code
+  http.response.code.desc:
+    Name: http.response.code.desc
+    Type: FtString
+    Info: Status Code Description
+    JsonName: http_response_code_http_response_code_desc
+  http.response.phrase:
+    Name: http.response.phrase
+    Type: FtString
+    Info: Response Phrase
+    JsonName: http_response_http_response_phrase
+  http.authorization:
+    Name: http.authorization
+    Type: FtString
+    Info: Authorization
+    JsonName: http_http_authorization
+  http.proxy_authenticate:
+    Name: http.proxy_authenticate
+    Type: FtString
+    Info: Proxy-Authenticate
+    JsonName: http_http_proxy_authenticate
+  http.proxy_authorization:
+    Name: http.proxy_authorization
+    Type: FtString
+    Info: Proxy-Authorization
+    JsonName: http_http_proxy_authorization
+  http.proxy_connect_host:
+    Name: http.proxy_connect_host
+    Type: FtString
+    Info: Proxy-Connect-Hostname
+    JsonName: http_http_proxy_connect_host
+  http.proxy_connect_port:
+    Name: http.proxy_connect_port
+    Type: FtUint16
+    Display: BaseDec
+    Info: Proxy-Connect-Port
+    JsonName: http_http_proxy_connect_port
+  http.www_authenticate:
+    Name: http.www_authenticate
+    Type: FtString
+    Info: WWW-Authenticate
+    JsonName: http_http_www_authenticate
+  http.content_type:
+    Name: http.content_type
+    Type: FtString
+    Info: Content-Type
+    JsonName: http_http_content_type
+  http.content_length_header:
+    Name: http.content_length_header
+    Type: FtString
+    Info: Content-Length
+    JsonName: http_http_content_length_header
+  http.content_length:
+    Name: http.content_length
+    Type: FtUint64
+    Display: BaseDec
+    Info: Content length
+    JsonName: http_http_content_length
+  http.content_encoding:
+    Name: http.content_encoding
+    Type: FtString
+    Info: Content-Encoding
+    JsonName: http_http_content_encoding
+  http.transfer_encoding:
+    Name: http.transfer_encoding
+    Type: FtString
+    Info: Transfer-Encoding
+    JsonName: http_http_transfer_encoding
+  http.upgrade:
+    Name: http.upgrade
+    Type: FtString
+    Info: Upgrade
+    JsonName: http_http_upgrade
+  http.user_agent:
+    Name: http.user_agent
+    Type: FtString
+    Info: User-Agent
+    JsonName: http_http_user_agent
+  http.host:
+    Name: http.host
+    Type: FtString
+    Info: Host
+    JsonName: http_http_host
+  http.connection:
+    Name: http.connection
+    Type: FtString
+    Info: Connection
+    JsonName: http_http_connection
+  http.cookie:
+    Name: http.cookie
+    Type: FtString
+    Info: Cookie
+    JsonName: http_http_cookie
+  http.cookie_pair:
+    Name: http.cookie_pair
+    Type: FtString
+    Info: Cookie pair
+    JsonName: http_http_cookie_pair
+  http.accept:
+    Name: http.accept
+    Type: FtString
+    Info: Accept
+    JsonName: http_http_accept
+  http.referer:
+    Name: http.referer
+    Type: FtString
+    Info: Referer
+    JsonName: http_http_referer
+  http.accept_language:
+    Name: http.accept_language
+    Type: FtString
+    Info: Accept-Language
+    JsonName: http_http_accept_language
+  http.accept_encoding:
+    Name: http.accept_encoding
+    Type: FtString
+    Info: Accept Encoding
+    JsonName: http_http_accept_encoding
+  http.date:
+    Name: http.date
+    Type: FtString
+    Info: Date
+    JsonName: http_http_date
+  http.cache_control:
+    Name: http.cache_control
+    Type: FtString
+    Info: Cache-Control
+    JsonName: http_http_cache_control
+  http.server:
+    Name: http.server
+    Type: FtString
+    Info: Server
+    JsonName: http_http_server
+  http.location:
+    Name: http.location
+    Type: FtString
+    Info: Location
+    JsonName: http_http_location
+  http.sec_websocket_accept:
+    Name: http.sec_websocket_accept
+    Type: FtString
+    Info: Sec-WebSocket-Accept
+    JsonName: http_http_sec_websocket_accept
+  http.sec_websocket_extensions:
+    Name: http.sec_websocket_extensions
+    Type: FtString
+    Info: Sec-WebSocket-Extensions
+    JsonName: http_http_sec_websocket_extensions
+  http.sec_websocket_key:
+    Name: http.sec_websocket_key
+    Type: FtString
+    Info: Sec-WebSocket-Key
+    JsonName: http_http_sec_websocket_key
+  http.sec_websocket_protocol:
+    Name: http.sec_websocket_protocol
+    Type: FtString
+    Info: Sec-WebSocket-Protocol
+    JsonName: http_http_sec_websocket_protocol
+  http.sec_websocket_version:
+    Name: http.sec_websocket_version
+    Type: FtString
+    Info: Sec-WebSocket-Version
+    JsonName: http_http_sec_websocket_version
+  http.set_cookie:
+    Name: http.set_cookie
+    Type: FtString
+    Info: Set-Cookie
+    JsonName: http_http_set_cookie
+  http.last_modified:
+    Name: http.last_modified
+    Type: FtString
+    Info: Last-Modified
+    JsonName: http_http_last_modified
+  http.x_forwarded_for:
+    Name: http.x_forwarded_for
+    Type: FtString
+    Info: X-Forwarded-For
+    JsonName: http_http_x_forwarded_for
+  http.request_in:
+    Name: http.request_in
+    Type: FtFramenum
+    Info: Request in frame
+    JsonName: http_http_request_in
+  http.response_in:
+    Name: http.response_in
+    Type: FtFramenum
+    Info: Response in frame
+    JsonName: http_http_response_in
+  http.next_request_in:
+    Name: http.next_request_in
+    Type: FtFramenum
+    Info: Next request in frame
+    JsonName: http_http_next_request_in
+  http.next_response_in:
+    Name: http.next_response_in
+    Type: FtFramenum
+    Info: Next response in frame
+    JsonName: http_http_next_response_in
+  http.prev_request_in:
+    Name: http.prev_request_in
+    Type: FtFramenum
+    Info: Prev request in frame
+    JsonName: http_http_prev_request_in
+  http.prev_response_in:
+    Name: http.prev_response_in
+    Type: FtFramenum
+    Info: Prev response in frame
+    JsonName: http_http_prev_response_in
+  http.time:
+    Name: http.time
+    Type: FtRelativeTime
+    Info: Time since request
+    JsonName: http_http_time
+  http.chunked_trailer_part:
+    Name: http.chunked_trailer_part
+    Type: FtString
+    Info: trailer-part
+    JsonName: http_http_chunked_trailer_part
+  http.chunk_boundary:
+    Name: http.chunk_boundary
+    Type: FtBytes
+    Info: Chunk boundary
+    JsonName: http_http_chunk_boundary
+  http.chunk_size:
+    Name: http.chunk_size
+    Type: FtUint32
+    Display: BaseDec
+    Info: Chunk size
+    JsonName: http_http_chunk_size
+  http.file_data:
+    Name: http.file_data
+    Type: FtString
+    Display: StrUnicode
+    Info: File Data
+    JsonName: http_http_file_data
+  http.unknown_header:
+    Name: http.unknown_header
+    Type: FtString
+    Info: Unknown header
+    JsonName: http_http_unknown_header

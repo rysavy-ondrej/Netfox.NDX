@@ -1,0 +1,53 @@
+Name: teredo
+Fields:
+  teredo.auth:
+    Name: teredo.auth
+    Info: Teredo Authentication header
+    JsonName: teredo_teredo_auth
+  teredo.auth.idlen:
+    Name: teredo.auth.idlen
+    Type: FtUint8
+    Display: BaseDec
+    Info: Client identifier length
+    JsonName: teredo_auth_teredo_auth_idlen
+  teredo.auth.aulen:
+    Name: teredo.auth.aulen
+    Type: FtUint8
+    Display: BaseDec
+    Info: Authentication value length
+    JsonName: teredo_auth_teredo_auth_aulen
+  teredo.auth.id:
+    Name: teredo.auth.id
+    Type: FtBytes
+    Info: Client identifier
+    JsonName: teredo_auth_teredo_auth_id
+  teredo.auth.value:
+    Name: teredo.auth.value
+    Type: FtBytes
+    Info: Authentication value
+    JsonName: teredo_auth_teredo_auth_value
+  teredo.auth.nonce:
+    Name: teredo.auth.nonce
+    Type: FtBytes
+    Info: Nonce value
+    JsonName: teredo_auth_teredo_auth_nonce
+  teredo.auth.conf:
+    Name: teredo.auth.conf
+    Type: FtBytes
+    Info: Confirmation byte
+    JsonName: teredo_auth_teredo_auth_conf
+  teredo.orig:
+    Name: teredo.orig
+    Info: Teredo Origin Indication header
+    JsonName: teredo_teredo_orig
+  teredo.orig.port:
+    Name: teredo.orig.port
+    Type: FtUint16
+    Display: BaseDec
+    Info: Origin UDP port
+    JsonName: teredo_orig_teredo_orig_port
+  teredo.orig.addr:
+    Name: teredo.orig.addr
+    Type: FtIpv4
+    Info: Origin IPv4 address
+    JsonName: teredo_orig_teredo_orig_addr

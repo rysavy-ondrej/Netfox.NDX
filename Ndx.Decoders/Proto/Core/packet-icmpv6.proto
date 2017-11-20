@@ -1,0 +1,1225 @@
+syntax = "proto3";
+package Ndx.Decoders.Core;
+message Icmpv6 {
+   // Type ('icmpv6_icmpv6_type')
+   uint32 Icmpv6Type = 1;
+
+   // Code ('icmpv6_icmpv6_code')
+   uint32 Icmpv6Code = 2;
+
+   // Checksum ('icmpv6_icmpv6_checksum')
+   uint32 Icmpv6Checksum = 3;
+
+   // Checksum Status ('icmpv6_checksum_icmpv6_checksum_status')
+   uint32 Icmpv6ChecksumStatus = 4;
+
+   // Reserved ('icmpv6_icmpv6_reserved')
+   bytes Icmpv6Reserved = 5;
+
+   // Data ('icmpv6_icmpv6_data')
+   bytes Icmpv6Data = 6;
+
+   // Unknown Data ('icmpv6_icmpv6_unknown_data')
+   bytes Icmpv6UnknownData = 7;
+
+   // MTU ('icmpv6_icmpv6_mtu')
+   uint32 Icmpv6Mtu = 8;
+
+   // Pointer ('icmpv6_icmpv6_pointer')
+   uint32 Icmpv6Pointer = 9;
+
+   // Identifier ('icmpv6_icmpv6_echo_identifier')
+   uint32 Icmpv6EchoIdentifier = 10;
+
+   // Sequence ('icmpv6_icmpv6_echo_sequence_number')
+   uint32 Icmpv6EchoSequenceNumber = 11;
+
+   // Nonce ('icmpv6_icmpv6_nonce')
+   bytes Icmpv6Nonce = 12;
+
+   // Cur hop limit ('icmpv6_icmpv6_nd_ra_cur_hop_limit')
+   uint32 Icmpv6NdRaCurHopLimit = 13;
+
+   // Flags ('icmpv6_icmpv6_nd_ra_flag')
+   uint32 Icmpv6NdRaFlag = 14;
+
+   // Managed address configuration ('icmpv6_nd_ra_flag_icmpv6_nd_ra_flag_m')
+   bool Icmpv6NdRaFlagM = 15;
+
+   // Other configuration ('icmpv6_nd_ra_flag_icmpv6_nd_ra_flag_o')
+   bool Icmpv6NdRaFlagO = 16;
+
+   // Home Agent ('icmpv6_nd_ra_flag_icmpv6_nd_ra_flag_h')
+   bool Icmpv6NdRaFlagH = 17;
+
+   // Prf (Default Router Preference) ('icmpv6_nd_ra_flag_icmpv6_nd_ra_flag_prf')
+   uint32 Icmpv6NdRaFlagPrf = 18;
+
+   // Proxy ('icmpv6_nd_ra_flag_icmpv6_nd_ra_flag_p')
+   bool Icmpv6NdRaFlagP = 19;
+
+   // Reserved ('icmpv6_nd_ra_flag_icmpv6_nd_ra_flag_rsv')
+   uint32 Icmpv6NdRaFlagRsv = 20;
+
+   // Router lifetime (s) ('icmpv6_icmpv6_nd_ra_router_lifetime')
+   uint32 Icmpv6NdRaRouterLifetime = 21;
+
+   // Reachable time (ms) ('icmpv6_icmpv6_nd_ra_reachable_time')
+   uint32 Icmpv6NdRaReachableTime = 22;
+
+   // Retrans timer (ms) ('icmpv6_icmpv6_nd_ra_retrans_timer')
+   uint32 Icmpv6NdRaRetransTimer = 23;
+
+   // Target Address ('icmpv6_icmpv6_nd_ns_target_address')
+   bytes Icmpv6NdNsTargetAddress = 24;
+
+   // Flags ('icmpv6_icmpv6_nd_na_flag')
+   uint32 Icmpv6NdNaFlag = 25;
+
+   // Router ('icmpv6_nd_na_flag_icmpv6_nd_na_flag_r')
+   bool Icmpv6NdNaFlagR = 26;
+
+   // Solicited ('icmpv6_nd_na_flag_icmpv6_nd_na_flag_s')
+   bool Icmpv6NdNaFlagS = 27;
+
+   // Override ('icmpv6_nd_na_flag_icmpv6_nd_na_flag_o')
+   bool Icmpv6NdNaFlagO = 28;
+
+   // Reserved ('icmpv6_nd_na_flag_icmpv6_nd_na_flag_rsv')
+   uint32 Icmpv6NdNaFlagRsv = 29;
+
+   // Target Address ('icmpv6_icmpv6_nd_na_target_address')
+   bytes Icmpv6NdNaTargetAddress = 30;
+
+   // Target Address ('icmpv6_icmpv6_nd_rd_target_address')
+   bytes Icmpv6NdRdTargetAddress = 31;
+
+   // Destination Address ('icmpv6_icmpv6_rd_na_destination_address')
+   bytes Icmpv6RdNaDestinationAddress = 32;
+
+   // ICMPv6 Option ('icmpv6_icmpv6_opt')
+   int32 Icmpv6Opt = 33;
+
+   // Type ('icmpv6_opt_icmpv6_opt_type')
+   uint32 Icmpv6OptType = 34;
+
+   // Length ('icmpv6_opt_icmpv6_opt_length')
+   uint32 Icmpv6OptLength = 35;
+
+   // Reserved ('icmpv6_opt_icmpv6_opt_reserved')
+   int32 Icmpv6OptReserved = 36;
+
+   // Padding ('icmpv6_opt_icmpv6_opt_padding')
+   int32 Icmpv6OptPadding = 37;
+
+   // Link-layer address ('icmpv6_opt_icmpv6_opt_linkaddr')
+   bytes Icmpv6OptLinkaddr = 38;
+
+   // Source Link-layer address ('icmpv6_opt_icmpv6_opt_src_linkaddr')
+   bytes Icmpv6OptSrcLinkaddr = 39;
+
+   // Target Link-layer address ('icmpv6_opt_icmpv6_opt_target_linkaddr')
+   bytes Icmpv6OptTargetLinkaddr = 40;
+
+   // Link-layer address ('icmpv6_opt_icmpv6_opt_linkaddr_eui64')
+   bytes Icmpv6OptLinkaddrEui64 = 41;
+
+   // Source Link-layer address ('icmpv6_opt_icmpv6_opt_src_linkaddr_eui64')
+   bytes Icmpv6OptSrcLinkaddrEui64 = 42;
+
+   // Target Link-layer address ('icmpv6_opt_icmpv6_opt_target_linkaddr_eui64')
+   bytes Icmpv6OptTargetLinkaddrEui64 = 43;
+
+   // Prefix Length ('icmpv6_opt_prefix_icmpv6_opt_prefix_length')
+   uint32 Icmpv6OptPrefixLength = 44;
+
+   // Flag ('icmpv6_opt_prefix_icmpv6_opt_prefix_flag')
+   uint32 Icmpv6OptPrefixFlag = 45;
+
+   // On-link flag(L) ('icmpv6_opt_prefix_flag_icmpv6_opt_prefix_flag_l')
+   bool Icmpv6OptPrefixFlagL = 46;
+
+   // Autonomous address-configuration flag(A) ('icmpv6_opt_prefix_flag_icmpv6_opt_prefix_flag_a')
+   bool Icmpv6OptPrefixFlagA = 47;
+
+   // Router address flag(R) ('icmpv6_opt_prefix_flag_icmpv6_opt_prefix_flag_r')
+   bool Icmpv6OptPrefixFlagR = 48;
+
+   // Reserved ('icmpv6_opt_prefix_flag_icmpv6_opt_prefix_flag_reserved')
+   uint32 Icmpv6OptPrefixFlagReserved = 49;
+
+   // Valid Lifetime ('icmpv6_opt_prefix_icmpv6_opt_prefix_valid_lifetime')
+   uint32 Icmpv6OptPrefixValidLifetime = 50;
+
+   // Preferred Lifetime ('icmpv6_opt_prefix_icmpv6_opt_prefix_preferred_lifetime')
+   uint32 Icmpv6OptPrefixPreferredLifetime = 51;
+
+   // Prefix ('icmpv6_opt_icmpv6_opt_prefix')
+   bytes Icmpv6OptPrefix = 52;
+
+   // Pad Length ('icmpv6_opt_cga_icmpv6_opt_cga_pad_length')
+   uint32 Icmpv6OptCgaPadLength = 53;
+
+   // CGA ('icmpv6_opt_icmpv6_opt_cga')
+   bytes Icmpv6OptCga = 54;
+
+   // Modifier ('icmpv6_opt_cga_icmpv6_opt_cga_modifier')
+   bytes Icmpv6OptCgaModifier = 55;
+
+   // Subnet Prefix ('icmpv6_opt_cga_icmpv6_opt_cga_subnet_prefix')
+   bytes Icmpv6OptCgaSubnetPrefix = 56;
+
+   // Count ('icmpv6_opt_cga_icmpv6_opt_cga_count')
+   bytes Icmpv6OptCgaCount = 57;
+
+   // Ext Type ('icmpv6_opt_cga_icmpv6_opt_cga_ext_type')
+   uint32 Icmpv6OptCgaExtType = 58;
+
+   // Ext Length ('icmpv6_opt_cga_icmpv6_opt_cga_ext_length')
+   uint32 Icmpv6OptCgaExtLength = 59;
+
+   // Ext Data ('icmpv6_opt_cga_icmpv6_opt_cga_ext_data')
+   bytes Icmpv6OptCgaExtData = 60;
+
+   // Key Hash ('icmpv6_icmpv6_opt_rsa_key_hash')
+   bytes Icmpv6OptRsaKeyHash = 61;
+
+   // Digital Signature and Padding ('icmpv6_opt_icmpv6_opt_digital_signature_padding')
+   int32 Icmpv6OptDigitalSignaturePadding = 62;
+
+   // Key Hash ('icmpv6_icmpv6_opt_ps_key_hash')
+   bytes Icmpv6OptPsKeyHash = 63;
+
+   // Timestamp ('icmpv6_opt_icmpv6_opt_timestamp')
+   int64 Icmpv6OptTimestamp = 64;
+
+   // Nonce ('icmpv6_opt_icmpv6_opt_nonce')
+   bytes Icmpv6OptNonce = 65;
+
+   // Certificate and Padding ('icmpv6_opt_icmpv6_opt_certificate_padding')
+   int32 Icmpv6OptCertificatePadding = 66;
+
+   // Option-code ('icmpv6_icmpv6_opt_ipa_option_code')
+   uint32 Icmpv6OptIpaOptionCode = 67;
+
+   // Prefix Length ('icmpv6_icmpv6_opt_ipa_prefix_len')
+   uint32 Icmpv6OptIpaPrefixLen = 68;
+
+   // IPv6 Address ('icmpv6_icmpv6_opt_ipa_ipv6_address')
+   bytes Icmpv6OptIpaIpv6Address = 69;
+
+   // Option-code ('icmpv6_icmpv6_opt_nrpi_option_code')
+   uint32 Icmpv6OptNrpiOptionCode = 70;
+
+   // Prefix Length ('icmpv6_icmpv6_opt_nrpi_prefix_len')
+   uint32 Icmpv6OptNrpiPrefixLen = 71;
+
+   // Prefix ('icmpv6_icmpv6_opt_nrpi_prefix')
+   bytes Icmpv6OptNrpiPrefix = 72;
+
+   // Option-code ('icmpv6_icmpv6_opt_lla_option_code')
+   uint32 Icmpv6OptLlaOptionCode = 73;
+
+   // Link-Layer Address ('icmpv6_icmpv6_opt_lla_bytes')
+   bytes Icmpv6OptLlaBytes = 74;
+
+   // Option-Code ('icmpv6_icmpv6_opt_naack_option_code')
+   uint32 Icmpv6OptNaackOptionCode = 75;
+
+   // Status ('icmpv6_icmpv6_opt_naack_status')
+   uint32 Icmpv6OptNaackStatus = 76;
+
+   // Supplied NCoA ('icmpv6_icmpv6_opt_naack_supplied_ncoa')
+   bytes Icmpv6OptNaackSuppliedNcoa = 77;
+
+   // Distance ('icmpv6_icmpv6_opt_map_distance')
+   uint32 Icmpv6OptMapDistance = 78;
+
+   // Preference ('icmpv6_icmpv6_opt_map_preference')
+   uint32 Icmpv6OptMapPreference = 79;
+
+   // Flag ('icmpv6_icmpv6_opt_map_flag')
+   uint32 Icmpv6OptMapFlag = 80;
+
+   // RCoA Flag ('icmpv6_opt_map_flag_icmpv6_opt_map_flag_r')
+   bool Icmpv6OptMapFlagR = 81;
+
+   // Reserved ('icmpv6_opt_map_flag_icmpv6_opt_map_flag_reserved')
+   uint32 Icmpv6OptMapFlagReserved = 82;
+
+   // Valid Lifetime ('icmpv6_icmpv6_opt_map_valid_lifetime')
+   uint32 Icmpv6OptMapValidLifetime = 83;
+
+   // Global Address ('icmpv6_icmpv6_opt_map_global_address')
+   bytes Icmpv6OptMapGlobalAddress = 84;
+
+   // Flag ('icmpv6_icmpv6_opt_route_info_flag')
+   uint32 Icmpv6OptRouteInfoFlag = 85;
+
+   // Route Preference ('icmpv6_opt_route_info_flag_icmpv6_opt_route_info_flag_route_preference')
+   uint32 Icmpv6OptRouteInfoFlagRoutePreference = 86;
+
+   // Reserved ('icmpv6_opt_route_info_flag_icmpv6_opt_route_info_flag_reserved')
+   uint32 Icmpv6OptRouteInfoFlagReserved = 87;
+
+   // Route Lifetime ('icmpv6_opt_icmpv6_opt_route_lifetime')
+   uint32 Icmpv6OptRouteLifetime = 88;
+
+   // Name Type ('icmpv6_opt_icmpv6_opt_name_type')
+   uint32 Icmpv6OptNameType = 89;
+
+   // DER Encoded X.501 Name ('icmpv6_opt_icmpv6_opt_name_x501')
+   bytes Icmpv6OptNameX501 = 90;
+
+   // FQDN ('icmpv6_opt_name_type_icmpv6_opt_name_type_fqdn')
+   string Icmpv6OptNameTypeFqdn = 91;
+
+   // Identifier ('icmpv6_icmpv6_send_identifier')
+   uint32 Icmpv6SendIdentifier = 92;
+
+   // All Components ('icmpv6_icmpv6_send_all_components')
+   uint32 Icmpv6SendAllComponents = 93;
+
+   // Component ('icmpv6_icmpv6_send_component')
+   uint32 Icmpv6SendComponent = 94;
+
+   // Name ('icmpv6_icmpv6_x509_Name')
+   uint32 Icmpv6X509Name = 95;
+
+   // Certificate ('icmpv6_icmpv6_x509_Certificate')
+   int32 Icmpv6X509Certificate = 96;
+
+   // Redirected Packet ('icmpv6_opt_icmpv6_opt_redirected_packet')
+   int32 Icmpv6OptRedirectedPacket = 97;
+
+   // MTU ('icmpv6_opt_icmpv6_opt_mtu')
+   uint32 Icmpv6OptMtu = 98;
+
+   // Shortcut Limit ('icmpv6_icmpv6_opt_nbma_shortcut_limit')
+   uint32 Icmpv6OptNbmaShortcutLimit = 99;
+
+   // Advertisement Interval ('icmpv6_opt_icmpv6_opt_advertisement_interval')
+   uint32 Icmpv6OptAdvertisementInterval = 100;
+
+   // Home Agent Preference ('icmpv6_opt_icmpv6_opt_home_agent_preference')
+   uint32 Icmpv6OptHomeAgentPreference = 101;
+
+   // Home Agent Preference ('icmpv6_opt_icmpv6_opt_home_agent_lifetime')
+   uint32 Icmpv6OptHomeAgentLifetime = 102;
+
+   // IPv6 Address ('icmpv6_opt_icmpv6_opt_ipv6_address')
+   bytes Icmpv6OptIpv6Address = 103;
+
+   // Lifetime ('icmpv6_opt_rdnss_icmpv6_opt_rdnss_lifetime')
+   uint32 Icmpv6OptRdnssLifetime = 104;
+
+   // Recursive DNS Servers ('icmpv6_opt_icmpv6_opt_rdnss')
+   bytes Icmpv6OptRdnss = 105;
+
+   // Flags Expansion Option ('icmpv6_opt_icmpv6_opt_efo')
+   uint32 Icmpv6OptEfo = 106;
+
+   // Managed address configuration ('icmpv6_opt_efo_icmpv6_opt_efo_m')
+   bool Icmpv6OptEfoM = 107;
+
+   // Other configuration ('icmpv6_opt_efo_icmpv6_opt_efo_o')
+   bool Icmpv6OptEfoO = 108;
+
+   // Home Agent ('icmpv6_opt_efo_icmpv6_opt_efo_h')
+   bool Icmpv6OptEfoH = 109;
+
+   // Prf (Default Router Preference) ('icmpv6_opt_efo_icmpv6_opt_efo_prf')
+   uint32 Icmpv6OptEfoPrf = 110;
+
+   // Proxy ('icmpv6_opt_efo_icmpv6_opt_efo_p')
+   bool Icmpv6OptEfoP = 111;
+
+   // Reserved ('icmpv6_opt_efo_icmpv6_opt_efo_rsv')
+   uint32 Icmpv6OptEfoRsv = 112;
+
+   // Pad Length ('icmpv6_icmpv6_opt_hkr_pad_length')
+   uint32 Icmpv6OptHkrPadLength = 113;
+
+   // AT ('icmpv6_icmpv6_opt_hkr_at')
+   uint32 Icmpv6OptHkrAt = 114;
+
+   // Reserved ('icmpv6_icmpv6_opt_hkr_reserved')
+   uint32 Icmpv6OptHkrReserved = 115;
+
+   // Handover Key Encryption Public Key ('icmpv6_icmpv6_opt_hkr_encryption_public_key')
+   bytes Icmpv6OptHkrEncryptionPublicKey = 116;
+
+   // Padding ('icmpv6_icmpv6_opt_hkr_padding')
+   bytes Icmpv6OptHkrPadding = 117;
+
+   // Padding ('icmpv6_icmpv6_opt_hkr_lifetime')
+   uint32 Icmpv6OptHkrLifetime = 118;
+
+   // Encrypted Handover Key ('icmpv6_icmpv6_opt_hkr_encrypted_handover_key')
+   bytes Icmpv6OptHkrEncryptedHandoverKey = 119;
+
+   // Option-Code ('icmpv6_icmpv6_opt_hai_option_code')
+   uint32 Icmpv6OptHaiOptionCode = 120;
+
+   // HAI-Length ('icmpv6_icmpv6_opt_hai_length')
+   uint32 Icmpv6OptHaiLength = 121;
+
+   // HAI-Value ('icmpv6_icmpv6_opt_hai_value')
+   bytes Icmpv6OptHaiValue = 122;
+
+   // Option-Code ('icmpv6_icmpv6_opt_mn_option_code')
+   uint32 Icmpv6OptMnOptionCode = 123;
+
+   // MN-Length ('icmpv6_icmpv6_opt_mn_length')
+   uint32 Icmpv6OptMnLength = 124;
+
+   // MN-Value ('icmpv6_icmpv6_opt_mn_value')
+   bytes Icmpv6OptMnValue = 125;
+
+   // Lifetime ('icmpv6_opt_dnssl_icmpv6_opt_dnssl_lifetime')
+   uint32 Icmpv6OptDnsslLifetime = 126;
+
+   // Domain Names ('icmpv6_opt_icmpv6_opt_dnssl')
+   string Icmpv6OptDnssl = 127;
+
+   // Status ('icmpv6_icmpv6_opt_aro_status')
+   uint32 Icmpv6OptAroStatus = 128;
+
+   // Registration  Lifetime ('icmpv6_icmpv6_opt_aro_registration_lifetime')
+   uint32 Icmpv6OptAroRegistrationLifetime = 129;
+
+   // EUI-64 ('icmpv6_icmpv6_opt_aro_eui64')
+   bytes Icmpv6OptAroEui64 = 130;
+
+   // Context Length ('icmpv6_icmpv6_opt_6co_context_length')
+   uint32 Icmpv6Opt6CoContextLength = 131;
+
+   // Flag ('icmpv6_icmpv6_opt_6co_flag')
+   uint32 Icmpv6Opt6CoFlag = 132;
+
+   // Compression Flag ('icmpv6_opt_6co_flag_icmpv6_opt_6co_flag_c')
+   bool Icmpv6Opt6CoFlagC = 133;
+
+   // CID ('icmpv6_opt_6co_flag_icmpv6_opt_6co_flag_cid')
+   uint32 Icmpv6Opt6CoFlagCid = 134;
+
+   // Reserved ('icmpv6_opt_6co_flag_icmpv6_opt_6co_flag_reserved')
+   uint32 Icmpv6Opt6CoFlagReserved = 135;
+
+   // Lifetime ('icmpv6_icmpv6_opt_6co_valid_lifetime')
+   uint32 Icmpv6Opt6CoValidLifetime = 136;
+
+   // Context Prefix ('icmpv6_icmpv6_opt_6co_context_prefix')
+   bytes Icmpv6Opt6CoContextPrefix = 137;
+
+   // Version Low ('icmpv6_icmpv6_opt_abro_version_low')
+   uint32 Icmpv6OptAbroVersionLow = 138;
+
+   // Version ('icmpv6_icmpv6_opt_abro_version_high')
+   uint32 Icmpv6OptAbroVersionHigh = 139;
+
+   // Valid Lifetime ('icmpv6_icmpv6_opt_abro_valid_lifetime')
+   uint32 Icmpv6OptAbroValidLifetime = 140;
+
+   // 6LBR Address ('icmpv6_icmpv6_opt_abro_6lbr_address')
+   bytes Icmpv6OptAbro6LbrAddress = 141;
+
+   // Unassigned ('icmpv6_icmpv6_opt_6cio_unassigned1')
+   uint32 Icmpv6Opt6CioUnassigned1 = 142;
+
+   // G ('icmpv6_icmpv6_opt_6cio_flag_g')
+   uint32 Icmpv6Opt6CioFlagG = 143;
+
+   // Unassigned ('icmpv6_icmpv6_opt_6cio_unassigned2')
+   uint32 Icmpv6Opt6CioUnassigned2 = 144;
+
+   // Captive Portal ('icmpv6_opt_icmpv6_opt_captive_portal')
+   string Icmpv6OptCaptivePortal = 145;
+
+   // Maximum Response Delay [ms] ('icmpv6_icmpv6_mld_maximum_response_delay')
+   uint32 Icmpv6MldMaximumResponseDelay = 146;
+
+   // Multicast Address ('icmpv6_icmpv6_mld_multicast_address')
+   bytes Icmpv6MldMulticastAddress = 147;
+
+   // Sequence Number ('icmpv6_icmpv6_rr_sequence_number')
+   uint32 Icmpv6RrSequenceNumber = 148;
+
+   // Segment Number ('icmpv6_icmpv6_rr_segment_number')
+   uint32 Icmpv6RrSegmentNumber = 149;
+
+   // Flags ('icmpv6_icmpv6_rr_flag')
+   uint32 Icmpv6RrFlag = 150;
+
+   // Test Command ('icmpv6_rr_flag_icmpv6_rr_flag_t')
+   bool Icmpv6RrFlagT = 151;
+
+   // Result requested ('icmpv6_rr_flag_icmpv6_rr_flag_r')
+   bool Icmpv6RrFlagR = 152;
+
+   // All Interfaces ('icmpv6_rr_flag_icmpv6_rr_flag_a')
+   bool Icmpv6RrFlagA = 153;
+
+   // Site-specific ('icmpv6_rr_flag_icmpv6_rr_flag_s')
+   bool Icmpv6RrFlagS = 154;
+
+   // Processed previously ('icmpv6_rr_flag_icmpv6_rr_flag_p')
+   bool Icmpv6RrFlagP = 155;
+
+   // Reserved ('icmpv6_rr_flag_icmpv6_rr_flag_rsv')
+   uint32 Icmpv6RrFlagRsv = 156;
+
+   // Max Delay ('icmpv6_icmpv6_rr_maxdelay')
+   uint32 Icmpv6RrMaxdelay = 157;
+
+   // Match-Prefix Part ('icmpv6_icmpv6_rr_pco_mp')
+   int32 Icmpv6RrPcoMp = 158;
+
+   // OpCode ('icmpv6_rr_pco_mp_icmpv6_rr_pco_mp_opcode')
+   uint32 Icmpv6RrPcoMpOpcode = 159;
+
+   // OpLength ('icmpv6_rr_pco_mp_icmpv6_rr_pco_mp_oplength')
+   uint32 Icmpv6RrPcoMpOplength = 160;
+
+   // Ordinal ('icmpv6_rr_pco_mp_icmpv6_rr_pco_mp_ordinal')
+   uint32 Icmpv6RrPcoMpOrdinal = 161;
+
+   // MatchLen ('icmpv6_rr_pco_mp_icmpv6_rr_pco_mp_matchlen')
+   uint32 Icmpv6RrPcoMpMatchlen = 162;
+
+   // MinLen ('icmpv6_rr_pco_mp_icmpv6_rr_pco_mp_minlen')
+   uint32 Icmpv6RrPcoMpMinlen = 163;
+
+   // MaxLen ('icmpv6_rr_pco_mp_icmpv6_rr_pco_mp_maxlen')
+   uint32 Icmpv6RrPcoMpMaxlen = 164;
+
+   // MatchPrefix ('icmpv6_rr_pco_mp_icmpv6_rr_pco_mp_matchprefix')
+   bytes Icmpv6RrPcoMpMatchprefix = 165;
+
+   // Use-Prefix Part ('icmpv6_icmpv6_rr_pco_up')
+   int32 Icmpv6RrPcoUp = 166;
+
+   // UseLen ('icmpv6_rr_pco_up_icmpv6_rr_pco_up_uselen')
+   uint32 Icmpv6RrPcoUpUselen = 167;
+
+   // KeepLen ('icmpv6_rr_pco_up_icmpv6_rr_pco_up_keeplen')
+   uint32 Icmpv6RrPcoUpKeeplen = 168;
+
+   // FlagMask ('icmpv6_rr_pco_up_icmpv6_rr_pco_up_flagmask')
+   uint32 Icmpv6RrPcoUpFlagmask = 169;
+
+   // On-link flag(L) ('icmpv6_rr_pco_up_flagmask_icmpv6_rr_pco_up_flagmask_l')
+   bool Icmpv6RrPcoUpFlagmaskL = 170;
+
+   // Autonomous address-configuration flag(A) ('icmpv6_rr_pco_up_flagmask_icmpv6_rr_pco_up_flagmask_a')
+   bool Icmpv6RrPcoUpFlagmaskA = 171;
+
+   // Reserved ('icmpv6_rr_pco_up_flagmask_icmpv6_rr_pco_up_flagmask_reserved')
+   uint32 Icmpv6RrPcoUpFlagmaskReserved = 172;
+
+   // RAFlags ('icmpv6_rr_pco_up_icmpv6_rr_pco_up_raflags')
+   uint32 Icmpv6RrPcoUpRaflags = 173;
+
+   // Valid Lifetime ('icmpv6_rr_pco_up_icmpv6_rr_pco_up_validlifetime')
+   uint32 Icmpv6RrPcoUpValidlifetime = 174;
+
+   // Preferred Lifetime ('icmpv6_rr_pco_up_icmpv6_rr_pco_up_preferredlifetime')
+   uint32 Icmpv6RrPcoUpPreferredlifetime = 175;
+
+   // Flags ('icmpv6_rr_pco_up_icmpv6_rr_pco_up_flag')
+   uint32 Icmpv6RrPcoUpFlag = 176;
+
+   // Decrement valid lifetime ('icmpv6_rr_pco_up_flag_icmpv6_rr_pco_up_flag_v')
+   bool Icmpv6RrPcoUpFlagV = 177;
+
+   // Decrement preferred lifetime ('icmpv6_rr_pco_up_flag_icmpv6_rr_pco_up_flag_p')
+   bool Icmpv6RrPcoUpFlagP = 178;
+
+   // Reserved ('icmpv6_rr_pco_up_flag_icmpv6_rr_pco_up_flag_reserved')
+   uint32 Icmpv6RrPcoUpFlagReserved = 179;
+
+   // UsePrefix ('icmpv6_rr_pco_up_icmpv6_rr_pco_up_useprefix')
+   bytes Icmpv6RrPcoUpUseprefix = 180;
+
+   // Result Message ('icmpv6_icmpv6_rr_rm')
+   int32 Icmpv6RrRm = 181;
+
+   // Flags ('icmpv6_rr_rm_icmpv6_rr_rm_flag')
+   uint32 Icmpv6RrRmFlag = 182;
+
+   // Bounds ('icmpv6_rr_rm_flag_icmpv6_rr_rm_flag_b')
+   bool Icmpv6RrRmFlagB = 183;
+
+   // Forbidden ('icmpv6_rr_rm_flag_icmpv6_rr_rm_flag_f')
+   bool Icmpv6RrRmFlagF = 184;
+
+   // Reserved ('icmpv6_rr_rm_flag_icmpv6_rr_rm_flag_reserved')
+   uint32 Icmpv6RrRmFlagReserved = 185;
+
+   // Ordinal ('icmpv6_rr_rm_icmpv6_rr_rm_ordinal')
+   uint32 Icmpv6RrRmOrdinal = 186;
+
+   // MatchedLen ('icmpv6_rr_rm_icmpv6_rr_rm_matchedlen')
+   uint32 Icmpv6RrRmMatchedlen = 187;
+
+   // InterfaceIndex ('icmpv6_rr_rm_icmpv6_rr_rm_interfaceindex')
+   uint32 Icmpv6RrRmInterfaceindex = 188;
+
+   // MatchedPrefix ('icmpv6_rr_rm_icmpv6_rr_rm_matchedprefix')
+   bytes Icmpv6RrRmMatchedprefix = 189;
+
+   // Identifier ('icmpv6_icmpv6_mip6_identifier')
+   uint32 Icmpv6Mip6Identifier = 190;
+
+   // Home Agent Address ('icmpv6_icmpv6_mip6_home_agent_address')
+   bytes Icmpv6Mip6HomeAgentAddress = 191;
+
+   // Flags ('icmpv6_icmpv6_mip6_flag')
+   uint32 Icmpv6Mip6Flag = 192;
+
+   // Managed address configuration ('icmpv6_mip6_flag_icmpv6_mip6_flag_m')
+   bool Icmpv6Mip6FlagM = 193;
+
+   // Other configuration ('icmpv6_mip6_flag_icmpv6_mip6_flag_o')
+   bool Icmpv6Mip6FlagO = 194;
+
+   // Reserved ('icmpv6_mip6_flag_icmpv6_mip6_flag_rsv')
+   uint32 Icmpv6Mip6FlagRsv = 195;
+
+   // Maximum Response Code ('icmpv6_icmpv6_mld_maximum_response_code')
+   uint32 Icmpv6MldMaximumResponseCode = 196;
+
+   // Flags ('icmpv6_icmpv6_mld_flag')
+   uint32 Icmpv6MldFlag = 197;
+
+   // Suppress Router-Side Processing ('icmpv6_mld_flag_icmpv6_mld_flag_s')
+   bool Icmpv6MldFlagS = 198;
+
+   // QRV (Querier's Robustness Variable) ('icmpv6_mld_flag_icmpv6_mld_flag_qrv')
+   uint32 Icmpv6MldFlagQrv = 199;
+
+   // Reserved ('icmpv6_mld_flag_icmpv6_mld_flag_reserved')
+   uint32 Icmpv6MldFlagReserved = 200;
+
+   // QQIC (Querier's Query Interval Code) ('icmpv6_icmpv6_mld_qqi')
+   uint32 Icmpv6MldQqi = 201;
+
+   // Number of Sources ('icmpv6_icmpv6_mld_nb_sources')
+   uint32 Icmpv6MldNbSources = 202;
+
+   // Source Address ('icmpv6_icmpv6_mld_source_address')
+   bytes Icmpv6MldSourceAddress = 203;
+
+   // Number of Multicast Address Records ('icmpv6_icmpv6_mldr_nb_mcast_records')
+   uint32 Icmpv6MldrNbMcastRecords = 204;
+
+   // Multicast Address Record ('icmpv6_icmpv6_mldr_mar')
+   int32 Icmpv6MldrMar = 205;
+
+   // Record Type ('icmpv6_mldr_mar_icmpv6_mldr_mar_record_type')
+   uint32 Icmpv6MldrMarRecordType = 206;
+
+   // Aux Data Len ('icmpv6_mldr_mar_icmpv6_mldr_mar_aux_data_len')
+   uint32 Icmpv6MldrMarAuxDataLen = 207;
+
+   // Number of Sources ('icmpv6_mldr_mar_icmpv6_mldr_mar_nb_sources')
+   uint32 Icmpv6MldrMarNbSources = 208;
+
+   // Multicast Address ('icmpv6_mldr_mar_icmpv6_mldr_mar_multicast_address')
+   bytes Icmpv6MldrMarMulticastAddress = 209;
+
+   // Source Address ('icmpv6_mldr_mar_icmpv6_mldr_mar_source_address')
+   bytes Icmpv6MldrMarSourceAddress = 210;
+
+   // Auxiliary Data ('icmpv6_mldr_mar_icmpv6_mldr_mar_auxiliary_data')
+   bytes Icmpv6MldrMarAuxiliaryData = 211;
+
+   // Subtype ('icmpv6_icmpv6_fmip6_subtype')
+   uint32 Icmpv6Fmip6Subtype = 212;
+
+   // Flag ('icmpv6_icmpv6_fmip6_hi_flag')
+   uint32 Icmpv6Fmip6HiFlag = 213;
+
+   // Assigned address configuration ('icmpv6_fmip6_hi_flag_icmpv6_fmip6_hi_flag_s')
+   bool Icmpv6Fmip6HiFlagS = 214;
+
+   // Buffer ('icmpv6_fmip6_hi_flag_icmpv6_fmip6_hi_flag_a')
+   bool Icmpv6Fmip6HiFlagA = 215;
+
+   // Reserved ('icmpv6_fmip6_hi_flag_icmpv6_fmip6_hi_flag_reserved')
+   uint32 Icmpv6Fmip6HiFlagReserved = 216;
+
+   // Identifier ('icmpv6_icmpv6_fmip6_identifier')
+   uint32 Icmpv6Fmip6Identifier = 217;
+
+   // Query Interval ('icmpv6_icmpv6_mcast_ra_query_interval')
+   uint32 Icmpv6McastRaQueryInterval = 218;
+
+   // Robustness Variable ('icmpv6_icmpv6_mcast_ra_robustness_variable')
+   uint32 Icmpv6McastRaRobustnessVariable = 219;
+
+   // Qtype ('icmpv6_icmpv6_ni_qtype')
+   uint32 Icmpv6NiQtype = 220;
+
+   // Flags ('icmpv6_icmpv6_ni_flag')
+   uint32 Icmpv6NiFlag = 221;
+
+   // Global-scope addresses ('icmpv6_ni_flag_icmpv6_ni_flag_g')
+   bool Icmpv6NiFlagG = 222;
+
+   // Site-local addresses ('icmpv6_ni_flag_icmpv6_ni_flag_s')
+   bool Icmpv6NiFlagS = 223;
+
+   // Link-local addresses ('icmpv6_ni_flag_icmpv6_ni_flag_l')
+   bool Icmpv6NiFlagL = 224;
+
+   // Compression ('icmpv6_ni_flag_icmpv6_ni_flag_c')
+   bool Icmpv6NiFlagC = 225;
+
+   // Unicast Addresses ('icmpv6_ni_flag_icmpv6_ni_flag_a')
+   bool Icmpv6NiFlagA = 226;
+
+   // Truncated ('icmpv6_ni_flag_icmpv6_ni_flag_t')
+   bool Icmpv6NiFlagT = 227;
+
+   // Reserved ('icmpv6_ni_flag_icmpv6_ni_flag_rsv')
+   uint32 Icmpv6NiFlagRsv = 228;
+
+   // Nonce ('icmpv6_icmpv6_ni_nonce')
+   uint64 Icmpv6NiNonce = 229;
+
+   // IPv6 subject address ('icmpv6_icmpv6_ni_query_subject_ipv6')
+   bytes Icmpv6NiQuerySubjectIpv6 = 230;
+
+   // FQDN subject ('icmpv6_icmpv6_ni_query_subject_fqdn')
+   string Icmpv6NiQuerySubjectFqdn = 231;
+
+   // IPv4 subject address ('icmpv6_icmpv6_ni_query_subject_ipv4')
+   bytes Icmpv6NiQuerySubjectIpv4 = 232;
+
+   // TTL ('icmpv6_icmpv6_ni_reply_node_ttl')
+   uint32 Icmpv6NiReplyNodeTtl = 233;
+
+   // Name Node ('icmpv6_icmpv6_ni_reply_node_name')
+   string Icmpv6NiReplyNodeName = 234;
+
+   // IPv6 Node address ('icmpv6_icmpv6_ni_reply_node_address')
+   bytes Icmpv6NiReplyNodeAddress = 235;
+
+   // IPv4 Node address ('icmpv6_icmpv6_ni_reply_ipv4_address')
+   bytes Icmpv6NiReplyIpv4Address = 236;
+
+   // Flags ('icmpv6_icmpv6_rpl_dis_flags')
+   uint32 Icmpv6RplDisFlags = 237;
+
+   // RPLInstanceID ('icmpv6_icmpv6_rpl_dio_instance')
+   uint32 Icmpv6RplDioInstance = 238;
+
+   // Version ('icmpv6_icmpv6_rpl_dio_version')
+   uint32 Icmpv6RplDioVersion = 239;
+
+   // Rank ('icmpv6_icmpv6_rpl_dio_rank')
+   uint32 Icmpv6RplDioRank = 240;
+
+   // Flags ('icmpv6_icmpv6_rpl_dio_flag')
+   uint32 Icmpv6RplDioFlag = 241;
+
+   // Grounded (G) ('icmpv6_rpl_dio_flag_icmpv6_rpl_dio_flag_g')
+   bool Icmpv6RplDioFlagG = 242;
+
+   // Zero ('icmpv6_rpl_dio_flag_icmpv6_rpl_dio_flag_0')
+   bool Icmpv6RplDioFlag0 = 243;
+
+   // Mode of Operation (MOP) ('icmpv6_rpl_dio_flag_icmpv6_rpl_dio_flag_mop')
+   uint32 Icmpv6RplDioFlagMop = 244;
+
+   // DODAG Preference ('icmpv6_rpl_dio_flag_icmpv6_rpl_dio_flag_preference')
+   uint32 Icmpv6RplDioFlagPreference = 245;
+
+   // Destination Advertisement Trigger Sequence Number (DTSN) ('icmpv6_icmpv6_rpl_dio_dtsn')
+   uint32 Icmpv6RplDioDtsn = 246;
+
+   // DODAGID ('icmpv6_icmpv6_rpl_dio_dagid')
+   bytes Icmpv6RplDioDagid = 247;
+
+   // RPLInstanceID ('icmpv6_icmpv6_rpl_dao_instance')
+   uint32 Icmpv6RplDaoInstance = 248;
+
+   // Flags ('icmpv6_icmpv6_rpl_dao_flag')
+   uint32 Icmpv6RplDaoFlag = 249;
+
+   // DAO-ACK Request (K) ('icmpv6_rpl_dao_flag_icmpv6_rpl_dao_flag_k')
+   bool Icmpv6RplDaoFlagK = 250;
+
+   // DODAGID Present (D) ('icmpv6_rpl_dao_flag_icmpv6_rpl_dao_flag_d')
+   bool Icmpv6RplDaoFlagD = 251;
+
+   // Reserved ('icmpv6_rpl_dao_flag_icmpv6_rpl_dao_flag_rsv')
+   uint32 Icmpv6RplDaoFlagRsv = 252;
+
+   // DAO Sequence ('icmpv6_icmpv6_rpl_dao_sequence')
+   uint32 Icmpv6RplDaoSequence = 253;
+
+   // DODAGID ('icmpv6_icmpv6_rpl_dao_dodagid')
+   bytes Icmpv6RplDaoDodagid = 254;
+
+   // RPLInstanceID ('icmpv6_icmpv6_rpl_daoack_instance')
+   uint32 Icmpv6RplDaoackInstance = 255;
+
+   // Flag ('icmpv6_icmpv6_rpl_daoack_flag')
+   uint32 Icmpv6RplDaoackFlag = 256;
+
+   // DODAGID Present (D) ('icmpv6_rpl_daoack_flag_icmpv6_rpl_daoack_flag_d')
+   bool Icmpv6RplDaoackFlagD = 257;
+
+   // Reserved ('icmpv6_rpl_daoack_flag_icmpv6_rpl_daoack_flag_rsv')
+   uint32 Icmpv6RplDaoackFlagRsv = 258;
+
+   // DAO-ACK Sequence ('icmpv6_icmpv6_rpl_daoack_sequence')
+   uint32 Icmpv6RplDaoackSequence = 259;
+
+   // Status ('icmpv6_icmpv6_rpl_daoack_status')
+   uint32 Icmpv6RplDaoackStatus = 260;
+
+   // DODAGID ('icmpv6_icmpv6_rpl_daoack_dodagid')
+   bytes Icmpv6RplDaoackDodagid = 261;
+
+   // RPLInstanceID ('icmpv6_icmpv6_rpl_cc_instance')
+   uint32 Icmpv6RplCcInstance = 262;
+
+   // Flag ('icmpv6_icmpv6_rpl_cc_flag')
+   uint32 Icmpv6RplCcFlag = 263;
+
+   // Response (R) ('icmpv6_rpl_cc_flag_icmpv6_rpl_cc_flag_r')
+   bool Icmpv6RplCcFlagR = 264;
+
+   // Reserved ('icmpv6_rpl_cc_flag_icmpv6_rpl_cc_flag_rsv')
+   uint32 Icmpv6RplCcFlagRsv = 265;
+
+   // CC Nonce ('icmpv6_icmpv6_rpl_cc_nonce')
+   uint32 Icmpv6RplCcNonce = 266;
+
+   // DODAGID ('icmpv6_icmpv6_rpl_cc_dodagid')
+   bytes Icmpv6RplCcDodagid = 267;
+
+   // Destination Counter ('icmpv6_icmpv6_rpl_cc_destination_counter')
+   uint32 Icmpv6RplCcDestinationCounter = 268;
+
+   // Flags ('icmpv6_icmpv6_rpl_secure_flag')
+   uint32 Icmpv6RplSecureFlag = 269;
+
+   // Counter is Time (T) ('icmpv6_rpl_secure_flag_icmpv6_rpl_secure_flag_t')
+   bool Icmpv6RplSecureFlagT = 270;
+
+   // Reserved ('icmpv6_rpl_secure_flag_icmpv6_rpl_secure_flag_rsv')
+   uint32 Icmpv6RplSecureFlagRsv = 271;
+
+   // Algorithm ('icmpv6_icmpv6_rpl_secure_algorithm')
+   uint32 Icmpv6RplSecureAlgorithm = 272;
+
+   // Key Identifier Mode (KIM) ('icmpv6_icmpv6_rpl_secure_kim')
+   uint32 Icmpv6RplSecureKim = 273;
+
+   // Security Level (LVL) ('icmpv6_icmpv6_rpl_secure_lvl')
+   uint32 Icmpv6RplSecureLvl = 274;
+
+   // Reserved ('icmpv6_icmpv6_rpl_secure_rsv')
+   uint32 Icmpv6RplSecureRsv = 275;
+
+   // Counter ('icmpv6_icmpv6_rpl_secure_counter')
+   uint32 Icmpv6RplSecureCounter = 276;
+
+   // Key Source ('icmpv6_icmpv6_rpl_secure_key_source')
+   bytes Icmpv6RplSecureKeySource = 277;
+
+   // Key Source ('icmpv6_icmpv6_rpl_secure_key_index')
+   uint32 Icmpv6RplSecureKeyIndex = 278;
+
+   // Type ('icmpv6_icmpv6_rpl_opt_type')
+   uint32 Icmpv6RplOptType = 279;
+
+   // Length ('icmpv6_icmpv6_rpl_opt_length')
+   uint32 Icmpv6RplOptLength = 280;
+
+   // Reserved ('icmpv6_icmpv6_rpl_opt_reserved')
+   int32 Icmpv6RplOptReserved = 281;
+
+   // Paddn ('icmpv6_icmpv6_rpl_opt_padn')
+   int32 Icmpv6RplOptPadn = 282;
+
+   // Routing Metric/Constraint Type ('icmpv6_icmpv6_rpl_opt_metric_type')
+   uint32 Icmpv6RplOptMetricType = 283;
+
+   // Flags ('icmpv6_icmpv6_rpl_opt_metric_flags')
+   uint32 Icmpv6RplOptMetricFlags = 284;
+
+   // Reserved Flags ('icmpv6_icmpv6_rpl_opt_metric_reserved')
+   uint32 Icmpv6RplOptMetricReserved = 285;
+
+   // Flag P ('icmpv6_icmpv6_rpl_opt_metric_flag_p')
+   bool Icmpv6RplOptMetricFlagP = 286;
+
+   // Flag C ('icmpv6_icmpv6_rpl_opt_metric_flag_c')
+   bool Icmpv6RplOptMetricFlagC = 287;
+
+   // Flag O ('icmpv6_icmpv6_rpl_opt_metric_flag_o')
+   bool Icmpv6RplOptMetricFlagO = 288;
+
+   // Flag R ('icmpv6_icmpv6_rpl_opt_metric_flag_r')
+   bool Icmpv6RplOptMetricFlagR = 289;
+
+   // A Field ('icmpv6_icmpv6_rpl_opt_metric_flag_a')
+   uint32 Icmpv6RplOptMetricFlagA = 290;
+
+   // Precedence field ('icmpv6_icmpv6_rpl_opt_metric_prec')
+   uint32 Icmpv6RplOptMetricPrec = 291;
+
+   // Metric Length ('icmpv6_icmpv6_rpl_opt_metric_length')
+   uint32 Icmpv6RplOptMetricLength = 292;
+
+   // Node Sate and Attribute Object ('icmpv6_icmpv6_rpl_opt_metric_nsa_object')
+   uint32 Icmpv6RplOptMetricNsaObject = 293;
+
+   // Reserved field ('icmpv6_rpl_opt_metric_nsa_object_icmpv6_rpl_opt_metric_nsa_object_reserved')
+   uint32 Icmpv6RplOptMetricNsaObjectReserved = 294;
+
+   // Flags ('icmpv6_rpl_opt_metric_nsa_object_icmpv6_rpl_opt_metric_nsa_object_flags')
+   uint32 Icmpv6RplOptMetricNsaObjectFlags = 295;
+
+   // Flag A ('icmpv6_icmpv6_rpl_opt_metric_nsa_object_flag_a')
+   bool Icmpv6RplOptMetricNsaObjectFlagA = 296;
+
+   // Flag O ('icmpv6_icmpv6_rpl_opt_metric_nsa_object_flag_o')
+   bool Icmpv6RplOptMetricNsaObjectFlagO = 297;
+
+   // Node Energy Object ('icmpv6_icmpv6_rpl_opt_metric_ne_object')
+   uint32 Icmpv6RplOptMetricNeObject = 298;
+
+   // Flags field ('icmpv6_rpl_opt_metric_ne_object_icmpv6_rpl_opt_metric_ne_object_flags')
+   uint32 Icmpv6RplOptMetricNeObjectFlags = 299;
+
+   // Flag I ('icmpv6_icmpv6_rpl_opt_metric_ne_object_flag_i')
+   bool Icmpv6RplOptMetricNeObjectFlagI = 300;
+
+   // Type ('icmpv6_rpl_opt_metric_ne_object_icmpv6_rpl_opt_metric_ne_object_type')
+   uint32 Icmpv6RplOptMetricNeObjectType = 301;
+
+   // Flag E ('icmpv6_icmpv6_rpl_opt_metric_ne_object_flag_e')
+   bool Icmpv6RplOptMetricNeObjectFlagE = 302;
+
+   // Energy ('icmpv6_rpl_opt_metric_ne_object_icmpv6_rpl_opt_metric_ne_object_energy')
+   uint32 Icmpv6RplOptMetricNeObjectEnergy = 303;
+
+   // Hop Count Object ('icmpv6_icmpv6_rpl_opt_metric_hp_object')
+   uint32 Icmpv6RplOptMetricHpObject = 304;
+
+   // Reserved field ('icmpv6_rpl_opt_metric_hp_object_icmpv6_rpl_opt_metric_hp_object_reserved')
+   uint32 Icmpv6RplOptMetricHpObjectReserved = 305;
+
+   // Flags ('icmpv6_rpl_opt_metric_hp_object_icmpv6_rpl_opt_metric_hp_object_flags')
+   uint32 Icmpv6RplOptMetricHpObjectFlags = 306;
+
+   // Hop Count ('icmpv6_rpl_opt_metric_hp_object_icmpv6_rpl_opt_metric_hp_object_hp')
+   uint32 Icmpv6RplOptMetricHpObjectHp = 307;
+
+   // Link Throughput ('icmpv6_icmpv6_rpl_opt_metric_lt_object_lt')
+   uint32 Icmpv6RplOptMetricLtObjectLt = 308;
+
+   // Link Latency ('icmpv6_icmpv6_rpl_opt_metric_ll_object_ll')
+   uint32 Icmpv6RplOptMetricLlObjectLl = 309;
+
+   // Link Quality Level Object ('icmpv6_icmpv6_rpl_opt_metric_lql_object')
+   uint32 Icmpv6RplOptMetricLqlObject = 310;
+
+   // Reserved field ('icmpv6_rpl_opt_metric_lql_object_icmpv6_rpl_opt_metric_lql_object_res')
+   uint32 Icmpv6RplOptMetricLqlObjectRes = 311;
+
+   // Val(ue) ('icmpv6_rpl_opt_metric_lql_object_icmpv6_rpl_opt_metric_lql_object_val')
+   uint32 Icmpv6RplOptMetricLqlObjectVal = 312;
+
+   // Counter ('icmpv6_rpl_opt_metric_lql_object_icmpv6_rpl_opt_metric_lql_object_counter')
+   uint32 Icmpv6RplOptMetricLqlObjectCounter = 313;
+
+   // ETX ('icmpv6_icmpv6_rpl_opt_metric_etx_object_etx')
+   uint32 Icmpv6RplOptMetricEtxObjectEtx = 314;
+
+   // Link Color Object ('icmpv6_icmpv6_rpl_opt_metric_lc_object')
+   int32 Icmpv6RplOptMetricLcObject = 315;
+
+   // Reserved field ('icmpv6_rpl_opt_metric_lc_object_icmpv6_rpl_opt_metric_lc_object_res')
+   uint32 Icmpv6RplOptMetricLcObjectRes = 316;
+
+   // Link Color ('icmpv6_rpl_opt_metric_lc_object_icmpv6_rpl_opt_metric_lc_object_lc')
+   uint32 Icmpv6RplOptMetricLcObjectLc = 317;
+
+   // Counter ('icmpv6_rpl_opt_metric_lc_object_icmpv6_rpl_opt_metric_lc_object_counter')
+   uint32 Icmpv6RplOptMetricLcObjectCounter = 318;
+
+   // Reserved ('icmpv6_rpl_opt_metric_lc_object_icmpv6_rpl_opt_metric_lc_object_reserved')
+   uint32 Icmpv6RplOptMetricLcObjectReserved = 319;
+
+   // Flag I ('icmpv6_icmpv6_rpl_opt_metric_lc_object_flag_i')
+   uint32 Icmpv6RplOptMetricLcObjectFlagI = 320;
+
+   // Prefix Length ('icmpv6_icmpv6_rpl_opt_route_prefix_length')
+   uint32 Icmpv6RplOptRoutePrefixLength = 321;
+
+   // Flag ('icmpv6_icmpv6_rpl_opt_route_flag')
+   uint32 Icmpv6RplOptRouteFlag = 322;
+
+   // Preference ('icmpv6_icmpv6_rpl_opt_route_pref')
+   uint32 Icmpv6RplOptRoutePref = 323;
+
+   // Reserved ('icmpv6_icmpv6_rpl_opt_route_reserved')
+   uint32 Icmpv6RplOptRouteReserved = 324;
+
+   // Route Lifetime ('icmpv6_icmpv6_rpl_opt_route_lifetime')
+   uint32 Icmpv6RplOptRouteLifetime = 325;
+
+   // Prefix ('icmpv6_icmpv6_rpl_opt_route_prefix')
+   bytes Icmpv6RplOptRoutePrefix = 326;
+
+   // Flag ('icmpv6_icmpv6_rpl_opt_config_flag')
+   uint32 Icmpv6RplOptConfigFlag = 327;
+
+   // Reserved ('icmpv6_icmpv6_rpl_opt_config_reserved')
+   uint32 Icmpv6RplOptConfigReserved = 328;
+
+   // Authentication Enabled ('icmpv6_icmpv6_rpl_opt_config_auth')
+   bool Icmpv6RplOptConfigAuth = 329;
+
+   // Path Control Size ('icmpv6_icmpv6_rpl_opt_config_pcs')
+   uint32 Icmpv6RplOptConfigPcs = 330;
+
+   // DIOIntervalDoublings ('icmpv6_icmpv6_rpl_opt_config_interval_double')
+   uint32 Icmpv6RplOptConfigIntervalDouble = 331;
+
+   // DIOIntervalMin ('icmpv6_icmpv6_rpl_opt_config_interval_min')
+   uint32 Icmpv6RplOptConfigIntervalMin = 332;
+
+   // DIORedundancyConstant ('icmpv6_icmpv6_rpl_opt_config_redundancy')
+   uint32 Icmpv6RplOptConfigRedundancy = 333;
+
+   // MaxRankInc ('icmpv6_icmpv6_rpl_opt_config_max_rank_inc')
+   uint32 Icmpv6RplOptConfigMaxRankInc = 334;
+
+   // MinHopRankInc ('icmpv6_icmpv6_rpl_opt_config_min_hop_rank_inc')
+   uint32 Icmpv6RplOptConfigMinHopRankInc = 335;
+
+   // OCP (Objective Code Point) ('icmpv6_icmpv6_rpl_opt_config_ocp')
+   uint32 Icmpv6RplOptConfigOcp = 336;
+
+   // Reserved ('icmpv6_icmpv6_rpl_opt_config_rsv')
+   uint32 Icmpv6RplOptConfigRsv = 337;
+
+   // Default Lifetime ('icmpv6_icmpv6_rpl_opt_config_def_lifetime')
+   uint32 Icmpv6RplOptConfigDefLifetime = 338;
+
+   // Lifetime Unit ('icmpv6_icmpv6_rpl_opt_config_lifetime_unit')
+   uint32 Icmpv6RplOptConfigLifetimeUnit = 339;
+
+   // Reserved ('icmpv6_icmpv6_rpl_opt_target_flag')
+   int32 Icmpv6RplOptTargetFlag = 340;
+
+   // Target Length ('icmpv6_icmpv6_rpl_opt_target_prefix_length')
+   uint32 Icmpv6RplOptTargetPrefixLength = 341;
+
+   // Target ('icmpv6_icmpv6_rpl_opt_target_prefix')
+   bytes Icmpv6RplOptTargetPrefix = 342;
+
+   // Flags ('icmpv6_icmpv6_rpl_opt_transit_flag')
+   uint32 Icmpv6RplOptTransitFlag = 343;
+
+   // External ('icmpv6_rpl_opt_transit_flag_icmpv6_rpl_opt_transit_flag_e')
+   bool Icmpv6RplOptTransitFlagE = 344;
+
+   // Reserved ('icmpv6_rpl_opt_transit_flag_icmpv6_rpl_opt_transit_flag_rsv')
+   uint32 Icmpv6RplOptTransitFlagRsv = 345;
+
+   // Path Control ('icmpv6_icmpv6_rpl_opt_transit_pathctl')
+   uint32 Icmpv6RplOptTransitPathctl = 346;
+
+   // Path Sequence ('icmpv6_icmpv6_rpl_opt_transit_pathseq')
+   uint32 Icmpv6RplOptTransitPathseq = 347;
+
+   // Path Lifetime ('icmpv6_icmpv6_rpl_opt_transit_pathlifetime')
+   uint32 Icmpv6RplOptTransitPathlifetime = 348;
+
+   // Parent Address ('icmpv6_icmpv6_rpl_opt_transit_parent')
+   bytes Icmpv6RplOptTransitParent = 349;
+
+   // Instance ('icmpv6_icmpv6_rpl_opt_solicited_instance')
+   uint32 Icmpv6RplOptSolicitedInstance = 350;
+
+   // Flag ('icmpv6_icmpv6_rpl_opt_solicited_flag')
+   uint32 Icmpv6RplOptSolicitedFlag = 351;
+
+   // Version predicate ('icmpv6_rpl_opt_solicited_flag_icmpv6_rpl_opt_solicited_flag_v')
+   bool Icmpv6RplOptSolicitedFlagV = 352;
+
+   // InstanceID predicate ('icmpv6_rpl_opt_solicited_flag_icmpv6_rpl_opt_solicited_flag_i')
+   bool Icmpv6RplOptSolicitedFlagI = 353;
+
+   // DODAGID predicate ('icmpv6_rpl_opt_solicited_flag_icmpv6_rpl_opt_solicited_flag_d')
+   bool Icmpv6RplOptSolicitedFlagD = 354;
+
+   // Reserved ('icmpv6_rpl_opt_solicited_flag_icmpv6_rpl_opt_solicited_flag_rsv')
+   uint32 Icmpv6RplOptSolicitedFlagRsv = 355;
+
+   // DODAGID ('icmpv6_icmpv6_rpl_opt_solicited_dodagid')
+   bytes Icmpv6RplOptSolicitedDodagid = 356;
+
+   // Version ('icmpv6_icmpv6_rpl_opt_solicited_version')
+   uint32 Icmpv6RplOptSolicitedVersion = 357;
+
+   // Prefix Length ('icmpv6_rpl_opt_prefix_icmpv6_rpl_opt_prefix_length')
+   uint32 Icmpv6RplOptPrefixLength = 358;
+
+   // Flag ('icmpv6_rpl_opt_prefix_icmpv6_rpl_opt_prefix_flag')
+   uint32 Icmpv6RplOptPrefixFlag = 359;
+
+   // On Link ('icmpv6_rpl_opt_prefix_flag_icmpv6_rpl_opt_prefix_flag_l')
+   bool Icmpv6RplOptPrefixFlagL = 360;
+
+   // Auto Address Config ('icmpv6_rpl_opt_config_flag_icmpv6_rpl_opt_config_flag_a')
+   bool Icmpv6RplOptConfigFlagA = 361;
+
+   // Router Address ('icmpv6_rpl_opt_config_flag_icmpv6_rpl_opt_config_flag_r')
+   bool Icmpv6RplOptConfigFlagR = 362;
+
+   // Reserved ('icmpv6_rpl_opt_config_flag_icmpv6_rpl_opt_config_flag_rsv')
+   uint32 Icmpv6RplOptConfigFlagRsv = 363;
+
+   // Valid Lifetime ('icmpv6_rpl_opt_prefix_icmpv6_rpl_opt_prefix_valid_lifetime')
+   uint32 Icmpv6RplOptPrefixValidLifetime = 364;
+
+   // Preferred Lifetime ('icmpv6_rpl_opt_prefix_icmpv6_rpl_opt_prefix_preferred_lifetime')
+   uint32 Icmpv6RplOptPrefixPreferredLifetime = 365;
+
+   // Destination Prefix ('icmpv6_icmpv6_rpl_opt_prefix')
+   bytes Icmpv6RplOptPrefix = 366;
+
+   // Descriptor ('icmpv6_icmpv6_rpl_opt_targetdesc_descriptor')
+   uint32 Icmpv6RplOptTargetdescDescriptor = 367;
+
+   // Flags ('icmpv6_icmpv6_rpl_opt_routediscovery_flag')
+   int32 Icmpv6RplOptRoutediscoveryFlag = 368;
+
+   // Reply ('icmpv6_rpl_opt_routediscovery_flag_icmpv6_rpl_opt_routediscovery_flag_reply')
+   bool Icmpv6RplOptRoutediscoveryFlagReply = 369;
+
+   // Hop-by-Hop ('icmpv6_rpl_opt_routediscovery_flag_icmpv6_rpl_opt_routediscovery_flag_hopbyhop')
+   bool Icmpv6RplOptRoutediscoveryFlagHopbyhop = 370;
+
+   // Number of Routes ('icmpv6_rpl_opt_routediscovery_flag_icmpv6_rpl_opt_routediscovery_flag_numofroutes')
+   uint32 Icmpv6RplOptRoutediscoveryFlagNumofroutes = 371;
+
+   // Compr ('icmpv6_rpl_opt_routediscovery_flag_icmpv6_rpl_opt_routediscovery_flag_compr')
+   uint32 Icmpv6RplOptRoutediscoveryFlagCompr = 372;
+
+   // Lifetime ('icmpv6_icmpv6_rpl_opt_routediscovery_lifetime')
+   uint32 Icmpv6RplOptRoutediscoveryLifetime = 373;
+
+   // MaxRank ('icmpv6_icmpv6_rpl_opt_routediscovery_maxrank')
+   uint32 Icmpv6RplOptRoutediscoveryMaxrank = 374;
+
+   // NH ('icmpv6_icmpv6_rpl_opt_routediscovery_nh')
+   uint32 Icmpv6RplOptRoutediscoveryNh = 375;
+
+   // Target Address ('icmpv6_icmpv6_rpl_opt_routediscovery_targetaddr')
+   bytes Icmpv6RplOptRoutediscoveryTargetaddr = 376;
+
+   // Address Vector ('icmpv6_icmpv6_rpl_opt_routediscovery_addr_vec')
+   int32 Icmpv6RplOptRoutediscoveryAddrVec = 377;
+
+   // Address ('icmpv6_icmpv6_rpl_opt_routediscovery_addrvec_addr')
+   bytes Icmpv6RplOptRoutediscoveryAddrvecAddr = 378;
+
+   // RPLInstanceID ('icmpv6_icmpv6_rpl_p2p_dro_instance')
+   uint32 Icmpv6RplP2pDroInstance = 379;
+
+   // Version ('icmpv6_icmpv6_rpl_p2p_dro_version')
+   uint32 Icmpv6RplP2pDroVersion = 380;
+
+   // Flags ('icmpv6_icmpv6_rpl_p2p_dro_flag')
+   uint32 Icmpv6RplP2pDroFlag = 381;
+
+   // Stop ('icmpv6_rpl_p2p_dro_flag_icmpv6_rpl_p2p_dro_flag_stop')
+   bool Icmpv6RplP2pDroFlagStop = 382;
+
+   // Ack ('icmpv6_rpl_p2p_dro_flag_icmpv6_rpl_p2p_dro_flag_ack')
+   bool Icmpv6RplP2pDroFlagAck = 383;
+
+   // Seq ('icmpv6_rpl_p2p_dro_flag_icmpv6_rpl_p2p_dro_flag_seq')
+   uint32 Icmpv6RplP2pDroFlagSeq = 384;
+
+   // Reserved ('icmpv6_rpl_p2p_dro_flag_icmpv6_rpl_p2p_dro_flag_reserved')
+   uint32 Icmpv6RplP2pDroFlagReserved = 385;
+
+   // DODAGID ('icmpv6_icmpv6_rpl_p2p_dro_dagid')
+   bytes Icmpv6RplP2pDroDagid = 386;
+
+   // Flags ('icmpv6_icmpv6_rpl_p2p_droack_flag')
+   uint32 Icmpv6RplP2pDroackFlag = 387;
+
+   // Seq ('icmpv6_rpl_p2p_droack_flag_icmpv6_rpl_p2p_droack_flag_seq')
+   uint32 Icmpv6RplP2pDroackFlagSeq = 388;
+
+   // Reserved ('icmpv6_rpl_p2p_droack_flag_icmpv6_rpl_p2p_droack_flag_reserved')
+   uint32 Icmpv6RplP2pDroackFlagReserved = 389;
+
+   // Num of Locs ('icmpv6_icmpv6_ilnp_nb_locs')
+   uint32 Icmpv6IlnpNbLocs = 390;
+
+   // Locator ('icmpv6_icmpv6_ilnp_nb_locator')
+   uint64 Icmpv6IlnpNbLocator = 391;
+
+   // Preference ('icmpv6_icmpv6_ilnp_nb_preference')
+   uint32 Icmpv6IlnpNbPreference = 392;
+
+   // Lifetime ('icmpv6_icmpv6_ilnp_nb_lifetime')
+   uint32 Icmpv6IlnpNbLifetime = 393;
+
+   // Status ('icmpv6_icmpv6_6lowpannd_da_status')
+   uint32 Icmpv66LowpanndDaStatus = 394;
+
+   // Reserved ('icmpv6_icmpv6_6lowpannd_da_rsv')
+   uint32 Icmpv66LowpanndDaRsv = 395;
+
+   // Lifetime ('icmpv6_icmpv6_6lowpannd_da_lifetime')
+   uint32 Icmpv66LowpanndDaLifetime = 396;
+
+   // EUI-64 ('icmpv6_icmpv6_6lowpannd_da_eui64')
+   bytes Icmpv66LowpanndDaEui64 = 397;
+
+   // Registered Address ('icmpv6_icmpv6_6lowpannd_da_reg_addr')
+   bytes Icmpv66LowpanndDaRegAddr = 398;
+
+   // Response In ('icmpv6_icmpv6_resp_in')
+   int64 Icmpv6RespIn = 399;
+
+   // No response seen ('icmpv6_icmpv6_no_resp')
+   int32 Icmpv6NoResp = 400;
+
+   // Response To ('icmpv6_icmpv6_resp_to')
+   int64 Icmpv6RespTo = 401;
+
+   // Response Time ('icmpv6_icmpv6_resptime')
+   double Icmpv6Resptime = 402;
+
+   // MinSequence ('icmpv6_icmpv6_mpl_seed_info_min_sequence')
+   uint32 Icmpv6MplSeedInfoMinSequence = 403;
+
+   // Buffered Messages Length ('icmpv6_icmpv6_mpl_seed_info_bm_len')
+   uint32 Icmpv6MplSeedInfoBmLen = 404;
+
+   // Seed ID Length ('icmpv6_icmpv6_mpl_seed_info_s')
+   uint32 Icmpv6MplSeedInfoS = 405;
+
+   // Seed ID ('icmpv6_icmpv6_mpl_seed_info_seed_id')
+   string Icmpv6MplSeedInfoSeedId = 406;
+
+   // Sequence ('icmpv6_icmpv6_mpl_seed_info_sequence')
+   uint32 Icmpv6MplSeedInfoSequence = 407;
+
+}

@@ -1,0 +1,267 @@
+Name: netbios
+Fields:
+  netbios.command:
+    Name: netbios.command
+    Type: FtUint8
+    Display: BaseHex
+    Info: Command
+    JsonName: netbios_netbios_command
+  netbios.hdr_len:
+    Name: netbios.hdr_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length
+    JsonName: netbios_netbios_hdr_len
+  netbios.delimiter:
+    Name: netbios.delimiter
+    Type: FtUint16
+    Display: BaseHex
+    Info: Delimiter
+    JsonName: netbios_netbios_delimiter
+  netbios.xmit_corrl:
+    Name: netbios.xmit_corrl
+    Type: FtUint16
+    Display: BaseHex
+    Info: Transmit Correlator
+    JsonName: netbios_netbios_xmit_corrl
+  netbios.resp_corrl:
+    Name: netbios.resp_corrl
+    Type: FtUint16
+    Display: BaseHex
+    Info: Response Correlator
+    JsonName: netbios_netbios_resp_corrl
+  netbios.call_name_type:
+    Name: netbios.call_name_type
+    Type: FtUint8
+    Display: BaseHex
+    Info: Caller's Name Type
+    JsonName: netbios_netbios_call_name_type
+  netbios.nb_name_type:
+    Name: netbios.nb_name_type
+    Type: FtUint8
+    Display: BaseHex
+    Info: NetBIOS Name Type
+    JsonName: netbios_netbios_nb_name_type
+  netbios.nb_name:
+    Name: netbios.nb_name
+    Type: FtString
+    Info: NetBIOS Name
+    JsonName: netbios_netbios_nb_name
+  netbios.version:
+    Name: netbios.version
+    Type: FtBoolean
+    Display: SepDot
+    Info: NetBIOS Version
+    JsonName: netbios_netbios_version
+  netbios.no_receive_flags:
+    Name: netbios.no_receive_flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flags
+    JsonName: netbios_netbios_no_receive_flags
+  netbios.no_receive_flags.send_no_ack:
+    Name: netbios.no_receive_flags.send_no_ack
+    Type: FtBoolean
+    Display: SepDot
+    Info: SEND.NO.ACK data received
+    JsonName: netbios_no_receive_flags_netbios_no_receive_flags_send_no_ack
+  netbios.largest_frame:
+    Name: netbios.largest_frame
+    Type: FtUint8
+    Display: BaseDec
+    Info: Largest Frame
+    JsonName: netbios_netbios_largest_frame
+  netbios.status_buffer_len:
+    Name: netbios.status_buffer_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length of status buffer
+    JsonName: netbios_netbios_status_buffer_len
+  netbios.status:
+    Name: netbios.status
+    Type: FtUint8
+    Display: BaseDec
+    Info: Status
+    JsonName: netbios_netbios_status
+  netbios.name_type:
+    Name: netbios.name_type
+    Type: FtUint16
+    Display: BaseDec
+    Info: Name type
+    JsonName: netbios_netbios_name_type
+  netbios.max_data_recv_size:
+    Name: netbios.max_data_recv_size
+    Type: FtUint16
+    Display: BaseDec
+    Info: Maximum data receive size
+    JsonName: netbios_netbios_max_data_recv_size
+  netbios.termination_indicator:
+    Name: netbios.termination_indicator
+    Type: FtUint16
+    Display: BaseHex
+    Info: Termination indicator
+    JsonName: netbios_netbios_termination_indicator
+  netbios.num_data_bytes_accepted:
+    Name: netbios.num_data_bytes_accepted
+    Type: FtUint16
+    Display: BaseDec
+    Info: Number of data bytes accepted
+    JsonName: netbios_netbios_num_data_bytes_accepted
+  netbios.local_session:
+    Name: netbios.local_session
+    Type: FtUint8
+    Display: BaseHex
+    Info: Local Session No.
+    JsonName: netbios_netbios_local_session
+  netbios.remote_session:
+    Name: netbios.remote_session
+    Type: FtUint8
+    Display: BaseHex
+    Info: Remote Session No.
+    JsonName: netbios_netbios_remote_session
+  netbios.flags:
+    Name: netbios.flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flags
+    JsonName: netbios_netbios_flags
+  netbios.flags.send_no_ack:
+    Name: netbios.flags.send_no_ack
+    Type: FtBoolean
+    Display: SepDot
+    Info: Handle SEND.NO.ACK
+    JsonName: netbios_flags_netbios_flags_send_no_ack
+  netbios.flags.ack:
+    Name: netbios.flags.ack
+    Type: FtBoolean
+    Display: SepDot
+    Info: Acknowledge
+    JsonName: netbios_flags_netbios_flags_ack
+  netbios.flags.ack_with_data:
+    Name: netbios.flags.ack_with_data
+    Type: FtBoolean
+    Display: SepDot
+    Info: Acknowledge with data
+    JsonName: netbios_flags_netbios_flags_ack_with_data
+  netbios.flags.ack_expected:
+    Name: netbios.flags.ack_expected
+    Type: FtBoolean
+    Display: SepDot
+    Info: Acknowledge expected
+    JsonName: netbios_flags_netbios_flags_ack_expected
+  netbios.flags.recv_cont_req:
+    Name: netbios.flags.recv_cont_req
+    Type: FtBoolean
+    Display: SepDot
+    Info: RECEIVE_CONTINUE requested
+    JsonName: netbios_flags_netbios_flags_recv_cont_req
+  netbios.data2:
+    Name: netbios.data2
+    Type: FtUint16
+    Display: BaseHex
+    Info: DATA2 value
+    JsonName: netbios_netbios_data2
+  netbios.data2.frame:
+    Name: netbios.data2.frame
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Data length exceeds maximum frame size
+    JsonName: netbios_data2_netbios_data2_frame
+  netbios.data2.user:
+    Name: netbios.data2.user
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Data length exceeds user's buffer
+    JsonName: netbios_data2_netbios_data2_user
+  netbios.data2.status:
+    Name: netbios.data2.status
+    Type: FtUint16
+    Display: BaseDec
+    Info: Status data length
+    JsonName: netbios_data2_netbios_data2_status
+  netbios.datagram_mac:
+    Name: netbios.datagram_mac
+    Type: FtEther
+    Info: Sender's MAC Address
+    JsonName: netbios_netbios_datagram_mac
+  netbios.datagram_bcast_mac:
+    Name: netbios.datagram_bcast_mac
+    Type: FtEther
+    Info: Sender's Node Address
+    JsonName: netbios_netbios_datagram_bcast_mac
+  netbios.resync_indicator:
+    Name: netbios.resync_indicator
+    Type: FtUint16
+    Display: BaseHex
+    Info: Re-sync indicator
+    JsonName: netbios_netbios_resync_indicator
+  netbios.status_request:
+    Name: netbios.status_request
+    Type: FtUint8
+    Display: BaseDec
+    Info: Status request
+    JsonName: netbios_netbios_status_request
+  netbios.local_session_no:
+    Name: netbios.local_session_no
+    Type: FtUint8
+    Display: BaseHex
+    Info: Local Session No.
+    JsonName: netbios_netbios_local_session_no
+  netbios.state_of_name:
+    Name: netbios.state_of_name
+    Type: FtUint8
+    Display: BaseHex
+    Info: State of name
+    JsonName: netbios_netbios_state_of_name
+  netbios.status_response:
+    Name: netbios.status_response
+    Type: FtUint8
+    Display: BaseDec
+    Info: Status response
+    JsonName: netbios_netbios_status_response
+  netbios.fragment.overlap:
+    Name: netbios.fragment.overlap
+    Type: FtBoolean
+    Info: Fragment overlap
+    JsonName: netbios_fragment_netbios_fragment_overlap
+  netbios.fragment.overlap.conflict:
+    Name: netbios.fragment.overlap.conflict
+    Type: FtBoolean
+    Info: Conflicting data in fragment overlap
+    JsonName: netbios_fragment_overlap_netbios_fragment_overlap_conflict
+  netbios.fragment.multipletails:
+    Name: netbios.fragment.multipletails
+    Type: FtBoolean
+    Info: Multiple tail fragments found
+    JsonName: netbios_fragment_netbios_fragment_multipletails
+  netbios.fragment.toolongfragment:
+    Name: netbios.fragment.toolongfragment
+    Type: FtBoolean
+    Info: Fragment too long
+    JsonName: netbios_fragment_netbios_fragment_toolongfragment
+  netbios.fragment.error:
+    Name: netbios.fragment.error
+    Type: FtFramenum
+    Info: Defragmentation error
+    JsonName: netbios_fragment_netbios_fragment_error
+  netbios.fragment.count:
+    Name: netbios.fragment.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Fragment count
+    JsonName: netbios_fragment_netbios_fragment_count
+  netbios.fragment:
+    Name: netbios.fragment
+    Type: FtFramenum
+    Info: NetBIOS Fragment
+    JsonName: netbios_netbios_fragment
+  netbios.fragments:
+    Name: netbios.fragments
+    Info: NetBIOS Fragments
+    JsonName: netbios_netbios_fragments
+  netbios.reassembled.length:
+    Name: netbios.reassembled.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reassembled NetBIOS length
+    JsonName: netbios_netbios_reassembled_length

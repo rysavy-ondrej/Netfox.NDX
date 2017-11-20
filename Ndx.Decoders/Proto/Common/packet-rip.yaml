@@ -1,0 +1,99 @@
+Name: rip
+Fields:
+  rip.command:
+    Name: rip.command
+    Type: FtUint8
+    Display: BaseDec
+    Info: Command
+    JsonName: rip_rip_command
+  rip.version:
+    Name: rip.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: Version
+    JsonName: rip_rip_version
+  rip.routing_domain:
+    Name: rip.routing_domain
+    Type: FtUint16
+    Display: BaseDec
+    Info: Routing Domain
+    JsonName: rip_rip_routing_domain
+  rip.ip:
+    Name: rip.ip
+    Type: FtIpv4
+    Info: IP Address
+    JsonName: rip_rip_ip
+  rip.netmask:
+    Name: rip.netmask
+    Type: FtIpv4
+    Display: BaseNetmask
+    Info: Netmask
+    JsonName: rip_rip_netmask
+  rip.next_hop:
+    Name: rip.next_hop
+    Type: FtIpv4
+    Info: Next Hop
+    JsonName: rip_rip_next_hop
+  rip.metric:
+    Name: rip.metric
+    Type: FtUint16
+    Display: BaseDec
+    Info: Metric
+    JsonName: rip_rip_metric
+  rip.auth.type:
+    Name: rip.auth.type
+    Type: FtUint16
+    Display: BaseDec
+    Info: Authentication type
+    JsonName: rip_rip_auth_type
+  rip.auth.passwd:
+    Name: rip.auth.passwd
+    Type: FtString
+    Info: Password
+    JsonName: rip_rip_auth_passwd
+  rip.family:
+    Name: rip.family
+    Type: FtUint16
+    Display: BaseDec
+    Info: Address Family
+    JsonName: rip_rip_family
+  rip.route_tag:
+    Name: rip.route_tag
+    Type: FtUint16
+    Display: BaseDec
+    Info: Route Tag
+    JsonName: rip_rip_route_tag
+  rip.zero_padding:
+    Name: rip.zero_padding
+    Type: FtString
+    Info: Zero adding
+    JsonName: rip_rip_zero_padding
+  rip.digest_offset:
+    Name: rip.digest_offset
+    Type: FtUint16
+    Display: BaseDec
+    Info: Digest Offset
+    JsonName: rip_rip_digest_offset
+  rip.key_id:
+    Name: rip.key_id
+    Type: FtUint8
+    Display: BaseDec
+    Info: Key ID
+    JsonName: rip_rip_key_id
+  rip.auth_data_len:
+    Name: rip.auth_data_len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Auth Data Len
+    JsonName: rip_rip_auth_data_len
+  rip.seq_num:
+    Name: rip.seq_num
+    Type: FtUint32
+    Display: BaseDec
+    Info: Seq num
+    JsonName: rip_rip_seq_num
+  rip.authentication_data:
+    Name: rip.authentication_data
+    Type: FtBytes
+    Info: Authentication Data
+    JsonName: rip_rip_authentication_data

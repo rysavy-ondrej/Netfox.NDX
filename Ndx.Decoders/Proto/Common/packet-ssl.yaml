@@ -1,0 +1,580 @@
+Name: ssl
+Fields:
+  ssl.record:
+    Name: ssl.record
+    Info: Record Layer
+    JsonName: ssl_ssl_record
+  ssl.record.content_type:
+    Name: ssl.record.content_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Content Type
+    JsonName: ssl_record_ssl_record_content_type
+  ssl.record.opaque_type:
+    Name: ssl.record.opaque_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Opaque Type
+    JsonName: ssl_record_ssl_record_opaque_type
+  ssl.handshake.type:
+    Name: ssl.handshake.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Handshake Message Type
+    JsonName: ssl_handshake_ssl_handshake_type
+  ssl.pct_handshake.type:
+    Name: ssl.pct_handshake.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Handshake Message Type
+    JsonName: ssl_ssl_pct_handshake_type
+  ssl.record.version:
+    Name: ssl.record.version
+    Type: FtUint16
+    Display: BaseHex
+    Info: Version
+    JsonName: ssl_record_ssl_record_version
+  ssl.record.length:
+    Name: ssl.record.length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length
+    JsonName: ssl_record_ssl_record_length
+  ssl.app_data:
+    Name: ssl.app_data
+    Type: FtBytes
+    Info: Encrypted Application Data
+    JsonName: ssl_ssl_app_data
+  ssl.record.is_escape:
+    Name: ssl.record.is_escape
+    Type: FtBoolean
+    Info: Is Escape
+    JsonName: ssl_record_ssl_record_is_escape
+  ssl.record.padding_length:
+    Name: ssl.record.padding_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Padding Length
+    JsonName: ssl_record_ssl_record_padding_length
+  ssl.alert_message:
+    Name: ssl.alert_message
+    Info: Alert Message
+    JsonName: ssl_ssl_alert_message
+  ssl.alert_message.level:
+    Name: ssl.alert_message.level
+    Type: FtUint8
+    Display: BaseDec
+    Info: Level
+    JsonName: ssl_alert_message_ssl_alert_message_level
+  ssl.alert_message.desc:
+    Name: ssl.alert_message.desc
+    Type: FtUint8
+    Display: BaseDec
+    Info: Description
+    JsonName: ssl_alert_message_ssl_alert_message_desc
+  ssl.handshake:
+    Name: ssl.handshake
+    Info: Handshake Protocol
+    JsonName: ssl_ssl_handshake
+  ssl.handshake.length:
+    Name: ssl.handshake.length
+    Type: FtUint24
+    Display: BaseDec
+    Info: Length
+    JsonName: ssl_handshake_ssl_handshake_length
+  ssl.handshake.cipherspec:
+    Name: ssl.handshake.cipherspec
+    Type: FtUint24
+    Display: BaseHex
+    Info: Cipher Spec
+    JsonName: ssl_handshake_ssl_handshake_cipherspec
+  ssl.handshake.npn_selected_protocol_len:
+    Name: ssl.handshake.npn_selected_protocol_len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Selected Protocol Length
+    JsonName: ssl_handshake_ssl_handshake_npn_selected_protocol_len
+  ssl.handshake.npn_selected_protocol:
+    Name: ssl.handshake.npn_selected_protocol
+    Type: FtString
+    Info: Selected Protocol
+    JsonName: ssl_handshake_ssl_handshake_npn_selected_protocol
+  ssl.handshake.npn_padding_len:
+    Name: ssl.handshake.npn_padding_len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Padding Length
+    JsonName: ssl_handshake_ssl_handshake_npn_padding_len
+  ssl.handshake.npn_padding:
+    Name: ssl.handshake.npn_padding
+    Type: FtBytes
+    Info: Padding
+    JsonName: ssl_handshake_ssl_handshake_npn_padding
+  ssl.handshake.md5_hash:
+    Name: ssl.handshake.md5_hash
+    Info: MD5 Hash
+    JsonName: ssl_handshake_ssl_handshake_md5_hash
+  ssl.handshake.sha_hash:
+    Name: ssl.handshake.sha_hash
+    Info: SHA-1 Hash
+    JsonName: ssl_handshake_ssl_handshake_sha_hash
+  ssl.heartbeat_message:
+    Name: ssl.heartbeat_message
+    Info: Heartbeat Message
+    JsonName: ssl_ssl_heartbeat_message
+  ssl.heartbeat_message.type:
+    Name: ssl.heartbeat_message.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Type
+    JsonName: ssl_heartbeat_message_ssl_heartbeat_message_type
+  ssl.heartbeat_message.payload_length:
+    Name: ssl.heartbeat_message.payload_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Payload Length
+    JsonName: ssl_heartbeat_message_ssl_heartbeat_message_payload_length
+  ssl.heartbeat_message.payload:
+    Name: ssl.heartbeat_message.payload
+    Type: FtBytes
+    Info: Payload Length
+    JsonName: ssl_heartbeat_message_ssl_heartbeat_message_payload
+  ssl.heartbeat_message.padding:
+    Name: ssl.heartbeat_message.padding
+    Type: FtBytes
+    Info: Payload Length
+    JsonName: ssl_heartbeat_message_ssl_heartbeat_message_padding
+  ssl.handshake.challenge:
+    Name: ssl.handshake.challenge
+    Info: Challenge
+    JsonName: ssl_handshake_ssl_handshake_challenge
+  ssl.handshake.cipher_spec_len:
+    Name: ssl.handshake.cipher_spec_len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Cipher Spec Length
+    JsonName: ssl_handshake_ssl_handshake_cipher_spec_len
+  ssl.handshake.session_id_length:
+    Name: ssl.handshake.session_id_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Session ID Length
+    JsonName: ssl_handshake_ssl_handshake_session_id_length
+  ssl.handshake.challenge_length:
+    Name: ssl.handshake.challenge_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Challenge Length
+    JsonName: ssl_handshake_ssl_handshake_challenge_length
+  ssl.handshake.clear_key_length:
+    Name: ssl.handshake.clear_key_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Clear Key Data Length
+    JsonName: ssl_handshake_ssl_handshake_clear_key_length
+  ssl.handshake.encrypted_key_length:
+    Name: ssl.handshake.encrypted_key_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Encrypted Key Data Length
+    JsonName: ssl_handshake_ssl_handshake_encrypted_key_length
+  ssl.handshake.key_arg_length:
+    Name: ssl.handshake.key_arg_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Key Argument Length
+    JsonName: ssl_handshake_ssl_handshake_key_arg_length
+  ssl.handshake.clear_key_data:
+    Name: ssl.handshake.clear_key_data
+    Info: Clear Key Data
+    JsonName: ssl_handshake_ssl_handshake_clear_key_data
+  ssl.handshake.encrypted_key:
+    Name: ssl.handshake.encrypted_key
+    Info: Encrypted Key
+    JsonName: ssl_handshake_ssl_handshake_encrypted_key
+  ssl.handshake.key_arg:
+    Name: ssl.handshake.key_arg
+    Info: Key Argument
+    JsonName: ssl_handshake_ssl_handshake_key_arg
+  ssl.handshake.session_id_hit:
+    Name: ssl.handshake.session_id_hit
+    Type: FtBoolean
+    Info: Session ID Hit
+    JsonName: ssl_handshake_ssl_handshake_session_id_hit
+  ssl.handshake.cert_type:
+    Name: ssl.handshake.cert_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Certificate Type
+    JsonName: ssl_handshake_ssl_handshake_cert_type
+  ssl.handshake.connection_id_length:
+    Name: ssl.handshake.connection_id_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Connection ID Length
+    JsonName: ssl_handshake_ssl_handshake_connection_id_length
+  ssl.handshake.connection_id:
+    Name: ssl.handshake.connection_id
+    Info: Connection ID
+    JsonName: ssl_handshake_ssl_handshake_connection_id
+  ssl.pct.handshake.cipherspec:
+    Name: ssl.pct.handshake.cipherspec
+    Info: Cipher Spec
+    JsonName: ssl_ssl_pct_handshake_cipherspec
+  ssl.pct.handshake.cipher:
+    Name: ssl.pct.handshake.cipher
+    Type: FtUint16
+    Display: BaseHex
+    Info: Cipher
+    JsonName: ssl_ssl_pct_handshake_cipher
+  ssl.pct.handshake.hashspec:
+    Name: ssl.pct.handshake.hashspec
+    Info: Hash Spec
+    JsonName: ssl_ssl_pct_handshake_hashspec
+  ssl.pct.handshake.hash:
+    Name: ssl.pct.handshake.hash
+    Type: FtUint16
+    Display: BaseHex
+    Info: Hash
+    JsonName: ssl_ssl_pct_handshake_hash
+  ssl.pct.handshake.certspec:
+    Name: ssl.pct.handshake.certspec
+    Info: Cert Spec
+    JsonName: ssl_ssl_pct_handshake_certspec
+  ssl.pct.handshake.cert:
+    Name: ssl.pct.handshake.cert
+    Type: FtUint16
+    Display: BaseHex
+    Info: Cert
+    JsonName: ssl_ssl_pct_handshake_cert
+  ssl.pct.handshake.exchspec:
+    Name: ssl.pct.handshake.exchspec
+    Info: Exchange Spec
+    JsonName: ssl_ssl_pct_handshake_exchspec
+  ssl.pct.handshake.exch:
+    Name: ssl.pct.handshake.exch
+    Type: FtUint16
+    Display: BaseHex
+    Info: Exchange
+    JsonName: ssl_ssl_pct_handshake_exch
+  ssl.pct.handshake.sig:
+    Name: ssl.pct.handshake.sig
+    Type: FtUint16
+    Display: BaseHex
+    Info: Sig Spec
+    JsonName: ssl_ssl_pct_handshake_sig
+  ssl.pct.msg_error_code:
+    Name: ssl.pct.msg_error_code
+    Type: FtUint16
+    Display: BaseHex
+    Info: PCT Error Code
+    JsonName: ssl_ssl_pct_msg_error_code
+  ssl.pct.handshake.server_cert:
+    Name: ssl.pct.handshake.server_cert
+    Type: FtBytes
+    Info: Server Cert
+    JsonName: ssl_ssl_pct_handshake_server_cert
+  ssl.pct.client_version:
+    Name: ssl.pct.client_version
+    Type: FtUint16
+    Display: BaseHex
+    Info: Client Version
+    JsonName: ssl_ssl_pct_client_version
+  ssl.pct.pad:
+    Name: ssl.pct.pad
+    Type: FtBytes
+    Info: PAD
+    JsonName: ssl_ssl_pct_pad
+  ssl.pct.client_session_id_data:
+    Name: ssl.pct.client_session_id_data
+    Type: FtBytes
+    Info: Client Session ID Data
+    JsonName: ssl_ssl_pct_client_session_id_data
+  ssl.pct.challenge_data:
+    Name: ssl.pct.challenge_data
+    Type: FtBytes
+    Info: Challenge Data
+    JsonName: ssl_ssl_pct_challenge_data
+  ssl.pct.ch_offset:
+    Name: ssl.pct.ch_offset
+    Type: FtUint16
+    Display: BaseDec
+    Info: CH_OFFSET
+    JsonName: ssl_ssl_pct_ch_offset
+  ssl.pct.cipher_specs_length:
+    Name: ssl.pct.cipher_specs_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: CIPHER_SPECS Length
+    JsonName: ssl_ssl_pct_cipher_specs_length
+  ssl.pct.hash_specs_length:
+    Name: ssl.pct.hash_specs_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: HASH_SPECS Length
+    JsonName: ssl_ssl_pct_hash_specs_length
+  ssl.pct.cert_specs_length:
+    Name: ssl.pct.cert_specs_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: CERT_SPECS Length
+    JsonName: ssl_ssl_pct_cert_specs_length
+  ssl.pct.exch_specs_length:
+    Name: ssl.pct.exch_specs_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: EXCH_SPECS Length
+    JsonName: ssl_ssl_pct_exch_specs_length
+  ssl.pct.iv_length:
+    Name: ssl.pct.iv_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: IV Length
+    JsonName: ssl_ssl_pct_iv_length
+  ssl.pct.encryption_key_length:
+    Name: ssl.pct.encryption_key_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Encryption key length
+    JsonName: ssl_ssl_pct_encryption_key_length
+  ssl.pct.mac_key_length_in_bits:
+    Name: ssl.pct.mac_key_length_in_bits
+    Type: FtUint8
+    Display: BaseDec
+    Info: MAC key length in bits
+    JsonName: ssl_ssl_pct_mac_key_length_in_bits
+  ssl.pct.iv_data:
+    Name: ssl.pct.iv_data
+    Type: FtBytes
+    Info: IV data
+    JsonName: ssl_ssl_pct_iv_data
+  ssl.pct.server_version:
+    Name: ssl.pct.server_version
+    Type: FtUint16
+    Display: BaseHex
+    Info: Server Version
+    JsonName: ssl_ssl_pct_server_version
+  ssl.pct.sh_restart_session_ok_flag:
+    Name: ssl.pct.sh_restart_session_ok_flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: SH_RESTART_SESSION_OK flag
+    JsonName: ssl_ssl_pct_sh_restart_session_ok_flag
+  ssl.pct.sh_client_auth_req_flag:
+    Name: ssl.pct.sh_client_auth_req_flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: SH_CLIENT_AUTH_REQ flag
+    JsonName: ssl_ssl_pct_sh_client_auth_req_flag
+  ssl.connection_id_data:
+    Name: ssl.connection_id_data
+    Type: FtBytes
+    Info: Connection ID Data
+    JsonName: ssl_ssl_connection_id_data
+  ssl.pct.server_certificate_length:
+    Name: ssl.pct.server_certificate_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Server Certificate Length
+    JsonName: ssl_ssl_pct_server_certificate_length
+  ssl.pct.client_cert_specs_length:
+    Name: ssl.pct.client_cert_specs_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Client CERT_SPECS Length
+    JsonName: ssl_ssl_pct_client_cert_specs_length
+  ssl.pct.client_sig_specs_length:
+    Name: ssl.pct.client_sig_specs_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Client SIG_SPECS Length
+    JsonName: ssl_ssl_pct_client_sig_specs_length
+  ssl.pct.response_length:
+    Name: ssl.pct.response_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Response Length
+    JsonName: ssl_ssl_pct_response_length
+  ssl.pct.client_cert_specs:
+    Name: ssl.pct.client_cert_specs
+    Type: FtBytes
+    Info: Client CERT_SPECS
+    JsonName: ssl_ssl_pct_client_cert_specs
+  ssl.pct.client_signature:
+    Name: ssl.pct.client_signature
+    Type: FtBytes
+    Info: Client Signature
+    JsonName: ssl_ssl_pct_client_signature
+  ssl.pct.server_response:
+    Name: ssl.pct.server_response
+    Type: FtBytes
+    Info: Server Response
+    JsonName: ssl_ssl_pct_server_response
+  ssl.pct.clear_key_length:
+    Name: ssl.pct.clear_key_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Clear Key Length
+    JsonName: ssl_ssl_pct_clear_key_length
+  ssl.pct.encrypted_key_length:
+    Name: ssl.pct.encrypted_key_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Encrypted Key Length
+    JsonName: ssl_ssl_pct_encrypted_key_length
+  ssl.pct.verify_prelude_length:
+    Name: ssl.pct.verify_prelude_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Verify Prelude Length
+    JsonName: ssl_ssl_pct_verify_prelude_length
+  ssl.pct.client_cert_length:
+    Name: ssl.pct.client_cert_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Client Cert Length
+    JsonName: ssl_ssl_pct_client_cert_length
+  ssl.pct.clear_key_data:
+    Name: ssl.pct.clear_key_data
+    Type: FtBytes
+    Info: Clear Key data
+    JsonName: ssl_ssl_pct_clear_key_data
+  ssl.pct.encrypted_key_data:
+    Name: ssl.pct.encrypted_key_data
+    Type: FtBytes
+    Info: Encrypted Key data
+    JsonName: ssl_ssl_pct_encrypted_key_data
+  ssl.pct.verify_prelude_data:
+    Name: ssl.pct.verify_prelude_data
+    Type: FtBytes
+    Info: Verify Prelude data
+    JsonName: ssl_ssl_pct_verify_prelude_data
+  ssl.pct.client_certificate_data:
+    Name: ssl.pct.client_certificate_data
+    Type: FtBytes
+    Info: Client Certificate data
+    JsonName: ssl_ssl_pct_client_certificate_data
+  ssl.pct.response_data:
+    Name: ssl.pct.response_data
+    Type: FtBytes
+    Info: Response data
+    JsonName: ssl_ssl_pct_response_data
+  ssl.pct.server_session_id_data:
+    Name: ssl.pct.server_session_id_data
+    Type: FtBytes
+    Info: Server Session ID data
+    JsonName: ssl_ssl_pct_server_session_id_data
+  ssl.pct.server_response_length:
+    Name: ssl.pct.server_response_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Server Response Length
+    JsonName: ssl_ssl_pct_server_response_length
+  ssl.pct.error_information_length:
+    Name: ssl.pct.error_information_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Error Information Length
+    JsonName: ssl_ssl_pct_error_information_length
+  ssl.pct.specs_mismatch_cipher:
+    Name: ssl.pct.specs_mismatch_cipher
+    Type: FtUint8
+    Display: BaseHex
+    Info: SPECS_MISMATCH_CIPHER
+    JsonName: ssl_ssl_pct_specs_mismatch_cipher
+  ssl.pct.specs_mismatch_hash:
+    Name: ssl.pct.specs_mismatch_hash
+    Type: FtUint8
+    Display: BaseHex
+    Info: SPECS_MISMATCH_HASH
+    JsonName: ssl_ssl_pct_specs_mismatch_hash
+  ssl.pct.specs_mismatch_cert:
+    Name: ssl.pct.specs_mismatch_cert
+    Type: FtUint8
+    Display: BaseHex
+    Info: SPECS_MISMATCH_CERT
+    JsonName: ssl_ssl_pct_specs_mismatch_cert
+  ssl.pct.specs_mismatch_exch:
+    Name: ssl.pct.specs_mismatch_exch
+    Type: FtUint8
+    Display: BaseHex
+    Info: SPECS_MISMATCH_EXCH
+    JsonName: ssl_ssl_pct_specs_mismatch_exch
+  ssl.pct.specs_mismatch_client_cert:
+    Name: ssl.pct.specs_mismatch_client_cert
+    Type: FtUint8
+    Display: BaseHex
+    Info: SPECS_MISMATCH_CLIENT_CERT
+    JsonName: ssl_ssl_pct_specs_mismatch_client_cert
+  ssl.pct.specs_mismatch_client_sig:
+    Name: ssl.pct.specs_mismatch_client_sig
+    Type: FtUint8
+    Display: BaseHex
+    Info: SPECS_MISMATCH_CLIENT_SIG
+    JsonName: ssl_ssl_pct_specs_mismatch_client_sig
+  ssl.pct.error_information_data:
+    Name: ssl.pct.error_information_data
+    Type: FtBytes
+    Info: Error Information data
+    JsonName: ssl_ssl_pct_error_information_data
+  ssl.segment.overlap:
+    Name: ssl.segment.overlap
+    Type: FtBoolean
+    Info: Segment overlap
+    JsonName: ssl_segment_ssl_segment_overlap
+  ssl.segment.overlap.conflict:
+    Name: ssl.segment.overlap.conflict
+    Type: FtBoolean
+    Info: Conflicting data in segment overlap
+    JsonName: ssl_segment_overlap_ssl_segment_overlap_conflict
+  ssl.segment.multipletails:
+    Name: ssl.segment.multipletails
+    Type: FtBoolean
+    Info: Multiple tail segments found
+    JsonName: ssl_segment_ssl_segment_multipletails
+  ssl.segment.toolongfragment:
+    Name: ssl.segment.toolongfragment
+    Type: FtBoolean
+    Info: Segment too long
+    JsonName: ssl_segment_ssl_segment_toolongfragment
+  ssl.segment.error:
+    Name: ssl.segment.error
+    Type: FtFramenum
+    Info: Reassembling error
+    JsonName: ssl_segment_ssl_segment_error
+  ssl.segment.count:
+    Name: ssl.segment.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Segment count
+    JsonName: ssl_segment_ssl_segment_count
+  ssl.segment:
+    Name: ssl.segment
+    Type: FtFramenum
+    Info: SSL segment
+    JsonName: ssl_ssl_segment
+  ssl.segments:
+    Name: ssl.segments
+    Info: Reassembled SSL segments
+    JsonName: ssl_ssl_segments
+  ssl.reassembled_in:
+    Name: ssl.reassembled_in
+    Type: FtFramenum
+    Info: Reassembled PDU in frame
+    JsonName: ssl_ssl_reassembled_in
+  ssl.reassembled.length:
+    Name: ssl.reassembled.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reassembled PDU length
+    JsonName: ssl_ssl_reassembled_length
+  ssl.reassembled.data:
+    Name: ssl.reassembled.data
+    Type: FtBytes
+    Info: Reassembled PDU data
+    JsonName: ssl_ssl_reassembled_data
+  ssl.segment.data:
+    Name: ssl.segment.data
+    Type: FtBytes
+    Info: SSL segment data
+    JsonName: ssl_segment_ssl_segment_data

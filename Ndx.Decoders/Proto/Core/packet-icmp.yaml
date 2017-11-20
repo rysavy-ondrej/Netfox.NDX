@@ -1,0 +1,434 @@
+Name: icmp
+Fields:
+  icmp.type:
+    Name: icmp.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Type
+    JsonName: icmp_icmp_type
+  icmp.code:
+    Name: icmp.code
+    Type: FtUint8
+    Display: BaseDec
+    Info: Code
+    JsonName: icmp_icmp_code
+  icmp.checksum:
+    Name: icmp.checksum
+    Type: FtUint16
+    Display: BaseHex
+    Info: Checksum
+    JsonName: icmp_icmp_checksum
+  icmp.checksum.status:
+    Name: icmp.checksum.status
+    Type: FtUint8
+    Info: Checksum Status
+    JsonName: icmp_checksum_icmp_checksum_status
+  icmp.unused:
+    Name: icmp.unused
+    Type: FtBytes
+    Info: Unused
+    JsonName: icmp_icmp_unused
+  icmp.reserved:
+    Name: icmp.reserved
+    Type: FtBytes
+    Info: Reserved
+    JsonName: icmp_icmp_reserved
+  icmp.ident:
+    Name: icmp.ident
+    Type: FtUint16
+    Display: BaseDecHex
+    Info: Identifier (BE)
+    JsonName: icmp_icmp_ident
+  icmp.seq:
+    Name: icmp.seq
+    Type: FtUint16
+    Display: BaseDecHex
+    Info: Sequence number (BE)
+    JsonName: icmp_icmp_seq
+  icmp.seq_le:
+    Name: icmp.seq_le
+    Type: FtUint16
+    Display: BaseDecHex
+    Info: Sequence number (LE)
+    JsonName: icmp_icmp_seq_le
+  icmp.mtu:
+    Name: icmp.mtu
+    Type: FtUint16
+    Display: BaseDec
+    Info: MTU of next hop
+    JsonName: icmp_icmp_mtu
+  icmp.num_addrs:
+    Name: icmp.num_addrs
+    Type: FtUint8
+    Display: BaseDec
+    Info: Number of addresses
+    JsonName: icmp_icmp_num_addrs
+  icmp.addr_entry_size:
+    Name: icmp.addr_entry_size
+    Type: FtUint8
+    Display: BaseDec
+    Info: Address entry size
+    JsonName: icmp_icmp_addr_entry_size
+  icmp.lifetime:
+    Name: icmp.lifetime
+    Type: FtUint16
+    Display: BaseDec
+    Info: Lifetime
+    JsonName: icmp_icmp_lifetime
+  icmp.pointer:
+    Name: icmp.pointer
+    Type: FtUint32
+    Display: BaseDec
+    Info: Pointer
+    JsonName: icmp_icmp_pointer
+  icmp.router_address:
+    Name: icmp.router_address
+    Type: FtIpv4
+    Info: Router address
+    JsonName: icmp_icmp_router_address
+  icmp.pref_level:
+    Name: icmp.pref_level
+    Type: FtInt32
+    Display: BaseDec
+    Info: Preference level
+    JsonName: icmp_icmp_pref_level
+  icmp.originate_timestamp:
+    Name: icmp.originate_timestamp
+    Type: FtUint32
+    Display: BaseDec
+    Info: Originate timestamp
+    JsonName: icmp_icmp_originate_timestamp
+  icmp.receive_timestamp:
+    Name: icmp.receive_timestamp
+    Type: FtUint32
+    Display: BaseDec
+    Info: Receive timestamp
+    JsonName: icmp_icmp_receive_timestamp
+  icmp.transmit_timestamp:
+    Name: icmp.transmit_timestamp
+    Type: FtUint32
+    Display: BaseDec
+    Info: Transmit timestamp
+    JsonName: icmp_icmp_transmit_timestamp
+  icmp.address_mask:
+    Name: icmp.address_mask
+    Type: FtIpv4
+    Info: Address Mask
+    JsonName: icmp_icmp_address_mask
+  icmp.redir_gw:
+    Name: icmp.redir_gw
+    Type: FtIpv4
+    Info: Gateway address
+    JsonName: icmp_icmp_redir_gw
+  icmp.mip.type:
+    Name: icmp.mip.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Extension Type
+    JsonName: icmp_icmp_mip_type
+  icmp.mip.length:
+    Name: icmp.mip.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Length
+    JsonName: icmp_icmp_mip_length
+  icmp.mip.prefixlength:
+    Name: icmp.mip.prefixlength
+    Type: FtUint8
+    Display: BaseDec
+    Info: Prefix Length
+    JsonName: icmp_icmp_mip_prefixlength
+  icmp.mip.seq:
+    Name: icmp.mip.seq
+    Type: FtUint16
+    Display: BaseDec
+    Info: Sequence Number
+    JsonName: icmp_icmp_mip_seq
+  icmp.mip.life:
+    Name: icmp.mip.life
+    Type: FtUint16
+    Display: BaseDec
+    Info: Registration Lifetime
+    JsonName: icmp_icmp_mip_life
+  icmp.mip.flags:
+    Name: icmp.mip.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmp_icmp_mip_flags
+  icmp.mip.r:
+    Name: icmp.mip.r
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Registration Required
+    JsonName: icmp_icmp_mip_r
+  icmp.mip.b:
+    Name: icmp.mip.b
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Busy
+    JsonName: icmp_icmp_mip_b
+  icmp.mip.h:
+    Name: icmp.mip.h
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Home Agent
+    JsonName: icmp_icmp_mip_h
+  icmp.mip.f:
+    Name: icmp.mip.f
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Foreign Agent
+    JsonName: icmp_icmp_mip_f
+  icmp.mip.m:
+    Name: icmp.mip.m
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Minimal Encapsulation
+    JsonName: icmp_icmp_mip_m
+  icmp.mip.g:
+    Name: icmp.mip.g
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: GRE
+    JsonName: icmp_icmp_mip_g
+  icmp.mip.v:
+    Name: icmp.mip.v
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: VJ Comp
+    JsonName: icmp_icmp_mip_v
+  icmp.mip.rt:
+    Name: icmp.mip.rt
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Reverse tunneling
+    JsonName: icmp_icmp_mip_rt
+  icmp.mip.u:
+    Name: icmp.mip.u
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: UDP tunneling
+    JsonName: icmp_icmp_mip_u
+  icmp.mip.x:
+    Name: icmp.mip.x
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Revocation support
+    JsonName: icmp_icmp_mip_x
+  icmp.mip.reserved:
+    Name: icmp.mip.reserved
+    Type: FtUint16
+    Display: BaseHex
+    Info: Reserved
+    JsonName: icmp_icmp_mip_reserved
+  icmp.mip.coa:
+    Name: icmp.mip.coa
+    Type: FtIpv4
+    Info: Care-Of-Address
+    JsonName: icmp_icmp_mip_coa
+  icmp.mip.challenge:
+    Name: icmp.mip.challenge
+    Type: FtBytes
+    Info: Challenge
+    JsonName: icmp_icmp_mip_challenge
+  icmp.mip.content:
+    Name: icmp.mip.content
+    Type: FtBytes
+    Info: Content
+    JsonName: icmp_icmp_mip_content
+  icmp.ext:
+    Name: icmp.ext
+    Info: ICMP Extensions
+    JsonName: icmp_icmp_ext
+  icmp.ext.version:
+    Name: icmp.ext.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: Version
+    JsonName: icmp_ext_icmp_ext_version
+  icmp.ext.res:
+    Name: icmp.ext.res
+    Type: FtUint16
+    Display: BaseHex
+    Info: Reserved
+    JsonName: icmp_ext_icmp_ext_res
+  icmp.ext.checksum:
+    Name: icmp.ext.checksum
+    Type: FtUint16
+    Display: BaseHex
+    Info: Checksum
+    JsonName: icmp_ext_icmp_ext_checksum
+  icmp.ext.checksum.status:
+    Name: icmp.ext.checksum.status
+    Type: FtUint8
+    Info: Checksum Status
+    JsonName: icmp_ext_checksum_icmp_ext_checksum_status
+  icmp.ext.length:
+    Name: icmp.ext.length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Length
+    JsonName: icmp_ext_icmp_ext_length
+  icmp.ext.class:
+    Name: icmp.ext.class
+    Type: FtUint8
+    Display: BaseDec
+    Info: Class
+    JsonName: icmp_ext_icmp_ext_class
+  icmp.ext.ctype:
+    Name: icmp.ext.ctype
+    Type: FtUint8
+    Display: BaseDec
+    Info: C-Type
+    JsonName: icmp_ext_icmp_ext_ctype
+  icmp.ext.data:
+    Name: icmp.ext.data
+    Type: FtBytes
+    Info: Data
+    JsonName: icmp_ext_icmp_ext_data
+  icmp.mpls.label:
+    Name: icmp.mpls.label
+    Type: FtUint24
+    Display: BaseDec
+    Info: Label
+    JsonName: icmp_icmp_mpls_label
+  icmp.mpls.exp:
+    Name: icmp.mpls.exp
+    Type: FtUint24
+    Display: BaseDec
+    Info: Experimental
+    JsonName: icmp_icmp_mpls_exp
+  icmp.mpls.s:
+    Name: icmp.mpls.s
+    Type: FtBoolean
+    Display: 24
+    Info: Stack bit
+    JsonName: icmp_icmp_mpls_s
+  icmp.mpls.ttl:
+    Name: icmp.mpls.ttl
+    Type: FtUint8
+    Display: BaseDec
+    Info: Time to live
+    JsonName: icmp_icmp_mpls_ttl
+  icmp.mpls.data:
+    Name: icmp.mpls.data
+    Type: FtBytes
+    Info: Data
+    JsonName: icmp_icmp_mpls_data
+  icmp.resp_in:
+    Name: icmp.resp_in
+    Type: FtFramenum
+    Info: Response frame
+    JsonName: icmp_icmp_resp_in
+  icmp.no_resp:
+    Name: icmp.no_resp
+    Info: No response seen
+    JsonName: icmp_icmp_no_resp
+  icmp.resp_to:
+    Name: icmp.resp_to
+    Type: FtFramenum
+    Info: Request frame
+    JsonName: icmp_icmp_resp_to
+  icmp.resptime:
+    Name: icmp.resptime
+    Type: FtDouble
+    Info: Response time
+    JsonName: icmp_icmp_resptime
+  icmp.data_time:
+    Name: icmp.data_time
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Timestamp from icmp data
+    JsonName: icmp_icmp_data_time
+  icmp.data_time_relative:
+    Name: icmp.data_time_relative
+    Type: FtRelativeTime
+    Info: Timestamp from icmp data (relative)
+    JsonName: icmp_icmp_data_time_relative
+  icmp.length:
+    Name: icmp.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Length
+    JsonName: icmp_icmp_length
+  icmp.length.original_datagram:
+    Name: icmp.length.original_datagram
+    Type: FtUint8
+    Display: BaseDec
+    Info: Length of original datagram
+    JsonName: icmp_length_icmp_length_original_datagram
+  icmp.int_info.role:
+    Name: icmp.int_info.role
+    Type: FtUint8
+    Display: BaseDec
+    Info: Interface Role
+    JsonName: icmp_icmp_int_info_role
+  icmp.int_info.reserved:
+    Name: icmp.int_info.reserved
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmp_icmp_int_info_reserved
+  icmp.int_info.ifindex:
+    Name: icmp.int_info.ifindex
+    Type: FtBoolean
+    Display: SepDot
+    Info: ifIndex
+    JsonName: icmp_icmp_int_info_ifindex
+  icmp.int_info.ipaddr:
+    Name: icmp.int_info.ipaddr
+    Type: FtBoolean
+    Display: SepDot
+    Info: IP Address
+    JsonName: icmp_icmp_int_info_ipaddr
+  icmp.int_info.name_present:
+    Name: icmp.int_info.name_present
+    Type: FtBoolean
+    Display: SepDot
+    Info: Interface Name
+    JsonName: icmp_icmp_int_info_name_present
+  icmp.int_info.mtu:
+    Name: icmp.int_info.mtu
+    Type: FtBoolean
+    Display: SepDot
+    Info: MTU
+    JsonName: icmp_icmp_int_info_mtu
+  icmp.int_info.index:
+    Name: icmp.int_info.index
+    Type: FtUint32
+    Display: BaseDec
+    Info: Interface Index
+    JsonName: icmp_icmp_int_info_index
+  icmp.int_info.afi:
+    Name: icmp.int_info.afi
+    Type: FtUint16
+    Display: BaseDec
+    Info: Address Family Identifier
+    JsonName: icmp_icmp_int_info_afi
+  icmp.int_info.ipv4:
+    Name: icmp.int_info.ipv4
+    Type: FtIpv4
+    Info: Source
+    JsonName: icmp_icmp_int_info_ipv4
+  icmp.int_info.ipv6:
+    Name: icmp.int_info.ipv6
+    Type: FtIpv6
+    Info: Source
+    JsonName: icmp_icmp_int_info_ipv6
+  icmp.int_info.ipunknown:
+    Name: icmp.int_info.ipunknown
+    Type: FtBytes
+    Info: Source
+    JsonName: icmp_icmp_int_info_ipunknown
+  icmp.int_info.name_length:
+    Name: icmp.int_info.name_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Name Length
+    JsonName: icmp_icmp_int_info_name_length
+  icmp.int_info.name:
+    Name: icmp.int_info.name
+    Type: FtString
+    Info: Name
+    JsonName: icmp_icmp_int_info_name

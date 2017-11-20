@@ -1,0 +1,2331 @@
+Name: icmpv6
+Fields:
+  icmpv6.type:
+    Name: icmpv6.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Type
+    JsonName: icmpv6_icmpv6_type
+  icmpv6.code:
+    Name: icmpv6.code
+    Type: FtUint8
+    Display: BaseDec
+    Info: Code
+    JsonName: icmpv6_icmpv6_code
+  icmpv6.checksum:
+    Name: icmpv6.checksum
+    Type: FtUint16
+    Display: BaseHex
+    Info: Checksum
+    JsonName: icmpv6_icmpv6_checksum
+  icmpv6.checksum.status:
+    Name: icmpv6.checksum.status
+    Type: FtUint8
+    Info: Checksum Status
+    JsonName: icmpv6_checksum_icmpv6_checksum_status
+  icmpv6.reserved:
+    Name: icmpv6.reserved
+    Type: FtBytes
+    Info: Reserved
+    JsonName: icmpv6_icmpv6_reserved
+  icmpv6.data:
+    Name: icmpv6.data
+    Type: FtBytes
+    Info: Data
+    JsonName: icmpv6_icmpv6_data
+  icmpv6.unknown_data:
+    Name: icmpv6.unknown_data
+    Type: FtBytes
+    Info: Unknown Data
+    JsonName: icmpv6_icmpv6_unknown_data
+  icmpv6.mtu:
+    Name: icmpv6.mtu
+    Type: FtUint32
+    Display: BaseDec
+    Info: MTU
+    JsonName: icmpv6_icmpv6_mtu
+  icmpv6.pointer:
+    Name: icmpv6.pointer
+    Type: FtUint32
+    Display: BaseDec
+    Info: Pointer
+    JsonName: icmpv6_icmpv6_pointer
+  icmpv6.echo.identifier:
+    Name: icmpv6.echo.identifier
+    Type: FtUint16
+    Display: BaseHex
+    Info: Identifier
+    JsonName: icmpv6_icmpv6_echo_identifier
+  icmpv6.echo.sequence_number:
+    Name: icmpv6.echo.sequence_number
+    Type: FtUint16
+    Display: BaseDec
+    Info: Sequence
+    JsonName: icmpv6_icmpv6_echo_sequence_number
+  icmpv6.nonce:
+    Name: icmpv6.nonce
+    Type: FtBytes
+    Info: Nonce
+    JsonName: icmpv6_icmpv6_nonce
+  icmpv6.nd.ra.cur_hop_limit:
+    Name: icmpv6.nd.ra.cur_hop_limit
+    Type: FtUint8
+    Display: BaseDec
+    Info: Cur hop limit
+    JsonName: icmpv6_icmpv6_nd_ra_cur_hop_limit
+  icmpv6.nd.ra.flag:
+    Name: icmpv6.nd.ra.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_icmpv6_nd_ra_flag
+  icmpv6.nd.ra.flag.m:
+    Name: icmpv6.nd.ra.flag.m
+    Type: FtBoolean
+    Display: SepDot
+    Info: Managed address configuration
+    JsonName: icmpv6_nd_ra_flag_icmpv6_nd_ra_flag_m
+  icmpv6.nd.ra.flag.o:
+    Name: icmpv6.nd.ra.flag.o
+    Type: FtBoolean
+    Display: SepDot
+    Info: Other configuration
+    JsonName: icmpv6_nd_ra_flag_icmpv6_nd_ra_flag_o
+  icmpv6.nd.ra.flag.h:
+    Name: icmpv6.nd.ra.flag.h
+    Type: FtBoolean
+    Display: SepDot
+    Info: Home Agent
+    JsonName: icmpv6_nd_ra_flag_icmpv6_nd_ra_flag_h
+  icmpv6.nd.ra.flag.prf:
+    Name: icmpv6.nd.ra.flag.prf
+    Type: FtUint8
+    Display: BaseDec
+    Info: Prf (Default Router Preference)
+    JsonName: icmpv6_nd_ra_flag_icmpv6_nd_ra_flag_prf
+  icmpv6.nd.ra.flag.p:
+    Name: icmpv6.nd.ra.flag.p
+    Type: FtBoolean
+    Display: SepDot
+    Info: Proxy
+    JsonName: icmpv6_nd_ra_flag_icmpv6_nd_ra_flag_p
+  icmpv6.nd.ra.flag.rsv:
+    Name: icmpv6.nd.ra.flag.rsv
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_nd_ra_flag_icmpv6_nd_ra_flag_rsv
+  icmpv6.nd.ra.router_lifetime:
+    Name: icmpv6.nd.ra.router_lifetime
+    Type: FtUint16
+    Display: BaseDec
+    Info: Router lifetime (s)
+    JsonName: icmpv6_icmpv6_nd_ra_router_lifetime
+  icmpv6.nd.ra.reachable_time:
+    Name: icmpv6.nd.ra.reachable_time
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reachable time (ms)
+    JsonName: icmpv6_icmpv6_nd_ra_reachable_time
+  icmpv6.nd.ra.retrans_timer:
+    Name: icmpv6.nd.ra.retrans_timer
+    Type: FtUint32
+    Display: BaseDec
+    Info: Retrans timer (ms)
+    JsonName: icmpv6_icmpv6_nd_ra_retrans_timer
+  icmpv6.nd.ns.target_address:
+    Name: icmpv6.nd.ns.target_address
+    Type: FtIpv6
+    Info: Target Address
+    JsonName: icmpv6_icmpv6_nd_ns_target_address
+  icmpv6.nd.na.flag:
+    Name: icmpv6.nd.na.flag
+    Type: FtUint32
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_icmpv6_nd_na_flag
+  icmpv6.nd.na.flag.r:
+    Name: icmpv6.nd.na.flag.r
+    Type: FtBoolean
+    Display: 32
+    Info: Router
+    JsonName: icmpv6_nd_na_flag_icmpv6_nd_na_flag_r
+  icmpv6.nd.na.flag.s:
+    Name: icmpv6.nd.na.flag.s
+    Type: FtBoolean
+    Display: 32
+    Info: Solicited
+    JsonName: icmpv6_nd_na_flag_icmpv6_nd_na_flag_s
+  icmpv6.nd.na.flag.o:
+    Name: icmpv6.nd.na.flag.o
+    Type: FtBoolean
+    Display: 32
+    Info: Override
+    JsonName: icmpv6_nd_na_flag_icmpv6_nd_na_flag_o
+  icmpv6.nd.na.flag.rsv:
+    Name: icmpv6.nd.na.flag.rsv
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_nd_na_flag_icmpv6_nd_na_flag_rsv
+  icmpv6.nd.na.target_address:
+    Name: icmpv6.nd.na.target_address
+    Type: FtIpv6
+    Info: Target Address
+    JsonName: icmpv6_icmpv6_nd_na_target_address
+  icmpv6.nd.rd.target_address:
+    Name: icmpv6.nd.rd.target_address
+    Type: FtIpv6
+    Info: Target Address
+    JsonName: icmpv6_icmpv6_nd_rd_target_address
+  icmpv6.rd.na.destination_address:
+    Name: icmpv6.rd.na.destination_address
+    Type: FtIpv6
+    Info: Destination Address
+    JsonName: icmpv6_icmpv6_rd_na_destination_address
+  icmpv6.opt:
+    Name: icmpv6.opt
+    Info: ICMPv6 Option
+    JsonName: icmpv6_icmpv6_opt
+  icmpv6.opt.type:
+    Name: icmpv6.opt.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Type
+    JsonName: icmpv6_opt_icmpv6_opt_type
+  icmpv6.opt.length:
+    Name: icmpv6.opt.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Length
+    JsonName: icmpv6_opt_icmpv6_opt_length
+  icmpv6.opt.reserved:
+    Name: icmpv6.opt.reserved
+    Info: Reserved
+    JsonName: icmpv6_opt_icmpv6_opt_reserved
+  icmpv6.opt.padding:
+    Name: icmpv6.opt.padding
+    Info: Padding
+    JsonName: icmpv6_opt_icmpv6_opt_padding
+  icmpv6.opt.linkaddr:
+    Name: icmpv6.opt.linkaddr
+    Type: FtBytes
+    Info: Link-layer address
+    JsonName: icmpv6_opt_icmpv6_opt_linkaddr
+  icmpv6.opt.src_linkaddr:
+    Name: icmpv6.opt.src_linkaddr
+    Type: FtBytes
+    Info: Source Link-layer address
+    JsonName: icmpv6_opt_icmpv6_opt_src_linkaddr
+  icmpv6.opt.target_linkaddr:
+    Name: icmpv6.opt.target_linkaddr
+    Type: FtBytes
+    Info: Target Link-layer address
+    JsonName: icmpv6_opt_icmpv6_opt_target_linkaddr
+  icmpv6.opt.linkaddr_eui64:
+    Name: icmpv6.opt.linkaddr_eui64
+    Type: FtEui64
+    Info: Link-layer address
+    JsonName: icmpv6_opt_icmpv6_opt_linkaddr_eui64
+  icmpv6.opt.src_linkaddr_eui64:
+    Name: icmpv6.opt.src_linkaddr_eui64
+    Type: FtEui64
+    Info: Source Link-layer address
+    JsonName: icmpv6_opt_icmpv6_opt_src_linkaddr_eui64
+  icmpv6.opt.target_linkaddr_eui64:
+    Name: icmpv6.opt.target_linkaddr_eui64
+    Type: FtEui64
+    Info: Target Link-layer address
+    JsonName: icmpv6_opt_icmpv6_opt_target_linkaddr_eui64
+  icmpv6.opt.prefix.length:
+    Name: icmpv6.opt.prefix.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Prefix Length
+    JsonName: icmpv6_opt_prefix_icmpv6_opt_prefix_length
+  icmpv6.opt.prefix.flag:
+    Name: icmpv6.opt.prefix.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flag
+    JsonName: icmpv6_opt_prefix_icmpv6_opt_prefix_flag
+  icmpv6.opt.prefix.flag.l:
+    Name: icmpv6.opt.prefix.flag.l
+    Type: FtBoolean
+    Display: SepDot
+    Info: On-link flag(L)
+    JsonName: icmpv6_opt_prefix_flag_icmpv6_opt_prefix_flag_l
+  icmpv6.opt.prefix.flag.a:
+    Name: icmpv6.opt.prefix.flag.a
+    Type: FtBoolean
+    Display: SepDot
+    Info: Autonomous address-configuration flag(A)
+    JsonName: icmpv6_opt_prefix_flag_icmpv6_opt_prefix_flag_a
+  icmpv6.opt.prefix.flag.r:
+    Name: icmpv6.opt.prefix.flag.r
+    Type: FtBoolean
+    Display: SepDot
+    Info: Router address flag(R)
+    JsonName: icmpv6_opt_prefix_flag_icmpv6_opt_prefix_flag_r
+  icmpv6.opt.prefix.flag.reserved:
+    Name: icmpv6.opt.prefix.flag.reserved
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_opt_prefix_flag_icmpv6_opt_prefix_flag_reserved
+  icmpv6.opt.prefix.valid_lifetime:
+    Name: icmpv6.opt.prefix.valid_lifetime
+    Type: FtUint32
+    Display: BaseDec
+    Info: Valid Lifetime
+    JsonName: icmpv6_opt_prefix_icmpv6_opt_prefix_valid_lifetime
+  icmpv6.opt.prefix.preferred_lifetime:
+    Name: icmpv6.opt.prefix.preferred_lifetime
+    Type: FtUint32
+    Display: BaseDec
+    Info: Preferred Lifetime
+    JsonName: icmpv6_opt_prefix_icmpv6_opt_prefix_preferred_lifetime
+  icmpv6.opt.prefix:
+    Name: icmpv6.opt.prefix
+    Type: FtIpv6
+    Info: Prefix
+    JsonName: icmpv6_opt_icmpv6_opt_prefix
+  icmpv6.opt.cga.pad_length:
+    Name: icmpv6.opt.cga.pad_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Pad Length
+    JsonName: icmpv6_opt_cga_icmpv6_opt_cga_pad_length
+  icmpv6.opt.cga:
+    Name: icmpv6.opt.cga
+    Type: FtBytes
+    Info: CGA
+    JsonName: icmpv6_opt_icmpv6_opt_cga
+  icmpv6.opt.cga.modifier:
+    Name: icmpv6.opt.cga.modifier
+    Type: FtBytes
+    Info: Modifier
+    JsonName: icmpv6_opt_cga_icmpv6_opt_cga_modifier
+  icmpv6.opt.cga.subnet_prefix:
+    Name: icmpv6.opt.cga.subnet_prefix
+    Type: FtBytes
+    Info: Subnet Prefix
+    JsonName: icmpv6_opt_cga_icmpv6_opt_cga_subnet_prefix
+  icmpv6.opt.cga.count:
+    Name: icmpv6.opt.cga.count
+    Type: FtBytes
+    Info: Count
+    JsonName: icmpv6_opt_cga_icmpv6_opt_cga_count
+  icmpv6.opt.cga.ext_type:
+    Name: icmpv6.opt.cga.ext_type
+    Type: FtUint16
+    Display: BaseDec
+    Info: Ext Type
+    JsonName: icmpv6_opt_cga_icmpv6_opt_cga_ext_type
+  icmpv6.opt.cga.ext_length:
+    Name: icmpv6.opt.cga.ext_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Ext Length
+    JsonName: icmpv6_opt_cga_icmpv6_opt_cga_ext_length
+  icmpv6.opt.cga.ext_data:
+    Name: icmpv6.opt.cga.ext_data
+    Type: FtBytes
+    Info: Ext Data
+    JsonName: icmpv6_opt_cga_icmpv6_opt_cga_ext_data
+  icmpv6.opt.rsa.key_hash:
+    Name: icmpv6.opt.rsa.key_hash
+    Type: FtBytes
+    Info: Key Hash
+    JsonName: icmpv6_icmpv6_opt_rsa_key_hash
+  icmpv6.opt.digital_signature_padding:
+    Name: icmpv6.opt.digital_signature_padding
+    Info: Digital Signature and Padding
+    JsonName: icmpv6_opt_icmpv6_opt_digital_signature_padding
+  icmpv6.opt.ps.key_hash:
+    Name: icmpv6.opt.ps.key_hash
+    Type: FtBytes
+    Info: Key Hash
+    JsonName: icmpv6_icmpv6_opt_ps_key_hash
+  icmpv6.opt.timestamp:
+    Name: icmpv6.opt.timestamp
+    Type: FtAbsoluteTime
+    Display: AbsoluteTimeLocal
+    Info: Timestamp
+    JsonName: icmpv6_opt_icmpv6_opt_timestamp
+  icmpv6.opt.nonce:
+    Name: icmpv6.opt.nonce
+    Type: FtBytes
+    Info: Nonce
+    JsonName: icmpv6_opt_icmpv6_opt_nonce
+  icmpv6.opt.certificate_padding:
+    Name: icmpv6.opt.certificate_padding
+    Info: Certificate and Padding
+    JsonName: icmpv6_opt_icmpv6_opt_certificate_padding
+  icmpv6.opt.ipa.option_code:
+    Name: icmpv6.opt.ipa.option_code
+    Type: FtUint8
+    Display: BaseDec
+    Info: Option-code
+    JsonName: icmpv6_icmpv6_opt_ipa_option_code
+  icmpv6.opt.ipa.prefix_len:
+    Name: icmpv6.opt.ipa.prefix_len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Prefix Length
+    JsonName: icmpv6_icmpv6_opt_ipa_prefix_len
+  icmpv6.opt.ipa.ipv6_address:
+    Name: icmpv6.opt.ipa.ipv6_address
+    Type: FtIpv6
+    Info: IPv6 Address
+    JsonName: icmpv6_icmpv6_opt_ipa_ipv6_address
+  icmpv6.opt.nrpi.option_code:
+    Name: icmpv6.opt.nrpi.option_code
+    Type: FtUint8
+    Display: BaseDec
+    Info: Option-code
+    JsonName: icmpv6_icmpv6_opt_nrpi_option_code
+  icmpv6.opt.nrpi.prefix_len:
+    Name: icmpv6.opt.nrpi.prefix_len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Prefix Length
+    JsonName: icmpv6_icmpv6_opt_nrpi_prefix_len
+  icmpv6.opt.nrpi.prefix:
+    Name: icmpv6.opt.nrpi.prefix
+    Type: FtIpv6
+    Info: Prefix
+    JsonName: icmpv6_icmpv6_opt_nrpi_prefix
+  icmpv6.opt.lla.option_code:
+    Name: icmpv6.opt.lla.option_code
+    Type: FtUint8
+    Display: BaseDec
+    Info: Option-code
+    JsonName: icmpv6_icmpv6_opt_lla_option_code
+  icmpv6.opt.lla.bytes:
+    Name: icmpv6.opt.lla.bytes
+    Type: FtBytes
+    Info: Link-Layer Address
+    JsonName: icmpv6_icmpv6_opt_lla_bytes
+  icmpv6.opt.naack.option_code:
+    Name: icmpv6.opt.naack.option_code
+    Type: FtUint8
+    Display: BaseDec
+    Info: Option-Code
+    JsonName: icmpv6_icmpv6_opt_naack_option_code
+  icmpv6.opt.naack.status:
+    Name: icmpv6.opt.naack.status
+    Type: FtUint8
+    Display: BaseDec
+    Info: Status
+    JsonName: icmpv6_icmpv6_opt_naack_status
+  icmpv6.opt.naack.supplied_ncoa:
+    Name: icmpv6.opt.naack.supplied_ncoa
+    Type: FtIpv6
+    Info: Supplied NCoA
+    JsonName: icmpv6_icmpv6_opt_naack_supplied_ncoa
+  icmpv6.opt.map.distance:
+    Name: icmpv6.opt.map.distance
+    Type: FtUint8
+    Display: BaseDec
+    Info: Distance
+    JsonName: icmpv6_icmpv6_opt_map_distance
+  icmpv6.opt.map.preference:
+    Name: icmpv6.opt.map.preference
+    Type: FtUint8
+    Display: BaseDec
+    Info: Preference
+    JsonName: icmpv6_icmpv6_opt_map_preference
+  icmpv6.opt.map.flag:
+    Name: icmpv6.opt.map.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flag
+    JsonName: icmpv6_icmpv6_opt_map_flag
+  icmpv6.opt.map.flag.r:
+    Name: icmpv6.opt.map.flag.r
+    Type: FtBoolean
+    Display: SepDot
+    Info: RCoA Flag
+    JsonName: icmpv6_opt_map_flag_icmpv6_opt_map_flag_r
+  icmpv6.opt.map.flag.reserved:
+    Name: icmpv6.opt.map.flag.reserved
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_opt_map_flag_icmpv6_opt_map_flag_reserved
+  icmpv6.opt.map.valid_lifetime:
+    Name: icmpv6.opt.map.valid_lifetime
+    Type: FtUint32
+    Display: BaseDec
+    Info: Valid Lifetime
+    JsonName: icmpv6_icmpv6_opt_map_valid_lifetime
+  icmpv6.opt.map.global_address:
+    Name: icmpv6.opt.map.global_address
+    Type: FtIpv6
+    Info: Global Address
+    JsonName: icmpv6_icmpv6_opt_map_global_address
+  icmpv6.opt.route_info.flag:
+    Name: icmpv6.opt.route_info.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flag
+    JsonName: icmpv6_icmpv6_opt_route_info_flag
+  icmpv6.opt.route_info.flag.route_preference:
+    Name: icmpv6.opt.route_info.flag.route_preference
+    Type: FtUint8
+    Display: BaseDec
+    Info: Route Preference
+    JsonName: icmpv6_opt_route_info_flag_icmpv6_opt_route_info_flag_route_preference
+  icmpv6.opt.route_info.flag.reserved:
+    Name: icmpv6.opt.route_info.flag.reserved
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_opt_route_info_flag_icmpv6_opt_route_info_flag_reserved
+  icmpv6.opt.route_lifetime:
+    Name: icmpv6.opt.route_lifetime
+    Type: FtUint32
+    Display: BaseDec
+    Info: Route Lifetime
+    JsonName: icmpv6_opt_icmpv6_opt_route_lifetime
+  icmpv6.opt.name_type:
+    Name: icmpv6.opt.name_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Name Type
+    JsonName: icmpv6_opt_icmpv6_opt_name_type
+  icmpv6.opt.name_x501:
+    Name: icmpv6.opt.name_x501
+    Type: FtBytes
+    Info: DER Encoded X.501 Name
+    JsonName: icmpv6_opt_icmpv6_opt_name_x501
+  icmpv6.opt.name_type.fqdn:
+    Name: icmpv6.opt.name_type.fqdn
+    Type: FtString
+    Info: FQDN
+    JsonName: icmpv6_opt_name_type_icmpv6_opt_name_type_fqdn
+  icmpv6.send.identifier:
+    Name: icmpv6.send.identifier
+    Type: FtUint16
+    Display: BaseDec
+    Info: Identifier
+    JsonName: icmpv6_icmpv6_send_identifier
+  icmpv6.send.all_components:
+    Name: icmpv6.send.all_components
+    Type: FtUint16
+    Display: BaseDec
+    Info: All Components
+    JsonName: icmpv6_icmpv6_send_all_components
+  icmpv6.send.component:
+    Name: icmpv6.send.component
+    Type: FtUint16
+    Display: BaseDec
+    Info: Component
+    JsonName: icmpv6_icmpv6_send_component
+  icmpv6.x509_Name:
+    Name: icmpv6.x509_Name
+    Type: FtUint32
+    Display: BaseDec
+    Info: Name
+    JsonName: icmpv6_icmpv6_x509_Name
+  icmpv6.x509_Certificate:
+    Name: icmpv6.x509_Certificate
+    Info: Certificate
+    JsonName: icmpv6_icmpv6_x509_Certificate
+  icmpv6.opt.redirected_packet:
+    Name: icmpv6.opt.redirected_packet
+    Info: Redirected Packet
+    JsonName: icmpv6_opt_icmpv6_opt_redirected_packet
+  icmpv6.opt.mtu:
+    Name: icmpv6.opt.mtu
+    Type: FtUint32
+    Display: BaseDec
+    Info: MTU
+    JsonName: icmpv6_opt_icmpv6_opt_mtu
+  icmpv6.opt.nbma.shortcut_limit:
+    Name: icmpv6.opt.nbma.shortcut_limit
+    Type: FtUint8
+    Display: BaseDec
+    Info: Shortcut Limit
+    JsonName: icmpv6_icmpv6_opt_nbma_shortcut_limit
+  icmpv6.opt.advertisement_interval:
+    Name: icmpv6.opt.advertisement_interval
+    Type: FtUint32
+    Display: BaseDec
+    Info: Advertisement Interval
+    JsonName: icmpv6_opt_icmpv6_opt_advertisement_interval
+  icmpv6.opt.home_agent_preference:
+    Name: icmpv6.opt.home_agent_preference
+    Type: FtUint16
+    Display: BaseDec
+    Info: Home Agent Preference
+    JsonName: icmpv6_opt_icmpv6_opt_home_agent_preference
+  icmpv6.opt.home_agent_lifetime:
+    Name: icmpv6.opt.home_agent_lifetime
+    Type: FtUint16
+    Display: BaseDec
+    Info: Home Agent Preference
+    JsonName: icmpv6_opt_icmpv6_opt_home_agent_lifetime
+  icmpv6.opt.ipv6_address:
+    Name: icmpv6.opt.ipv6_address
+    Type: FtIpv6
+    Info: IPv6 Address
+    JsonName: icmpv6_opt_icmpv6_opt_ipv6_address
+  icmpv6.opt.rdnss.lifetime:
+    Name: icmpv6.opt.rdnss.lifetime
+    Type: FtUint32
+    Display: BaseDec
+    Info: Lifetime
+    JsonName: icmpv6_opt_rdnss_icmpv6_opt_rdnss_lifetime
+  icmpv6.opt.rdnss:
+    Name: icmpv6.opt.rdnss
+    Type: FtIpv6
+    Info: Recursive DNS Servers
+    JsonName: icmpv6_opt_icmpv6_opt_rdnss
+  icmpv6.opt.efo:
+    Name: icmpv6.opt.efo
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags Expansion Option
+    JsonName: icmpv6_opt_icmpv6_opt_efo
+  icmpv6.opt.efo.m:
+    Name: icmpv6.opt.efo.m
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Managed address configuration
+    JsonName: icmpv6_opt_efo_icmpv6_opt_efo_m
+  icmpv6.opt.efo.o:
+    Name: icmpv6.opt.efo.o
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Other configuration
+    JsonName: icmpv6_opt_efo_icmpv6_opt_efo_o
+  icmpv6.opt.efo.h:
+    Name: icmpv6.opt.efo.h
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Home Agent
+    JsonName: icmpv6_opt_efo_icmpv6_opt_efo_h
+  icmpv6.opt.efo.prf:
+    Name: icmpv6.opt.efo.prf
+    Type: FtUint16
+    Display: BaseDec
+    Info: Prf (Default Router Preference)
+    JsonName: icmpv6_opt_efo_icmpv6_opt_efo_prf
+  icmpv6.opt.efo.p:
+    Name: icmpv6.opt.efo.p
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Proxy
+    JsonName: icmpv6_opt_efo_icmpv6_opt_efo_p
+  icmpv6.opt.efo.rsv:
+    Name: icmpv6.opt.efo.rsv
+    Type: FtUint16
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_opt_efo_icmpv6_opt_efo_rsv
+  icmpv6.opt.hkr.pad_length:
+    Name: icmpv6.opt.hkr.pad_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Pad Length
+    JsonName: icmpv6_icmpv6_opt_hkr_pad_length
+  icmpv6.opt.hkr.at:
+    Name: icmpv6.opt.hkr.at
+    Type: FtUint8
+    Display: BaseDec
+    Info: AT
+    JsonName: icmpv6_icmpv6_opt_hkr_at
+  icmpv6.opt.hkr.reserved:
+    Name: icmpv6.opt.hkr.reserved
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_icmpv6_opt_hkr_reserved
+  icmpv6.opt.hkr.encryption_public_key:
+    Name: icmpv6.opt.hkr.encryption_public_key
+    Type: FtBytes
+    Info: Handover Key Encryption Public Key
+    JsonName: icmpv6_icmpv6_opt_hkr_encryption_public_key
+  icmpv6.opt.hkr.padding:
+    Name: icmpv6.opt.hkr.padding
+    Type: FtBytes
+    Info: Padding
+    JsonName: icmpv6_icmpv6_opt_hkr_padding
+  icmpv6.opt.hkr.lifetime:
+    Name: icmpv6.opt.hkr.lifetime
+    Type: FtUint16
+    Display: BaseDec
+    Info: Padding
+    JsonName: icmpv6_icmpv6_opt_hkr_lifetime
+  icmpv6.opt.hkr.encrypted_handover_key:
+    Name: icmpv6.opt.hkr.encrypted_handover_key
+    Type: FtBytes
+    Info: Encrypted Handover Key
+    JsonName: icmpv6_icmpv6_opt_hkr_encrypted_handover_key
+  icmpv6.opt.hai.option_code:
+    Name: icmpv6.opt.hai.option_code
+    Type: FtUint8
+    Display: BaseDec
+    Info: Option-Code
+    JsonName: icmpv6_icmpv6_opt_hai_option_code
+  icmpv6.opt.hai.length:
+    Name: icmpv6.opt.hai.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: HAI-Length
+    JsonName: icmpv6_icmpv6_opt_hai_length
+  icmpv6.opt.hai.value:
+    Name: icmpv6.opt.hai.value
+    Type: FtBytes
+    Info: HAI-Value
+    JsonName: icmpv6_icmpv6_opt_hai_value
+  icmpv6.opt.mn.option_code:
+    Name: icmpv6.opt.mn.option_code
+    Type: FtUint8
+    Display: BaseDec
+    Info: Option-Code
+    JsonName: icmpv6_icmpv6_opt_mn_option_code
+  icmpv6.opt.mn.length:
+    Name: icmpv6.opt.mn.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: MN-Length
+    JsonName: icmpv6_icmpv6_opt_mn_length
+  icmpv6.opt.mn.value:
+    Name: icmpv6.opt.mn.value
+    Type: FtBytes
+    Info: MN-Value
+    JsonName: icmpv6_icmpv6_opt_mn_value
+  icmpv6.opt.dnssl.lifetime:
+    Name: icmpv6.opt.dnssl.lifetime
+    Type: FtUint32
+    Display: BaseDec
+    Info: Lifetime
+    JsonName: icmpv6_opt_dnssl_icmpv6_opt_dnssl_lifetime
+  icmpv6.opt.dnssl:
+    Name: icmpv6.opt.dnssl
+    Type: FtString
+    Info: Domain Names
+    JsonName: icmpv6_opt_icmpv6_opt_dnssl
+  icmpv6.opt.aro.status:
+    Name: icmpv6.opt.aro.status
+    Type: FtUint8
+    Display: BaseDec
+    Info: Status
+    JsonName: icmpv6_icmpv6_opt_aro_status
+  icmpv6.opt.aro.registration_lifetime:
+    Name: icmpv6.opt.aro.registration_lifetime
+    Type: FtUint16
+    Display: BaseDec
+    Info: Registration  Lifetime
+    JsonName: icmpv6_icmpv6_opt_aro_registration_lifetime
+  icmpv6.opt.aro.eui64:
+    Name: icmpv6.opt.aro.eui64
+    Type: FtEui64
+    Info: EUI-64
+    JsonName: icmpv6_icmpv6_opt_aro_eui64
+  icmpv6.opt.6co.context_length:
+    Name: icmpv6.opt.6co.context_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Context Length
+    JsonName: icmpv6_icmpv6_opt_6co_context_length
+  icmpv6.opt.6co.flag:
+    Name: icmpv6.opt.6co.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flag
+    JsonName: icmpv6_icmpv6_opt_6co_flag
+  icmpv6.opt.6co.flag.c:
+    Name: icmpv6.opt.6co.flag.c
+    Type: FtBoolean
+    Display: SepDot
+    Info: Compression Flag
+    JsonName: icmpv6_opt_6co_flag_icmpv6_opt_6co_flag_c
+  icmpv6.opt.6co.flag.cid:
+    Name: icmpv6.opt.6co.flag.cid
+    Type: FtUint8
+    Display: BaseDec
+    Info: CID
+    JsonName: icmpv6_opt_6co_flag_icmpv6_opt_6co_flag_cid
+  icmpv6.opt.6co.flag.reserved:
+    Name: icmpv6.opt.6co.flag.reserved
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_opt_6co_flag_icmpv6_opt_6co_flag_reserved
+  icmpv6.opt.6co.valid_lifetime:
+    Name: icmpv6.opt.6co.valid_lifetime
+    Type: FtUint16
+    Display: BaseDec
+    Info: Lifetime
+    JsonName: icmpv6_icmpv6_opt_6co_valid_lifetime
+  icmpv6.opt.6co.context_prefix:
+    Name: icmpv6.opt.6co.context_prefix
+    Type: FtIpv6
+    Info: Context Prefix
+    JsonName: icmpv6_icmpv6_opt_6co_context_prefix
+  icmpv6.opt.abro.version_low:
+    Name: icmpv6.opt.abro.version_low
+    Type: FtUint16
+    Display: BaseDec
+    Info: Version Low
+    JsonName: icmpv6_icmpv6_opt_abro_version_low
+  icmpv6.opt.abro.version_high:
+    Name: icmpv6.opt.abro.version_high
+    Type: FtUint16
+    Display: BaseDec
+    Info: Version
+    JsonName: icmpv6_icmpv6_opt_abro_version_high
+  icmpv6.opt.abro.valid_lifetime:
+    Name: icmpv6.opt.abro.valid_lifetime
+    Type: FtUint16
+    Display: BaseDec
+    Info: Valid Lifetime
+    JsonName: icmpv6_icmpv6_opt_abro_valid_lifetime
+  icmpv6.opt.abro.6lbr_address:
+    Name: icmpv6.opt.abro.6lbr_address
+    Type: FtIpv6
+    Info: 6LBR Address
+    JsonName: icmpv6_icmpv6_opt_abro_6lbr_address
+  icmpv6.opt.6cio.unassigned1:
+    Name: icmpv6.opt.6cio.unassigned1
+    Type: FtUint16
+    Display: BaseHex
+    Info: Unassigned
+    JsonName: icmpv6_icmpv6_opt_6cio_unassigned1
+  icmpv6.opt.6cio.flag_g:
+    Name: icmpv6.opt.6cio.flag_g
+    Type: FtUint16
+    Display: BaseHex
+    Info: G
+    JsonName: icmpv6_icmpv6_opt_6cio_flag_g
+  icmpv6.opt.6cio.unassigned2:
+    Name: icmpv6.opt.6cio.unassigned2
+    Type: FtUint32
+    Display: BaseHex
+    Info: Unassigned
+    JsonName: icmpv6_icmpv6_opt_6cio_unassigned2
+  icmpv6.opt.captive_portal:
+    Name: icmpv6.opt.captive_portal
+    Type: FtString
+    Info: Captive Portal
+    JsonName: icmpv6_opt_icmpv6_opt_captive_portal
+  icmpv6.mld.maximum_response_delay:
+    Name: icmpv6.mld.maximum_response_delay
+    Type: FtUint16
+    Display: BaseDec
+    Info: Maximum Response Delay [ms]
+    JsonName: icmpv6_icmpv6_mld_maximum_response_delay
+  icmpv6.mld.multicast_address:
+    Name: icmpv6.mld.multicast_address
+    Type: FtIpv6
+    Info: Multicast Address
+    JsonName: icmpv6_icmpv6_mld_multicast_address
+  icmpv6.rr.sequence_number:
+    Name: icmpv6.rr.sequence_number
+    Type: FtUint32
+    Display: BaseDec
+    Info: Sequence Number
+    JsonName: icmpv6_icmpv6_rr_sequence_number
+  icmpv6.rr.segment_number:
+    Name: icmpv6.rr.segment_number
+    Type: FtUint8
+    Display: BaseDec
+    Info: Segment Number
+    JsonName: icmpv6_icmpv6_rr_segment_number
+  icmpv6.rr.flag:
+    Name: icmpv6.rr.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_icmpv6_rr_flag
+  icmpv6.rr.flag.t:
+    Name: icmpv6.rr.flag.t
+    Type: FtBoolean
+    Display: SepDot
+    Info: Test Command
+    JsonName: icmpv6_rr_flag_icmpv6_rr_flag_t
+  icmpv6.rr.flag.r:
+    Name: icmpv6.rr.flag.r
+    Type: FtBoolean
+    Display: SepDot
+    Info: Result requested
+    JsonName: icmpv6_rr_flag_icmpv6_rr_flag_r
+  icmpv6.rr.flag.a:
+    Name: icmpv6.rr.flag.a
+    Type: FtBoolean
+    Display: SepDot
+    Info: All Interfaces
+    JsonName: icmpv6_rr_flag_icmpv6_rr_flag_a
+  icmpv6.rr.flag.s:
+    Name: icmpv6.rr.flag.s
+    Type: FtBoolean
+    Display: SepDot
+    Info: Site-specific
+    JsonName: icmpv6_rr_flag_icmpv6_rr_flag_s
+  icmpv6.rr.flag.p:
+    Name: icmpv6.rr.flag.p
+    Type: FtBoolean
+    Display: SepDot
+    Info: Processed previously
+    JsonName: icmpv6_rr_flag_icmpv6_rr_flag_p
+  icmpv6.rr.flag.rsv:
+    Name: icmpv6.rr.flag.rsv
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_rr_flag_icmpv6_rr_flag_rsv
+  icmpv6.rr.maxdelay:
+    Name: icmpv6.rr.maxdelay
+    Type: FtUint16
+    Display: BaseDec
+    Info: Max Delay
+    JsonName: icmpv6_icmpv6_rr_maxdelay
+  icmpv6.rr.pco.mp:
+    Name: icmpv6.rr.pco.mp
+    Info: Match-Prefix Part
+    JsonName: icmpv6_icmpv6_rr_pco_mp
+  icmpv6.rr.pco.mp.opcode:
+    Name: icmpv6.rr.pco.mp.opcode
+    Type: FtUint8
+    Display: BaseDec
+    Info: OpCode
+    JsonName: icmpv6_rr_pco_mp_icmpv6_rr_pco_mp_opcode
+  icmpv6.rr.pco.mp.oplength:
+    Name: icmpv6.rr.pco.mp.oplength
+    Type: FtUint8
+    Display: BaseDec
+    Info: OpLength
+    JsonName: icmpv6_rr_pco_mp_icmpv6_rr_pco_mp_oplength
+  icmpv6.rr.pco.mp.ordinal:
+    Name: icmpv6.rr.pco.mp.ordinal
+    Type: FtUint8
+    Display: BaseHex
+    Info: Ordinal
+    JsonName: icmpv6_rr_pco_mp_icmpv6_rr_pco_mp_ordinal
+  icmpv6.rr.pco.mp.matchlen:
+    Name: icmpv6.rr.pco.mp.matchlen
+    Type: FtUint8
+    Display: BaseDec
+    Info: MatchLen
+    JsonName: icmpv6_rr_pco_mp_icmpv6_rr_pco_mp_matchlen
+  icmpv6.rr.pco.mp.minlen:
+    Name: icmpv6.rr.pco.mp.minlen
+    Type: FtUint8
+    Display: BaseDec
+    Info: MinLen
+    JsonName: icmpv6_rr_pco_mp_icmpv6_rr_pco_mp_minlen
+  icmpv6.rr.pco.mp.maxlen:
+    Name: icmpv6.rr.pco.mp.maxlen
+    Type: FtUint8
+    Display: BaseDec
+    Info: MaxLen
+    JsonName: icmpv6_rr_pco_mp_icmpv6_rr_pco_mp_maxlen
+  icmpv6.rr.pco.mp.matchprefix:
+    Name: icmpv6.rr.pco.mp.matchprefix
+    Type: FtIpv6
+    Info: MatchPrefix
+    JsonName: icmpv6_rr_pco_mp_icmpv6_rr_pco_mp_matchprefix
+  icmpv6.rr.pco.up:
+    Name: icmpv6.rr.pco.up
+    Info: Use-Prefix Part
+    JsonName: icmpv6_icmpv6_rr_pco_up
+  icmpv6.rr.pco.up.uselen:
+    Name: icmpv6.rr.pco.up.uselen
+    Type: FtUint8
+    Display: BaseDec
+    Info: UseLen
+    JsonName: icmpv6_rr_pco_up_icmpv6_rr_pco_up_uselen
+  icmpv6.rr.pco.up.keeplen:
+    Name: icmpv6.rr.pco.up.keeplen
+    Type: FtUint8
+    Display: BaseDec
+    Info: KeepLen
+    JsonName: icmpv6_rr_pco_up_icmpv6_rr_pco_up_keeplen
+  icmpv6.rr.pco.up.flagmask:
+    Name: icmpv6.rr.pco.up.flagmask
+    Type: FtUint8
+    Display: BaseHex
+    Info: FlagMask
+    JsonName: icmpv6_rr_pco_up_icmpv6_rr_pco_up_flagmask
+  icmpv6.rr.pco.up.flagmask.l:
+    Name: icmpv6.rr.pco.up.flagmask.l
+    Type: FtBoolean
+    Display: SepDot
+    Info: On-link flag(L)
+    JsonName: icmpv6_rr_pco_up_flagmask_icmpv6_rr_pco_up_flagmask_l
+  icmpv6.rr.pco.up.flagmask.a:
+    Name: icmpv6.rr.pco.up.flagmask.a
+    Type: FtBoolean
+    Display: SepDot
+    Info: Autonomous address-configuration flag(A)
+    JsonName: icmpv6_rr_pco_up_flagmask_icmpv6_rr_pco_up_flagmask_a
+  icmpv6.rr.pco.up.flagmask.reserved:
+    Name: icmpv6.rr.pco.up.flagmask.reserved
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_rr_pco_up_flagmask_icmpv6_rr_pco_up_flagmask_reserved
+  icmpv6.rr.pco.up.raflags:
+    Name: icmpv6.rr.pco.up.raflags
+    Type: FtUint8
+    Display: BaseHex
+    Info: RAFlags
+    JsonName: icmpv6_rr_pco_up_icmpv6_rr_pco_up_raflags
+  icmpv6.rr.pco.up.validlifetime:
+    Name: icmpv6.rr.pco.up.validlifetime
+    Type: FtUint32
+    Display: BaseDec
+    Info: Valid Lifetime
+    JsonName: icmpv6_rr_pco_up_icmpv6_rr_pco_up_validlifetime
+  icmpv6.rr.pco.up.preferredlifetime:
+    Name: icmpv6.rr.pco.up.preferredlifetime
+    Type: FtUint32
+    Display: BaseDec
+    Info: Preferred Lifetime
+    JsonName: icmpv6_rr_pco_up_icmpv6_rr_pco_up_preferredlifetime
+  icmpv6.rr.pco.up.flag:
+    Name: icmpv6.rr.pco.up.flag
+    Type: FtUint32
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_rr_pco_up_icmpv6_rr_pco_up_flag
+  icmpv6.rr.pco.up.flag.v:
+    Name: icmpv6.rr.pco.up.flag.v
+    Type: FtBoolean
+    Display: 32
+    Info: Decrement valid lifetime
+    JsonName: icmpv6_rr_pco_up_flag_icmpv6_rr_pco_up_flag_v
+  icmpv6.rr.pco.up.flag.p:
+    Name: icmpv6.rr.pco.up.flag.p
+    Type: FtBoolean
+    Display: 32
+    Info: Decrement preferred lifetime
+    JsonName: icmpv6_rr_pco_up_flag_icmpv6_rr_pco_up_flag_p
+  icmpv6.rr.pco.up.flag.reserved:
+    Name: icmpv6.rr.pco.up.flag.reserved
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_rr_pco_up_flag_icmpv6_rr_pco_up_flag_reserved
+  icmpv6.rr.pco.up.useprefix:
+    Name: icmpv6.rr.pco.up.useprefix
+    Type: FtIpv6
+    Info: UsePrefix
+    JsonName: icmpv6_rr_pco_up_icmpv6_rr_pco_up_useprefix
+  icmpv6.rr.rm:
+    Name: icmpv6.rr.rm
+    Info: Result Message
+    JsonName: icmpv6_icmpv6_rr_rm
+  icmpv6.rr.rm.flag:
+    Name: icmpv6.rr.rm.flag
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_rr_rm_icmpv6_rr_rm_flag
+  icmpv6.rr.rm.flag.b:
+    Name: icmpv6.rr.rm.flag.b
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Bounds
+    JsonName: icmpv6_rr_rm_flag_icmpv6_rr_rm_flag_b
+  icmpv6.rr.rm.flag.f:
+    Name: icmpv6.rr.rm.flag.f
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Forbidden
+    JsonName: icmpv6_rr_rm_flag_icmpv6_rr_rm_flag_f
+  icmpv6.rr.rm.flag.reserved:
+    Name: icmpv6.rr.rm.flag.reserved
+    Type: FtUint16
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_rr_rm_flag_icmpv6_rr_rm_flag_reserved
+  icmpv6.rr.rm.ordinal:
+    Name: icmpv6.rr.rm.ordinal
+    Type: FtUint8
+    Display: BaseHex
+    Info: Ordinal
+    JsonName: icmpv6_rr_rm_icmpv6_rr_rm_ordinal
+  icmpv6.rr.rm.matchedlen:
+    Name: icmpv6.rr.rm.matchedlen
+    Type: FtUint8
+    Display: BaseDec
+    Info: MatchedLen
+    JsonName: icmpv6_rr_rm_icmpv6_rr_rm_matchedlen
+  icmpv6.rr.rm.interfaceindex:
+    Name: icmpv6.rr.rm.interfaceindex
+    Type: FtUint32
+    Display: BaseDec
+    Info: InterfaceIndex
+    JsonName: icmpv6_rr_rm_icmpv6_rr_rm_interfaceindex
+  icmpv6.rr.rm.matchedprefix:
+    Name: icmpv6.rr.rm.matchedprefix
+    Type: FtIpv6
+    Info: MatchedPrefix
+    JsonName: icmpv6_rr_rm_icmpv6_rr_rm_matchedprefix
+  icmpv6.mip6.identifier:
+    Name: icmpv6.mip6.identifier
+    Type: FtUint16
+    Display: BaseDecHex
+    Info: Identifier
+    JsonName: icmpv6_icmpv6_mip6_identifier
+  icmpv6.mip6.home_agent_address:
+    Name: icmpv6.mip6.home_agent_address
+    Type: FtIpv6
+    Info: Home Agent Address
+    JsonName: icmpv6_icmpv6_mip6_home_agent_address
+  icmpv6.mip6.flag:
+    Name: icmpv6.mip6.flag
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_icmpv6_mip6_flag
+  icmpv6.mip6.flag.m:
+    Name: icmpv6.mip6.flag.m
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Managed address configuration
+    JsonName: icmpv6_mip6_flag_icmpv6_mip6_flag_m
+  icmpv6.mip6.flag.o:
+    Name: icmpv6.mip6.flag.o
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Other configuration
+    JsonName: icmpv6_mip6_flag_icmpv6_mip6_flag_o
+  icmpv6.mip6.flag.rsv:
+    Name: icmpv6.mip6.flag.rsv
+    Type: FtUint16
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_mip6_flag_icmpv6_mip6_flag_rsv
+  icmpv6.mld.maximum_response_code:
+    Name: icmpv6.mld.maximum_response_code
+    Type: FtUint16
+    Display: BaseDec
+    Info: Maximum Response Code
+    JsonName: icmpv6_icmpv6_mld_maximum_response_code
+  icmpv6.mld.flag:
+    Name: icmpv6.mld.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_icmpv6_mld_flag
+  icmpv6.mld.flag.s:
+    Name: icmpv6.mld.flag.s
+    Type: FtBoolean
+    Display: SepDot
+    Info: Suppress Router-Side Processing
+    JsonName: icmpv6_mld_flag_icmpv6_mld_flag_s
+  icmpv6.mld.flag.qrv:
+    Name: icmpv6.mld.flag.qrv
+    Type: FtUint8
+    Display: BaseDec
+    Info: QRV (Querier's Robustness Variable)
+    JsonName: icmpv6_mld_flag_icmpv6_mld_flag_qrv
+  icmpv6.mld.flag.reserved:
+    Name: icmpv6.mld.flag.reserved
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_mld_flag_icmpv6_mld_flag_reserved
+  icmpv6.mld.qqi:
+    Name: icmpv6.mld.qqi
+    Type: FtUint8
+    Display: BaseDec
+    Info: QQIC (Querier's Query Interval Code)
+    JsonName: icmpv6_icmpv6_mld_qqi
+  icmpv6.mld.nb_sources:
+    Name: icmpv6.mld.nb_sources
+    Type: FtUint16
+    Display: BaseDec
+    Info: Number of Sources
+    JsonName: icmpv6_icmpv6_mld_nb_sources
+  icmpv6.mld.source_address:
+    Name: icmpv6.mld.source_address
+    Type: FtIpv6
+    Info: Source Address
+    JsonName: icmpv6_icmpv6_mld_source_address
+  icmpv6.mldr.nb_mcast_records:
+    Name: icmpv6.mldr.nb_mcast_records
+    Type: FtUint16
+    Display: BaseDec
+    Info: Number of Multicast Address Records
+    JsonName: icmpv6_icmpv6_mldr_nb_mcast_records
+  icmpv6.mldr.mar:
+    Name: icmpv6.mldr.mar
+    Info: Multicast Address Record
+    JsonName: icmpv6_icmpv6_mldr_mar
+  icmpv6.mldr.mar.record_type:
+    Name: icmpv6.mldr.mar.record_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Record Type
+    JsonName: icmpv6_mldr_mar_icmpv6_mldr_mar_record_type
+  icmpv6.mldr.mar.aux_data_len:
+    Name: icmpv6.mldr.mar.aux_data_len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Aux Data Len
+    JsonName: icmpv6_mldr_mar_icmpv6_mldr_mar_aux_data_len
+  icmpv6.mldr.mar.nb_sources:
+    Name: icmpv6.mldr.mar.nb_sources
+    Type: FtUint16
+    Display: BaseDec
+    Info: Number of Sources
+    JsonName: icmpv6_mldr_mar_icmpv6_mldr_mar_nb_sources
+  icmpv6.mldr.mar.multicast_address:
+    Name: icmpv6.mldr.mar.multicast_address
+    Type: FtIpv6
+    Info: Multicast Address
+    JsonName: icmpv6_mldr_mar_icmpv6_mldr_mar_multicast_address
+  icmpv6.mldr.mar.source_address:
+    Name: icmpv6.mldr.mar.source_address
+    Type: FtIpv6
+    Info: Source Address
+    JsonName: icmpv6_mldr_mar_icmpv6_mldr_mar_source_address
+  icmpv6.mldr.mar.auxiliary_data:
+    Name: icmpv6.mldr.mar.auxiliary_data
+    Type: FtBytes
+    Info: Auxiliary Data
+    JsonName: icmpv6_mldr_mar_icmpv6_mldr_mar_auxiliary_data
+  icmpv6.fmip6.subtype:
+    Name: icmpv6.fmip6.subtype
+    Type: FtUint8
+    Display: BaseDec
+    Info: Subtype
+    JsonName: icmpv6_icmpv6_fmip6_subtype
+  icmpv6.fmip6.hi.flag:
+    Name: icmpv6.fmip6.hi.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flag
+    JsonName: icmpv6_icmpv6_fmip6_hi_flag
+  icmpv6.fmip6.hi.flag.s:
+    Name: icmpv6.fmip6.hi.flag.s
+    Type: FtBoolean
+    Display: SepDot
+    Info: Assigned address configuration
+    JsonName: icmpv6_fmip6_hi_flag_icmpv6_fmip6_hi_flag_s
+  icmpv6.fmip6.hi.flag.a:
+    Name: icmpv6.fmip6.hi.flag.a
+    Type: FtBoolean
+    Display: SepDot
+    Info: Buffer
+    JsonName: icmpv6_fmip6_hi_flag_icmpv6_fmip6_hi_flag_a
+  icmpv6.fmip6.hi.flag.reserved:
+    Name: icmpv6.fmip6.hi.flag.reserved
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_fmip6_hi_flag_icmpv6_fmip6_hi_flag_reserved
+  icmpv6.fmip6.identifier:
+    Name: icmpv6.fmip6.identifier
+    Type: FtUint16
+    Display: BaseDecHex
+    Info: Identifier
+    JsonName: icmpv6_icmpv6_fmip6_identifier
+  icmpv6.mcast_ra.query_interval:
+    Name: icmpv6.mcast_ra.query_interval
+    Type: FtUint16
+    Display: BaseDec
+    Info: Query Interval
+    JsonName: icmpv6_icmpv6_mcast_ra_query_interval
+  icmpv6.mcast_ra.robustness_variable:
+    Name: icmpv6.mcast_ra.robustness_variable
+    Type: FtUint16
+    Display: BaseDec
+    Info: Robustness Variable
+    JsonName: icmpv6_icmpv6_mcast_ra_robustness_variable
+  icmpv6.ni.qtype:
+    Name: icmpv6.ni.qtype
+    Type: FtUint16
+    Display: BaseDec
+    Info: Qtype
+    JsonName: icmpv6_icmpv6_ni_qtype
+  icmpv6.ni.flag:
+    Name: icmpv6.ni.flag
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_icmpv6_ni_flag
+  icmpv6.ni.flag.g:
+    Name: icmpv6.ni.flag.g
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Global-scope addresses
+    JsonName: icmpv6_ni_flag_icmpv6_ni_flag_g
+  icmpv6.ni.flag.s:
+    Name: icmpv6.ni.flag.s
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Site-local addresses
+    JsonName: icmpv6_ni_flag_icmpv6_ni_flag_s
+  icmpv6.ni.flag.l:
+    Name: icmpv6.ni.flag.l
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Link-local addresses
+    JsonName: icmpv6_ni_flag_icmpv6_ni_flag_l
+  icmpv6.ni.flag.c:
+    Name: icmpv6.ni.flag.c
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Compression
+    JsonName: icmpv6_ni_flag_icmpv6_ni_flag_c
+  icmpv6.ni.flag.a:
+    Name: icmpv6.ni.flag.a
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Unicast Addresses
+    JsonName: icmpv6_ni_flag_icmpv6_ni_flag_a
+  icmpv6.ni.flag.t:
+    Name: icmpv6.ni.flag.t
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Truncated
+    JsonName: icmpv6_ni_flag_icmpv6_ni_flag_t
+  icmpv6.ni.flag.rsv:
+    Name: icmpv6.ni.flag.rsv
+    Type: FtUint16
+    Display: BaseHex
+    Info: Reserved
+    JsonName: icmpv6_ni_flag_icmpv6_ni_flag_rsv
+  icmpv6.ni.nonce:
+    Name: icmpv6.ni.nonce
+    Type: FtUint64
+    Display: BaseHex
+    Info: Nonce
+    JsonName: icmpv6_icmpv6_ni_nonce
+  icmpv6.ni.query.subject_ipv6:
+    Name: icmpv6.ni.query.subject_ipv6
+    Type: FtIpv6
+    Info: IPv6 subject address
+    JsonName: icmpv6_icmpv6_ni_query_subject_ipv6
+  icmpv6.ni.query.subject_fqdn:
+    Name: icmpv6.ni.query.subject_fqdn
+    Type: FtString
+    Info: FQDN subject
+    JsonName: icmpv6_icmpv6_ni_query_subject_fqdn
+  icmpv6.ni.query.subject_ipv4:
+    Name: icmpv6.ni.query.subject_ipv4
+    Type: FtIpv4
+    Info: IPv4 subject address
+    JsonName: icmpv6_icmpv6_ni_query_subject_ipv4
+  icmpv6.ni.reply.node_ttl:
+    Name: icmpv6.ni.reply.node_ttl
+    Type: FtUint32
+    Display: BaseDec
+    Info: TTL
+    JsonName: icmpv6_icmpv6_ni_reply_node_ttl
+  icmpv6.ni.reply.node_name:
+    Name: icmpv6.ni.reply.node_name
+    Type: FtString
+    Info: Name Node
+    JsonName: icmpv6_icmpv6_ni_reply_node_name
+  icmpv6.ni.reply.node_address:
+    Name: icmpv6.ni.reply.node_address
+    Type: FtIpv6
+    Info: IPv6 Node address
+    JsonName: icmpv6_icmpv6_ni_reply_node_address
+  icmpv6.ni.reply.ipv4_address:
+    Name: icmpv6.ni.reply.ipv4_address
+    Type: FtIpv4
+    Info: IPv4 Node address
+    JsonName: icmpv6_icmpv6_ni_reply_ipv4_address
+  icmpv6.rpl.dis.flags:
+    Name: icmpv6.rpl.dis.flags
+    Type: FtUint8
+    Display: BaseDec
+    Info: Flags
+    JsonName: icmpv6_icmpv6_rpl_dis_flags
+  icmpv6.rpl.dio.instance:
+    Name: icmpv6.rpl.dio.instance
+    Type: FtUint8
+    Display: BaseDec
+    Info: RPLInstanceID
+    JsonName: icmpv6_icmpv6_rpl_dio_instance
+  icmpv6.rpl.dio.version:
+    Name: icmpv6.rpl.dio.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: Version
+    JsonName: icmpv6_icmpv6_rpl_dio_version
+  icmpv6.rpl.dio.rank:
+    Name: icmpv6.rpl.dio.rank
+    Type: FtUint16
+    Display: BaseDec
+    Info: Rank
+    JsonName: icmpv6_icmpv6_rpl_dio_rank
+  icmpv6.rpl.dio.flag:
+    Name: icmpv6.rpl.dio.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_icmpv6_rpl_dio_flag
+  icmpv6.rpl.dio.flag.g:
+    Name: icmpv6.rpl.dio.flag.g
+    Type: FtBoolean
+    Display: SepDot
+    Info: Grounded (G)
+    JsonName: icmpv6_rpl_dio_flag_icmpv6_rpl_dio_flag_g
+  icmpv6.rpl.dio.flag.0:
+    Name: icmpv6.rpl.dio.flag.0
+    Type: FtBoolean
+    Display: SepDot
+    Info: Zero
+    JsonName: icmpv6_rpl_dio_flag_icmpv6_rpl_dio_flag_0
+  icmpv6.rpl.dio.flag.mop:
+    Name: icmpv6.rpl.dio.flag.mop
+    Type: FtUint8
+    Display: BaseHex
+    Info: Mode of Operation (MOP)
+    JsonName: icmpv6_rpl_dio_flag_icmpv6_rpl_dio_flag_mop
+  icmpv6.rpl.dio.flag.preference:
+    Name: icmpv6.rpl.dio.flag.preference
+    Type: FtUint8
+    Display: BaseDec
+    Info: DODAG Preference
+    JsonName: icmpv6_rpl_dio_flag_icmpv6_rpl_dio_flag_preference
+  icmpv6.rpl.dio.dtsn:
+    Name: icmpv6.rpl.dio.dtsn
+    Type: FtUint8
+    Display: BaseDec
+    Info: Destination Advertisement Trigger Sequence Number (DTSN)
+    JsonName: icmpv6_icmpv6_rpl_dio_dtsn
+  icmpv6.rpl.dio.dagid:
+    Name: icmpv6.rpl.dio.dagid
+    Type: FtIpv6
+    Info: DODAGID
+    JsonName: icmpv6_icmpv6_rpl_dio_dagid
+  icmpv6.rpl.dao.instance:
+    Name: icmpv6.rpl.dao.instance
+    Type: FtUint8
+    Display: BaseDec
+    Info: RPLInstanceID
+    JsonName: icmpv6_icmpv6_rpl_dao_instance
+  icmpv6.rpl.dao.flag:
+    Name: icmpv6.rpl.dao.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_icmpv6_rpl_dao_flag
+  icmpv6.rpl.dao.flag.k:
+    Name: icmpv6.rpl.dao.flag.k
+    Type: FtBoolean
+    Display: SepDot
+    Info: DAO-ACK Request (K)
+    JsonName: icmpv6_rpl_dao_flag_icmpv6_rpl_dao_flag_k
+  icmpv6.rpl.dao.flag.d:
+    Name: icmpv6.rpl.dao.flag.d
+    Type: FtBoolean
+    Display: SepDot
+    Info: DODAGID Present (D)
+    JsonName: icmpv6_rpl_dao_flag_icmpv6_rpl_dao_flag_d
+  icmpv6.rpl.dao.flag.rsv:
+    Name: icmpv6.rpl.dao.flag.rsv
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_rpl_dao_flag_icmpv6_rpl_dao_flag_rsv
+  icmpv6.rpl.dao.sequence:
+    Name: icmpv6.rpl.dao.sequence
+    Type: FtUint8
+    Display: BaseDec
+    Info: DAO Sequence
+    JsonName: icmpv6_icmpv6_rpl_dao_sequence
+  icmpv6.rpl.dao.dodagid:
+    Name: icmpv6.rpl.dao.dodagid
+    Type: FtIpv6
+    Info: DODAGID
+    JsonName: icmpv6_icmpv6_rpl_dao_dodagid
+  icmpv6.rpl.daoack.instance:
+    Name: icmpv6.rpl.daoack.instance
+    Type: FtUint8
+    Display: BaseDec
+    Info: RPLInstanceID
+    JsonName: icmpv6_icmpv6_rpl_daoack_instance
+  icmpv6.rpl.daoack.flag:
+    Name: icmpv6.rpl.daoack.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flag
+    JsonName: icmpv6_icmpv6_rpl_daoack_flag
+  icmpv6.rpl.daoack.flag.d:
+    Name: icmpv6.rpl.daoack.flag.d
+    Type: FtBoolean
+    Display: SepDot
+    Info: DODAGID Present (D)
+    JsonName: icmpv6_rpl_daoack_flag_icmpv6_rpl_daoack_flag_d
+  icmpv6.rpl.daoack.flag.rsv:
+    Name: icmpv6.rpl.daoack.flag.rsv
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_rpl_daoack_flag_icmpv6_rpl_daoack_flag_rsv
+  icmpv6.rpl.daoack.sequence:
+    Name: icmpv6.rpl.daoack.sequence
+    Type: FtUint8
+    Display: BaseDec
+    Info: DAO-ACK Sequence
+    JsonName: icmpv6_icmpv6_rpl_daoack_sequence
+  icmpv6.rpl.daoack.status:
+    Name: icmpv6.rpl.daoack.status
+    Type: FtUint8
+    Display: BaseDec
+    Info: Status
+    JsonName: icmpv6_icmpv6_rpl_daoack_status
+  icmpv6.rpl.daoack.dodagid:
+    Name: icmpv6.rpl.daoack.dodagid
+    Type: FtIpv6
+    Info: DODAGID
+    JsonName: icmpv6_icmpv6_rpl_daoack_dodagid
+  icmpv6.rpl.cc.instance:
+    Name: icmpv6.rpl.cc.instance
+    Type: FtUint8
+    Display: BaseDec
+    Info: RPLInstanceID
+    JsonName: icmpv6_icmpv6_rpl_cc_instance
+  icmpv6.rpl.cc.flag:
+    Name: icmpv6.rpl.cc.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flag
+    JsonName: icmpv6_icmpv6_rpl_cc_flag
+  icmpv6.rpl.cc.flag.r:
+    Name: icmpv6.rpl.cc.flag.r
+    Type: FtBoolean
+    Display: SepDot
+    Info: Response (R)
+    JsonName: icmpv6_rpl_cc_flag_icmpv6_rpl_cc_flag_r
+  icmpv6.rpl.cc.flag.rsv:
+    Name: icmpv6.rpl.cc.flag.rsv
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_rpl_cc_flag_icmpv6_rpl_cc_flag_rsv
+  icmpv6.rpl.cc.nonce:
+    Name: icmpv6.rpl.cc.nonce
+    Type: FtUint16
+    Display: BaseHex
+    Info: CC Nonce
+    JsonName: icmpv6_icmpv6_rpl_cc_nonce
+  icmpv6.rpl.cc.dodagid:
+    Name: icmpv6.rpl.cc.dodagid
+    Type: FtIpv6
+    Info: DODAGID
+    JsonName: icmpv6_icmpv6_rpl_cc_dodagid
+  icmpv6.rpl.cc.destination_counter:
+    Name: icmpv6.rpl.cc.destination_counter
+    Type: FtUint32
+    Display: BaseDec
+    Info: Destination Counter
+    JsonName: icmpv6_icmpv6_rpl_cc_destination_counter
+  icmpv6.rpl.secure.flag:
+    Name: icmpv6.rpl.secure.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_icmpv6_rpl_secure_flag
+  icmpv6.rpl.secure.flag.t:
+    Name: icmpv6.rpl.secure.flag.t
+    Type: FtBoolean
+    Display: SepDot
+    Info: Counter is Time (T)
+    JsonName: icmpv6_rpl_secure_flag_icmpv6_rpl_secure_flag_t
+  icmpv6.rpl.secure.flag.rsv:
+    Name: icmpv6.rpl.secure.flag.rsv
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_rpl_secure_flag_icmpv6_rpl_secure_flag_rsv
+  icmpv6.rpl.secure.algorithm:
+    Name: icmpv6.rpl.secure.algorithm
+    Type: FtUint8
+    Display: BaseDec
+    Info: Algorithm
+    JsonName: icmpv6_icmpv6_rpl_secure_algorithm
+  icmpv6.rpl.secure.kim:
+    Name: icmpv6.rpl.secure.kim
+    Type: FtUint8
+    Display: BaseDec
+    Info: Key Identifier Mode (KIM)
+    JsonName: icmpv6_icmpv6_rpl_secure_kim
+  icmpv6.rpl.secure.lvl:
+    Name: icmpv6.rpl.secure.lvl
+    Type: FtUint8
+    Display: BaseDec
+    Info: Security Level (LVL)
+    JsonName: icmpv6_icmpv6_rpl_secure_lvl
+  icmpv6.rpl.secure.rsv:
+    Name: icmpv6.rpl.secure.rsv
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_icmpv6_rpl_secure_rsv
+  icmpv6.rpl.secure.counter:
+    Name: icmpv6.rpl.secure.counter
+    Type: FtUint32
+    Display: BaseDec
+    Info: Counter
+    JsonName: icmpv6_icmpv6_rpl_secure_counter
+  icmpv6.rpl.secure.key.source:
+    Name: icmpv6.rpl.secure.key.source
+    Type: FtBytes
+    Info: Key Source
+    JsonName: icmpv6_icmpv6_rpl_secure_key_source
+  icmpv6.rpl.secure.key.index:
+    Name: icmpv6.rpl.secure.key.index
+    Type: FtUint8
+    Display: BaseDec
+    Info: Key Source
+    JsonName: icmpv6_icmpv6_rpl_secure_key_index
+  icmpv6.rpl.opt.type:
+    Name: icmpv6.rpl.opt.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Type
+    JsonName: icmpv6_icmpv6_rpl_opt_type
+  icmpv6.rpl.opt.length:
+    Name: icmpv6.rpl.opt.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Length
+    JsonName: icmpv6_icmpv6_rpl_opt_length
+  icmpv6.rpl.opt.reserved:
+    Name: icmpv6.rpl.opt.reserved
+    Info: Reserved
+    JsonName: icmpv6_icmpv6_rpl_opt_reserved
+  icmpv6.rpl.opt.padn:
+    Name: icmpv6.rpl.opt.padn
+    Info: Paddn
+    JsonName: icmpv6_icmpv6_rpl_opt_padn
+  icmpv6.rpl.opt.metric.type:
+    Name: icmpv6.rpl.opt.metric.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Routing Metric/Constraint Type
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_type
+  icmpv6.rpl.opt.metric.flags:
+    Name: icmpv6.rpl.opt.metric.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_flags
+  icmpv6.rpl.opt.metric.reserved:
+    Name: icmpv6.rpl.opt.metric.reserved
+    Type: FtUint16
+    Display: BaseHex
+    Info: Reserved Flags
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_reserved
+  icmpv6.rpl.opt.metric.flag.p:
+    Name: icmpv6.rpl.opt.metric.flag.p
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Flag P
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_flag_p
+  icmpv6.rpl.opt.metric.flag.c:
+    Name: icmpv6.rpl.opt.metric.flag.c
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Flag C
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_flag_c
+  icmpv6.rpl.opt.metric.flag.o:
+    Name: icmpv6.rpl.opt.metric.flag.o
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Flag O
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_flag_o
+  icmpv6.rpl.opt.metric.flag.r:
+    Name: icmpv6.rpl.opt.metric.flag.r
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Flag R
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_flag_r
+  icmpv6.rpl.opt.metric.flag.a:
+    Name: icmpv6.rpl.opt.metric.flag.a
+    Type: FtUint16
+    Display: BaseHex
+    Info: A Field
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_flag_a
+  icmpv6.rpl.opt.metric.prec:
+    Name: icmpv6.rpl.opt.metric.prec
+    Type: FtUint16
+    Display: BaseHex
+    Info: Precedence field
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_prec
+  icmpv6.rpl.opt.metric.length:
+    Name: icmpv6.rpl.opt.metric.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Metric Length
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_length
+  icmpv6.rpl.opt.metric.nsa.object:
+    Name: icmpv6.rpl.opt.metric.nsa.object
+    Type: FtUint16
+    Display: BaseHex
+    Info: Node Sate and Attribute Object
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_nsa_object
+  icmpv6.rpl.opt.metric.nsa.object.reserved:
+    Name: icmpv6.rpl.opt.metric.nsa.object.reserved
+    Type: FtUint16
+    Display: BaseHex
+    Info: Reserved field
+    JsonName: icmpv6_rpl_opt_metric_nsa_object_icmpv6_rpl_opt_metric_nsa_object_reserved
+  icmpv6.rpl.opt.metric.nsa.object.flags:
+    Name: icmpv6.rpl.opt.metric.nsa.object.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_rpl_opt_metric_nsa_object_icmpv6_rpl_opt_metric_nsa_object_flags
+  icmpv6.rpl.opt.metric.nsa.object.flag.a:
+    Name: icmpv6.rpl.opt.metric.nsa.object.flag.a
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Flag A
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_nsa_object_flag_a
+  icmpv6.rpl.opt.metric.nsa.object.flag.o:
+    Name: icmpv6.rpl.opt.metric.nsa.object.flag.o
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Flag O
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_nsa_object_flag_o
+  icmpv6.rpl.opt.metric.ne.object:
+    Name: icmpv6.rpl.opt.metric.ne.object
+    Type: FtUint16
+    Display: BaseHex
+    Info: Node Energy Object
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_ne_object
+  icmpv6.rpl.opt.metric.ne.object.flags:
+    Name: icmpv6.rpl.opt.metric.ne.object.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags field
+    JsonName: icmpv6_rpl_opt_metric_ne_object_icmpv6_rpl_opt_metric_ne_object_flags
+  icmpv6.rpl.opt.metric.ne.object.flag.i:
+    Name: icmpv6.rpl.opt.metric.ne.object.flag.i
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Flag I
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_ne_object_flag_i
+  icmpv6.rpl.opt.metric.ne.object.type:
+    Name: icmpv6.rpl.opt.metric.ne.object.type
+    Type: FtUint16
+    Display: BaseHex
+    Info: Type
+    JsonName: icmpv6_rpl_opt_metric_ne_object_icmpv6_rpl_opt_metric_ne_object_type
+  icmpv6.rpl.opt.metric.ne.object.flag.e:
+    Name: icmpv6.rpl.opt.metric.ne.object.flag.e
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Flag E
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_ne_object_flag_e
+  icmpv6.rpl.opt.metric.ne.object.energy:
+    Name: icmpv6.rpl.opt.metric.ne.object.energy
+    Type: FtUint16
+    Display: BaseHex
+    Info: Energy
+    JsonName: icmpv6_rpl_opt_metric_ne_object_icmpv6_rpl_opt_metric_ne_object_energy
+  icmpv6.rpl.opt.metric.hp.object:
+    Name: icmpv6.rpl.opt.metric.hp.object
+    Type: FtUint16
+    Display: BaseHex
+    Info: Hop Count Object
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_hp_object
+  icmpv6.rpl.opt.metric.hp.object.reserved:
+    Name: icmpv6.rpl.opt.metric.hp.object.reserved
+    Type: FtUint16
+    Display: BaseHex
+    Info: Reserved field
+    JsonName: icmpv6_rpl_opt_metric_hp_object_icmpv6_rpl_opt_metric_hp_object_reserved
+  icmpv6.rpl.opt.metric.hp.object.flags:
+    Name: icmpv6.rpl.opt.metric.hp.object.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_rpl_opt_metric_hp_object_icmpv6_rpl_opt_metric_hp_object_flags
+  icmpv6.rpl.opt.metric.hp.object.hp:
+    Name: icmpv6.rpl.opt.metric.hp.object.hp
+    Type: FtUint16
+    Display: BaseDec
+    Info: Hop Count
+    JsonName: icmpv6_rpl_opt_metric_hp_object_icmpv6_rpl_opt_metric_hp_object_hp
+  icmpv6.rpl.opt.metric.lt.object.lt:
+    Name: icmpv6.rpl.opt.metric.lt.object.lt
+    Type: FtUint32
+    Display: BaseDec
+    Info: Link Throughput
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_lt_object_lt
+  icmpv6.rpl.opt.metric.ll.object.ll:
+    Name: icmpv6.rpl.opt.metric.ll.object.ll
+    Type: FtUint32
+    Display: BaseDec
+    Info: Link Latency
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_ll_object_ll
+  icmpv6.rpl.opt.metric.lql.object:
+    Name: icmpv6.rpl.opt.metric.lql.object
+    Type: FtUint8
+    Display: BaseHex
+    Info: Link Quality Level Object
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_lql_object
+  icmpv6.rpl.opt.metric.lql.object.res:
+    Name: icmpv6.rpl.opt.metric.lql.object.res
+    Type: FtUint8
+    Display: BaseHex
+    Info: Reserved field
+    JsonName: icmpv6_rpl_opt_metric_lql_object_icmpv6_rpl_opt_metric_lql_object_res
+  icmpv6.rpl.opt.metric.lql.object.val:
+    Name: icmpv6.rpl.opt.metric.lql.object.val
+    Type: FtUint8
+    Display: BaseHex
+    Info: Val(ue)
+    JsonName: icmpv6_rpl_opt_metric_lql_object_icmpv6_rpl_opt_metric_lql_object_val
+  icmpv6.rpl.opt.metric.lql.object.counter:
+    Name: icmpv6.rpl.opt.metric.lql.object.counter
+    Type: FtUint8
+    Display: BaseDec
+    Info: Counter
+    JsonName: icmpv6_rpl_opt_metric_lql_object_icmpv6_rpl_opt_metric_lql_object_counter
+  icmpv6.rpl.opt.metric.etx.object.etx:
+    Name: icmpv6.rpl.opt.metric.etx.object.etx
+    Type: FtUint16
+    Display: BaseDec
+    Info: ETX
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_etx_object_etx
+  icmpv6.rpl.opt.metric.lc.object:
+    Name: icmpv6.rpl.opt.metric.lc.object
+    Info: Link Color Object
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_lc_object
+  icmpv6.rpl.opt.metric.lc.object.res:
+    Name: icmpv6.rpl.opt.metric.lc.object.res
+    Type: FtUint8
+    Display: BaseHex
+    Info: Reserved field
+    JsonName: icmpv6_rpl_opt_metric_lc_object_icmpv6_rpl_opt_metric_lc_object_res
+  icmpv6.rpl.opt.metric.lc.object.lc:
+    Name: icmpv6.rpl.opt.metric.lc.object.lc
+    Type: FtUint16
+    Display: BaseHex
+    Info: Link Color
+    JsonName: icmpv6_rpl_opt_metric_lc_object_icmpv6_rpl_opt_metric_lc_object_lc
+  icmpv6.rpl.opt.metric.lc.object.counter:
+    Name: icmpv6.rpl.opt.metric.lc.object.counter
+    Type: FtUint16
+    Display: BaseDec
+    Info: Counter
+    JsonName: icmpv6_rpl_opt_metric_lc_object_icmpv6_rpl_opt_metric_lc_object_counter
+  icmpv6.rpl.opt.metric.lc.object.reserved:
+    Name: icmpv6.rpl.opt.metric.lc.object.reserved
+    Type: FtUint16
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_rpl_opt_metric_lc_object_icmpv6_rpl_opt_metric_lc_object_reserved
+  icmpv6.rpl.opt.metric.lc.object.flag.i:
+    Name: icmpv6.rpl.opt.metric.lc.object.flag.i
+    Type: FtUint16
+    Display: BaseDec
+    Info: Flag I
+    JsonName: icmpv6_icmpv6_rpl_opt_metric_lc_object_flag_i
+  icmpv6.rpl.opt.route.prefix_length:
+    Name: icmpv6.rpl.opt.route.prefix_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Prefix Length
+    JsonName: icmpv6_icmpv6_rpl_opt_route_prefix_length
+  icmpv6.rpl.opt.route.flag:
+    Name: icmpv6.rpl.opt.route.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flag
+    JsonName: icmpv6_icmpv6_rpl_opt_route_flag
+  icmpv6.rpl.opt.route.pref:
+    Name: icmpv6.rpl.opt.route.pref
+    Type: FtUint8
+    Display: BaseDec
+    Info: Preference
+    JsonName: icmpv6_icmpv6_rpl_opt_route_pref
+  icmpv6.rpl.opt.route.reserved:
+    Name: icmpv6.rpl.opt.route.reserved
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_icmpv6_rpl_opt_route_reserved
+  icmpv6.rpl.opt.route.lifetime:
+    Name: icmpv6.rpl.opt.route.lifetime
+    Type: FtUint32
+    Display: BaseDec
+    Info: Route Lifetime
+    JsonName: icmpv6_icmpv6_rpl_opt_route_lifetime
+  icmpv6.rpl.opt.route.prefix:
+    Name: icmpv6.rpl.opt.route.prefix
+    Type: FtIpv6
+    Info: Prefix
+    JsonName: icmpv6_icmpv6_rpl_opt_route_prefix
+  icmpv6.rpl.opt.config.flag:
+    Name: icmpv6.rpl.opt.config.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flag
+    JsonName: icmpv6_icmpv6_rpl_opt_config_flag
+  icmpv6.rpl.opt.config.reserved:
+    Name: icmpv6.rpl.opt.config.reserved
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_icmpv6_rpl_opt_config_reserved
+  icmpv6.rpl.opt.config.auth:
+    Name: icmpv6.rpl.opt.config.auth
+    Type: FtBoolean
+    Display: SepDot
+    Info: Authentication Enabled
+    JsonName: icmpv6_icmpv6_rpl_opt_config_auth
+  icmpv6.rpl.opt.config.pcs:
+    Name: icmpv6.rpl.opt.config.pcs
+    Type: FtUint8
+    Display: BaseDec
+    Info: Path Control Size
+    JsonName: icmpv6_icmpv6_rpl_opt_config_pcs
+  icmpv6.rpl.opt.config.interval_double:
+    Name: icmpv6.rpl.opt.config.interval_double
+    Type: FtUint8
+    Display: BaseDec
+    Info: DIOIntervalDoublings
+    JsonName: icmpv6_icmpv6_rpl_opt_config_interval_double
+  icmpv6.rpl.opt.config.interval_min:
+    Name: icmpv6.rpl.opt.config.interval_min
+    Type: FtUint16
+    Display: BaseDec
+    Info: DIOIntervalMin
+    JsonName: icmpv6_icmpv6_rpl_opt_config_interval_min
+  icmpv6.rpl.opt.config.redundancy:
+    Name: icmpv6.rpl.opt.config.redundancy
+    Type: FtUint8
+    Display: BaseDec
+    Info: DIORedundancyConstant
+    JsonName: icmpv6_icmpv6_rpl_opt_config_redundancy
+  icmpv6.rpl.opt.config.max_rank_inc:
+    Name: icmpv6.rpl.opt.config.max_rank_inc
+    Type: FtUint16
+    Display: BaseDec
+    Info: MaxRankInc
+    JsonName: icmpv6_icmpv6_rpl_opt_config_max_rank_inc
+  icmpv6.rpl.opt.config.min_hop_rank_inc:
+    Name: icmpv6.rpl.opt.config.min_hop_rank_inc
+    Type: FtUint16
+    Display: BaseDec
+    Info: MinHopRankInc
+    JsonName: icmpv6_icmpv6_rpl_opt_config_min_hop_rank_inc
+  icmpv6.rpl.opt.config.ocp:
+    Name: icmpv6.rpl.opt.config.ocp
+    Type: FtUint16
+    Display: BaseDec
+    Info: OCP (Objective Code Point)
+    JsonName: icmpv6_icmpv6_rpl_opt_config_ocp
+  icmpv6.rpl.opt.config.rsv:
+    Name: icmpv6.rpl.opt.config.rsv
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_icmpv6_rpl_opt_config_rsv
+  icmpv6.rpl.opt.config.def_lifetime:
+    Name: icmpv6.rpl.opt.config.def_lifetime
+    Type: FtUint8
+    Display: BaseDec
+    Info: Default Lifetime
+    JsonName: icmpv6_icmpv6_rpl_opt_config_def_lifetime
+  icmpv6.rpl.opt.config.lifetime_unit:
+    Name: icmpv6.rpl.opt.config.lifetime_unit
+    Type: FtUint16
+    Display: BaseDec
+    Info: Lifetime Unit
+    JsonName: icmpv6_icmpv6_rpl_opt_config_lifetime_unit
+  icmpv6.rpl.opt.target.flag:
+    Name: icmpv6.rpl.opt.target.flag
+    Info: Reserved
+    JsonName: icmpv6_icmpv6_rpl_opt_target_flag
+  icmpv6.rpl.opt.target.prefix_length:
+    Name: icmpv6.rpl.opt.target.prefix_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Target Length
+    JsonName: icmpv6_icmpv6_rpl_opt_target_prefix_length
+  icmpv6.rpl.opt.target.prefix:
+    Name: icmpv6.rpl.opt.target.prefix
+    Type: FtIpv6
+    Info: Target
+    JsonName: icmpv6_icmpv6_rpl_opt_target_prefix
+  icmpv6.rpl.opt.transit.flag:
+    Name: icmpv6.rpl.opt.transit.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_icmpv6_rpl_opt_transit_flag
+  icmpv6.rpl.opt.transit.flag.e:
+    Name: icmpv6.rpl.opt.transit.flag.e
+    Type: FtBoolean
+    Display: SepDot
+    Info: External
+    JsonName: icmpv6_rpl_opt_transit_flag_icmpv6_rpl_opt_transit_flag_e
+  icmpv6.rpl.opt.transit.flag.rsv:
+    Name: icmpv6.rpl.opt.transit.flag.rsv
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_rpl_opt_transit_flag_icmpv6_rpl_opt_transit_flag_rsv
+  icmpv6.rpl.opt.transit.pathctl:
+    Name: icmpv6.rpl.opt.transit.pathctl
+    Type: FtUint8
+    Display: BaseDec
+    Info: Path Control
+    JsonName: icmpv6_icmpv6_rpl_opt_transit_pathctl
+  icmpv6.rpl.opt.transit.pathseq:
+    Name: icmpv6.rpl.opt.transit.pathseq
+    Type: FtUint8
+    Display: BaseDec
+    Info: Path Sequence
+    JsonName: icmpv6_icmpv6_rpl_opt_transit_pathseq
+  icmpv6.rpl.opt.transit.pathlifetime:
+    Name: icmpv6.rpl.opt.transit.pathlifetime
+    Type: FtUint8
+    Display: BaseDec
+    Info: Path Lifetime
+    JsonName: icmpv6_icmpv6_rpl_opt_transit_pathlifetime
+  icmpv6.rpl.opt.transit.parent:
+    Name: icmpv6.rpl.opt.transit.parent
+    Type: FtIpv6
+    Info: Parent Address
+    JsonName: icmpv6_icmpv6_rpl_opt_transit_parent
+  icmpv6.rpl.opt.solicited.instance:
+    Name: icmpv6.rpl.opt.solicited.instance
+    Type: FtUint8
+    Display: BaseDec
+    Info: Instance
+    JsonName: icmpv6_icmpv6_rpl_opt_solicited_instance
+  icmpv6.rpl.opt.solicited.flag:
+    Name: icmpv6.rpl.opt.solicited.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flag
+    JsonName: icmpv6_icmpv6_rpl_opt_solicited_flag
+  icmpv6.rpl.opt.solicited.flag.v:
+    Name: icmpv6.rpl.opt.solicited.flag.v
+    Type: FtBoolean
+    Display: SepDot
+    Info: Version predicate
+    JsonName: icmpv6_rpl_opt_solicited_flag_icmpv6_rpl_opt_solicited_flag_v
+  icmpv6.rpl.opt.solicited.flag.i:
+    Name: icmpv6.rpl.opt.solicited.flag.i
+    Type: FtBoolean
+    Display: SepDot
+    Info: InstanceID predicate
+    JsonName: icmpv6_rpl_opt_solicited_flag_icmpv6_rpl_opt_solicited_flag_i
+  icmpv6.rpl.opt.solicited.flag.d:
+    Name: icmpv6.rpl.opt.solicited.flag.d
+    Type: FtBoolean
+    Display: SepDot
+    Info: DODAGID predicate
+    JsonName: icmpv6_rpl_opt_solicited_flag_icmpv6_rpl_opt_solicited_flag_d
+  icmpv6.rpl.opt.solicited.flag.rsv:
+    Name: icmpv6.rpl.opt.solicited.flag.rsv
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_rpl_opt_solicited_flag_icmpv6_rpl_opt_solicited_flag_rsv
+  icmpv6.rpl.opt.solicited.dodagid:
+    Name: icmpv6.rpl.opt.solicited.dodagid
+    Type: FtIpv6
+    Info: DODAGID
+    JsonName: icmpv6_icmpv6_rpl_opt_solicited_dodagid
+  icmpv6.rpl.opt.solicited.version:
+    Name: icmpv6.rpl.opt.solicited.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: Version
+    JsonName: icmpv6_icmpv6_rpl_opt_solicited_version
+  icmpv6.rpl.opt.prefix.length:
+    Name: icmpv6.rpl.opt.prefix.length
+    Type: FtUint8
+    Display: BaseDec
+    Info: Prefix Length
+    JsonName: icmpv6_rpl_opt_prefix_icmpv6_rpl_opt_prefix_length
+  icmpv6.rpl.opt.prefix.flag:
+    Name: icmpv6.rpl.opt.prefix.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flag
+    JsonName: icmpv6_rpl_opt_prefix_icmpv6_rpl_opt_prefix_flag
+  icmpv6.rpl.opt.prefix.flag.l:
+    Name: icmpv6.rpl.opt.prefix.flag.l
+    Type: FtBoolean
+    Display: SepDot
+    Info: On Link
+    JsonName: icmpv6_rpl_opt_prefix_flag_icmpv6_rpl_opt_prefix_flag_l
+  icmpv6.rpl.opt.config.flag.a:
+    Name: icmpv6.rpl.opt.config.flag.a
+    Type: FtBoolean
+    Display: SepDot
+    Info: Auto Address Config
+    JsonName: icmpv6_rpl_opt_config_flag_icmpv6_rpl_opt_config_flag_a
+  icmpv6.rpl.opt.config.flag.r:
+    Name: icmpv6.rpl.opt.config.flag.r
+    Type: FtBoolean
+    Display: SepDot
+    Info: Router Address
+    JsonName: icmpv6_rpl_opt_config_flag_icmpv6_rpl_opt_config_flag_r
+  icmpv6.rpl.opt.config.flag.rsv:
+    Name: icmpv6.rpl.opt.config.flag.rsv
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_rpl_opt_config_flag_icmpv6_rpl_opt_config_flag_rsv
+  icmpv6.rpl.opt.prefix.valid_lifetime:
+    Name: icmpv6.rpl.opt.prefix.valid_lifetime
+    Type: FtUint32
+    Display: BaseDec
+    Info: Valid Lifetime
+    JsonName: icmpv6_rpl_opt_prefix_icmpv6_rpl_opt_prefix_valid_lifetime
+  icmpv6.rpl.opt.prefix.preferred_lifetime:
+    Name: icmpv6.rpl.opt.prefix.preferred_lifetime
+    Type: FtUint32
+    Display: BaseDec
+    Info: Preferred Lifetime
+    JsonName: icmpv6_rpl_opt_prefix_icmpv6_rpl_opt_prefix_preferred_lifetime
+  icmpv6.rpl.opt.prefix:
+    Name: icmpv6.rpl.opt.prefix
+    Type: FtIpv6
+    Info: Destination Prefix
+    JsonName: icmpv6_icmpv6_rpl_opt_prefix
+  icmpv6.rpl.opt.targetdesc.descriptor:
+    Name: icmpv6.rpl.opt.targetdesc.descriptor
+    Type: FtUint32
+    Display: BaseHex
+    Info: Descriptor
+    JsonName: icmpv6_icmpv6_rpl_opt_targetdesc_descriptor
+  icmpv6.rpl.opt.routediscovery.flag:
+    Name: icmpv6.rpl.opt.routediscovery.flag
+    Info: Flags
+    JsonName: icmpv6_icmpv6_rpl_opt_routediscovery_flag
+  icmpv6.rpl.opt.routediscovery.flag.reply:
+    Name: icmpv6.rpl.opt.routediscovery.flag.reply
+    Type: FtBoolean
+    Display: SepDot
+    Info: Reply
+    JsonName: icmpv6_rpl_opt_routediscovery_flag_icmpv6_rpl_opt_routediscovery_flag_reply
+  icmpv6.rpl.opt.routediscovery.flag.hopbyhop:
+    Name: icmpv6.rpl.opt.routediscovery.flag.hopbyhop
+    Type: FtBoolean
+    Display: SepDot
+    Info: Hop-by-Hop
+    JsonName: icmpv6_rpl_opt_routediscovery_flag_icmpv6_rpl_opt_routediscovery_flag_hopbyhop
+  icmpv6.rpl.opt.routediscovery.flag.numofroutes:
+    Name: icmpv6.rpl.opt.routediscovery.flag.numofroutes
+    Type: FtUint8
+    Display: BaseDec
+    Info: Number of Routes
+    JsonName: icmpv6_rpl_opt_routediscovery_flag_icmpv6_rpl_opt_routediscovery_flag_numofroutes
+  icmpv6.rpl.opt.routediscovery.flag.compr:
+    Name: icmpv6.rpl.opt.routediscovery.flag.compr
+    Type: FtUint8
+    Display: BaseDec
+    Info: Compr
+    JsonName: icmpv6_rpl_opt_routediscovery_flag_icmpv6_rpl_opt_routediscovery_flag_compr
+  icmpv6.rpl.opt.routediscovery.lifetime:
+    Name: icmpv6.rpl.opt.routediscovery.lifetime
+    Type: FtUint8
+    Display: BaseDec
+    Info: Lifetime
+    JsonName: icmpv6_icmpv6_rpl_opt_routediscovery_lifetime
+  icmpv6.rpl.opt.routediscovery.maxrank:
+    Name: icmpv6.rpl.opt.routediscovery.maxrank
+    Type: FtUint8
+    Display: BaseDec
+    Info: MaxRank
+    JsonName: icmpv6_icmpv6_rpl_opt_routediscovery_maxrank
+  icmpv6.rpl.opt.routediscovery.nh:
+    Name: icmpv6.rpl.opt.routediscovery.nh
+    Type: FtUint8
+    Display: BaseDec
+    Info: NH
+    JsonName: icmpv6_icmpv6_rpl_opt_routediscovery_nh
+  icmpv6.rpl.opt.routediscovery.targetaddr:
+    Name: icmpv6.rpl.opt.routediscovery.targetaddr
+    Type: FtIpv6
+    Info: Target Address
+    JsonName: icmpv6_icmpv6_rpl_opt_routediscovery_targetaddr
+  icmpv6.rpl.opt.routediscovery.addr_vec:
+    Name: icmpv6.rpl.opt.routediscovery.addr_vec
+    Info: Address Vector
+    JsonName: icmpv6_icmpv6_rpl_opt_routediscovery_addr_vec
+  icmpv6.rpl.opt.routediscovery.addrvec.addr:
+    Name: icmpv6.rpl.opt.routediscovery.addrvec.addr
+    Type: FtIpv6
+    Info: Address
+    JsonName: icmpv6_icmpv6_rpl_opt_routediscovery_addrvec_addr
+  icmpv6.rpl.p2p.dro.instance:
+    Name: icmpv6.rpl.p2p.dro.instance
+    Type: FtUint8
+    Display: BaseDec
+    Info: RPLInstanceID
+    JsonName: icmpv6_icmpv6_rpl_p2p_dro_instance
+  icmpv6.rpl.p2p.dro.version:
+    Name: icmpv6.rpl.p2p.dro.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: Version
+    JsonName: icmpv6_icmpv6_rpl_p2p_dro_version
+  icmpv6.rpl.p2p.dro.flag:
+    Name: icmpv6.rpl.p2p.dro.flag
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_icmpv6_rpl_p2p_dro_flag
+  icmpv6.rpl.p2p.dro.flag.stop:
+    Name: icmpv6.rpl.p2p.dro.flag.stop
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Stop
+    JsonName: icmpv6_rpl_p2p_dro_flag_icmpv6_rpl_p2p_dro_flag_stop
+  icmpv6.rpl.p2p.dro.flag.ack:
+    Name: icmpv6.rpl.p2p.dro.flag.ack
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Ack
+    JsonName: icmpv6_rpl_p2p_dro_flag_icmpv6_rpl_p2p_dro_flag_ack
+  icmpv6.rpl.p2p.dro.flag.seq:
+    Name: icmpv6.rpl.p2p.dro.flag.seq
+    Type: FtUint16
+    Display: BaseDec
+    Info: Seq
+    JsonName: icmpv6_rpl_p2p_dro_flag_icmpv6_rpl_p2p_dro_flag_seq
+  icmpv6.rpl.p2p.dro.flag.reserved:
+    Name: icmpv6.rpl.p2p.dro.flag.reserved
+    Type: FtUint16
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_rpl_p2p_dro_flag_icmpv6_rpl_p2p_dro_flag_reserved
+  icmpv6.rpl.p2p.dro.dagid:
+    Name: icmpv6.rpl.p2p.dro.dagid
+    Type: FtIpv6
+    Info: DODAGID
+    JsonName: icmpv6_icmpv6_rpl_p2p_dro_dagid
+  icmpv6.rpl.p2p.droack.flag:
+    Name: icmpv6.rpl.p2p.droack.flag
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: icmpv6_icmpv6_rpl_p2p_droack_flag
+  icmpv6.rpl.p2p.droack.flag.seq:
+    Name: icmpv6.rpl.p2p.droack.flag.seq
+    Type: FtUint16
+    Display: BaseDec
+    Info: Seq
+    JsonName: icmpv6_rpl_p2p_droack_flag_icmpv6_rpl_p2p_droack_flag_seq
+  icmpv6.rpl.p2p.droack.flag.reserved:
+    Name: icmpv6.rpl.p2p.droack.flag.reserved
+    Type: FtUint16
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_rpl_p2p_droack_flag_icmpv6_rpl_p2p_droack_flag_reserved
+  icmpv6.ilnp.nb_locs:
+    Name: icmpv6.ilnp.nb_locs
+    Type: FtUint8
+    Display: BaseDec
+    Info: Num of Locs
+    JsonName: icmpv6_icmpv6_ilnp_nb_locs
+  icmpv6.ilnp.nb_locator:
+    Name: icmpv6.ilnp.nb_locator
+    Type: FtUint64
+    Display: BaseHex
+    Info: Locator
+    JsonName: icmpv6_icmpv6_ilnp_nb_locator
+  icmpv6.ilnp.nb_preference:
+    Name: icmpv6.ilnp.nb_preference
+    Type: FtUint32
+    Display: BaseDec
+    Info: Preference
+    JsonName: icmpv6_icmpv6_ilnp_nb_preference
+  icmpv6.ilnp.nb_lifetime:
+    Name: icmpv6.ilnp.nb_lifetime
+    Type: FtUint32
+    Display: BaseDec
+    Info: Lifetime
+    JsonName: icmpv6_icmpv6_ilnp_nb_lifetime
+  icmpv6.6lowpannd.da.status:
+    Name: icmpv6.6lowpannd.da.status
+    Type: FtUint8
+    Display: BaseDec
+    Info: Status
+    JsonName: icmpv6_icmpv6_6lowpannd_da_status
+  icmpv6.6lowpannd.da.rsv:
+    Name: icmpv6.6lowpannd.da.rsv
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: icmpv6_icmpv6_6lowpannd_da_rsv
+  icmpv6.6lowpannd.da.lifetime:
+    Name: icmpv6.6lowpannd.da.lifetime
+    Type: FtUint16
+    Display: BaseDec
+    Info: Lifetime
+    JsonName: icmpv6_icmpv6_6lowpannd_da_lifetime
+  icmpv6.6lowpannd.da.eui64:
+    Name: icmpv6.6lowpannd.da.eui64
+    Type: FtEui64
+    Info: EUI-64
+    JsonName: icmpv6_icmpv6_6lowpannd_da_eui64
+  icmpv6.6lowpannd.da.reg_addr:
+    Name: icmpv6.6lowpannd.da.reg_addr
+    Type: FtIpv6
+    Info: Registered Address
+    JsonName: icmpv6_icmpv6_6lowpannd_da_reg_addr
+  icmpv6.resp_in:
+    Name: icmpv6.resp_in
+    Type: FtFramenum
+    Info: Response In
+    JsonName: icmpv6_icmpv6_resp_in
+  icmpv6.no_resp:
+    Name: icmpv6.no_resp
+    Info: No response seen
+    JsonName: icmpv6_icmpv6_no_resp
+  icmpv6.resp_to:
+    Name: icmpv6.resp_to
+    Type: FtFramenum
+    Info: Response To
+    JsonName: icmpv6_icmpv6_resp_to
+  icmpv6.resptime:
+    Name: icmpv6.resptime
+    Type: FtDouble
+    Info: Response Time
+    JsonName: icmpv6_icmpv6_resptime
+  icmpv6.mpl.seed_info.min_sequence:
+    Name: icmpv6.mpl.seed_info.min_sequence
+    Type: FtUint8
+    Display: BaseDec
+    Info: MinSequence
+    JsonName: icmpv6_icmpv6_mpl_seed_info_min_sequence
+  icmpv6.mpl.seed_info.bm_len:
+    Name: icmpv6.mpl.seed_info.bm_len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Buffered Messages Length
+    JsonName: icmpv6_icmpv6_mpl_seed_info_bm_len
+  icmpv6.mpl.seed_info.s:
+    Name: icmpv6.mpl.seed_info.s
+    Type: FtUint8
+    Display: BaseDec
+    Info: Seed ID Length
+    JsonName: icmpv6_icmpv6_mpl_seed_info_s
+  icmpv6.mpl.seed_info.seed_id:
+    Name: icmpv6.mpl.seed_info.seed_id
+    Type: FtString
+    Info: Seed ID
+    JsonName: icmpv6_icmpv6_mpl_seed_info_seed_id
+  icmpv6.mpl.seed_info.sequence:
+    Name: icmpv6.mpl.seed_info.sequence
+    Type: FtUint8
+    Display: BaseDec
+    Info: Sequence
+    JsonName: icmpv6_icmpv6_mpl_seed_info_sequence

@@ -1,0 +1,247 @@
+Name: igmp
+Fields:
+  igmp.type:
+    Name: igmp.type
+    Type: FtUint8
+    Display: BaseHex
+    Info: Type
+    JsonName: igmp_igmp_type
+  igmp.reserved:
+    Name: igmp.reserved
+    Type: FtBytes
+    Info: Reserved
+    JsonName: igmp_igmp_reserved
+  igmp.version:
+    Name: igmp.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: IGMP Version
+    JsonName: igmp_igmp_version
+  igmp.group_type:
+    Name: igmp.group_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Type Of Group
+    JsonName: igmp_igmp_group_type
+  igmp.reply:
+    Name: igmp.reply
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reply
+    JsonName: igmp_igmp_reply
+  igmp.reply.pending:
+    Name: igmp.reply.pending
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reply Pending
+    JsonName: igmp_reply_igmp_reply_pending
+  igmp.checksum:
+    Name: igmp.checksum
+    Type: FtUint16
+    Display: BaseHex
+    Info: Checksum
+    JsonName: igmp_igmp_checksum
+  igmp.checksum.status:
+    Name: igmp.checksum.status
+    Type: FtUint8
+    Info: Checksum Status
+    JsonName: igmp_checksum_igmp_checksum_status
+  igmp.identifier:
+    Name: igmp.identifier
+    Type: FtUint32
+    Display: BaseDec
+    Info: Identifier
+    JsonName: igmp_igmp_identifier
+  igmp.access_key:
+    Name: igmp.access_key
+    Type: FtBytes
+    Info: Access Key
+    JsonName: igmp_igmp_access_key
+  igmp.max_resp:
+    Name: igmp.max_resp
+    Type: FtUint8
+    Display: BaseDec
+    Info: Max Resp Time
+    JsonName: igmp_igmp_max_resp
+  igmp.s:
+    Name: igmp.s
+    Type: FtBoolean
+    Display: SepDot
+    Info: S
+    JsonName: igmp_igmp_s
+  igmp.qrv:
+    Name: igmp.qrv
+    Type: FtUint8
+    Display: BaseDec
+    Info: QRV
+    JsonName: igmp_igmp_qrv
+  igmp.qqic:
+    Name: igmp.qqic
+    Type: FtUint8
+    Display: BaseDec
+    Info: QQIC
+    JsonName: igmp_igmp_qqic
+  igmp.num_src:
+    Name: igmp.num_src
+    Type: FtUint16
+    Display: BaseDec
+    Info: Num Src
+    JsonName: igmp_igmp_num_src
+  igmp.saddr:
+    Name: igmp.saddr
+    Type: FtIpv4
+    Info: Source Address
+    JsonName: igmp_igmp_saddr
+  igmp.num_grp_recs:
+    Name: igmp.num_grp_recs
+    Type: FtUint16
+    Display: BaseDec
+    Info: Num Group Records
+    JsonName: igmp_igmp_num_grp_recs
+  igmp.record_type:
+    Name: igmp.record_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Record Type
+    JsonName: igmp_igmp_record_type
+  igmp.aux_data_len:
+    Name: igmp.aux_data_len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Aux Data Len
+    JsonName: igmp_igmp_aux_data_len
+  igmp.maddr:
+    Name: igmp.maddr
+    Type: FtIpv4
+    Info: Multicast Address
+    JsonName: igmp_igmp_maddr
+  igmp.aux_data:
+    Name: igmp.aux_data
+    Type: FtBytes
+    Info: Aux Data
+    JsonName: igmp_igmp_aux_data
+  igmp.data:
+    Name: igmp.data
+    Type: FtBytes
+    Info: Data
+    JsonName: igmp_igmp_data
+  igmp.max_resp.exp:
+    Name: igmp.max_resp.exp
+    Type: FtUint8
+    Display: BaseHex
+    Info: Exponent
+    JsonName: igmp_max_resp_igmp_max_resp_exp
+  igmp.max_resp.mant:
+    Name: igmp.max_resp.mant
+    Type: FtUint8
+    Display: BaseHex
+    Info: Mantissa
+    JsonName: igmp_max_resp_igmp_max_resp_mant
+  igmp.mtrace.max_hops:
+    Name: igmp.mtrace.max_hops
+    Type: FtUint8
+    Display: BaseDec
+    Info: '# hops'
+    JsonName: igmp_igmp_mtrace_max_hops
+  igmp.mtrace.saddr:
+    Name: igmp.mtrace.saddr
+    Type: FtIpv4
+    Info: Source Address
+    JsonName: igmp_igmp_mtrace_saddr
+  igmp.mtrace.raddr:
+    Name: igmp.mtrace.raddr
+    Type: FtIpv4
+    Info: Receiver Address
+    JsonName: igmp_igmp_mtrace_raddr
+  igmp.mtrace.rspaddr:
+    Name: igmp.mtrace.rspaddr
+    Type: FtIpv4
+    Info: Response Address
+    JsonName: igmp_igmp_mtrace_rspaddr
+  igmp.mtrace.resp_ttl:
+    Name: igmp.mtrace.resp_ttl
+    Type: FtUint8
+    Display: BaseDec
+    Info: Response TTL
+    JsonName: igmp_igmp_mtrace_resp_ttl
+  igmp.mtrace.q_id:
+    Name: igmp.mtrace.q_id
+    Type: FtUint24
+    Display: BaseDec
+    Info: Query ID
+    JsonName: igmp_igmp_mtrace_q_id
+  igmp.mtrace.q_arrival:
+    Name: igmp.mtrace.q_arrival
+    Type: FtUint32
+    Display: BaseDec
+    Info: Query Arrival
+    JsonName: igmp_igmp_mtrace_q_arrival
+  igmp.mtrace.q_inaddr:
+    Name: igmp.mtrace.q_inaddr
+    Type: FtIpv4
+    Info: In itf addr
+    JsonName: igmp_igmp_mtrace_q_inaddr
+  igmp.mtrace.q_outaddr:
+    Name: igmp.mtrace.q_outaddr
+    Type: FtIpv4
+    Info: Out itf addr
+    JsonName: igmp_igmp_mtrace_q_outaddr
+  igmp.mtrace.q_prevrtr:
+    Name: igmp.mtrace.q_prevrtr
+    Type: FtIpv4
+    Info: Previous rtr addr
+    JsonName: igmp_igmp_mtrace_q_prevrtr
+  igmp.mtrace.q_inpkt:
+    Name: igmp.mtrace.q_inpkt
+    Type: FtUint32
+    Display: BaseDec
+    Info: In pkts
+    JsonName: igmp_igmp_mtrace_q_inpkt
+  igmp.mtrace.q_outpkt:
+    Name: igmp.mtrace.q_outpkt
+    Type: FtUint32
+    Display: BaseDec
+    Info: Out pkts
+    JsonName: igmp_igmp_mtrace_q_outpkt
+  igmp.mtrace.q_total:
+    Name: igmp.mtrace.q_total
+    Type: FtUint32
+    Display: BaseDec
+    Info: S,G pkt count
+    JsonName: igmp_igmp_mtrace_q_total
+  igmp.mtrace.q_rtg_proto:
+    Name: igmp.mtrace.q_rtg_proto
+    Type: FtUint8
+    Display: BaseDec
+    Info: Rtg Protocol
+    JsonName: igmp_igmp_mtrace_q_rtg_proto
+  igmp.mtrace.q_fwd_ttl:
+    Name: igmp.mtrace.q_fwd_ttl
+    Type: FtUint8
+    Display: BaseDec
+    Info: FwdTTL
+    JsonName: igmp_igmp_mtrace_q_fwd_ttl
+  igmp.mtrace.q_mbz:
+    Name: igmp.mtrace.q_mbz
+    Type: FtUint8
+    Display: BaseHex
+    Info: MBZ
+    JsonName: igmp_igmp_mtrace_q_mbz
+  igmp.mtrace.q_s:
+    Name: igmp.mtrace.q_s
+    Type: FtUint8
+    Display: BaseHex
+    Info: S
+    JsonName: igmp_igmp_mtrace_q_s
+  igmp.mtrace.q_src_mask:
+    Name: igmp.mtrace.q_src_mask
+    Type: FtUint8
+    Display: BaseHex
+    Info: Src Mask
+    JsonName: igmp_igmp_mtrace_q_src_mask
+  igmp.mtrace.q_fwd_code:
+    Name: igmp.mtrace.q_fwd_code
+    Type: FtUint8
+    Display: BaseHex
+    Info: Forwarding Code
+    JsonName: igmp_igmp_mtrace_q_fwd_code

@@ -1,0 +1,142 @@
+syntax = "proto3";
+package Ndx.Decoders.Core;
+message Arp {
+   // Hardware type ('arp_arp_hw_type')
+   uint32 ArpHwType = 1;
+
+   // Protocol type ('arp_arp_proto_type')
+   uint32 ArpProtoType = 2;
+
+   // Hardware size ('arp_arp_hw_size')
+   uint32 ArpHwSize = 3;
+
+   // Sender ATM number type ('arp_arp_src_htype')
+   bool ArpSrcHtype = 4;
+
+   // Sender ATM number length ('arp_arp_src_hlen')
+   uint32 ArpSrcHlen = 5;
+
+   // Sender ATM subaddress type ('arp_arp_src_stype')
+   bool ArpSrcStype = 6;
+
+   // Sender ATM subaddress length ('arp_arp_src_slen')
+   uint32 ArpSrcSlen = 7;
+
+   // Protocol size ('arp_arp_proto_size')
+   uint32 ArpProtoSize = 8;
+
+   // Opcode ('arp_arp_opcode')
+   uint32 ArpOpcode = 9;
+
+   // Is gratuitous ('arp_arp_isgratuitous')
+   bool ArpIsgratuitous = 10;
+
+   // Sender protocol size ('arp_arp_src_pln')
+   uint32 ArpSrcPln = 11;
+
+   // Target ATM number type ('arp_arp_dst_htype')
+   bool ArpDstHtype = 12;
+
+   // Target ATM number length ('arp_arp_dst_hlen')
+   uint32 ArpDstHlen = 13;
+
+   // Target ATM subaddress type ('arp_arp_dst_stype')
+   bool ArpDstStype = 14;
+
+   // Target ATM subaddress length ('arp_arp_dst_slen')
+   uint32 ArpDstSlen = 15;
+
+   // Target protocol size ('arp_arp_dst_pln')
+   uint32 ArpDstPln = 16;
+
+   // Sender hardware address ('arp_arp_src_hw')
+   bytes ArpSrcHw = 17;
+
+   // Sender MAC address ('arp_arp_src_hw_mac')
+   bytes ArpSrcHwMac = 18;
+
+   // Sender AX.25 address ('arp_arp_src_hw_ax25')
+   bytes ArpSrcHwAx25 = 19;
+
+   // Sender ATM number (E.164) ('arp_arp_src_atm_num_e164')
+   string ArpSrcAtmNumE164 = 20;
+
+   // Sender ATM number (NSAP) ('arp_arp_src_atm_num_nsap')
+   bytes ArpSrcAtmNumNsap = 21;
+
+   // Sender ATM subaddress ('arp_arp_src_atm_subaddr')
+   bytes ArpSrcAtmSubaddr = 22;
+
+   // Sender protocol address ('arp_arp_src_proto')
+   bytes ArpSrcProto = 23;
+
+   // Sender IP address ('arp_arp_src_proto_ipv4')
+   bytes ArpSrcProtoIpv4 = 24;
+
+   // Target hardware address ('arp_arp_dst_hw')
+   bytes ArpDstHw = 25;
+
+   // Target MAC address ('arp_arp_dst_hw_mac')
+   bytes ArpDstHwMac = 26;
+
+   // Target AX.25 address ('arp_arp_dst_hw_ax25')
+   bytes ArpDstHwAx25 = 27;
+
+   // Target ATM number (E.164) ('arp_arp_dst_atm_num_e164')
+   string ArpDstAtmNumE164 = 28;
+
+   // Target ATM number (NSAP) ('arp_arp_dst_atm_num_nsap')
+   bytes ArpDstAtmNumNsap = 29;
+
+   // Target ATM subaddress ('arp_arp_dst_atm_subaddr')
+   bytes ArpDstAtmSubaddr = 30;
+
+   // Target protocol address ('arp_arp_dst_proto')
+   bytes ArpDstProto = 31;
+
+   // Target IP address ('arp_arp_dst_proto_ipv4')
+   bytes ArpDstProtoIpv4 = 32;
+
+   // DRARP error status ('arp_arp_dst_drarp_error_status')
+   uint32 ArpDstDrarpErrorStatus = 33;
+
+   // Frame showing earlier use of IP address ('arp_arp_duplicate-address-frame')
+   int64 ArpDuplicateAddressFrame = 34;
+
+   // Seconds since earlier frame seen ('arp_arp_seconds-since-duplicate-address-frame')
+   uint32 ArpSecondsSinceDuplicateAddressFrame = 35;
+
+   // Data Country Code ('arp_arp_src_atm_data_country_code')
+   uint32 ArpSrcAtmDataCountryCode = 36;
+
+   // Data Country Code (group) ('arp_arp_src_atm_data_country_code_group')
+   uint32 ArpSrcAtmDataCountryCodeGroup = 37;
+
+   // High Order DSP ('arp_arp_src_atm_high_order_dsp')
+   bytes ArpSrcAtmHighOrderDsp = 38;
+
+   // End System Identifier ('arp_arp_src_atm_end_system_identifier')
+   bytes ArpSrcAtmEndSystemIdentifier = 39;
+
+   // Selector ('arp_arp_src_atm_selector')
+   uint32 ArpSrcAtmSelector = 40;
+
+   // International Code Designator ('arp_arp_src_atm_international_code_designator')
+   uint32 ArpSrcAtmInternationalCodeDesignator = 41;
+
+   // International Code Designator (group) ('arp_arp_src_atm_international_code_designator_group')
+   uint32 ArpSrcAtmInternationalCodeDesignatorGroup = 42;
+
+   // E.164 ISDN ('arp_arp_src_atm_e_164_isdn')
+   bytes ArpSrcAtmE164Isdn = 43;
+
+   // E.164 ISDN ('arp_arp_src_atm_e_164_isdn_group')
+   bytes ArpSrcAtmE164IsdnGroup = 44;
+
+   // Rest of address ('arp_arp_src_atm_rest_of_address')
+   bytes ArpSrcAtmRestOfAddress = 45;
+
+   // AFI ('arp_arp_src_atm_afi')
+   uint32 ArpSrcAtmAfi = 46;
+
+}

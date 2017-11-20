@@ -1,0 +1,227 @@
+Name: gre
+Fields:
+  gre.proto:
+    Name: gre.proto
+    Type: FtUint16
+    Display: BaseHex
+    Info: Protocol Type
+    JsonName: gre_gre_proto
+  gre.flags_and_version:
+    Name: gre.flags_and_version
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags and Version
+    JsonName: gre_gre_flags_and_version
+  gre.flags.checksum:
+    Name: gre.flags.checksum
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Checksum Bit
+    JsonName: gre_gre_flags_checksum
+  gre.flags.routing:
+    Name: gre.flags.routing
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Routing Bit
+    JsonName: gre_gre_flags_routing
+  gre.flags.key:
+    Name: gre.flags.key
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Key Bit
+    JsonName: gre_gre_flags_key
+  gre.flags.sequence_number:
+    Name: gre.flags.sequence_number
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Sequence Number Bit
+    JsonName: gre_gre_flags_sequence_number
+  gre.flags.strict_source_route:
+    Name: gre.flags.strict_source_route
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Strict Source Route Bit
+    JsonName: gre_gre_flags_strict_source_route
+  gre.flags.recursion_control:
+    Name: gre.flags.recursion_control
+    Type: FtUint16
+    Display: BaseDec
+    Info: Recursion control
+    JsonName: gre_gre_flags_recursion_control
+  gre.flags.ack:
+    Name: gre.flags.ack
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Acknowledgment
+    JsonName: gre_gre_flags_ack
+  gre.flags.reserved:
+    Name: gre.flags.reserved
+    Type: FtUint16
+    Display: BaseDec
+    Info: Flags (Reserved)
+    JsonName: gre_gre_flags_reserved
+  gre.flags.version:
+    Name: gre.flags.version
+    Type: FtUint16
+    Display: BaseDec
+    Info: Version
+    JsonName: gre_gre_flags_version
+  gre.checksum:
+    Name: gre.checksum
+    Type: FtUint16
+    Display: BaseHex
+    Info: Checksum
+    JsonName: gre_gre_checksum
+  gre.checksum.status:
+    Name: gre.checksum.status
+    Type: FtUint8
+    Info: Checksum Status
+    JsonName: gre_checksum_gre_checksum_status
+  gre.offset:
+    Name: gre.offset
+    Type: FtUint16
+    Display: BaseDec
+    Info: Offset
+    JsonName: gre_gre_offset
+  gre.key:
+    Name: gre.key
+    Type: FtUint32
+    Display: BaseHex
+    Info: Key
+    JsonName: gre_gre_key
+  gre.key.payload_length:
+    Name: gre.key.payload_length
+    Type: FtUint16
+    Display: BaseDec
+    Info: Payload Length
+    JsonName: gre_key_gre_key_payload_length
+  gre.key.call_id:
+    Name: gre.key.call_id
+    Type: FtUint16
+    Display: BaseDec
+    Info: Call ID
+    JsonName: gre_key_gre_key_call_id
+  gre.sequence_number:
+    Name: gre.sequence_number
+    Type: FtUint32
+    Display: BaseDec
+    Info: Sequence Number
+    JsonName: gre_gre_sequence_number
+  gre.ack_number:
+    Name: gre.ack_number
+    Type: FtUint32
+    Display: BaseDec
+    Info: Acknowledgment Number
+    JsonName: gre_gre_ack_number
+  gre.routing:
+    Name: gre.routing
+    Info: Routing
+    JsonName: gre_gre_routing
+  gre.routing.address_family:
+    Name: gre.routing.address_family
+    Type: FtUint16
+    Display: BaseDec
+    Info: Address Family
+    JsonName: gre_routing_gre_routing_address_family
+  gre.routing.sre_offset:
+    Name: gre.routing.sre_offset
+    Type: FtUint8
+    Display: BaseDec
+    Info: SRE Offset
+    JsonName: gre_routing_gre_routing_sre_offset
+  gre.routing.src_length:
+    Name: gre.routing.src_length
+    Type: FtUint8
+    Display: BaseDec
+    Info: SRE Length
+    JsonName: gre_routing_gre_routing_src_length
+  gre.routing.information:
+    Name: gre.routing.information
+    Type: FtBytes
+    Info: Routing Information
+    JsonName: gre_routing_gre_routing_information
+  gre.ggp2_attrib:
+    Name: gre.ggp2_attrib
+    Info: 3GGP2 Attributes
+    JsonName: gre_gre_ggp2_attrib
+  gre.ggp2_attrib_id:
+    Name: gre.ggp2_attrib_id
+    Type: FtUint8
+    Display: BaseHex
+    Info: Type
+    JsonName: gre_gre_ggp2_attrib_id
+  gre.ggp2_attrib_length:
+    Name: gre.ggp2_attrib_length
+    Type: FtUint8
+    Display: BaseHex
+    Info: Length
+    JsonName: gre_gre_ggp2_attrib_length
+  gre.3ggp2_sdi:
+    Name: gre.3ggp2_sdi
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: SDI/DOS
+    JsonName: gre_gre_3ggp2_sdi
+  gre.3ggp2_fci:
+    Name: gre.3ggp2_fci
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Flow Control Indicator
+    JsonName: gre_gre_3ggp2_fci
+  gre.3ggp2_di:
+    Name: gre.3ggp2_di
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Duration Indicator
+    JsonName: gre_gre_3ggp2_di
+  gre.ggp2_flow_disc:
+    Name: gre.ggp2_flow_disc
+    Type: FtBytes
+    Info: Flow ID
+    JsonName: gre_gre_ggp2_flow_disc
+  gre.ggp2_3ggp2_seg:
+    Name: gre.ggp2_3ggp2_seg
+    Type: FtUint16
+    Display: BaseHex
+    Info: Type
+    JsonName: gre_gre_ggp2_3ggp2_seg
+  gre.wccp.redirect_header:
+    Name: gre.wccp.redirect_header
+    Info: Redirect Header
+    JsonName: gre_gre_wccp_redirect_header
+  gre.wccp.dynamic_service:
+    Name: gre.wccp.dynamic_service
+    Type: FtBoolean
+    Display: SepDot
+    Info: Dynamic Service
+    JsonName: gre_gre_wccp_dynamic_service
+  gre.wccp.alternative_bucket_used:
+    Name: gre.wccp.alternative_bucket_used
+    Type: FtBoolean
+    Display: SepDot
+    Info: Alternative bucket used
+    JsonName: gre_gre_wccp_alternative_bucket_used
+  gre.wccp.redirect_header_valid:
+    Name: gre.wccp.redirect_header_valid
+    Type: FtBoolean
+    Display: SepDot
+    Info: WCCP Redirect header is valid
+    JsonName: gre_gre_wccp_redirect_header_valid
+  gre.wccp.service_id:
+    Name: gre.wccp.service_id
+    Type: FtUint8
+    Display: BaseDec
+    Info: Service ID
+    JsonName: gre_gre_wccp_service_id
+  gre.wccp.alternative_bucket:
+    Name: gre.wccp.alternative_bucket
+    Type: FtUint8
+    Display: BaseDec
+    Info: Alternative Bucket
+    JsonName: gre_gre_wccp_alternative_bucket
+  gre.wccp.primary_bucket:
+    Name: gre.wccp.primary_bucket
+    Type: FtUint8
+    Display: BaseDec
+    Info: Primary Bucket
+    JsonName: gre_gre_wccp_primary_bucket

@@ -1,0 +1,47 @@
+Name: fddi
+Fields:
+  fddi.fc:
+    Name: fddi.fc
+    Type: FtUint8
+    Display: BaseHex
+    Info: Frame Control
+    JsonName: fddi_fddi_fc
+  fddi.fc.clf:
+    Name: fddi.fc.clf
+    Type: FtUint8
+    Display: BaseHex
+    Info: Class/Length/Format
+    JsonName: fddi_fc_fddi_fc_clf
+  fddi.fc.prio:
+    Name: fddi.fc.prio
+    Type: FtUint8
+    Display: BaseDec
+    Info: Priority
+    JsonName: fddi_fc_fddi_fc_prio
+  fddi.fc.smt_subtype:
+    Name: fddi.fc.smt_subtype
+    Type: FtUint8
+    Display: BaseDec
+    Info: SMT Subtype
+    JsonName: fddi_fc_fddi_fc_smt_subtype
+  fddi.fc.mac_subtype:
+    Name: fddi.fc.mac_subtype
+    Type: FtUint8
+    Display: BaseDec
+    Info: MAC Subtype
+    JsonName: fddi_fc_fddi_fc_mac_subtype
+  fddi.dst:
+    Name: fddi.dst
+    Type: FtEther
+    Info: Destination
+    JsonName: fddi_fddi_dst
+  fddi.src:
+    Name: fddi.src
+    Type: FtEther
+    Info: Source
+    JsonName: fddi_fddi_src
+  fddi.addr:
+    Name: fddi.addr
+    Type: FtEther
+    Info: Source or Destination Address
+    JsonName: fddi_fddi_addr

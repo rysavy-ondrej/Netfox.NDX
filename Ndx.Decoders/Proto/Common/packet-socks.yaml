@@ -1,0 +1,143 @@
+Name: socks
+Fields:
+  socks.version:
+    Name: socks.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: Version
+    JsonName: socks_socks_version
+  socks.dst:
+    Name: socks.dst
+    Type: FtIpv4
+    Info: Remote Address
+    JsonName: socks_socks_dst
+  socks.dstV6:
+    Name: socks.dstV6
+    Type: FtIpv6
+    Info: Remote Address(ipv6)
+    JsonName: socks_socks_dstV6
+  socks.gssapi.data:
+    Name: socks.gssapi.data
+    Type: FtBytes
+    Info: GSSAPI data
+    JsonName: socks_socks_gssapi_data
+  socks.gssapi.command:
+    Name: socks.gssapi.command
+    Type: FtUint8
+    Display: BaseDec
+    Info: SOCKS/GSSAPI command
+    JsonName: socks_socks_gssapi_command
+  socks.gssapi.length:
+    Name: socks.gssapi.length
+    Type: FtUint16
+    Display: BaseDec
+    Info: SOCKS/GSSAPI data length
+    JsonName: socks_socks_gssapi_length
+  socks.v4a_dns_name:
+    Name: socks.v4a_dns_name
+    Type: FtStringz
+    Info: SOCKS v4a Remote Domain Name
+    JsonName: socks_socks_v4a_dns_name
+  socks.dstport:
+    Name: socks.dstport
+    Type: FtUint16
+    Display: BaseDec
+    Info: Remote Port
+    JsonName: socks_socks_dstport
+  socks.command:
+    Name: socks.command
+    Type: FtUint8
+    Display: BaseDec
+    Info: Command
+    JsonName: socks_socks_command
+  socks.results:
+    Name: socks.results
+    Type: FtUint8
+    Display: BaseDec
+    Info: Results(V4)
+    JsonName: socks_socks_results
+  socks.auth_method_count:
+    Name: socks.auth_method_count
+    Type: FtUint8
+    Display: BaseDec
+    Info: Authentication Method Count
+    JsonName: socks_socks_auth_method_count
+  socks.auth_method:
+    Name: socks.auth_method
+    Type: FtUint8
+    Display: BaseDec
+    Info: Method
+    JsonName: socks_socks_auth_method
+  socks.reserved:
+    Name: socks.reserved
+    Type: FtUint8
+    Display: BaseDec
+    Info: Reserved
+    JsonName: socks_socks_reserved
+  socks.port:
+    Name: socks.port
+    Type: FtUint16
+    Display: BaseDec
+    Info: Port
+    JsonName: socks_socks_port
+  socks.auth_accepted_method:
+    Name: socks.auth_accepted_method
+    Type: FtUint8
+    Display: BaseDec
+    Info: Accepted Auth Method
+    JsonName: socks_socks_auth_accepted_method
+  socks.auth_status:
+    Name: socks.auth_status
+    Type: FtUint8
+    Display: BaseDec
+    Info: Status
+    JsonName: socks_socks_auth_status
+  socks.remote_host_port:
+    Name: socks.remote_host_port
+    Type: FtUint16
+    Display: BaseDec
+    Info: Remote Host Port
+    JsonName: socks_socks_remote_host_port
+  socks.username:
+    Name: socks.username
+    Type: FtString
+    Info: User name
+    JsonName: socks_socks_username
+  socks.password:
+    Name: socks.password
+    Type: FtString
+    Info: Password
+    JsonName: socks_socks_password
+  socks.remote_name:
+    Name: socks.remote_name
+    Type: FtString
+    Info: Remote name
+    JsonName: socks_socks_remote_name
+  socks.address_type:
+    Name: socks.address_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Address Type
+    JsonName: socks_socks_address_type
+  socks.fragment_number:
+    Name: socks.fragment_number
+    Type: FtUint8
+    Display: BaseDec
+    Info: Fragment Number
+    JsonName: socks_socks_fragment_number
+  socks.ping_end_command:
+    Name: socks.ping_end_command
+    Info: 'Ping: End command'
+    JsonName: socks_socks_ping_end_command
+  socks.ping_results:
+    Name: socks.ping_results
+    Info: Ping Results
+    JsonName: socks_socks_ping_results
+  socks.traceroute_end_command:
+    Name: socks.traceroute_end_command
+    Info: 'Traceroute: End command'
+    JsonName: socks_socks_traceroute_end_command
+  socks.traceroute_results:
+    Name: socks.traceroute_results
+    Info: Traceroute Results
+    JsonName: socks_socks_traceroute_results

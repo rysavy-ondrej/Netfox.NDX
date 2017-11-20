@@ -1,0 +1,659 @@
+Name: ip
+Fields:
+  ip.version:
+    Name: ip.version
+    Type: FtUint8
+    Display: BaseDec
+    Info: Version
+    JsonName: ip_ip_version
+  ip.hdr_len:
+    Name: ip.hdr_len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Header Length
+    JsonName: ip_ip_hdr_len
+  ip.dsfield:
+    Name: ip.dsfield
+    Type: FtUint8
+    Display: BaseHex
+    Info: Differentiated Services Field
+    JsonName: ip_ip_dsfield
+  ip.dsfield.dscp:
+    Name: ip.dsfield.dscp
+    Type: FtUint8
+    Display: BaseDec
+    Info: Differentiated Services Codepoint
+    JsonName: ip_dsfield_ip_dsfield_dscp
+  ip.dsfield.ecn:
+    Name: ip.dsfield.ecn
+    Type: FtUint8
+    Display: BaseDec
+    Info: Explicit Congestion Notification
+    JsonName: ip_dsfield_ip_dsfield_ecn
+  ip.tos:
+    Name: ip.tos
+    Type: FtUint8
+    Display: BaseDec
+    Info: Type of Service
+    JsonName: ip_ip_tos
+  ip.tos.precedence:
+    Name: ip.tos.precedence
+    Type: FtUint8
+    Display: BaseDec
+    Info: Precedence
+    JsonName: ip_tos_ip_tos_precedence
+  ip.tos.delay:
+    Name: ip.tos.delay
+    Type: FtBoolean
+    Display: SepDot
+    Info: Delay
+    JsonName: ip_tos_ip_tos_delay
+  ip.tos.throughput:
+    Name: ip.tos.throughput
+    Type: FtBoolean
+    Display: SepDot
+    Info: Throughput
+    JsonName: ip_tos_ip_tos_throughput
+  ip.tos.reliability:
+    Name: ip.tos.reliability
+    Type: FtBoolean
+    Display: SepDot
+    Info: Reliability
+    JsonName: ip_tos_ip_tos_reliability
+  ip.tos.cost:
+    Name: ip.tos.cost
+    Type: FtBoolean
+    Display: SepDot
+    Info: Cost
+    JsonName: ip_tos_ip_tos_cost
+  ip.len:
+    Name: ip.len
+    Type: FtUint16
+    Display: BaseDec
+    Info: Total Length
+    JsonName: ip_ip_len
+  ip.id:
+    Name: ip.id
+    Type: FtUint16
+    Display: BaseHexDec
+    Info: Identification
+    JsonName: ip_ip_id
+  ip.dst:
+    Name: ip.dst
+    Type: FtIpv4
+    Info: Destination
+    JsonName: ip_ip_dst
+  ip.dst_host:
+    Name: ip.dst_host
+    Type: FtString
+    Info: Destination Host
+    JsonName: ip_ip_dst_host
+  ip.src:
+    Name: ip.src
+    Type: FtIpv4
+    Info: Source
+    JsonName: ip_ip_src
+  ip.src_host:
+    Name: ip.src_host
+    Type: FtString
+    Info: Source Host
+    JsonName: ip_ip_src_host
+  ip.addr:
+    Name: ip.addr
+    Type: FtIpv4
+    Info: Source or Destination Address
+    JsonName: ip_ip_addr
+  ip.host:
+    Name: ip.host
+    Type: FtString
+    Info: Source or Destination Host
+    JsonName: ip_ip_host
+  ip.geoip.country:
+    Name: ip.geoip.country
+    Type: FtString
+    Display: StrUnicode
+    Info: Source or Destination GeoIP Country
+    JsonName: ip_ip_geoip_country
+  ip.geoip.city:
+    Name: ip.geoip.city
+    Type: FtString
+    Display: StrUnicode
+    Info: Source or Destination GeoIP City
+    JsonName: ip_ip_geoip_city
+  ip.geoip.org:
+    Name: ip.geoip.org
+    Type: FtString
+    Display: StrUnicode
+    Info: Source or Destination GeoIP Organization
+    JsonName: ip_ip_geoip_org
+  ip.geoip.isp:
+    Name: ip.geoip.isp
+    Type: FtString
+    Display: StrUnicode
+    Info: Source or Destination GeoIP ISP
+    JsonName: ip_ip_geoip_isp
+  ip.geoip.asnum:
+    Name: ip.geoip.asnum
+    Type: FtString
+    Display: StrUnicode
+    Info: Source or Destination GeoIP AS Number
+    JsonName: ip_ip_geoip_asnum
+  ip.geoip.lat:
+    Name: ip.geoip.lat
+    Type: FtDouble
+    Info: Source or Destination GeoIP Latitude
+    JsonName: ip_ip_geoip_lat
+  ip.geoip.lon:
+    Name: ip.geoip.lon
+    Type: FtDouble
+    Info: Source or Destination GeoIP Longitude
+    JsonName: ip_ip_geoip_lon
+  ip.geoip.src_country:
+    Name: ip.geoip.src_country
+    Type: FtString
+    Display: StrUnicode
+    Info: Source GeoIP Country
+    JsonName: ip_ip_geoip_src_country
+  ip.geoip.src_city:
+    Name: ip.geoip.src_city
+    Type: FtString
+    Display: StrUnicode
+    Info: Source GeoIP City
+    JsonName: ip_ip_geoip_src_city
+  ip.geoip.src_org:
+    Name: ip.geoip.src_org
+    Type: FtString
+    Display: StrUnicode
+    Info: Source GeoIP Organization
+    JsonName: ip_ip_geoip_src_org
+  ip.geoip.src_isp:
+    Name: ip.geoip.src_isp
+    Type: FtString
+    Display: StrUnicode
+    Info: Source GeoIP ISP
+    JsonName: ip_ip_geoip_src_isp
+  ip.geoip.src_asnum:
+    Name: ip.geoip.src_asnum
+    Type: FtString
+    Display: StrUnicode
+    Info: Source GeoIP AS Number
+    JsonName: ip_ip_geoip_src_asnum
+  ip.geoip.src_lat:
+    Name: ip.geoip.src_lat
+    Type: FtDouble
+    Info: Source GeoIP Latitude
+    JsonName: ip_ip_geoip_src_lat
+  ip.geoip.src_lon:
+    Name: ip.geoip.src_lon
+    Type: FtDouble
+    Info: Source GeoIP Longitude
+    JsonName: ip_ip_geoip_src_lon
+  ip.geoip.dst_country:
+    Name: ip.geoip.dst_country
+    Type: FtString
+    Display: StrUnicode
+    Info: Destination GeoIP Country
+    JsonName: ip_ip_geoip_dst_country
+  ip.geoip.dst_city:
+    Name: ip.geoip.dst_city
+    Type: FtString
+    Display: StrUnicode
+    Info: Destination GeoIP City
+    JsonName: ip_ip_geoip_dst_city
+  ip.geoip.dst_org:
+    Name: ip.geoip.dst_org
+    Type: FtString
+    Display: StrUnicode
+    Info: Destination GeoIP Organization
+    JsonName: ip_ip_geoip_dst_org
+  ip.geoip.dst_isp:
+    Name: ip.geoip.dst_isp
+    Type: FtString
+    Display: StrUnicode
+    Info: Destination GeoIP ISP
+    JsonName: ip_ip_geoip_dst_isp
+  ip.geoip.dst_asnum:
+    Name: ip.geoip.dst_asnum
+    Type: FtString
+    Display: StrUnicode
+    Info: Destination GeoIP AS Number
+    JsonName: ip_ip_geoip_dst_asnum
+  ip.geoip.dst_lat:
+    Name: ip.geoip.dst_lat
+    Type: FtDouble
+    Info: Destination GeoIP Latitude
+    JsonName: ip_ip_geoip_dst_lat
+  ip.geoip.dst_lon:
+    Name: ip.geoip.dst_lon
+    Type: FtDouble
+    Info: Destination GeoIP Longitude
+    JsonName: ip_ip_geoip_dst_lon
+  ip.flags:
+    Name: ip.flags
+    Type: FtUint16
+    Display: BaseHex
+    Info: Flags
+    JsonName: ip_ip_flags
+  ip.flags.sf:
+    Name: ip.flags.sf
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Security flag
+    JsonName: ip_flags_ip_flags_sf
+  ip.flags.rb:
+    Name: ip.flags.rb
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Reserved bit
+    JsonName: ip_flags_ip_flags_rb
+  ip.flags.df:
+    Name: ip.flags.df
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: Don't fragment
+    JsonName: ip_flags_ip_flags_df
+  ip.flags.mf:
+    Name: ip.flags.mf
+    Type: FtBoolean
+    Display: BasePtSctp
+    Info: More fragments
+    JsonName: ip_flags_ip_flags_mf
+  ip.frag_offset:
+    Name: ip.frag_offset
+    Type: FtUint16
+    Display: BaseDec
+    Info: Fragment offset
+    JsonName: ip_ip_frag_offset
+  ip.ttl:
+    Name: ip.ttl
+    Type: FtUint8
+    Display: BaseDec
+    Info: Time to live
+    JsonName: ip_ip_ttl
+  ip.proto:
+    Name: ip.proto
+    Type: FtUint8
+    Display: BaseDec
+    Info: Protocol
+    JsonName: ip_ip_proto
+  ip.checksum:
+    Name: ip.checksum
+    Type: FtUint16
+    Display: BaseHex
+    Info: Header checksum
+    JsonName: ip_ip_checksum
+  ip.checksum_calculated:
+    Name: ip.checksum_calculated
+    Type: FtUint16
+    Display: BaseHex
+    Info: Calculated Checksum
+    JsonName: ip_ip_checksum_calculated
+  ip.checksum.status:
+    Name: ip.checksum.status
+    Type: FtUint8
+    Info: Header checksum status
+    JsonName: ip_checksum_ip_checksum_status
+  ip.opt.type:
+    Name: ip.opt.type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Type
+    JsonName: ip_ip_opt_type
+  ip.opt.type.copy:
+    Name: ip.opt.type.copy
+    Type: FtBoolean
+    Display: SepDot
+    Info: Copy on fragmentation
+    JsonName: ip_opt_type_ip_opt_type_copy
+  ip.opt.type.class:
+    Name: ip.opt.type.class
+    Type: FtUint8
+    Display: BaseDec
+    Info: Class
+    JsonName: ip_opt_type_ip_opt_type_class
+  ip.opt.type.number:
+    Name: ip.opt.type.number
+    Type: FtUint8
+    Display: BaseDec
+    Info: Number
+    JsonName: ip_opt_type_ip_opt_type_number
+  ip.opt.len:
+    Name: ip.opt.len
+    Type: FtUint8
+    Display: BaseDec
+    Info: Length
+    JsonName: ip_ip_opt_len
+  ip.opt.ptr:
+    Name: ip.opt.ptr
+    Type: FtUint8
+    Display: BaseDec
+    Info: Pointer
+    JsonName: ip_ip_opt_ptr
+  ip.opt.sid:
+    Name: ip.opt.sid
+    Type: FtUint16
+    Display: BaseDec
+    Info: Stream Identifier
+    JsonName: ip_ip_opt_sid
+  ip.opt.mtu:
+    Name: ip.opt.mtu
+    Type: FtUint16
+    Display: BaseDec
+    Info: MTU
+    JsonName: ip_ip_opt_mtu
+  ip.opt.id_number:
+    Name: ip.opt.id_number
+    Type: FtUint16
+    Display: BaseDec
+    Info: ID Number
+    JsonName: ip_ip_opt_id_number
+  ip.opt.ohc:
+    Name: ip.opt.ohc
+    Type: FtUint16
+    Display: BaseDec
+    Info: Outbound Hop Count
+    JsonName: ip_ip_opt_ohc
+  ip.opt.rhc:
+    Name: ip.opt.rhc
+    Type: FtUint16
+    Display: BaseDec
+    Info: Return Hop Count
+    JsonName: ip_ip_opt_rhc
+  ip.opt.originator:
+    Name: ip.opt.originator
+    Type: FtIpv4
+    Info: Originator IP Address
+    JsonName: ip_ip_opt_originator
+  ip.opt.ra:
+    Name: ip.opt.ra
+    Type: FtUint16
+    Display: BaseDec
+    Info: Router Alert
+    JsonName: ip_ip_opt_ra
+  ip.opt.addr:
+    Name: ip.opt.addr
+    Type: FtIpv4
+    Info: IP Address
+    JsonName: ip_ip_opt_addr
+  ip.opt.padding:
+    Name: ip.opt.padding
+    Type: FtBytes
+    Info: Padding
+    JsonName: ip_ip_opt_padding
+  ip.opt.qs_func:
+    Name: ip.opt.qs_func
+    Type: FtUint8
+    Display: BaseDec
+    Info: Function
+    JsonName: ip_ip_opt_qs_func
+  ip.opt.qs_rate:
+    Name: ip.opt.qs_rate
+    Type: FtUint8
+    Display: BaseDec
+    Info: Rate
+    JsonName: ip_ip_opt_qs_rate
+  ip.opt.qs_ttl:
+    Name: ip.opt.qs_ttl
+    Type: FtUint8
+    Display: BaseDec
+    Info: QS TTL
+    JsonName: ip_ip_opt_qs_ttl
+  ip.opt.qs_ttl_diff:
+    Name: ip.opt.qs_ttl_diff
+    Type: FtUint8
+    Display: BaseDec
+    Info: TTL Diff
+    JsonName: ip_ip_opt_qs_ttl_diff
+  ip.opt.qs_unused:
+    Name: ip.opt.qs_unused
+    Type: FtUint8
+    Display: BaseDec
+    Info: Not Used
+    JsonName: ip_ip_opt_qs_unused
+  ip.opt.qs_nonce:
+    Name: ip.opt.qs_nonce
+    Type: FtUint32
+    Display: BaseHex
+    Info: QS Nonce
+    JsonName: ip_ip_opt_qs_nonce
+  ip.opt.qs_reserved:
+    Name: ip.opt.qs_reserved
+    Type: FtUint32
+    Display: BaseHex
+    Info: Reserved
+    JsonName: ip_ip_opt_qs_reserved
+  ip.opt.sec_rfc791_sec:
+    Name: ip.opt.sec_rfc791_sec
+    Type: FtUint8
+    Display: BaseHex
+    Info: Security
+    JsonName: ip_ip_opt_sec_rfc791_sec
+  ip.opt.sec_rfc791_comp:
+    Name: ip.opt.sec_rfc791_comp
+    Type: FtUint16
+    Display: BaseDec
+    Info: Compartments
+    JsonName: ip_ip_opt_sec_rfc791_comp
+  ip.opt.sec_rfc791_hr:
+    Name: ip.opt.sec_rfc791_hr
+    Type: FtString
+    Info: Handling Restrictions
+    JsonName: ip_ip_opt_sec_rfc791_hr
+  ip.opt.sec_rfc791_tcc:
+    Name: ip.opt.sec_rfc791_tcc
+    Type: FtString
+    Info: Transmission Control Code
+    JsonName: ip_ip_opt_sec_rfc791_tcc
+  ip.opt.sec_cl:
+    Name: ip.opt.sec_cl
+    Type: FtUint8
+    Display: BaseHex
+    Info: Classification Level
+    JsonName: ip_ip_opt_sec_cl
+  ip.opt.sec_prot_auth_flags:
+    Name: ip.opt.sec_prot_auth_flags
+    Type: FtUint8
+    Display: BaseHex
+    Info: Protection Authority Flags
+    JsonName: ip_ip_opt_sec_prot_auth_flags
+  ip.opt.sec_prot_auth_genser:
+    Name: ip.opt.sec_prot_auth_genser
+    Type: FtBoolean
+    Display: SepDot
+    Info: GENSER
+    JsonName: ip_ip_opt_sec_prot_auth_genser
+  ip.opt.sec_prot_auth_siop_esi:
+    Name: ip.opt.sec_prot_auth_siop_esi
+    Type: FtBoolean
+    Display: SepDot
+    Info: SIOP-ESI
+    JsonName: ip_ip_opt_sec_prot_auth_siop_esi
+  ip.opt.sec_prot_auth_sci:
+    Name: ip.opt.sec_prot_auth_sci
+    Type: FtBoolean
+    Display: SepDot
+    Info: SCI
+    JsonName: ip_ip_opt_sec_prot_auth_sci
+  ip.opt.sec_prot_auth_nsa:
+    Name: ip.opt.sec_prot_auth_nsa
+    Type: FtBoolean
+    Display: SepDot
+    Info: NSA
+    JsonName: ip_ip_opt_sec_prot_auth_nsa
+  ip.opt.sec_prot_auth_doe:
+    Name: ip.opt.sec_prot_auth_doe
+    Type: FtBoolean
+    Display: SepDot
+    Info: DOE
+    JsonName: ip_ip_opt_sec_prot_auth_doe
+  ip.opt.sec_prot_auth_unassigned:
+    Name: ip.opt.sec_prot_auth_unassigned
+    Type: FtUint8
+    Display: BaseHex
+    Info: Unassigned
+    JsonName: ip_ip_opt_sec_prot_auth_unassigned
+  ip.opt.sec_prot_auth_fti:
+    Name: ip.opt.sec_prot_auth_fti
+    Type: FtBoolean
+    Display: SepDot
+    Info: Field Termination Indicator
+    JsonName: ip_ip_opt_sec_prot_auth_fti
+  ip.opt.ext_sec_add_sec_info_format_code:
+    Name: ip.opt.ext_sec_add_sec_info_format_code
+    Type: FtUint8
+    Display: BaseHex
+    Info: Additional Security Info Format Code
+    JsonName: ip_ip_opt_ext_sec_add_sec_info_format_code
+  ip.opt.ext_sec_add_sec_info:
+    Name: ip.opt.ext_sec_add_sec_info
+    Type: FtBytes
+    Info: Additional Security Info
+    JsonName: ip_ip_opt_ext_sec_add_sec_info
+  ip.rec_rt:
+    Name: ip.rec_rt
+    Type: FtIpv4
+    Info: Recorded Route
+    JsonName: ip_ip_rec_rt
+  ip.rec_rt_host:
+    Name: ip.rec_rt_host
+    Type: FtString
+    Info: Recorded Route Host
+    JsonName: ip_ip_rec_rt_host
+  ip.cur_rt:
+    Name: ip.cur_rt
+    Type: FtIpv4
+    Info: Current Route
+    JsonName: ip_ip_cur_rt
+  ip.cur_rt_host:
+    Name: ip.cur_rt_host
+    Type: FtString
+    Info: Current Route Host
+    JsonName: ip_ip_cur_rt_host
+  ip.src_rt:
+    Name: ip.src_rt
+    Type: FtIpv4
+    Info: Source Route
+    JsonName: ip_ip_src_rt
+  ip.src_rt_host:
+    Name: ip.src_rt_host
+    Type: FtString
+    Info: Source Route Host
+    JsonName: ip_ip_src_rt_host
+  ip.empty_rt:
+    Name: ip.empty_rt
+    Type: FtIpv4
+    Info: Empty Route
+    JsonName: ip_ip_empty_rt
+  ip.empty_rt_host:
+    Name: ip.empty_rt_host
+    Type: FtString
+    Info: Empty Route Host
+    JsonName: ip_ip_empty_rt_host
+  ip.cipso.tag_type:
+    Name: ip.cipso.tag_type
+    Type: FtUint8
+    Display: BaseDec
+    Info: Tag Type
+    JsonName: ip_ip_cipso_tag_type
+  ip.fragment.overlap:
+    Name: ip.fragment.overlap
+    Type: FtBoolean
+    Info: Fragment overlap
+    JsonName: ip_fragment_ip_fragment_overlap
+  ip.fragment.overlap.conflict:
+    Name: ip.fragment.overlap.conflict
+    Type: FtBoolean
+    Info: Conflicting data in fragment overlap
+    JsonName: ip_fragment_overlap_ip_fragment_overlap_conflict
+  ip.fragment.multipletails:
+    Name: ip.fragment.multipletails
+    Type: FtBoolean
+    Info: Multiple tail fragments found
+    JsonName: ip_fragment_ip_fragment_multipletails
+  ip.fragment.toolongfragment:
+    Name: ip.fragment.toolongfragment
+    Type: FtBoolean
+    Info: Fragment too long
+    JsonName: ip_fragment_ip_fragment_toolongfragment
+  ip.fragment.error:
+    Name: ip.fragment.error
+    Type: FtFramenum
+    Info: Defragmentation error
+    JsonName: ip_fragment_ip_fragment_error
+  ip.fragment.count:
+    Name: ip.fragment.count
+    Type: FtUint32
+    Display: BaseDec
+    Info: Fragment count
+    JsonName: ip_fragment_ip_fragment_count
+  ip.fragment:
+    Name: ip.fragment
+    Type: FtFramenum
+    Info: IPv4 Fragment
+    JsonName: ip_ip_fragment
+  ip.fragments:
+    Name: ip.fragments
+    Type: FtBytes
+    Info: IPv4 Fragments
+    JsonName: ip_ip_fragments
+  ip.reassembled_in:
+    Name: ip.reassembled_in
+    Type: FtFramenum
+    Info: Reassembled IPv4 in frame
+    JsonName: ip_ip_reassembled_in
+  ip.reassembled.length:
+    Name: ip.reassembled.length
+    Type: FtUint32
+    Display: BaseDec
+    Info: Reassembled IPv4 length
+    JsonName: ip_ip_reassembled_length
+  ip.reassembled.data:
+    Name: ip.reassembled.data
+    Type: FtBytes
+    Info: Reassembled IPv4 data
+    JsonName: ip_ip_reassembled_data
+  ip.cipso.doi:
+    Name: ip.cipso.doi
+    Type: FtUint32
+    Display: BaseDec
+    Info: DOI
+    JsonName: ip_ip_cipso_doi
+  ip.cipso.sensitivity_level:
+    Name: ip.cipso.sensitivity_level
+    Type: FtUint8
+    Display: BaseDec
+    Info: Sensitivity Level
+    JsonName: ip_ip_cipso_sensitivity_level
+  ip.cipso.categories:
+    Name: ip.cipso.categories
+    Type: FtString
+    Info: Categories
+    JsonName: ip_ip_cipso_categories
+  ip.cipso.tag_data:
+    Name: ip.cipso.tag_data
+    Type: FtBytes
+    Info: Tag data
+    JsonName: ip_ip_cipso_tag_data
+  ip.opt.overflow:
+    Name: ip.opt.overflow
+    Type: FtUint8
+    Display: BaseDec
+    Info: Overflow
+    JsonName: ip_ip_opt_overflow
+  ip.opt.flag:
+    Name: ip.opt.flag
+    Type: FtUint8
+    Display: BaseHex
+    Info: Flag
+    JsonName: ip_ip_opt_flag
+  ip.opt.time_stamp:
+    Name: ip.opt.time_stamp
+    Type: FtUint32
+    Display: BaseDec
+    Info: Time stamp
+    JsonName: ip_ip_opt_time_stamp
+  ip.opt.time_stamp_addr:
+    Name: ip.opt.time_stamp_addr
+    Type: FtIpv4
+    Info: Address
+    JsonName: ip_ip_opt_time_stamp_addr

@@ -1,0 +1,795 @@
+Name: ldap
+Fields:
+  ldap.sasl_buffer_length:
+    Name: ldap.sasl_buffer_length
+    Type: FtUint32
+    Display: BaseDec
+    Info: SASL Buffer Length
+    JsonName: ldap_ldap_sasl_buffer_length
+  ldap.response_in:
+    Name: ldap.response_in
+    Type: FtFramenum
+    Info: Response In
+    JsonName: ldap_ldap_response_in
+  ldap.response_to:
+    Name: ldap.response_to
+    Type: FtFramenum
+    Info: Response To
+    JsonName: ldap_ldap_response_to
+  ldap.time:
+    Name: ldap.time
+    Type: FtRelativeTime
+    Info: Time
+    JsonName: ldap_ldap_time
+  ldap.sid:
+    Name: ldap.sid
+    Type: FtString
+    Info: Sid
+    JsonName: ldap_ldap_sid
+  ldap.guid:
+    Name: ldap.guid
+    Type: FtGuid
+    Info: GUID
+    JsonName: ldap_ldap_guid
+  ldap.AccessMask.ADS_CREATE_CHILD:
+    Name: ldap.AccessMask.ADS_CREATE_CHILD
+    Type: FtBoolean
+    Display: 32
+    Info: Ads Create Child
+    JsonName: ldap_ldap_AccessMask_ADS_CREATE_CHILD
+  ldap.AccessMask.ADS_DELETE_CHILD:
+    Name: ldap.AccessMask.ADS_DELETE_CHILD
+    Type: FtBoolean
+    Display: 32
+    Info: Ads Delete Child
+    JsonName: ldap_ldap_AccessMask_ADS_DELETE_CHILD
+  ldap.AccessMask.ADS_LIST:
+    Name: ldap.AccessMask.ADS_LIST
+    Type: FtBoolean
+    Display: 32
+    Info: Ads List
+    JsonName: ldap_ldap_AccessMask_ADS_LIST
+  ldap.AccessMask.ADS_SELF_WRITE:
+    Name: ldap.AccessMask.ADS_SELF_WRITE
+    Type: FtBoolean
+    Display: 32
+    Info: Ads Self Write
+    JsonName: ldap_ldap_AccessMask_ADS_SELF_WRITE
+  ldap.AccessMask.ADS_READ_PROP:
+    Name: ldap.AccessMask.ADS_READ_PROP
+    Type: FtBoolean
+    Display: 32
+    Info: Ads Read Prop
+    JsonName: ldap_ldap_AccessMask_ADS_READ_PROP
+  ldap.AccessMask.ADS_WRITE_PROP:
+    Name: ldap.AccessMask.ADS_WRITE_PROP
+    Type: FtBoolean
+    Display: 32
+    Info: Ads Write Prop
+    JsonName: ldap_ldap_AccessMask_ADS_WRITE_PROP
+  ldap.AccessMask.ADS_DELETE_TREE:
+    Name: ldap.AccessMask.ADS_DELETE_TREE
+    Type: FtBoolean
+    Display: 32
+    Info: Ads Delete Tree
+    JsonName: ldap_ldap_AccessMask_ADS_DELETE_TREE
+  ldap.AccessMask.ADS_LIST_OBJECT:
+    Name: ldap.AccessMask.ADS_LIST_OBJECT
+    Type: FtBoolean
+    Display: 32
+    Info: Ads List Object
+    JsonName: ldap_ldap_AccessMask_ADS_LIST_OBJECT
+  ldap.AccessMask.ADS_CONTROL_ACCESS:
+    Name: ldap.AccessMask.ADS_CONTROL_ACCESS
+    Type: FtBoolean
+    Display: 32
+    Info: Ads Control Access
+    JsonName: ldap_ldap_AccessMask_ADS_CONTROL_ACCESS
+  ldap.LDAPMessage_element:
+    Name: ldap.LDAPMessage_element
+    Info: LDAPMessage
+    JsonName: ldap_ldap_LDAPMessage_element
+  ldap.object_security_flag:
+    Name: ldap.object_security_flag
+    Type: FtBoolean
+    Display: 32
+    Info: Flag Object_Security
+    JsonName: ldap_ldap_object_security_flag
+  ldap.ancestor_first_flag:
+    Name: ldap.ancestor_first_flag
+    Type: FtBoolean
+    Display: 32
+    Info: Flag Ancestor_First
+    JsonName: ldap_ldap_ancestor_first_flag
+  ldap.public_data_only_flag:
+    Name: ldap.public_data_only_flag
+    Type: FtBoolean
+    Display: 32
+    Info: Flag Public_Data_Only
+    JsonName: ldap_ldap_public_data_only_flag
+  ldap.incremental_value_flag:
+    Name: ldap.incremental_value_flag
+    Type: FtBoolean
+    Display: 32
+    Info: Flag Incremental_Value
+    JsonName: ldap_ldap_incremental_value_flag
+  ldap.oid:
+    Name: ldap.oid
+    Type: FtString
+    Info: OID
+    JsonName: ldap_ldap_oid
+  ldap.gssapi_encrypted_payload:
+    Name: ldap.gssapi_encrypted_payload
+    Type: FtBytes
+    Info: GSS-API Encrypted payload
+    JsonName: ldap_ldap_gssapi_encrypted_payload
+  ldap.SearchControlValue_element:
+    Name: ldap.SearchControlValue_element
+    Info: SearchControlValue
+    JsonName: ldap_ldap_SearchControlValue_element
+  ldap.SortKeyList:
+    Name: ldap.SortKeyList
+    Type: FtUint32
+    Display: BaseDec
+    Info: SortKeyList
+    JsonName: ldap_ldap_SortKeyList
+  ldap.SortResult_element:
+    Name: ldap.SortResult_element
+    Info: SortResult
+    JsonName: ldap_ldap_SortResult_element
+  ldap.DirSyncControlValue_element:
+    Name: ldap.DirSyncControlValue_element
+    Info: DirSyncControlValue
+    JsonName: ldap_ldap_DirSyncControlValue_element
+  ldap.PasswdModifyRequestValue_element:
+    Name: ldap.PasswdModifyRequestValue_element
+    Info: PasswdModifyRequestValue
+    JsonName: ldap_ldap_PasswdModifyRequestValue_element
+  ldap.CancelRequestValue_element:
+    Name: ldap.CancelRequestValue_element
+    Info: CancelRequestValue
+    JsonName: ldap_ldap_CancelRequestValue_element
+  ldap.SyncRequestValue_element:
+    Name: ldap.SyncRequestValue_element
+    Info: SyncRequestValue
+    JsonName: ldap_ldap_SyncRequestValue_element
+  ldap.SyncStateValue_element:
+    Name: ldap.SyncStateValue_element
+    Info: SyncStateValue
+    JsonName: ldap_ldap_SyncStateValue_element
+  ldap.SyncDoneValue_element:
+    Name: ldap.SyncDoneValue_element
+    Info: SyncDoneValue
+    JsonName: ldap_ldap_SyncDoneValue_element
+  ldap.SyncInfoValue:
+    Name: ldap.SyncInfoValue
+    Type: FtUint32
+    Display: BaseDec
+    Info: SyncInfoValue
+    JsonName: ldap_ldap_SyncInfoValue
+  ldap.PasswordPolicyResponseValue_element:
+    Name: ldap.PasswordPolicyResponseValue_element
+    Info: PasswordPolicyResponseValue
+    JsonName: ldap_ldap_PasswordPolicyResponseValue_element
+  ldap.messageID:
+    Name: ldap.messageID
+    Type: FtUint32
+    Display: BaseDec
+    Info: messageID
+    JsonName: ldap_ldap_messageID
+  ldap.protocolOp:
+    Name: ldap.protocolOp
+    Type: FtUint32
+    Display: BaseDec
+    Info: protocolOp
+    JsonName: ldap_ldap_protocolOp
+  ldap.controls:
+    Name: ldap.controls
+    Type: FtUint32
+    Display: BaseDec
+    Info: controls
+    JsonName: ldap_ldap_controls
+  ldap.bindRequest_element:
+    Name: ldap.bindRequest_element
+    Info: bindRequest
+    JsonName: ldap_ldap_bindRequest_element
+  ldap.bindResponse_element:
+    Name: ldap.bindResponse_element
+    Info: bindResponse
+    JsonName: ldap_ldap_bindResponse_element
+  ldap.unbindRequest_element:
+    Name: ldap.unbindRequest_element
+    Info: unbindRequest
+    JsonName: ldap_ldap_unbindRequest_element
+  ldap.searchRequest_element:
+    Name: ldap.searchRequest_element
+    Info: searchRequest
+    JsonName: ldap_ldap_searchRequest_element
+  ldap.searchResEntry_element:
+    Name: ldap.searchResEntry_element
+    Info: searchResEntry
+    JsonName: ldap_ldap_searchResEntry_element
+  ldap.searchResDone_element:
+    Name: ldap.searchResDone_element
+    Info: searchResDone
+    JsonName: ldap_ldap_searchResDone_element
+  ldap.searchResRef:
+    Name: ldap.searchResRef
+    Type: FtUint32
+    Display: BaseDec
+    Info: searchResRef
+    JsonName: ldap_ldap_searchResRef
+  ldap.modifyRequest_element:
+    Name: ldap.modifyRequest_element
+    Info: modifyRequest
+    JsonName: ldap_ldap_modifyRequest_element
+  ldap.modifyResponse_element:
+    Name: ldap.modifyResponse_element
+    Info: modifyResponse
+    JsonName: ldap_ldap_modifyResponse_element
+  ldap.addRequest_element:
+    Name: ldap.addRequest_element
+    Info: addRequest
+    JsonName: ldap_ldap_addRequest_element
+  ldap.addResponse_element:
+    Name: ldap.addResponse_element
+    Info: addResponse
+    JsonName: ldap_ldap_addResponse_element
+  ldap.delRequest:
+    Name: ldap.delRequest
+    Type: FtString
+    Info: delRequest
+    JsonName: ldap_ldap_delRequest
+  ldap.delResponse_element:
+    Name: ldap.delResponse_element
+    Info: delResponse
+    JsonName: ldap_ldap_delResponse_element
+  ldap.modDNRequest_element:
+    Name: ldap.modDNRequest_element
+    Info: modDNRequest
+    JsonName: ldap_ldap_modDNRequest_element
+  ldap.modDNResponse_element:
+    Name: ldap.modDNResponse_element
+    Info: modDNResponse
+    JsonName: ldap_ldap_modDNResponse_element
+  ldap.compareRequest_element:
+    Name: ldap.compareRequest_element
+    Info: compareRequest
+    JsonName: ldap_ldap_compareRequest_element
+  ldap.compareResponse_element:
+    Name: ldap.compareResponse_element
+    Info: compareResponse
+    JsonName: ldap_ldap_compareResponse_element
+  ldap.abandonRequest:
+    Name: ldap.abandonRequest
+    Type: FtUint32
+    Display: BaseDec
+    Info: abandonRequest
+    JsonName: ldap_ldap_abandonRequest
+  ldap.extendedReq_element:
+    Name: ldap.extendedReq_element
+    Info: extendedReq
+    JsonName: ldap_ldap_extendedReq_element
+  ldap.extendedResp_element:
+    Name: ldap.extendedResp_element
+    Info: extendedResp
+    JsonName: ldap_ldap_extendedResp_element
+  ldap.intermediateResponse_element:
+    Name: ldap.intermediateResponse_element
+    Info: intermediateResponse
+    JsonName: ldap_ldap_intermediateResponse_element
+  ldap.AttributeDescription:
+    Name: ldap.AttributeDescription
+    Type: FtString
+    Info: AttributeDescription
+    JsonName: ldap_ldap_AttributeDescription
+  ldap.attributeDesc:
+    Name: ldap.attributeDesc
+    Type: FtString
+    Info: attributeDesc
+    JsonName: ldap_ldap_attributeDesc
+  ldap.assertionValue:
+    Name: ldap.assertionValue
+    Type: FtString
+    Info: assertionValue
+    JsonName: ldap_ldap_assertionValue
+  ldap.type:
+    Name: ldap.type
+    Type: FtString
+    Info: type
+    JsonName: ldap_ldap_type
+  ldap.vals:
+    Name: ldap.vals
+    Type: FtUint32
+    Display: BaseDec
+    Info: vals
+    JsonName: ldap_ldap_vals
+  ldap.AttributeValue:
+    Name: ldap.AttributeValue
+    Type: FtBytes
+    Info: AttributeValue
+    JsonName: ldap_ldap_AttributeValue
+  ldap.resultCode:
+    Name: ldap.resultCode
+    Type: FtUint32
+    Display: BaseDec
+    Info: resultCode
+    JsonName: ldap_ldap_resultCode
+  ldap.matchedDN:
+    Name: ldap.matchedDN
+    Type: FtString
+    Info: matchedDN
+    JsonName: ldap_ldap_matchedDN
+  ldap.errorMessage:
+    Name: ldap.errorMessage
+    Type: FtString
+    Info: errorMessage
+    JsonName: ldap_ldap_errorMessage
+  ldap.referral:
+    Name: ldap.referral
+    Type: FtUint32
+    Display: BaseDec
+    Info: referral
+    JsonName: ldap_ldap_referral
+  ldap.LDAPURL:
+    Name: ldap.LDAPURL
+    Type: FtString
+    Info: LDAPURL
+    JsonName: ldap_ldap_LDAPURL
+  ldap.Control_element:
+    Name: ldap.Control_element
+    Info: Control
+    JsonName: ldap_ldap_Control_element
+  ldap.controlType:
+    Name: ldap.controlType
+    Type: FtString
+    Info: controlType
+    JsonName: ldap_ldap_controlType
+  ldap.criticality:
+    Name: ldap.criticality
+    Type: FtBoolean
+    Info: criticality
+    JsonName: ldap_ldap_criticality
+  ldap.controlValue:
+    Name: ldap.controlValue
+    Type: FtBytes
+    Info: controlValue
+    JsonName: ldap_ldap_controlValue
+  ldap.version:
+    Name: ldap.version
+    Type: FtUint32
+    Display: BaseDec
+    Info: version
+    JsonName: ldap_ldap_version
+  ldap.name:
+    Name: ldap.name
+    Type: FtString
+    Info: name
+    JsonName: ldap_ldap_name
+  ldap.authentication:
+    Name: ldap.authentication
+    Type: FtUint32
+    Display: BaseDec
+    Info: authentication
+    JsonName: ldap_ldap_authentication
+  ldap.simple:
+    Name: ldap.simple
+    Type: FtString
+    Info: simple
+    JsonName: ldap_ldap_simple
+  ldap.sasl_element:
+    Name: ldap.sasl_element
+    Info: sasl
+    JsonName: ldap_ldap_sasl_element
+  ldap.ntlmsspNegotiate:
+    Name: ldap.ntlmsspNegotiate
+    Type: FtBytes
+    Info: ntlmsspNegotiate
+    JsonName: ldap_ldap_ntlmsspNegotiate
+  ldap.ntlmsspAuth:
+    Name: ldap.ntlmsspAuth
+    Type: FtBytes
+    Info: ntlmsspAuth
+    JsonName: ldap_ldap_ntlmsspAuth
+  ldap.mechanism:
+    Name: ldap.mechanism
+    Type: FtString
+    Info: mechanism
+    JsonName: ldap_ldap_mechanism
+  ldap.credentials:
+    Name: ldap.credentials
+    Type: FtBytes
+    Info: credentials
+    JsonName: ldap_ldap_credentials
+  ldap.serverSaslCreds:
+    Name: ldap.serverSaslCreds
+    Type: FtBytes
+    Info: serverSaslCreds
+    JsonName: ldap_ldap_serverSaslCreds
+  ldap.baseObject:
+    Name: ldap.baseObject
+    Type: FtString
+    Info: baseObject
+    JsonName: ldap_ldap_baseObject
+  ldap.scope:
+    Name: ldap.scope
+    Type: FtUint32
+    Display: BaseDec
+    Info: scope
+    JsonName: ldap_ldap_scope
+  ldap.derefAliases:
+    Name: ldap.derefAliases
+    Type: FtUint32
+    Display: BaseDec
+    Info: derefAliases
+    JsonName: ldap_ldap_derefAliases
+  ldap.sizeLimit:
+    Name: ldap.sizeLimit
+    Type: FtUint32
+    Display: BaseDec
+    Info: sizeLimit
+    JsonName: ldap_ldap_sizeLimit
+  ldap.timeLimit:
+    Name: ldap.timeLimit
+    Type: FtUint32
+    Display: BaseDec
+    Info: timeLimit
+    JsonName: ldap_ldap_timeLimit
+  ldap.typesOnly:
+    Name: ldap.typesOnly
+    Type: FtBoolean
+    Info: typesOnly
+    JsonName: ldap_ldap_typesOnly
+  ldap.filter:
+    Name: ldap.filter
+    Type: FtUint32
+    Display: BaseDec
+    Info: filter
+    JsonName: ldap_ldap_filter
+  ldap.attributes:
+    Name: ldap.attributes
+    Type: FtUint32
+    Display: BaseDec
+    Info: attributes
+    JsonName: ldap_ldap_attributes
+  ldap.and:
+    Name: ldap.and
+    Type: FtUint32
+    Display: BaseDec
+    Info: and
+    JsonName: ldap_ldap_and
+  ldap.and_item:
+    Name: ldap.and_item
+    Type: FtUint32
+    Display: BaseDec
+    Info: and item
+    JsonName: ldap_ldap_and_item
+  ldap.or:
+    Name: ldap.or
+    Type: FtUint32
+    Display: BaseDec
+    Info: or
+    JsonName: ldap_ldap_or
+  ldap.or_item:
+    Name: ldap.or_item
+    Type: FtUint32
+    Display: BaseDec
+    Info: or item
+    JsonName: ldap_ldap_or_item
+  ldap.not:
+    Name: ldap.not
+    Type: FtUint32
+    Display: BaseDec
+    Info: not
+    JsonName: ldap_ldap_not
+  ldap.equalityMatch_element:
+    Name: ldap.equalityMatch_element
+    Info: equalityMatch
+    JsonName: ldap_ldap_equalityMatch_element
+  ldap.substrings_element:
+    Name: ldap.substrings_element
+    Info: substrings
+    JsonName: ldap_ldap_substrings_element
+  ldap.greaterOrEqual_element:
+    Name: ldap.greaterOrEqual_element
+    Info: greaterOrEqual
+    JsonName: ldap_ldap_greaterOrEqual_element
+  ldap.lessOrEqual_element:
+    Name: ldap.lessOrEqual_element
+    Info: lessOrEqual
+    JsonName: ldap_ldap_lessOrEqual_element
+  ldap.present:
+    Name: ldap.present
+    Type: FtString
+    Info: present
+    JsonName: ldap_ldap_present
+  ldap.approxMatch_element:
+    Name: ldap.approxMatch_element
+    Info: approxMatch
+    JsonName: ldap_ldap_approxMatch_element
+  ldap.extensibleMatch_element:
+    Name: ldap.extensibleMatch_element
+    Info: extensibleMatch
+    JsonName: ldap_ldap_extensibleMatch_element
+  ldap.substrings:
+    Name: ldap.substrings
+    Type: FtUint32
+    Display: BaseDec
+    Info: substrings
+    JsonName: ldap_ldap_substrings
+  ldap.substrings_item:
+    Name: ldap.substrings_item
+    Type: FtUint32
+    Display: BaseDec
+    Info: substrings item
+    JsonName: ldap_ldap_substrings_item
+  ldap.initial:
+    Name: ldap.initial
+    Type: FtString
+    Info: initial
+    JsonName: ldap_ldap_initial
+  ldap.any:
+    Name: ldap.any
+    Type: FtString
+    Info: any
+    JsonName: ldap_ldap_any
+  ldap.final:
+    Name: ldap.final
+    Type: FtString
+    Info: final
+    JsonName: ldap_ldap_final
+  ldap.matchingRule:
+    Name: ldap.matchingRule
+    Type: FtString
+    Info: matchingRule
+    JsonName: ldap_ldap_matchingRule
+  ldap.matchValue:
+    Name: ldap.matchValue
+    Type: FtString
+    Info: matchValue
+    JsonName: ldap_ldap_matchValue
+  ldap.dnAttributes:
+    Name: ldap.dnAttributes
+    Type: FtBoolean
+    Info: dnAttributes
+    JsonName: ldap_ldap_dnAttributes
+  ldap.objectName:
+    Name: ldap.objectName
+    Type: FtString
+    Info: objectName
+    JsonName: ldap_ldap_objectName
+  ldap.PartialAttributeList_item_element:
+    Name: ldap.PartialAttributeList_item_element
+    Info: PartialAttributeList item
+    JsonName: ldap_ldap_PartialAttributeList_item_element
+  ldap.object:
+    Name: ldap.object
+    Type: FtString
+    Info: object
+    JsonName: ldap_ldap_object
+  ldap.modification:
+    Name: ldap.modification
+    Type: FtUint32
+    Display: BaseDec
+    Info: modification
+    JsonName: ldap_ldap_modification
+  ldap.modification_item_element:
+    Name: ldap.modification_item_element
+    Info: modification item
+    JsonName: ldap_ldap_modification_item_element
+  ldap.operation:
+    Name: ldap.operation
+    Type: FtUint32
+    Display: BaseDec
+    Info: operation
+    JsonName: ldap_ldap_operation
+  ldap.modification_element:
+    Name: ldap.modification_element
+    Info: modification
+    JsonName: ldap_ldap_modification_element
+  ldap.entry:
+    Name: ldap.entry
+    Type: FtString
+    Info: entry
+    JsonName: ldap_ldap_entry
+  ldap.AttributeList_item_element:
+    Name: ldap.AttributeList_item_element
+    Info: AttributeList item
+    JsonName: ldap_ldap_AttributeList_item_element
+  ldap.newrdn:
+    Name: ldap.newrdn
+    Type: FtString
+    Info: newrdn
+    JsonName: ldap_ldap_newrdn
+  ldap.deleteoldrdn:
+    Name: ldap.deleteoldrdn
+    Type: FtBoolean
+    Info: deleteoldrdn
+    JsonName: ldap_ldap_deleteoldrdn
+  ldap.newSuperior:
+    Name: ldap.newSuperior
+    Type: FtString
+    Info: newSuperior
+    JsonName: ldap_ldap_newSuperior
+  ldap.ava_element:
+    Name: ldap.ava_element
+    Info: ava
+    JsonName: ldap_ldap_ava_element
+  ldap.requestName:
+    Name: ldap.requestName
+    Type: FtString
+    Info: requestName
+    JsonName: ldap_ldap_requestName
+  ldap.requestValue:
+    Name: ldap.requestValue
+    Type: FtBytes
+    Info: requestValue
+    JsonName: ldap_ldap_requestValue
+  ldap.responseName:
+    Name: ldap.responseName
+    Type: FtString
+    Info: responseName
+    JsonName: ldap_ldap_responseName
+  ldap.response:
+    Name: ldap.response
+    Type: FtBytes
+    Info: response
+    JsonName: ldap_ldap_response
+  ldap.responseValue:
+    Name: ldap.responseValue
+    Type: FtBytes
+    Info: responseValue
+    JsonName: ldap_ldap_responseValue
+  ldap.size:
+    Name: ldap.size
+    Type: FtInt32
+    Display: BaseDec
+    Info: size
+    JsonName: ldap_ldap_size
+  ldap.cookie:
+    Name: ldap.cookie
+    Type: FtBytes
+    Info: cookie
+    JsonName: ldap_ldap_cookie
+  ldap.SortKeyList_item_element:
+    Name: ldap.SortKeyList_item_element
+    Info: SortKeyList item
+    JsonName: ldap_ldap_SortKeyList_item_element
+  ldap.attributeType:
+    Name: ldap.attributeType
+    Type: FtString
+    Info: attributeType
+    JsonName: ldap_ldap_attributeType
+  ldap.orderingRule:
+    Name: ldap.orderingRule
+    Type: FtString
+    Info: orderingRule
+    JsonName: ldap_ldap_orderingRule
+  ldap.reverseOrder:
+    Name: ldap.reverseOrder
+    Type: FtBoolean
+    Info: reverseOrder
+    JsonName: ldap_ldap_reverseOrder
+  ldap.sortResult:
+    Name: ldap.sortResult
+    Type: FtUint32
+    Display: BaseDec
+    Info: sortResult
+    JsonName: ldap_ldap_sortResult
+  ldap.flags:
+    Name: ldap.flags
+    Type: FtUint32
+    Display: BaseHex
+    Info: flags
+    JsonName: ldap_ldap_flags
+  ldap.maxBytes:
+    Name: ldap.maxBytes
+    Type: FtInt32
+    Display: BaseDec
+    Info: maxBytes
+    JsonName: ldap_ldap_maxBytes
+  ldap.userIdentity:
+    Name: ldap.userIdentity
+    Type: FtBytes
+    Info: userIdentity
+    JsonName: ldap_ldap_userIdentity
+  ldap.oldPasswd:
+    Name: ldap.oldPasswd
+    Type: FtBytes
+    Info: oldPasswd
+    JsonName: ldap_ldap_oldPasswd
+  ldap.newPasswd:
+    Name: ldap.newPasswd
+    Type: FtBytes
+    Info: newPasswd
+    JsonName: ldap_ldap_newPasswd
+  ldap.cancelID:
+    Name: ldap.cancelID
+    Type: FtUint32
+    Display: BaseDec
+    Info: cancelID
+    JsonName: ldap_ldap_cancelID
+  ldap.mode:
+    Name: ldap.mode
+    Type: FtUint32
+    Display: BaseDec
+    Info: mode
+    JsonName: ldap_ldap_mode
+  ldap.reloadHint:
+    Name: ldap.reloadHint
+    Type: FtBoolean
+    Info: reloadHint
+    JsonName: ldap_ldap_reloadHint
+  ldap.state:
+    Name: ldap.state
+    Type: FtUint32
+    Display: BaseDec
+    Info: state
+    JsonName: ldap_ldap_state
+  ldap.entryUUID:
+    Name: ldap.entryUUID
+    Type: FtBytes
+    Info: entryUUID
+    JsonName: ldap_ldap_entryUUID
+  ldap.refreshDeletes:
+    Name: ldap.refreshDeletes
+    Type: FtBoolean
+    Info: refreshDeletes
+    JsonName: ldap_ldap_refreshDeletes
+  ldap.newcookie:
+    Name: ldap.newcookie
+    Type: FtBytes
+    Info: newcookie
+    JsonName: ldap_ldap_newcookie
+  ldap.refreshDelete_element:
+    Name: ldap.refreshDelete_element
+    Info: refreshDelete
+    JsonName: ldap_ldap_refreshDelete_element
+  ldap.refreshDone:
+    Name: ldap.refreshDone
+    Type: FtBoolean
+    Info: refreshDone
+    JsonName: ldap_ldap_refreshDone
+  ldap.refreshPresent_element:
+    Name: ldap.refreshPresent_element
+    Info: refreshPresent
+    JsonName: ldap_ldap_refreshPresent_element
+  ldap.syncIdSet_element:
+    Name: ldap.syncIdSet_element
+    Info: syncIdSet
+    JsonName: ldap_ldap_syncIdSet_element
+  ldap.syncUUIDs:
+    Name: ldap.syncUUIDs
+    Type: FtUint32
+    Display: BaseDec
+    Info: syncUUIDs
+    JsonName: ldap_ldap_syncUUIDs
+  ldap.SyncUUID:
+    Name: ldap.SyncUUID
+    Type: FtBytes
+    Info: SyncUUID
+    JsonName: ldap_ldap_SyncUUID
+  ldap.warning:
+    Name: ldap.warning
+    Type: FtUint32
+    Display: BaseDec
+    Info: warning
+    JsonName: ldap_ldap_warning
+  ldap.timeBeforeExpiration:
+    Name: ldap.timeBeforeExpiration
+    Type: FtUint32
+    Display: BaseDec
+    Info: timeBeforeExpiration
+    JsonName: ldap_ldap_timeBeforeExpiration
+  ldap.graceAuthNsRemaining:
+    Name: ldap.graceAuthNsRemaining
+    Type: FtUint32
+    Display: BaseDec
+    Info: graceAuthNsRemaining
+    JsonName: ldap_ldap_graceAuthNsRemaining
+  ldap.error:
+    Name: ldap.error
+    Type: FtUint32
+    Display: BaseDec
+    Info: error
+    JsonName: ldap_ldap_error

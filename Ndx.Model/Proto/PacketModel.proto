@@ -69,23 +69,3 @@ message DecodedFrame {
 	int64 Timestamp = 3;
 	map<string, Variant> Fields = 10;
 }
-
-
-message Parameter {
-	string Name = 1;
-	map<string,Variant> Properties = 2;
-}
-
-message Event {
-	message EventValue {
-		oneof ValueType {
-			Variant VariantValue = 1;
-			DecodedFrame PacketValue = 2;
-			Parameter ParameterValue = 4;
-		}
-	}
-
-	string Name = 1;
-	int64 Timestamp = 2;
-	map<string,EventValue> Items = 3; 
-}
