@@ -36,6 +36,7 @@ namespace Netdx
             {
                 var infiles = target.Argument("input", "Input trace in JSON format produces with 'TShark -T ek' command. Use - for reading from stdin.", true);
                 var outdir = target.Option("-o|--outdir", "The output directory were to put files with decoded packets.", CommandOptionType.SingleValue);
+                var outfile = target.Option("-" +"w|--writeTo", "The output filename were to put decoded packets. If multiple files are used, the output is concatenated in this single file.", CommandOptionType.SingleValue);
                 target.Description = "Prepares data for further processing by NDX tools.";
                 target.HelpOption("-?|-h|--help");
                 target.OnExecute(() =>
@@ -48,37 +49,41 @@ namespace Netdx
                     }
                     var cmd = new PrepareTrace();
 
-                    foreach (var infile in infiles.Values)
+
+                    
+                    Stream GetOutstream(string infile, out string outpath)
                     {
-
-                        Stream instream;
-                        Stream outstream;
-
-                        if (infile.Equals("STDIN"))
-                        {
-                            instream = Console.OpenStandardInput();
-                            var outfile = Path.ChangeExtension(outdir.HasValue() ? Path.Combine(outdir.Value(), Path.GetFileName(infile)) : infile, "dcap");
-                            outstream = File.Open(outfile, FileMode.OpenOrCreate, FileAccess.Write);
-                            Console.WriteLine($"{infile}->{outfile}");
+                        var pathPrefix = outdir.HasValue() ? outdir.Value() : String.Empty;
+                        if (outfile.HasValue())
+                        {                            
+                            outpath = Path.Combine(pathPrefix, outfile.Value());
+                            return File.Open(outpath, FileMode.Append, FileAccess.Write);
                         }
                         else
                         {
-                            instream = File.OpenRead(infile);
-                            var outfile = Path.ChangeExtension(outdir.HasValue() ? Path.Combine(outdir.Value(), Path.GetFileName(infile)) : infile, "dcap");
-                            outstream = File.Open(outfile, FileMode.OpenOrCreate, FileAccess.Write);
-                            Console.WriteLine($"{infile}->{outfile}");
-                        }                        
-                        try
-                        {
-                            cmd.Execute(instream, outstream);
+                            outpath = Path.ChangeExtension(Path.Combine(pathPrefix, infile), "dcap");
+                            return File.Open(outpath, FileMode.OpenOrCreate, FileAccess.Write);
                         }
-                        catch (Exception e)
-                        {
-                            target.Error.WriteLine();
-                            target.Error.WriteLine($"ERROR: {e.Message}");
-                            target.Error.WriteLine("Use switch -d to see details about this error.");
-                        }
+                    }
 
+                    foreach (var infile in infiles.Values)
+                    {
+                        using (var instream = infile.Equals("STDIN") ? Console.OpenStandardInput() : File.OpenRead(infile))
+                        using (var outstream = GetOutstream(infile, out var filename))
+                        {
+                            Console.WriteLine($"{infile}->{filename}");
+
+                            try
+                            {
+                                cmd.Execute(instream, outstream);
+                            }
+                            catch (Exception e)
+                            {
+                                target.Error.WriteLine();
+                                target.Error.WriteLine($"ERROR: {e.Message}");
+                                target.Error.WriteLine("Use switch -d to see details about this error.");
+                            }
+                        }
                     }
                     return 0;
                 });

@@ -1,6 +1,12 @@
 ﻿# Ndx.Decoders
 The project provides a collection of protocol decoders and representation objects. 
-Decoders are categorized in the following groups:
+Decoders enable to read JSON input produced by the tshark tool:
+
+```bash
+$ tshark -T ek -r input.pcap
+```
+
+Protocols are categorized in the following groups:
 * Base: Ethernet, Frame, IEEE802.11, IP, IPv6, LLC, TCP, UDP
 * Core:	ARP, ATM, HTTP, HTTP2, ICMP, ICMPv6, IGMP, IPSEC, IPX, NBIPX, NBT, NETBIOS, PPP
 * Common: ...

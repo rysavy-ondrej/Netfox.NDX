@@ -97,7 +97,7 @@
     <Compile Include="Decoders\Core\PacketNetbios.cs" />
     <Compile Include="Decoders\Core\PacketPpp.cs" />
     <Compile Include="Decoders\Packet.cs" />
-    <Compile Include="Packet.cs" />
+    <Compile Include="PacketDecoder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
