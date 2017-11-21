@@ -95,24 +95,24 @@ Fields:
     Type: FtUint16
     Display: BaseDec
     Info: Type
-    JsonName: dns_dns_qry_type
+    JsonName: text_dns_qry_type
   dns.qry.class:
     Name: dns.qry.class
     Type: FtUint16
     Display: BaseHex
     Info: Class
-    JsonName: dns_dns_qry_class
+    JsonName: text_dns_qry_class
   dns.qry.name:
     Name: dns.qry.name
     Type: FtString
     Info: Name
-    JsonName: dns_dns_qry_name
+    JsonName: text_dns_qry_name
   dns.qry.name.len:
     Name: dns.qry.name.len
     Type: FtUint16
     Display: BaseDec
     Info: Name Length
-    JsonName: dns_qry_name_dns_qry_name_len
+    JsonName: text_dns_qry_name_len
   dns.count.labels:
     Name: dns.count.labels
     Type: FtUint16
@@ -124,13 +124,13 @@ Fields:
     Type: FtUint16
     Display: BaseDec
     Info: Type
-    JsonName: dns_dns_resp_type
+    JsonName: text_dns_resp_type
   dns.resp.class:
     Name: dns.resp.class
     Type: FtUint16
     Display: BaseHex
     Info: Class
-    JsonName: dns_dns_resp_class
+    JsonName: text_dns_resp_class
   dns.resp.cache_flush:
     Name: dns.resp.cache_flush
     Type: FtBoolean
@@ -171,91 +171,91 @@ Fields:
     Name: dns.srv.service
     Type: FtString
     Info: Service
-    JsonName: dns_dns_srv_service
+    JsonName: text_dns_srv_service
   dns.srv.proto:
     Name: dns.srv.proto
     Type: FtString
     Info: Protocol
-    JsonName: dns_dns_srv_proto
+    JsonName: text_dns_srv_proto
   dns.srv.name:
     Name: dns.srv.name
     Type: FtString
     Info: Name
-    JsonName: dns_dns_srv_name
+    JsonName: text_dns_srv_name
   dns.srv.priority:
     Name: dns.srv.priority
     Type: FtUint16
     Display: BaseDec
     Info: Priority
-    JsonName: dns_dns_srv_priority
+    JsonName: text_dns_srv_priority
   dns.srv.weight:
     Name: dns.srv.weight
     Type: FtUint16
     Display: BaseDec
     Info: Weight
-    JsonName: dns_dns_srv_weight
+    JsonName: text_dns_srv_weight
   dns.srv.port:
     Name: dns.srv.port
     Type: FtUint16
     Display: BaseDec
     Info: Port
-    JsonName: dns_dns_srv_port
+    JsonName: text_dns_srv_port
   dns.srv.target:
     Name: dns.srv.target
     Type: FtString
     Info: Target
-    JsonName: dns_dns_srv_target
+    JsonName: text_dns_srv_target
   dns.naptr.order:
     Name: dns.naptr.order
     Type: FtUint16
     Display: BaseDec
     Info: Order
-    JsonName: dns_dns_naptr_order
+    JsonName: text_dns_naptr_order
   dns.naptr.preference:
     Name: dns.naptr.preference
     Type: FtUint16
     Display: BaseDec
     Info: Preference
-    JsonName: dns_dns_naptr_preference
+    JsonName: text_dns_naptr_preference
   dns.naptr.flags_length:
     Name: dns.naptr.flags_length
     Type: FtUint8
     Display: BaseDec
     Info: Flags Length
-    JsonName: dns_dns_naptr_flags_length
+    JsonName: text_dns_naptr_flags_length
   dns.naptr.flags:
     Name: dns.naptr.flags
     Type: FtString
     Info: Flags
-    JsonName: dns_dns_naptr_flags
+    JsonName: text_dns_naptr_flags
   dns.naptr.service_length:
     Name: dns.naptr.service_length
     Type: FtUint8
     Display: BaseDec
     Info: Service Length
-    JsonName: dns_dns_naptr_service_length
+    JsonName: text_dns_naptr_service_length
   dns.naptr.service:
     Name: dns.naptr.service
     Type: FtString
     Info: Service
-    JsonName: dns_dns_naptr_service
+    JsonName: text_dns_naptr_service
   dns.naptr.regex_length:
     Name: dns.naptr.regex_length
     Type: FtUint8
     Display: BaseDec
     Info: Regex Length
-    JsonName: dns_dns_naptr_regex_length
+    JsonName: text_dns_naptr_regex_length
   dns.naptr.regex:
     Name: dns.naptr.regex
     Type: FtString
     Info: Regex
-    JsonName: dns_dns_naptr_regex
+    JsonName: text_dns_naptr_regex
   dns.naptr.replacement_length:
     Name: dns.naptr.replacement_length
     Type: FtUint8
     Display: BaseDec
     Info: Replacement Length
-    JsonName: dns_dns_naptr_replacement_length
+    JsonName: text_dns_naptr_replacement_length
   dns.naptr.replacement:
     Name: dns.naptr.replacement
     Type: FtString
@@ -265,49 +265,49 @@ Fields:
     Name: dns.resp.name
     Type: FtString
     Info: Name
-    JsonName: dns_dns_resp_name
+    JsonName: text_dns_resp_name
   dns.resp.ttl:
     Name: dns.resp.ttl
     Type: FtInt32
     Display: BaseDec
     Info: Time to live
-    JsonName: dns_dns_resp_ttl
+    JsonName: text_dns_resp_ttl
   dns.resp.len:
     Name: dns.resp.len
     Type: FtUint32
     Display: BaseDec
     Info: Data length
-    JsonName: dns_dns_resp_len
+    JsonName: text_dns_resp_len
   dns.a:
     Name: dns.a
     Type: FtIpv4
     Info: Address
-    JsonName: dns_dns_a
+    JsonName: text_dns_a
   dns.md:
     Name: dns.md
     Type: FtString
     Info: Mail Destination
-    JsonName: dns_dns_md
+    JsonName: text_dns_md
   dns.mf:
     Name: dns.mf
     Type: FtString
     Info: Mail Forwarder
-    JsonName: dns_dns_mf
+    JsonName: text_dns_mf
   dns.mb:
     Name: dns.mb
     Type: FtString
     Info: MailBox Domaine
-    JsonName: dns_dns_mb
+    JsonName: text_dns_mb
   dns.mg:
     Name: dns.mg
     Type: FtString
     Info: Mail Group member
-    JsonName: dns_dns_mg
+    JsonName: text_dns_mg
   dns.mr:
     Name: dns.mr
     Type: FtString
     Info: Mail Rename domaine
-    JsonName: dns_dns_mr
+    JsonName: text_dns_mr
   dns.null:
     Name: dns.null
     Type: FtBytes
@@ -317,18 +317,18 @@ Fields:
     Name: dns.aaaa
     Type: FtIpv6
     Info: AAAA Address
-    JsonName: dns_dns_aaaa
+    JsonName: text_dns_aaaa
   dns.cname:
     Name: dns.cname
     Type: FtString
     Info: CNAME
-    JsonName: dns_dns_cname
+    JsonName: text_dns_cname
   dns.rr.udp_payload_size:
     Name: dns.rr.udp_payload_size
     Type: FtUint16
     Display: BaseHex
     Info: UDP payload size
-    JsonName: dns_dns_rr_udp_payload_size
+    JsonName: text_dns_rr_udp_payload_size
   dns.soa.mname:
     Name: dns.soa.mname
     Type: FtString
@@ -338,42 +338,42 @@ Fields:
     Name: dns.soa.rname
     Type: FtString
     Info: Responsible authority's mailbox
-    JsonName: dns_dns_soa_rname
+    JsonName: text_dns_soa_rname
   dns.soa.serial_number:
     Name: dns.soa.serial_number
     Type: FtUint32
     Display: BaseDec
     Info: Serial Number
-    JsonName: dns_dns_soa_serial_number
+    JsonName: text_dns_soa_serial_number
   dns.soa.refresh_interval:
     Name: dns.soa.refresh_interval
     Type: FtUint32
     Display: BaseDec
     Info: Refresh Interval
-    JsonName: dns_dns_soa_refresh_interval
+    JsonName: text_dns_soa_refresh_interval
   dns.soa.retry_interval:
     Name: dns.soa.retry_interval
     Type: FtUint32
     Display: BaseDec
     Info: Retry Interval
-    JsonName: dns_dns_soa_retry_interval
+    JsonName: text_dns_soa_retry_interval
   dns.soa.expire_limit:
     Name: dns.soa.expire_limit
     Type: FtUint32
     Display: BaseDec
     Info: Expire limit
-    JsonName: dns_dns_soa_expire_limit
+    JsonName: text_dns_soa_expire_limit
   dns.soa.mininum_ttl:
     Name: dns.soa.mininum_ttl
     Type: FtUint32
     Display: BaseDec
     Info: Minimum TTL
-    JsonName: dns_dns_soa_mininum_ttl
+    JsonName: text_dns_soa_mininum_ttl
   dns.ptr.domain_name:
     Name: dns.ptr.domain_name
     Type: FtString
     Info: Domain Name
-    JsonName: dns_dns_ptr_domain_name
+    JsonName: text_dns_ptr_domain_name
   dns.wks.address:
     Name: dns.wks.address
     Type: FtIpv4
@@ -428,12 +428,12 @@ Fields:
     Type: FtUint16
     Display: BaseDec
     Info: Preference
-    JsonName: dns_dns_mx_preference
+    JsonName: text_dns_mx_preference
   dns.mx.mail_exchange:
     Name: dns.mx.mail_exchange
     Type: FtString
     Info: Mail Exchange
-    JsonName: dns_dns_mx_mail_exchange
+    JsonName: text_dns_mx_mail_exchange
   dns.txt.length:
     Name: dns.txt.length
     Type: FtUint8
@@ -991,7 +991,7 @@ Fields:
     Name: dns.ns
     Type: FtString
     Info: Name Server
-    JsonName: dns_dns_ns
+    JsonName: text_dns_ns
   dns.opt:
     Name: dns.opt
     Info: Option

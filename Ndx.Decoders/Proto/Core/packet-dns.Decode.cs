@@ -743,7 +743,7 @@ namespace Ndx.Decoders.Core
       }
       {
         var val = token["dns_opt_dns_opt_n3u"];
-        if (val != null) obj.DnsOptN3U = Convert.ToUInt32(val.Value<string>(), 10);
+        if (val != null) obj.DnsOptN3u = Convert.ToUInt32(val.Value<string>(), 10);
       }
       {
         var val = token["dns_dns_opt_client_family"];

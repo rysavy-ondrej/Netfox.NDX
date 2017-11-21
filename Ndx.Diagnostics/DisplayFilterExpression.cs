@@ -35,7 +35,8 @@ namespace Ndx.Diagnostics
         /// Parses the input string to <see cref="FlowKeyFilterExpression"/>.
         /// </summary>
         /// <param name="filter">An input string using flow filter syntax to express the filter.</param>
-        /// <returns><see cref="FlowKeyFilterExpression"/> instance containig the filter. Use <see cref="FlowKeyFilterExpression.FlowFilter"/> to get filter function.</returns>
+        /// <returns><see cref="FlowKeyFilterExpression"/> instance containig the filter. 
+        /// Use <see cref="FlowKeyFilterExpression.FlowFilter"/> to get filter function.</returns>
         /// <exception cref="ParseException">thrown on syntax error.</exception>
         public static DisplayFilterExpression Parse(string filter)
         {

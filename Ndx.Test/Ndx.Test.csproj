@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Captures\ReadFiles.cs" />
     <Compile Include="Console\ConversationsTest.cs" />
+    <Compile Include="Decoders\DecoderFactoryTest.cs" />
     <Compile Include="Decoders\DecodersTest.cs" />
     <Compile Include="Decoders\DnsDecoderTest.cs" />
     <Compile Include="Diagnostics\RuleTest.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Ingest\LoadFromTest.cs" />
     <Compile Include="Model\VariantTest.cs" />
     <Compile Include="Model\LoadSaveTest.cs" />
+    <Compile Include="Decoders\PacketTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ipfix\IpfixTest.cs" />
     <Compile Include="Tshark\TSharkProcessTest.cs" />

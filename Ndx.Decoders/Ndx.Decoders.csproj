@@ -97,6 +97,7 @@
     <Compile Include="Decoders\Core\PacketNetbios.cs" />
     <Compile Include="Decoders\Core\PacketPpp.cs" />
     <Compile Include="Decoders\Packet.cs" />
+    <Compile Include="Packet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +184,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ndx.Captures\Ndx.Captures.csproj">
+      <Project>{F7893DF7-5638-43BC-91E5-E612E4D0AD53}</Project>
+      <Name>Ndx.Captures</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ndx.Model\Ndx.Model.csproj">
       <Project>{6c85ca82-04e3-4600-80ab-12b53f6ae4b3}</Project>
       <Name>Ndx.Model</Name>
@@ -193,6 +198,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>$(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools\windows_x86\protoc  --proto_path $(ProjectDir)Proto --proto_path $(ProjectDir)Proto\Base --csharp_out=$(ProjectDir)Decoders $(ProjectDir)Proto\Packet.proto</PreBuildEvent>
+    <PreBuildEvent>$(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools\windows_x86\protoc  --proto_path $(ProjectDir)Proto --proto_path $(ProjectDir)Proto\Base --proto_path $(ProjectDir)Proto\Core --proto_path $(ProjectDir)Proto\Common --csharp_out=$(ProjectDir)Decoders $(ProjectDir)Proto\Packet.proto</PreBuildEvent>
   </PropertyGroup>
 </Project>

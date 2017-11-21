@@ -5,6 +5,7 @@
 syntax = "proto3";
 package ndx.decoders;
 option java_package = "org.ndx.decoders";
+// BASE:
 import "packet-eth.proto";
 import "packet-frame.proto";
 import "packet-ieee80211.proto";
@@ -13,38 +14,53 @@ import "packet-ipv6.proto";
 import "packet-llc.proto";
 import "packet-tcp.proto";
 import "packet-udp.proto";
+// CORE:
+import "packet-arp.proto";
+import "packet-atm.proto";
+import "packet-dns.proto";
+import "packet-http.proto";
+import "packet-http2.proto";
+import "packet-icmp.proto";
+import "packet-icmpv6.proto";
+import "packet-igmp.proto";
+import "packet-ipsec.proto";
+import "packet-ipx.proto";
+import "packet-nbipx.proto";
+import "packet-nbt.proto";
+import "packet-netbios.proto";
+import "packet-ppp.proto";
 
-message LinkPacket {
-	oneof Link {
-		Ndx.Decoders.Basic.Eth Ethernet = 1;
-		Ndx.Decoders.Basic.Ieee80211 Wireless = 9;
-	}
-}
-
-message InternetPacket {
-	oneof Net {
-		Ndx.Decoders.Basic.Ip Ip = 1;
-		Ndx.Decoders.Basic.Ipv6 Ipv6 = 2;
-	}
-}
-
-message TransportPacket {
-	oneof Transport {
-		Ndx.Decoders.Basic.Tcp Tcp = 1;
-		Ndx.Decoders.Basic.Udp Udp = 2;
-	}
-}
-
-message ApplicationPacket {
-
-}
 
 message Packet {
-	int64 TimeStamp = 5;
+	int64 TimeStamp = 1;
 	int32 FrameNumber = 2;
 
-	LinkPacket Link = 10;
-	InternetPacket Network = 20;
-	TransportPacket Transport = 30;
-	ApplicationPacket Application = 40;
+	message Protocol {
+		oneof ProtocolType {
+			// BASE:
+			Ndx.Decoders.Basic.Eth Ethernet = 1;
+			Ndx.Decoders.Basic.Ieee80211 Wireless = 2;
+			Ndx.Decoders.Basic.Ip Ip = 3;
+			Ndx.Decoders.Basic.Ipv6 Ipv6 = 4;
+			Ndx.Decoders.Basic.Tcp Tcp = 5;
+			Ndx.Decoders.Basic.Udp Udp = 6;
+			// CORE:
+			Ndx.Decoders.Core.Arp arp = 101;
+			Ndx.Decoders.Core.Atm atm = 102;
+			Ndx.Decoders.Core.Dns dns = 103;
+			Ndx.Decoders.Core.Http http = 104;
+			Ndx.Decoders.Core.Http2 http2 = 105;
+			Ndx.Decoders.Core.Icmp icmp = 106;
+			Ndx.Decoders.Core.Icmpv6 icmpv6 = 107;
+			Ndx.Decoders.Core.Igmp igmp = 108;
+			Ndx.Decoders.Core.Ipsec ipsec = 109;
+			Ndx.Decoders.Core.Ipx ipx = 110;
+			Ndx.Decoders.Core.Nbipx nbipx = 111;
+			Ndx.Decoders.Core.Nbt nbt = 112;
+			Ndx.Decoders.Core.Netbios netbios = 113;
+			Ndx.Decoders.Core.Ppp ppp = 114;
+			// COMMON:
+		}
+	}
+	repeated Protocol Protocols = 10;
 }

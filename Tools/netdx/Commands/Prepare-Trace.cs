@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.CommandLineUtils;
+﻿using Google.Protobuf;
+using Microsoft.Extensions.CommandLineUtils;
 using Ndx.Captures;
 using Ndx.Decoders;
 using Ndx.Model;
@@ -10,20 +11,19 @@ namespace Netdx
 {
     internal class PrepareTrace
     {
-        public void Execute(string inpath, string outpath)
+        public void Execute(Stream instream, Stream outstream)
         {
             var factory = new DecoderFactory();
-            using (var json = new PcapJsonStream(new StreamReader(File.OpenRead(inpath))))
+            var decoder = new PacketDecoder();
+            using (var pcapstream = new PcapJsonStream(new StreamReader(instream)))
             {
                 JsonPacket packet;
-                while((packet = json.ReadPacket()) != null)
+                while((packet = pcapstream.ReadPacket()) != null)
                 {
-                    foreach(var proto in packet.Protocols)
-                    {
-                        var protoObj = packet.GetProtocol(proto);
-                        var message = factory.DecodeProtocol(proto, protoObj);
-                    }
+                    var pckt = decoder.Decode(factory, packet);
+                    pckt.WriteDelimitedTo(outstream);
                 }
+                outstream.Flush();
             }
         }
 
@@ -34,7 +34,7 @@ namespace Netdx
             return 
             (CommandLineApplication target) =>
             {
-                var infiles = target.Argument("input", "Input trace in JSON format produces with 'TShark -T ek' command.", true);
+                var infiles = target.Argument("input", "Input trace in JSON format produces with 'TShark -T ek' command. Use - for reading from stdin.", true);
                 var outdir = target.Option("-o|--outdir", "The output directory were to put files with decoded packets.", CommandOptionType.SingleValue);
                 target.Description = "Prepares data for further processing by NDX tools.";
                 target.HelpOption("-?|-h|--help");
@@ -48,14 +48,29 @@ namespace Netdx
                     }
                     var cmd = new PrepareTrace();
 
-                    foreach (var file in infiles.Values)
+                    foreach (var infile in infiles.Values)
                     {
-                        var infile = file;
-                        var outfile = Path.ChangeExtension(outdir.HasValue() ? Path.Combine(outdir.Value(), Path.GetFileName(infile)) : infile, "zip");
-                        Console.WriteLine($"{file}->{outfile}");
+
+                        Stream instream;
+                        Stream outstream;
+
+                        if (infile.Equals("STDIN"))
+                        {
+                            instream = Console.OpenStandardInput();
+                            var outfile = Path.ChangeExtension(outdir.HasValue() ? Path.Combine(outdir.Value(), Path.GetFileName(infile)) : infile, "dcap");
+                            outstream = File.Open(outfile, FileMode.OpenOrCreate, FileAccess.Write);
+                            Console.WriteLine($"{infile}->{outfile}");
+                        }
+                        else
+                        {
+                            instream = File.OpenRead(infile);
+                            var outfile = Path.ChangeExtension(outdir.HasValue() ? Path.Combine(outdir.Value(), Path.GetFileName(infile)) : infile, "dcap");
+                            outstream = File.Open(outfile, FileMode.OpenOrCreate, FileAccess.Write);
+                            Console.WriteLine($"{infile}->{outfile}");
+                        }                        
                         try
                         {
-                            cmd.Execute(infile, outfile);
+                            cmd.Execute(instream, outstream);
                         }
                         catch (Exception e)
                         {

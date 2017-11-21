@@ -26,681 +26,44 @@ namespace Ndx.Decoders {
             "bxoScGFja2V0LWZyYW1lLnByb3RvGhZwYWNrZXQtaWVlZTgwMjExLnByb3Rv",
             "Gg9wYWNrZXQtaXAucHJvdG8aEXBhY2tldC1pcHY2LnByb3RvGhBwYWNrZXQt",
             "bGxjLnByb3RvGhBwYWNrZXQtdGNwLnByb3RvGhBwYWNrZXQtdWRwLnByb3Rv",
-            "InQKCkxpbmtQYWNrZXQSKwoIRXRoZXJuZXQYASABKAsyFy5OZHguRGVjb2Rl",
-            "cnMuQmFzaWMuRXRoSAASMQoIV2lyZWxlc3MYCSABKAsyHS5OZHguRGVjb2Rl",
-            "cnMuQmFzaWMuSWVlZTgwMjExSABCBgoETGluayJnCg5JbnRlcm5ldFBhY2tl",
-            "dBIkCgJJcBgBIAEoCzIWLk5keC5EZWNvZGVycy5CYXNpYy5JcEgAEigKBElw",
-            "djYYAiABKAsyGC5OZHguRGVjb2RlcnMuQmFzaWMuSXB2NkgAQgUKA05ldCJu",
-            "Cg9UcmFuc3BvcnRQYWNrZXQSJgoDVGNwGAEgASgLMhcuTmR4LkRlY29kZXJz",
-            "LkJhc2ljLlRjcEgAEiYKA1VkcBgCIAEoCzIXLk5keC5EZWNvZGVycy5CYXNp",
-            "Yy5VZHBIAEILCglUcmFuc3BvcnQiEwoRQXBwbGljYXRpb25QYWNrZXQi7wEK",
-            "BlBhY2tldBIRCglUaW1lU3RhbXAYBSABKAMSEwoLRnJhbWVOdW1iZXIYAiAB",
-            "KAUSJgoETGluaxgKIAEoCzIYLm5keC5kZWNvZGVycy5MaW5rUGFja2V0Ei0K",
-            "B05ldHdvcmsYFCABKAsyHC5uZHguZGVjb2RlcnMuSW50ZXJuZXRQYWNrZXQS",
-            "MAoJVHJhbnNwb3J0GB4gASgLMh0ubmR4LmRlY29kZXJzLlRyYW5zcG9ydFBh",
-            "Y2tldBI0CgtBcHBsaWNhdGlvbhgoIAEoCzIfLm5keC5kZWNvZGVycy5BcHBs",
-            "aWNhdGlvblBhY2tldEISChBvcmcubmR4LmRlY29kZXJzYgZwcm90bzM="));
+            "GhBwYWNrZXQtYXJwLnByb3RvGhBwYWNrZXQtYXRtLnByb3RvGhBwYWNrZXQt",
+            "ZG5zLnByb3RvGhFwYWNrZXQtaHR0cC5wcm90bxoScGFja2V0LWh0dHAyLnBy",
+            "b3RvGhFwYWNrZXQtaWNtcC5wcm90bxoTcGFja2V0LWljbXB2Ni5wcm90bxoR",
+            "cGFja2V0LWlnbXAucHJvdG8aEnBhY2tldC1pcHNlYy5wcm90bxoQcGFja2V0",
+            "LWlweC5wcm90bxoScGFja2V0LW5iaXB4LnByb3RvGhBwYWNrZXQtbmJ0LnBy",
+            "b3RvGhRwYWNrZXQtbmV0Ymlvcy5wcm90bxoQcGFja2V0LXBwcC5wcm90byLB",
+            "BwoGUGFja2V0EhEKCVRpbWVTdGFtcBgBIAEoAxITCgtGcmFtZU51bWJlchgC",
+            "IAEoBRIwCglQcm90b2NvbHMYCiADKAsyHS5uZHguZGVjb2RlcnMuUGFja2V0",
+            "LlByb3RvY29sGtwGCghQcm90b2NvbBIrCghFdGhlcm5ldBgBIAEoCzIXLk5k",
+            "eC5EZWNvZGVycy5CYXNpYy5FdGhIABIxCghXaXJlbGVzcxgCIAEoCzIdLk5k",
+            "eC5EZWNvZGVycy5CYXNpYy5JZWVlODAyMTFIABIkCgJJcBgDIAEoCzIWLk5k",
+            "eC5EZWNvZGVycy5CYXNpYy5JcEgAEigKBElwdjYYBCABKAsyGC5OZHguRGVj",
+            "b2RlcnMuQmFzaWMuSXB2NkgAEiYKA1RjcBgFIAEoCzIXLk5keC5EZWNvZGVy",
+            "cy5CYXNpYy5UY3BIABImCgNVZHAYBiABKAsyFy5OZHguRGVjb2RlcnMuQmFz",
+            "aWMuVWRwSAASJQoDYXJwGGUgASgLMhYuTmR4LkRlY29kZXJzLkNvcmUuQXJw",
+            "SAASJQoDYXRtGGYgASgLMhYuTmR4LkRlY29kZXJzLkNvcmUuQXRtSAASJQoD",
+            "ZG5zGGcgASgLMhYuTmR4LkRlY29kZXJzLkNvcmUuRG5zSAASJwoEaHR0cBho",
+            "IAEoCzIXLk5keC5EZWNvZGVycy5Db3JlLkh0dHBIABIpCgVodHRwMhhpIAEo",
+            "CzIYLk5keC5EZWNvZGVycy5Db3JlLkh0dHAySAASJwoEaWNtcBhqIAEoCzIX",
+            "Lk5keC5EZWNvZGVycy5Db3JlLkljbXBIABIrCgZpY21wdjYYayABKAsyGS5O",
+            "ZHguRGVjb2RlcnMuQ29yZS5JY21wdjZIABInCgRpZ21wGGwgASgLMhcuTmR4",
+            "LkRlY29kZXJzLkNvcmUuSWdtcEgAEikKBWlwc2VjGG0gASgLMhguTmR4LkRl",
+            "Y29kZXJzLkNvcmUuSXBzZWNIABIlCgNpcHgYbiABKAsyFi5OZHguRGVjb2Rl",
+            "cnMuQ29yZS5JcHhIABIpCgVuYmlweBhvIAEoCzIYLk5keC5EZWNvZGVycy5D",
+            "b3JlLk5iaXB4SAASJQoDbmJ0GHAgASgLMhYuTmR4LkRlY29kZXJzLkNvcmUu",
+            "TmJ0SAASLQoHbmV0YmlvcxhxIAEoCzIaLk5keC5EZWNvZGVycy5Db3JlLk5l",
+            "dGJpb3NIABIlCgNwcHAYciABKAsyFi5OZHguRGVjb2RlcnMuQ29yZS5QcHBI",
+            "AEIOCgxQcm90b2NvbFR5cGVCEgoQb3JnLm5keC5kZWNvZGVyc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Ndx.Decoders.Basic.PacketEthReflection.Descriptor, global::Ndx.Decoders.Basic.PacketFrameReflection.Descriptor, global::Ndx.Decoders.Basic.PacketIeee80211Reflection.Descriptor, global::Ndx.Decoders.Basic.PacketIpReflection.Descriptor, global::Ndx.Decoders.Basic.PacketIpv6Reflection.Descriptor, global::Ndx.Decoders.Basic.PacketLlcReflection.Descriptor, global::Ndx.Decoders.Basic.PacketTcpReflection.Descriptor, global::Ndx.Decoders.Basic.PacketUdpReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Ndx.Decoders.Basic.PacketEthReflection.Descriptor, global::Ndx.Decoders.Basic.PacketFrameReflection.Descriptor, global::Ndx.Decoders.Basic.PacketIeee80211Reflection.Descriptor, global::Ndx.Decoders.Basic.PacketIpReflection.Descriptor, global::Ndx.Decoders.Basic.PacketIpv6Reflection.Descriptor, global::Ndx.Decoders.Basic.PacketLlcReflection.Descriptor, global::Ndx.Decoders.Basic.PacketTcpReflection.Descriptor, global::Ndx.Decoders.Basic.PacketUdpReflection.Descriptor, global::Ndx.Decoders.Core.PacketArpReflection.Descriptor, global::Ndx.Decoders.Core.PacketAtmReflection.Descriptor, global::Ndx.Decoders.Core.PacketDnsReflection.Descriptor, global::Ndx.Decoders.Core.PacketHttpReflection.Descriptor, global::Ndx.Decoders.Core.PacketHttp2Reflection.Descriptor, global::Ndx.Decoders.Core.PacketIcmpReflection.Descriptor, global::Ndx.Decoders.Core.PacketIcmpv6Reflection.Descriptor, global::Ndx.Decoders.Core.PacketIgmpReflection.Descriptor, global::Ndx.Decoders.Core.PacketIpsecReflection.Descriptor, global::Ndx.Decoders.Core.PacketIpxReflection.Descriptor, global::Ndx.Decoders.Core.PacketNbipxReflection.Descriptor, global::Ndx.Decoders.Core.PacketNbtReflection.Descriptor, global::Ndx.Decoders.Core.PacketNetbiosReflection.Descriptor, global::Ndx.Decoders.Core.PacketPppReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.LinkPacket), global::Ndx.Decoders.LinkPacket.Parser, new[]{ "Ethernet", "Wireless" }, new[]{ "Link" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.InternetPacket), global::Ndx.Decoders.InternetPacket.Parser, new[]{ "Ip", "Ipv6" }, new[]{ "Net" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.TransportPacket), global::Ndx.Decoders.TransportPacket.Parser, new[]{ "Tcp", "Udp" }, new[]{ "Transport" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.ApplicationPacket), global::Ndx.Decoders.ApplicationPacket.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Packet), global::Ndx.Decoders.Packet.Parser, new[]{ "TimeStamp", "FrameNumber", "Link", "Network", "Transport", "Application" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Packet), global::Ndx.Decoders.Packet.Parser, new[]{ "TimeStamp", "FrameNumber", "Protocols" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Packet.Types.Protocol), global::Ndx.Decoders.Packet.Types.Protocol.Parser, new[]{ "Ethernet", "Wireless", "Ip", "Ipv6", "Tcp", "Udp", "Arp", "Atm", "Dns", "Http", "Http2", "Icmp", "Icmpv6", "Igmp", "Ipsec", "Ipx", "Nbipx", "Nbt", "Netbios", "Ppp" }, new[]{ "ProtocolType" }, null, null)})
           }));
     }
     #endregion
 
   }
   #region Messages
-  public sealed partial class LinkPacket : pb::IMessage<LinkPacket> {
-    private static readonly pb::MessageParser<LinkPacket> _parser = new pb::MessageParser<LinkPacket>(() => new LinkPacket());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<LinkPacket> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Decoders.PacketReflection.Descriptor.MessageTypes[0]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public LinkPacket() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public LinkPacket(LinkPacket other) : this() {
-      switch (other.LinkCase) {
-        case LinkOneofCase.Ethernet:
-          Ethernet = other.Ethernet.Clone();
-          break;
-        case LinkOneofCase.Wireless:
-          Wireless = other.Wireless.Clone();
-          break;
-      }
-
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public LinkPacket Clone() {
-      return new LinkPacket(this);
-    }
-
-    /// <summary>Field number for the "Ethernet" field.</summary>
-    public const int EthernetFieldNumber = 1;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Decoders.Basic.Eth Ethernet {
-      get { return linkCase_ == LinkOneofCase.Ethernet ? (global::Ndx.Decoders.Basic.Eth) link_ : null; }
-      set {
-        link_ = value;
-        linkCase_ = value == null ? LinkOneofCase.None : LinkOneofCase.Ethernet;
-      }
-    }
-
-    /// <summary>Field number for the "Wireless" field.</summary>
-    public const int WirelessFieldNumber = 9;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Decoders.Basic.Ieee80211 Wireless {
-      get { return linkCase_ == LinkOneofCase.Wireless ? (global::Ndx.Decoders.Basic.Ieee80211) link_ : null; }
-      set {
-        link_ = value;
-        linkCase_ = value == null ? LinkOneofCase.None : LinkOneofCase.Wireless;
-      }
-    }
-
-    private object link_;
-    /// <summary>Enum of possible cases for the "Link" oneof.</summary>
-    public enum LinkOneofCase {
-      None = 0,
-      Ethernet = 1,
-      Wireless = 9,
-    }
-    private LinkOneofCase linkCase_ = LinkOneofCase.None;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public LinkOneofCase LinkCase {
-      get { return linkCase_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void ClearLink() {
-      linkCase_ = LinkOneofCase.None;
-      link_ = null;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as LinkPacket);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(LinkPacket other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (!object.Equals(Ethernet, other.Ethernet)) return false;
-      if (!object.Equals(Wireless, other.Wireless)) return false;
-      if (LinkCase != other.LinkCase) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (linkCase_ == LinkOneofCase.Ethernet) hash ^= Ethernet.GetHashCode();
-      if (linkCase_ == LinkOneofCase.Wireless) hash ^= Wireless.GetHashCode();
-      hash ^= (int) linkCase_;
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (linkCase_ == LinkOneofCase.Ethernet) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Ethernet);
-      }
-      if (linkCase_ == LinkOneofCase.Wireless) {
-        output.WriteRawTag(74);
-        output.WriteMessage(Wireless);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (linkCase_ == LinkOneofCase.Ethernet) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Ethernet);
-      }
-      if (linkCase_ == LinkOneofCase.Wireless) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Wireless);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(LinkPacket other) {
-      if (other == null) {
-        return;
-      }
-      switch (other.LinkCase) {
-        case LinkOneofCase.Ethernet:
-          Ethernet = other.Ethernet;
-          break;
-        case LinkOneofCase.Wireless:
-          Wireless = other.Wireless;
-          break;
-      }
-
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 10: {
-            global::Ndx.Decoders.Basic.Eth subBuilder = new global::Ndx.Decoders.Basic.Eth();
-            if (linkCase_ == LinkOneofCase.Ethernet) {
-              subBuilder.MergeFrom(Ethernet);
-            }
-            input.ReadMessage(subBuilder);
-            Ethernet = subBuilder;
-            break;
-          }
-          case 74: {
-            global::Ndx.Decoders.Basic.Ieee80211 subBuilder = new global::Ndx.Decoders.Basic.Ieee80211();
-            if (linkCase_ == LinkOneofCase.Wireless) {
-              subBuilder.MergeFrom(Wireless);
-            }
-            input.ReadMessage(subBuilder);
-            Wireless = subBuilder;
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class InternetPacket : pb::IMessage<InternetPacket> {
-    private static readonly pb::MessageParser<InternetPacket> _parser = new pb::MessageParser<InternetPacket>(() => new InternetPacket());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<InternetPacket> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Decoders.PacketReflection.Descriptor.MessageTypes[1]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public InternetPacket() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public InternetPacket(InternetPacket other) : this() {
-      switch (other.NetCase) {
-        case NetOneofCase.Ip:
-          Ip = other.Ip.Clone();
-          break;
-        case NetOneofCase.Ipv6:
-          Ipv6 = other.Ipv6.Clone();
-          break;
-      }
-
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public InternetPacket Clone() {
-      return new InternetPacket(this);
-    }
-
-    /// <summary>Field number for the "Ip" field.</summary>
-    public const int IpFieldNumber = 1;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Decoders.Basic.Ip Ip {
-      get { return netCase_ == NetOneofCase.Ip ? (global::Ndx.Decoders.Basic.Ip) net_ : null; }
-      set {
-        net_ = value;
-        netCase_ = value == null ? NetOneofCase.None : NetOneofCase.Ip;
-      }
-    }
-
-    /// <summary>Field number for the "Ipv6" field.</summary>
-    public const int Ipv6FieldNumber = 2;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Decoders.Basic.Ipv6 Ipv6 {
-      get { return netCase_ == NetOneofCase.Ipv6 ? (global::Ndx.Decoders.Basic.Ipv6) net_ : null; }
-      set {
-        net_ = value;
-        netCase_ = value == null ? NetOneofCase.None : NetOneofCase.Ipv6;
-      }
-    }
-
-    private object net_;
-    /// <summary>Enum of possible cases for the "Net" oneof.</summary>
-    public enum NetOneofCase {
-      None = 0,
-      Ip = 1,
-      Ipv6 = 2,
-    }
-    private NetOneofCase netCase_ = NetOneofCase.None;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public NetOneofCase NetCase {
-      get { return netCase_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void ClearNet() {
-      netCase_ = NetOneofCase.None;
-      net_ = null;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as InternetPacket);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(InternetPacket other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (!object.Equals(Ip, other.Ip)) return false;
-      if (!object.Equals(Ipv6, other.Ipv6)) return false;
-      if (NetCase != other.NetCase) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (netCase_ == NetOneofCase.Ip) hash ^= Ip.GetHashCode();
-      if (netCase_ == NetOneofCase.Ipv6) hash ^= Ipv6.GetHashCode();
-      hash ^= (int) netCase_;
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (netCase_ == NetOneofCase.Ip) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Ip);
-      }
-      if (netCase_ == NetOneofCase.Ipv6) {
-        output.WriteRawTag(18);
-        output.WriteMessage(Ipv6);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (netCase_ == NetOneofCase.Ip) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Ip);
-      }
-      if (netCase_ == NetOneofCase.Ipv6) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Ipv6);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(InternetPacket other) {
-      if (other == null) {
-        return;
-      }
-      switch (other.NetCase) {
-        case NetOneofCase.Ip:
-          Ip = other.Ip;
-          break;
-        case NetOneofCase.Ipv6:
-          Ipv6 = other.Ipv6;
-          break;
-      }
-
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 10: {
-            global::Ndx.Decoders.Basic.Ip subBuilder = new global::Ndx.Decoders.Basic.Ip();
-            if (netCase_ == NetOneofCase.Ip) {
-              subBuilder.MergeFrom(Ip);
-            }
-            input.ReadMessage(subBuilder);
-            Ip = subBuilder;
-            break;
-          }
-          case 18: {
-            global::Ndx.Decoders.Basic.Ipv6 subBuilder = new global::Ndx.Decoders.Basic.Ipv6();
-            if (netCase_ == NetOneofCase.Ipv6) {
-              subBuilder.MergeFrom(Ipv6);
-            }
-            input.ReadMessage(subBuilder);
-            Ipv6 = subBuilder;
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class TransportPacket : pb::IMessage<TransportPacket> {
-    private static readonly pb::MessageParser<TransportPacket> _parser = new pb::MessageParser<TransportPacket>(() => new TransportPacket());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<TransportPacket> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Decoders.PacketReflection.Descriptor.MessageTypes[2]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TransportPacket() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TransportPacket(TransportPacket other) : this() {
-      switch (other.TransportCase) {
-        case TransportOneofCase.Tcp:
-          Tcp = other.Tcp.Clone();
-          break;
-        case TransportOneofCase.Udp:
-          Udp = other.Udp.Clone();
-          break;
-      }
-
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TransportPacket Clone() {
-      return new TransportPacket(this);
-    }
-
-    /// <summary>Field number for the "Tcp" field.</summary>
-    public const int TcpFieldNumber = 1;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Decoders.Basic.Tcp Tcp {
-      get { return transportCase_ == TransportOneofCase.Tcp ? (global::Ndx.Decoders.Basic.Tcp) transport_ : null; }
-      set {
-        transport_ = value;
-        transportCase_ = value == null ? TransportOneofCase.None : TransportOneofCase.Tcp;
-      }
-    }
-
-    /// <summary>Field number for the "Udp" field.</summary>
-    public const int UdpFieldNumber = 2;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Decoders.Basic.Udp Udp {
-      get { return transportCase_ == TransportOneofCase.Udp ? (global::Ndx.Decoders.Basic.Udp) transport_ : null; }
-      set {
-        transport_ = value;
-        transportCase_ = value == null ? TransportOneofCase.None : TransportOneofCase.Udp;
-      }
-    }
-
-    private object transport_;
-    /// <summary>Enum of possible cases for the "Transport" oneof.</summary>
-    public enum TransportOneofCase {
-      None = 0,
-      Tcp = 1,
-      Udp = 2,
-    }
-    private TransportOneofCase transportCase_ = TransportOneofCase.None;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TransportOneofCase TransportCase {
-      get { return transportCase_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void ClearTransport() {
-      transportCase_ = TransportOneofCase.None;
-      transport_ = null;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as TransportPacket);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(TransportPacket other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (!object.Equals(Tcp, other.Tcp)) return false;
-      if (!object.Equals(Udp, other.Udp)) return false;
-      if (TransportCase != other.TransportCase) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (transportCase_ == TransportOneofCase.Tcp) hash ^= Tcp.GetHashCode();
-      if (transportCase_ == TransportOneofCase.Udp) hash ^= Udp.GetHashCode();
-      hash ^= (int) transportCase_;
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (transportCase_ == TransportOneofCase.Tcp) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Tcp);
-      }
-      if (transportCase_ == TransportOneofCase.Udp) {
-        output.WriteRawTag(18);
-        output.WriteMessage(Udp);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (transportCase_ == TransportOneofCase.Tcp) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Tcp);
-      }
-      if (transportCase_ == TransportOneofCase.Udp) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Udp);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(TransportPacket other) {
-      if (other == null) {
-        return;
-      }
-      switch (other.TransportCase) {
-        case TransportOneofCase.Tcp:
-          Tcp = other.Tcp;
-          break;
-        case TransportOneofCase.Udp:
-          Udp = other.Udp;
-          break;
-      }
-
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 10: {
-            global::Ndx.Decoders.Basic.Tcp subBuilder = new global::Ndx.Decoders.Basic.Tcp();
-            if (transportCase_ == TransportOneofCase.Tcp) {
-              subBuilder.MergeFrom(Tcp);
-            }
-            input.ReadMessage(subBuilder);
-            Tcp = subBuilder;
-            break;
-          }
-          case 18: {
-            global::Ndx.Decoders.Basic.Udp subBuilder = new global::Ndx.Decoders.Basic.Udp();
-            if (transportCase_ == TransportOneofCase.Udp) {
-              subBuilder.MergeFrom(Udp);
-            }
-            input.ReadMessage(subBuilder);
-            Udp = subBuilder;
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class ApplicationPacket : pb::IMessage<ApplicationPacket> {
-    private static readonly pb::MessageParser<ApplicationPacket> _parser = new pb::MessageParser<ApplicationPacket>(() => new ApplicationPacket());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<ApplicationPacket> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Decoders.PacketReflection.Descriptor.MessageTypes[3]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ApplicationPacket() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ApplicationPacket(ApplicationPacket other) : this() {
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ApplicationPacket Clone() {
-      return new ApplicationPacket(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as ApplicationPacket);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(ApplicationPacket other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(ApplicationPacket other) {
-      if (other == null) {
-        return;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-        }
-      }
-    }
-
-  }
-
   public sealed partial class Packet : pb::IMessage<Packet> {
     private static readonly pb::MessageParser<Packet> _parser = new pb::MessageParser<Packet>(() => new Packet());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -708,7 +71,7 @@ namespace Ndx.Decoders {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Decoders.PacketReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Ndx.Decoders.PacketReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -727,10 +90,7 @@ namespace Ndx.Decoders {
     public Packet(Packet other) : this() {
       timeStamp_ = other.timeStamp_;
       frameNumber_ = other.frameNumber_;
-      Link = other.link_ != null ? other.Link.Clone() : null;
-      Network = other.network_ != null ? other.Network.Clone() : null;
-      Transport = other.transport_ != null ? other.Transport.Clone() : null;
-      Application = other.application_ != null ? other.Application.Clone() : null;
+      protocols_ = other.protocols_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -739,7 +99,7 @@ namespace Ndx.Decoders {
     }
 
     /// <summary>Field number for the "TimeStamp" field.</summary>
-    public const int TimeStampFieldNumber = 5;
+    public const int TimeStampFieldNumber = 1;
     private long timeStamp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public long TimeStamp {
@@ -760,48 +120,14 @@ namespace Ndx.Decoders {
       }
     }
 
-    /// <summary>Field number for the "Link" field.</summary>
-    public const int LinkFieldNumber = 10;
-    private global::Ndx.Decoders.LinkPacket link_;
+    /// <summary>Field number for the "Protocols" field.</summary>
+    public const int ProtocolsFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::Ndx.Decoders.Packet.Types.Protocol> _repeated_protocols_codec
+        = pb::FieldCodec.ForMessage(82, global::Ndx.Decoders.Packet.Types.Protocol.Parser);
+    private readonly pbc::RepeatedField<global::Ndx.Decoders.Packet.Types.Protocol> protocols_ = new pbc::RepeatedField<global::Ndx.Decoders.Packet.Types.Protocol>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Decoders.LinkPacket Link {
-      get { return link_; }
-      set {
-        link_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Network" field.</summary>
-    public const int NetworkFieldNumber = 20;
-    private global::Ndx.Decoders.InternetPacket network_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Decoders.InternetPacket Network {
-      get { return network_; }
-      set {
-        network_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Transport" field.</summary>
-    public const int TransportFieldNumber = 30;
-    private global::Ndx.Decoders.TransportPacket transport_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Decoders.TransportPacket Transport {
-      get { return transport_; }
-      set {
-        transport_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Application" field.</summary>
-    public const int ApplicationFieldNumber = 40;
-    private global::Ndx.Decoders.ApplicationPacket application_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Ndx.Decoders.ApplicationPacket Application {
-      get { return application_; }
-      set {
-        application_ = value;
-      }
+    public pbc::RepeatedField<global::Ndx.Decoders.Packet.Types.Protocol> Protocols {
+      get { return protocols_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -819,10 +145,7 @@ namespace Ndx.Decoders {
       }
       if (TimeStamp != other.TimeStamp) return false;
       if (FrameNumber != other.FrameNumber) return false;
-      if (!object.Equals(Link, other.Link)) return false;
-      if (!object.Equals(Network, other.Network)) return false;
-      if (!object.Equals(Transport, other.Transport)) return false;
-      if (!object.Equals(Application, other.Application)) return false;
+      if(!protocols_.Equals(other.protocols_)) return false;
       return true;
     }
 
@@ -831,10 +154,7 @@ namespace Ndx.Decoders {
       int hash = 1;
       if (TimeStamp != 0L) hash ^= TimeStamp.GetHashCode();
       if (FrameNumber != 0) hash ^= FrameNumber.GetHashCode();
-      if (link_ != null) hash ^= Link.GetHashCode();
-      if (network_ != null) hash ^= Network.GetHashCode();
-      if (transport_ != null) hash ^= Transport.GetHashCode();
-      if (application_ != null) hash ^= Application.GetHashCode();
+      hash ^= protocols_.GetHashCode();
       return hash;
     }
 
@@ -845,30 +165,15 @@ namespace Ndx.Decoders {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (TimeStamp != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(TimeStamp);
+      }
       if (FrameNumber != 0) {
         output.WriteRawTag(16);
         output.WriteInt32(FrameNumber);
       }
-      if (TimeStamp != 0L) {
-        output.WriteRawTag(40);
-        output.WriteInt64(TimeStamp);
-      }
-      if (link_ != null) {
-        output.WriteRawTag(82);
-        output.WriteMessage(Link);
-      }
-      if (network_ != null) {
-        output.WriteRawTag(162, 1);
-        output.WriteMessage(Network);
-      }
-      if (transport_ != null) {
-        output.WriteRawTag(242, 1);
-        output.WriteMessage(Transport);
-      }
-      if (application_ != null) {
-        output.WriteRawTag(194, 2);
-        output.WriteMessage(Application);
-      }
+      protocols_.WriteTo(output, _repeated_protocols_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -880,18 +185,7 @@ namespace Ndx.Decoders {
       if (FrameNumber != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(FrameNumber);
       }
-      if (link_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Link);
-      }
-      if (network_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Network);
-      }
-      if (transport_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Transport);
-      }
-      if (application_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Application);
-      }
+      size += protocols_.CalculateSize(_repeated_protocols_codec);
       return size;
     }
 
@@ -906,30 +200,7 @@ namespace Ndx.Decoders {
       if (other.FrameNumber != 0) {
         FrameNumber = other.FrameNumber;
       }
-      if (other.link_ != null) {
-        if (link_ == null) {
-          link_ = new global::Ndx.Decoders.LinkPacket();
-        }
-        Link.MergeFrom(other.Link);
-      }
-      if (other.network_ != null) {
-        if (network_ == null) {
-          network_ = new global::Ndx.Decoders.InternetPacket();
-        }
-        Network.MergeFrom(other.Network);
-      }
-      if (other.transport_ != null) {
-        if (transport_ == null) {
-          transport_ = new global::Ndx.Decoders.TransportPacket();
-        }
-        Transport.MergeFrom(other.Transport);
-      }
-      if (other.application_ != null) {
-        if (application_ == null) {
-          application_ = new global::Ndx.Decoders.ApplicationPacket();
-        }
-        Application.MergeFrom(other.Application);
-      }
+      protocols_.Add(other.protocols_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -940,45 +211,871 @@ namespace Ndx.Decoders {
           default:
             input.SkipLastField();
             break;
+          case 8: {
+            TimeStamp = input.ReadInt64();
+            break;
+          }
           case 16: {
             FrameNumber = input.ReadInt32();
             break;
           }
-          case 40: {
-            TimeStamp = input.ReadInt64();
-            break;
-          }
           case 82: {
-            if (link_ == null) {
-              link_ = new global::Ndx.Decoders.LinkPacket();
-            }
-            input.ReadMessage(link_);
-            break;
-          }
-          case 162: {
-            if (network_ == null) {
-              network_ = new global::Ndx.Decoders.InternetPacket();
-            }
-            input.ReadMessage(network_);
-            break;
-          }
-          case 242: {
-            if (transport_ == null) {
-              transport_ = new global::Ndx.Decoders.TransportPacket();
-            }
-            input.ReadMessage(transport_);
-            break;
-          }
-          case 322: {
-            if (application_ == null) {
-              application_ = new global::Ndx.Decoders.ApplicationPacket();
-            }
-            input.ReadMessage(application_);
+            protocols_.AddEntriesFrom(input, _repeated_protocols_codec);
             break;
           }
         }
       }
     }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the Packet message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Protocol : pb::IMessage<Protocol> {
+        private static readonly pb::MessageParser<Protocol> _parser = new pb::MessageParser<Protocol>(() => new Protocol());
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Protocol> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::Ndx.Decoders.Packet.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Protocol() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Protocol(Protocol other) : this() {
+          switch (other.ProtocolTypeCase) {
+            case ProtocolTypeOneofCase.Ethernet:
+              Ethernet = other.Ethernet.Clone();
+              break;
+            case ProtocolTypeOneofCase.Wireless:
+              Wireless = other.Wireless.Clone();
+              break;
+            case ProtocolTypeOneofCase.Ip:
+              Ip = other.Ip.Clone();
+              break;
+            case ProtocolTypeOneofCase.Ipv6:
+              Ipv6 = other.Ipv6.Clone();
+              break;
+            case ProtocolTypeOneofCase.Tcp:
+              Tcp = other.Tcp.Clone();
+              break;
+            case ProtocolTypeOneofCase.Udp:
+              Udp = other.Udp.Clone();
+              break;
+            case ProtocolTypeOneofCase.Arp:
+              Arp = other.Arp.Clone();
+              break;
+            case ProtocolTypeOneofCase.Atm:
+              Atm = other.Atm.Clone();
+              break;
+            case ProtocolTypeOneofCase.Dns:
+              Dns = other.Dns.Clone();
+              break;
+            case ProtocolTypeOneofCase.Http:
+              Http = other.Http.Clone();
+              break;
+            case ProtocolTypeOneofCase.Http2:
+              Http2 = other.Http2.Clone();
+              break;
+            case ProtocolTypeOneofCase.Icmp:
+              Icmp = other.Icmp.Clone();
+              break;
+            case ProtocolTypeOneofCase.Icmpv6:
+              Icmpv6 = other.Icmpv6.Clone();
+              break;
+            case ProtocolTypeOneofCase.Igmp:
+              Igmp = other.Igmp.Clone();
+              break;
+            case ProtocolTypeOneofCase.Ipsec:
+              Ipsec = other.Ipsec.Clone();
+              break;
+            case ProtocolTypeOneofCase.Ipx:
+              Ipx = other.Ipx.Clone();
+              break;
+            case ProtocolTypeOneofCase.Nbipx:
+              Nbipx = other.Nbipx.Clone();
+              break;
+            case ProtocolTypeOneofCase.Nbt:
+              Nbt = other.Nbt.Clone();
+              break;
+            case ProtocolTypeOneofCase.Netbios:
+              Netbios = other.Netbios.Clone();
+              break;
+            case ProtocolTypeOneofCase.Ppp:
+              Ppp = other.Ppp.Clone();
+              break;
+          }
+
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Protocol Clone() {
+          return new Protocol(this);
+        }
+
+        /// <summary>Field number for the "Ethernet" field.</summary>
+        public const int EthernetFieldNumber = 1;
+        /// <summary>
+        /// BASE:
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Basic.Eth Ethernet {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Ethernet ? (global::Ndx.Decoders.Basic.Eth) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Ethernet;
+          }
+        }
+
+        /// <summary>Field number for the "Wireless" field.</summary>
+        public const int WirelessFieldNumber = 2;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Basic.Ieee80211 Wireless {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Wireless ? (global::Ndx.Decoders.Basic.Ieee80211) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Wireless;
+          }
+        }
+
+        /// <summary>Field number for the "Ip" field.</summary>
+        public const int IpFieldNumber = 3;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Basic.Ip Ip {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Ip ? (global::Ndx.Decoders.Basic.Ip) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Ip;
+          }
+        }
+
+        /// <summary>Field number for the "Ipv6" field.</summary>
+        public const int Ipv6FieldNumber = 4;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Basic.Ipv6 Ipv6 {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Ipv6 ? (global::Ndx.Decoders.Basic.Ipv6) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Ipv6;
+          }
+        }
+
+        /// <summary>Field number for the "Tcp" field.</summary>
+        public const int TcpFieldNumber = 5;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Basic.Tcp Tcp {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Tcp ? (global::Ndx.Decoders.Basic.Tcp) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Tcp;
+          }
+        }
+
+        /// <summary>Field number for the "Udp" field.</summary>
+        public const int UdpFieldNumber = 6;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Basic.Udp Udp {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Udp ? (global::Ndx.Decoders.Basic.Udp) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Udp;
+          }
+        }
+
+        /// <summary>Field number for the "arp" field.</summary>
+        public const int ArpFieldNumber = 101;
+        /// <summary>
+        /// CORE:
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Core.Arp Arp {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Arp ? (global::Ndx.Decoders.Core.Arp) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Arp;
+          }
+        }
+
+        /// <summary>Field number for the "atm" field.</summary>
+        public const int AtmFieldNumber = 102;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Core.Atm Atm {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Atm ? (global::Ndx.Decoders.Core.Atm) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Atm;
+          }
+        }
+
+        /// <summary>Field number for the "dns" field.</summary>
+        public const int DnsFieldNumber = 103;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Core.Dns Dns {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Dns ? (global::Ndx.Decoders.Core.Dns) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Dns;
+          }
+        }
+
+        /// <summary>Field number for the "http" field.</summary>
+        public const int HttpFieldNumber = 104;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Core.Http Http {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Http ? (global::Ndx.Decoders.Core.Http) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Http;
+          }
+        }
+
+        /// <summary>Field number for the "http2" field.</summary>
+        public const int Http2FieldNumber = 105;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Core.Http2 Http2 {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Http2 ? (global::Ndx.Decoders.Core.Http2) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Http2;
+          }
+        }
+
+        /// <summary>Field number for the "icmp" field.</summary>
+        public const int IcmpFieldNumber = 106;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Core.Icmp Icmp {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Icmp ? (global::Ndx.Decoders.Core.Icmp) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Icmp;
+          }
+        }
+
+        /// <summary>Field number for the "icmpv6" field.</summary>
+        public const int Icmpv6FieldNumber = 107;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Core.Icmpv6 Icmpv6 {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Icmpv6 ? (global::Ndx.Decoders.Core.Icmpv6) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Icmpv6;
+          }
+        }
+
+        /// <summary>Field number for the "igmp" field.</summary>
+        public const int IgmpFieldNumber = 108;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Core.Igmp Igmp {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Igmp ? (global::Ndx.Decoders.Core.Igmp) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Igmp;
+          }
+        }
+
+        /// <summary>Field number for the "ipsec" field.</summary>
+        public const int IpsecFieldNumber = 109;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Core.Ipsec Ipsec {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Ipsec ? (global::Ndx.Decoders.Core.Ipsec) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Ipsec;
+          }
+        }
+
+        /// <summary>Field number for the "ipx" field.</summary>
+        public const int IpxFieldNumber = 110;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Core.Ipx Ipx {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Ipx ? (global::Ndx.Decoders.Core.Ipx) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Ipx;
+          }
+        }
+
+        /// <summary>Field number for the "nbipx" field.</summary>
+        public const int NbipxFieldNumber = 111;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Core.Nbipx Nbipx {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Nbipx ? (global::Ndx.Decoders.Core.Nbipx) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Nbipx;
+          }
+        }
+
+        /// <summary>Field number for the "nbt" field.</summary>
+        public const int NbtFieldNumber = 112;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Core.Nbt Nbt {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Nbt ? (global::Ndx.Decoders.Core.Nbt) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Nbt;
+          }
+        }
+
+        /// <summary>Field number for the "netbios" field.</summary>
+        public const int NetbiosFieldNumber = 113;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Core.Netbios Netbios {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Netbios ? (global::Ndx.Decoders.Core.Netbios) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Netbios;
+          }
+        }
+
+        /// <summary>Field number for the "ppp" field.</summary>
+        public const int PppFieldNumber = 114;
+        /// <summary>
+        /// COMMON:
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Ndx.Decoders.Core.Ppp Ppp {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Ppp ? (global::Ndx.Decoders.Core.Ppp) protocolType_ : null; }
+          set {
+            protocolType_ = value;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Ppp;
+          }
+        }
+
+        private object protocolType_;
+        /// <summary>Enum of possible cases for the "ProtocolType" oneof.</summary>
+        public enum ProtocolTypeOneofCase {
+          None = 0,
+          Ethernet = 1,
+          Wireless = 2,
+          Ip = 3,
+          Ipv6 = 4,
+          Tcp = 5,
+          Udp = 6,
+          Arp = 101,
+          Atm = 102,
+          Dns = 103,
+          Http = 104,
+          Http2 = 105,
+          Icmp = 106,
+          Icmpv6 = 107,
+          Igmp = 108,
+          Ipsec = 109,
+          Ipx = 110,
+          Nbipx = 111,
+          Nbt = 112,
+          Netbios = 113,
+          Ppp = 114,
+        }
+        private ProtocolTypeOneofCase protocolTypeCase_ = ProtocolTypeOneofCase.None;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public ProtocolTypeOneofCase ProtocolTypeCase {
+          get { return protocolTypeCase_; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void ClearProtocolType() {
+          protocolTypeCase_ = ProtocolTypeOneofCase.None;
+          protocolType_ = null;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Protocol);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Protocol other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (!object.Equals(Ethernet, other.Ethernet)) return false;
+          if (!object.Equals(Wireless, other.Wireless)) return false;
+          if (!object.Equals(Ip, other.Ip)) return false;
+          if (!object.Equals(Ipv6, other.Ipv6)) return false;
+          if (!object.Equals(Tcp, other.Tcp)) return false;
+          if (!object.Equals(Udp, other.Udp)) return false;
+          if (!object.Equals(Arp, other.Arp)) return false;
+          if (!object.Equals(Atm, other.Atm)) return false;
+          if (!object.Equals(Dns, other.Dns)) return false;
+          if (!object.Equals(Http, other.Http)) return false;
+          if (!object.Equals(Http2, other.Http2)) return false;
+          if (!object.Equals(Icmp, other.Icmp)) return false;
+          if (!object.Equals(Icmpv6, other.Icmpv6)) return false;
+          if (!object.Equals(Igmp, other.Igmp)) return false;
+          if (!object.Equals(Ipsec, other.Ipsec)) return false;
+          if (!object.Equals(Ipx, other.Ipx)) return false;
+          if (!object.Equals(Nbipx, other.Nbipx)) return false;
+          if (!object.Equals(Nbt, other.Nbt)) return false;
+          if (!object.Equals(Netbios, other.Netbios)) return false;
+          if (!object.Equals(Ppp, other.Ppp)) return false;
+          if (ProtocolTypeCase != other.ProtocolTypeCase) return false;
+          return true;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ethernet) hash ^= Ethernet.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Wireless) hash ^= Wireless.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ip) hash ^= Ip.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ipv6) hash ^= Ipv6.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Tcp) hash ^= Tcp.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Udp) hash ^= Udp.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Arp) hash ^= Arp.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Atm) hash ^= Atm.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Dns) hash ^= Dns.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Http) hash ^= Http.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Http2) hash ^= Http2.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Icmp) hash ^= Icmp.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Icmpv6) hash ^= Icmpv6.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Igmp) hash ^= Igmp.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ipsec) hash ^= Ipsec.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ipx) hash ^= Ipx.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Nbipx) hash ^= Nbipx.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Nbt) hash ^= Nbt.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Netbios) hash ^= Netbios.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ppp) hash ^= Ppp.GetHashCode();
+          hash ^= (int) protocolTypeCase_;
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ethernet) {
+            output.WriteRawTag(10);
+            output.WriteMessage(Ethernet);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Wireless) {
+            output.WriteRawTag(18);
+            output.WriteMessage(Wireless);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ip) {
+            output.WriteRawTag(26);
+            output.WriteMessage(Ip);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ipv6) {
+            output.WriteRawTag(34);
+            output.WriteMessage(Ipv6);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Tcp) {
+            output.WriteRawTag(42);
+            output.WriteMessage(Tcp);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Udp) {
+            output.WriteRawTag(50);
+            output.WriteMessage(Udp);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Arp) {
+            output.WriteRawTag(170, 6);
+            output.WriteMessage(Arp);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Atm) {
+            output.WriteRawTag(178, 6);
+            output.WriteMessage(Atm);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Dns) {
+            output.WriteRawTag(186, 6);
+            output.WriteMessage(Dns);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Http) {
+            output.WriteRawTag(194, 6);
+            output.WriteMessage(Http);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Http2) {
+            output.WriteRawTag(202, 6);
+            output.WriteMessage(Http2);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Icmp) {
+            output.WriteRawTag(210, 6);
+            output.WriteMessage(Icmp);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Icmpv6) {
+            output.WriteRawTag(218, 6);
+            output.WriteMessage(Icmpv6);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Igmp) {
+            output.WriteRawTag(226, 6);
+            output.WriteMessage(Igmp);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ipsec) {
+            output.WriteRawTag(234, 6);
+            output.WriteMessage(Ipsec);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ipx) {
+            output.WriteRawTag(242, 6);
+            output.WriteMessage(Ipx);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Nbipx) {
+            output.WriteRawTag(250, 6);
+            output.WriteMessage(Nbipx);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Nbt) {
+            output.WriteRawTag(130, 7);
+            output.WriteMessage(Nbt);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Netbios) {
+            output.WriteRawTag(138, 7);
+            output.WriteMessage(Netbios);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ppp) {
+            output.WriteRawTag(146, 7);
+            output.WriteMessage(Ppp);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ethernet) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Ethernet);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Wireless) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Wireless);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ip) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Ip);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ipv6) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Ipv6);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Tcp) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Tcp);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Udp) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Udp);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Arp) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Arp);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Atm) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Atm);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Dns) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Dns);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Http) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Http);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Http2) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Http2);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Icmp) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Icmp);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Icmpv6) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Icmpv6);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Igmp) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Igmp);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ipsec) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Ipsec);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ipx) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Ipx);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Nbipx) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Nbipx);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Nbt) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Nbt);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Netbios) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Netbios);
+          }
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ppp) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Ppp);
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Protocol other) {
+          if (other == null) {
+            return;
+          }
+          switch (other.ProtocolTypeCase) {
+            case ProtocolTypeOneofCase.Ethernet:
+              Ethernet = other.Ethernet;
+              break;
+            case ProtocolTypeOneofCase.Wireless:
+              Wireless = other.Wireless;
+              break;
+            case ProtocolTypeOneofCase.Ip:
+              Ip = other.Ip;
+              break;
+            case ProtocolTypeOneofCase.Ipv6:
+              Ipv6 = other.Ipv6;
+              break;
+            case ProtocolTypeOneofCase.Tcp:
+              Tcp = other.Tcp;
+              break;
+            case ProtocolTypeOneofCase.Udp:
+              Udp = other.Udp;
+              break;
+            case ProtocolTypeOneofCase.Arp:
+              Arp = other.Arp;
+              break;
+            case ProtocolTypeOneofCase.Atm:
+              Atm = other.Atm;
+              break;
+            case ProtocolTypeOneofCase.Dns:
+              Dns = other.Dns;
+              break;
+            case ProtocolTypeOneofCase.Http:
+              Http = other.Http;
+              break;
+            case ProtocolTypeOneofCase.Http2:
+              Http2 = other.Http2;
+              break;
+            case ProtocolTypeOneofCase.Icmp:
+              Icmp = other.Icmp;
+              break;
+            case ProtocolTypeOneofCase.Icmpv6:
+              Icmpv6 = other.Icmpv6;
+              break;
+            case ProtocolTypeOneofCase.Igmp:
+              Igmp = other.Igmp;
+              break;
+            case ProtocolTypeOneofCase.Ipsec:
+              Ipsec = other.Ipsec;
+              break;
+            case ProtocolTypeOneofCase.Ipx:
+              Ipx = other.Ipx;
+              break;
+            case ProtocolTypeOneofCase.Nbipx:
+              Nbipx = other.Nbipx;
+              break;
+            case ProtocolTypeOneofCase.Nbt:
+              Nbt = other.Nbt;
+              break;
+            case ProtocolTypeOneofCase.Netbios:
+              Netbios = other.Netbios;
+              break;
+            case ProtocolTypeOneofCase.Ppp:
+              Ppp = other.Ppp;
+              break;
+          }
+
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                input.SkipLastField();
+                break;
+              case 10: {
+                global::Ndx.Decoders.Basic.Eth subBuilder = new global::Ndx.Decoders.Basic.Eth();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Ethernet) {
+                  subBuilder.MergeFrom(Ethernet);
+                }
+                input.ReadMessage(subBuilder);
+                Ethernet = subBuilder;
+                break;
+              }
+              case 18: {
+                global::Ndx.Decoders.Basic.Ieee80211 subBuilder = new global::Ndx.Decoders.Basic.Ieee80211();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Wireless) {
+                  subBuilder.MergeFrom(Wireless);
+                }
+                input.ReadMessage(subBuilder);
+                Wireless = subBuilder;
+                break;
+              }
+              case 26: {
+                global::Ndx.Decoders.Basic.Ip subBuilder = new global::Ndx.Decoders.Basic.Ip();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Ip) {
+                  subBuilder.MergeFrom(Ip);
+                }
+                input.ReadMessage(subBuilder);
+                Ip = subBuilder;
+                break;
+              }
+              case 34: {
+                global::Ndx.Decoders.Basic.Ipv6 subBuilder = new global::Ndx.Decoders.Basic.Ipv6();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Ipv6) {
+                  subBuilder.MergeFrom(Ipv6);
+                }
+                input.ReadMessage(subBuilder);
+                Ipv6 = subBuilder;
+                break;
+              }
+              case 42: {
+                global::Ndx.Decoders.Basic.Tcp subBuilder = new global::Ndx.Decoders.Basic.Tcp();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Tcp) {
+                  subBuilder.MergeFrom(Tcp);
+                }
+                input.ReadMessage(subBuilder);
+                Tcp = subBuilder;
+                break;
+              }
+              case 50: {
+                global::Ndx.Decoders.Basic.Udp subBuilder = new global::Ndx.Decoders.Basic.Udp();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Udp) {
+                  subBuilder.MergeFrom(Udp);
+                }
+                input.ReadMessage(subBuilder);
+                Udp = subBuilder;
+                break;
+              }
+              case 810: {
+                global::Ndx.Decoders.Core.Arp subBuilder = new global::Ndx.Decoders.Core.Arp();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Arp) {
+                  subBuilder.MergeFrom(Arp);
+                }
+                input.ReadMessage(subBuilder);
+                Arp = subBuilder;
+                break;
+              }
+              case 818: {
+                global::Ndx.Decoders.Core.Atm subBuilder = new global::Ndx.Decoders.Core.Atm();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Atm) {
+                  subBuilder.MergeFrom(Atm);
+                }
+                input.ReadMessage(subBuilder);
+                Atm = subBuilder;
+                break;
+              }
+              case 826: {
+                global::Ndx.Decoders.Core.Dns subBuilder = new global::Ndx.Decoders.Core.Dns();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Dns) {
+                  subBuilder.MergeFrom(Dns);
+                }
+                input.ReadMessage(subBuilder);
+                Dns = subBuilder;
+                break;
+              }
+              case 834: {
+                global::Ndx.Decoders.Core.Http subBuilder = new global::Ndx.Decoders.Core.Http();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Http) {
+                  subBuilder.MergeFrom(Http);
+                }
+                input.ReadMessage(subBuilder);
+                Http = subBuilder;
+                break;
+              }
+              case 842: {
+                global::Ndx.Decoders.Core.Http2 subBuilder = new global::Ndx.Decoders.Core.Http2();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Http2) {
+                  subBuilder.MergeFrom(Http2);
+                }
+                input.ReadMessage(subBuilder);
+                Http2 = subBuilder;
+                break;
+              }
+              case 850: {
+                global::Ndx.Decoders.Core.Icmp subBuilder = new global::Ndx.Decoders.Core.Icmp();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Icmp) {
+                  subBuilder.MergeFrom(Icmp);
+                }
+                input.ReadMessage(subBuilder);
+                Icmp = subBuilder;
+                break;
+              }
+              case 858: {
+                global::Ndx.Decoders.Core.Icmpv6 subBuilder = new global::Ndx.Decoders.Core.Icmpv6();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Icmpv6) {
+                  subBuilder.MergeFrom(Icmpv6);
+                }
+                input.ReadMessage(subBuilder);
+                Icmpv6 = subBuilder;
+                break;
+              }
+              case 866: {
+                global::Ndx.Decoders.Core.Igmp subBuilder = new global::Ndx.Decoders.Core.Igmp();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Igmp) {
+                  subBuilder.MergeFrom(Igmp);
+                }
+                input.ReadMessage(subBuilder);
+                Igmp = subBuilder;
+                break;
+              }
+              case 874: {
+                global::Ndx.Decoders.Core.Ipsec subBuilder = new global::Ndx.Decoders.Core.Ipsec();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Ipsec) {
+                  subBuilder.MergeFrom(Ipsec);
+                }
+                input.ReadMessage(subBuilder);
+                Ipsec = subBuilder;
+                break;
+              }
+              case 882: {
+                global::Ndx.Decoders.Core.Ipx subBuilder = new global::Ndx.Decoders.Core.Ipx();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Ipx) {
+                  subBuilder.MergeFrom(Ipx);
+                }
+                input.ReadMessage(subBuilder);
+                Ipx = subBuilder;
+                break;
+              }
+              case 890: {
+                global::Ndx.Decoders.Core.Nbipx subBuilder = new global::Ndx.Decoders.Core.Nbipx();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Nbipx) {
+                  subBuilder.MergeFrom(Nbipx);
+                }
+                input.ReadMessage(subBuilder);
+                Nbipx = subBuilder;
+                break;
+              }
+              case 898: {
+                global::Ndx.Decoders.Core.Nbt subBuilder = new global::Ndx.Decoders.Core.Nbt();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Nbt) {
+                  subBuilder.MergeFrom(Nbt);
+                }
+                input.ReadMessage(subBuilder);
+                Nbt = subBuilder;
+                break;
+              }
+              case 906: {
+                global::Ndx.Decoders.Core.Netbios subBuilder = new global::Ndx.Decoders.Core.Netbios();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Netbios) {
+                  subBuilder.MergeFrom(Netbios);
+                }
+                input.ReadMessage(subBuilder);
+                Netbios = subBuilder;
+                break;
+              }
+              case 914: {
+                global::Ndx.Decoders.Core.Ppp subBuilder = new global::Ndx.Decoders.Core.Ppp();
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Ppp) {
+                  subBuilder.MergeFrom(Ppp);
+                }
+                input.ReadMessage(subBuilder);
+                Ppp = subBuilder;
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
 
   }
 
