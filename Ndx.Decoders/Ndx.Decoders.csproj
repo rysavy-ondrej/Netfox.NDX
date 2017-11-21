@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Packet.cs" />
     <Compile Include="DecoderFactory.cs" />
     <Compile Include="Decoders\Base\packet-eth.Decode.cs" />
     <Compile Include="Decoders\Base\packet-frame.Decode.cs" />
@@ -104,7 +105,6 @@
     <None Include="packages.config" />
     <None Include="Parsers\Binary\BinaryProtocols.md" />
     <None Include="Parsers\Text\TextProtocols.md" />
-    <None Include="Proto\Base\generate-decoders.cmd" />
     <None Include="Proto\Base\packet-eth.proto" />
     <None Include="Proto\Base\packet-eth.yaml" />
     <None Include="Proto\Base\packet-frame.proto" />
@@ -150,7 +150,7 @@
     <None Include="Proto\Common\packet-telnet.yaml" />
     <None Include="Proto\Common\packet-teredo.yaml" />
     <None Include="Proto\Common\packet-tftp.yaml" />
-    <None Include="Proto\Core\generate-decoders.cmd" />
+    <None Include="Proto\Core\genproto.cmd" />
     <None Include="Proto\Core\packet-arp.proto" />
     <None Include="Proto\Core\packet-arp.yaml" />
     <None Include="Proto\Core\packet-atm.proto" />
@@ -158,7 +158,9 @@
     <None Include="Proto\Core\packet-dns.proto" />
     <None Include="Proto\Core\packet-dns.yaml" />
     <None Include="Proto\Core\packet-http.proto" />
-    <None Include="Proto\Core\packet-http.yaml" />
+    <None Include="Proto\Core\packet-http.yaml">
+      <Generator>genproto.cmd</Generator>
+    </None>
     <None Include="Proto\Core\packet-http2.proto" />
     <None Include="Proto\Core\packet-http2.yaml" />
     <None Include="Proto\Core\packet-icmp.yaml" />

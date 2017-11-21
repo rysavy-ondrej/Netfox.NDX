@@ -38,27 +38,27 @@ message Packet {
 	message Protocol {
 		oneof ProtocolType {
 			// BASE:
-			Ndx.Decoders.Basic.Eth Ethernet = 1;
-			Ndx.Decoders.Basic.Ieee80211 Wireless = 2;
+			Ndx.Decoders.Basic.Eth Eth = 1;
+			Ndx.Decoders.Basic.Ieee80211 Ieee80211 = 2;
 			Ndx.Decoders.Basic.Ip Ip = 3;
 			Ndx.Decoders.Basic.Ipv6 Ipv6 = 4;
 			Ndx.Decoders.Basic.Tcp Tcp = 5;
 			Ndx.Decoders.Basic.Udp Udp = 6;
 			// CORE:
-			Ndx.Decoders.Core.Arp arp = 101;
-			Ndx.Decoders.Core.Atm atm = 102;
-			Ndx.Decoders.Core.Dns dns = 103;
-			Ndx.Decoders.Core.Http http = 104;
-			Ndx.Decoders.Core.Http2 http2 = 105;
-			Ndx.Decoders.Core.Icmp icmp = 106;
-			Ndx.Decoders.Core.Icmpv6 icmpv6 = 107;
-			Ndx.Decoders.Core.Igmp igmp = 108;
-			Ndx.Decoders.Core.Ipsec ipsec = 109;
-			Ndx.Decoders.Core.Ipx ipx = 110;
-			Ndx.Decoders.Core.Nbipx nbipx = 111;
-			Ndx.Decoders.Core.Nbt nbt = 112;
-			Ndx.Decoders.Core.Netbios netbios = 113;
-			Ndx.Decoders.Core.Ppp ppp = 114;
+			Ndx.Decoders.Core.Arp Arp = 101;
+			Ndx.Decoders.Core.Atm Atm = 102;
+			Ndx.Decoders.Core.Dns Dns = 103;
+			Ndx.Decoders.Core.Http Http = 104;
+			Ndx.Decoders.Core.Http2 Http2 = 105;
+			Ndx.Decoders.Core.Icmp Icmp = 106;
+			Ndx.Decoders.Core.Icmpv6 Icmpv6 = 107;
+			Ndx.Decoders.Core.Igmp Igmp = 108;
+			Ndx.Decoders.Core.Ipsec Ipsec = 109;
+			Ndx.Decoders.Core.Ipx Ipx = 110;
+			Ndx.Decoders.Core.Nbipx Nbipx = 111;
+			Ndx.Decoders.Core.Nbt Nbt = 112;
+			Ndx.Decoders.Core.Netbios Netbios = 113;
+			Ndx.Decoders.Core.Ppp Ppp = 114;
 			// COMMON:
 		}
 	}

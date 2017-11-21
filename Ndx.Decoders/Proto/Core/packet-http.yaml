@@ -57,27 +57,17 @@ Fields:
     Type: FtString
     Info: Citrix AG Session ID
     JsonName: http_authcitrix_http_authcitrix_session
-  http.response.line:
-    Name: http.response.line
-    Type: FtString
-    Info: Response line
-    JsonName: http_response_http_response_line
-  http.request.line:
-    Name: http.request.line
-    Type: FtString
-    Info: Request line
-    JsonName: http_request_http_request_line
   http.request.method:
     Name: http.request.method
     Type: FtString
     Info: Request Method
-    JsonName: http_request_http_request_method
+    JsonName: text_http_request_method
   http.request.uri:
     Name: http.request.uri
     Type: FtString
     Display: StrUnicode
     Info: Request URI
-    JsonName: http_request_http_request_uri
+    JsonName: text_http_request_uri
   http.request.uri.path:
     Name: http.request.uri.path
     Type: FtString
@@ -100,33 +90,33 @@ Fields:
     Name: http.request.version
     Type: FtString
     Info: Request Version
-    JsonName: http_request_http_request_version
+    JsonName: text_http_request_version
   http.response.version:
     Name: http.response.version
     Type: FtString
     Info: Response Version
-    JsonName: http_response_http_response_version
+    JsonName: text_http_response_version
   http.request.full_uri:
     Name: http.request.full_uri
     Type: FtString
     Info: Full request URI
-    JsonName: http_request_http_request_full_uri
+    JsonName: http_http_request_full_uri
   http.response.code:
     Name: http.response.code
     Type: FtUint16
     Display: BaseDec
     Info: Status Code
-    JsonName: http_response_http_response_code
+    JsonName: text_http_response_code
   http.response.code.desc:
     Name: http.response.code.desc
     Type: FtString
     Info: Status Code Description
-    JsonName: http_response_code_http_response_code_desc
+    JsonName: text_http_response_code_desc
   http.response.phrase:
     Name: http.response.phrase
     Type: FtString
     Info: Response Phrase
-    JsonName: http_response_http_response_phrase
+    JsonName: text_http_response_phrase
   http.authorization:
     Name: http.authorization
     Type: FtString

@@ -31,33 +31,33 @@ namespace Ndx.Decoders {
             "b3RvGhFwYWNrZXQtaWNtcC5wcm90bxoTcGFja2V0LWljbXB2Ni5wcm90bxoR",
             "cGFja2V0LWlnbXAucHJvdG8aEnBhY2tldC1pcHNlYy5wcm90bxoQcGFja2V0",
             "LWlweC5wcm90bxoScGFja2V0LW5iaXB4LnByb3RvGhBwYWNrZXQtbmJ0LnBy",
-            "b3RvGhRwYWNrZXQtbmV0Ymlvcy5wcm90bxoQcGFja2V0LXBwcC5wcm90byLB",
+            "b3RvGhRwYWNrZXQtbmV0Ymlvcy5wcm90bxoQcGFja2V0LXBwcC5wcm90byK9",
             "BwoGUGFja2V0EhEKCVRpbWVTdGFtcBgBIAEoAxITCgtGcmFtZU51bWJlchgC",
             "IAEoBRIwCglQcm90b2NvbHMYCiADKAsyHS5uZHguZGVjb2RlcnMuUGFja2V0",
-            "LlByb3RvY29sGtwGCghQcm90b2NvbBIrCghFdGhlcm5ldBgBIAEoCzIXLk5k",
-            "eC5EZWNvZGVycy5CYXNpYy5FdGhIABIxCghXaXJlbGVzcxgCIAEoCzIdLk5k",
-            "eC5EZWNvZGVycy5CYXNpYy5JZWVlODAyMTFIABIkCgJJcBgDIAEoCzIWLk5k",
-            "eC5EZWNvZGVycy5CYXNpYy5JcEgAEigKBElwdjYYBCABKAsyGC5OZHguRGVj",
-            "b2RlcnMuQmFzaWMuSXB2NkgAEiYKA1RjcBgFIAEoCzIXLk5keC5EZWNvZGVy",
-            "cy5CYXNpYy5UY3BIABImCgNVZHAYBiABKAsyFy5OZHguRGVjb2RlcnMuQmFz",
-            "aWMuVWRwSAASJQoDYXJwGGUgASgLMhYuTmR4LkRlY29kZXJzLkNvcmUuQXJw",
-            "SAASJQoDYXRtGGYgASgLMhYuTmR4LkRlY29kZXJzLkNvcmUuQXRtSAASJQoD",
-            "ZG5zGGcgASgLMhYuTmR4LkRlY29kZXJzLkNvcmUuRG5zSAASJwoEaHR0cBho",
-            "IAEoCzIXLk5keC5EZWNvZGVycy5Db3JlLkh0dHBIABIpCgVodHRwMhhpIAEo",
-            "CzIYLk5keC5EZWNvZGVycy5Db3JlLkh0dHAySAASJwoEaWNtcBhqIAEoCzIX",
-            "Lk5keC5EZWNvZGVycy5Db3JlLkljbXBIABIrCgZpY21wdjYYayABKAsyGS5O",
-            "ZHguRGVjb2RlcnMuQ29yZS5JY21wdjZIABInCgRpZ21wGGwgASgLMhcuTmR4",
-            "LkRlY29kZXJzLkNvcmUuSWdtcEgAEikKBWlwc2VjGG0gASgLMhguTmR4LkRl",
-            "Y29kZXJzLkNvcmUuSXBzZWNIABIlCgNpcHgYbiABKAsyFi5OZHguRGVjb2Rl",
-            "cnMuQ29yZS5JcHhIABIpCgVuYmlweBhvIAEoCzIYLk5keC5EZWNvZGVycy5D",
-            "b3JlLk5iaXB4SAASJQoDbmJ0GHAgASgLMhYuTmR4LkRlY29kZXJzLkNvcmUu",
-            "TmJ0SAASLQoHbmV0YmlvcxhxIAEoCzIaLk5keC5EZWNvZGVycy5Db3JlLk5l",
-            "dGJpb3NIABIlCgNwcHAYciABKAsyFi5OZHguRGVjb2RlcnMuQ29yZS5QcHBI",
-            "AEIOCgxQcm90b2NvbFR5cGVCEgoQb3JnLm5keC5kZWNvZGVyc2IGcHJvdG8z"));
+            "LlByb3RvY29sGtgGCghQcm90b2NvbBImCgNFdGgYASABKAsyFy5OZHguRGVj",
+            "b2RlcnMuQmFzaWMuRXRoSAASMgoJSWVlZTgwMjExGAIgASgLMh0uTmR4LkRl",
+            "Y29kZXJzLkJhc2ljLkllZWU4MDIxMUgAEiQKAklwGAMgASgLMhYuTmR4LkRl",
+            "Y29kZXJzLkJhc2ljLklwSAASKAoESXB2NhgEIAEoCzIYLk5keC5EZWNvZGVy",
+            "cy5CYXNpYy5JcHY2SAASJgoDVGNwGAUgASgLMhcuTmR4LkRlY29kZXJzLkJh",
+            "c2ljLlRjcEgAEiYKA1VkcBgGIAEoCzIXLk5keC5EZWNvZGVycy5CYXNpYy5V",
+            "ZHBIABIlCgNBcnAYZSABKAsyFi5OZHguRGVjb2RlcnMuQ29yZS5BcnBIABIl",
+            "CgNBdG0YZiABKAsyFi5OZHguRGVjb2RlcnMuQ29yZS5BdG1IABIlCgNEbnMY",
+            "ZyABKAsyFi5OZHguRGVjb2RlcnMuQ29yZS5EbnNIABInCgRIdHRwGGggASgL",
+            "MhcuTmR4LkRlY29kZXJzLkNvcmUuSHR0cEgAEikKBUh0dHAyGGkgASgLMhgu",
+            "TmR4LkRlY29kZXJzLkNvcmUuSHR0cDJIABInCgRJY21wGGogASgLMhcuTmR4",
+            "LkRlY29kZXJzLkNvcmUuSWNtcEgAEisKBkljbXB2NhhrIAEoCzIZLk5keC5E",
+            "ZWNvZGVycy5Db3JlLkljbXB2NkgAEicKBElnbXAYbCABKAsyFy5OZHguRGVj",
+            "b2RlcnMuQ29yZS5JZ21wSAASKQoFSXBzZWMYbSABKAsyGC5OZHguRGVjb2Rl",
+            "cnMuQ29yZS5JcHNlY0gAEiUKA0lweBhuIAEoCzIWLk5keC5EZWNvZGVycy5D",
+            "b3JlLklweEgAEikKBU5iaXB4GG8gASgLMhguTmR4LkRlY29kZXJzLkNvcmUu",
+            "TmJpcHhIABIlCgNOYnQYcCABKAsyFi5OZHguRGVjb2RlcnMuQ29yZS5OYnRI",
+            "ABItCgdOZXRiaW9zGHEgASgLMhouTmR4LkRlY29kZXJzLkNvcmUuTmV0Ymlv",
+            "c0gAEiUKA1BwcBhyIAEoCzIWLk5keC5EZWNvZGVycy5Db3JlLlBwcEgAQg4K",
+            "DFByb3RvY29sVHlwZUISChBvcmcubmR4LmRlY29kZXJzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Decoders.Basic.PacketEthReflection.Descriptor, global::Ndx.Decoders.Basic.PacketFrameReflection.Descriptor, global::Ndx.Decoders.Basic.PacketIeee80211Reflection.Descriptor, global::Ndx.Decoders.Basic.PacketIpReflection.Descriptor, global::Ndx.Decoders.Basic.PacketIpv6Reflection.Descriptor, global::Ndx.Decoders.Basic.PacketLlcReflection.Descriptor, global::Ndx.Decoders.Basic.PacketTcpReflection.Descriptor, global::Ndx.Decoders.Basic.PacketUdpReflection.Descriptor, global::Ndx.Decoders.Core.PacketArpReflection.Descriptor, global::Ndx.Decoders.Core.PacketAtmReflection.Descriptor, global::Ndx.Decoders.Core.PacketDnsReflection.Descriptor, global::Ndx.Decoders.Core.PacketHttpReflection.Descriptor, global::Ndx.Decoders.Core.PacketHttp2Reflection.Descriptor, global::Ndx.Decoders.Core.PacketIcmpReflection.Descriptor, global::Ndx.Decoders.Core.PacketIcmpv6Reflection.Descriptor, global::Ndx.Decoders.Core.PacketIgmpReflection.Descriptor, global::Ndx.Decoders.Core.PacketIpsecReflection.Descriptor, global::Ndx.Decoders.Core.PacketIpxReflection.Descriptor, global::Ndx.Decoders.Core.PacketNbipxReflection.Descriptor, global::Ndx.Decoders.Core.PacketNbtReflection.Descriptor, global::Ndx.Decoders.Core.PacketNetbiosReflection.Descriptor, global::Ndx.Decoders.Core.PacketPppReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Packet), global::Ndx.Decoders.Packet.Parser, new[]{ "TimeStamp", "FrameNumber", "Protocols" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Packet.Types.Protocol), global::Ndx.Decoders.Packet.Types.Protocol.Parser, new[]{ "Ethernet", "Wireless", "Ip", "Ipv6", "Tcp", "Udp", "Arp", "Atm", "Dns", "Http", "Http2", "Icmp", "Icmpv6", "Igmp", "Ipsec", "Ipx", "Nbipx", "Nbt", "Netbios", "Ppp" }, new[]{ "ProtocolType" }, null, null)})
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Packet), global::Ndx.Decoders.Packet.Parser, new[]{ "TimeStamp", "FrameNumber", "Protocols" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Packet.Types.Protocol), global::Ndx.Decoders.Packet.Types.Protocol.Parser, new[]{ "Eth", "Ieee80211", "Ip", "Ipv6", "Tcp", "Udp", "Arp", "Atm", "Dns", "Http", "Http2", "Icmp", "Icmpv6", "Igmp", "Ipsec", "Ipx", "Nbipx", "Nbt", "Netbios", "Ppp" }, new[]{ "ProtocolType" }, null, null)})
           }));
     }
     #endregion
@@ -256,11 +256,11 @@ namespace Ndx.Decoders {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public Protocol(Protocol other) : this() {
           switch (other.ProtocolTypeCase) {
-            case ProtocolTypeOneofCase.Ethernet:
-              Ethernet = other.Ethernet.Clone();
+            case ProtocolTypeOneofCase.Eth:
+              Eth = other.Eth.Clone();
               break;
-            case ProtocolTypeOneofCase.Wireless:
-              Wireless = other.Wireless.Clone();
+            case ProtocolTypeOneofCase.Ieee80211:
+              Ieee80211 = other.Ieee80211.Clone();
               break;
             case ProtocolTypeOneofCase.Ip:
               Ip = other.Ip.Clone();
@@ -325,28 +325,28 @@ namespace Ndx.Decoders {
           return new Protocol(this);
         }
 
-        /// <summary>Field number for the "Ethernet" field.</summary>
-        public const int EthernetFieldNumber = 1;
+        /// <summary>Field number for the "Eth" field.</summary>
+        public const int EthFieldNumber = 1;
         /// <summary>
         /// BASE:
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::Ndx.Decoders.Basic.Eth Ethernet {
-          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Ethernet ? (global::Ndx.Decoders.Basic.Eth) protocolType_ : null; }
+        public global::Ndx.Decoders.Basic.Eth Eth {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Eth ? (global::Ndx.Decoders.Basic.Eth) protocolType_ : null; }
           set {
             protocolType_ = value;
-            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Ethernet;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Eth;
           }
         }
 
-        /// <summary>Field number for the "Wireless" field.</summary>
-        public const int WirelessFieldNumber = 2;
+        /// <summary>Field number for the "Ieee80211" field.</summary>
+        public const int Ieee80211FieldNumber = 2;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::Ndx.Decoders.Basic.Ieee80211 Wireless {
-          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Wireless ? (global::Ndx.Decoders.Basic.Ieee80211) protocolType_ : null; }
+        public global::Ndx.Decoders.Basic.Ieee80211 Ieee80211 {
+          get { return protocolTypeCase_ == ProtocolTypeOneofCase.Ieee80211 ? (global::Ndx.Decoders.Basic.Ieee80211) protocolType_ : null; }
           set {
             protocolType_ = value;
-            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Wireless;
+            protocolTypeCase_ = value == null ? ProtocolTypeOneofCase.None : ProtocolTypeOneofCase.Ieee80211;
           }
         }
 
@@ -394,7 +394,7 @@ namespace Ndx.Decoders {
           }
         }
 
-        /// <summary>Field number for the "arp" field.</summary>
+        /// <summary>Field number for the "Arp" field.</summary>
         public const int ArpFieldNumber = 101;
         /// <summary>
         /// CORE:
@@ -408,7 +408,7 @@ namespace Ndx.Decoders {
           }
         }
 
-        /// <summary>Field number for the "atm" field.</summary>
+        /// <summary>Field number for the "Atm" field.</summary>
         public const int AtmFieldNumber = 102;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Ndx.Decoders.Core.Atm Atm {
@@ -419,7 +419,7 @@ namespace Ndx.Decoders {
           }
         }
 
-        /// <summary>Field number for the "dns" field.</summary>
+        /// <summary>Field number for the "Dns" field.</summary>
         public const int DnsFieldNumber = 103;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Ndx.Decoders.Core.Dns Dns {
@@ -430,7 +430,7 @@ namespace Ndx.Decoders {
           }
         }
 
-        /// <summary>Field number for the "http" field.</summary>
+        /// <summary>Field number for the "Http" field.</summary>
         public const int HttpFieldNumber = 104;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Ndx.Decoders.Core.Http Http {
@@ -441,7 +441,7 @@ namespace Ndx.Decoders {
           }
         }
 
-        /// <summary>Field number for the "http2" field.</summary>
+        /// <summary>Field number for the "Http2" field.</summary>
         public const int Http2FieldNumber = 105;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Ndx.Decoders.Core.Http2 Http2 {
@@ -452,7 +452,7 @@ namespace Ndx.Decoders {
           }
         }
 
-        /// <summary>Field number for the "icmp" field.</summary>
+        /// <summary>Field number for the "Icmp" field.</summary>
         public const int IcmpFieldNumber = 106;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Ndx.Decoders.Core.Icmp Icmp {
@@ -463,7 +463,7 @@ namespace Ndx.Decoders {
           }
         }
 
-        /// <summary>Field number for the "icmpv6" field.</summary>
+        /// <summary>Field number for the "Icmpv6" field.</summary>
         public const int Icmpv6FieldNumber = 107;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Ndx.Decoders.Core.Icmpv6 Icmpv6 {
@@ -474,7 +474,7 @@ namespace Ndx.Decoders {
           }
         }
 
-        /// <summary>Field number for the "igmp" field.</summary>
+        /// <summary>Field number for the "Igmp" field.</summary>
         public const int IgmpFieldNumber = 108;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Ndx.Decoders.Core.Igmp Igmp {
@@ -485,7 +485,7 @@ namespace Ndx.Decoders {
           }
         }
 
-        /// <summary>Field number for the "ipsec" field.</summary>
+        /// <summary>Field number for the "Ipsec" field.</summary>
         public const int IpsecFieldNumber = 109;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Ndx.Decoders.Core.Ipsec Ipsec {
@@ -496,7 +496,7 @@ namespace Ndx.Decoders {
           }
         }
 
-        /// <summary>Field number for the "ipx" field.</summary>
+        /// <summary>Field number for the "Ipx" field.</summary>
         public const int IpxFieldNumber = 110;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Ndx.Decoders.Core.Ipx Ipx {
@@ -507,7 +507,7 @@ namespace Ndx.Decoders {
           }
         }
 
-        /// <summary>Field number for the "nbipx" field.</summary>
+        /// <summary>Field number for the "Nbipx" field.</summary>
         public const int NbipxFieldNumber = 111;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Ndx.Decoders.Core.Nbipx Nbipx {
@@ -518,7 +518,7 @@ namespace Ndx.Decoders {
           }
         }
 
-        /// <summary>Field number for the "nbt" field.</summary>
+        /// <summary>Field number for the "Nbt" field.</summary>
         public const int NbtFieldNumber = 112;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Ndx.Decoders.Core.Nbt Nbt {
@@ -529,7 +529,7 @@ namespace Ndx.Decoders {
           }
         }
 
-        /// <summary>Field number for the "netbios" field.</summary>
+        /// <summary>Field number for the "Netbios" field.</summary>
         public const int NetbiosFieldNumber = 113;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Ndx.Decoders.Core.Netbios Netbios {
@@ -540,7 +540,7 @@ namespace Ndx.Decoders {
           }
         }
 
-        /// <summary>Field number for the "ppp" field.</summary>
+        /// <summary>Field number for the "Ppp" field.</summary>
         public const int PppFieldNumber = 114;
         /// <summary>
         /// COMMON:
@@ -558,8 +558,8 @@ namespace Ndx.Decoders {
         /// <summary>Enum of possible cases for the "ProtocolType" oneof.</summary>
         public enum ProtocolTypeOneofCase {
           None = 0,
-          Ethernet = 1,
-          Wireless = 2,
+          Eth = 1,
+          Ieee80211 = 2,
           Ip = 3,
           Ipv6 = 4,
           Tcp = 5,
@@ -604,8 +604,8 @@ namespace Ndx.Decoders {
           if (ReferenceEquals(other, this)) {
             return true;
           }
-          if (!object.Equals(Ethernet, other.Ethernet)) return false;
-          if (!object.Equals(Wireless, other.Wireless)) return false;
+          if (!object.Equals(Eth, other.Eth)) return false;
+          if (!object.Equals(Ieee80211, other.Ieee80211)) return false;
           if (!object.Equals(Ip, other.Ip)) return false;
           if (!object.Equals(Ipv6, other.Ipv6)) return false;
           if (!object.Equals(Tcp, other.Tcp)) return false;
@@ -631,8 +631,8 @@ namespace Ndx.Decoders {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
-          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ethernet) hash ^= Ethernet.GetHashCode();
-          if (protocolTypeCase_ == ProtocolTypeOneofCase.Wireless) hash ^= Wireless.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Eth) hash ^= Eth.GetHashCode();
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ieee80211) hash ^= Ieee80211.GetHashCode();
           if (protocolTypeCase_ == ProtocolTypeOneofCase.Ip) hash ^= Ip.GetHashCode();
           if (protocolTypeCase_ == ProtocolTypeOneofCase.Ipv6) hash ^= Ipv6.GetHashCode();
           if (protocolTypeCase_ == ProtocolTypeOneofCase.Tcp) hash ^= Tcp.GetHashCode();
@@ -662,13 +662,13 @@ namespace Ndx.Decoders {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
-          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ethernet) {
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Eth) {
             output.WriteRawTag(10);
-            output.WriteMessage(Ethernet);
+            output.WriteMessage(Eth);
           }
-          if (protocolTypeCase_ == ProtocolTypeOneofCase.Wireless) {
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ieee80211) {
             output.WriteRawTag(18);
-            output.WriteMessage(Wireless);
+            output.WriteMessage(Ieee80211);
           }
           if (protocolTypeCase_ == ProtocolTypeOneofCase.Ip) {
             output.WriteRawTag(26);
@@ -747,11 +747,11 @@ namespace Ndx.Decoders {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
-          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ethernet) {
-            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Ethernet);
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Eth) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Eth);
           }
-          if (protocolTypeCase_ == ProtocolTypeOneofCase.Wireless) {
-            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Wireless);
+          if (protocolTypeCase_ == ProtocolTypeOneofCase.Ieee80211) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Ieee80211);
           }
           if (protocolTypeCase_ == ProtocolTypeOneofCase.Ip) {
             size += 1 + pb::CodedOutputStream.ComputeMessageSize(Ip);
@@ -816,11 +816,11 @@ namespace Ndx.Decoders {
             return;
           }
           switch (other.ProtocolTypeCase) {
-            case ProtocolTypeOneofCase.Ethernet:
-              Ethernet = other.Ethernet;
+            case ProtocolTypeOneofCase.Eth:
+              Eth = other.Eth;
               break;
-            case ProtocolTypeOneofCase.Wireless:
-              Wireless = other.Wireless;
+            case ProtocolTypeOneofCase.Ieee80211:
+              Ieee80211 = other.Ieee80211;
               break;
             case ProtocolTypeOneofCase.Ip:
               Ip = other.Ip;
@@ -890,20 +890,20 @@ namespace Ndx.Decoders {
                 break;
               case 10: {
                 global::Ndx.Decoders.Basic.Eth subBuilder = new global::Ndx.Decoders.Basic.Eth();
-                if (protocolTypeCase_ == ProtocolTypeOneofCase.Ethernet) {
-                  subBuilder.MergeFrom(Ethernet);
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Eth) {
+                  subBuilder.MergeFrom(Eth);
                 }
                 input.ReadMessage(subBuilder);
-                Ethernet = subBuilder;
+                Eth = subBuilder;
                 break;
               }
               case 18: {
                 global::Ndx.Decoders.Basic.Ieee80211 subBuilder = new global::Ndx.Decoders.Basic.Ieee80211();
-                if (protocolTypeCase_ == ProtocolTypeOneofCase.Wireless) {
-                  subBuilder.MergeFrom(Wireless);
+                if (protocolTypeCase_ == ProtocolTypeOneofCase.Ieee80211) {
+                  subBuilder.MergeFrom(Ieee80211);
                 }
                 input.ReadMessage(subBuilder);
-                Wireless = subBuilder;
+                Ieee80211 = subBuilder;
                 break;
               }
               case 26: {

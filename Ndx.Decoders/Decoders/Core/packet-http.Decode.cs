@@ -58,19 +58,11 @@ namespace Ndx.Decoders.Core
         if (val != null) obj.HttpAuthcitrixSession = val.Value<string>();
       }
       {
-        var val = token["http_response_http_response_line"];
-        if (val != null) obj.HttpResponseLine = val.Value<string>();
-      }
-      {
-        var val = token["http_request_http_request_line"];
-        if (val != null) obj.HttpRequestLine = val.Value<string>();
-      }
-      {
-        var val = token["http_request_http_request_method"];
+        var val = token["text_http_request_method"];
         if (val != null) obj.HttpRequestMethod = val.Value<string>();
       }
       {
-        var val = token["http_request_http_request_uri"];
+        var val = token["text_http_request_uri"];
         if (val != null) obj.HttpRequestUri = val.Value<string>();
       }
       {
@@ -86,27 +78,27 @@ namespace Ndx.Decoders.Core
         if (val != null) obj.HttpRequestUriQueryParameter = val.Value<string>();
       }
       {
-        var val = token["http_request_http_request_version"];
+        var val = token["text_http_request_version"];
         if (val != null) obj.HttpRequestVersion = val.Value<string>();
       }
       {
-        var val = token["http_response_http_response_version"];
+        var val = token["text_http_response_version"];
         if (val != null) obj.HttpResponseVersion = val.Value<string>();
       }
       {
-        var val = token["http_request_http_request_full_uri"];
+        var val = token["http_http_request_full_uri"];
         if (val != null) obj.HttpRequestFullUri = val.Value<string>();
       }
       {
-        var val = token["http_response_http_response_code"];
+        var val = token["text_http_response_code"];
         if (val != null) obj.HttpResponseCode = Convert.ToUInt32(val.Value<string>(), 10);
       }
       {
-        var val = token["http_response_code_http_response_code_desc"];
+        var val = token["text_http_response_code_desc"];
         if (val != null) obj.HttpResponseCodeDesc = val.Value<string>();
       }
       {
-        var val = token["http_response_http_response_phrase"];
+        var val = token["text_http_response_phrase"];
         if (val != null) obj.HttpResponsePhrase = val.Value<string>();
       }
       {

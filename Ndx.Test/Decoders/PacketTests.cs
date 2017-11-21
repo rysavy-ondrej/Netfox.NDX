@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Ndx.Decoders.Basic;
 using System.IO;
 using Ndx.Captures;
+using Ndx.Decoders.Core;
 
 namespace Ndx.Decoders.Tests
 {
@@ -46,6 +47,31 @@ namespace Ndx.Decoders.Tests
                     Console.WriteLine(decodedPacket);
                 }
             }            
+        }
+
+        [Test()]
+        public void DecodeTestSelect()
+        {
+
+            var input = Path.Combine(TestContext.CurrentContext.TestDirectory, @"..\..\..\TestData\http.json");
+            List<Packet> packets = new List<Packet>();
+            using (var reader = new StreamReader(File.OpenRead(input)))
+            {
+                var factory = new DecoderFactory();
+                var decoder = new PacketDecoder();
+                var stream = new PcapJsonStream(reader);
+                JsonPacket packet;
+                while ((packet = stream.ReadPacket()) != null)
+                {
+                    var decodedPacket = decoder.Decode(factory, packet);
+                    packets.Add(decodedPacket);
+                }
+            }
+            var https = packets.Select(x => x.Protocol<Http>()).Where(x => x!=null);
+            foreach (var http in https)
+            {
+                Console.WriteLine(http);
+            }
         }
     }
 }

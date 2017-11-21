@@ -34,178 +34,172 @@ message Http {
    // Citrix AG Session ID ('http_authcitrix_http_authcitrix_session')
    string HttpAuthcitrixSession = 11;
 
-   // Response line ('http_response_http_response_line')
-   string HttpResponseLine = 12;
+   // Request Method ('text_http_request_method')
+   string HttpRequestMethod = 12;
 
-   // Request line ('http_request_http_request_line')
-   string HttpRequestLine = 13;
-
-   // Request Method ('http_request_http_request_method')
-   string HttpRequestMethod = 14;
-
-   // Request URI ('http_request_http_request_uri')
-   string HttpRequestUri = 15;
+   // Request URI ('text_http_request_uri')
+   string HttpRequestUri = 13;
 
    // Request URI Path ('http_request_uri_http_request_uri_path')
-   string HttpRequestUriPath = 16;
+   string HttpRequestUriPath = 14;
 
    // Request URI Query ('http_request_uri_http_request_uri_query')
-   string HttpRequestUriQuery = 17;
+   string HttpRequestUriQuery = 15;
 
    // Request URI Query Parameter ('http_request_uri_query_http_request_uri_query_parameter')
-   string HttpRequestUriQueryParameter = 18;
+   string HttpRequestUriQueryParameter = 16;
 
-   // Request Version ('http_request_http_request_version')
-   string HttpRequestVersion = 19;
+   // Request Version ('text_http_request_version')
+   string HttpRequestVersion = 17;
 
-   // Response Version ('http_response_http_response_version')
-   string HttpResponseVersion = 20;
+   // Response Version ('text_http_response_version')
+   string HttpResponseVersion = 18;
 
-   // Full request URI ('http_request_http_request_full_uri')
-   string HttpRequestFullUri = 21;
+   // Full request URI ('http_http_request_full_uri')
+   string HttpRequestFullUri = 19;
 
-   // Status Code ('http_response_http_response_code')
-   uint32 HttpResponseCode = 22;
+   // Status Code ('text_http_response_code')
+   uint32 HttpResponseCode = 20;
 
-   // Status Code Description ('http_response_code_http_response_code_desc')
-   string HttpResponseCodeDesc = 23;
+   // Status Code Description ('text_http_response_code_desc')
+   string HttpResponseCodeDesc = 21;
 
-   // Response Phrase ('http_response_http_response_phrase')
-   string HttpResponsePhrase = 24;
+   // Response Phrase ('text_http_response_phrase')
+   string HttpResponsePhrase = 22;
 
    // Authorization ('http_http_authorization')
-   string HttpAuthorization = 25;
+   string HttpAuthorization = 23;
 
    // Proxy-Authenticate ('http_http_proxy_authenticate')
-   string HttpProxyAuthenticate = 26;
+   string HttpProxyAuthenticate = 24;
 
    // Proxy-Authorization ('http_http_proxy_authorization')
-   string HttpProxyAuthorization = 27;
+   string HttpProxyAuthorization = 25;
 
    // Proxy-Connect-Hostname ('http_http_proxy_connect_host')
-   string HttpProxyConnectHost = 28;
+   string HttpProxyConnectHost = 26;
 
    // Proxy-Connect-Port ('http_http_proxy_connect_port')
-   uint32 HttpProxyConnectPort = 29;
+   uint32 HttpProxyConnectPort = 27;
 
    // WWW-Authenticate ('http_http_www_authenticate')
-   string HttpWwwAuthenticate = 30;
+   string HttpWwwAuthenticate = 28;
 
    // Content-Type ('http_http_content_type')
-   string HttpContentType = 31;
+   string HttpContentType = 29;
 
    // Content-Length ('http_http_content_length_header')
-   string HttpContentLengthHeader = 32;
+   string HttpContentLengthHeader = 30;
 
    // Content length ('http_http_content_length')
-   uint64 HttpContentLength = 33;
+   uint64 HttpContentLength = 31;
 
    // Content-Encoding ('http_http_content_encoding')
-   string HttpContentEncoding = 34;
+   string HttpContentEncoding = 32;
 
    // Transfer-Encoding ('http_http_transfer_encoding')
-   string HttpTransferEncoding = 35;
+   string HttpTransferEncoding = 33;
 
    // Upgrade ('http_http_upgrade')
-   string HttpUpgrade = 36;
+   string HttpUpgrade = 34;
 
    // User-Agent ('http_http_user_agent')
-   string HttpUserAgent = 37;
+   string HttpUserAgent = 35;
 
    // Host ('http_http_host')
-   string HttpHost = 38;
+   string HttpHost = 36;
 
    // Connection ('http_http_connection')
-   string HttpConnection = 39;
+   string HttpConnection = 37;
 
    // Cookie ('http_http_cookie')
-   string HttpCookie = 40;
+   string HttpCookie = 38;
 
    // Cookie pair ('http_http_cookie_pair')
-   string HttpCookiePair = 41;
+   string HttpCookiePair = 39;
 
    // Accept ('http_http_accept')
-   string HttpAccept = 42;
+   string HttpAccept = 40;
 
    // Referer ('http_http_referer')
-   string HttpReferer = 43;
+   string HttpReferer = 41;
 
    // Accept-Language ('http_http_accept_language')
-   string HttpAcceptLanguage = 44;
+   string HttpAcceptLanguage = 42;
 
    // Accept Encoding ('http_http_accept_encoding')
-   string HttpAcceptEncoding = 45;
+   string HttpAcceptEncoding = 43;
 
    // Date ('http_http_date')
-   string HttpDate = 46;
+   string HttpDate = 44;
 
    // Cache-Control ('http_http_cache_control')
-   string HttpCacheControl = 47;
+   string HttpCacheControl = 45;
 
    // Server ('http_http_server')
-   string HttpServer = 48;
+   string HttpServer = 46;
 
    // Location ('http_http_location')
-   string HttpLocation = 49;
+   string HttpLocation = 47;
 
    // Sec-WebSocket-Accept ('http_http_sec_websocket_accept')
-   string HttpSecWebsocketAccept = 50;
+   string HttpSecWebsocketAccept = 48;
 
    // Sec-WebSocket-Extensions ('http_http_sec_websocket_extensions')
-   string HttpSecWebsocketExtensions = 51;
+   string HttpSecWebsocketExtensions = 49;
 
    // Sec-WebSocket-Key ('http_http_sec_websocket_key')
-   string HttpSecWebsocketKey = 52;
+   string HttpSecWebsocketKey = 50;
 
    // Sec-WebSocket-Protocol ('http_http_sec_websocket_protocol')
-   string HttpSecWebsocketProtocol = 53;
+   string HttpSecWebsocketProtocol = 51;
 
    // Sec-WebSocket-Version ('http_http_sec_websocket_version')
-   string HttpSecWebsocketVersion = 54;
+   string HttpSecWebsocketVersion = 52;
 
    // Set-Cookie ('http_http_set_cookie')
-   string HttpSetCookie = 55;
+   string HttpSetCookie = 53;
 
    // Last-Modified ('http_http_last_modified')
-   string HttpLastModified = 56;
+   string HttpLastModified = 54;
 
    // X-Forwarded-For ('http_http_x_forwarded_for')
-   string HttpXForwardedFor = 57;
+   string HttpXForwardedFor = 55;
 
    // Request in frame ('http_http_request_in')
-   int64 HttpRequestIn = 58;
+   int64 HttpRequestIn = 56;
 
    // Response in frame ('http_http_response_in')
-   int64 HttpResponseIn = 59;
+   int64 HttpResponseIn = 57;
 
    // Next request in frame ('http_http_next_request_in')
-   int64 HttpNextRequestIn = 60;
+   int64 HttpNextRequestIn = 58;
 
    // Next response in frame ('http_http_next_response_in')
-   int64 HttpNextResponseIn = 61;
+   int64 HttpNextResponseIn = 59;
 
    // Prev request in frame ('http_http_prev_request_in')
-   int64 HttpPrevRequestIn = 62;
+   int64 HttpPrevRequestIn = 60;
 
    // Prev response in frame ('http_http_prev_response_in')
-   int64 HttpPrevResponseIn = 63;
+   int64 HttpPrevResponseIn = 61;
 
    // Time since request ('http_http_time')
-   int64 HttpTime = 64;
+   int64 HttpTime = 62;
 
    // trailer-part ('http_http_chunked_trailer_part')
-   string HttpChunkedTrailerPart = 65;
+   string HttpChunkedTrailerPart = 63;
 
    // Chunk boundary ('http_http_chunk_boundary')
-   bytes HttpChunkBoundary = 66;
+   bytes HttpChunkBoundary = 64;
 
    // Chunk size ('http_http_chunk_size')
-   uint32 HttpChunkSize = 67;
+   uint32 HttpChunkSize = 65;
 
    // File Data ('http_http_file_data')
-   string HttpFileData = 68;
+   string HttpFileData = 66;
 
    // Unknown header ('http_http_unknown_header')
-   string HttpUnknownHeader = 69;
+   string HttpUnknownHeader = 67;
 
 }
