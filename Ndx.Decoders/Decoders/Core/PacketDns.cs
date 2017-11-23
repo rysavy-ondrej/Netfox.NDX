@@ -22,181 +22,60 @@ namespace Ndx.Decoders.Core {
     static PacketDnsReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChBwYWNrZXQtZG5zLnByb3RvEhFOZHguRGVjb2RlcnMuQ29yZSLdOgoDRG5z",
+            "ChBwYWNrZXQtZG5zLnByb3RvEhFOZHguRGVjb2RlcnMuQ29yZSKtEAoDRG5z",
             "EjIKCERuc0ZsYWdzGAEgASgLMiAuTmR4LkRlY29kZXJzLkNvcmUuRG5zLl9E",
             "bnNGbGFncxINCgVEbnNJZBgCIAEoDRIVCg1EbnNSZXNwb25zZUluGAMgASgD",
-            "EhUKDURuc1Jlc3BvbnNlVG8YBCABKAMSDwoHRG5zVGltZRgFIAEoAxIVCg1E",
+            "EhUKDURuc1Jlc3BvbnNlVG8YBCABKAMSDwoHRG5zVGltZRgFIAEoAhIVCg1E",
             "bnNDb3VudEFkZFJyGAYgASgNEi4KBkRuc1FyeRgHIAMoCzIeLk5keC5EZWNv",
             "ZGVycy5Db3JlLkRucy5fRG5zUXJ5EjAKB0Ruc1Jlc3AYCCADKAsyHy5OZHgu",
-            "RGVjb2RlcnMuQ29yZS5EbnMuX0Ruc1Jlc3ASFQoNRG5zU3J2U2VydmljZRgJ",
-            "IAEoCRITCgtEbnNTcnZQcm90bxgKIAEoCRISCgpEbnNTcnZOYW1lGAsgASgJ",
-            "EhYKDkRuc1NydlByaW9yaXR5GAwgASgNEhQKDERuc1NydldlaWdodBgNIAEo",
-            "DRISCgpEbnNTcnZQb3J0GA4gASgNEhQKDERuc1NydlRhcmdldBgPIAEoCRIV",
-            "Cg1EbnNOYXB0ck9yZGVyGBAgASgNEhoKEkRuc05hcHRyUHJlZmVyZW5jZRgR",
-            "IAEoDRIbChNEbnNOYXB0ckZsYWdzTGVuZ3RoGBIgASgNEhUKDURuc05hcHRy",
-            "RmxhZ3MYEyABKAkSHQoVRG5zTmFwdHJTZXJ2aWNlTGVuZ3RoGBQgASgNEhcK",
-            "D0Ruc05hcHRyU2VydmljZRgVIAEoCRIbChNEbnNOYXB0clJlZ2V4TGVuZ3Ro",
-            "GBYgASgNEhUKDURuc05hcHRyUmVnZXgYFyABKAkSIQoZRG5zTmFwdHJSZXBs",
-            "YWNlbWVudExlbmd0aBgYIAEoDRIbChNEbnNOYXB0clJlcGxhY2VtZW50GBkg",
-            "ASgJEgwKBERuc0EYGiABKAwSDQoFRG5zTWQYGyABKAkSDQoFRG5zTWYYHCAB",
-            "KAkSDQoFRG5zTWIYHSABKAkSDQoFRG5zTWcYHiABKAkSDQoFRG5zTXIYHyAB",
-            "KAkSDwoHRG5zTnVsbBggIAEoDBIPCgdEbnNBYWFhGCEgASgMEhAKCERuc0Nu",
-            "YW1lGCIgASgJEhsKE0Ruc1JyVWRwUGF5bG9hZFNpemUYIyABKA0SEwoLRG5z",
-            "U29hTW5hbWUYJCABKAkSEwoLRG5zU29hUm5hbWUYJSABKAkSGgoSRG5zU29h",
-            "U2VyaWFsTnVtYmVyGCYgASgNEh0KFURuc1NvYVJlZnJlc2hJbnRlcnZhbBgn",
-            "IAEoDRIbChNEbnNTb2FSZXRyeUludGVydmFsGCggASgNEhkKEURuc1NvYUV4",
-            "cGlyZUxpbWl0GCkgASgNEhgKEERuc1NvYU1pbmludW1UdGwYKiABKA0SGAoQ",
-            "RG5zUHRyRG9tYWluTmFtZRgrIAEoCRIVCg1EbnNXa3NBZGRyZXNzGCwgASgM",
-            "EhYKDkRuc1drc1Byb3RvY29sGC0gASgNEhIKCkRuc1drc0JpdHMYLiABKA0S",
-            "GQoRRG5zSGluZm9DcHVMZW5ndGgYLyABKA0SEwoLRG5zSGluZm9DcHUYMCAB",
-            "KAkSGAoQRG5zSGluZm9Pc0xlbmd0aBgxIAEoDRISCgpEbnNIaW5mb09zGDIg",
-            "ASgJEhEKCURuc01pbmZvUhgzIAEoCRIRCglEbnNNaW5mb0UYNCABKAkSFwoP",
-            "RG5zTXhQcmVmZXJlbmNlGDUgASgNEhkKEURuc014TWFpbEV4Y2hhbmdlGDYg",
-            "ASgJEhQKDERuc1R4dExlbmd0aBg3IAEoDRIOCgZEbnNUeHQYOCABKAkSFQoN",
-            "RG5zT3BlbnBncGtleRg5IAEoCRITCgtEbnNDc3luY1NvYRg6IAEoDRIVCg1E",
-            "bnNDc3luY0ZsYWdzGDsgASgNEh4KFkRuc0NzeW5jRmxhZ3NJbW1lZGlhdGUY",
-            "PCABKAgSHwoXRG5zQ3N5bmNGbGFnc1NvYW1pbmltdW0YPSABKAgSGgoSRG5z",
-            "Q3N5bmNUeXBlQml0bWFwGD4gASgMEhQKDERuc1NwZkxlbmd0aBg/IAEoDRIO",
-            "CgZEbnNTcGYYQCABKAkSHAoURG5zSWxucE5pZFByZWZlcmVuY2UYQSABKA0S",
-            "EgoKRG5zSWxucE5pZBhCIAEoDBIcChREbnNJbG5wTDMyUHJlZmVyZW5jZRhD",
-            "IAEoDRISCgpEbnNJbG5wTDMyGEQgASgMEhwKFERuc0lsbnBMNjRQcmVmZXJl",
-            "bmNlGEUgASgNEhIKCkRuc0lsbnBMNjQYRiABKAwSGwoTRG5zSWxucExwUHJl",
-            "ZmVyZW5jZRhHIAEoDRIRCglEbnNJbG5wTHAYSCABKAkSEAoIRG5zRXVpNDgY",
-            "SSABKAwSEAoIRG5zRXVpNjQYSiABKAwSGwoTRG5zUnJzaWdUeXBlQ292ZXJl",
-            "ZBhLIAEoDRIZChFEbnNScnNpZ0FsZ29yaXRobRhMIAEoDRIWCg5EbnNScnNp",
-            "Z0xhYmVscxhNIAEoDRIbChNEbnNScnNpZ09yaWdpbmFsVHRsGE4gASgNEiMK",
-            "G0Ruc1Jyc2lnU2lnbmF0dXJlRXhwaXJhdGlvbhhPIAEoAxIiChpEbnNScnNp",
-            "Z1NpZ25hdHVyZUluY2VwdGlvbhhQIAEoAxIWCg5EbnNScnNpZ0tleVRhZxhR",
-            "IAEoDRIbChNEbnNScnNpZ1NpZ25lcnNOYW1lGFIgASgJEhkKEURuc1Jyc2ln",
-            "U2lnbmF0dXJlGFMgASgMEhYKDkRuc0Ruc2tleUZsYWdzGFQgASgNEh0KFURu",
-            "c0Ruc2tleUZsYWdzWm9uZUtleRhVIAEoCBIgChhEbnNEbnNrZXlGbGFnc0tl",
-            "eVJldm9rZWQYViABKAgSJgoeRG5zRG5za2V5RmxhZ3NTZWN1cmVFbnRyeVBv",
-            "aW50GFcgASgIEh4KFkRuc0Ruc2tleUZsYWdzUmVzZXJ2ZWQYWCABKA0SGQoR",
-            "RG5zRG5za2V5UHJvdG9jb2wYWSABKA0SGgoSRG5zRG5za2V5QWxnb3JpdGht",
-            "GFogASgNEhYKDkRuc0Ruc2tleUtleUlkGFsgASgNEhoKEkRuc0Ruc2tleVB1",
-            "YmxpY0tleRhcIAEoDBITCgtEbnNLZXlGbGFncxhdIAEoDRIhChlEbnNLZXlG",
-            "bGFnc0F1dGhlbnRpY2F0aW9uGF4gASgIEiIKGkRuc0tleUZsYWdzQ29uZmlk",
-            "ZW50aWFsaXR5GF8gASgIEhsKE0Ruc0tleUZsYWdzUmVxdWlyZWQYYCABKAgS",
-            "IQoZRG5zS2V5RmxhZ3NBc3NvY2lhdGVkVXNlchhhIAEoCBIoCiBEbnNLZXlG",
-            "bGFnc0Fzc29jaWF0ZWROYW1lZEVudGl0eRhiIAEoCBIYChBEbnNLZXlGbGFn",
-            "c0lwc2VjGGMgASgIEhcKD0Ruc0tleUZsYWdzTWltZRhkIAEoCBIcChREbnNL",
-            "ZXlGbGFnc1NpZ25hdG9yeRhlIAEoDRIWCg5EbnNLZXlQcm90b2NvbBhmIAEo",
-            "DRIXCg9EbnNLZXlBbGdvcml0aG0YZyABKA0SEwoLRG5zS2V5S2V5SWQYaCAB",
-            "KA0SFwoPRG5zS2V5UHVibGljS2V5GGkgASgMEhcKD0Ruc1B4UHJlZmVyZW5j",
-            "ZRhqIAEoDRITCgtEbnNQeE1hcDgyMhhrIAEoCRITCgtEbnNQeE1hcDQwMBhs",
-            "IAEoCRIXCg9EbnNUa2V5QWxnb05hbWUYbSABKAkSIgoaRG5zVGtleVNpZ25h",
-            "dHVyZUV4cGlyYXRpb24YbiABKAMSIQoZRG5zVGtleVNpZ25hdHVyZUluY2Vw",
-            "dGlvbhhvIAEoAxITCgtEbnNUa2V5TW9kZRhwIAEoDRIUCgxEbnNUa2V5RXJy",
-            "b3IYcSABKA0SFgoORG5zVGtleUtleVNpemUYciABKA0SFgoORG5zVGtleUtl",
-            "eURhdGEYcyABKAwSGAoQRG5zVGtleU90aGVyU2l6ZRh0IAEoDRIYChBEbnNU",
-            "a2V5T3RoZXJEYXRhGHUgASgMEiQKHERuc0lwc2Vja2V5R2F0ZXdheVByZWNl",
-            "ZGVuY2UYdiABKA0SIwobRG5zSXBzZWNrZXlHYXRld2F5QWxnb3JpdGhtGHcg",
-            "ASgNEh4KFkRuc0lwc2Vja2V5R2F0ZXdheVR5cGUYeCABKA0SHgoWRG5zSXBz",
-            "ZWNrZXlHYXRld2F5SXB2NBh5IAEoDBIeChZEbnNJcHNlY2tleUdhdGV3YXlJ",
-            "cHY2GHogASgMEh0KFURuc0lwc2Vja2V5R2F0ZXdheURucxh7IAEoCRIcChRE",
-            "bnNJcHNlY2tleVB1YmxpY0tleRh8IAEoDBIXCg9EbnNYcGZJcFZlcnNpb24Y",
-            "fSABKA0SFgoORG5zWHBmUHJvdG9jb2wYfiABKA0SGAoQRG5zWHBmU291cmNl",
-            "SXB2NBh/IAEoDBIeChVEbnNYcGZEZXN0aW5hdGlvbklwdjQYgAEgASgMEhkK",
-            "EERuc1hwZlNvdXJjZUlwdjYYgQEgASgMEh4KFURuc1hwZkRlc3RpbmF0aW9u",
-            "SXB2NhiCASABKAwSFAoLRG5zWHBmU3BvcnQYgwEgASgNEhQKC0Ruc1hwZkRw",
-            "b3J0GIQBIAEoDRIXCg5EbnNBNlByZWZpeExlbhiFASABKA0SGwoSRG5zQTZB",
-            "ZGRyZXNzU3VmZml4GIYBIAEoDBIYCg9EbnNBNlByZWZpeE5hbWUYhwEgASgJ",
-            "EhEKCERuc0RuYW1lGIgBIAEoCRIWCg1EbnNMb2NWZXJzaW9uGIkBIAEoDRIT",
-            "CgpEbnNMb2NTaXplGIoBIAEoDRIiChlEbnNMb2NIb3Jpem9udGFsUHJlY2lz",
-            "aW9uGIsBIAEoDRIgChdEbnNMb2NWZXJ0aWNhbFByZWNpc2lvbhiMASABKA0S",
-            "FwoORG5zTG9jTGF0aXR1ZGUYjQEgASgNEhgKD0Ruc0xvY0xvbmdpdHVkZRiO",
-            "ASABKA0SFwoORG5zTG9jQWx0aXR1ZGUYjwEgASgNEhoKEURuc0xvY1Vua25v",
-            "d25EYXRhGJABIAEoDBIdChREbnNOeHROZXh0RG9tYWluTmFtZRiRASABKAkS",
-            "GAoPRG5zS3hQcmVmZXJlbmNlGJIBIAEoDRIZChBEbnNLeEtleUV4Y2hhbmdl",
-            "GJMBIAEoCRIUCgtEbnNDZXJ0VHlwZRiUASABKA0SFgoNRG5zQ2VydEtleVRh",
-            "ZxiVASABKA0SGQoQRG5zQ2VydEFsZ29yaXRobRiWASABKA0SGwoSRG5zQ2Vy",
-            "dENlcnRpZmljYXRlGJcBIAEoDBIeChVEbnNOc2VjTmV4dERvbWFpbk5hbWUY",
-            "mAEgASgJEg4KBURuc05zGJkBIAEoCRIPCgZEbnNPcHQYmgEgASgFEhMKCkRu",
-            "c09wdENvZGUYmwEgASgNEhIKCURuc09wdExlbhicASABKA0SEwoKRG5zT3B0",
-            "RGF0YRidASABKAwSEgoJRG5zT3B0RGF1GJ4BIAEoDRISCglEbnNPcHREaHUY",
-            "nwEgASgNEhIKCURuc09wdE4zdRigASABKA0SGwoSRG5zT3B0Q2xpZW50RmFt",
-            "aWx5GKEBIAEoDRIcChNEbnNPcHRDbGllbnROZXRtYXNrGKIBIAEoDRIaChFE",
-            "bnNPcHRDbGllbnRTY29wZRijASABKA0SGQoQRG5zT3B0Q2xpZW50QWRkchik",
-            "ASABKAwSGgoRRG5zT3B0Q2xpZW50QWRkcjQYpQEgASgMEhoKEURuc09wdENs",
-            "aWVudEFkZHI2GKYBIAEoDBIbChJEbnNPcHRDb29raWVDbGllbnQYpwEgASgM",
-            "EhsKEkRuc09wdENvb2tpZVNlcnZlchioASABKAwSJgodRG5zT3B0RWRuc1Rj",
-            "cEtlZXBhbGl2ZVRpbWVvdXQYqQEgASgNEhYKDURuc09wdFBhZGRpbmcYqgEg",
-            "ASgMEhgKD0Ruc09wdENoYWluRnFkbhirASABKAkSGAoPRG5zQ291bnRRdWVy",
-            "aWVzGKwBIAEoDRIWCg1EbnNDb3VudFpvbmVzGK0BIAEoDRIYCg9EbnNDb3Vu",
-            "dEFuc3dlcnMYrgEgASgNEh4KFURuc0NvdW50UHJlcmVxdWlzaXRlcxivASAB",
-            "KA0SFwoORG5zQ291bnRBdXRoUnIYsAEgASgNEhgKD0Ruc0NvdW50VXBkYXRl",
-            "cxixASABKA0SFQoMRG5zTnNlYzNBbGdvGLIBIAEoDRIWCg1EbnNOc2VjM0Zs",
-            "YWdzGLMBIAEoDRIcChNEbnNOc2VjM0ZsYWdzT3B0T3V0GLQBIAEoCBIbChJE",
-            "bnNOc2VjM0l0ZXJhdGlvbnMYtQEgASgNEhsKEkRuc05zZWMzU2FsdExlbmd0",
-            "aBi2ASABKA0SGgoRRG5zTnNlYzNTYWx0VmFsdWUYtwEgASgMEhsKEkRuc05z",
-            "ZWMzSGFzaExlbmd0aBi4ASABKA0SGgoRRG5zTnNlYzNIYXNoVmFsdWUYuQEg",
-            "ASgMEiAKF0Ruc1Rsc2FDZXJ0aWZpY2F0ZVVzYWdlGLoBIAEoDRIYCg9EbnNU",
-            "bHNhU2VsZWN0b3IYuwEgASgNEhwKE0Ruc1Rsc2FNYXRjaGluZ1R5cGUYvAEg",
-            "ASgNEioKIURuc1Rsc2FDZXJ0aWZpY2F0ZUFzc29jaWF0aW9uRGF0YRi9ASAB",
-            "KAwSHQoURG5zVHNpZ0FsZ29yaXRobU5hbWUYvgEgASgJEhoKEURuc1RzaWdU",
-            "aW1lU2lnbmVkGL8BIAEoAxIaChFEbnNUc2lnT3JpZ2luYWxJZBjAASABKA0S",
-            "FQoMRG5zVHNpZ0Vycm9yGMEBIAEoDRIVCgxEbnNUc2lnRnVkZ2UYwgEgASgN",
-            "EhcKDkRuc1RzaWdNYWNTaXplGMMBIAEoDRIYCg9EbnNUc2lnT3RoZXJMZW4Y",
-            "xAEgASgNEhMKCkRuc1RzaWdNYWMYxQEgASgFEhkKEERuc1RzaWdPdGhlckRh",
-            "dGEYxgEgASgMEhoKEURuc1NzaGZwQWxnb3JpdGhtGMcBIAEoDRIgChdEbnNT",
-            "c2hmcEZpbmdlcnByaW50VHlwZRjIASABKA0SHAoTRG5zU3NoZnBGaW5nZXJw",
-            "cmludBjJASABKAwSGAoPRG5zSGlwSGl0TGVuZ3RoGMoBIAEoDRIYCg9EbnNI",
-            "aXBIaXRQa0FsZ28YywEgASgNEhcKDkRuc0hpcFBrTGVuZ3RoGMwBIAEoDRIS",
-            "CglEbnNIaXBIaXQYzQEgASgMEhEKCERuc0hpcFBrGM4BIAEoDBIfChZEbnNI",
-            "aXBSZW5kZXp2b3VzU2VydmVyGM8BIAEoCRIWCg1EbnNEaGNpZFJkYXRhGNAB",
-            "IAEoDBITCgpEbnNEc0tleUlkGNEBIAEoDRIXCg5EbnNEc0FsZ29yaXRobRjS",
-            "ASABKA0SGAoPRG5zRHNEaWdlc3RUeXBlGNMBIAEoDRIUCgtEbnNEc0RpZ2Vz",
-            "dBjUASABKAwSHAoTRG5zQXBsQWRkcmVzc0ZhbWlseRjVASABKA0SGgoRRG5z",
-            "QXBsQ29kZWRQcmVmaXgY1gEgASgNEhcKDkRuc0FwbE5lZ2F0aW9uGNcBIAEo",
-            "CBIYCg9EbnNBcGxBZmRsZW5ndGgY2AEgASgNEhoKEURuc0FwbEFmZHBhcnRJ",
-            "cHY0GNkBIAEoDBIaChFEbnNBcGxBZmRwYXJ0SXB2NhjaASABKAwSGgoRRG5z",
-            "QXBsQWZkcGFydERhdGEY2wEgASgMEh8KFkRuc0dwb3NMb25naXR1ZGVMZW5n",
-            "dGgY3AEgASgNEhkKEERuc0dwb3NMb25naXR1ZGUY3QEgASgJEh4KFURuc0dw",
-            "b3NMYXRpdHVkZUxlbmd0aBjeASABKA0SGAoPRG5zR3Bvc0xhdGl0dWRlGN8B",
-            "IAEoCRIeChVEbnNHcG9zQWx0aXR1ZGVMZW5ndGgY4AEgASgNEhgKD0Ruc0dw",
-            "b3NBbHRpdHVkZRjhASABKAkSFQoMRG5zUnBNYWlsYm94GOIBIAEoCRITCgpE",
-            "bnNScFR4dFJyGOMBIAEoCRIYCg9EbnNBZnNkYlN1YnR5cGUY5AEgASgNEhkK",
-            "EERuc0Fmc2RiSG9zdG5hbWUY5QEgASgJEhUKDERuc1gyNUxlbmd0aBjmASAB",
-            "KA0SGgoRRG5zWDI1UHNkbkFkZHJlc3MY5wEgASgJEhYKDURuc0lkc25MZW5n",
-            "dGgY6AEgASgNEhcKDkRuc0lkc25BZGRyZXNzGOkBIAEoCRIYCg9EbnNJZHNu",
-            "U2FMZW5ndGgY6gEgASgNEhkKEERuc0lkc25TYUFkZHJlc3MY6wEgASgJEhUK",
-            "DERuc1J0U3VidHlwZRjsASABKA0SHgoVRG5zUnRJbnRlcm1lZGlhdGVIb3N0",
-            "GO0BIAEoCRIVCgxEbnNOc2FwUmRhdGEY7gEgASgMEhgKD0Ruc05zYXBQdHJP",
-            "d25lchjvASABKAkSFAoLRG5zQ2FhRmxhZ3MY8AEgASgNEiIKGURuc0NhYUZs",
-            "YWdzSXNzdWVyQ3JpdGljYWwY8QEgASgIEhQKC0Ruc0NhYUlzc3VlGPIBIAEo",
-            "CRIYCg9EbnNDYWFJc3N1ZXdpbGQY8wEgASgJEhQKC0Ruc0NhYUlvZGVmGPQB",
-            "IAEoCRIWCg1EbnNDYWFVbmtub3duGPUBIAEoCRIYCg9EbnNDYWFUYWdMZW5n",
-            "dGgY9gEgASgNEhIKCURuc0NhYVRhZxj3ASABKAkSFAoLRG5zQ2FhVmFsdWUY",
-            "+AEgASgJEhkKEERuc1dpbnNMb2NhbEZsYWcY+QEgASgIEh0KFERuc1dpbnNM",
-            "b29rdXBUaW1lb3V0GPoBIAEoDRIcChNEbnNXaW5zQ2FjaGVUaW1lb3V0GPsB",
-            "IAEoDRIdChREbnNXaW5zTmJXaW5zU2VydmVycxj8ASABKA0SGgoRRG5zV2lu",
-            "c1dpbnNTZXJ2ZXIY/QEgASgMEhoKEURuc1dpbnNyTG9jYWxGbGFnGP4BIAEo",
-            "CBIeChVEbnNXaW5zckxvb2t1cFRpbWVvdXQY/wEgASgNEh0KFERuc1dpbnNy",
-            "Q2FjaGVUaW1lb3V0GIACIAEoDRIhChhEbnNXaW5zck5hbWVSZXN1bHREb21h",
-            "aW4YgQIgASgJEhAKB0Ruc0RhdGEYggIgASgMGskCCglfRG5zRmxhZ3MSGAoQ",
-            "RG5zRmxhZ3NSZXNwb25zZRgBIAEoCBIWCg5EbnNGbGFnc09wY29kZRgCIAEo",
-            "DRIdChVEbnNGbGFnc0F1dGhvcml0YXRpdmUYAyABKAgSGAoQRG5zRmxhZ3ND",
-            "b25mbGljdBgEIAEoCBIZChFEbnNGbGFnc1RydW5jYXRlZBgFIAEoCBIaChJE",
-            "bnNGbGFnc1JlY2Rlc2lyZWQYBiABKAgSGQoRRG5zRmxhZ3NUZW50YXRpdmUY",
-            "ByABKAgSGAoQRG5zRmxhZ3NSZWNhdmFpbBgIIAEoCBIRCglEbnNGbGFnc1oY",
-            "CSABKAgSHQoVRG5zRmxhZ3NBdXRoZW50aWNhdGVkGAogASgIEhwKFERuc0Zs",
-            "YWdzQ2hlY2tkaXNhYmxlGAsgASgIEhUKDURuc0ZsYWdzUmNvZGUYDCABKA0a",
-            "dQoHX0Ruc1FyeRISCgpEbnNRcnlUeXBlGAEgASgNEhMKC0Ruc1FyeUNsYXNz",
-            "GAIgASgNEhIKCkRuc1FyeU5hbWUYAyABKAkSFQoNRG5zUXJ5TmFtZUxlbhgE",
-            "IAEoDRIWCg5EbnNDb3VudExhYmVscxgFIAEoBRqZAgoIX0Ruc1Jlc3ASEwoL",
-            "RG5zUmVzcFR5cGUYASABKA0SFAoMRG5zUmVzcENsYXNzGAIgASgNEhkKEURu",
-            "c1Jlc3BDYWNoZUZsdXNoGAMgASgIEhcKD0Ruc1Jlc3BFeHRSY29kZRgEIAEo",
-            "DRIbChNEbnNSZXNwRWRuczBWZXJzaW9uGAUgASgNEhAKCERuc1Jlc3BaGAYg",
-            "ASgNEhIKCkRuc1Jlc3BaRG8YByABKAgSGAoQRG5zUmVzcFpSZXNlcnZlZBgI",
-            "IAEoDRITCgtEbnNSZXNwTmFtZRgJIAEoCRISCgpEbnNSZXNwVHRsGAogASgF",
-            "EhIKCkRuc1Jlc3BMZW4YCyABKA0SFAoMRG5zUmVzcFZhbHVlGAwgASgJYgZw",
-            "cm90bzM="));
+            "RGVjb2RlcnMuQ29yZS5EbnMuX0Ruc1Jlc3ASFwoPRG5zQ291bnRRdWVyaWVz",
+            "GAkgASgNEhUKDURuc0NvdW50Wm9uZXMYCiABKA0SFwoPRG5zQ291bnRBbnN3",
+            "ZXJzGAsgASgNEh0KFURuc0NvdW50UHJlcmVxdWlzaXRlcxgMIAEoDRIWCg5E",
+            "bnNDb3VudEF1dGhSchgNIAEoDRIXCg9EbnNDb3VudFVwZGF0ZXMYDiABKA0a",
+            "yQIKCV9EbnNGbGFncxIYChBEbnNGbGFnc1Jlc3BvbnNlGAEgASgIEhYKDkRu",
+            "c0ZsYWdzT3Bjb2RlGAIgASgNEh0KFURuc0ZsYWdzQXV0aG9yaXRhdGl2ZRgD",
+            "IAEoCBIYChBEbnNGbGFnc0NvbmZsaWN0GAQgASgIEhkKEURuc0ZsYWdzVHJ1",
+            "bmNhdGVkGAUgASgIEhoKEkRuc0ZsYWdzUmVjZGVzaXJlZBgGIAEoCBIZChFE",
+            "bnNGbGFnc1RlbnRhdGl2ZRgHIAEoCBIYChBEbnNGbGFnc1JlY2F2YWlsGAgg",
+            "ASgIEhEKCURuc0ZsYWdzWhgJIAEoCBIdChVEbnNGbGFnc0F1dGhlbnRpY2F0",
+            "ZWQYCiABKAgSHAoURG5zRmxhZ3NDaGVja2Rpc2FibGUYCyABKAgSFQoNRG5z",
+            "RmxhZ3NSY29kZRgMIAEoDRp1CgdfRG5zUXJ5EhIKCkRuc1FyeVR5cGUYASAB",
+            "KA0SEwoLRG5zUXJ5Q2xhc3MYAiABKA0SEgoKRG5zUXJ5TmFtZRgDIAEoCRIV",
+            "Cg1EbnNRcnlOYW1lTGVuGAQgASgNEhYKDkRuc0NvdW50TGFiZWxzGAUgASgF",
+            "Gs4JCghfRG5zUmVzcBITCgtEbnNSZXNwVHlwZRgBIAEoDRIUCgxEbnNSZXNw",
+            "Q2xhc3MYAiABKA0SGQoRRG5zUmVzcENhY2hlRmx1c2gYAyABKAgSFwoPRG5z",
+            "UmVzcEV4dFJjb2RlGAQgASgNEhsKE0Ruc1Jlc3BFZG5zMFZlcnNpb24YBSAB",
+            "KA0SEAoIRG5zUmVzcFoYBiABKA0SEgoKRG5zUmVzcFpEbxgHIAEoCBIYChBE",
+            "bnNSZXNwWlJlc2VydmVkGAggASgNEhMKC0Ruc1Jlc3BOYW1lGAkgASgJEhIK",
+            "CkRuc1Jlc3BUdGwYCiABKAUSEgoKRG5zUmVzcExlbhgLIAEoDRIUCgxEbnNS",
+            "ZXNwVmFsdWUYDCABKAkSFQoNRG5zU3J2U2VydmljZRgNIAEoCRITCgtEbnNT",
+            "cnZQcm90bxgOIAEoCRISCgpEbnNTcnZOYW1lGA8gASgJEhYKDkRuc1NydlBy",
+            "aW9yaXR5GBAgASgNEhQKDERuc1NydldlaWdodBgRIAEoDRISCgpEbnNTcnZQ",
+            "b3J0GBIgASgNEhQKDERuc1NydlRhcmdldBgTIAEoCRIVCg1EbnNOYXB0ck9y",
+            "ZGVyGBQgASgNEhoKEkRuc05hcHRyUHJlZmVyZW5jZRgVIAEoDRIbChNEbnNO",
+            "YXB0ckZsYWdzTGVuZ3RoGBYgASgNEhUKDURuc05hcHRyRmxhZ3MYFyABKAkS",
+            "HQoVRG5zTmFwdHJTZXJ2aWNlTGVuZ3RoGBggASgNEhcKD0Ruc05hcHRyU2Vy",
+            "dmljZRgZIAEoCRIbChNEbnNOYXB0clJlZ2V4TGVuZ3RoGBogASgNEhUKDURu",
+            "c05hcHRyUmVnZXgYGyABKAkSIQoZRG5zTmFwdHJSZXBsYWNlbWVudExlbmd0",
+            "aBgcIAEoDRIbChNEbnNOYXB0clJlcGxhY2VtZW50GB0gASgJEgwKBERuc0EY",
+            "HiABKAwSDQoFRG5zTWQYHyABKAkSDQoFRG5zTWYYICABKAkSDQoFRG5zTWIY",
+            "ISABKAkSDQoFRG5zTWcYIiABKAkSDQoFRG5zTXIYIyABKAkSDwoHRG5zTnVs",
+            "bBgkIAEoDBIPCgdEbnNBYWFhGCUgASgMEhAKCERuc0NuYW1lGCYgASgJEhsK",
+            "E0Ruc1JyVWRwUGF5bG9hZFNpemUYJyABKA0SEwoLRG5zU29hTW5hbWUYKCAB",
+            "KAkSEwoLRG5zU29hUm5hbWUYKSABKAkSGgoSRG5zU29hU2VyaWFsTnVtYmVy",
+            "GCogASgNEh0KFURuc1NvYVJlZnJlc2hJbnRlcnZhbBgrIAEoDRIbChNEbnNT",
+            "b2FSZXRyeUludGVydmFsGCwgASgNEhkKEURuc1NvYUV4cGlyZUxpbWl0GC0g",
+            "ASgNEhgKEERuc1NvYU1pbmludW1UdGwYLiABKA0SGAoQRG5zUHRyRG9tYWlu",
+            "TmFtZRgvIAEoCRIRCglEbnNNaW5mb1IYMCABKAkSEQoJRG5zTWluZm9FGDEg",
+            "ASgJEhcKD0Ruc014UHJlZmVyZW5jZRgyIAEoDRIZChFEbnNNeE1haWxFeGNo",
+            "YW5nZRgzIAEoCRIUCgxEbnNUeHRMZW5ndGgYNCABKA0SDgoGRG5zVHh0GDUg",
+            "ASgJEg0KBURuc05zGDYgASgJYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Core.Dns), global::Ndx.Decoders.Core.Dns.Parser, new[]{ "DnsFlags", "DnsId", "DnsResponseIn", "DnsResponseTo", "DnsTime", "DnsCountAddRr", "DnsQry", "DnsResp", "DnsSrvService", "DnsSrvProto", "DnsSrvName", "DnsSrvPriority", "DnsSrvWeight", "DnsSrvPort", "DnsSrvTarget", "DnsNaptrOrder", "DnsNaptrPreference", "DnsNaptrFlagsLength", "DnsNaptrFlags", "DnsNaptrServiceLength", "DnsNaptrService", "DnsNaptrRegexLength", "DnsNaptrRegex", "DnsNaptrReplacementLength", "DnsNaptrReplacement", "DnsA", "DnsMd", "DnsMf", "DnsMb", "DnsMg", "DnsMr", "DnsNull", "DnsAaaa", "DnsCname", "DnsRrUdpPayloadSize", "DnsSoaMname", "DnsSoaRname", "DnsSoaSerialNumber", "DnsSoaRefreshInterval", "DnsSoaRetryInterval", "DnsSoaExpireLimit", "DnsSoaMininumTtl", "DnsPtrDomainName", "DnsWksAddress", "DnsWksProtocol", "DnsWksBits", "DnsHinfoCpuLength", "DnsHinfoCpu", "DnsHinfoOsLength", "DnsHinfoOs", "DnsMinfoR", "DnsMinfoE", "DnsMxPreference", "DnsMxMailExchange", "DnsTxtLength", "DnsTxt", "DnsOpenpgpkey", "DnsCsyncSoa", "DnsCsyncFlags", "DnsCsyncFlagsImmediate", "DnsCsyncFlagsSoaminimum", "DnsCsyncTypeBitmap", "DnsSpfLength", "DnsSpf", "DnsIlnpNidPreference", "DnsIlnpNid", "DnsIlnpL32Preference", "DnsIlnpL32", "DnsIlnpL64Preference", "DnsIlnpL64", "DnsIlnpLpPreference", "DnsIlnpLp", "DnsEui48", "DnsEui64", "DnsRrsigTypeCovered", "DnsRrsigAlgorithm", "DnsRrsigLabels", "DnsRrsigOriginalTtl", "DnsRrsigSignatureExpiration", "DnsRrsigSignatureInception", "DnsRrsigKeyTag", "DnsRrsigSignersName", "DnsRrsigSignature", "DnsDnskeyFlags", "DnsDnskeyFlagsZoneKey", "DnsDnskeyFlagsKeyRevoked", "DnsDnskeyFlagsSecureEntryPoint", "DnsDnskeyFlagsReserved", "DnsDnskeyProtocol", "DnsDnskeyAlgorithm", "DnsDnskeyKeyId", "DnsDnskeyPublicKey", "DnsKeyFlags", "DnsKeyFlagsAuthentication", "DnsKeyFlagsConfidentiality", "DnsKeyFlagsRequired", "DnsKeyFlagsAssociatedUser", "DnsKeyFlagsAssociatedNamedEntity", "DnsKeyFlagsIpsec", "DnsKeyFlagsMime", "DnsKeyFlagsSignatory", "DnsKeyProtocol", "DnsKeyAlgorithm", "DnsKeyKeyId", "DnsKeyPublicKey", "DnsPxPreference", "DnsPxMap822", "DnsPxMap400", "DnsTkeyAlgoName", "DnsTkeySignatureExpiration", "DnsTkeySignatureInception", "DnsTkeyMode", "DnsTkeyError", "DnsTkeyKeySize", "DnsTkeyKeyData", "DnsTkeyOtherSize", "DnsTkeyOtherData", "DnsIpseckeyGatewayPrecedence", "DnsIpseckeyGatewayAlgorithm", "DnsIpseckeyGatewayType", "DnsIpseckeyGatewayIpv4", "DnsIpseckeyGatewayIpv6", "DnsIpseckeyGatewayDns", "DnsIpseckeyPublicKey", "DnsXpfIpVersion", "DnsXpfProtocol", "DnsXpfSourceIpv4", "DnsXpfDestinationIpv4", "DnsXpfSourceIpv6", "DnsXpfDestinationIpv6", "DnsXpfSport", "DnsXpfDport", "DnsA6PrefixLen", "DnsA6AddressSuffix", "DnsA6PrefixName", "DnsDname", "DnsLocVersion", "DnsLocSize", "DnsLocHorizontalPrecision", "DnsLocVerticalPrecision", "DnsLocLatitude", "DnsLocLongitude", "DnsLocAltitude", "DnsLocUnknownData", "DnsNxtNextDomainName", "DnsKxPreference", "DnsKxKeyExchange", "DnsCertType", "DnsCertKeyTag", "DnsCertAlgorithm", "DnsCertCertificate", "DnsNsecNextDomainName", "DnsNs", "DnsOpt", "DnsOptCode", "DnsOptLen", "DnsOptData", "DnsOptDau", "DnsOptDhu", "DnsOptN3U", "DnsOptClientFamily", "DnsOptClientNetmask", "DnsOptClientScope", "DnsOptClientAddr", "DnsOptClientAddr4", "DnsOptClientAddr6", "DnsOptCookieClient", "DnsOptCookieServer", "DnsOptEdnsTcpKeepaliveTimeout", "DnsOptPadding", "DnsOptChainFqdn", "DnsCountQueries", "DnsCountZones", "DnsCountAnswers", "DnsCountPrerequisites", "DnsCountAuthRr", "DnsCountUpdates", "DnsNsec3Algo", "DnsNsec3Flags", "DnsNsec3FlagsOptOut", "DnsNsec3Iterations", "DnsNsec3SaltLength", "DnsNsec3SaltValue", "DnsNsec3HashLength", "DnsNsec3HashValue", "DnsTlsaCertificateUsage", "DnsTlsaSelector", "DnsTlsaMatchingType", "DnsTlsaCertificateAssociationData", "DnsTsigAlgorithmName", "DnsTsigTimeSigned", "DnsTsigOriginalId", "DnsTsigError", "DnsTsigFudge", "DnsTsigMacSize", "DnsTsigOtherLen", "DnsTsigMac", "DnsTsigOtherData", "DnsSshfpAlgorithm", "DnsSshfpFingerprintType", "DnsSshfpFingerprint", "DnsHipHitLength", "DnsHipHitPkAlgo", "DnsHipPkLength", "DnsHipHit", "DnsHipPk", "DnsHipRendezvousServer", "DnsDhcidRdata", "DnsDsKeyId", "DnsDsAlgorithm", "DnsDsDigestType", "DnsDsDigest", "DnsAplAddressFamily", "DnsAplCodedPrefix", "DnsAplNegation", "DnsAplAfdlength", "DnsAplAfdpartIpv4", "DnsAplAfdpartIpv6", "DnsAplAfdpartData", "DnsGposLongitudeLength", "DnsGposLongitude", "DnsGposLatitudeLength", "DnsGposLatitude", "DnsGposAltitudeLength", "DnsGposAltitude", "DnsRpMailbox", "DnsRpTxtRr", "DnsAfsdbSubtype", "DnsAfsdbHostname", "DnsX25Length", "DnsX25PsdnAddress", "DnsIdsnLength", "DnsIdsnAddress", "DnsIdsnSaLength", "DnsIdsnSaAddress", "DnsRtSubtype", "DnsRtIntermediateHost", "DnsNsapRdata", "DnsNsapPtrOwner", "DnsCaaFlags", "DnsCaaFlagsIssuerCritical", "DnsCaaIssue", "DnsCaaIssuewild", "DnsCaaIodef", "DnsCaaUnknown", "DnsCaaTagLength", "DnsCaaTag", "DnsCaaValue", "DnsWinsLocalFlag", "DnsWinsLookupTimeout", "DnsWinsCacheTimeout", "DnsWinsNbWinsServers", "DnsWinsWinsServer", "DnsWinsrLocalFlag", "DnsWinsrLookupTimeout", "DnsWinsrCacheTimeout", "DnsWinsrNameResultDomain", "DnsData" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Core.Dns.Types._DnsFlags), global::Ndx.Decoders.Core.Dns.Types._DnsFlags.Parser, new[]{ "DnsFlagsResponse", "DnsFlagsOpcode", "DnsFlagsAuthoritative", "DnsFlagsConflict", "DnsFlagsTruncated", "DnsFlagsRecdesired", "DnsFlagsTentative", "DnsFlagsRecavail", "DnsFlagsZ", "DnsFlagsAuthenticated", "DnsFlagsCheckdisable", "DnsFlagsRcode" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Core.Dns), global::Ndx.Decoders.Core.Dns.Parser, new[]{ "DnsFlags", "DnsId", "DnsResponseIn", "DnsResponseTo", "DnsTime", "DnsCountAddRr", "DnsQry", "DnsResp", "DnsCountQueries", "DnsCountZones", "DnsCountAnswers", "DnsCountPrerequisites", "DnsCountAuthRr", "DnsCountUpdates" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Core.Dns.Types._DnsFlags), global::Ndx.Decoders.Core.Dns.Types._DnsFlags.Parser, new[]{ "DnsFlagsResponse", "DnsFlagsOpcode", "DnsFlagsAuthoritative", "DnsFlagsConflict", "DnsFlagsTruncated", "DnsFlagsRecdesired", "DnsFlagsTentative", "DnsFlagsRecavail", "DnsFlagsZ", "DnsFlagsAuthenticated", "DnsFlagsCheckdisable", "DnsFlagsRcode" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Core.Dns.Types._DnsQry), global::Ndx.Decoders.Core.Dns.Types._DnsQry.Parser, new[]{ "DnsQryType", "DnsQryClass", "DnsQryName", "DnsQryNameLen", "DnsCountLabels" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Core.Dns.Types._DnsResp), global::Ndx.Decoders.Core.Dns.Types._DnsResp.Parser, new[]{ "DnsRespType", "DnsRespClass", "DnsRespCacheFlush", "DnsRespExtRcode", "DnsRespEdns0Version", "DnsRespZ", "DnsRespZDo", "DnsRespZReserved", "DnsRespName", "DnsRespTtl", "DnsRespLen", "DnsRespValue" }, null, null, null)})
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Core.Dns.Types._DnsResp), global::Ndx.Decoders.Core.Dns.Types._DnsResp.Parser, new[]{ "DnsRespType", "DnsRespClass", "DnsRespCacheFlush", "DnsRespExtRcode", "DnsRespEdns0Version", "DnsRespZ", "DnsRespZDo", "DnsRespZReserved", "DnsRespName", "DnsRespTtl", "DnsRespLen", "DnsRespValue", "DnsSrvService", "DnsSrvProto", "DnsSrvName", "DnsSrvPriority", "DnsSrvWeight", "DnsSrvPort", "DnsSrvTarget", "DnsNaptrOrder", "DnsNaptrPreference", "DnsNaptrFlagsLength", "DnsNaptrFlags", "DnsNaptrServiceLength", "DnsNaptrService", "DnsNaptrRegexLength", "DnsNaptrRegex", "DnsNaptrReplacementLength", "DnsNaptrReplacement", "DnsA", "DnsMd", "DnsMf", "DnsMb", "DnsMg", "DnsMr", "DnsNull", "DnsAaaa", "DnsCname", "DnsRrUdpPayloadSize", "DnsSoaMname", "DnsSoaRname", "DnsSoaSerialNumber", "DnsSoaRefreshInterval", "DnsSoaRetryInterval", "DnsSoaExpireLimit", "DnsSoaMininumTtl", "DnsPtrDomainName", "DnsMinfoR", "DnsMinfoE", "DnsMxPreference", "DnsMxMailExchange", "DnsTxtLength", "DnsTxt", "DnsNs" }, null, null, null)})
           }));
     }
     #endregion
@@ -235,256 +114,12 @@ namespace Ndx.Decoders.Core {
       dnsCountAddRr_ = other.dnsCountAddRr_;
       dnsQry_ = other.dnsQry_.Clone();
       dnsResp_ = other.dnsResp_.Clone();
-      dnsSrvService_ = other.dnsSrvService_;
-      dnsSrvProto_ = other.dnsSrvProto_;
-      dnsSrvName_ = other.dnsSrvName_;
-      dnsSrvPriority_ = other.dnsSrvPriority_;
-      dnsSrvWeight_ = other.dnsSrvWeight_;
-      dnsSrvPort_ = other.dnsSrvPort_;
-      dnsSrvTarget_ = other.dnsSrvTarget_;
-      dnsNaptrOrder_ = other.dnsNaptrOrder_;
-      dnsNaptrPreference_ = other.dnsNaptrPreference_;
-      dnsNaptrFlagsLength_ = other.dnsNaptrFlagsLength_;
-      dnsNaptrFlags_ = other.dnsNaptrFlags_;
-      dnsNaptrServiceLength_ = other.dnsNaptrServiceLength_;
-      dnsNaptrService_ = other.dnsNaptrService_;
-      dnsNaptrRegexLength_ = other.dnsNaptrRegexLength_;
-      dnsNaptrRegex_ = other.dnsNaptrRegex_;
-      dnsNaptrReplacementLength_ = other.dnsNaptrReplacementLength_;
-      dnsNaptrReplacement_ = other.dnsNaptrReplacement_;
-      dnsA_ = other.dnsA_;
-      dnsMd_ = other.dnsMd_;
-      dnsMf_ = other.dnsMf_;
-      dnsMb_ = other.dnsMb_;
-      dnsMg_ = other.dnsMg_;
-      dnsMr_ = other.dnsMr_;
-      dnsNull_ = other.dnsNull_;
-      dnsAaaa_ = other.dnsAaaa_;
-      dnsCname_ = other.dnsCname_;
-      dnsRrUdpPayloadSize_ = other.dnsRrUdpPayloadSize_;
-      dnsSoaMname_ = other.dnsSoaMname_;
-      dnsSoaRname_ = other.dnsSoaRname_;
-      dnsSoaSerialNumber_ = other.dnsSoaSerialNumber_;
-      dnsSoaRefreshInterval_ = other.dnsSoaRefreshInterval_;
-      dnsSoaRetryInterval_ = other.dnsSoaRetryInterval_;
-      dnsSoaExpireLimit_ = other.dnsSoaExpireLimit_;
-      dnsSoaMininumTtl_ = other.dnsSoaMininumTtl_;
-      dnsPtrDomainName_ = other.dnsPtrDomainName_;
-      dnsWksAddress_ = other.dnsWksAddress_;
-      dnsWksProtocol_ = other.dnsWksProtocol_;
-      dnsWksBits_ = other.dnsWksBits_;
-      dnsHinfoCpuLength_ = other.dnsHinfoCpuLength_;
-      dnsHinfoCpu_ = other.dnsHinfoCpu_;
-      dnsHinfoOsLength_ = other.dnsHinfoOsLength_;
-      dnsHinfoOs_ = other.dnsHinfoOs_;
-      dnsMinfoR_ = other.dnsMinfoR_;
-      dnsMinfoE_ = other.dnsMinfoE_;
-      dnsMxPreference_ = other.dnsMxPreference_;
-      dnsMxMailExchange_ = other.dnsMxMailExchange_;
-      dnsTxtLength_ = other.dnsTxtLength_;
-      dnsTxt_ = other.dnsTxt_;
-      dnsOpenpgpkey_ = other.dnsOpenpgpkey_;
-      dnsCsyncSoa_ = other.dnsCsyncSoa_;
-      dnsCsyncFlags_ = other.dnsCsyncFlags_;
-      dnsCsyncFlagsImmediate_ = other.dnsCsyncFlagsImmediate_;
-      dnsCsyncFlagsSoaminimum_ = other.dnsCsyncFlagsSoaminimum_;
-      dnsCsyncTypeBitmap_ = other.dnsCsyncTypeBitmap_;
-      dnsSpfLength_ = other.dnsSpfLength_;
-      dnsSpf_ = other.dnsSpf_;
-      dnsIlnpNidPreference_ = other.dnsIlnpNidPreference_;
-      dnsIlnpNid_ = other.dnsIlnpNid_;
-      dnsIlnpL32Preference_ = other.dnsIlnpL32Preference_;
-      dnsIlnpL32_ = other.dnsIlnpL32_;
-      dnsIlnpL64Preference_ = other.dnsIlnpL64Preference_;
-      dnsIlnpL64_ = other.dnsIlnpL64_;
-      dnsIlnpLpPreference_ = other.dnsIlnpLpPreference_;
-      dnsIlnpLp_ = other.dnsIlnpLp_;
-      dnsEui48_ = other.dnsEui48_;
-      dnsEui64_ = other.dnsEui64_;
-      dnsRrsigTypeCovered_ = other.dnsRrsigTypeCovered_;
-      dnsRrsigAlgorithm_ = other.dnsRrsigAlgorithm_;
-      dnsRrsigLabels_ = other.dnsRrsigLabels_;
-      dnsRrsigOriginalTtl_ = other.dnsRrsigOriginalTtl_;
-      dnsRrsigSignatureExpiration_ = other.dnsRrsigSignatureExpiration_;
-      dnsRrsigSignatureInception_ = other.dnsRrsigSignatureInception_;
-      dnsRrsigKeyTag_ = other.dnsRrsigKeyTag_;
-      dnsRrsigSignersName_ = other.dnsRrsigSignersName_;
-      dnsRrsigSignature_ = other.dnsRrsigSignature_;
-      dnsDnskeyFlags_ = other.dnsDnskeyFlags_;
-      dnsDnskeyFlagsZoneKey_ = other.dnsDnskeyFlagsZoneKey_;
-      dnsDnskeyFlagsKeyRevoked_ = other.dnsDnskeyFlagsKeyRevoked_;
-      dnsDnskeyFlagsSecureEntryPoint_ = other.dnsDnskeyFlagsSecureEntryPoint_;
-      dnsDnskeyFlagsReserved_ = other.dnsDnskeyFlagsReserved_;
-      dnsDnskeyProtocol_ = other.dnsDnskeyProtocol_;
-      dnsDnskeyAlgorithm_ = other.dnsDnskeyAlgorithm_;
-      dnsDnskeyKeyId_ = other.dnsDnskeyKeyId_;
-      dnsDnskeyPublicKey_ = other.dnsDnskeyPublicKey_;
-      dnsKeyFlags_ = other.dnsKeyFlags_;
-      dnsKeyFlagsAuthentication_ = other.dnsKeyFlagsAuthentication_;
-      dnsKeyFlagsConfidentiality_ = other.dnsKeyFlagsConfidentiality_;
-      dnsKeyFlagsRequired_ = other.dnsKeyFlagsRequired_;
-      dnsKeyFlagsAssociatedUser_ = other.dnsKeyFlagsAssociatedUser_;
-      dnsKeyFlagsAssociatedNamedEntity_ = other.dnsKeyFlagsAssociatedNamedEntity_;
-      dnsKeyFlagsIpsec_ = other.dnsKeyFlagsIpsec_;
-      dnsKeyFlagsMime_ = other.dnsKeyFlagsMime_;
-      dnsKeyFlagsSignatory_ = other.dnsKeyFlagsSignatory_;
-      dnsKeyProtocol_ = other.dnsKeyProtocol_;
-      dnsKeyAlgorithm_ = other.dnsKeyAlgorithm_;
-      dnsKeyKeyId_ = other.dnsKeyKeyId_;
-      dnsKeyPublicKey_ = other.dnsKeyPublicKey_;
-      dnsPxPreference_ = other.dnsPxPreference_;
-      dnsPxMap822_ = other.dnsPxMap822_;
-      dnsPxMap400_ = other.dnsPxMap400_;
-      dnsTkeyAlgoName_ = other.dnsTkeyAlgoName_;
-      dnsTkeySignatureExpiration_ = other.dnsTkeySignatureExpiration_;
-      dnsTkeySignatureInception_ = other.dnsTkeySignatureInception_;
-      dnsTkeyMode_ = other.dnsTkeyMode_;
-      dnsTkeyError_ = other.dnsTkeyError_;
-      dnsTkeyKeySize_ = other.dnsTkeyKeySize_;
-      dnsTkeyKeyData_ = other.dnsTkeyKeyData_;
-      dnsTkeyOtherSize_ = other.dnsTkeyOtherSize_;
-      dnsTkeyOtherData_ = other.dnsTkeyOtherData_;
-      dnsIpseckeyGatewayPrecedence_ = other.dnsIpseckeyGatewayPrecedence_;
-      dnsIpseckeyGatewayAlgorithm_ = other.dnsIpseckeyGatewayAlgorithm_;
-      dnsIpseckeyGatewayType_ = other.dnsIpseckeyGatewayType_;
-      dnsIpseckeyGatewayIpv4_ = other.dnsIpseckeyGatewayIpv4_;
-      dnsIpseckeyGatewayIpv6_ = other.dnsIpseckeyGatewayIpv6_;
-      dnsIpseckeyGatewayDns_ = other.dnsIpseckeyGatewayDns_;
-      dnsIpseckeyPublicKey_ = other.dnsIpseckeyPublicKey_;
-      dnsXpfIpVersion_ = other.dnsXpfIpVersion_;
-      dnsXpfProtocol_ = other.dnsXpfProtocol_;
-      dnsXpfSourceIpv4_ = other.dnsXpfSourceIpv4_;
-      dnsXpfDestinationIpv4_ = other.dnsXpfDestinationIpv4_;
-      dnsXpfSourceIpv6_ = other.dnsXpfSourceIpv6_;
-      dnsXpfDestinationIpv6_ = other.dnsXpfDestinationIpv6_;
-      dnsXpfSport_ = other.dnsXpfSport_;
-      dnsXpfDport_ = other.dnsXpfDport_;
-      dnsA6PrefixLen_ = other.dnsA6PrefixLen_;
-      dnsA6AddressSuffix_ = other.dnsA6AddressSuffix_;
-      dnsA6PrefixName_ = other.dnsA6PrefixName_;
-      dnsDname_ = other.dnsDname_;
-      dnsLocVersion_ = other.dnsLocVersion_;
-      dnsLocSize_ = other.dnsLocSize_;
-      dnsLocHorizontalPrecision_ = other.dnsLocHorizontalPrecision_;
-      dnsLocVerticalPrecision_ = other.dnsLocVerticalPrecision_;
-      dnsLocLatitude_ = other.dnsLocLatitude_;
-      dnsLocLongitude_ = other.dnsLocLongitude_;
-      dnsLocAltitude_ = other.dnsLocAltitude_;
-      dnsLocUnknownData_ = other.dnsLocUnknownData_;
-      dnsNxtNextDomainName_ = other.dnsNxtNextDomainName_;
-      dnsKxPreference_ = other.dnsKxPreference_;
-      dnsKxKeyExchange_ = other.dnsKxKeyExchange_;
-      dnsCertType_ = other.dnsCertType_;
-      dnsCertKeyTag_ = other.dnsCertKeyTag_;
-      dnsCertAlgorithm_ = other.dnsCertAlgorithm_;
-      dnsCertCertificate_ = other.dnsCertCertificate_;
-      dnsNsecNextDomainName_ = other.dnsNsecNextDomainName_;
-      dnsNs_ = other.dnsNs_;
-      dnsOpt_ = other.dnsOpt_;
-      dnsOptCode_ = other.dnsOptCode_;
-      dnsOptLen_ = other.dnsOptLen_;
-      dnsOptData_ = other.dnsOptData_;
-      dnsOptDau_ = other.dnsOptDau_;
-      dnsOptDhu_ = other.dnsOptDhu_;
-      dnsOptN3U_ = other.dnsOptN3U_;
-      dnsOptClientFamily_ = other.dnsOptClientFamily_;
-      dnsOptClientNetmask_ = other.dnsOptClientNetmask_;
-      dnsOptClientScope_ = other.dnsOptClientScope_;
-      dnsOptClientAddr_ = other.dnsOptClientAddr_;
-      dnsOptClientAddr4_ = other.dnsOptClientAddr4_;
-      dnsOptClientAddr6_ = other.dnsOptClientAddr6_;
-      dnsOptCookieClient_ = other.dnsOptCookieClient_;
-      dnsOptCookieServer_ = other.dnsOptCookieServer_;
-      dnsOptEdnsTcpKeepaliveTimeout_ = other.dnsOptEdnsTcpKeepaliveTimeout_;
-      dnsOptPadding_ = other.dnsOptPadding_;
-      dnsOptChainFqdn_ = other.dnsOptChainFqdn_;
       dnsCountQueries_ = other.dnsCountQueries_;
       dnsCountZones_ = other.dnsCountZones_;
       dnsCountAnswers_ = other.dnsCountAnswers_;
       dnsCountPrerequisites_ = other.dnsCountPrerequisites_;
       dnsCountAuthRr_ = other.dnsCountAuthRr_;
       dnsCountUpdates_ = other.dnsCountUpdates_;
-      dnsNsec3Algo_ = other.dnsNsec3Algo_;
-      dnsNsec3Flags_ = other.dnsNsec3Flags_;
-      dnsNsec3FlagsOptOut_ = other.dnsNsec3FlagsOptOut_;
-      dnsNsec3Iterations_ = other.dnsNsec3Iterations_;
-      dnsNsec3SaltLength_ = other.dnsNsec3SaltLength_;
-      dnsNsec3SaltValue_ = other.dnsNsec3SaltValue_;
-      dnsNsec3HashLength_ = other.dnsNsec3HashLength_;
-      dnsNsec3HashValue_ = other.dnsNsec3HashValue_;
-      dnsTlsaCertificateUsage_ = other.dnsTlsaCertificateUsage_;
-      dnsTlsaSelector_ = other.dnsTlsaSelector_;
-      dnsTlsaMatchingType_ = other.dnsTlsaMatchingType_;
-      dnsTlsaCertificateAssociationData_ = other.dnsTlsaCertificateAssociationData_;
-      dnsTsigAlgorithmName_ = other.dnsTsigAlgorithmName_;
-      dnsTsigTimeSigned_ = other.dnsTsigTimeSigned_;
-      dnsTsigOriginalId_ = other.dnsTsigOriginalId_;
-      dnsTsigError_ = other.dnsTsigError_;
-      dnsTsigFudge_ = other.dnsTsigFudge_;
-      dnsTsigMacSize_ = other.dnsTsigMacSize_;
-      dnsTsigOtherLen_ = other.dnsTsigOtherLen_;
-      dnsTsigMac_ = other.dnsTsigMac_;
-      dnsTsigOtherData_ = other.dnsTsigOtherData_;
-      dnsSshfpAlgorithm_ = other.dnsSshfpAlgorithm_;
-      dnsSshfpFingerprintType_ = other.dnsSshfpFingerprintType_;
-      dnsSshfpFingerprint_ = other.dnsSshfpFingerprint_;
-      dnsHipHitLength_ = other.dnsHipHitLength_;
-      dnsHipHitPkAlgo_ = other.dnsHipHitPkAlgo_;
-      dnsHipPkLength_ = other.dnsHipPkLength_;
-      dnsHipHit_ = other.dnsHipHit_;
-      dnsHipPk_ = other.dnsHipPk_;
-      dnsHipRendezvousServer_ = other.dnsHipRendezvousServer_;
-      dnsDhcidRdata_ = other.dnsDhcidRdata_;
-      dnsDsKeyId_ = other.dnsDsKeyId_;
-      dnsDsAlgorithm_ = other.dnsDsAlgorithm_;
-      dnsDsDigestType_ = other.dnsDsDigestType_;
-      dnsDsDigest_ = other.dnsDsDigest_;
-      dnsAplAddressFamily_ = other.dnsAplAddressFamily_;
-      dnsAplCodedPrefix_ = other.dnsAplCodedPrefix_;
-      dnsAplNegation_ = other.dnsAplNegation_;
-      dnsAplAfdlength_ = other.dnsAplAfdlength_;
-      dnsAplAfdpartIpv4_ = other.dnsAplAfdpartIpv4_;
-      dnsAplAfdpartIpv6_ = other.dnsAplAfdpartIpv6_;
-      dnsAplAfdpartData_ = other.dnsAplAfdpartData_;
-      dnsGposLongitudeLength_ = other.dnsGposLongitudeLength_;
-      dnsGposLongitude_ = other.dnsGposLongitude_;
-      dnsGposLatitudeLength_ = other.dnsGposLatitudeLength_;
-      dnsGposLatitude_ = other.dnsGposLatitude_;
-      dnsGposAltitudeLength_ = other.dnsGposAltitudeLength_;
-      dnsGposAltitude_ = other.dnsGposAltitude_;
-      dnsRpMailbox_ = other.dnsRpMailbox_;
-      dnsRpTxtRr_ = other.dnsRpTxtRr_;
-      dnsAfsdbSubtype_ = other.dnsAfsdbSubtype_;
-      dnsAfsdbHostname_ = other.dnsAfsdbHostname_;
-      dnsX25Length_ = other.dnsX25Length_;
-      dnsX25PsdnAddress_ = other.dnsX25PsdnAddress_;
-      dnsIdsnLength_ = other.dnsIdsnLength_;
-      dnsIdsnAddress_ = other.dnsIdsnAddress_;
-      dnsIdsnSaLength_ = other.dnsIdsnSaLength_;
-      dnsIdsnSaAddress_ = other.dnsIdsnSaAddress_;
-      dnsRtSubtype_ = other.dnsRtSubtype_;
-      dnsRtIntermediateHost_ = other.dnsRtIntermediateHost_;
-      dnsNsapRdata_ = other.dnsNsapRdata_;
-      dnsNsapPtrOwner_ = other.dnsNsapPtrOwner_;
-      dnsCaaFlags_ = other.dnsCaaFlags_;
-      dnsCaaFlagsIssuerCritical_ = other.dnsCaaFlagsIssuerCritical_;
-      dnsCaaIssue_ = other.dnsCaaIssue_;
-      dnsCaaIssuewild_ = other.dnsCaaIssuewild_;
-      dnsCaaIodef_ = other.dnsCaaIodef_;
-      dnsCaaUnknown_ = other.dnsCaaUnknown_;
-      dnsCaaTagLength_ = other.dnsCaaTagLength_;
-      dnsCaaTag_ = other.dnsCaaTag_;
-      dnsCaaValue_ = other.dnsCaaValue_;
-      dnsWinsLocalFlag_ = other.dnsWinsLocalFlag_;
-      dnsWinsLookupTimeout_ = other.dnsWinsLookupTimeout_;
-      dnsWinsCacheTimeout_ = other.dnsWinsCacheTimeout_;
-      dnsWinsNbWinsServers_ = other.dnsWinsNbWinsServers_;
-      dnsWinsWinsServer_ = other.dnsWinsWinsServer_;
-      dnsWinsrLocalFlag_ = other.dnsWinsrLocalFlag_;
-      dnsWinsrLookupTimeout_ = other.dnsWinsrLookupTimeout_;
-      dnsWinsrCacheTimeout_ = other.dnsWinsrCacheTimeout_;
-      dnsWinsrNameResultDomain_ = other.dnsWinsrNameResultDomain_;
-      dnsData_ = other.dnsData_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -550,12 +185,12 @@ namespace Ndx.Decoders.Core {
 
     /// <summary>Field number for the "DnsTime" field.</summary>
     public const int DnsTimeFieldNumber = 5;
-    private long dnsTime_;
+    private float dnsTime_;
     /// <summary>
     /// Time ('dns_dns_time')
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long DnsTime {
+    public float DnsTime {
       get { return dnsTime_; }
       set {
         dnsTime_ = value;
@@ -602,2290 +237,8 @@ namespace Ndx.Decoders.Core {
       get { return dnsResp_; }
     }
 
-    /// <summary>Field number for the "DnsSrvService" field.</summary>
-    public const int DnsSrvServiceFieldNumber = 9;
-    private string dnsSrvService_ = "";
-    /// <summary>
-    /// Service ('text_dns_srv_service')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsSrvService {
-      get { return dnsSrvService_; }
-      set {
-        dnsSrvService_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsSrvProto" field.</summary>
-    public const int DnsSrvProtoFieldNumber = 10;
-    private string dnsSrvProto_ = "";
-    /// <summary>
-    /// Protocol ('text_dns_srv_proto')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsSrvProto {
-      get { return dnsSrvProto_; }
-      set {
-        dnsSrvProto_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsSrvName" field.</summary>
-    public const int DnsSrvNameFieldNumber = 11;
-    private string dnsSrvName_ = "";
-    /// <summary>
-    /// Name ('text_dns_srv_name')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsSrvName {
-      get { return dnsSrvName_; }
-      set {
-        dnsSrvName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsSrvPriority" field.</summary>
-    public const int DnsSrvPriorityFieldNumber = 12;
-    private uint dnsSrvPriority_;
-    /// <summary>
-    /// Priority ('text_dns_srv_priority')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsSrvPriority {
-      get { return dnsSrvPriority_; }
-      set {
-        dnsSrvPriority_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsSrvWeight" field.</summary>
-    public const int DnsSrvWeightFieldNumber = 13;
-    private uint dnsSrvWeight_;
-    /// <summary>
-    /// Weight ('text_dns_srv_weight')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsSrvWeight {
-      get { return dnsSrvWeight_; }
-      set {
-        dnsSrvWeight_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsSrvPort" field.</summary>
-    public const int DnsSrvPortFieldNumber = 14;
-    private uint dnsSrvPort_;
-    /// <summary>
-    /// Port ('text_dns_srv_port')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsSrvPort {
-      get { return dnsSrvPort_; }
-      set {
-        dnsSrvPort_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsSrvTarget" field.</summary>
-    public const int DnsSrvTargetFieldNumber = 15;
-    private string dnsSrvTarget_ = "";
-    /// <summary>
-    /// Target ('text_dns_srv_target')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsSrvTarget {
-      get { return dnsSrvTarget_; }
-      set {
-        dnsSrvTarget_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsNaptrOrder" field.</summary>
-    public const int DnsNaptrOrderFieldNumber = 16;
-    private uint dnsNaptrOrder_;
-    /// <summary>
-    /// Order ('text_dns_naptr_order')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsNaptrOrder {
-      get { return dnsNaptrOrder_; }
-      set {
-        dnsNaptrOrder_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsNaptrPreference" field.</summary>
-    public const int DnsNaptrPreferenceFieldNumber = 17;
-    private uint dnsNaptrPreference_;
-    /// <summary>
-    /// Preference ('text_dns_naptr_preference')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsNaptrPreference {
-      get { return dnsNaptrPreference_; }
-      set {
-        dnsNaptrPreference_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsNaptrFlagsLength" field.</summary>
-    public const int DnsNaptrFlagsLengthFieldNumber = 18;
-    private uint dnsNaptrFlagsLength_;
-    /// <summary>
-    /// Flags Length ('text_dns_naptr_flags_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsNaptrFlagsLength {
-      get { return dnsNaptrFlagsLength_; }
-      set {
-        dnsNaptrFlagsLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsNaptrFlags" field.</summary>
-    public const int DnsNaptrFlagsFieldNumber = 19;
-    private string dnsNaptrFlags_ = "";
-    /// <summary>
-    /// Flags ('text_dns_naptr_flags')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsNaptrFlags {
-      get { return dnsNaptrFlags_; }
-      set {
-        dnsNaptrFlags_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsNaptrServiceLength" field.</summary>
-    public const int DnsNaptrServiceLengthFieldNumber = 20;
-    private uint dnsNaptrServiceLength_;
-    /// <summary>
-    /// Service Length ('text_dns_naptr_service_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsNaptrServiceLength {
-      get { return dnsNaptrServiceLength_; }
-      set {
-        dnsNaptrServiceLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsNaptrService" field.</summary>
-    public const int DnsNaptrServiceFieldNumber = 21;
-    private string dnsNaptrService_ = "";
-    /// <summary>
-    /// Service ('text_dns_naptr_service')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsNaptrService {
-      get { return dnsNaptrService_; }
-      set {
-        dnsNaptrService_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsNaptrRegexLength" field.</summary>
-    public const int DnsNaptrRegexLengthFieldNumber = 22;
-    private uint dnsNaptrRegexLength_;
-    /// <summary>
-    /// Regex Length ('text_dns_naptr_regex_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsNaptrRegexLength {
-      get { return dnsNaptrRegexLength_; }
-      set {
-        dnsNaptrRegexLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsNaptrRegex" field.</summary>
-    public const int DnsNaptrRegexFieldNumber = 23;
-    private string dnsNaptrRegex_ = "";
-    /// <summary>
-    /// Regex ('text_dns_naptr_regex')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsNaptrRegex {
-      get { return dnsNaptrRegex_; }
-      set {
-        dnsNaptrRegex_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsNaptrReplacementLength" field.</summary>
-    public const int DnsNaptrReplacementLengthFieldNumber = 24;
-    private uint dnsNaptrReplacementLength_;
-    /// <summary>
-    /// Replacement Length ('text_dns_naptr_replacement_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsNaptrReplacementLength {
-      get { return dnsNaptrReplacementLength_; }
-      set {
-        dnsNaptrReplacementLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsNaptrReplacement" field.</summary>
-    public const int DnsNaptrReplacementFieldNumber = 25;
-    private string dnsNaptrReplacement_ = "";
-    /// <summary>
-    /// Replacement ('dns_dns_naptr_replacement')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsNaptrReplacement {
-      get { return dnsNaptrReplacement_; }
-      set {
-        dnsNaptrReplacement_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsA" field.</summary>
-    public const int DnsAFieldNumber = 26;
-    private pb::ByteString dnsA_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Address ('text_dns_a')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsA {
-      get { return dnsA_; }
-      set {
-        dnsA_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsMd" field.</summary>
-    public const int DnsMdFieldNumber = 27;
-    private string dnsMd_ = "";
-    /// <summary>
-    /// Mail Destination ('text_dns_md')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsMd {
-      get { return dnsMd_; }
-      set {
-        dnsMd_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsMf" field.</summary>
-    public const int DnsMfFieldNumber = 28;
-    private string dnsMf_ = "";
-    /// <summary>
-    /// Mail Forwarder ('text_dns_mf')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsMf {
-      get { return dnsMf_; }
-      set {
-        dnsMf_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsMb" field.</summary>
-    public const int DnsMbFieldNumber = 29;
-    private string dnsMb_ = "";
-    /// <summary>
-    /// MailBox Domaine ('text_dns_mb')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsMb {
-      get { return dnsMb_; }
-      set {
-        dnsMb_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsMg" field.</summary>
-    public const int DnsMgFieldNumber = 30;
-    private string dnsMg_ = "";
-    /// <summary>
-    /// Mail Group member ('text_dns_mg')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsMg {
-      get { return dnsMg_; }
-      set {
-        dnsMg_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsMr" field.</summary>
-    public const int DnsMrFieldNumber = 31;
-    private string dnsMr_ = "";
-    /// <summary>
-    /// Mail Rename domaine ('text_dns_mr')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsMr {
-      get { return dnsMr_; }
-      set {
-        dnsMr_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsNull" field.</summary>
-    public const int DnsNullFieldNumber = 32;
-    private pb::ByteString dnsNull_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Null (data) ('dns_dns_null')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsNull {
-      get { return dnsNull_; }
-      set {
-        dnsNull_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsAaaa" field.</summary>
-    public const int DnsAaaaFieldNumber = 33;
-    private pb::ByteString dnsAaaa_ = pb::ByteString.Empty;
-    /// <summary>
-    /// AAAA Address ('text_dns_aaaa')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsAaaa {
-      get { return dnsAaaa_; }
-      set {
-        dnsAaaa_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsCname" field.</summary>
-    public const int DnsCnameFieldNumber = 34;
-    private string dnsCname_ = "";
-    /// <summary>
-    /// CNAME ('text_dns_cname')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsCname {
-      get { return dnsCname_; }
-      set {
-        dnsCname_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsRrUdpPayloadSize" field.</summary>
-    public const int DnsRrUdpPayloadSizeFieldNumber = 35;
-    private uint dnsRrUdpPayloadSize_;
-    /// <summary>
-    /// UDP payload size ('text_dns_rr_udp_payload_size')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsRrUdpPayloadSize {
-      get { return dnsRrUdpPayloadSize_; }
-      set {
-        dnsRrUdpPayloadSize_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsSoaMname" field.</summary>
-    public const int DnsSoaMnameFieldNumber = 36;
-    private string dnsSoaMname_ = "";
-    /// <summary>
-    /// Primary name server ('dns_dns_soa_mname')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsSoaMname {
-      get { return dnsSoaMname_; }
-      set {
-        dnsSoaMname_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsSoaRname" field.</summary>
-    public const int DnsSoaRnameFieldNumber = 37;
-    private string dnsSoaRname_ = "";
-    /// <summary>
-    /// Responsible authority's mailbox ('text_dns_soa_rname')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsSoaRname {
-      get { return dnsSoaRname_; }
-      set {
-        dnsSoaRname_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsSoaSerialNumber" field.</summary>
-    public const int DnsSoaSerialNumberFieldNumber = 38;
-    private uint dnsSoaSerialNumber_;
-    /// <summary>
-    /// Serial Number ('text_dns_soa_serial_number')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsSoaSerialNumber {
-      get { return dnsSoaSerialNumber_; }
-      set {
-        dnsSoaSerialNumber_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsSoaRefreshInterval" field.</summary>
-    public const int DnsSoaRefreshIntervalFieldNumber = 39;
-    private uint dnsSoaRefreshInterval_;
-    /// <summary>
-    /// Refresh Interval ('text_dns_soa_refresh_interval')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsSoaRefreshInterval {
-      get { return dnsSoaRefreshInterval_; }
-      set {
-        dnsSoaRefreshInterval_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsSoaRetryInterval" field.</summary>
-    public const int DnsSoaRetryIntervalFieldNumber = 40;
-    private uint dnsSoaRetryInterval_;
-    /// <summary>
-    /// Retry Interval ('text_dns_soa_retry_interval')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsSoaRetryInterval {
-      get { return dnsSoaRetryInterval_; }
-      set {
-        dnsSoaRetryInterval_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsSoaExpireLimit" field.</summary>
-    public const int DnsSoaExpireLimitFieldNumber = 41;
-    private uint dnsSoaExpireLimit_;
-    /// <summary>
-    /// Expire limit ('text_dns_soa_expire_limit')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsSoaExpireLimit {
-      get { return dnsSoaExpireLimit_; }
-      set {
-        dnsSoaExpireLimit_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsSoaMininumTtl" field.</summary>
-    public const int DnsSoaMininumTtlFieldNumber = 42;
-    private uint dnsSoaMininumTtl_;
-    /// <summary>
-    /// Minimum TTL ('text_dns_soa_mininum_ttl')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsSoaMininumTtl {
-      get { return dnsSoaMininumTtl_; }
-      set {
-        dnsSoaMininumTtl_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsPtrDomainName" field.</summary>
-    public const int DnsPtrDomainNameFieldNumber = 43;
-    private string dnsPtrDomainName_ = "";
-    /// <summary>
-    /// Domain Name ('text_dns_ptr_domain_name')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsPtrDomainName {
-      get { return dnsPtrDomainName_; }
-      set {
-        dnsPtrDomainName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsWksAddress" field.</summary>
-    public const int DnsWksAddressFieldNumber = 44;
-    private pb::ByteString dnsWksAddress_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Address ('dns_dns_wks_address')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsWksAddress {
-      get { return dnsWksAddress_; }
-      set {
-        dnsWksAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsWksProtocol" field.</summary>
-    public const int DnsWksProtocolFieldNumber = 45;
-    private uint dnsWksProtocol_;
-    /// <summary>
-    /// Protocol ('dns_dns_wks_protocol')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsWksProtocol {
-      get { return dnsWksProtocol_; }
-      set {
-        dnsWksProtocol_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsWksBits" field.</summary>
-    public const int DnsWksBitsFieldNumber = 46;
-    private uint dnsWksBits_;
-    /// <summary>
-    /// Bits ('dns_dns_wks_bits')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsWksBits {
-      get { return dnsWksBits_; }
-      set {
-        dnsWksBits_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsHinfoCpuLength" field.</summary>
-    public const int DnsHinfoCpuLengthFieldNumber = 47;
-    private uint dnsHinfoCpuLength_;
-    /// <summary>
-    /// CPU Length ('dns_dns_hinfo_cpu_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsHinfoCpuLength {
-      get { return dnsHinfoCpuLength_; }
-      set {
-        dnsHinfoCpuLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsHinfoCpu" field.</summary>
-    public const int DnsHinfoCpuFieldNumber = 48;
-    private string dnsHinfoCpu_ = "";
-    /// <summary>
-    /// CPU ('dns_dns_hinfo_cpu')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsHinfoCpu {
-      get { return dnsHinfoCpu_; }
-      set {
-        dnsHinfoCpu_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsHinfoOsLength" field.</summary>
-    public const int DnsHinfoOsLengthFieldNumber = 49;
-    private uint dnsHinfoOsLength_;
-    /// <summary>
-    /// OS Length ('dns_dns_hinfo_os_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsHinfoOsLength {
-      get { return dnsHinfoOsLength_; }
-      set {
-        dnsHinfoOsLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsHinfoOs" field.</summary>
-    public const int DnsHinfoOsFieldNumber = 50;
-    private string dnsHinfoOs_ = "";
-    /// <summary>
-    /// OS ('dns_dns_hinfo_os')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsHinfoOs {
-      get { return dnsHinfoOs_; }
-      set {
-        dnsHinfoOs_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsMinfoR" field.</summary>
-    public const int DnsMinfoRFieldNumber = 51;
-    private string dnsMinfoR_ = "";
-    /// <summary>
-    /// Responsible Mailbox ('dns_dns_minfo_r')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsMinfoR {
-      get { return dnsMinfoR_; }
-      set {
-        dnsMinfoR_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsMinfoE" field.</summary>
-    public const int DnsMinfoEFieldNumber = 52;
-    private string dnsMinfoE_ = "";
-    /// <summary>
-    /// Error Mailbox ('dns_dns_minfo_e')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsMinfoE {
-      get { return dnsMinfoE_; }
-      set {
-        dnsMinfoE_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsMxPreference" field.</summary>
-    public const int DnsMxPreferenceFieldNumber = 53;
-    private uint dnsMxPreference_;
-    /// <summary>
-    /// Preference ('text_dns_mx_preference')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsMxPreference {
-      get { return dnsMxPreference_; }
-      set {
-        dnsMxPreference_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsMxMailExchange" field.</summary>
-    public const int DnsMxMailExchangeFieldNumber = 54;
-    private string dnsMxMailExchange_ = "";
-    /// <summary>
-    /// Mail Exchange ('text_dns_mx_mail_exchange')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsMxMailExchange {
-      get { return dnsMxMailExchange_; }
-      set {
-        dnsMxMailExchange_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsTxtLength" field.</summary>
-    public const int DnsTxtLengthFieldNumber = 55;
-    private uint dnsTxtLength_;
-    /// <summary>
-    /// TXT Length ('dns_txt_dns_txt_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsTxtLength {
-      get { return dnsTxtLength_; }
-      set {
-        dnsTxtLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTxt" field.</summary>
-    public const int DnsTxtFieldNumber = 56;
-    private string dnsTxt_ = "";
-    /// <summary>
-    /// TXT ('dns_dns_txt')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsTxt {
-      get { return dnsTxt_; }
-      set {
-        dnsTxt_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsOpenpgpkey" field.</summary>
-    public const int DnsOpenpgpkeyFieldNumber = 57;
-    private string dnsOpenpgpkey_ = "";
-    /// <summary>
-    /// OpenPGP Key ('dns_dns_openpgpkey')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsOpenpgpkey {
-      get { return dnsOpenpgpkey_; }
-      set {
-        dnsOpenpgpkey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsCsyncSoa" field.</summary>
-    public const int DnsCsyncSoaFieldNumber = 58;
-    private uint dnsCsyncSoa_;
-    /// <summary>
-    /// SOA ('dns_dns_csync_soa')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsCsyncSoa {
-      get { return dnsCsyncSoa_; }
-      set {
-        dnsCsyncSoa_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsCsyncFlags" field.</summary>
-    public const int DnsCsyncFlagsFieldNumber = 59;
-    private uint dnsCsyncFlags_;
-    /// <summary>
-    /// Flags ('dns_dns_csync_flags')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsCsyncFlags {
-      get { return dnsCsyncFlags_; }
-      set {
-        dnsCsyncFlags_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsCsyncFlagsImmediate" field.</summary>
-    public const int DnsCsyncFlagsImmediateFieldNumber = 60;
-    private bool dnsCsyncFlagsImmediate_;
-    /// <summary>
-    /// immediate ('dns_csync_flags_dns_csync_flags_immediate')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsCsyncFlagsImmediate {
-      get { return dnsCsyncFlagsImmediate_; }
-      set {
-        dnsCsyncFlagsImmediate_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsCsyncFlagsSoaminimum" field.</summary>
-    public const int DnsCsyncFlagsSoaminimumFieldNumber = 61;
-    private bool dnsCsyncFlagsSoaminimum_;
-    /// <summary>
-    /// soaminimum ('dns_csync_flags_dns_csync_flags_soaminimum')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsCsyncFlagsSoaminimum {
-      get { return dnsCsyncFlagsSoaminimum_; }
-      set {
-        dnsCsyncFlagsSoaminimum_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsCsyncTypeBitmap" field.</summary>
-    public const int DnsCsyncTypeBitmapFieldNumber = 62;
-    private pb::ByteString dnsCsyncTypeBitmap_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Type Bitmap ('dns_dns_csync_type_bitmap')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsCsyncTypeBitmap {
-      get { return dnsCsyncTypeBitmap_; }
-      set {
-        dnsCsyncTypeBitmap_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsSpfLength" field.</summary>
-    public const int DnsSpfLengthFieldNumber = 63;
-    private uint dnsSpfLength_;
-    /// <summary>
-    /// SPF Length ('dns_spf_dns_spf_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsSpfLength {
-      get { return dnsSpfLength_; }
-      set {
-        dnsSpfLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsSpf" field.</summary>
-    public const int DnsSpfFieldNumber = 64;
-    private string dnsSpf_ = "";
-    /// <summary>
-    /// SPF ('dns_dns_spf')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsSpf {
-      get { return dnsSpf_; }
-      set {
-        dnsSpf_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsIlnpNidPreference" field.</summary>
-    public const int DnsIlnpNidPreferenceFieldNumber = 65;
-    private uint dnsIlnpNidPreference_;
-    /// <summary>
-    /// Preference ('dns_ilnp_nid_dns_ilnp_nid_preference')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsIlnpNidPreference {
-      get { return dnsIlnpNidPreference_; }
-      set {
-        dnsIlnpNidPreference_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsIlnpNid" field.</summary>
-    public const int DnsIlnpNidFieldNumber = 66;
-    private pb::ByteString dnsIlnpNid_ = pb::ByteString.Empty;
-    /// <summary>
-    /// NodeID ('dns_dns_ilnp_nid')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsIlnpNid {
-      get { return dnsIlnpNid_; }
-      set {
-        dnsIlnpNid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsIlnpL32Preference" field.</summary>
-    public const int DnsIlnpL32PreferenceFieldNumber = 67;
-    private uint dnsIlnpL32Preference_;
-    /// <summary>
-    /// Preference ('dns_ilnp_l32_dns_ilnp_l32_preference')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsIlnpL32Preference {
-      get { return dnsIlnpL32Preference_; }
-      set {
-        dnsIlnpL32Preference_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsIlnpL32" field.</summary>
-    public const int DnsIlnpL32FieldNumber = 68;
-    private pb::ByteString dnsIlnpL32_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Locator32 ('dns_dns_ilnp_l32')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsIlnpL32 {
-      get { return dnsIlnpL32_; }
-      set {
-        dnsIlnpL32_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsIlnpL64Preference" field.</summary>
-    public const int DnsIlnpL64PreferenceFieldNumber = 69;
-    private uint dnsIlnpL64Preference_;
-    /// <summary>
-    /// Preference ('dns_ilnp_l64_dns_ilnp_l64_preference')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsIlnpL64Preference {
-      get { return dnsIlnpL64Preference_; }
-      set {
-        dnsIlnpL64Preference_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsIlnpL64" field.</summary>
-    public const int DnsIlnpL64FieldNumber = 70;
-    private pb::ByteString dnsIlnpL64_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Locator64 ('dns_dns_ilnp_l64')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsIlnpL64 {
-      get { return dnsIlnpL64_; }
-      set {
-        dnsIlnpL64_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsIlnpLpPreference" field.</summary>
-    public const int DnsIlnpLpPreferenceFieldNumber = 71;
-    private uint dnsIlnpLpPreference_;
-    /// <summary>
-    /// Preference ('dns_ilnp_lp_dns_ilnp_lp_preference')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsIlnpLpPreference {
-      get { return dnsIlnpLpPreference_; }
-      set {
-        dnsIlnpLpPreference_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsIlnpLp" field.</summary>
-    public const int DnsIlnpLpFieldNumber = 72;
-    private string dnsIlnpLp_ = "";
-    /// <summary>
-    /// Locator FQDN ('dns_dns_ilnp_lp')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsIlnpLp {
-      get { return dnsIlnpLp_; }
-      set {
-        dnsIlnpLp_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsEui48" field.</summary>
-    public const int DnsEui48FieldNumber = 73;
-    private pb::ByteString dnsEui48_ = pb::ByteString.Empty;
-    /// <summary>
-    /// EUI48 Address ('dns_dns_eui48')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsEui48 {
-      get { return dnsEui48_; }
-      set {
-        dnsEui48_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsEui64" field.</summary>
-    public const int DnsEui64FieldNumber = 74;
-    private pb::ByteString dnsEui64_ = pb::ByteString.Empty;
-    /// <summary>
-    /// EUI64 Address ('dns_dns_eui64')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsEui64 {
-      get { return dnsEui64_; }
-      set {
-        dnsEui64_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsRrsigTypeCovered" field.</summary>
-    public const int DnsRrsigTypeCoveredFieldNumber = 75;
-    private uint dnsRrsigTypeCovered_;
-    /// <summary>
-    /// Type Covered ('dns_dns_rrsig_type_covered')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsRrsigTypeCovered {
-      get { return dnsRrsigTypeCovered_; }
-      set {
-        dnsRrsigTypeCovered_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsRrsigAlgorithm" field.</summary>
-    public const int DnsRrsigAlgorithmFieldNumber = 76;
-    private uint dnsRrsigAlgorithm_;
-    /// <summary>
-    /// Algorithm ('dns_dns_rrsig_algorithm')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsRrsigAlgorithm {
-      get { return dnsRrsigAlgorithm_; }
-      set {
-        dnsRrsigAlgorithm_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsRrsigLabels" field.</summary>
-    public const int DnsRrsigLabelsFieldNumber = 77;
-    private uint dnsRrsigLabels_;
-    /// <summary>
-    /// Labels ('dns_dns_rrsig_labels')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsRrsigLabels {
-      get { return dnsRrsigLabels_; }
-      set {
-        dnsRrsigLabels_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsRrsigOriginalTtl" field.</summary>
-    public const int DnsRrsigOriginalTtlFieldNumber = 78;
-    private uint dnsRrsigOriginalTtl_;
-    /// <summary>
-    /// Original TTL ('dns_dns_rrsig_original_ttl')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsRrsigOriginalTtl {
-      get { return dnsRrsigOriginalTtl_; }
-      set {
-        dnsRrsigOriginalTtl_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsRrsigSignatureExpiration" field.</summary>
-    public const int DnsRrsigSignatureExpirationFieldNumber = 79;
-    private long dnsRrsigSignatureExpiration_;
-    /// <summary>
-    /// Signature Expiration ('dns_dns_rrsig_signature_expiration')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long DnsRrsigSignatureExpiration {
-      get { return dnsRrsigSignatureExpiration_; }
-      set {
-        dnsRrsigSignatureExpiration_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsRrsigSignatureInception" field.</summary>
-    public const int DnsRrsigSignatureInceptionFieldNumber = 80;
-    private long dnsRrsigSignatureInception_;
-    /// <summary>
-    /// Signature Inception ('dns_dns_rrsig_signature_inception')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long DnsRrsigSignatureInception {
-      get { return dnsRrsigSignatureInception_; }
-      set {
-        dnsRrsigSignatureInception_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsRrsigKeyTag" field.</summary>
-    public const int DnsRrsigKeyTagFieldNumber = 81;
-    private uint dnsRrsigKeyTag_;
-    /// <summary>
-    /// Key Tag ('dns_dns_rrsig_key_tag')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsRrsigKeyTag {
-      get { return dnsRrsigKeyTag_; }
-      set {
-        dnsRrsigKeyTag_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsRrsigSignersName" field.</summary>
-    public const int DnsRrsigSignersNameFieldNumber = 82;
-    private string dnsRrsigSignersName_ = "";
-    /// <summary>
-    /// Signer's name ('dns_dns_rrsig_signers_name')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsRrsigSignersName {
-      get { return dnsRrsigSignersName_; }
-      set {
-        dnsRrsigSignersName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsRrsigSignature" field.</summary>
-    public const int DnsRrsigSignatureFieldNumber = 83;
-    private pb::ByteString dnsRrsigSignature_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Signature ('dns_dns_rrsig_signature')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsRrsigSignature {
-      get { return dnsRrsigSignature_; }
-      set {
-        dnsRrsigSignature_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsDnskeyFlags" field.</summary>
-    public const int DnsDnskeyFlagsFieldNumber = 84;
-    private uint dnsDnskeyFlags_;
-    /// <summary>
-    /// Flags ('dns_dns_dnskey_flags')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsDnskeyFlags {
-      get { return dnsDnskeyFlags_; }
-      set {
-        dnsDnskeyFlags_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsDnskeyFlagsZoneKey" field.</summary>
-    public const int DnsDnskeyFlagsZoneKeyFieldNumber = 85;
-    private bool dnsDnskeyFlagsZoneKey_;
-    /// <summary>
-    /// Zone Key ('dns_dnskey_flags_dns_dnskey_flags_zone_key')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsDnskeyFlagsZoneKey {
-      get { return dnsDnskeyFlagsZoneKey_; }
-      set {
-        dnsDnskeyFlagsZoneKey_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsDnskeyFlagsKeyRevoked" field.</summary>
-    public const int DnsDnskeyFlagsKeyRevokedFieldNumber = 86;
-    private bool dnsDnskeyFlagsKeyRevoked_;
-    /// <summary>
-    /// Key Revoked ('dns_dnskey_flags_dns_dnskey_flags_key_revoked')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsDnskeyFlagsKeyRevoked {
-      get { return dnsDnskeyFlagsKeyRevoked_; }
-      set {
-        dnsDnskeyFlagsKeyRevoked_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsDnskeyFlagsSecureEntryPoint" field.</summary>
-    public const int DnsDnskeyFlagsSecureEntryPointFieldNumber = 87;
-    private bool dnsDnskeyFlagsSecureEntryPoint_;
-    /// <summary>
-    /// Key Signing Key ('dns_dnskey_flags_dns_dnskey_flags_secure_entry_point')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsDnskeyFlagsSecureEntryPoint {
-      get { return dnsDnskeyFlagsSecureEntryPoint_; }
-      set {
-        dnsDnskeyFlagsSecureEntryPoint_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsDnskeyFlagsReserved" field.</summary>
-    public const int DnsDnskeyFlagsReservedFieldNumber = 88;
-    private uint dnsDnskeyFlagsReserved_;
-    /// <summary>
-    /// Key Signing Key ('dns_dnskey_flags_dns_dnskey_flags_reserved')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsDnskeyFlagsReserved {
-      get { return dnsDnskeyFlagsReserved_; }
-      set {
-        dnsDnskeyFlagsReserved_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsDnskeyProtocol" field.</summary>
-    public const int DnsDnskeyProtocolFieldNumber = 89;
-    private uint dnsDnskeyProtocol_;
-    /// <summary>
-    /// Protocol ('dns_dns_dnskey_protocol')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsDnskeyProtocol {
-      get { return dnsDnskeyProtocol_; }
-      set {
-        dnsDnskeyProtocol_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsDnskeyAlgorithm" field.</summary>
-    public const int DnsDnskeyAlgorithmFieldNumber = 90;
-    private uint dnsDnskeyAlgorithm_;
-    /// <summary>
-    /// Algorithm ('dns_dns_dnskey_algorithm')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsDnskeyAlgorithm {
-      get { return dnsDnskeyAlgorithm_; }
-      set {
-        dnsDnskeyAlgorithm_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsDnskeyKeyId" field.</summary>
-    public const int DnsDnskeyKeyIdFieldNumber = 91;
-    private uint dnsDnskeyKeyId_;
-    /// <summary>
-    /// Key id ('dns_dns_dnskey_key_id')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsDnskeyKeyId {
-      get { return dnsDnskeyKeyId_; }
-      set {
-        dnsDnskeyKeyId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsDnskeyPublicKey" field.</summary>
-    public const int DnsDnskeyPublicKeyFieldNumber = 92;
-    private pb::ByteString dnsDnskeyPublicKey_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Public Key ('dns_dns_dnskey_public_key')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsDnskeyPublicKey {
-      get { return dnsDnskeyPublicKey_; }
-      set {
-        dnsDnskeyPublicKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsKeyFlags" field.</summary>
-    public const int DnsKeyFlagsFieldNumber = 93;
-    private uint dnsKeyFlags_;
-    /// <summary>
-    /// Flags ('dns_dns_key_flags')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsKeyFlags {
-      get { return dnsKeyFlags_; }
-      set {
-        dnsKeyFlags_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsKeyFlagsAuthentication" field.</summary>
-    public const int DnsKeyFlagsAuthenticationFieldNumber = 94;
-    private bool dnsKeyFlagsAuthentication_;
-    /// <summary>
-    /// Key allowed for authentication ('dns_key_flags_dns_key_flags_authentication')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsKeyFlagsAuthentication {
-      get { return dnsKeyFlagsAuthentication_; }
-      set {
-        dnsKeyFlagsAuthentication_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsKeyFlagsConfidentiality" field.</summary>
-    public const int DnsKeyFlagsConfidentialityFieldNumber = 95;
-    private bool dnsKeyFlagsConfidentiality_;
-    /// <summary>
-    /// Key allowed for confidentiality ('dns_key_flags_dns_key_flags_confidentiality')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsKeyFlagsConfidentiality {
-      get { return dnsKeyFlagsConfidentiality_; }
-      set {
-        dnsKeyFlagsConfidentiality_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsKeyFlagsRequired" field.</summary>
-    public const int DnsKeyFlagsRequiredFieldNumber = 96;
-    private bool dnsKeyFlagsRequired_;
-    /// <summary>
-    /// Key required ('dns_key_flags_dns_key_flags_required')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsKeyFlagsRequired {
-      get { return dnsKeyFlagsRequired_; }
-      set {
-        dnsKeyFlagsRequired_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsKeyFlagsAssociatedUser" field.</summary>
-    public const int DnsKeyFlagsAssociatedUserFieldNumber = 97;
-    private bool dnsKeyFlagsAssociatedUser_;
-    /// <summary>
-    /// Key is associated with a user ('dns_key_flags_dns_key_flags_associated_user')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsKeyFlagsAssociatedUser {
-      get { return dnsKeyFlagsAssociatedUser_; }
-      set {
-        dnsKeyFlagsAssociatedUser_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsKeyFlagsAssociatedNamedEntity" field.</summary>
-    public const int DnsKeyFlagsAssociatedNamedEntityFieldNumber = 98;
-    private bool dnsKeyFlagsAssociatedNamedEntity_;
-    /// <summary>
-    /// Key is associated with the named entity ('dns_key_flags_dns_key_flags_associated_named_entity')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsKeyFlagsAssociatedNamedEntity {
-      get { return dnsKeyFlagsAssociatedNamedEntity_; }
-      set {
-        dnsKeyFlagsAssociatedNamedEntity_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsKeyFlagsIpsec" field.</summary>
-    public const int DnsKeyFlagsIpsecFieldNumber = 99;
-    private bool dnsKeyFlagsIpsec_;
-    /// <summary>
-    /// Key use with IPSEC ('dns_key_flags_dns_key_flags_ipsec')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsKeyFlagsIpsec {
-      get { return dnsKeyFlagsIpsec_; }
-      set {
-        dnsKeyFlagsIpsec_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsKeyFlagsMime" field.</summary>
-    public const int DnsKeyFlagsMimeFieldNumber = 100;
-    private bool dnsKeyFlagsMime_;
-    /// <summary>
-    /// Key use with MIME security multiparts ('dns_key_flags_dns_key_flags_mime')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsKeyFlagsMime {
-      get { return dnsKeyFlagsMime_; }
-      set {
-        dnsKeyFlagsMime_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsKeyFlagsSignatory" field.</summary>
-    public const int DnsKeyFlagsSignatoryFieldNumber = 101;
-    private uint dnsKeyFlagsSignatory_;
-    /// <summary>
-    /// Signatory ('dns_key_flags_dns_key_flags_signatory')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsKeyFlagsSignatory {
-      get { return dnsKeyFlagsSignatory_; }
-      set {
-        dnsKeyFlagsSignatory_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsKeyProtocol" field.</summary>
-    public const int DnsKeyProtocolFieldNumber = 102;
-    private uint dnsKeyProtocol_;
-    /// <summary>
-    /// Protocol ('dns_dns_key_protocol')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsKeyProtocol {
-      get { return dnsKeyProtocol_; }
-      set {
-        dnsKeyProtocol_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsKeyAlgorithm" field.</summary>
-    public const int DnsKeyAlgorithmFieldNumber = 103;
-    private uint dnsKeyAlgorithm_;
-    /// <summary>
-    /// Algorithm ('dns_dns_key_algorithm')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsKeyAlgorithm {
-      get { return dnsKeyAlgorithm_; }
-      set {
-        dnsKeyAlgorithm_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsKeyKeyId" field.</summary>
-    public const int DnsKeyKeyIdFieldNumber = 104;
-    private uint dnsKeyKeyId_;
-    /// <summary>
-    /// Key ID ('dns_dns_key_key_id')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsKeyKeyId {
-      get { return dnsKeyKeyId_; }
-      set {
-        dnsKeyKeyId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsKeyPublicKey" field.</summary>
-    public const int DnsKeyPublicKeyFieldNumber = 105;
-    private pb::ByteString dnsKeyPublicKey_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Public Key ('dns_dns_key_public_key')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsKeyPublicKey {
-      get { return dnsKeyPublicKey_; }
-      set {
-        dnsKeyPublicKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsPxPreference" field.</summary>
-    public const int DnsPxPreferenceFieldNumber = 106;
-    private uint dnsPxPreference_;
-    /// <summary>
-    /// Preference ('dns_dns_px_preference')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsPxPreference {
-      get { return dnsPxPreference_; }
-      set {
-        dnsPxPreference_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsPxMap822" field.</summary>
-    public const int DnsPxMap822FieldNumber = 107;
-    private string dnsPxMap822_ = "";
-    /// <summary>
-    /// MAP822 ('dns_dns_px_map822')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsPxMap822 {
-      get { return dnsPxMap822_; }
-      set {
-        dnsPxMap822_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsPxMap400" field.</summary>
-    public const int DnsPxMap400FieldNumber = 108;
-    private string dnsPxMap400_ = "";
-    /// <summary>
-    /// MAPX400 ('dns_dns_px_map400')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsPxMap400 {
-      get { return dnsPxMap400_; }
-      set {
-        dnsPxMap400_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsTkeyAlgoName" field.</summary>
-    public const int DnsTkeyAlgoNameFieldNumber = 109;
-    private string dnsTkeyAlgoName_ = "";
-    /// <summary>
-    /// Algorithm name ('dns_dns_tkey_algo_name')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsTkeyAlgoName {
-      get { return dnsTkeyAlgoName_; }
-      set {
-        dnsTkeyAlgoName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsTkeySignatureExpiration" field.</summary>
-    public const int DnsTkeySignatureExpirationFieldNumber = 110;
-    private long dnsTkeySignatureExpiration_;
-    /// <summary>
-    /// Signature Expiration ('dns_dns_tkey_signature_expiration')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long DnsTkeySignatureExpiration {
-      get { return dnsTkeySignatureExpiration_; }
-      set {
-        dnsTkeySignatureExpiration_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTkeySignatureInception" field.</summary>
-    public const int DnsTkeySignatureInceptionFieldNumber = 111;
-    private long dnsTkeySignatureInception_;
-    /// <summary>
-    /// Signature Inception ('dns_dns_tkey_signature_inception')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long DnsTkeySignatureInception {
-      get { return dnsTkeySignatureInception_; }
-      set {
-        dnsTkeySignatureInception_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTkeyMode" field.</summary>
-    public const int DnsTkeyModeFieldNumber = 112;
-    private uint dnsTkeyMode_;
-    /// <summary>
-    /// Mode ('dns_dns_tkey_mode')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsTkeyMode {
-      get { return dnsTkeyMode_; }
-      set {
-        dnsTkeyMode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTkeyError" field.</summary>
-    public const int DnsTkeyErrorFieldNumber = 113;
-    private uint dnsTkeyError_;
-    /// <summary>
-    /// Error ('dns_dns_tkey_error')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsTkeyError {
-      get { return dnsTkeyError_; }
-      set {
-        dnsTkeyError_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTkeyKeySize" field.</summary>
-    public const int DnsTkeyKeySizeFieldNumber = 114;
-    private uint dnsTkeyKeySize_;
-    /// <summary>
-    /// Key Size ('dns_dns_tkey_key_size')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsTkeyKeySize {
-      get { return dnsTkeyKeySize_; }
-      set {
-        dnsTkeyKeySize_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTkeyKeyData" field.</summary>
-    public const int DnsTkeyKeyDataFieldNumber = 115;
-    private pb::ByteString dnsTkeyKeyData_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Key Data ('dns_dns_tkey_key_data')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsTkeyKeyData {
-      get { return dnsTkeyKeyData_; }
-      set {
-        dnsTkeyKeyData_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsTkeyOtherSize" field.</summary>
-    public const int DnsTkeyOtherSizeFieldNumber = 116;
-    private uint dnsTkeyOtherSize_;
-    /// <summary>
-    /// Other Size ('dns_dns_tkey_other_size')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsTkeyOtherSize {
-      get { return dnsTkeyOtherSize_; }
-      set {
-        dnsTkeyOtherSize_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTkeyOtherData" field.</summary>
-    public const int DnsTkeyOtherDataFieldNumber = 117;
-    private pb::ByteString dnsTkeyOtherData_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Other Data ('dns_dns_tkey_other_data')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsTkeyOtherData {
-      get { return dnsTkeyOtherData_; }
-      set {
-        dnsTkeyOtherData_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsIpseckeyGatewayPrecedence" field.</summary>
-    public const int DnsIpseckeyGatewayPrecedenceFieldNumber = 118;
-    private uint dnsIpseckeyGatewayPrecedence_;
-    /// <summary>
-    /// Gateway Precedence ('dns_dns_ipseckey_gateway_precedence')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsIpseckeyGatewayPrecedence {
-      get { return dnsIpseckeyGatewayPrecedence_; }
-      set {
-        dnsIpseckeyGatewayPrecedence_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsIpseckeyGatewayAlgorithm" field.</summary>
-    public const int DnsIpseckeyGatewayAlgorithmFieldNumber = 119;
-    private uint dnsIpseckeyGatewayAlgorithm_;
-    /// <summary>
-    /// Gateway Algorithm ('dns_dns_ipseckey_gateway_algorithm')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsIpseckeyGatewayAlgorithm {
-      get { return dnsIpseckeyGatewayAlgorithm_; }
-      set {
-        dnsIpseckeyGatewayAlgorithm_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsIpseckeyGatewayType" field.</summary>
-    public const int DnsIpseckeyGatewayTypeFieldNumber = 120;
-    private uint dnsIpseckeyGatewayType_;
-    /// <summary>
-    /// Gateway Type ('dns_dns_ipseckey_gateway_type')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsIpseckeyGatewayType {
-      get { return dnsIpseckeyGatewayType_; }
-      set {
-        dnsIpseckeyGatewayType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsIpseckeyGatewayIpv4" field.</summary>
-    public const int DnsIpseckeyGatewayIpv4FieldNumber = 121;
-    private pb::ByteString dnsIpseckeyGatewayIpv4_ = pb::ByteString.Empty;
-    /// <summary>
-    /// IPv4 Gateway ('dns_dns_ipseckey_gateway_ipv4')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsIpseckeyGatewayIpv4 {
-      get { return dnsIpseckeyGatewayIpv4_; }
-      set {
-        dnsIpseckeyGatewayIpv4_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsIpseckeyGatewayIpv6" field.</summary>
-    public const int DnsIpseckeyGatewayIpv6FieldNumber = 122;
-    private pb::ByteString dnsIpseckeyGatewayIpv6_ = pb::ByteString.Empty;
-    /// <summary>
-    /// IPv6 Gateway ('dns_dns_ipseckey_gateway_ipv6')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsIpseckeyGatewayIpv6 {
-      get { return dnsIpseckeyGatewayIpv6_; }
-      set {
-        dnsIpseckeyGatewayIpv6_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsIpseckeyGatewayDns" field.</summary>
-    public const int DnsIpseckeyGatewayDnsFieldNumber = 123;
-    private string dnsIpseckeyGatewayDns_ = "";
-    /// <summary>
-    /// DNS Gateway ('dns_dns_ipseckey_gateway_dns')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsIpseckeyGatewayDns {
-      get { return dnsIpseckeyGatewayDns_; }
-      set {
-        dnsIpseckeyGatewayDns_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsIpseckeyPublicKey" field.</summary>
-    public const int DnsIpseckeyPublicKeyFieldNumber = 124;
-    private pb::ByteString dnsIpseckeyPublicKey_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Public Key ('dns_dns_ipseckey_public_key')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsIpseckeyPublicKey {
-      get { return dnsIpseckeyPublicKey_; }
-      set {
-        dnsIpseckeyPublicKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsXpfIpVersion" field.</summary>
-    public const int DnsXpfIpVersionFieldNumber = 125;
-    private uint dnsXpfIpVersion_;
-    /// <summary>
-    /// IP Version ('dns_dns_xpf_ip_version')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsXpfIpVersion {
-      get { return dnsXpfIpVersion_; }
-      set {
-        dnsXpfIpVersion_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsXpfProtocol" field.</summary>
-    public const int DnsXpfProtocolFieldNumber = 126;
-    private uint dnsXpfProtocol_;
-    /// <summary>
-    /// Protocol ('dns_dns_xpf_protocol')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsXpfProtocol {
-      get { return dnsXpfProtocol_; }
-      set {
-        dnsXpfProtocol_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsXpfSourceIpv4" field.</summary>
-    public const int DnsXpfSourceIpv4FieldNumber = 127;
-    private pb::ByteString dnsXpfSourceIpv4_ = pb::ByteString.Empty;
-    /// <summary>
-    /// IPv4 Source ('dns_dns_xpf_source_ipv4')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsXpfSourceIpv4 {
-      get { return dnsXpfSourceIpv4_; }
-      set {
-        dnsXpfSourceIpv4_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsXpfDestinationIpv4" field.</summary>
-    public const int DnsXpfDestinationIpv4FieldNumber = 128;
-    private pb::ByteString dnsXpfDestinationIpv4_ = pb::ByteString.Empty;
-    /// <summary>
-    /// IPv4 Destination ('dns_dns_xpf_destination_ipv4')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsXpfDestinationIpv4 {
-      get { return dnsXpfDestinationIpv4_; }
-      set {
-        dnsXpfDestinationIpv4_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsXpfSourceIpv6" field.</summary>
-    public const int DnsXpfSourceIpv6FieldNumber = 129;
-    private pb::ByteString dnsXpfSourceIpv6_ = pb::ByteString.Empty;
-    /// <summary>
-    /// IPv6 Source ('dns_dns_xpf_source_ipv6')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsXpfSourceIpv6 {
-      get { return dnsXpfSourceIpv6_; }
-      set {
-        dnsXpfSourceIpv6_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsXpfDestinationIpv6" field.</summary>
-    public const int DnsXpfDestinationIpv6FieldNumber = 130;
-    private pb::ByteString dnsXpfDestinationIpv6_ = pb::ByteString.Empty;
-    /// <summary>
-    /// IPv6 Destination ('dns_dns_xpf_destination_ipv6')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsXpfDestinationIpv6 {
-      get { return dnsXpfDestinationIpv6_; }
-      set {
-        dnsXpfDestinationIpv6_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsXpfSport" field.</summary>
-    public const int DnsXpfSportFieldNumber = 131;
-    private uint dnsXpfSport_;
-    /// <summary>
-    /// Source port ('dns_dns_xpf_sport')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsXpfSport {
-      get { return dnsXpfSport_; }
-      set {
-        dnsXpfSport_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsXpfDport" field.</summary>
-    public const int DnsXpfDportFieldNumber = 132;
-    private uint dnsXpfDport_;
-    /// <summary>
-    /// Destination port ('dns_dns_xpf_dport')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsXpfDport {
-      get { return dnsXpfDport_; }
-      set {
-        dnsXpfDport_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsA6PrefixLen" field.</summary>
-    public const int DnsA6PrefixLenFieldNumber = 133;
-    private uint dnsA6PrefixLen_;
-    /// <summary>
-    /// Prefix len ('dns_dns_a6_prefix_len')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsA6PrefixLen {
-      get { return dnsA6PrefixLen_; }
-      set {
-        dnsA6PrefixLen_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsA6AddressSuffix" field.</summary>
-    public const int DnsA6AddressSuffixFieldNumber = 134;
-    private pb::ByteString dnsA6AddressSuffix_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Address Suffix ('dns_dns_a6_address_suffix')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsA6AddressSuffix {
-      get { return dnsA6AddressSuffix_; }
-      set {
-        dnsA6AddressSuffix_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsA6PrefixName" field.</summary>
-    public const int DnsA6PrefixNameFieldNumber = 135;
-    private string dnsA6PrefixName_ = "";
-    /// <summary>
-    /// Prefix name ('dns_dns_a6_prefix_name')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsA6PrefixName {
-      get { return dnsA6PrefixName_; }
-      set {
-        dnsA6PrefixName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsDname" field.</summary>
-    public const int DnsDnameFieldNumber = 136;
-    private string dnsDname_ = "";
-    /// <summary>
-    /// Dname ('dns_dns_dname')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsDname {
-      get { return dnsDname_; }
-      set {
-        dnsDname_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsLocVersion" field.</summary>
-    public const int DnsLocVersionFieldNumber = 137;
-    private uint dnsLocVersion_;
-    /// <summary>
-    /// Version ('dns_dns_loc_version')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsLocVersion {
-      get { return dnsLocVersion_; }
-      set {
-        dnsLocVersion_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsLocSize" field.</summary>
-    public const int DnsLocSizeFieldNumber = 138;
-    private uint dnsLocSize_;
-    /// <summary>
-    /// Size ('dns_dns_loc_size')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsLocSize {
-      get { return dnsLocSize_; }
-      set {
-        dnsLocSize_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsLocHorizontalPrecision" field.</summary>
-    public const int DnsLocHorizontalPrecisionFieldNumber = 139;
-    private uint dnsLocHorizontalPrecision_;
-    /// <summary>
-    /// Horizontal Precision ('dns_dns_loc_horizontal_precision')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsLocHorizontalPrecision {
-      get { return dnsLocHorizontalPrecision_; }
-      set {
-        dnsLocHorizontalPrecision_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsLocVerticalPrecision" field.</summary>
-    public const int DnsLocVerticalPrecisionFieldNumber = 140;
-    private uint dnsLocVerticalPrecision_;
-    /// <summary>
-    /// Vertical Precision ('dns_dns_loc_vertical_precision')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsLocVerticalPrecision {
-      get { return dnsLocVerticalPrecision_; }
-      set {
-        dnsLocVerticalPrecision_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsLocLatitude" field.</summary>
-    public const int DnsLocLatitudeFieldNumber = 141;
-    private uint dnsLocLatitude_;
-    /// <summary>
-    /// Latitude ('dns_dns_loc_latitude')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsLocLatitude {
-      get { return dnsLocLatitude_; }
-      set {
-        dnsLocLatitude_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsLocLongitude" field.</summary>
-    public const int DnsLocLongitudeFieldNumber = 142;
-    private uint dnsLocLongitude_;
-    /// <summary>
-    /// Longitude ('dns_dns_loc_longitude')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsLocLongitude {
-      get { return dnsLocLongitude_; }
-      set {
-        dnsLocLongitude_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsLocAltitude" field.</summary>
-    public const int DnsLocAltitudeFieldNumber = 143;
-    private uint dnsLocAltitude_;
-    /// <summary>
-    /// Altitude ('dns_dns_loc_altitude')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsLocAltitude {
-      get { return dnsLocAltitude_; }
-      set {
-        dnsLocAltitude_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsLocUnknownData" field.</summary>
-    public const int DnsLocUnknownDataFieldNumber = 144;
-    private pb::ByteString dnsLocUnknownData_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Unknown data ('dns_dns_loc_unknown_data')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsLocUnknownData {
-      get { return dnsLocUnknownData_; }
-      set {
-        dnsLocUnknownData_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsNxtNextDomainName" field.</summary>
-    public const int DnsNxtNextDomainNameFieldNumber = 145;
-    private string dnsNxtNextDomainName_ = "";
-    /// <summary>
-    /// Next Domain Name ('dns_dns_nxt_next_domain_name')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsNxtNextDomainName {
-      get { return dnsNxtNextDomainName_; }
-      set {
-        dnsNxtNextDomainName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsKxPreference" field.</summary>
-    public const int DnsKxPreferenceFieldNumber = 146;
-    private uint dnsKxPreference_;
-    /// <summary>
-    /// Preference ('dns_dns_kx_preference')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsKxPreference {
-      get { return dnsKxPreference_; }
-      set {
-        dnsKxPreference_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsKxKeyExchange" field.</summary>
-    public const int DnsKxKeyExchangeFieldNumber = 147;
-    private string dnsKxKeyExchange_ = "";
-    /// <summary>
-    /// Key Exchange ('dns_dns_kx_key_exchange')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsKxKeyExchange {
-      get { return dnsKxKeyExchange_; }
-      set {
-        dnsKxKeyExchange_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsCertType" field.</summary>
-    public const int DnsCertTypeFieldNumber = 148;
-    private uint dnsCertType_;
-    /// <summary>
-    /// Type ('dns_dns_cert_type')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsCertType {
-      get { return dnsCertType_; }
-      set {
-        dnsCertType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsCertKeyTag" field.</summary>
-    public const int DnsCertKeyTagFieldNumber = 149;
-    private uint dnsCertKeyTag_;
-    /// <summary>
-    /// Key Tag ('dns_dns_cert_key_tag')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsCertKeyTag {
-      get { return dnsCertKeyTag_; }
-      set {
-        dnsCertKeyTag_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsCertAlgorithm" field.</summary>
-    public const int DnsCertAlgorithmFieldNumber = 150;
-    private uint dnsCertAlgorithm_;
-    /// <summary>
-    /// Algorithm ('dns_dns_cert_algorithm')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsCertAlgorithm {
-      get { return dnsCertAlgorithm_; }
-      set {
-        dnsCertAlgorithm_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsCertCertificate" field.</summary>
-    public const int DnsCertCertificateFieldNumber = 151;
-    private pb::ByteString dnsCertCertificate_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Certificate (or CRL) ('dns_dns_cert_certificate')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsCertCertificate {
-      get { return dnsCertCertificate_; }
-      set {
-        dnsCertCertificate_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsNsecNextDomainName" field.</summary>
-    public const int DnsNsecNextDomainNameFieldNumber = 152;
-    private string dnsNsecNextDomainName_ = "";
-    /// <summary>
-    /// Next Domain Name ('dns_dns_nsec_next_domain_name')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsNsecNextDomainName {
-      get { return dnsNsecNextDomainName_; }
-      set {
-        dnsNsecNextDomainName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsNs" field.</summary>
-    public const int DnsNsFieldNumber = 153;
-    private string dnsNs_ = "";
-    /// <summary>
-    /// Name Server ('text_dns_ns')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsNs {
-      get { return dnsNs_; }
-      set {
-        dnsNs_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsOpt" field.</summary>
-    public const int DnsOptFieldNumber = 154;
-    private int dnsOpt_;
-    /// <summary>
-    /// Option ('dns_dns_opt')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int DnsOpt {
-      get { return dnsOpt_; }
-      set {
-        dnsOpt_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptCode" field.</summary>
-    public const int DnsOptCodeFieldNumber = 155;
-    private uint dnsOptCode_;
-    /// <summary>
-    /// Option Code ('dns_opt_dns_opt_code')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsOptCode {
-      get { return dnsOptCode_; }
-      set {
-        dnsOptCode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptLen" field.</summary>
-    public const int DnsOptLenFieldNumber = 156;
-    private uint dnsOptLen_;
-    /// <summary>
-    /// Option Length ('dns_opt_dns_opt_len')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsOptLen {
-      get { return dnsOptLen_; }
-      set {
-        dnsOptLen_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptData" field.</summary>
-    public const int DnsOptDataFieldNumber = 157;
-    private pb::ByteString dnsOptData_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Option Data ('dns_opt_dns_opt_data')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsOptData {
-      get { return dnsOptData_; }
-      set {
-        dnsOptData_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptDau" field.</summary>
-    public const int DnsOptDauFieldNumber = 158;
-    private uint dnsOptDau_;
-    /// <summary>
-    /// DAU ('dns_opt_dns_opt_dau')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsOptDau {
-      get { return dnsOptDau_; }
-      set {
-        dnsOptDau_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptDhu" field.</summary>
-    public const int DnsOptDhuFieldNumber = 159;
-    private uint dnsOptDhu_;
-    /// <summary>
-    /// DHU ('dns_opt_dns_opt_dhu')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsOptDhu {
-      get { return dnsOptDhu_; }
-      set {
-        dnsOptDhu_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptN3u" field.</summary>
-    public const int DnsOptN3UFieldNumber = 160;
-    private uint dnsOptN3U_;
-    /// <summary>
-    /// N3U ('dns_opt_dns_opt_n3u')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsOptN3U {
-      get { return dnsOptN3U_; }
-      set {
-        dnsOptN3U_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptClientFamily" field.</summary>
-    public const int DnsOptClientFamilyFieldNumber = 161;
-    private uint dnsOptClientFamily_;
-    /// <summary>
-    /// Family ('dns_dns_opt_client_family')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsOptClientFamily {
-      get { return dnsOptClientFamily_; }
-      set {
-        dnsOptClientFamily_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptClientNetmask" field.</summary>
-    public const int DnsOptClientNetmaskFieldNumber = 162;
-    private uint dnsOptClientNetmask_;
-    /// <summary>
-    /// Source Netmask ('dns_dns_opt_client_netmask')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsOptClientNetmask {
-      get { return dnsOptClientNetmask_; }
-      set {
-        dnsOptClientNetmask_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptClientScope" field.</summary>
-    public const int DnsOptClientScopeFieldNumber = 163;
-    private uint dnsOptClientScope_;
-    /// <summary>
-    /// Scope Netmask ('dns_dns_opt_client_scope')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsOptClientScope {
-      get { return dnsOptClientScope_; }
-      set {
-        dnsOptClientScope_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptClientAddr" field.</summary>
-    public const int DnsOptClientAddrFieldNumber = 164;
-    private pb::ByteString dnsOptClientAddr_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Client Subnet ('dns_dns_opt_client_addr')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsOptClientAddr {
-      get { return dnsOptClientAddr_; }
-      set {
-        dnsOptClientAddr_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptClientAddr4" field.</summary>
-    public const int DnsOptClientAddr4FieldNumber = 165;
-    private pb::ByteString dnsOptClientAddr4_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Client Subnet ('dns_dns_opt_client_addr4')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsOptClientAddr4 {
-      get { return dnsOptClientAddr4_; }
-      set {
-        dnsOptClientAddr4_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptClientAddr6" field.</summary>
-    public const int DnsOptClientAddr6FieldNumber = 166;
-    private pb::ByteString dnsOptClientAddr6_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Client Subnet ('dns_dns_opt_client_addr6')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsOptClientAddr6 {
-      get { return dnsOptClientAddr6_; }
-      set {
-        dnsOptClientAddr6_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptCookieClient" field.</summary>
-    public const int DnsOptCookieClientFieldNumber = 167;
-    private pb::ByteString dnsOptCookieClient_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Client Cookie ('dns_dns_opt_cookie_client')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsOptCookieClient {
-      get { return dnsOptCookieClient_; }
-      set {
-        dnsOptCookieClient_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptCookieServer" field.</summary>
-    public const int DnsOptCookieServerFieldNumber = 168;
-    private pb::ByteString dnsOptCookieServer_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Server Cookie ('dns_dns_opt_cookie_server')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsOptCookieServer {
-      get { return dnsOptCookieServer_; }
-      set {
-        dnsOptCookieServer_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptEdnsTcpKeepaliveTimeout" field.</summary>
-    public const int DnsOptEdnsTcpKeepaliveTimeoutFieldNumber = 169;
-    private uint dnsOptEdnsTcpKeepaliveTimeout_;
-    /// <summary>
-    /// Timeout ('dns_dns_opt_edns_tcp_keepalive_timeout')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsOptEdnsTcpKeepaliveTimeout {
-      get { return dnsOptEdnsTcpKeepaliveTimeout_; }
-      set {
-        dnsOptEdnsTcpKeepaliveTimeout_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptPadding" field.</summary>
-    public const int DnsOptPaddingFieldNumber = 170;
-    private pb::ByteString dnsOptPadding_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Padding ('dns_opt_dns_opt_padding')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsOptPadding {
-      get { return dnsOptPadding_; }
-      set {
-        dnsOptPadding_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsOptChainFqdn" field.</summary>
-    public const int DnsOptChainFqdnFieldNumber = 171;
-    private string dnsOptChainFqdn_ = "";
-    /// <summary>
-    /// Closest Trust Point ('dns_dns_opt_chain_fqdn')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsOptChainFqdn {
-      get { return dnsOptChainFqdn_; }
-      set {
-        dnsOptChainFqdn_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "DnsCountQueries" field.</summary>
-    public const int DnsCountQueriesFieldNumber = 172;
+    public const int DnsCountQueriesFieldNumber = 9;
     private uint dnsCountQueries_;
     /// <summary>
     /// Questions ('dns_dns_count_queries')
@@ -2899,7 +252,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "DnsCountZones" field.</summary>
-    public const int DnsCountZonesFieldNumber = 173;
+    public const int DnsCountZonesFieldNumber = 10;
     private uint dnsCountZones_;
     /// <summary>
     /// Zones ('dns_dns_count_zones')
@@ -2913,7 +266,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "DnsCountAnswers" field.</summary>
-    public const int DnsCountAnswersFieldNumber = 174;
+    public const int DnsCountAnswersFieldNumber = 11;
     private uint dnsCountAnswers_;
     /// <summary>
     /// Answer RRs ('dns_dns_count_answers')
@@ -2927,7 +280,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "DnsCountPrerequisites" field.</summary>
-    public const int DnsCountPrerequisitesFieldNumber = 175;
+    public const int DnsCountPrerequisitesFieldNumber = 12;
     private uint dnsCountPrerequisites_;
     /// <summary>
     /// Prerequisites ('dns_dns_count_prerequisites')
@@ -2941,7 +294,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "DnsCountAuthRr" field.</summary>
-    public const int DnsCountAuthRrFieldNumber = 176;
+    public const int DnsCountAuthRrFieldNumber = 13;
     private uint dnsCountAuthRr_;
     /// <summary>
     /// Authority RRs ('dns_dns_count_auth_rr')
@@ -2955,7 +308,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "DnsCountUpdates" field.</summary>
-    public const int DnsCountUpdatesFieldNumber = 177;
+    public const int DnsCountUpdatesFieldNumber = 14;
     private uint dnsCountUpdates_;
     /// <summary>
     /// Updates ('dns_dns_count_updates')
@@ -2965,1140 +318,6 @@ namespace Ndx.Decoders.Core {
       get { return dnsCountUpdates_; }
       set {
         dnsCountUpdates_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsNsec3Algo" field.</summary>
-    public const int DnsNsec3AlgoFieldNumber = 178;
-    private uint dnsNsec3Algo_;
-    /// <summary>
-    /// Hash algorithm ('dns_dns_nsec3_algo')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsNsec3Algo {
-      get { return dnsNsec3Algo_; }
-      set {
-        dnsNsec3Algo_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsNsec3Flags" field.</summary>
-    public const int DnsNsec3FlagsFieldNumber = 179;
-    private uint dnsNsec3Flags_;
-    /// <summary>
-    /// NSEC3 flags ('dns_dns_nsec3_flags')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsNsec3Flags {
-      get { return dnsNsec3Flags_; }
-      set {
-        dnsNsec3Flags_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsNsec3FlagsOptOut" field.</summary>
-    public const int DnsNsec3FlagsOptOutFieldNumber = 180;
-    private bool dnsNsec3FlagsOptOut_;
-    /// <summary>
-    /// NSEC3 Opt-out flag ('dns_nsec3_flags_dns_nsec3_flags_opt_out')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsNsec3FlagsOptOut {
-      get { return dnsNsec3FlagsOptOut_; }
-      set {
-        dnsNsec3FlagsOptOut_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsNsec3Iterations" field.</summary>
-    public const int DnsNsec3IterationsFieldNumber = 181;
-    private uint dnsNsec3Iterations_;
-    /// <summary>
-    /// NSEC3 iterations ('dns_dns_nsec3_iterations')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsNsec3Iterations {
-      get { return dnsNsec3Iterations_; }
-      set {
-        dnsNsec3Iterations_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsNsec3SaltLength" field.</summary>
-    public const int DnsNsec3SaltLengthFieldNumber = 182;
-    private uint dnsNsec3SaltLength_;
-    /// <summary>
-    /// Salt length ('dns_dns_nsec3_salt_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsNsec3SaltLength {
-      get { return dnsNsec3SaltLength_; }
-      set {
-        dnsNsec3SaltLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsNsec3SaltValue" field.</summary>
-    public const int DnsNsec3SaltValueFieldNumber = 183;
-    private pb::ByteString dnsNsec3SaltValue_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Salt value ('dns_dns_nsec3_salt_value')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsNsec3SaltValue {
-      get { return dnsNsec3SaltValue_; }
-      set {
-        dnsNsec3SaltValue_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsNsec3HashLength" field.</summary>
-    public const int DnsNsec3HashLengthFieldNumber = 184;
-    private uint dnsNsec3HashLength_;
-    /// <summary>
-    /// Hash length ('dns_dns_nsec3_hash_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsNsec3HashLength {
-      get { return dnsNsec3HashLength_; }
-      set {
-        dnsNsec3HashLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsNsec3HashValue" field.</summary>
-    public const int DnsNsec3HashValueFieldNumber = 185;
-    private pb::ByteString dnsNsec3HashValue_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Next hashed owner ('dns_dns_nsec3_hash_value')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsNsec3HashValue {
-      get { return dnsNsec3HashValue_; }
-      set {
-        dnsNsec3HashValue_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsTlsaCertificateUsage" field.</summary>
-    public const int DnsTlsaCertificateUsageFieldNumber = 186;
-    private uint dnsTlsaCertificateUsage_;
-    /// <summary>
-    /// Certificate Usage ('dns_dns_tlsa_certificate_usage')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsTlsaCertificateUsage {
-      get { return dnsTlsaCertificateUsage_; }
-      set {
-        dnsTlsaCertificateUsage_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTlsaSelector" field.</summary>
-    public const int DnsTlsaSelectorFieldNumber = 187;
-    private uint dnsTlsaSelector_;
-    /// <summary>
-    /// Selector ('dns_dns_tlsa_selector')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsTlsaSelector {
-      get { return dnsTlsaSelector_; }
-      set {
-        dnsTlsaSelector_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTlsaMatchingType" field.</summary>
-    public const int DnsTlsaMatchingTypeFieldNumber = 188;
-    private uint dnsTlsaMatchingType_;
-    /// <summary>
-    /// Matching Type ('dns_dns_tlsa_matching_type')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsTlsaMatchingType {
-      get { return dnsTlsaMatchingType_; }
-      set {
-        dnsTlsaMatchingType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTlsaCertificateAssociationData" field.</summary>
-    public const int DnsTlsaCertificateAssociationDataFieldNumber = 189;
-    private pb::ByteString dnsTlsaCertificateAssociationData_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Certificate Association Data ('dns_dns_tlsa_certificate_association_data')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsTlsaCertificateAssociationData {
-      get { return dnsTlsaCertificateAssociationData_; }
-      set {
-        dnsTlsaCertificateAssociationData_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsTsigAlgorithmName" field.</summary>
-    public const int DnsTsigAlgorithmNameFieldNumber = 190;
-    private string dnsTsigAlgorithmName_ = "";
-    /// <summary>
-    /// Algorithm Name ('dns_dns_tsig_algorithm_name')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsTsigAlgorithmName {
-      get { return dnsTsigAlgorithmName_; }
-      set {
-        dnsTsigAlgorithmName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsTsigTimeSigned" field.</summary>
-    public const int DnsTsigTimeSignedFieldNumber = 191;
-    private long dnsTsigTimeSigned_;
-    /// <summary>
-    /// Time Signed ('dns_dns_tsig_time_signed')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long DnsTsigTimeSigned {
-      get { return dnsTsigTimeSigned_; }
-      set {
-        dnsTsigTimeSigned_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTsigOriginalId" field.</summary>
-    public const int DnsTsigOriginalIdFieldNumber = 192;
-    private uint dnsTsigOriginalId_;
-    /// <summary>
-    /// Original Id ('dns_dns_tsig_original_id')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsTsigOriginalId {
-      get { return dnsTsigOriginalId_; }
-      set {
-        dnsTsigOriginalId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTsigError" field.</summary>
-    public const int DnsTsigErrorFieldNumber = 193;
-    private uint dnsTsigError_;
-    /// <summary>
-    /// Error ('dns_dns_tsig_error')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsTsigError {
-      get { return dnsTsigError_; }
-      set {
-        dnsTsigError_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTsigFudge" field.</summary>
-    public const int DnsTsigFudgeFieldNumber = 194;
-    private uint dnsTsigFudge_;
-    /// <summary>
-    /// Fudge ('dns_dns_tsig_fudge')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsTsigFudge {
-      get { return dnsTsigFudge_; }
-      set {
-        dnsTsigFudge_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTsigMacSize" field.</summary>
-    public const int DnsTsigMacSizeFieldNumber = 195;
-    private uint dnsTsigMacSize_;
-    /// <summary>
-    /// MAC Size ('dns_dns_tsig_mac_size')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsTsigMacSize {
-      get { return dnsTsigMacSize_; }
-      set {
-        dnsTsigMacSize_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTsigOtherLen" field.</summary>
-    public const int DnsTsigOtherLenFieldNumber = 196;
-    private uint dnsTsigOtherLen_;
-    /// <summary>
-    /// Other Len ('dns_dns_tsig_other_len')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsTsigOtherLen {
-      get { return dnsTsigOtherLen_; }
-      set {
-        dnsTsigOtherLen_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTsigMac" field.</summary>
-    public const int DnsTsigMacFieldNumber = 197;
-    private int dnsTsigMac_;
-    /// <summary>
-    /// MAC ('dns_dns_tsig_mac')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int DnsTsigMac {
-      get { return dnsTsigMac_; }
-      set {
-        dnsTsigMac_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsTsigOtherData" field.</summary>
-    public const int DnsTsigOtherDataFieldNumber = 198;
-    private pb::ByteString dnsTsigOtherData_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Other Data ('dns_dns_tsig_other_data')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsTsigOtherData {
-      get { return dnsTsigOtherData_; }
-      set {
-        dnsTsigOtherData_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsSshfpAlgorithm" field.</summary>
-    public const int DnsSshfpAlgorithmFieldNumber = 199;
-    private uint dnsSshfpAlgorithm_;
-    /// <summary>
-    /// Algorithm ('dns_dns_sshfp_algorithm')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsSshfpAlgorithm {
-      get { return dnsSshfpAlgorithm_; }
-      set {
-        dnsSshfpAlgorithm_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsSshfpFingerprintType" field.</summary>
-    public const int DnsSshfpFingerprintTypeFieldNumber = 200;
-    private uint dnsSshfpFingerprintType_;
-    /// <summary>
-    /// Fingerprint type ('dns_sshfp_fingerprint_dns_sshfp_fingerprint_type')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsSshfpFingerprintType {
-      get { return dnsSshfpFingerprintType_; }
-      set {
-        dnsSshfpFingerprintType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsSshfpFingerprint" field.</summary>
-    public const int DnsSshfpFingerprintFieldNumber = 201;
-    private pb::ByteString dnsSshfpFingerprint_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Fingerprint ('dns_dns_sshfp_fingerprint')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsSshfpFingerprint {
-      get { return dnsSshfpFingerprint_; }
-      set {
-        dnsSshfpFingerprint_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsHipHitLength" field.</summary>
-    public const int DnsHipHitLengthFieldNumber = 202;
-    private uint dnsHipHitLength_;
-    /// <summary>
-    /// HIT length ('dns_hip_hit_dns_hip_hit_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsHipHitLength {
-      get { return dnsHipHitLength_; }
-      set {
-        dnsHipHitLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsHipHitPkAlgo" field.</summary>
-    public const int DnsHipHitPkAlgoFieldNumber = 203;
-    private uint dnsHipHitPkAlgo_;
-    /// <summary>
-    /// HIT length ('dns_dns_hip_hit_pk_algo')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsHipHitPkAlgo {
-      get { return dnsHipHitPkAlgo_; }
-      set {
-        dnsHipHitPkAlgo_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsHipPkLength" field.</summary>
-    public const int DnsHipPkLengthFieldNumber = 204;
-    private uint dnsHipPkLength_;
-    /// <summary>
-    /// PK length ('dns_hip_pk_dns_hip_pk_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsHipPkLength {
-      get { return dnsHipPkLength_; }
-      set {
-        dnsHipPkLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsHipHit" field.</summary>
-    public const int DnsHipHitFieldNumber = 205;
-    private pb::ByteString dnsHipHit_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Host Identity Tag ('dns_dns_hip_hit')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsHipHit {
-      get { return dnsHipHit_; }
-      set {
-        dnsHipHit_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsHipPk" field.</summary>
-    public const int DnsHipPkFieldNumber = 206;
-    private pb::ByteString dnsHipPk_ = pb::ByteString.Empty;
-    /// <summary>
-    /// HIP Public Key ('dns_dns_hip_pk')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsHipPk {
-      get { return dnsHipPk_; }
-      set {
-        dnsHipPk_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsHipRendezvousServer" field.</summary>
-    public const int DnsHipRendezvousServerFieldNumber = 207;
-    private string dnsHipRendezvousServer_ = "";
-    /// <summary>
-    /// Rendezvous Server ('dns_dns_hip_rendezvous_server')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsHipRendezvousServer {
-      get { return dnsHipRendezvousServer_; }
-      set {
-        dnsHipRendezvousServer_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsDhcidRdata" field.</summary>
-    public const int DnsDhcidRdataFieldNumber = 208;
-    private pb::ByteString dnsDhcidRdata_ = pb::ByteString.Empty;
-    /// <summary>
-    /// DHCID Data ('dns_dns_dhcid_rdata')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsDhcidRdata {
-      get { return dnsDhcidRdata_; }
-      set {
-        dnsDhcidRdata_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsDsKeyId" field.</summary>
-    public const int DnsDsKeyIdFieldNumber = 209;
-    private uint dnsDsKeyId_;
-    /// <summary>
-    /// Key id ('dns_dns_ds_key_id')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsDsKeyId {
-      get { return dnsDsKeyId_; }
-      set {
-        dnsDsKeyId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsDsAlgorithm" field.</summary>
-    public const int DnsDsAlgorithmFieldNumber = 210;
-    private uint dnsDsAlgorithm_;
-    /// <summary>
-    /// Algorithm ('dns_dns_ds_algorithm')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsDsAlgorithm {
-      get { return dnsDsAlgorithm_; }
-      set {
-        dnsDsAlgorithm_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsDsDigestType" field.</summary>
-    public const int DnsDsDigestTypeFieldNumber = 211;
-    private uint dnsDsDigestType_;
-    /// <summary>
-    /// Digest Type ('dns_dns_ds_digest_type')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsDsDigestType {
-      get { return dnsDsDigestType_; }
-      set {
-        dnsDsDigestType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsDsDigest" field.</summary>
-    public const int DnsDsDigestFieldNumber = 212;
-    private pb::ByteString dnsDsDigest_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Digest ('dns_dns_ds_digest')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsDsDigest {
-      get { return dnsDsDigest_; }
-      set {
-        dnsDsDigest_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsAplAddressFamily" field.</summary>
-    public const int DnsAplAddressFamilyFieldNumber = 213;
-    private uint dnsAplAddressFamily_;
-    /// <summary>
-    /// Address Family ('dns_dns_apl_address_family')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsAplAddressFamily {
-      get { return dnsAplAddressFamily_; }
-      set {
-        dnsAplAddressFamily_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsAplCodedPrefix" field.</summary>
-    public const int DnsAplCodedPrefixFieldNumber = 214;
-    private uint dnsAplCodedPrefix_;
-    /// <summary>
-    /// Prefix Length ('dns_dns_apl_coded_prefix')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsAplCodedPrefix {
-      get { return dnsAplCodedPrefix_; }
-      set {
-        dnsAplCodedPrefix_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsAplNegation" field.</summary>
-    public const int DnsAplNegationFieldNumber = 215;
-    private bool dnsAplNegation_;
-    /// <summary>
-    /// Negation Flag ('dns_dns_apl_negation')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsAplNegation {
-      get { return dnsAplNegation_; }
-      set {
-        dnsAplNegation_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsAplAfdlength" field.</summary>
-    public const int DnsAplAfdlengthFieldNumber = 216;
-    private uint dnsAplAfdlength_;
-    /// <summary>
-    /// Address Length ('dns_dns_apl_afdlength')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsAplAfdlength {
-      get { return dnsAplAfdlength_; }
-      set {
-        dnsAplAfdlength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsAplAfdpartIpv4" field.</summary>
-    public const int DnsAplAfdpartIpv4FieldNumber = 217;
-    private pb::ByteString dnsAplAfdpartIpv4_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Address ('dns_dns_apl_afdpart_ipv4')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsAplAfdpartIpv4 {
-      get { return dnsAplAfdpartIpv4_; }
-      set {
-        dnsAplAfdpartIpv4_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsAplAfdpartIpv6" field.</summary>
-    public const int DnsAplAfdpartIpv6FieldNumber = 218;
-    private pb::ByteString dnsAplAfdpartIpv6_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Address ('dns_dns_apl_afdpart_ipv6')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsAplAfdpartIpv6 {
-      get { return dnsAplAfdpartIpv6_; }
-      set {
-        dnsAplAfdpartIpv6_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsAplAfdpartData" field.</summary>
-    public const int DnsAplAfdpartDataFieldNumber = 219;
-    private pb::ByteString dnsAplAfdpartData_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Address ('dns_dns_apl_afdpart_data')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsAplAfdpartData {
-      get { return dnsAplAfdpartData_; }
-      set {
-        dnsAplAfdpartData_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsGposLongitudeLength" field.</summary>
-    public const int DnsGposLongitudeLengthFieldNumber = 220;
-    private uint dnsGposLongitudeLength_;
-    /// <summary>
-    /// Longitude length ('dns_dns_gpos_longitude_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsGposLongitudeLength {
-      get { return dnsGposLongitudeLength_; }
-      set {
-        dnsGposLongitudeLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsGposLongitude" field.</summary>
-    public const int DnsGposLongitudeFieldNumber = 221;
-    private string dnsGposLongitude_ = "";
-    /// <summary>
-    /// Longitude ('dns_dns_gpos_longitude')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsGposLongitude {
-      get { return dnsGposLongitude_; }
-      set {
-        dnsGposLongitude_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsGposLatitudeLength" field.</summary>
-    public const int DnsGposLatitudeLengthFieldNumber = 222;
-    private uint dnsGposLatitudeLength_;
-    /// <summary>
-    /// Latitude length ('dns_dns_gpos_latitude_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsGposLatitudeLength {
-      get { return dnsGposLatitudeLength_; }
-      set {
-        dnsGposLatitudeLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsGposLatitude" field.</summary>
-    public const int DnsGposLatitudeFieldNumber = 223;
-    private string dnsGposLatitude_ = "";
-    /// <summary>
-    /// Latitude ('dns_dns_gpos_latitude')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsGposLatitude {
-      get { return dnsGposLatitude_; }
-      set {
-        dnsGposLatitude_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsGposAltitudeLength" field.</summary>
-    public const int DnsGposAltitudeLengthFieldNumber = 224;
-    private uint dnsGposAltitudeLength_;
-    /// <summary>
-    /// Altitude length ('dns_dns_gpos_altitude_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsGposAltitudeLength {
-      get { return dnsGposAltitudeLength_; }
-      set {
-        dnsGposAltitudeLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsGposAltitude" field.</summary>
-    public const int DnsGposAltitudeFieldNumber = 225;
-    private string dnsGposAltitude_ = "";
-    /// <summary>
-    /// Altitude ('dns_dns_gpos_altitude')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsGposAltitude {
-      get { return dnsGposAltitude_; }
-      set {
-        dnsGposAltitude_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsRpMailbox" field.</summary>
-    public const int DnsRpMailboxFieldNumber = 226;
-    private string dnsRpMailbox_ = "";
-    /// <summary>
-    /// Mailbox ('dns_dns_rp_mailbox')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsRpMailbox {
-      get { return dnsRpMailbox_; }
-      set {
-        dnsRpMailbox_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsRpTxtRr" field.</summary>
-    public const int DnsRpTxtRrFieldNumber = 227;
-    private string dnsRpTxtRr_ = "";
-    /// <summary>
-    /// TXT RR ('dns_dns_rp_txt_rr')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsRpTxtRr {
-      get { return dnsRpTxtRr_; }
-      set {
-        dnsRpTxtRr_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsAfsdbSubtype" field.</summary>
-    public const int DnsAfsdbSubtypeFieldNumber = 228;
-    private uint dnsAfsdbSubtype_;
-    /// <summary>
-    /// Subtype ('dns_dns_afsdb_subtype')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsAfsdbSubtype {
-      get { return dnsAfsdbSubtype_; }
-      set {
-        dnsAfsdbSubtype_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsAfsdbHostname" field.</summary>
-    public const int DnsAfsdbHostnameFieldNumber = 229;
-    private string dnsAfsdbHostname_ = "";
-    /// <summary>
-    /// Hostname ('dns_dns_afsdb_hostname')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsAfsdbHostname {
-      get { return dnsAfsdbHostname_; }
-      set {
-        dnsAfsdbHostname_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsX25Length" field.</summary>
-    public const int DnsX25LengthFieldNumber = 230;
-    private uint dnsX25Length_;
-    /// <summary>
-    /// Length ('dns_dns_x25_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsX25Length {
-      get { return dnsX25Length_; }
-      set {
-        dnsX25Length_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsX25PsdnAddress" field.</summary>
-    public const int DnsX25PsdnAddressFieldNumber = 231;
-    private string dnsX25PsdnAddress_ = "";
-    /// <summary>
-    /// PSDN-Address ('dns_dns_x25_psdn_address')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsX25PsdnAddress {
-      get { return dnsX25PsdnAddress_; }
-      set {
-        dnsX25PsdnAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsIdsnLength" field.</summary>
-    public const int DnsIdsnLengthFieldNumber = 232;
-    private uint dnsIdsnLength_;
-    /// <summary>
-    /// Length ('dns_dns_idsn_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsIdsnLength {
-      get { return dnsIdsnLength_; }
-      set {
-        dnsIdsnLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsIdsnAddress" field.</summary>
-    public const int DnsIdsnAddressFieldNumber = 233;
-    private string dnsIdsnAddress_ = "";
-    /// <summary>
-    /// ISDN Address ('dns_dns_idsn_address')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsIdsnAddress {
-      get { return dnsIdsnAddress_; }
-      set {
-        dnsIdsnAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsIdsnSaLength" field.</summary>
-    public const int DnsIdsnSaLengthFieldNumber = 234;
-    private uint dnsIdsnSaLength_;
-    /// <summary>
-    /// Length ('dns_dns_idsn_sa_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsIdsnSaLength {
-      get { return dnsIdsnSaLength_; }
-      set {
-        dnsIdsnSaLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsIdsnSaAddress" field.</summary>
-    public const int DnsIdsnSaAddressFieldNumber = 235;
-    private string dnsIdsnSaAddress_ = "";
-    /// <summary>
-    /// Sub Address ('dns_dns_idsn_sa_address')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsIdsnSaAddress {
-      get { return dnsIdsnSaAddress_; }
-      set {
-        dnsIdsnSaAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsRtSubtype" field.</summary>
-    public const int DnsRtSubtypeFieldNumber = 236;
-    private uint dnsRtSubtype_;
-    /// <summary>
-    /// Preference ('dns_dns_rt_subtype')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsRtSubtype {
-      get { return dnsRtSubtype_; }
-      set {
-        dnsRtSubtype_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsRtIntermediateHost" field.</summary>
-    public const int DnsRtIntermediateHostFieldNumber = 237;
-    private string dnsRtIntermediateHost_ = "";
-    /// <summary>
-    /// Intermediate Hostname ('dns_dns_rt_intermediate_host')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsRtIntermediateHost {
-      get { return dnsRtIntermediateHost_; }
-      set {
-        dnsRtIntermediateHost_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsNsapRdata" field.</summary>
-    public const int DnsNsapRdataFieldNumber = 238;
-    private pb::ByteString dnsNsapRdata_ = pb::ByteString.Empty;
-    /// <summary>
-    /// NSAP Data ('dns_dns_nsap_rdata')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsNsapRdata {
-      get { return dnsNsapRdata_; }
-      set {
-        dnsNsapRdata_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsNsapPtrOwner" field.</summary>
-    public const int DnsNsapPtrOwnerFieldNumber = 239;
-    private string dnsNsapPtrOwner_ = "";
-    /// <summary>
-    /// Owner ('dns_dns_nsap_ptr_owner')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsNsapPtrOwner {
-      get { return dnsNsapPtrOwner_; }
-      set {
-        dnsNsapPtrOwner_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsCaaFlags" field.</summary>
-    public const int DnsCaaFlagsFieldNumber = 240;
-    private uint dnsCaaFlags_;
-    /// <summary>
-    /// CAA Flags ('dns_dns_caa_flags')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsCaaFlags {
-      get { return dnsCaaFlags_; }
-      set {
-        dnsCaaFlags_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsCaaFlagsIssuerCritical" field.</summary>
-    public const int DnsCaaFlagsIssuerCriticalFieldNumber = 241;
-    private bool dnsCaaFlagsIssuerCritical_;
-    /// <summary>
-    /// Issuer Critical ('dns_caa_flags_dns_caa_flags_issuer_critical')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsCaaFlagsIssuerCritical {
-      get { return dnsCaaFlagsIssuerCritical_; }
-      set {
-        dnsCaaFlagsIssuerCritical_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsCaaIssue" field.</summary>
-    public const int DnsCaaIssueFieldNumber = 242;
-    private string dnsCaaIssue_ = "";
-    /// <summary>
-    /// Issue ('dns_dns_caa_issue')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsCaaIssue {
-      get { return dnsCaaIssue_; }
-      set {
-        dnsCaaIssue_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsCaaIssuewild" field.</summary>
-    public const int DnsCaaIssuewildFieldNumber = 243;
-    private string dnsCaaIssuewild_ = "";
-    /// <summary>
-    /// Issue Wildcard ('dns_dns_caa_issuewild')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsCaaIssuewild {
-      get { return dnsCaaIssuewild_; }
-      set {
-        dnsCaaIssuewild_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsCaaIodef" field.</summary>
-    public const int DnsCaaIodefFieldNumber = 244;
-    private string dnsCaaIodef_ = "";
-    /// <summary>
-    /// Report URL ('dns_dns_caa_iodef')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsCaaIodef {
-      get { return dnsCaaIodef_; }
-      set {
-        dnsCaaIodef_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsCaaUnknown" field.</summary>
-    public const int DnsCaaUnknownFieldNumber = 245;
-    private string dnsCaaUnknown_ = "";
-    /// <summary>
-    /// Unknown tag ('dns_dns_caa_unknown')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsCaaUnknown {
-      get { return dnsCaaUnknown_; }
-      set {
-        dnsCaaUnknown_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsCaaTagLength" field.</summary>
-    public const int DnsCaaTagLengthFieldNumber = 246;
-    private uint dnsCaaTagLength_;
-    /// <summary>
-    /// Tag length ('dns_dns_caa_tag_length')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsCaaTagLength {
-      get { return dnsCaaTagLength_; }
-      set {
-        dnsCaaTagLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsCaaTag" field.</summary>
-    public const int DnsCaaTagFieldNumber = 247;
-    private string dnsCaaTag_ = "";
-    /// <summary>
-    /// Tag ('dns_dns_caa_tag')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsCaaTag {
-      get { return dnsCaaTag_; }
-      set {
-        dnsCaaTag_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsCaaValue" field.</summary>
-    public const int DnsCaaValueFieldNumber = 248;
-    private string dnsCaaValue_ = "";
-    /// <summary>
-    /// Value ('dns_dns_caa_value')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsCaaValue {
-      get { return dnsCaaValue_; }
-      set {
-        dnsCaaValue_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsWinsLocalFlag" field.</summary>
-    public const int DnsWinsLocalFlagFieldNumber = 249;
-    private bool dnsWinsLocalFlag_;
-    /// <summary>
-    /// Local Flag ('dns_dns_wins_local_flag')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsWinsLocalFlag {
-      get { return dnsWinsLocalFlag_; }
-      set {
-        dnsWinsLocalFlag_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsWinsLookupTimeout" field.</summary>
-    public const int DnsWinsLookupTimeoutFieldNumber = 250;
-    private uint dnsWinsLookupTimeout_;
-    /// <summary>
-    /// Lookup timeout ('dns_dns_wins_lookup_timeout')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsWinsLookupTimeout {
-      get { return dnsWinsLookupTimeout_; }
-      set {
-        dnsWinsLookupTimeout_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsWinsCacheTimeout" field.</summary>
-    public const int DnsWinsCacheTimeoutFieldNumber = 251;
-    private uint dnsWinsCacheTimeout_;
-    /// <summary>
-    /// Cache timeout ('dns_dns_wins_cache_timeout')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsWinsCacheTimeout {
-      get { return dnsWinsCacheTimeout_; }
-      set {
-        dnsWinsCacheTimeout_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsWinsNbWinsServers" field.</summary>
-    public const int DnsWinsNbWinsServersFieldNumber = 252;
-    private uint dnsWinsNbWinsServers_;
-    /// <summary>
-    /// Number of WINS servers ('dns_dns_wins_nb_wins_servers')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsWinsNbWinsServers {
-      get { return dnsWinsNbWinsServers_; }
-      set {
-        dnsWinsNbWinsServers_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsWinsWinsServer" field.</summary>
-    public const int DnsWinsWinsServerFieldNumber = 253;
-    private pb::ByteString dnsWinsWinsServer_ = pb::ByteString.Empty;
-    /// <summary>
-    /// WINS Server Address ('dns_dns_wins_wins_server')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsWinsWinsServer {
-      get { return dnsWinsWinsServer_; }
-      set {
-        dnsWinsWinsServer_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsWinsrLocalFlag" field.</summary>
-    public const int DnsWinsrLocalFlagFieldNumber = 254;
-    private bool dnsWinsrLocalFlag_;
-    /// <summary>
-    /// Local Flag ('dns_dns_winsr_local_flag')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool DnsWinsrLocalFlag {
-      get { return dnsWinsrLocalFlag_; }
-      set {
-        dnsWinsrLocalFlag_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsWinsrLookupTimeout" field.</summary>
-    public const int DnsWinsrLookupTimeoutFieldNumber = 255;
-    private uint dnsWinsrLookupTimeout_;
-    /// <summary>
-    /// Lookup timeout ('dns_dns_winsr_lookup_timeout')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsWinsrLookupTimeout {
-      get { return dnsWinsrLookupTimeout_; }
-      set {
-        dnsWinsrLookupTimeout_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsWinsrCacheTimeout" field.</summary>
-    public const int DnsWinsrCacheTimeoutFieldNumber = 256;
-    private uint dnsWinsrCacheTimeout_;
-    /// <summary>
-    /// Cache timeout ('dns_dns_winsr_cache_timeout')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint DnsWinsrCacheTimeout {
-      get { return dnsWinsrCacheTimeout_; }
-      set {
-        dnsWinsrCacheTimeout_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DnsWinsrNameResultDomain" field.</summary>
-    public const int DnsWinsrNameResultDomainFieldNumber = 257;
-    private string dnsWinsrNameResultDomain_ = "";
-    /// <summary>
-    /// Name Result Domain ('dns_dns_winsr_name_result_domain')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DnsWinsrNameResultDomain {
-      get { return dnsWinsrNameResultDomain_; }
-      set {
-        dnsWinsrNameResultDomain_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DnsData" field.</summary>
-    public const int DnsDataFieldNumber = 258;
-    private pb::ByteString dnsData_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Data ('dns_dns_data')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString DnsData {
-      get { return dnsData_; }
-      set {
-        dnsData_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -4123,256 +342,12 @@ namespace Ndx.Decoders.Core {
       if (DnsCountAddRr != other.DnsCountAddRr) return false;
       if(!dnsQry_.Equals(other.dnsQry_)) return false;
       if(!dnsResp_.Equals(other.dnsResp_)) return false;
-      if (DnsSrvService != other.DnsSrvService) return false;
-      if (DnsSrvProto != other.DnsSrvProto) return false;
-      if (DnsSrvName != other.DnsSrvName) return false;
-      if (DnsSrvPriority != other.DnsSrvPriority) return false;
-      if (DnsSrvWeight != other.DnsSrvWeight) return false;
-      if (DnsSrvPort != other.DnsSrvPort) return false;
-      if (DnsSrvTarget != other.DnsSrvTarget) return false;
-      if (DnsNaptrOrder != other.DnsNaptrOrder) return false;
-      if (DnsNaptrPreference != other.DnsNaptrPreference) return false;
-      if (DnsNaptrFlagsLength != other.DnsNaptrFlagsLength) return false;
-      if (DnsNaptrFlags != other.DnsNaptrFlags) return false;
-      if (DnsNaptrServiceLength != other.DnsNaptrServiceLength) return false;
-      if (DnsNaptrService != other.DnsNaptrService) return false;
-      if (DnsNaptrRegexLength != other.DnsNaptrRegexLength) return false;
-      if (DnsNaptrRegex != other.DnsNaptrRegex) return false;
-      if (DnsNaptrReplacementLength != other.DnsNaptrReplacementLength) return false;
-      if (DnsNaptrReplacement != other.DnsNaptrReplacement) return false;
-      if (DnsA != other.DnsA) return false;
-      if (DnsMd != other.DnsMd) return false;
-      if (DnsMf != other.DnsMf) return false;
-      if (DnsMb != other.DnsMb) return false;
-      if (DnsMg != other.DnsMg) return false;
-      if (DnsMr != other.DnsMr) return false;
-      if (DnsNull != other.DnsNull) return false;
-      if (DnsAaaa != other.DnsAaaa) return false;
-      if (DnsCname != other.DnsCname) return false;
-      if (DnsRrUdpPayloadSize != other.DnsRrUdpPayloadSize) return false;
-      if (DnsSoaMname != other.DnsSoaMname) return false;
-      if (DnsSoaRname != other.DnsSoaRname) return false;
-      if (DnsSoaSerialNumber != other.DnsSoaSerialNumber) return false;
-      if (DnsSoaRefreshInterval != other.DnsSoaRefreshInterval) return false;
-      if (DnsSoaRetryInterval != other.DnsSoaRetryInterval) return false;
-      if (DnsSoaExpireLimit != other.DnsSoaExpireLimit) return false;
-      if (DnsSoaMininumTtl != other.DnsSoaMininumTtl) return false;
-      if (DnsPtrDomainName != other.DnsPtrDomainName) return false;
-      if (DnsWksAddress != other.DnsWksAddress) return false;
-      if (DnsWksProtocol != other.DnsWksProtocol) return false;
-      if (DnsWksBits != other.DnsWksBits) return false;
-      if (DnsHinfoCpuLength != other.DnsHinfoCpuLength) return false;
-      if (DnsHinfoCpu != other.DnsHinfoCpu) return false;
-      if (DnsHinfoOsLength != other.DnsHinfoOsLength) return false;
-      if (DnsHinfoOs != other.DnsHinfoOs) return false;
-      if (DnsMinfoR != other.DnsMinfoR) return false;
-      if (DnsMinfoE != other.DnsMinfoE) return false;
-      if (DnsMxPreference != other.DnsMxPreference) return false;
-      if (DnsMxMailExchange != other.DnsMxMailExchange) return false;
-      if (DnsTxtLength != other.DnsTxtLength) return false;
-      if (DnsTxt != other.DnsTxt) return false;
-      if (DnsOpenpgpkey != other.DnsOpenpgpkey) return false;
-      if (DnsCsyncSoa != other.DnsCsyncSoa) return false;
-      if (DnsCsyncFlags != other.DnsCsyncFlags) return false;
-      if (DnsCsyncFlagsImmediate != other.DnsCsyncFlagsImmediate) return false;
-      if (DnsCsyncFlagsSoaminimum != other.DnsCsyncFlagsSoaminimum) return false;
-      if (DnsCsyncTypeBitmap != other.DnsCsyncTypeBitmap) return false;
-      if (DnsSpfLength != other.DnsSpfLength) return false;
-      if (DnsSpf != other.DnsSpf) return false;
-      if (DnsIlnpNidPreference != other.DnsIlnpNidPreference) return false;
-      if (DnsIlnpNid != other.DnsIlnpNid) return false;
-      if (DnsIlnpL32Preference != other.DnsIlnpL32Preference) return false;
-      if (DnsIlnpL32 != other.DnsIlnpL32) return false;
-      if (DnsIlnpL64Preference != other.DnsIlnpL64Preference) return false;
-      if (DnsIlnpL64 != other.DnsIlnpL64) return false;
-      if (DnsIlnpLpPreference != other.DnsIlnpLpPreference) return false;
-      if (DnsIlnpLp != other.DnsIlnpLp) return false;
-      if (DnsEui48 != other.DnsEui48) return false;
-      if (DnsEui64 != other.DnsEui64) return false;
-      if (DnsRrsigTypeCovered != other.DnsRrsigTypeCovered) return false;
-      if (DnsRrsigAlgorithm != other.DnsRrsigAlgorithm) return false;
-      if (DnsRrsigLabels != other.DnsRrsigLabels) return false;
-      if (DnsRrsigOriginalTtl != other.DnsRrsigOriginalTtl) return false;
-      if (DnsRrsigSignatureExpiration != other.DnsRrsigSignatureExpiration) return false;
-      if (DnsRrsigSignatureInception != other.DnsRrsigSignatureInception) return false;
-      if (DnsRrsigKeyTag != other.DnsRrsigKeyTag) return false;
-      if (DnsRrsigSignersName != other.DnsRrsigSignersName) return false;
-      if (DnsRrsigSignature != other.DnsRrsigSignature) return false;
-      if (DnsDnskeyFlags != other.DnsDnskeyFlags) return false;
-      if (DnsDnskeyFlagsZoneKey != other.DnsDnskeyFlagsZoneKey) return false;
-      if (DnsDnskeyFlagsKeyRevoked != other.DnsDnskeyFlagsKeyRevoked) return false;
-      if (DnsDnskeyFlagsSecureEntryPoint != other.DnsDnskeyFlagsSecureEntryPoint) return false;
-      if (DnsDnskeyFlagsReserved != other.DnsDnskeyFlagsReserved) return false;
-      if (DnsDnskeyProtocol != other.DnsDnskeyProtocol) return false;
-      if (DnsDnskeyAlgorithm != other.DnsDnskeyAlgorithm) return false;
-      if (DnsDnskeyKeyId != other.DnsDnskeyKeyId) return false;
-      if (DnsDnskeyPublicKey != other.DnsDnskeyPublicKey) return false;
-      if (DnsKeyFlags != other.DnsKeyFlags) return false;
-      if (DnsKeyFlagsAuthentication != other.DnsKeyFlagsAuthentication) return false;
-      if (DnsKeyFlagsConfidentiality != other.DnsKeyFlagsConfidentiality) return false;
-      if (DnsKeyFlagsRequired != other.DnsKeyFlagsRequired) return false;
-      if (DnsKeyFlagsAssociatedUser != other.DnsKeyFlagsAssociatedUser) return false;
-      if (DnsKeyFlagsAssociatedNamedEntity != other.DnsKeyFlagsAssociatedNamedEntity) return false;
-      if (DnsKeyFlagsIpsec != other.DnsKeyFlagsIpsec) return false;
-      if (DnsKeyFlagsMime != other.DnsKeyFlagsMime) return false;
-      if (DnsKeyFlagsSignatory != other.DnsKeyFlagsSignatory) return false;
-      if (DnsKeyProtocol != other.DnsKeyProtocol) return false;
-      if (DnsKeyAlgorithm != other.DnsKeyAlgorithm) return false;
-      if (DnsKeyKeyId != other.DnsKeyKeyId) return false;
-      if (DnsKeyPublicKey != other.DnsKeyPublicKey) return false;
-      if (DnsPxPreference != other.DnsPxPreference) return false;
-      if (DnsPxMap822 != other.DnsPxMap822) return false;
-      if (DnsPxMap400 != other.DnsPxMap400) return false;
-      if (DnsTkeyAlgoName != other.DnsTkeyAlgoName) return false;
-      if (DnsTkeySignatureExpiration != other.DnsTkeySignatureExpiration) return false;
-      if (DnsTkeySignatureInception != other.DnsTkeySignatureInception) return false;
-      if (DnsTkeyMode != other.DnsTkeyMode) return false;
-      if (DnsTkeyError != other.DnsTkeyError) return false;
-      if (DnsTkeyKeySize != other.DnsTkeyKeySize) return false;
-      if (DnsTkeyKeyData != other.DnsTkeyKeyData) return false;
-      if (DnsTkeyOtherSize != other.DnsTkeyOtherSize) return false;
-      if (DnsTkeyOtherData != other.DnsTkeyOtherData) return false;
-      if (DnsIpseckeyGatewayPrecedence != other.DnsIpseckeyGatewayPrecedence) return false;
-      if (DnsIpseckeyGatewayAlgorithm != other.DnsIpseckeyGatewayAlgorithm) return false;
-      if (DnsIpseckeyGatewayType != other.DnsIpseckeyGatewayType) return false;
-      if (DnsIpseckeyGatewayIpv4 != other.DnsIpseckeyGatewayIpv4) return false;
-      if (DnsIpseckeyGatewayIpv6 != other.DnsIpseckeyGatewayIpv6) return false;
-      if (DnsIpseckeyGatewayDns != other.DnsIpseckeyGatewayDns) return false;
-      if (DnsIpseckeyPublicKey != other.DnsIpseckeyPublicKey) return false;
-      if (DnsXpfIpVersion != other.DnsXpfIpVersion) return false;
-      if (DnsXpfProtocol != other.DnsXpfProtocol) return false;
-      if (DnsXpfSourceIpv4 != other.DnsXpfSourceIpv4) return false;
-      if (DnsXpfDestinationIpv4 != other.DnsXpfDestinationIpv4) return false;
-      if (DnsXpfSourceIpv6 != other.DnsXpfSourceIpv6) return false;
-      if (DnsXpfDestinationIpv6 != other.DnsXpfDestinationIpv6) return false;
-      if (DnsXpfSport != other.DnsXpfSport) return false;
-      if (DnsXpfDport != other.DnsXpfDport) return false;
-      if (DnsA6PrefixLen != other.DnsA6PrefixLen) return false;
-      if (DnsA6AddressSuffix != other.DnsA6AddressSuffix) return false;
-      if (DnsA6PrefixName != other.DnsA6PrefixName) return false;
-      if (DnsDname != other.DnsDname) return false;
-      if (DnsLocVersion != other.DnsLocVersion) return false;
-      if (DnsLocSize != other.DnsLocSize) return false;
-      if (DnsLocHorizontalPrecision != other.DnsLocHorizontalPrecision) return false;
-      if (DnsLocVerticalPrecision != other.DnsLocVerticalPrecision) return false;
-      if (DnsLocLatitude != other.DnsLocLatitude) return false;
-      if (DnsLocLongitude != other.DnsLocLongitude) return false;
-      if (DnsLocAltitude != other.DnsLocAltitude) return false;
-      if (DnsLocUnknownData != other.DnsLocUnknownData) return false;
-      if (DnsNxtNextDomainName != other.DnsNxtNextDomainName) return false;
-      if (DnsKxPreference != other.DnsKxPreference) return false;
-      if (DnsKxKeyExchange != other.DnsKxKeyExchange) return false;
-      if (DnsCertType != other.DnsCertType) return false;
-      if (DnsCertKeyTag != other.DnsCertKeyTag) return false;
-      if (DnsCertAlgorithm != other.DnsCertAlgorithm) return false;
-      if (DnsCertCertificate != other.DnsCertCertificate) return false;
-      if (DnsNsecNextDomainName != other.DnsNsecNextDomainName) return false;
-      if (DnsNs != other.DnsNs) return false;
-      if (DnsOpt != other.DnsOpt) return false;
-      if (DnsOptCode != other.DnsOptCode) return false;
-      if (DnsOptLen != other.DnsOptLen) return false;
-      if (DnsOptData != other.DnsOptData) return false;
-      if (DnsOptDau != other.DnsOptDau) return false;
-      if (DnsOptDhu != other.DnsOptDhu) return false;
-      if (DnsOptN3U != other.DnsOptN3U) return false;
-      if (DnsOptClientFamily != other.DnsOptClientFamily) return false;
-      if (DnsOptClientNetmask != other.DnsOptClientNetmask) return false;
-      if (DnsOptClientScope != other.DnsOptClientScope) return false;
-      if (DnsOptClientAddr != other.DnsOptClientAddr) return false;
-      if (DnsOptClientAddr4 != other.DnsOptClientAddr4) return false;
-      if (DnsOptClientAddr6 != other.DnsOptClientAddr6) return false;
-      if (DnsOptCookieClient != other.DnsOptCookieClient) return false;
-      if (DnsOptCookieServer != other.DnsOptCookieServer) return false;
-      if (DnsOptEdnsTcpKeepaliveTimeout != other.DnsOptEdnsTcpKeepaliveTimeout) return false;
-      if (DnsOptPadding != other.DnsOptPadding) return false;
-      if (DnsOptChainFqdn != other.DnsOptChainFqdn) return false;
       if (DnsCountQueries != other.DnsCountQueries) return false;
       if (DnsCountZones != other.DnsCountZones) return false;
       if (DnsCountAnswers != other.DnsCountAnswers) return false;
       if (DnsCountPrerequisites != other.DnsCountPrerequisites) return false;
       if (DnsCountAuthRr != other.DnsCountAuthRr) return false;
       if (DnsCountUpdates != other.DnsCountUpdates) return false;
-      if (DnsNsec3Algo != other.DnsNsec3Algo) return false;
-      if (DnsNsec3Flags != other.DnsNsec3Flags) return false;
-      if (DnsNsec3FlagsOptOut != other.DnsNsec3FlagsOptOut) return false;
-      if (DnsNsec3Iterations != other.DnsNsec3Iterations) return false;
-      if (DnsNsec3SaltLength != other.DnsNsec3SaltLength) return false;
-      if (DnsNsec3SaltValue != other.DnsNsec3SaltValue) return false;
-      if (DnsNsec3HashLength != other.DnsNsec3HashLength) return false;
-      if (DnsNsec3HashValue != other.DnsNsec3HashValue) return false;
-      if (DnsTlsaCertificateUsage != other.DnsTlsaCertificateUsage) return false;
-      if (DnsTlsaSelector != other.DnsTlsaSelector) return false;
-      if (DnsTlsaMatchingType != other.DnsTlsaMatchingType) return false;
-      if (DnsTlsaCertificateAssociationData != other.DnsTlsaCertificateAssociationData) return false;
-      if (DnsTsigAlgorithmName != other.DnsTsigAlgorithmName) return false;
-      if (DnsTsigTimeSigned != other.DnsTsigTimeSigned) return false;
-      if (DnsTsigOriginalId != other.DnsTsigOriginalId) return false;
-      if (DnsTsigError != other.DnsTsigError) return false;
-      if (DnsTsigFudge != other.DnsTsigFudge) return false;
-      if (DnsTsigMacSize != other.DnsTsigMacSize) return false;
-      if (DnsTsigOtherLen != other.DnsTsigOtherLen) return false;
-      if (DnsTsigMac != other.DnsTsigMac) return false;
-      if (DnsTsigOtherData != other.DnsTsigOtherData) return false;
-      if (DnsSshfpAlgorithm != other.DnsSshfpAlgorithm) return false;
-      if (DnsSshfpFingerprintType != other.DnsSshfpFingerprintType) return false;
-      if (DnsSshfpFingerprint != other.DnsSshfpFingerprint) return false;
-      if (DnsHipHitLength != other.DnsHipHitLength) return false;
-      if (DnsHipHitPkAlgo != other.DnsHipHitPkAlgo) return false;
-      if (DnsHipPkLength != other.DnsHipPkLength) return false;
-      if (DnsHipHit != other.DnsHipHit) return false;
-      if (DnsHipPk != other.DnsHipPk) return false;
-      if (DnsHipRendezvousServer != other.DnsHipRendezvousServer) return false;
-      if (DnsDhcidRdata != other.DnsDhcidRdata) return false;
-      if (DnsDsKeyId != other.DnsDsKeyId) return false;
-      if (DnsDsAlgorithm != other.DnsDsAlgorithm) return false;
-      if (DnsDsDigestType != other.DnsDsDigestType) return false;
-      if (DnsDsDigest != other.DnsDsDigest) return false;
-      if (DnsAplAddressFamily != other.DnsAplAddressFamily) return false;
-      if (DnsAplCodedPrefix != other.DnsAplCodedPrefix) return false;
-      if (DnsAplNegation != other.DnsAplNegation) return false;
-      if (DnsAplAfdlength != other.DnsAplAfdlength) return false;
-      if (DnsAplAfdpartIpv4 != other.DnsAplAfdpartIpv4) return false;
-      if (DnsAplAfdpartIpv6 != other.DnsAplAfdpartIpv6) return false;
-      if (DnsAplAfdpartData != other.DnsAplAfdpartData) return false;
-      if (DnsGposLongitudeLength != other.DnsGposLongitudeLength) return false;
-      if (DnsGposLongitude != other.DnsGposLongitude) return false;
-      if (DnsGposLatitudeLength != other.DnsGposLatitudeLength) return false;
-      if (DnsGposLatitude != other.DnsGposLatitude) return false;
-      if (DnsGposAltitudeLength != other.DnsGposAltitudeLength) return false;
-      if (DnsGposAltitude != other.DnsGposAltitude) return false;
-      if (DnsRpMailbox != other.DnsRpMailbox) return false;
-      if (DnsRpTxtRr != other.DnsRpTxtRr) return false;
-      if (DnsAfsdbSubtype != other.DnsAfsdbSubtype) return false;
-      if (DnsAfsdbHostname != other.DnsAfsdbHostname) return false;
-      if (DnsX25Length != other.DnsX25Length) return false;
-      if (DnsX25PsdnAddress != other.DnsX25PsdnAddress) return false;
-      if (DnsIdsnLength != other.DnsIdsnLength) return false;
-      if (DnsIdsnAddress != other.DnsIdsnAddress) return false;
-      if (DnsIdsnSaLength != other.DnsIdsnSaLength) return false;
-      if (DnsIdsnSaAddress != other.DnsIdsnSaAddress) return false;
-      if (DnsRtSubtype != other.DnsRtSubtype) return false;
-      if (DnsRtIntermediateHost != other.DnsRtIntermediateHost) return false;
-      if (DnsNsapRdata != other.DnsNsapRdata) return false;
-      if (DnsNsapPtrOwner != other.DnsNsapPtrOwner) return false;
-      if (DnsCaaFlags != other.DnsCaaFlags) return false;
-      if (DnsCaaFlagsIssuerCritical != other.DnsCaaFlagsIssuerCritical) return false;
-      if (DnsCaaIssue != other.DnsCaaIssue) return false;
-      if (DnsCaaIssuewild != other.DnsCaaIssuewild) return false;
-      if (DnsCaaIodef != other.DnsCaaIodef) return false;
-      if (DnsCaaUnknown != other.DnsCaaUnknown) return false;
-      if (DnsCaaTagLength != other.DnsCaaTagLength) return false;
-      if (DnsCaaTag != other.DnsCaaTag) return false;
-      if (DnsCaaValue != other.DnsCaaValue) return false;
-      if (DnsWinsLocalFlag != other.DnsWinsLocalFlag) return false;
-      if (DnsWinsLookupTimeout != other.DnsWinsLookupTimeout) return false;
-      if (DnsWinsCacheTimeout != other.DnsWinsCacheTimeout) return false;
-      if (DnsWinsNbWinsServers != other.DnsWinsNbWinsServers) return false;
-      if (DnsWinsWinsServer != other.DnsWinsWinsServer) return false;
-      if (DnsWinsrLocalFlag != other.DnsWinsrLocalFlag) return false;
-      if (DnsWinsrLookupTimeout != other.DnsWinsrLookupTimeout) return false;
-      if (DnsWinsrCacheTimeout != other.DnsWinsrCacheTimeout) return false;
-      if (DnsWinsrNameResultDomain != other.DnsWinsrNameResultDomain) return false;
-      if (DnsData != other.DnsData) return false;
       return true;
     }
 
@@ -4383,260 +358,16 @@ namespace Ndx.Decoders.Core {
       if (DnsId != 0) hash ^= DnsId.GetHashCode();
       if (DnsResponseIn != 0L) hash ^= DnsResponseIn.GetHashCode();
       if (DnsResponseTo != 0L) hash ^= DnsResponseTo.GetHashCode();
-      if (DnsTime != 0L) hash ^= DnsTime.GetHashCode();
+      if (DnsTime != 0F) hash ^= DnsTime.GetHashCode();
       if (DnsCountAddRr != 0) hash ^= DnsCountAddRr.GetHashCode();
       hash ^= dnsQry_.GetHashCode();
       hash ^= dnsResp_.GetHashCode();
-      if (DnsSrvService.Length != 0) hash ^= DnsSrvService.GetHashCode();
-      if (DnsSrvProto.Length != 0) hash ^= DnsSrvProto.GetHashCode();
-      if (DnsSrvName.Length != 0) hash ^= DnsSrvName.GetHashCode();
-      if (DnsSrvPriority != 0) hash ^= DnsSrvPriority.GetHashCode();
-      if (DnsSrvWeight != 0) hash ^= DnsSrvWeight.GetHashCode();
-      if (DnsSrvPort != 0) hash ^= DnsSrvPort.GetHashCode();
-      if (DnsSrvTarget.Length != 0) hash ^= DnsSrvTarget.GetHashCode();
-      if (DnsNaptrOrder != 0) hash ^= DnsNaptrOrder.GetHashCode();
-      if (DnsNaptrPreference != 0) hash ^= DnsNaptrPreference.GetHashCode();
-      if (DnsNaptrFlagsLength != 0) hash ^= DnsNaptrFlagsLength.GetHashCode();
-      if (DnsNaptrFlags.Length != 0) hash ^= DnsNaptrFlags.GetHashCode();
-      if (DnsNaptrServiceLength != 0) hash ^= DnsNaptrServiceLength.GetHashCode();
-      if (DnsNaptrService.Length != 0) hash ^= DnsNaptrService.GetHashCode();
-      if (DnsNaptrRegexLength != 0) hash ^= DnsNaptrRegexLength.GetHashCode();
-      if (DnsNaptrRegex.Length != 0) hash ^= DnsNaptrRegex.GetHashCode();
-      if (DnsNaptrReplacementLength != 0) hash ^= DnsNaptrReplacementLength.GetHashCode();
-      if (DnsNaptrReplacement.Length != 0) hash ^= DnsNaptrReplacement.GetHashCode();
-      if (DnsA.Length != 0) hash ^= DnsA.GetHashCode();
-      if (DnsMd.Length != 0) hash ^= DnsMd.GetHashCode();
-      if (DnsMf.Length != 0) hash ^= DnsMf.GetHashCode();
-      if (DnsMb.Length != 0) hash ^= DnsMb.GetHashCode();
-      if (DnsMg.Length != 0) hash ^= DnsMg.GetHashCode();
-      if (DnsMr.Length != 0) hash ^= DnsMr.GetHashCode();
-      if (DnsNull.Length != 0) hash ^= DnsNull.GetHashCode();
-      if (DnsAaaa.Length != 0) hash ^= DnsAaaa.GetHashCode();
-      if (DnsCname.Length != 0) hash ^= DnsCname.GetHashCode();
-      if (DnsRrUdpPayloadSize != 0) hash ^= DnsRrUdpPayloadSize.GetHashCode();
-      if (DnsSoaMname.Length != 0) hash ^= DnsSoaMname.GetHashCode();
-      if (DnsSoaRname.Length != 0) hash ^= DnsSoaRname.GetHashCode();
-      if (DnsSoaSerialNumber != 0) hash ^= DnsSoaSerialNumber.GetHashCode();
-      if (DnsSoaRefreshInterval != 0) hash ^= DnsSoaRefreshInterval.GetHashCode();
-      if (DnsSoaRetryInterval != 0) hash ^= DnsSoaRetryInterval.GetHashCode();
-      if (DnsSoaExpireLimit != 0) hash ^= DnsSoaExpireLimit.GetHashCode();
-      if (DnsSoaMininumTtl != 0) hash ^= DnsSoaMininumTtl.GetHashCode();
-      if (DnsPtrDomainName.Length != 0) hash ^= DnsPtrDomainName.GetHashCode();
-      if (DnsWksAddress.Length != 0) hash ^= DnsWksAddress.GetHashCode();
-      if (DnsWksProtocol != 0) hash ^= DnsWksProtocol.GetHashCode();
-      if (DnsWksBits != 0) hash ^= DnsWksBits.GetHashCode();
-      if (DnsHinfoCpuLength != 0) hash ^= DnsHinfoCpuLength.GetHashCode();
-      if (DnsHinfoCpu.Length != 0) hash ^= DnsHinfoCpu.GetHashCode();
-      if (DnsHinfoOsLength != 0) hash ^= DnsHinfoOsLength.GetHashCode();
-      if (DnsHinfoOs.Length != 0) hash ^= DnsHinfoOs.GetHashCode();
-      if (DnsMinfoR.Length != 0) hash ^= DnsMinfoR.GetHashCode();
-      if (DnsMinfoE.Length != 0) hash ^= DnsMinfoE.GetHashCode();
-      if (DnsMxPreference != 0) hash ^= DnsMxPreference.GetHashCode();
-      if (DnsMxMailExchange.Length != 0) hash ^= DnsMxMailExchange.GetHashCode();
-      if (DnsTxtLength != 0) hash ^= DnsTxtLength.GetHashCode();
-      if (DnsTxt.Length != 0) hash ^= DnsTxt.GetHashCode();
-      if (DnsOpenpgpkey.Length != 0) hash ^= DnsOpenpgpkey.GetHashCode();
-      if (DnsCsyncSoa != 0) hash ^= DnsCsyncSoa.GetHashCode();
-      if (DnsCsyncFlags != 0) hash ^= DnsCsyncFlags.GetHashCode();
-      if (DnsCsyncFlagsImmediate != false) hash ^= DnsCsyncFlagsImmediate.GetHashCode();
-      if (DnsCsyncFlagsSoaminimum != false) hash ^= DnsCsyncFlagsSoaminimum.GetHashCode();
-      if (DnsCsyncTypeBitmap.Length != 0) hash ^= DnsCsyncTypeBitmap.GetHashCode();
-      if (DnsSpfLength != 0) hash ^= DnsSpfLength.GetHashCode();
-      if (DnsSpf.Length != 0) hash ^= DnsSpf.GetHashCode();
-      if (DnsIlnpNidPreference != 0) hash ^= DnsIlnpNidPreference.GetHashCode();
-      if (DnsIlnpNid.Length != 0) hash ^= DnsIlnpNid.GetHashCode();
-      if (DnsIlnpL32Preference != 0) hash ^= DnsIlnpL32Preference.GetHashCode();
-      if (DnsIlnpL32.Length != 0) hash ^= DnsIlnpL32.GetHashCode();
-      if (DnsIlnpL64Preference != 0) hash ^= DnsIlnpL64Preference.GetHashCode();
-      if (DnsIlnpL64.Length != 0) hash ^= DnsIlnpL64.GetHashCode();
-      if (DnsIlnpLpPreference != 0) hash ^= DnsIlnpLpPreference.GetHashCode();
-      if (DnsIlnpLp.Length != 0) hash ^= DnsIlnpLp.GetHashCode();
-      if (DnsEui48.Length != 0) hash ^= DnsEui48.GetHashCode();
-      if (DnsEui64.Length != 0) hash ^= DnsEui64.GetHashCode();
-      if (DnsRrsigTypeCovered != 0) hash ^= DnsRrsigTypeCovered.GetHashCode();
-      if (DnsRrsigAlgorithm != 0) hash ^= DnsRrsigAlgorithm.GetHashCode();
-      if (DnsRrsigLabels != 0) hash ^= DnsRrsigLabels.GetHashCode();
-      if (DnsRrsigOriginalTtl != 0) hash ^= DnsRrsigOriginalTtl.GetHashCode();
-      if (DnsRrsigSignatureExpiration != 0L) hash ^= DnsRrsigSignatureExpiration.GetHashCode();
-      if (DnsRrsigSignatureInception != 0L) hash ^= DnsRrsigSignatureInception.GetHashCode();
-      if (DnsRrsigKeyTag != 0) hash ^= DnsRrsigKeyTag.GetHashCode();
-      if (DnsRrsigSignersName.Length != 0) hash ^= DnsRrsigSignersName.GetHashCode();
-      if (DnsRrsigSignature.Length != 0) hash ^= DnsRrsigSignature.GetHashCode();
-      if (DnsDnskeyFlags != 0) hash ^= DnsDnskeyFlags.GetHashCode();
-      if (DnsDnskeyFlagsZoneKey != false) hash ^= DnsDnskeyFlagsZoneKey.GetHashCode();
-      if (DnsDnskeyFlagsKeyRevoked != false) hash ^= DnsDnskeyFlagsKeyRevoked.GetHashCode();
-      if (DnsDnskeyFlagsSecureEntryPoint != false) hash ^= DnsDnskeyFlagsSecureEntryPoint.GetHashCode();
-      if (DnsDnskeyFlagsReserved != 0) hash ^= DnsDnskeyFlagsReserved.GetHashCode();
-      if (DnsDnskeyProtocol != 0) hash ^= DnsDnskeyProtocol.GetHashCode();
-      if (DnsDnskeyAlgorithm != 0) hash ^= DnsDnskeyAlgorithm.GetHashCode();
-      if (DnsDnskeyKeyId != 0) hash ^= DnsDnskeyKeyId.GetHashCode();
-      if (DnsDnskeyPublicKey.Length != 0) hash ^= DnsDnskeyPublicKey.GetHashCode();
-      if (DnsKeyFlags != 0) hash ^= DnsKeyFlags.GetHashCode();
-      if (DnsKeyFlagsAuthentication != false) hash ^= DnsKeyFlagsAuthentication.GetHashCode();
-      if (DnsKeyFlagsConfidentiality != false) hash ^= DnsKeyFlagsConfidentiality.GetHashCode();
-      if (DnsKeyFlagsRequired != false) hash ^= DnsKeyFlagsRequired.GetHashCode();
-      if (DnsKeyFlagsAssociatedUser != false) hash ^= DnsKeyFlagsAssociatedUser.GetHashCode();
-      if (DnsKeyFlagsAssociatedNamedEntity != false) hash ^= DnsKeyFlagsAssociatedNamedEntity.GetHashCode();
-      if (DnsKeyFlagsIpsec != false) hash ^= DnsKeyFlagsIpsec.GetHashCode();
-      if (DnsKeyFlagsMime != false) hash ^= DnsKeyFlagsMime.GetHashCode();
-      if (DnsKeyFlagsSignatory != 0) hash ^= DnsKeyFlagsSignatory.GetHashCode();
-      if (DnsKeyProtocol != 0) hash ^= DnsKeyProtocol.GetHashCode();
-      if (DnsKeyAlgorithm != 0) hash ^= DnsKeyAlgorithm.GetHashCode();
-      if (DnsKeyKeyId != 0) hash ^= DnsKeyKeyId.GetHashCode();
-      if (DnsKeyPublicKey.Length != 0) hash ^= DnsKeyPublicKey.GetHashCode();
-      if (DnsPxPreference != 0) hash ^= DnsPxPreference.GetHashCode();
-      if (DnsPxMap822.Length != 0) hash ^= DnsPxMap822.GetHashCode();
-      if (DnsPxMap400.Length != 0) hash ^= DnsPxMap400.GetHashCode();
-      if (DnsTkeyAlgoName.Length != 0) hash ^= DnsTkeyAlgoName.GetHashCode();
-      if (DnsTkeySignatureExpiration != 0L) hash ^= DnsTkeySignatureExpiration.GetHashCode();
-      if (DnsTkeySignatureInception != 0L) hash ^= DnsTkeySignatureInception.GetHashCode();
-      if (DnsTkeyMode != 0) hash ^= DnsTkeyMode.GetHashCode();
-      if (DnsTkeyError != 0) hash ^= DnsTkeyError.GetHashCode();
-      if (DnsTkeyKeySize != 0) hash ^= DnsTkeyKeySize.GetHashCode();
-      if (DnsTkeyKeyData.Length != 0) hash ^= DnsTkeyKeyData.GetHashCode();
-      if (DnsTkeyOtherSize != 0) hash ^= DnsTkeyOtherSize.GetHashCode();
-      if (DnsTkeyOtherData.Length != 0) hash ^= DnsTkeyOtherData.GetHashCode();
-      if (DnsIpseckeyGatewayPrecedence != 0) hash ^= DnsIpseckeyGatewayPrecedence.GetHashCode();
-      if (DnsIpseckeyGatewayAlgorithm != 0) hash ^= DnsIpseckeyGatewayAlgorithm.GetHashCode();
-      if (DnsIpseckeyGatewayType != 0) hash ^= DnsIpseckeyGatewayType.GetHashCode();
-      if (DnsIpseckeyGatewayIpv4.Length != 0) hash ^= DnsIpseckeyGatewayIpv4.GetHashCode();
-      if (DnsIpseckeyGatewayIpv6.Length != 0) hash ^= DnsIpseckeyGatewayIpv6.GetHashCode();
-      if (DnsIpseckeyGatewayDns.Length != 0) hash ^= DnsIpseckeyGatewayDns.GetHashCode();
-      if (DnsIpseckeyPublicKey.Length != 0) hash ^= DnsIpseckeyPublicKey.GetHashCode();
-      if (DnsXpfIpVersion != 0) hash ^= DnsXpfIpVersion.GetHashCode();
-      if (DnsXpfProtocol != 0) hash ^= DnsXpfProtocol.GetHashCode();
-      if (DnsXpfSourceIpv4.Length != 0) hash ^= DnsXpfSourceIpv4.GetHashCode();
-      if (DnsXpfDestinationIpv4.Length != 0) hash ^= DnsXpfDestinationIpv4.GetHashCode();
-      if (DnsXpfSourceIpv6.Length != 0) hash ^= DnsXpfSourceIpv6.GetHashCode();
-      if (DnsXpfDestinationIpv6.Length != 0) hash ^= DnsXpfDestinationIpv6.GetHashCode();
-      if (DnsXpfSport != 0) hash ^= DnsXpfSport.GetHashCode();
-      if (DnsXpfDport != 0) hash ^= DnsXpfDport.GetHashCode();
-      if (DnsA6PrefixLen != 0) hash ^= DnsA6PrefixLen.GetHashCode();
-      if (DnsA6AddressSuffix.Length != 0) hash ^= DnsA6AddressSuffix.GetHashCode();
-      if (DnsA6PrefixName.Length != 0) hash ^= DnsA6PrefixName.GetHashCode();
-      if (DnsDname.Length != 0) hash ^= DnsDname.GetHashCode();
-      if (DnsLocVersion != 0) hash ^= DnsLocVersion.GetHashCode();
-      if (DnsLocSize != 0) hash ^= DnsLocSize.GetHashCode();
-      if (DnsLocHorizontalPrecision != 0) hash ^= DnsLocHorizontalPrecision.GetHashCode();
-      if (DnsLocVerticalPrecision != 0) hash ^= DnsLocVerticalPrecision.GetHashCode();
-      if (DnsLocLatitude != 0) hash ^= DnsLocLatitude.GetHashCode();
-      if (DnsLocLongitude != 0) hash ^= DnsLocLongitude.GetHashCode();
-      if (DnsLocAltitude != 0) hash ^= DnsLocAltitude.GetHashCode();
-      if (DnsLocUnknownData.Length != 0) hash ^= DnsLocUnknownData.GetHashCode();
-      if (DnsNxtNextDomainName.Length != 0) hash ^= DnsNxtNextDomainName.GetHashCode();
-      if (DnsKxPreference != 0) hash ^= DnsKxPreference.GetHashCode();
-      if (DnsKxKeyExchange.Length != 0) hash ^= DnsKxKeyExchange.GetHashCode();
-      if (DnsCertType != 0) hash ^= DnsCertType.GetHashCode();
-      if (DnsCertKeyTag != 0) hash ^= DnsCertKeyTag.GetHashCode();
-      if (DnsCertAlgorithm != 0) hash ^= DnsCertAlgorithm.GetHashCode();
-      if (DnsCertCertificate.Length != 0) hash ^= DnsCertCertificate.GetHashCode();
-      if (DnsNsecNextDomainName.Length != 0) hash ^= DnsNsecNextDomainName.GetHashCode();
-      if (DnsNs.Length != 0) hash ^= DnsNs.GetHashCode();
-      if (DnsOpt != 0) hash ^= DnsOpt.GetHashCode();
-      if (DnsOptCode != 0) hash ^= DnsOptCode.GetHashCode();
-      if (DnsOptLen != 0) hash ^= DnsOptLen.GetHashCode();
-      if (DnsOptData.Length != 0) hash ^= DnsOptData.GetHashCode();
-      if (DnsOptDau != 0) hash ^= DnsOptDau.GetHashCode();
-      if (DnsOptDhu != 0) hash ^= DnsOptDhu.GetHashCode();
-      if (DnsOptN3U != 0) hash ^= DnsOptN3U.GetHashCode();
-      if (DnsOptClientFamily != 0) hash ^= DnsOptClientFamily.GetHashCode();
-      if (DnsOptClientNetmask != 0) hash ^= DnsOptClientNetmask.GetHashCode();
-      if (DnsOptClientScope != 0) hash ^= DnsOptClientScope.GetHashCode();
-      if (DnsOptClientAddr.Length != 0) hash ^= DnsOptClientAddr.GetHashCode();
-      if (DnsOptClientAddr4.Length != 0) hash ^= DnsOptClientAddr4.GetHashCode();
-      if (DnsOptClientAddr6.Length != 0) hash ^= DnsOptClientAddr6.GetHashCode();
-      if (DnsOptCookieClient.Length != 0) hash ^= DnsOptCookieClient.GetHashCode();
-      if (DnsOptCookieServer.Length != 0) hash ^= DnsOptCookieServer.GetHashCode();
-      if (DnsOptEdnsTcpKeepaliveTimeout != 0) hash ^= DnsOptEdnsTcpKeepaliveTimeout.GetHashCode();
-      if (DnsOptPadding.Length != 0) hash ^= DnsOptPadding.GetHashCode();
-      if (DnsOptChainFqdn.Length != 0) hash ^= DnsOptChainFqdn.GetHashCode();
       if (DnsCountQueries != 0) hash ^= DnsCountQueries.GetHashCode();
       if (DnsCountZones != 0) hash ^= DnsCountZones.GetHashCode();
       if (DnsCountAnswers != 0) hash ^= DnsCountAnswers.GetHashCode();
       if (DnsCountPrerequisites != 0) hash ^= DnsCountPrerequisites.GetHashCode();
       if (DnsCountAuthRr != 0) hash ^= DnsCountAuthRr.GetHashCode();
       if (DnsCountUpdates != 0) hash ^= DnsCountUpdates.GetHashCode();
-      if (DnsNsec3Algo != 0) hash ^= DnsNsec3Algo.GetHashCode();
-      if (DnsNsec3Flags != 0) hash ^= DnsNsec3Flags.GetHashCode();
-      if (DnsNsec3FlagsOptOut != false) hash ^= DnsNsec3FlagsOptOut.GetHashCode();
-      if (DnsNsec3Iterations != 0) hash ^= DnsNsec3Iterations.GetHashCode();
-      if (DnsNsec3SaltLength != 0) hash ^= DnsNsec3SaltLength.GetHashCode();
-      if (DnsNsec3SaltValue.Length != 0) hash ^= DnsNsec3SaltValue.GetHashCode();
-      if (DnsNsec3HashLength != 0) hash ^= DnsNsec3HashLength.GetHashCode();
-      if (DnsNsec3HashValue.Length != 0) hash ^= DnsNsec3HashValue.GetHashCode();
-      if (DnsTlsaCertificateUsage != 0) hash ^= DnsTlsaCertificateUsage.GetHashCode();
-      if (DnsTlsaSelector != 0) hash ^= DnsTlsaSelector.GetHashCode();
-      if (DnsTlsaMatchingType != 0) hash ^= DnsTlsaMatchingType.GetHashCode();
-      if (DnsTlsaCertificateAssociationData.Length != 0) hash ^= DnsTlsaCertificateAssociationData.GetHashCode();
-      if (DnsTsigAlgorithmName.Length != 0) hash ^= DnsTsigAlgorithmName.GetHashCode();
-      if (DnsTsigTimeSigned != 0L) hash ^= DnsTsigTimeSigned.GetHashCode();
-      if (DnsTsigOriginalId != 0) hash ^= DnsTsigOriginalId.GetHashCode();
-      if (DnsTsigError != 0) hash ^= DnsTsigError.GetHashCode();
-      if (DnsTsigFudge != 0) hash ^= DnsTsigFudge.GetHashCode();
-      if (DnsTsigMacSize != 0) hash ^= DnsTsigMacSize.GetHashCode();
-      if (DnsTsigOtherLen != 0) hash ^= DnsTsigOtherLen.GetHashCode();
-      if (DnsTsigMac != 0) hash ^= DnsTsigMac.GetHashCode();
-      if (DnsTsigOtherData.Length != 0) hash ^= DnsTsigOtherData.GetHashCode();
-      if (DnsSshfpAlgorithm != 0) hash ^= DnsSshfpAlgorithm.GetHashCode();
-      if (DnsSshfpFingerprintType != 0) hash ^= DnsSshfpFingerprintType.GetHashCode();
-      if (DnsSshfpFingerprint.Length != 0) hash ^= DnsSshfpFingerprint.GetHashCode();
-      if (DnsHipHitLength != 0) hash ^= DnsHipHitLength.GetHashCode();
-      if (DnsHipHitPkAlgo != 0) hash ^= DnsHipHitPkAlgo.GetHashCode();
-      if (DnsHipPkLength != 0) hash ^= DnsHipPkLength.GetHashCode();
-      if (DnsHipHit.Length != 0) hash ^= DnsHipHit.GetHashCode();
-      if (DnsHipPk.Length != 0) hash ^= DnsHipPk.GetHashCode();
-      if (DnsHipRendezvousServer.Length != 0) hash ^= DnsHipRendezvousServer.GetHashCode();
-      if (DnsDhcidRdata.Length != 0) hash ^= DnsDhcidRdata.GetHashCode();
-      if (DnsDsKeyId != 0) hash ^= DnsDsKeyId.GetHashCode();
-      if (DnsDsAlgorithm != 0) hash ^= DnsDsAlgorithm.GetHashCode();
-      if (DnsDsDigestType != 0) hash ^= DnsDsDigestType.GetHashCode();
-      if (DnsDsDigest.Length != 0) hash ^= DnsDsDigest.GetHashCode();
-      if (DnsAplAddressFamily != 0) hash ^= DnsAplAddressFamily.GetHashCode();
-      if (DnsAplCodedPrefix != 0) hash ^= DnsAplCodedPrefix.GetHashCode();
-      if (DnsAplNegation != false) hash ^= DnsAplNegation.GetHashCode();
-      if (DnsAplAfdlength != 0) hash ^= DnsAplAfdlength.GetHashCode();
-      if (DnsAplAfdpartIpv4.Length != 0) hash ^= DnsAplAfdpartIpv4.GetHashCode();
-      if (DnsAplAfdpartIpv6.Length != 0) hash ^= DnsAplAfdpartIpv6.GetHashCode();
-      if (DnsAplAfdpartData.Length != 0) hash ^= DnsAplAfdpartData.GetHashCode();
-      if (DnsGposLongitudeLength != 0) hash ^= DnsGposLongitudeLength.GetHashCode();
-      if (DnsGposLongitude.Length != 0) hash ^= DnsGposLongitude.GetHashCode();
-      if (DnsGposLatitudeLength != 0) hash ^= DnsGposLatitudeLength.GetHashCode();
-      if (DnsGposLatitude.Length != 0) hash ^= DnsGposLatitude.GetHashCode();
-      if (DnsGposAltitudeLength != 0) hash ^= DnsGposAltitudeLength.GetHashCode();
-      if (DnsGposAltitude.Length != 0) hash ^= DnsGposAltitude.GetHashCode();
-      if (DnsRpMailbox.Length != 0) hash ^= DnsRpMailbox.GetHashCode();
-      if (DnsRpTxtRr.Length != 0) hash ^= DnsRpTxtRr.GetHashCode();
-      if (DnsAfsdbSubtype != 0) hash ^= DnsAfsdbSubtype.GetHashCode();
-      if (DnsAfsdbHostname.Length != 0) hash ^= DnsAfsdbHostname.GetHashCode();
-      if (DnsX25Length != 0) hash ^= DnsX25Length.GetHashCode();
-      if (DnsX25PsdnAddress.Length != 0) hash ^= DnsX25PsdnAddress.GetHashCode();
-      if (DnsIdsnLength != 0) hash ^= DnsIdsnLength.GetHashCode();
-      if (DnsIdsnAddress.Length != 0) hash ^= DnsIdsnAddress.GetHashCode();
-      if (DnsIdsnSaLength != 0) hash ^= DnsIdsnSaLength.GetHashCode();
-      if (DnsIdsnSaAddress.Length != 0) hash ^= DnsIdsnSaAddress.GetHashCode();
-      if (DnsRtSubtype != 0) hash ^= DnsRtSubtype.GetHashCode();
-      if (DnsRtIntermediateHost.Length != 0) hash ^= DnsRtIntermediateHost.GetHashCode();
-      if (DnsNsapRdata.Length != 0) hash ^= DnsNsapRdata.GetHashCode();
-      if (DnsNsapPtrOwner.Length != 0) hash ^= DnsNsapPtrOwner.GetHashCode();
-      if (DnsCaaFlags != 0) hash ^= DnsCaaFlags.GetHashCode();
-      if (DnsCaaFlagsIssuerCritical != false) hash ^= DnsCaaFlagsIssuerCritical.GetHashCode();
-      if (DnsCaaIssue.Length != 0) hash ^= DnsCaaIssue.GetHashCode();
-      if (DnsCaaIssuewild.Length != 0) hash ^= DnsCaaIssuewild.GetHashCode();
-      if (DnsCaaIodef.Length != 0) hash ^= DnsCaaIodef.GetHashCode();
-      if (DnsCaaUnknown.Length != 0) hash ^= DnsCaaUnknown.GetHashCode();
-      if (DnsCaaTagLength != 0) hash ^= DnsCaaTagLength.GetHashCode();
-      if (DnsCaaTag.Length != 0) hash ^= DnsCaaTag.GetHashCode();
-      if (DnsCaaValue.Length != 0) hash ^= DnsCaaValue.GetHashCode();
-      if (DnsWinsLocalFlag != false) hash ^= DnsWinsLocalFlag.GetHashCode();
-      if (DnsWinsLookupTimeout != 0) hash ^= DnsWinsLookupTimeout.GetHashCode();
-      if (DnsWinsCacheTimeout != 0) hash ^= DnsWinsCacheTimeout.GetHashCode();
-      if (DnsWinsNbWinsServers != 0) hash ^= DnsWinsNbWinsServers.GetHashCode();
-      if (DnsWinsWinsServer.Length != 0) hash ^= DnsWinsWinsServer.GetHashCode();
-      if (DnsWinsrLocalFlag != false) hash ^= DnsWinsrLocalFlag.GetHashCode();
-      if (DnsWinsrLookupTimeout != 0) hash ^= DnsWinsrLookupTimeout.GetHashCode();
-      if (DnsWinsrCacheTimeout != 0) hash ^= DnsWinsrCacheTimeout.GetHashCode();
-      if (DnsWinsrNameResultDomain.Length != 0) hash ^= DnsWinsrNameResultDomain.GetHashCode();
-      if (DnsData.Length != 0) hash ^= DnsData.GetHashCode();
       return hash;
     }
 
@@ -4663,9 +394,9 @@ namespace Ndx.Decoders.Core {
         output.WriteRawTag(32);
         output.WriteInt64(DnsResponseTo);
       }
-      if (DnsTime != 0L) {
-        output.WriteRawTag(40);
-        output.WriteInt64(DnsTime);
+      if (DnsTime != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(DnsTime);
       }
       if (DnsCountAddRr != 0) {
         output.WriteRawTag(48);
@@ -4673,1005 +404,29 @@ namespace Ndx.Decoders.Core {
       }
       dnsQry_.WriteTo(output, _repeated_dnsQry_codec);
       dnsResp_.WriteTo(output, _repeated_dnsResp_codec);
-      if (DnsSrvService.Length != 0) {
-        output.WriteRawTag(74);
-        output.WriteString(DnsSrvService);
-      }
-      if (DnsSrvProto.Length != 0) {
-        output.WriteRawTag(82);
-        output.WriteString(DnsSrvProto);
-      }
-      if (DnsSrvName.Length != 0) {
-        output.WriteRawTag(90);
-        output.WriteString(DnsSrvName);
-      }
-      if (DnsSrvPriority != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(DnsSrvPriority);
-      }
-      if (DnsSrvWeight != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(DnsSrvWeight);
-      }
-      if (DnsSrvPort != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(DnsSrvPort);
-      }
-      if (DnsSrvTarget.Length != 0) {
-        output.WriteRawTag(122);
-        output.WriteString(DnsSrvTarget);
-      }
-      if (DnsNaptrOrder != 0) {
-        output.WriteRawTag(128, 1);
-        output.WriteUInt32(DnsNaptrOrder);
-      }
-      if (DnsNaptrPreference != 0) {
-        output.WriteRawTag(136, 1);
-        output.WriteUInt32(DnsNaptrPreference);
-      }
-      if (DnsNaptrFlagsLength != 0) {
-        output.WriteRawTag(144, 1);
-        output.WriteUInt32(DnsNaptrFlagsLength);
-      }
-      if (DnsNaptrFlags.Length != 0) {
-        output.WriteRawTag(154, 1);
-        output.WriteString(DnsNaptrFlags);
-      }
-      if (DnsNaptrServiceLength != 0) {
-        output.WriteRawTag(160, 1);
-        output.WriteUInt32(DnsNaptrServiceLength);
-      }
-      if (DnsNaptrService.Length != 0) {
-        output.WriteRawTag(170, 1);
-        output.WriteString(DnsNaptrService);
-      }
-      if (DnsNaptrRegexLength != 0) {
-        output.WriteRawTag(176, 1);
-        output.WriteUInt32(DnsNaptrRegexLength);
-      }
-      if (DnsNaptrRegex.Length != 0) {
-        output.WriteRawTag(186, 1);
-        output.WriteString(DnsNaptrRegex);
-      }
-      if (DnsNaptrReplacementLength != 0) {
-        output.WriteRawTag(192, 1);
-        output.WriteUInt32(DnsNaptrReplacementLength);
-      }
-      if (DnsNaptrReplacement.Length != 0) {
-        output.WriteRawTag(202, 1);
-        output.WriteString(DnsNaptrReplacement);
-      }
-      if (DnsA.Length != 0) {
-        output.WriteRawTag(210, 1);
-        output.WriteBytes(DnsA);
-      }
-      if (DnsMd.Length != 0) {
-        output.WriteRawTag(218, 1);
-        output.WriteString(DnsMd);
-      }
-      if (DnsMf.Length != 0) {
-        output.WriteRawTag(226, 1);
-        output.WriteString(DnsMf);
-      }
-      if (DnsMb.Length != 0) {
-        output.WriteRawTag(234, 1);
-        output.WriteString(DnsMb);
-      }
-      if (DnsMg.Length != 0) {
-        output.WriteRawTag(242, 1);
-        output.WriteString(DnsMg);
-      }
-      if (DnsMr.Length != 0) {
-        output.WriteRawTag(250, 1);
-        output.WriteString(DnsMr);
-      }
-      if (DnsNull.Length != 0) {
-        output.WriteRawTag(130, 2);
-        output.WriteBytes(DnsNull);
-      }
-      if (DnsAaaa.Length != 0) {
-        output.WriteRawTag(138, 2);
-        output.WriteBytes(DnsAaaa);
-      }
-      if (DnsCname.Length != 0) {
-        output.WriteRawTag(146, 2);
-        output.WriteString(DnsCname);
-      }
-      if (DnsRrUdpPayloadSize != 0) {
-        output.WriteRawTag(152, 2);
-        output.WriteUInt32(DnsRrUdpPayloadSize);
-      }
-      if (DnsSoaMname.Length != 0) {
-        output.WriteRawTag(162, 2);
-        output.WriteString(DnsSoaMname);
-      }
-      if (DnsSoaRname.Length != 0) {
-        output.WriteRawTag(170, 2);
-        output.WriteString(DnsSoaRname);
-      }
-      if (DnsSoaSerialNumber != 0) {
-        output.WriteRawTag(176, 2);
-        output.WriteUInt32(DnsSoaSerialNumber);
-      }
-      if (DnsSoaRefreshInterval != 0) {
-        output.WriteRawTag(184, 2);
-        output.WriteUInt32(DnsSoaRefreshInterval);
-      }
-      if (DnsSoaRetryInterval != 0) {
-        output.WriteRawTag(192, 2);
-        output.WriteUInt32(DnsSoaRetryInterval);
-      }
-      if (DnsSoaExpireLimit != 0) {
-        output.WriteRawTag(200, 2);
-        output.WriteUInt32(DnsSoaExpireLimit);
-      }
-      if (DnsSoaMininumTtl != 0) {
-        output.WriteRawTag(208, 2);
-        output.WriteUInt32(DnsSoaMininumTtl);
-      }
-      if (DnsPtrDomainName.Length != 0) {
-        output.WriteRawTag(218, 2);
-        output.WriteString(DnsPtrDomainName);
-      }
-      if (DnsWksAddress.Length != 0) {
-        output.WriteRawTag(226, 2);
-        output.WriteBytes(DnsWksAddress);
-      }
-      if (DnsWksProtocol != 0) {
-        output.WriteRawTag(232, 2);
-        output.WriteUInt32(DnsWksProtocol);
-      }
-      if (DnsWksBits != 0) {
-        output.WriteRawTag(240, 2);
-        output.WriteUInt32(DnsWksBits);
-      }
-      if (DnsHinfoCpuLength != 0) {
-        output.WriteRawTag(248, 2);
-        output.WriteUInt32(DnsHinfoCpuLength);
-      }
-      if (DnsHinfoCpu.Length != 0) {
-        output.WriteRawTag(130, 3);
-        output.WriteString(DnsHinfoCpu);
-      }
-      if (DnsHinfoOsLength != 0) {
-        output.WriteRawTag(136, 3);
-        output.WriteUInt32(DnsHinfoOsLength);
-      }
-      if (DnsHinfoOs.Length != 0) {
-        output.WriteRawTag(146, 3);
-        output.WriteString(DnsHinfoOs);
-      }
-      if (DnsMinfoR.Length != 0) {
-        output.WriteRawTag(154, 3);
-        output.WriteString(DnsMinfoR);
-      }
-      if (DnsMinfoE.Length != 0) {
-        output.WriteRawTag(162, 3);
-        output.WriteString(DnsMinfoE);
-      }
-      if (DnsMxPreference != 0) {
-        output.WriteRawTag(168, 3);
-        output.WriteUInt32(DnsMxPreference);
-      }
-      if (DnsMxMailExchange.Length != 0) {
-        output.WriteRawTag(178, 3);
-        output.WriteString(DnsMxMailExchange);
-      }
-      if (DnsTxtLength != 0) {
-        output.WriteRawTag(184, 3);
-        output.WriteUInt32(DnsTxtLength);
-      }
-      if (DnsTxt.Length != 0) {
-        output.WriteRawTag(194, 3);
-        output.WriteString(DnsTxt);
-      }
-      if (DnsOpenpgpkey.Length != 0) {
-        output.WriteRawTag(202, 3);
-        output.WriteString(DnsOpenpgpkey);
-      }
-      if (DnsCsyncSoa != 0) {
-        output.WriteRawTag(208, 3);
-        output.WriteUInt32(DnsCsyncSoa);
-      }
-      if (DnsCsyncFlags != 0) {
-        output.WriteRawTag(216, 3);
-        output.WriteUInt32(DnsCsyncFlags);
-      }
-      if (DnsCsyncFlagsImmediate != false) {
-        output.WriteRawTag(224, 3);
-        output.WriteBool(DnsCsyncFlagsImmediate);
-      }
-      if (DnsCsyncFlagsSoaminimum != false) {
-        output.WriteRawTag(232, 3);
-        output.WriteBool(DnsCsyncFlagsSoaminimum);
-      }
-      if (DnsCsyncTypeBitmap.Length != 0) {
-        output.WriteRawTag(242, 3);
-        output.WriteBytes(DnsCsyncTypeBitmap);
-      }
-      if (DnsSpfLength != 0) {
-        output.WriteRawTag(248, 3);
-        output.WriteUInt32(DnsSpfLength);
-      }
-      if (DnsSpf.Length != 0) {
-        output.WriteRawTag(130, 4);
-        output.WriteString(DnsSpf);
-      }
-      if (DnsIlnpNidPreference != 0) {
-        output.WriteRawTag(136, 4);
-        output.WriteUInt32(DnsIlnpNidPreference);
-      }
-      if (DnsIlnpNid.Length != 0) {
-        output.WriteRawTag(146, 4);
-        output.WriteBytes(DnsIlnpNid);
-      }
-      if (DnsIlnpL32Preference != 0) {
-        output.WriteRawTag(152, 4);
-        output.WriteUInt32(DnsIlnpL32Preference);
-      }
-      if (DnsIlnpL32.Length != 0) {
-        output.WriteRawTag(162, 4);
-        output.WriteBytes(DnsIlnpL32);
-      }
-      if (DnsIlnpL64Preference != 0) {
-        output.WriteRawTag(168, 4);
-        output.WriteUInt32(DnsIlnpL64Preference);
-      }
-      if (DnsIlnpL64.Length != 0) {
-        output.WriteRawTag(178, 4);
-        output.WriteBytes(DnsIlnpL64);
-      }
-      if (DnsIlnpLpPreference != 0) {
-        output.WriteRawTag(184, 4);
-        output.WriteUInt32(DnsIlnpLpPreference);
-      }
-      if (DnsIlnpLp.Length != 0) {
-        output.WriteRawTag(194, 4);
-        output.WriteString(DnsIlnpLp);
-      }
-      if (DnsEui48.Length != 0) {
-        output.WriteRawTag(202, 4);
-        output.WriteBytes(DnsEui48);
-      }
-      if (DnsEui64.Length != 0) {
-        output.WriteRawTag(210, 4);
-        output.WriteBytes(DnsEui64);
-      }
-      if (DnsRrsigTypeCovered != 0) {
-        output.WriteRawTag(216, 4);
-        output.WriteUInt32(DnsRrsigTypeCovered);
-      }
-      if (DnsRrsigAlgorithm != 0) {
-        output.WriteRawTag(224, 4);
-        output.WriteUInt32(DnsRrsigAlgorithm);
-      }
-      if (DnsRrsigLabels != 0) {
-        output.WriteRawTag(232, 4);
-        output.WriteUInt32(DnsRrsigLabels);
-      }
-      if (DnsRrsigOriginalTtl != 0) {
-        output.WriteRawTag(240, 4);
-        output.WriteUInt32(DnsRrsigOriginalTtl);
-      }
-      if (DnsRrsigSignatureExpiration != 0L) {
-        output.WriteRawTag(248, 4);
-        output.WriteInt64(DnsRrsigSignatureExpiration);
-      }
-      if (DnsRrsigSignatureInception != 0L) {
-        output.WriteRawTag(128, 5);
-        output.WriteInt64(DnsRrsigSignatureInception);
-      }
-      if (DnsRrsigKeyTag != 0) {
-        output.WriteRawTag(136, 5);
-        output.WriteUInt32(DnsRrsigKeyTag);
-      }
-      if (DnsRrsigSignersName.Length != 0) {
-        output.WriteRawTag(146, 5);
-        output.WriteString(DnsRrsigSignersName);
-      }
-      if (DnsRrsigSignature.Length != 0) {
-        output.WriteRawTag(154, 5);
-        output.WriteBytes(DnsRrsigSignature);
-      }
-      if (DnsDnskeyFlags != 0) {
-        output.WriteRawTag(160, 5);
-        output.WriteUInt32(DnsDnskeyFlags);
-      }
-      if (DnsDnskeyFlagsZoneKey != false) {
-        output.WriteRawTag(168, 5);
-        output.WriteBool(DnsDnskeyFlagsZoneKey);
-      }
-      if (DnsDnskeyFlagsKeyRevoked != false) {
-        output.WriteRawTag(176, 5);
-        output.WriteBool(DnsDnskeyFlagsKeyRevoked);
-      }
-      if (DnsDnskeyFlagsSecureEntryPoint != false) {
-        output.WriteRawTag(184, 5);
-        output.WriteBool(DnsDnskeyFlagsSecureEntryPoint);
-      }
-      if (DnsDnskeyFlagsReserved != 0) {
-        output.WriteRawTag(192, 5);
-        output.WriteUInt32(DnsDnskeyFlagsReserved);
-      }
-      if (DnsDnskeyProtocol != 0) {
-        output.WriteRawTag(200, 5);
-        output.WriteUInt32(DnsDnskeyProtocol);
-      }
-      if (DnsDnskeyAlgorithm != 0) {
-        output.WriteRawTag(208, 5);
-        output.WriteUInt32(DnsDnskeyAlgorithm);
-      }
-      if (DnsDnskeyKeyId != 0) {
-        output.WriteRawTag(216, 5);
-        output.WriteUInt32(DnsDnskeyKeyId);
-      }
-      if (DnsDnskeyPublicKey.Length != 0) {
-        output.WriteRawTag(226, 5);
-        output.WriteBytes(DnsDnskeyPublicKey);
-      }
-      if (DnsKeyFlags != 0) {
-        output.WriteRawTag(232, 5);
-        output.WriteUInt32(DnsKeyFlags);
-      }
-      if (DnsKeyFlagsAuthentication != false) {
-        output.WriteRawTag(240, 5);
-        output.WriteBool(DnsKeyFlagsAuthentication);
-      }
-      if (DnsKeyFlagsConfidentiality != false) {
-        output.WriteRawTag(248, 5);
-        output.WriteBool(DnsKeyFlagsConfidentiality);
-      }
-      if (DnsKeyFlagsRequired != false) {
-        output.WriteRawTag(128, 6);
-        output.WriteBool(DnsKeyFlagsRequired);
-      }
-      if (DnsKeyFlagsAssociatedUser != false) {
-        output.WriteRawTag(136, 6);
-        output.WriteBool(DnsKeyFlagsAssociatedUser);
-      }
-      if (DnsKeyFlagsAssociatedNamedEntity != false) {
-        output.WriteRawTag(144, 6);
-        output.WriteBool(DnsKeyFlagsAssociatedNamedEntity);
-      }
-      if (DnsKeyFlagsIpsec != false) {
-        output.WriteRawTag(152, 6);
-        output.WriteBool(DnsKeyFlagsIpsec);
-      }
-      if (DnsKeyFlagsMime != false) {
-        output.WriteRawTag(160, 6);
-        output.WriteBool(DnsKeyFlagsMime);
-      }
-      if (DnsKeyFlagsSignatory != 0) {
-        output.WriteRawTag(168, 6);
-        output.WriteUInt32(DnsKeyFlagsSignatory);
-      }
-      if (DnsKeyProtocol != 0) {
-        output.WriteRawTag(176, 6);
-        output.WriteUInt32(DnsKeyProtocol);
-      }
-      if (DnsKeyAlgorithm != 0) {
-        output.WriteRawTag(184, 6);
-        output.WriteUInt32(DnsKeyAlgorithm);
-      }
-      if (DnsKeyKeyId != 0) {
-        output.WriteRawTag(192, 6);
-        output.WriteUInt32(DnsKeyKeyId);
-      }
-      if (DnsKeyPublicKey.Length != 0) {
-        output.WriteRawTag(202, 6);
-        output.WriteBytes(DnsKeyPublicKey);
-      }
-      if (DnsPxPreference != 0) {
-        output.WriteRawTag(208, 6);
-        output.WriteUInt32(DnsPxPreference);
-      }
-      if (DnsPxMap822.Length != 0) {
-        output.WriteRawTag(218, 6);
-        output.WriteString(DnsPxMap822);
-      }
-      if (DnsPxMap400.Length != 0) {
-        output.WriteRawTag(226, 6);
-        output.WriteString(DnsPxMap400);
-      }
-      if (DnsTkeyAlgoName.Length != 0) {
-        output.WriteRawTag(234, 6);
-        output.WriteString(DnsTkeyAlgoName);
-      }
-      if (DnsTkeySignatureExpiration != 0L) {
-        output.WriteRawTag(240, 6);
-        output.WriteInt64(DnsTkeySignatureExpiration);
-      }
-      if (DnsTkeySignatureInception != 0L) {
-        output.WriteRawTag(248, 6);
-        output.WriteInt64(DnsTkeySignatureInception);
-      }
-      if (DnsTkeyMode != 0) {
-        output.WriteRawTag(128, 7);
-        output.WriteUInt32(DnsTkeyMode);
-      }
-      if (DnsTkeyError != 0) {
-        output.WriteRawTag(136, 7);
-        output.WriteUInt32(DnsTkeyError);
-      }
-      if (DnsTkeyKeySize != 0) {
-        output.WriteRawTag(144, 7);
-        output.WriteUInt32(DnsTkeyKeySize);
-      }
-      if (DnsTkeyKeyData.Length != 0) {
-        output.WriteRawTag(154, 7);
-        output.WriteBytes(DnsTkeyKeyData);
-      }
-      if (DnsTkeyOtherSize != 0) {
-        output.WriteRawTag(160, 7);
-        output.WriteUInt32(DnsTkeyOtherSize);
-      }
-      if (DnsTkeyOtherData.Length != 0) {
-        output.WriteRawTag(170, 7);
-        output.WriteBytes(DnsTkeyOtherData);
-      }
-      if (DnsIpseckeyGatewayPrecedence != 0) {
-        output.WriteRawTag(176, 7);
-        output.WriteUInt32(DnsIpseckeyGatewayPrecedence);
-      }
-      if (DnsIpseckeyGatewayAlgorithm != 0) {
-        output.WriteRawTag(184, 7);
-        output.WriteUInt32(DnsIpseckeyGatewayAlgorithm);
-      }
-      if (DnsIpseckeyGatewayType != 0) {
-        output.WriteRawTag(192, 7);
-        output.WriteUInt32(DnsIpseckeyGatewayType);
-      }
-      if (DnsIpseckeyGatewayIpv4.Length != 0) {
-        output.WriteRawTag(202, 7);
-        output.WriteBytes(DnsIpseckeyGatewayIpv4);
-      }
-      if (DnsIpseckeyGatewayIpv6.Length != 0) {
-        output.WriteRawTag(210, 7);
-        output.WriteBytes(DnsIpseckeyGatewayIpv6);
-      }
-      if (DnsIpseckeyGatewayDns.Length != 0) {
-        output.WriteRawTag(218, 7);
-        output.WriteString(DnsIpseckeyGatewayDns);
-      }
-      if (DnsIpseckeyPublicKey.Length != 0) {
-        output.WriteRawTag(226, 7);
-        output.WriteBytes(DnsIpseckeyPublicKey);
-      }
-      if (DnsXpfIpVersion != 0) {
-        output.WriteRawTag(232, 7);
-        output.WriteUInt32(DnsXpfIpVersion);
-      }
-      if (DnsXpfProtocol != 0) {
-        output.WriteRawTag(240, 7);
-        output.WriteUInt32(DnsXpfProtocol);
-      }
-      if (DnsXpfSourceIpv4.Length != 0) {
-        output.WriteRawTag(250, 7);
-        output.WriteBytes(DnsXpfSourceIpv4);
-      }
-      if (DnsXpfDestinationIpv4.Length != 0) {
-        output.WriteRawTag(130, 8);
-        output.WriteBytes(DnsXpfDestinationIpv4);
-      }
-      if (DnsXpfSourceIpv6.Length != 0) {
-        output.WriteRawTag(138, 8);
-        output.WriteBytes(DnsXpfSourceIpv6);
-      }
-      if (DnsXpfDestinationIpv6.Length != 0) {
-        output.WriteRawTag(146, 8);
-        output.WriteBytes(DnsXpfDestinationIpv6);
-      }
-      if (DnsXpfSport != 0) {
-        output.WriteRawTag(152, 8);
-        output.WriteUInt32(DnsXpfSport);
-      }
-      if (DnsXpfDport != 0) {
-        output.WriteRawTag(160, 8);
-        output.WriteUInt32(DnsXpfDport);
-      }
-      if (DnsA6PrefixLen != 0) {
-        output.WriteRawTag(168, 8);
-        output.WriteUInt32(DnsA6PrefixLen);
-      }
-      if (DnsA6AddressSuffix.Length != 0) {
-        output.WriteRawTag(178, 8);
-        output.WriteBytes(DnsA6AddressSuffix);
-      }
-      if (DnsA6PrefixName.Length != 0) {
-        output.WriteRawTag(186, 8);
-        output.WriteString(DnsA6PrefixName);
-      }
-      if (DnsDname.Length != 0) {
-        output.WriteRawTag(194, 8);
-        output.WriteString(DnsDname);
-      }
-      if (DnsLocVersion != 0) {
-        output.WriteRawTag(200, 8);
-        output.WriteUInt32(DnsLocVersion);
-      }
-      if (DnsLocSize != 0) {
-        output.WriteRawTag(208, 8);
-        output.WriteUInt32(DnsLocSize);
-      }
-      if (DnsLocHorizontalPrecision != 0) {
-        output.WriteRawTag(216, 8);
-        output.WriteUInt32(DnsLocHorizontalPrecision);
-      }
-      if (DnsLocVerticalPrecision != 0) {
-        output.WriteRawTag(224, 8);
-        output.WriteUInt32(DnsLocVerticalPrecision);
-      }
-      if (DnsLocLatitude != 0) {
-        output.WriteRawTag(232, 8);
-        output.WriteUInt32(DnsLocLatitude);
-      }
-      if (DnsLocLongitude != 0) {
-        output.WriteRawTag(240, 8);
-        output.WriteUInt32(DnsLocLongitude);
-      }
-      if (DnsLocAltitude != 0) {
-        output.WriteRawTag(248, 8);
-        output.WriteUInt32(DnsLocAltitude);
-      }
-      if (DnsLocUnknownData.Length != 0) {
-        output.WriteRawTag(130, 9);
-        output.WriteBytes(DnsLocUnknownData);
-      }
-      if (DnsNxtNextDomainName.Length != 0) {
-        output.WriteRawTag(138, 9);
-        output.WriteString(DnsNxtNextDomainName);
-      }
-      if (DnsKxPreference != 0) {
-        output.WriteRawTag(144, 9);
-        output.WriteUInt32(DnsKxPreference);
-      }
-      if (DnsKxKeyExchange.Length != 0) {
-        output.WriteRawTag(154, 9);
-        output.WriteString(DnsKxKeyExchange);
-      }
-      if (DnsCertType != 0) {
-        output.WriteRawTag(160, 9);
-        output.WriteUInt32(DnsCertType);
-      }
-      if (DnsCertKeyTag != 0) {
-        output.WriteRawTag(168, 9);
-        output.WriteUInt32(DnsCertKeyTag);
-      }
-      if (DnsCertAlgorithm != 0) {
-        output.WriteRawTag(176, 9);
-        output.WriteUInt32(DnsCertAlgorithm);
-      }
-      if (DnsCertCertificate.Length != 0) {
-        output.WriteRawTag(186, 9);
-        output.WriteBytes(DnsCertCertificate);
-      }
-      if (DnsNsecNextDomainName.Length != 0) {
-        output.WriteRawTag(194, 9);
-        output.WriteString(DnsNsecNextDomainName);
-      }
-      if (DnsNs.Length != 0) {
-        output.WriteRawTag(202, 9);
-        output.WriteString(DnsNs);
-      }
-      if (DnsOpt != 0) {
-        output.WriteRawTag(208, 9);
-        output.WriteInt32(DnsOpt);
-      }
-      if (DnsOptCode != 0) {
-        output.WriteRawTag(216, 9);
-        output.WriteUInt32(DnsOptCode);
-      }
-      if (DnsOptLen != 0) {
-        output.WriteRawTag(224, 9);
-        output.WriteUInt32(DnsOptLen);
-      }
-      if (DnsOptData.Length != 0) {
-        output.WriteRawTag(234, 9);
-        output.WriteBytes(DnsOptData);
-      }
-      if (DnsOptDau != 0) {
-        output.WriteRawTag(240, 9);
-        output.WriteUInt32(DnsOptDau);
-      }
-      if (DnsOptDhu != 0) {
-        output.WriteRawTag(248, 9);
-        output.WriteUInt32(DnsOptDhu);
-      }
-      if (DnsOptN3U != 0) {
-        output.WriteRawTag(128, 10);
-        output.WriteUInt32(DnsOptN3U);
-      }
-      if (DnsOptClientFamily != 0) {
-        output.WriteRawTag(136, 10);
-        output.WriteUInt32(DnsOptClientFamily);
-      }
-      if (DnsOptClientNetmask != 0) {
-        output.WriteRawTag(144, 10);
-        output.WriteUInt32(DnsOptClientNetmask);
-      }
-      if (DnsOptClientScope != 0) {
-        output.WriteRawTag(152, 10);
-        output.WriteUInt32(DnsOptClientScope);
-      }
-      if (DnsOptClientAddr.Length != 0) {
-        output.WriteRawTag(162, 10);
-        output.WriteBytes(DnsOptClientAddr);
-      }
-      if (DnsOptClientAddr4.Length != 0) {
-        output.WriteRawTag(170, 10);
-        output.WriteBytes(DnsOptClientAddr4);
-      }
-      if (DnsOptClientAddr6.Length != 0) {
-        output.WriteRawTag(178, 10);
-        output.WriteBytes(DnsOptClientAddr6);
-      }
-      if (DnsOptCookieClient.Length != 0) {
-        output.WriteRawTag(186, 10);
-        output.WriteBytes(DnsOptCookieClient);
-      }
-      if (DnsOptCookieServer.Length != 0) {
-        output.WriteRawTag(194, 10);
-        output.WriteBytes(DnsOptCookieServer);
-      }
-      if (DnsOptEdnsTcpKeepaliveTimeout != 0) {
-        output.WriteRawTag(200, 10);
-        output.WriteUInt32(DnsOptEdnsTcpKeepaliveTimeout);
-      }
-      if (DnsOptPadding.Length != 0) {
-        output.WriteRawTag(210, 10);
-        output.WriteBytes(DnsOptPadding);
-      }
-      if (DnsOptChainFqdn.Length != 0) {
-        output.WriteRawTag(218, 10);
-        output.WriteString(DnsOptChainFqdn);
-      }
       if (DnsCountQueries != 0) {
-        output.WriteRawTag(224, 10);
+        output.WriteRawTag(72);
         output.WriteUInt32(DnsCountQueries);
       }
       if (DnsCountZones != 0) {
-        output.WriteRawTag(232, 10);
+        output.WriteRawTag(80);
         output.WriteUInt32(DnsCountZones);
       }
       if (DnsCountAnswers != 0) {
-        output.WriteRawTag(240, 10);
+        output.WriteRawTag(88);
         output.WriteUInt32(DnsCountAnswers);
       }
       if (DnsCountPrerequisites != 0) {
-        output.WriteRawTag(248, 10);
+        output.WriteRawTag(96);
         output.WriteUInt32(DnsCountPrerequisites);
       }
       if (DnsCountAuthRr != 0) {
-        output.WriteRawTag(128, 11);
+        output.WriteRawTag(104);
         output.WriteUInt32(DnsCountAuthRr);
       }
       if (DnsCountUpdates != 0) {
-        output.WriteRawTag(136, 11);
+        output.WriteRawTag(112);
         output.WriteUInt32(DnsCountUpdates);
-      }
-      if (DnsNsec3Algo != 0) {
-        output.WriteRawTag(144, 11);
-        output.WriteUInt32(DnsNsec3Algo);
-      }
-      if (DnsNsec3Flags != 0) {
-        output.WriteRawTag(152, 11);
-        output.WriteUInt32(DnsNsec3Flags);
-      }
-      if (DnsNsec3FlagsOptOut != false) {
-        output.WriteRawTag(160, 11);
-        output.WriteBool(DnsNsec3FlagsOptOut);
-      }
-      if (DnsNsec3Iterations != 0) {
-        output.WriteRawTag(168, 11);
-        output.WriteUInt32(DnsNsec3Iterations);
-      }
-      if (DnsNsec3SaltLength != 0) {
-        output.WriteRawTag(176, 11);
-        output.WriteUInt32(DnsNsec3SaltLength);
-      }
-      if (DnsNsec3SaltValue.Length != 0) {
-        output.WriteRawTag(186, 11);
-        output.WriteBytes(DnsNsec3SaltValue);
-      }
-      if (DnsNsec3HashLength != 0) {
-        output.WriteRawTag(192, 11);
-        output.WriteUInt32(DnsNsec3HashLength);
-      }
-      if (DnsNsec3HashValue.Length != 0) {
-        output.WriteRawTag(202, 11);
-        output.WriteBytes(DnsNsec3HashValue);
-      }
-      if (DnsTlsaCertificateUsage != 0) {
-        output.WriteRawTag(208, 11);
-        output.WriteUInt32(DnsTlsaCertificateUsage);
-      }
-      if (DnsTlsaSelector != 0) {
-        output.WriteRawTag(216, 11);
-        output.WriteUInt32(DnsTlsaSelector);
-      }
-      if (DnsTlsaMatchingType != 0) {
-        output.WriteRawTag(224, 11);
-        output.WriteUInt32(DnsTlsaMatchingType);
-      }
-      if (DnsTlsaCertificateAssociationData.Length != 0) {
-        output.WriteRawTag(234, 11);
-        output.WriteBytes(DnsTlsaCertificateAssociationData);
-      }
-      if (DnsTsigAlgorithmName.Length != 0) {
-        output.WriteRawTag(242, 11);
-        output.WriteString(DnsTsigAlgorithmName);
-      }
-      if (DnsTsigTimeSigned != 0L) {
-        output.WriteRawTag(248, 11);
-        output.WriteInt64(DnsTsigTimeSigned);
-      }
-      if (DnsTsigOriginalId != 0) {
-        output.WriteRawTag(128, 12);
-        output.WriteUInt32(DnsTsigOriginalId);
-      }
-      if (DnsTsigError != 0) {
-        output.WriteRawTag(136, 12);
-        output.WriteUInt32(DnsTsigError);
-      }
-      if (DnsTsigFudge != 0) {
-        output.WriteRawTag(144, 12);
-        output.WriteUInt32(DnsTsigFudge);
-      }
-      if (DnsTsigMacSize != 0) {
-        output.WriteRawTag(152, 12);
-        output.WriteUInt32(DnsTsigMacSize);
-      }
-      if (DnsTsigOtherLen != 0) {
-        output.WriteRawTag(160, 12);
-        output.WriteUInt32(DnsTsigOtherLen);
-      }
-      if (DnsTsigMac != 0) {
-        output.WriteRawTag(168, 12);
-        output.WriteInt32(DnsTsigMac);
-      }
-      if (DnsTsigOtherData.Length != 0) {
-        output.WriteRawTag(178, 12);
-        output.WriteBytes(DnsTsigOtherData);
-      }
-      if (DnsSshfpAlgorithm != 0) {
-        output.WriteRawTag(184, 12);
-        output.WriteUInt32(DnsSshfpAlgorithm);
-      }
-      if (DnsSshfpFingerprintType != 0) {
-        output.WriteRawTag(192, 12);
-        output.WriteUInt32(DnsSshfpFingerprintType);
-      }
-      if (DnsSshfpFingerprint.Length != 0) {
-        output.WriteRawTag(202, 12);
-        output.WriteBytes(DnsSshfpFingerprint);
-      }
-      if (DnsHipHitLength != 0) {
-        output.WriteRawTag(208, 12);
-        output.WriteUInt32(DnsHipHitLength);
-      }
-      if (DnsHipHitPkAlgo != 0) {
-        output.WriteRawTag(216, 12);
-        output.WriteUInt32(DnsHipHitPkAlgo);
-      }
-      if (DnsHipPkLength != 0) {
-        output.WriteRawTag(224, 12);
-        output.WriteUInt32(DnsHipPkLength);
-      }
-      if (DnsHipHit.Length != 0) {
-        output.WriteRawTag(234, 12);
-        output.WriteBytes(DnsHipHit);
-      }
-      if (DnsHipPk.Length != 0) {
-        output.WriteRawTag(242, 12);
-        output.WriteBytes(DnsHipPk);
-      }
-      if (DnsHipRendezvousServer.Length != 0) {
-        output.WriteRawTag(250, 12);
-        output.WriteString(DnsHipRendezvousServer);
-      }
-      if (DnsDhcidRdata.Length != 0) {
-        output.WriteRawTag(130, 13);
-        output.WriteBytes(DnsDhcidRdata);
-      }
-      if (DnsDsKeyId != 0) {
-        output.WriteRawTag(136, 13);
-        output.WriteUInt32(DnsDsKeyId);
-      }
-      if (DnsDsAlgorithm != 0) {
-        output.WriteRawTag(144, 13);
-        output.WriteUInt32(DnsDsAlgorithm);
-      }
-      if (DnsDsDigestType != 0) {
-        output.WriteRawTag(152, 13);
-        output.WriteUInt32(DnsDsDigestType);
-      }
-      if (DnsDsDigest.Length != 0) {
-        output.WriteRawTag(162, 13);
-        output.WriteBytes(DnsDsDigest);
-      }
-      if (DnsAplAddressFamily != 0) {
-        output.WriteRawTag(168, 13);
-        output.WriteUInt32(DnsAplAddressFamily);
-      }
-      if (DnsAplCodedPrefix != 0) {
-        output.WriteRawTag(176, 13);
-        output.WriteUInt32(DnsAplCodedPrefix);
-      }
-      if (DnsAplNegation != false) {
-        output.WriteRawTag(184, 13);
-        output.WriteBool(DnsAplNegation);
-      }
-      if (DnsAplAfdlength != 0) {
-        output.WriteRawTag(192, 13);
-        output.WriteUInt32(DnsAplAfdlength);
-      }
-      if (DnsAplAfdpartIpv4.Length != 0) {
-        output.WriteRawTag(202, 13);
-        output.WriteBytes(DnsAplAfdpartIpv4);
-      }
-      if (DnsAplAfdpartIpv6.Length != 0) {
-        output.WriteRawTag(210, 13);
-        output.WriteBytes(DnsAplAfdpartIpv6);
-      }
-      if (DnsAplAfdpartData.Length != 0) {
-        output.WriteRawTag(218, 13);
-        output.WriteBytes(DnsAplAfdpartData);
-      }
-      if (DnsGposLongitudeLength != 0) {
-        output.WriteRawTag(224, 13);
-        output.WriteUInt32(DnsGposLongitudeLength);
-      }
-      if (DnsGposLongitude.Length != 0) {
-        output.WriteRawTag(234, 13);
-        output.WriteString(DnsGposLongitude);
-      }
-      if (DnsGposLatitudeLength != 0) {
-        output.WriteRawTag(240, 13);
-        output.WriteUInt32(DnsGposLatitudeLength);
-      }
-      if (DnsGposLatitude.Length != 0) {
-        output.WriteRawTag(250, 13);
-        output.WriteString(DnsGposLatitude);
-      }
-      if (DnsGposAltitudeLength != 0) {
-        output.WriteRawTag(128, 14);
-        output.WriteUInt32(DnsGposAltitudeLength);
-      }
-      if (DnsGposAltitude.Length != 0) {
-        output.WriteRawTag(138, 14);
-        output.WriteString(DnsGposAltitude);
-      }
-      if (DnsRpMailbox.Length != 0) {
-        output.WriteRawTag(146, 14);
-        output.WriteString(DnsRpMailbox);
-      }
-      if (DnsRpTxtRr.Length != 0) {
-        output.WriteRawTag(154, 14);
-        output.WriteString(DnsRpTxtRr);
-      }
-      if (DnsAfsdbSubtype != 0) {
-        output.WriteRawTag(160, 14);
-        output.WriteUInt32(DnsAfsdbSubtype);
-      }
-      if (DnsAfsdbHostname.Length != 0) {
-        output.WriteRawTag(170, 14);
-        output.WriteString(DnsAfsdbHostname);
-      }
-      if (DnsX25Length != 0) {
-        output.WriteRawTag(176, 14);
-        output.WriteUInt32(DnsX25Length);
-      }
-      if (DnsX25PsdnAddress.Length != 0) {
-        output.WriteRawTag(186, 14);
-        output.WriteString(DnsX25PsdnAddress);
-      }
-      if (DnsIdsnLength != 0) {
-        output.WriteRawTag(192, 14);
-        output.WriteUInt32(DnsIdsnLength);
-      }
-      if (DnsIdsnAddress.Length != 0) {
-        output.WriteRawTag(202, 14);
-        output.WriteString(DnsIdsnAddress);
-      }
-      if (DnsIdsnSaLength != 0) {
-        output.WriteRawTag(208, 14);
-        output.WriteUInt32(DnsIdsnSaLength);
-      }
-      if (DnsIdsnSaAddress.Length != 0) {
-        output.WriteRawTag(218, 14);
-        output.WriteString(DnsIdsnSaAddress);
-      }
-      if (DnsRtSubtype != 0) {
-        output.WriteRawTag(224, 14);
-        output.WriteUInt32(DnsRtSubtype);
-      }
-      if (DnsRtIntermediateHost.Length != 0) {
-        output.WriteRawTag(234, 14);
-        output.WriteString(DnsRtIntermediateHost);
-      }
-      if (DnsNsapRdata.Length != 0) {
-        output.WriteRawTag(242, 14);
-        output.WriteBytes(DnsNsapRdata);
-      }
-      if (DnsNsapPtrOwner.Length != 0) {
-        output.WriteRawTag(250, 14);
-        output.WriteString(DnsNsapPtrOwner);
-      }
-      if (DnsCaaFlags != 0) {
-        output.WriteRawTag(128, 15);
-        output.WriteUInt32(DnsCaaFlags);
-      }
-      if (DnsCaaFlagsIssuerCritical != false) {
-        output.WriteRawTag(136, 15);
-        output.WriteBool(DnsCaaFlagsIssuerCritical);
-      }
-      if (DnsCaaIssue.Length != 0) {
-        output.WriteRawTag(146, 15);
-        output.WriteString(DnsCaaIssue);
-      }
-      if (DnsCaaIssuewild.Length != 0) {
-        output.WriteRawTag(154, 15);
-        output.WriteString(DnsCaaIssuewild);
-      }
-      if (DnsCaaIodef.Length != 0) {
-        output.WriteRawTag(162, 15);
-        output.WriteString(DnsCaaIodef);
-      }
-      if (DnsCaaUnknown.Length != 0) {
-        output.WriteRawTag(170, 15);
-        output.WriteString(DnsCaaUnknown);
-      }
-      if (DnsCaaTagLength != 0) {
-        output.WriteRawTag(176, 15);
-        output.WriteUInt32(DnsCaaTagLength);
-      }
-      if (DnsCaaTag.Length != 0) {
-        output.WriteRawTag(186, 15);
-        output.WriteString(DnsCaaTag);
-      }
-      if (DnsCaaValue.Length != 0) {
-        output.WriteRawTag(194, 15);
-        output.WriteString(DnsCaaValue);
-      }
-      if (DnsWinsLocalFlag != false) {
-        output.WriteRawTag(200, 15);
-        output.WriteBool(DnsWinsLocalFlag);
-      }
-      if (DnsWinsLookupTimeout != 0) {
-        output.WriteRawTag(208, 15);
-        output.WriteUInt32(DnsWinsLookupTimeout);
-      }
-      if (DnsWinsCacheTimeout != 0) {
-        output.WriteRawTag(216, 15);
-        output.WriteUInt32(DnsWinsCacheTimeout);
-      }
-      if (DnsWinsNbWinsServers != 0) {
-        output.WriteRawTag(224, 15);
-        output.WriteUInt32(DnsWinsNbWinsServers);
-      }
-      if (DnsWinsWinsServer.Length != 0) {
-        output.WriteRawTag(234, 15);
-        output.WriteBytes(DnsWinsWinsServer);
-      }
-      if (DnsWinsrLocalFlag != false) {
-        output.WriteRawTag(240, 15);
-        output.WriteBool(DnsWinsrLocalFlag);
-      }
-      if (DnsWinsrLookupTimeout != 0) {
-        output.WriteRawTag(248, 15);
-        output.WriteUInt32(DnsWinsrLookupTimeout);
-      }
-      if (DnsWinsrCacheTimeout != 0) {
-        output.WriteRawTag(128, 16);
-        output.WriteUInt32(DnsWinsrCacheTimeout);
-      }
-      if (DnsWinsrNameResultDomain.Length != 0) {
-        output.WriteRawTag(138, 16);
-        output.WriteString(DnsWinsrNameResultDomain);
-      }
-      if (DnsData.Length != 0) {
-        output.WriteRawTag(146, 16);
-        output.WriteBytes(DnsData);
       }
     }
 
@@ -5690,763 +445,31 @@ namespace Ndx.Decoders.Core {
       if (DnsResponseTo != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(DnsResponseTo);
       }
-      if (DnsTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(DnsTime);
+      if (DnsTime != 0F) {
+        size += 1 + 4;
       }
       if (DnsCountAddRr != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DnsCountAddRr);
       }
       size += dnsQry_.CalculateSize(_repeated_dnsQry_codec);
       size += dnsResp_.CalculateSize(_repeated_dnsResp_codec);
-      if (DnsSrvService.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(DnsSrvService);
-      }
-      if (DnsSrvProto.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(DnsSrvProto);
-      }
-      if (DnsSrvName.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(DnsSrvName);
-      }
-      if (DnsSrvPriority != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DnsSrvPriority);
-      }
-      if (DnsSrvWeight != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DnsSrvWeight);
-      }
-      if (DnsSrvPort != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DnsSrvPort);
-      }
-      if (DnsSrvTarget.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(DnsSrvTarget);
-      }
-      if (DnsNaptrOrder != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNaptrOrder);
-      }
-      if (DnsNaptrPreference != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNaptrPreference);
-      }
-      if (DnsNaptrFlagsLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNaptrFlagsLength);
-      }
-      if (DnsNaptrFlags.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsNaptrFlags);
-      }
-      if (DnsNaptrServiceLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNaptrServiceLength);
-      }
-      if (DnsNaptrService.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsNaptrService);
-      }
-      if (DnsNaptrRegexLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNaptrRegexLength);
-      }
-      if (DnsNaptrRegex.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsNaptrRegex);
-      }
-      if (DnsNaptrReplacementLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNaptrReplacementLength);
-      }
-      if (DnsNaptrReplacement.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsNaptrReplacement);
-      }
-      if (DnsA.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsA);
-      }
-      if (DnsMd.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMd);
-      }
-      if (DnsMf.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMf);
-      }
-      if (DnsMb.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMb);
-      }
-      if (DnsMg.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMg);
-      }
-      if (DnsMr.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMr);
-      }
-      if (DnsNull.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsNull);
-      }
-      if (DnsAaaa.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsAaaa);
-      }
-      if (DnsCname.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsCname);
-      }
-      if (DnsRrUdpPayloadSize != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsRrUdpPayloadSize);
-      }
-      if (DnsSoaMname.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsSoaMname);
-      }
-      if (DnsSoaRname.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsSoaRname);
-      }
-      if (DnsSoaSerialNumber != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSoaSerialNumber);
-      }
-      if (DnsSoaRefreshInterval != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSoaRefreshInterval);
-      }
-      if (DnsSoaRetryInterval != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSoaRetryInterval);
-      }
-      if (DnsSoaExpireLimit != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSoaExpireLimit);
-      }
-      if (DnsSoaMininumTtl != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSoaMininumTtl);
-      }
-      if (DnsPtrDomainName.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsPtrDomainName);
-      }
-      if (DnsWksAddress.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsWksAddress);
-      }
-      if (DnsWksProtocol != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsWksProtocol);
-      }
-      if (DnsWksBits != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsWksBits);
-      }
-      if (DnsHinfoCpuLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsHinfoCpuLength);
-      }
-      if (DnsHinfoCpu.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsHinfoCpu);
-      }
-      if (DnsHinfoOsLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsHinfoOsLength);
-      }
-      if (DnsHinfoOs.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsHinfoOs);
-      }
-      if (DnsMinfoR.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMinfoR);
-      }
-      if (DnsMinfoE.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMinfoE);
-      }
-      if (DnsMxPreference != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsMxPreference);
-      }
-      if (DnsMxMailExchange.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMxMailExchange);
-      }
-      if (DnsTxtLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsTxtLength);
-      }
-      if (DnsTxt.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsTxt);
-      }
-      if (DnsOpenpgpkey.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsOpenpgpkey);
-      }
-      if (DnsCsyncSoa != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsCsyncSoa);
-      }
-      if (DnsCsyncFlags != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsCsyncFlags);
-      }
-      if (DnsCsyncFlagsImmediate != false) {
-        size += 2 + 1;
-      }
-      if (DnsCsyncFlagsSoaminimum != false) {
-        size += 2 + 1;
-      }
-      if (DnsCsyncTypeBitmap.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsCsyncTypeBitmap);
-      }
-      if (DnsSpfLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSpfLength);
-      }
-      if (DnsSpf.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsSpf);
-      }
-      if (DnsIlnpNidPreference != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsIlnpNidPreference);
-      }
-      if (DnsIlnpNid.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsIlnpNid);
-      }
-      if (DnsIlnpL32Preference != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsIlnpL32Preference);
-      }
-      if (DnsIlnpL32.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsIlnpL32);
-      }
-      if (DnsIlnpL64Preference != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsIlnpL64Preference);
-      }
-      if (DnsIlnpL64.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsIlnpL64);
-      }
-      if (DnsIlnpLpPreference != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsIlnpLpPreference);
-      }
-      if (DnsIlnpLp.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsIlnpLp);
-      }
-      if (DnsEui48.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsEui48);
-      }
-      if (DnsEui64.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsEui64);
-      }
-      if (DnsRrsigTypeCovered != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsRrsigTypeCovered);
-      }
-      if (DnsRrsigAlgorithm != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsRrsigAlgorithm);
-      }
-      if (DnsRrsigLabels != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsRrsigLabels);
-      }
-      if (DnsRrsigOriginalTtl != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsRrsigOriginalTtl);
-      }
-      if (DnsRrsigSignatureExpiration != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(DnsRrsigSignatureExpiration);
-      }
-      if (DnsRrsigSignatureInception != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(DnsRrsigSignatureInception);
-      }
-      if (DnsRrsigKeyTag != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsRrsigKeyTag);
-      }
-      if (DnsRrsigSignersName.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsRrsigSignersName);
-      }
-      if (DnsRrsigSignature.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsRrsigSignature);
-      }
-      if (DnsDnskeyFlags != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsDnskeyFlags);
-      }
-      if (DnsDnskeyFlagsZoneKey != false) {
-        size += 2 + 1;
-      }
-      if (DnsDnskeyFlagsKeyRevoked != false) {
-        size += 2 + 1;
-      }
-      if (DnsDnskeyFlagsSecureEntryPoint != false) {
-        size += 2 + 1;
-      }
-      if (DnsDnskeyFlagsReserved != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsDnskeyFlagsReserved);
-      }
-      if (DnsDnskeyProtocol != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsDnskeyProtocol);
-      }
-      if (DnsDnskeyAlgorithm != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsDnskeyAlgorithm);
-      }
-      if (DnsDnskeyKeyId != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsDnskeyKeyId);
-      }
-      if (DnsDnskeyPublicKey.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsDnskeyPublicKey);
-      }
-      if (DnsKeyFlags != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsKeyFlags);
-      }
-      if (DnsKeyFlagsAuthentication != false) {
-        size += 2 + 1;
-      }
-      if (DnsKeyFlagsConfidentiality != false) {
-        size += 2 + 1;
-      }
-      if (DnsKeyFlagsRequired != false) {
-        size += 2 + 1;
-      }
-      if (DnsKeyFlagsAssociatedUser != false) {
-        size += 2 + 1;
-      }
-      if (DnsKeyFlagsAssociatedNamedEntity != false) {
-        size += 2 + 1;
-      }
-      if (DnsKeyFlagsIpsec != false) {
-        size += 2 + 1;
-      }
-      if (DnsKeyFlagsMime != false) {
-        size += 2 + 1;
-      }
-      if (DnsKeyFlagsSignatory != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsKeyFlagsSignatory);
-      }
-      if (DnsKeyProtocol != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsKeyProtocol);
-      }
-      if (DnsKeyAlgorithm != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsKeyAlgorithm);
-      }
-      if (DnsKeyKeyId != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsKeyKeyId);
-      }
-      if (DnsKeyPublicKey.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsKeyPublicKey);
-      }
-      if (DnsPxPreference != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsPxPreference);
-      }
-      if (DnsPxMap822.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsPxMap822);
-      }
-      if (DnsPxMap400.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsPxMap400);
-      }
-      if (DnsTkeyAlgoName.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsTkeyAlgoName);
-      }
-      if (DnsTkeySignatureExpiration != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(DnsTkeySignatureExpiration);
-      }
-      if (DnsTkeySignatureInception != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(DnsTkeySignatureInception);
-      }
-      if (DnsTkeyMode != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsTkeyMode);
-      }
-      if (DnsTkeyError != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsTkeyError);
-      }
-      if (DnsTkeyKeySize != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsTkeyKeySize);
-      }
-      if (DnsTkeyKeyData.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsTkeyKeyData);
-      }
-      if (DnsTkeyOtherSize != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsTkeyOtherSize);
-      }
-      if (DnsTkeyOtherData.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsTkeyOtherData);
-      }
-      if (DnsIpseckeyGatewayPrecedence != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsIpseckeyGatewayPrecedence);
-      }
-      if (DnsIpseckeyGatewayAlgorithm != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsIpseckeyGatewayAlgorithm);
-      }
-      if (DnsIpseckeyGatewayType != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsIpseckeyGatewayType);
-      }
-      if (DnsIpseckeyGatewayIpv4.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsIpseckeyGatewayIpv4);
-      }
-      if (DnsIpseckeyGatewayIpv6.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsIpseckeyGatewayIpv6);
-      }
-      if (DnsIpseckeyGatewayDns.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsIpseckeyGatewayDns);
-      }
-      if (DnsIpseckeyPublicKey.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsIpseckeyPublicKey);
-      }
-      if (DnsXpfIpVersion != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsXpfIpVersion);
-      }
-      if (DnsXpfProtocol != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsXpfProtocol);
-      }
-      if (DnsXpfSourceIpv4.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsXpfSourceIpv4);
-      }
-      if (DnsXpfDestinationIpv4.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsXpfDestinationIpv4);
-      }
-      if (DnsXpfSourceIpv6.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsXpfSourceIpv6);
-      }
-      if (DnsXpfDestinationIpv6.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsXpfDestinationIpv6);
-      }
-      if (DnsXpfSport != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsXpfSport);
-      }
-      if (DnsXpfDport != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsXpfDport);
-      }
-      if (DnsA6PrefixLen != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsA6PrefixLen);
-      }
-      if (DnsA6AddressSuffix.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsA6AddressSuffix);
-      }
-      if (DnsA6PrefixName.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsA6PrefixName);
-      }
-      if (DnsDname.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsDname);
-      }
-      if (DnsLocVersion != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsLocVersion);
-      }
-      if (DnsLocSize != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsLocSize);
-      }
-      if (DnsLocHorizontalPrecision != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsLocHorizontalPrecision);
-      }
-      if (DnsLocVerticalPrecision != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsLocVerticalPrecision);
-      }
-      if (DnsLocLatitude != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsLocLatitude);
-      }
-      if (DnsLocLongitude != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsLocLongitude);
-      }
-      if (DnsLocAltitude != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsLocAltitude);
-      }
-      if (DnsLocUnknownData.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsLocUnknownData);
-      }
-      if (DnsNxtNextDomainName.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsNxtNextDomainName);
-      }
-      if (DnsKxPreference != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsKxPreference);
-      }
-      if (DnsKxKeyExchange.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsKxKeyExchange);
-      }
-      if (DnsCertType != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsCertType);
-      }
-      if (DnsCertKeyTag != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsCertKeyTag);
-      }
-      if (DnsCertAlgorithm != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsCertAlgorithm);
-      }
-      if (DnsCertCertificate.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsCertCertificate);
-      }
-      if (DnsNsecNextDomainName.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsNsecNextDomainName);
-      }
-      if (DnsNs.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsNs);
-      }
-      if (DnsOpt != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(DnsOpt);
-      }
-      if (DnsOptCode != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsOptCode);
-      }
-      if (DnsOptLen != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsOptLen);
-      }
-      if (DnsOptData.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsOptData);
-      }
-      if (DnsOptDau != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsOptDau);
-      }
-      if (DnsOptDhu != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsOptDhu);
-      }
-      if (DnsOptN3U != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsOptN3U);
-      }
-      if (DnsOptClientFamily != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsOptClientFamily);
-      }
-      if (DnsOptClientNetmask != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsOptClientNetmask);
-      }
-      if (DnsOptClientScope != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsOptClientScope);
-      }
-      if (DnsOptClientAddr.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsOptClientAddr);
-      }
-      if (DnsOptClientAddr4.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsOptClientAddr4);
-      }
-      if (DnsOptClientAddr6.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsOptClientAddr6);
-      }
-      if (DnsOptCookieClient.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsOptCookieClient);
-      }
-      if (DnsOptCookieServer.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsOptCookieServer);
-      }
-      if (DnsOptEdnsTcpKeepaliveTimeout != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsOptEdnsTcpKeepaliveTimeout);
-      }
-      if (DnsOptPadding.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsOptPadding);
-      }
-      if (DnsOptChainFqdn.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsOptChainFqdn);
-      }
       if (DnsCountQueries != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsCountQueries);
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DnsCountQueries);
       }
       if (DnsCountZones != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsCountZones);
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DnsCountZones);
       }
       if (DnsCountAnswers != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsCountAnswers);
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DnsCountAnswers);
       }
       if (DnsCountPrerequisites != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsCountPrerequisites);
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DnsCountPrerequisites);
       }
       if (DnsCountAuthRr != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsCountAuthRr);
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DnsCountAuthRr);
       }
       if (DnsCountUpdates != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsCountUpdates);
-      }
-      if (DnsNsec3Algo != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNsec3Algo);
-      }
-      if (DnsNsec3Flags != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNsec3Flags);
-      }
-      if (DnsNsec3FlagsOptOut != false) {
-        size += 2 + 1;
-      }
-      if (DnsNsec3Iterations != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNsec3Iterations);
-      }
-      if (DnsNsec3SaltLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNsec3SaltLength);
-      }
-      if (DnsNsec3SaltValue.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsNsec3SaltValue);
-      }
-      if (DnsNsec3HashLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNsec3HashLength);
-      }
-      if (DnsNsec3HashValue.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsNsec3HashValue);
-      }
-      if (DnsTlsaCertificateUsage != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsTlsaCertificateUsage);
-      }
-      if (DnsTlsaSelector != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsTlsaSelector);
-      }
-      if (DnsTlsaMatchingType != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsTlsaMatchingType);
-      }
-      if (DnsTlsaCertificateAssociationData.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsTlsaCertificateAssociationData);
-      }
-      if (DnsTsigAlgorithmName.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsTsigAlgorithmName);
-      }
-      if (DnsTsigTimeSigned != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(DnsTsigTimeSigned);
-      }
-      if (DnsTsigOriginalId != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsTsigOriginalId);
-      }
-      if (DnsTsigError != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsTsigError);
-      }
-      if (DnsTsigFudge != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsTsigFudge);
-      }
-      if (DnsTsigMacSize != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsTsigMacSize);
-      }
-      if (DnsTsigOtherLen != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsTsigOtherLen);
-      }
-      if (DnsTsigMac != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(DnsTsigMac);
-      }
-      if (DnsTsigOtherData.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsTsigOtherData);
-      }
-      if (DnsSshfpAlgorithm != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSshfpAlgorithm);
-      }
-      if (DnsSshfpFingerprintType != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSshfpFingerprintType);
-      }
-      if (DnsSshfpFingerprint.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsSshfpFingerprint);
-      }
-      if (DnsHipHitLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsHipHitLength);
-      }
-      if (DnsHipHitPkAlgo != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsHipHitPkAlgo);
-      }
-      if (DnsHipPkLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsHipPkLength);
-      }
-      if (DnsHipHit.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsHipHit);
-      }
-      if (DnsHipPk.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsHipPk);
-      }
-      if (DnsHipRendezvousServer.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsHipRendezvousServer);
-      }
-      if (DnsDhcidRdata.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsDhcidRdata);
-      }
-      if (DnsDsKeyId != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsDsKeyId);
-      }
-      if (DnsDsAlgorithm != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsDsAlgorithm);
-      }
-      if (DnsDsDigestType != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsDsDigestType);
-      }
-      if (DnsDsDigest.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsDsDigest);
-      }
-      if (DnsAplAddressFamily != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsAplAddressFamily);
-      }
-      if (DnsAplCodedPrefix != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsAplCodedPrefix);
-      }
-      if (DnsAplNegation != false) {
-        size += 2 + 1;
-      }
-      if (DnsAplAfdlength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsAplAfdlength);
-      }
-      if (DnsAplAfdpartIpv4.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsAplAfdpartIpv4);
-      }
-      if (DnsAplAfdpartIpv6.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsAplAfdpartIpv6);
-      }
-      if (DnsAplAfdpartData.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsAplAfdpartData);
-      }
-      if (DnsGposLongitudeLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsGposLongitudeLength);
-      }
-      if (DnsGposLongitude.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsGposLongitude);
-      }
-      if (DnsGposLatitudeLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsGposLatitudeLength);
-      }
-      if (DnsGposLatitude.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsGposLatitude);
-      }
-      if (DnsGposAltitudeLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsGposAltitudeLength);
-      }
-      if (DnsGposAltitude.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsGposAltitude);
-      }
-      if (DnsRpMailbox.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsRpMailbox);
-      }
-      if (DnsRpTxtRr.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsRpTxtRr);
-      }
-      if (DnsAfsdbSubtype != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsAfsdbSubtype);
-      }
-      if (DnsAfsdbHostname.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsAfsdbHostname);
-      }
-      if (DnsX25Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsX25Length);
-      }
-      if (DnsX25PsdnAddress.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsX25PsdnAddress);
-      }
-      if (DnsIdsnLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsIdsnLength);
-      }
-      if (DnsIdsnAddress.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsIdsnAddress);
-      }
-      if (DnsIdsnSaLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsIdsnSaLength);
-      }
-      if (DnsIdsnSaAddress.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsIdsnSaAddress);
-      }
-      if (DnsRtSubtype != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsRtSubtype);
-      }
-      if (DnsRtIntermediateHost.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsRtIntermediateHost);
-      }
-      if (DnsNsapRdata.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsNsapRdata);
-      }
-      if (DnsNsapPtrOwner.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsNsapPtrOwner);
-      }
-      if (DnsCaaFlags != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsCaaFlags);
-      }
-      if (DnsCaaFlagsIssuerCritical != false) {
-        size += 2 + 1;
-      }
-      if (DnsCaaIssue.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsCaaIssue);
-      }
-      if (DnsCaaIssuewild.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsCaaIssuewild);
-      }
-      if (DnsCaaIodef.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsCaaIodef);
-      }
-      if (DnsCaaUnknown.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsCaaUnknown);
-      }
-      if (DnsCaaTagLength != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsCaaTagLength);
-      }
-      if (DnsCaaTag.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsCaaTag);
-      }
-      if (DnsCaaValue.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsCaaValue);
-      }
-      if (DnsWinsLocalFlag != false) {
-        size += 2 + 1;
-      }
-      if (DnsWinsLookupTimeout != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsWinsLookupTimeout);
-      }
-      if (DnsWinsCacheTimeout != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsWinsCacheTimeout);
-      }
-      if (DnsWinsNbWinsServers != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsWinsNbWinsServers);
-      }
-      if (DnsWinsWinsServer.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsWinsWinsServer);
-      }
-      if (DnsWinsrLocalFlag != false) {
-        size += 2 + 1;
-      }
-      if (DnsWinsrLookupTimeout != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsWinsrLookupTimeout);
-      }
-      if (DnsWinsrCacheTimeout != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsWinsrCacheTimeout);
-      }
-      if (DnsWinsrNameResultDomain.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsWinsrNameResultDomain);
-      }
-      if (DnsData.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsData);
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DnsCountUpdates);
       }
       return size;
     }
@@ -6471,7 +494,7 @@ namespace Ndx.Decoders.Core {
       if (other.DnsResponseTo != 0L) {
         DnsResponseTo = other.DnsResponseTo;
       }
-      if (other.DnsTime != 0L) {
+      if (other.DnsTime != 0F) {
         DnsTime = other.DnsTime;
       }
       if (other.DnsCountAddRr != 0) {
@@ -6479,495 +502,6 @@ namespace Ndx.Decoders.Core {
       }
       dnsQry_.Add(other.dnsQry_);
       dnsResp_.Add(other.dnsResp_);
-      if (other.DnsSrvService.Length != 0) {
-        DnsSrvService = other.DnsSrvService;
-      }
-      if (other.DnsSrvProto.Length != 0) {
-        DnsSrvProto = other.DnsSrvProto;
-      }
-      if (other.DnsSrvName.Length != 0) {
-        DnsSrvName = other.DnsSrvName;
-      }
-      if (other.DnsSrvPriority != 0) {
-        DnsSrvPriority = other.DnsSrvPriority;
-      }
-      if (other.DnsSrvWeight != 0) {
-        DnsSrvWeight = other.DnsSrvWeight;
-      }
-      if (other.DnsSrvPort != 0) {
-        DnsSrvPort = other.DnsSrvPort;
-      }
-      if (other.DnsSrvTarget.Length != 0) {
-        DnsSrvTarget = other.DnsSrvTarget;
-      }
-      if (other.DnsNaptrOrder != 0) {
-        DnsNaptrOrder = other.DnsNaptrOrder;
-      }
-      if (other.DnsNaptrPreference != 0) {
-        DnsNaptrPreference = other.DnsNaptrPreference;
-      }
-      if (other.DnsNaptrFlagsLength != 0) {
-        DnsNaptrFlagsLength = other.DnsNaptrFlagsLength;
-      }
-      if (other.DnsNaptrFlags.Length != 0) {
-        DnsNaptrFlags = other.DnsNaptrFlags;
-      }
-      if (other.DnsNaptrServiceLength != 0) {
-        DnsNaptrServiceLength = other.DnsNaptrServiceLength;
-      }
-      if (other.DnsNaptrService.Length != 0) {
-        DnsNaptrService = other.DnsNaptrService;
-      }
-      if (other.DnsNaptrRegexLength != 0) {
-        DnsNaptrRegexLength = other.DnsNaptrRegexLength;
-      }
-      if (other.DnsNaptrRegex.Length != 0) {
-        DnsNaptrRegex = other.DnsNaptrRegex;
-      }
-      if (other.DnsNaptrReplacementLength != 0) {
-        DnsNaptrReplacementLength = other.DnsNaptrReplacementLength;
-      }
-      if (other.DnsNaptrReplacement.Length != 0) {
-        DnsNaptrReplacement = other.DnsNaptrReplacement;
-      }
-      if (other.DnsA.Length != 0) {
-        DnsA = other.DnsA;
-      }
-      if (other.DnsMd.Length != 0) {
-        DnsMd = other.DnsMd;
-      }
-      if (other.DnsMf.Length != 0) {
-        DnsMf = other.DnsMf;
-      }
-      if (other.DnsMb.Length != 0) {
-        DnsMb = other.DnsMb;
-      }
-      if (other.DnsMg.Length != 0) {
-        DnsMg = other.DnsMg;
-      }
-      if (other.DnsMr.Length != 0) {
-        DnsMr = other.DnsMr;
-      }
-      if (other.DnsNull.Length != 0) {
-        DnsNull = other.DnsNull;
-      }
-      if (other.DnsAaaa.Length != 0) {
-        DnsAaaa = other.DnsAaaa;
-      }
-      if (other.DnsCname.Length != 0) {
-        DnsCname = other.DnsCname;
-      }
-      if (other.DnsRrUdpPayloadSize != 0) {
-        DnsRrUdpPayloadSize = other.DnsRrUdpPayloadSize;
-      }
-      if (other.DnsSoaMname.Length != 0) {
-        DnsSoaMname = other.DnsSoaMname;
-      }
-      if (other.DnsSoaRname.Length != 0) {
-        DnsSoaRname = other.DnsSoaRname;
-      }
-      if (other.DnsSoaSerialNumber != 0) {
-        DnsSoaSerialNumber = other.DnsSoaSerialNumber;
-      }
-      if (other.DnsSoaRefreshInterval != 0) {
-        DnsSoaRefreshInterval = other.DnsSoaRefreshInterval;
-      }
-      if (other.DnsSoaRetryInterval != 0) {
-        DnsSoaRetryInterval = other.DnsSoaRetryInterval;
-      }
-      if (other.DnsSoaExpireLimit != 0) {
-        DnsSoaExpireLimit = other.DnsSoaExpireLimit;
-      }
-      if (other.DnsSoaMininumTtl != 0) {
-        DnsSoaMininumTtl = other.DnsSoaMininumTtl;
-      }
-      if (other.DnsPtrDomainName.Length != 0) {
-        DnsPtrDomainName = other.DnsPtrDomainName;
-      }
-      if (other.DnsWksAddress.Length != 0) {
-        DnsWksAddress = other.DnsWksAddress;
-      }
-      if (other.DnsWksProtocol != 0) {
-        DnsWksProtocol = other.DnsWksProtocol;
-      }
-      if (other.DnsWksBits != 0) {
-        DnsWksBits = other.DnsWksBits;
-      }
-      if (other.DnsHinfoCpuLength != 0) {
-        DnsHinfoCpuLength = other.DnsHinfoCpuLength;
-      }
-      if (other.DnsHinfoCpu.Length != 0) {
-        DnsHinfoCpu = other.DnsHinfoCpu;
-      }
-      if (other.DnsHinfoOsLength != 0) {
-        DnsHinfoOsLength = other.DnsHinfoOsLength;
-      }
-      if (other.DnsHinfoOs.Length != 0) {
-        DnsHinfoOs = other.DnsHinfoOs;
-      }
-      if (other.DnsMinfoR.Length != 0) {
-        DnsMinfoR = other.DnsMinfoR;
-      }
-      if (other.DnsMinfoE.Length != 0) {
-        DnsMinfoE = other.DnsMinfoE;
-      }
-      if (other.DnsMxPreference != 0) {
-        DnsMxPreference = other.DnsMxPreference;
-      }
-      if (other.DnsMxMailExchange.Length != 0) {
-        DnsMxMailExchange = other.DnsMxMailExchange;
-      }
-      if (other.DnsTxtLength != 0) {
-        DnsTxtLength = other.DnsTxtLength;
-      }
-      if (other.DnsTxt.Length != 0) {
-        DnsTxt = other.DnsTxt;
-      }
-      if (other.DnsOpenpgpkey.Length != 0) {
-        DnsOpenpgpkey = other.DnsOpenpgpkey;
-      }
-      if (other.DnsCsyncSoa != 0) {
-        DnsCsyncSoa = other.DnsCsyncSoa;
-      }
-      if (other.DnsCsyncFlags != 0) {
-        DnsCsyncFlags = other.DnsCsyncFlags;
-      }
-      if (other.DnsCsyncFlagsImmediate != false) {
-        DnsCsyncFlagsImmediate = other.DnsCsyncFlagsImmediate;
-      }
-      if (other.DnsCsyncFlagsSoaminimum != false) {
-        DnsCsyncFlagsSoaminimum = other.DnsCsyncFlagsSoaminimum;
-      }
-      if (other.DnsCsyncTypeBitmap.Length != 0) {
-        DnsCsyncTypeBitmap = other.DnsCsyncTypeBitmap;
-      }
-      if (other.DnsSpfLength != 0) {
-        DnsSpfLength = other.DnsSpfLength;
-      }
-      if (other.DnsSpf.Length != 0) {
-        DnsSpf = other.DnsSpf;
-      }
-      if (other.DnsIlnpNidPreference != 0) {
-        DnsIlnpNidPreference = other.DnsIlnpNidPreference;
-      }
-      if (other.DnsIlnpNid.Length != 0) {
-        DnsIlnpNid = other.DnsIlnpNid;
-      }
-      if (other.DnsIlnpL32Preference != 0) {
-        DnsIlnpL32Preference = other.DnsIlnpL32Preference;
-      }
-      if (other.DnsIlnpL32.Length != 0) {
-        DnsIlnpL32 = other.DnsIlnpL32;
-      }
-      if (other.DnsIlnpL64Preference != 0) {
-        DnsIlnpL64Preference = other.DnsIlnpL64Preference;
-      }
-      if (other.DnsIlnpL64.Length != 0) {
-        DnsIlnpL64 = other.DnsIlnpL64;
-      }
-      if (other.DnsIlnpLpPreference != 0) {
-        DnsIlnpLpPreference = other.DnsIlnpLpPreference;
-      }
-      if (other.DnsIlnpLp.Length != 0) {
-        DnsIlnpLp = other.DnsIlnpLp;
-      }
-      if (other.DnsEui48.Length != 0) {
-        DnsEui48 = other.DnsEui48;
-      }
-      if (other.DnsEui64.Length != 0) {
-        DnsEui64 = other.DnsEui64;
-      }
-      if (other.DnsRrsigTypeCovered != 0) {
-        DnsRrsigTypeCovered = other.DnsRrsigTypeCovered;
-      }
-      if (other.DnsRrsigAlgorithm != 0) {
-        DnsRrsigAlgorithm = other.DnsRrsigAlgorithm;
-      }
-      if (other.DnsRrsigLabels != 0) {
-        DnsRrsigLabels = other.DnsRrsigLabels;
-      }
-      if (other.DnsRrsigOriginalTtl != 0) {
-        DnsRrsigOriginalTtl = other.DnsRrsigOriginalTtl;
-      }
-      if (other.DnsRrsigSignatureExpiration != 0L) {
-        DnsRrsigSignatureExpiration = other.DnsRrsigSignatureExpiration;
-      }
-      if (other.DnsRrsigSignatureInception != 0L) {
-        DnsRrsigSignatureInception = other.DnsRrsigSignatureInception;
-      }
-      if (other.DnsRrsigKeyTag != 0) {
-        DnsRrsigKeyTag = other.DnsRrsigKeyTag;
-      }
-      if (other.DnsRrsigSignersName.Length != 0) {
-        DnsRrsigSignersName = other.DnsRrsigSignersName;
-      }
-      if (other.DnsRrsigSignature.Length != 0) {
-        DnsRrsigSignature = other.DnsRrsigSignature;
-      }
-      if (other.DnsDnskeyFlags != 0) {
-        DnsDnskeyFlags = other.DnsDnskeyFlags;
-      }
-      if (other.DnsDnskeyFlagsZoneKey != false) {
-        DnsDnskeyFlagsZoneKey = other.DnsDnskeyFlagsZoneKey;
-      }
-      if (other.DnsDnskeyFlagsKeyRevoked != false) {
-        DnsDnskeyFlagsKeyRevoked = other.DnsDnskeyFlagsKeyRevoked;
-      }
-      if (other.DnsDnskeyFlagsSecureEntryPoint != false) {
-        DnsDnskeyFlagsSecureEntryPoint = other.DnsDnskeyFlagsSecureEntryPoint;
-      }
-      if (other.DnsDnskeyFlagsReserved != 0) {
-        DnsDnskeyFlagsReserved = other.DnsDnskeyFlagsReserved;
-      }
-      if (other.DnsDnskeyProtocol != 0) {
-        DnsDnskeyProtocol = other.DnsDnskeyProtocol;
-      }
-      if (other.DnsDnskeyAlgorithm != 0) {
-        DnsDnskeyAlgorithm = other.DnsDnskeyAlgorithm;
-      }
-      if (other.DnsDnskeyKeyId != 0) {
-        DnsDnskeyKeyId = other.DnsDnskeyKeyId;
-      }
-      if (other.DnsDnskeyPublicKey.Length != 0) {
-        DnsDnskeyPublicKey = other.DnsDnskeyPublicKey;
-      }
-      if (other.DnsKeyFlags != 0) {
-        DnsKeyFlags = other.DnsKeyFlags;
-      }
-      if (other.DnsKeyFlagsAuthentication != false) {
-        DnsKeyFlagsAuthentication = other.DnsKeyFlagsAuthentication;
-      }
-      if (other.DnsKeyFlagsConfidentiality != false) {
-        DnsKeyFlagsConfidentiality = other.DnsKeyFlagsConfidentiality;
-      }
-      if (other.DnsKeyFlagsRequired != false) {
-        DnsKeyFlagsRequired = other.DnsKeyFlagsRequired;
-      }
-      if (other.DnsKeyFlagsAssociatedUser != false) {
-        DnsKeyFlagsAssociatedUser = other.DnsKeyFlagsAssociatedUser;
-      }
-      if (other.DnsKeyFlagsAssociatedNamedEntity != false) {
-        DnsKeyFlagsAssociatedNamedEntity = other.DnsKeyFlagsAssociatedNamedEntity;
-      }
-      if (other.DnsKeyFlagsIpsec != false) {
-        DnsKeyFlagsIpsec = other.DnsKeyFlagsIpsec;
-      }
-      if (other.DnsKeyFlagsMime != false) {
-        DnsKeyFlagsMime = other.DnsKeyFlagsMime;
-      }
-      if (other.DnsKeyFlagsSignatory != 0) {
-        DnsKeyFlagsSignatory = other.DnsKeyFlagsSignatory;
-      }
-      if (other.DnsKeyProtocol != 0) {
-        DnsKeyProtocol = other.DnsKeyProtocol;
-      }
-      if (other.DnsKeyAlgorithm != 0) {
-        DnsKeyAlgorithm = other.DnsKeyAlgorithm;
-      }
-      if (other.DnsKeyKeyId != 0) {
-        DnsKeyKeyId = other.DnsKeyKeyId;
-      }
-      if (other.DnsKeyPublicKey.Length != 0) {
-        DnsKeyPublicKey = other.DnsKeyPublicKey;
-      }
-      if (other.DnsPxPreference != 0) {
-        DnsPxPreference = other.DnsPxPreference;
-      }
-      if (other.DnsPxMap822.Length != 0) {
-        DnsPxMap822 = other.DnsPxMap822;
-      }
-      if (other.DnsPxMap400.Length != 0) {
-        DnsPxMap400 = other.DnsPxMap400;
-      }
-      if (other.DnsTkeyAlgoName.Length != 0) {
-        DnsTkeyAlgoName = other.DnsTkeyAlgoName;
-      }
-      if (other.DnsTkeySignatureExpiration != 0L) {
-        DnsTkeySignatureExpiration = other.DnsTkeySignatureExpiration;
-      }
-      if (other.DnsTkeySignatureInception != 0L) {
-        DnsTkeySignatureInception = other.DnsTkeySignatureInception;
-      }
-      if (other.DnsTkeyMode != 0) {
-        DnsTkeyMode = other.DnsTkeyMode;
-      }
-      if (other.DnsTkeyError != 0) {
-        DnsTkeyError = other.DnsTkeyError;
-      }
-      if (other.DnsTkeyKeySize != 0) {
-        DnsTkeyKeySize = other.DnsTkeyKeySize;
-      }
-      if (other.DnsTkeyKeyData.Length != 0) {
-        DnsTkeyKeyData = other.DnsTkeyKeyData;
-      }
-      if (other.DnsTkeyOtherSize != 0) {
-        DnsTkeyOtherSize = other.DnsTkeyOtherSize;
-      }
-      if (other.DnsTkeyOtherData.Length != 0) {
-        DnsTkeyOtherData = other.DnsTkeyOtherData;
-      }
-      if (other.DnsIpseckeyGatewayPrecedence != 0) {
-        DnsIpseckeyGatewayPrecedence = other.DnsIpseckeyGatewayPrecedence;
-      }
-      if (other.DnsIpseckeyGatewayAlgorithm != 0) {
-        DnsIpseckeyGatewayAlgorithm = other.DnsIpseckeyGatewayAlgorithm;
-      }
-      if (other.DnsIpseckeyGatewayType != 0) {
-        DnsIpseckeyGatewayType = other.DnsIpseckeyGatewayType;
-      }
-      if (other.DnsIpseckeyGatewayIpv4.Length != 0) {
-        DnsIpseckeyGatewayIpv4 = other.DnsIpseckeyGatewayIpv4;
-      }
-      if (other.DnsIpseckeyGatewayIpv6.Length != 0) {
-        DnsIpseckeyGatewayIpv6 = other.DnsIpseckeyGatewayIpv6;
-      }
-      if (other.DnsIpseckeyGatewayDns.Length != 0) {
-        DnsIpseckeyGatewayDns = other.DnsIpseckeyGatewayDns;
-      }
-      if (other.DnsIpseckeyPublicKey.Length != 0) {
-        DnsIpseckeyPublicKey = other.DnsIpseckeyPublicKey;
-      }
-      if (other.DnsXpfIpVersion != 0) {
-        DnsXpfIpVersion = other.DnsXpfIpVersion;
-      }
-      if (other.DnsXpfProtocol != 0) {
-        DnsXpfProtocol = other.DnsXpfProtocol;
-      }
-      if (other.DnsXpfSourceIpv4.Length != 0) {
-        DnsXpfSourceIpv4 = other.DnsXpfSourceIpv4;
-      }
-      if (other.DnsXpfDestinationIpv4.Length != 0) {
-        DnsXpfDestinationIpv4 = other.DnsXpfDestinationIpv4;
-      }
-      if (other.DnsXpfSourceIpv6.Length != 0) {
-        DnsXpfSourceIpv6 = other.DnsXpfSourceIpv6;
-      }
-      if (other.DnsXpfDestinationIpv6.Length != 0) {
-        DnsXpfDestinationIpv6 = other.DnsXpfDestinationIpv6;
-      }
-      if (other.DnsXpfSport != 0) {
-        DnsXpfSport = other.DnsXpfSport;
-      }
-      if (other.DnsXpfDport != 0) {
-        DnsXpfDport = other.DnsXpfDport;
-      }
-      if (other.DnsA6PrefixLen != 0) {
-        DnsA6PrefixLen = other.DnsA6PrefixLen;
-      }
-      if (other.DnsA6AddressSuffix.Length != 0) {
-        DnsA6AddressSuffix = other.DnsA6AddressSuffix;
-      }
-      if (other.DnsA6PrefixName.Length != 0) {
-        DnsA6PrefixName = other.DnsA6PrefixName;
-      }
-      if (other.DnsDname.Length != 0) {
-        DnsDname = other.DnsDname;
-      }
-      if (other.DnsLocVersion != 0) {
-        DnsLocVersion = other.DnsLocVersion;
-      }
-      if (other.DnsLocSize != 0) {
-        DnsLocSize = other.DnsLocSize;
-      }
-      if (other.DnsLocHorizontalPrecision != 0) {
-        DnsLocHorizontalPrecision = other.DnsLocHorizontalPrecision;
-      }
-      if (other.DnsLocVerticalPrecision != 0) {
-        DnsLocVerticalPrecision = other.DnsLocVerticalPrecision;
-      }
-      if (other.DnsLocLatitude != 0) {
-        DnsLocLatitude = other.DnsLocLatitude;
-      }
-      if (other.DnsLocLongitude != 0) {
-        DnsLocLongitude = other.DnsLocLongitude;
-      }
-      if (other.DnsLocAltitude != 0) {
-        DnsLocAltitude = other.DnsLocAltitude;
-      }
-      if (other.DnsLocUnknownData.Length != 0) {
-        DnsLocUnknownData = other.DnsLocUnknownData;
-      }
-      if (other.DnsNxtNextDomainName.Length != 0) {
-        DnsNxtNextDomainName = other.DnsNxtNextDomainName;
-      }
-      if (other.DnsKxPreference != 0) {
-        DnsKxPreference = other.DnsKxPreference;
-      }
-      if (other.DnsKxKeyExchange.Length != 0) {
-        DnsKxKeyExchange = other.DnsKxKeyExchange;
-      }
-      if (other.DnsCertType != 0) {
-        DnsCertType = other.DnsCertType;
-      }
-      if (other.DnsCertKeyTag != 0) {
-        DnsCertKeyTag = other.DnsCertKeyTag;
-      }
-      if (other.DnsCertAlgorithm != 0) {
-        DnsCertAlgorithm = other.DnsCertAlgorithm;
-      }
-      if (other.DnsCertCertificate.Length != 0) {
-        DnsCertCertificate = other.DnsCertCertificate;
-      }
-      if (other.DnsNsecNextDomainName.Length != 0) {
-        DnsNsecNextDomainName = other.DnsNsecNextDomainName;
-      }
-      if (other.DnsNs.Length != 0) {
-        DnsNs = other.DnsNs;
-      }
-      if (other.DnsOpt != 0) {
-        DnsOpt = other.DnsOpt;
-      }
-      if (other.DnsOptCode != 0) {
-        DnsOptCode = other.DnsOptCode;
-      }
-      if (other.DnsOptLen != 0) {
-        DnsOptLen = other.DnsOptLen;
-      }
-      if (other.DnsOptData.Length != 0) {
-        DnsOptData = other.DnsOptData;
-      }
-      if (other.DnsOptDau != 0) {
-        DnsOptDau = other.DnsOptDau;
-      }
-      if (other.DnsOptDhu != 0) {
-        DnsOptDhu = other.DnsOptDhu;
-      }
-      if (other.DnsOptN3U != 0) {
-        DnsOptN3U = other.DnsOptN3U;
-      }
-      if (other.DnsOptClientFamily != 0) {
-        DnsOptClientFamily = other.DnsOptClientFamily;
-      }
-      if (other.DnsOptClientNetmask != 0) {
-        DnsOptClientNetmask = other.DnsOptClientNetmask;
-      }
-      if (other.DnsOptClientScope != 0) {
-        DnsOptClientScope = other.DnsOptClientScope;
-      }
-      if (other.DnsOptClientAddr.Length != 0) {
-        DnsOptClientAddr = other.DnsOptClientAddr;
-      }
-      if (other.DnsOptClientAddr4.Length != 0) {
-        DnsOptClientAddr4 = other.DnsOptClientAddr4;
-      }
-      if (other.DnsOptClientAddr6.Length != 0) {
-        DnsOptClientAddr6 = other.DnsOptClientAddr6;
-      }
-      if (other.DnsOptCookieClient.Length != 0) {
-        DnsOptCookieClient = other.DnsOptCookieClient;
-      }
-      if (other.DnsOptCookieServer.Length != 0) {
-        DnsOptCookieServer = other.DnsOptCookieServer;
-      }
-      if (other.DnsOptEdnsTcpKeepaliveTimeout != 0) {
-        DnsOptEdnsTcpKeepaliveTimeout = other.DnsOptEdnsTcpKeepaliveTimeout;
-      }
-      if (other.DnsOptPadding.Length != 0) {
-        DnsOptPadding = other.DnsOptPadding;
-      }
-      if (other.DnsOptChainFqdn.Length != 0) {
-        DnsOptChainFqdn = other.DnsOptChainFqdn;
-      }
       if (other.DnsCountQueries != 0) {
         DnsCountQueries = other.DnsCountQueries;
       }
@@ -6985,249 +519,6 @@ namespace Ndx.Decoders.Core {
       }
       if (other.DnsCountUpdates != 0) {
         DnsCountUpdates = other.DnsCountUpdates;
-      }
-      if (other.DnsNsec3Algo != 0) {
-        DnsNsec3Algo = other.DnsNsec3Algo;
-      }
-      if (other.DnsNsec3Flags != 0) {
-        DnsNsec3Flags = other.DnsNsec3Flags;
-      }
-      if (other.DnsNsec3FlagsOptOut != false) {
-        DnsNsec3FlagsOptOut = other.DnsNsec3FlagsOptOut;
-      }
-      if (other.DnsNsec3Iterations != 0) {
-        DnsNsec3Iterations = other.DnsNsec3Iterations;
-      }
-      if (other.DnsNsec3SaltLength != 0) {
-        DnsNsec3SaltLength = other.DnsNsec3SaltLength;
-      }
-      if (other.DnsNsec3SaltValue.Length != 0) {
-        DnsNsec3SaltValue = other.DnsNsec3SaltValue;
-      }
-      if (other.DnsNsec3HashLength != 0) {
-        DnsNsec3HashLength = other.DnsNsec3HashLength;
-      }
-      if (other.DnsNsec3HashValue.Length != 0) {
-        DnsNsec3HashValue = other.DnsNsec3HashValue;
-      }
-      if (other.DnsTlsaCertificateUsage != 0) {
-        DnsTlsaCertificateUsage = other.DnsTlsaCertificateUsage;
-      }
-      if (other.DnsTlsaSelector != 0) {
-        DnsTlsaSelector = other.DnsTlsaSelector;
-      }
-      if (other.DnsTlsaMatchingType != 0) {
-        DnsTlsaMatchingType = other.DnsTlsaMatchingType;
-      }
-      if (other.DnsTlsaCertificateAssociationData.Length != 0) {
-        DnsTlsaCertificateAssociationData = other.DnsTlsaCertificateAssociationData;
-      }
-      if (other.DnsTsigAlgorithmName.Length != 0) {
-        DnsTsigAlgorithmName = other.DnsTsigAlgorithmName;
-      }
-      if (other.DnsTsigTimeSigned != 0L) {
-        DnsTsigTimeSigned = other.DnsTsigTimeSigned;
-      }
-      if (other.DnsTsigOriginalId != 0) {
-        DnsTsigOriginalId = other.DnsTsigOriginalId;
-      }
-      if (other.DnsTsigError != 0) {
-        DnsTsigError = other.DnsTsigError;
-      }
-      if (other.DnsTsigFudge != 0) {
-        DnsTsigFudge = other.DnsTsigFudge;
-      }
-      if (other.DnsTsigMacSize != 0) {
-        DnsTsigMacSize = other.DnsTsigMacSize;
-      }
-      if (other.DnsTsigOtherLen != 0) {
-        DnsTsigOtherLen = other.DnsTsigOtherLen;
-      }
-      if (other.DnsTsigMac != 0) {
-        DnsTsigMac = other.DnsTsigMac;
-      }
-      if (other.DnsTsigOtherData.Length != 0) {
-        DnsTsigOtherData = other.DnsTsigOtherData;
-      }
-      if (other.DnsSshfpAlgorithm != 0) {
-        DnsSshfpAlgorithm = other.DnsSshfpAlgorithm;
-      }
-      if (other.DnsSshfpFingerprintType != 0) {
-        DnsSshfpFingerprintType = other.DnsSshfpFingerprintType;
-      }
-      if (other.DnsSshfpFingerprint.Length != 0) {
-        DnsSshfpFingerprint = other.DnsSshfpFingerprint;
-      }
-      if (other.DnsHipHitLength != 0) {
-        DnsHipHitLength = other.DnsHipHitLength;
-      }
-      if (other.DnsHipHitPkAlgo != 0) {
-        DnsHipHitPkAlgo = other.DnsHipHitPkAlgo;
-      }
-      if (other.DnsHipPkLength != 0) {
-        DnsHipPkLength = other.DnsHipPkLength;
-      }
-      if (other.DnsHipHit.Length != 0) {
-        DnsHipHit = other.DnsHipHit;
-      }
-      if (other.DnsHipPk.Length != 0) {
-        DnsHipPk = other.DnsHipPk;
-      }
-      if (other.DnsHipRendezvousServer.Length != 0) {
-        DnsHipRendezvousServer = other.DnsHipRendezvousServer;
-      }
-      if (other.DnsDhcidRdata.Length != 0) {
-        DnsDhcidRdata = other.DnsDhcidRdata;
-      }
-      if (other.DnsDsKeyId != 0) {
-        DnsDsKeyId = other.DnsDsKeyId;
-      }
-      if (other.DnsDsAlgorithm != 0) {
-        DnsDsAlgorithm = other.DnsDsAlgorithm;
-      }
-      if (other.DnsDsDigestType != 0) {
-        DnsDsDigestType = other.DnsDsDigestType;
-      }
-      if (other.DnsDsDigest.Length != 0) {
-        DnsDsDigest = other.DnsDsDigest;
-      }
-      if (other.DnsAplAddressFamily != 0) {
-        DnsAplAddressFamily = other.DnsAplAddressFamily;
-      }
-      if (other.DnsAplCodedPrefix != 0) {
-        DnsAplCodedPrefix = other.DnsAplCodedPrefix;
-      }
-      if (other.DnsAplNegation != false) {
-        DnsAplNegation = other.DnsAplNegation;
-      }
-      if (other.DnsAplAfdlength != 0) {
-        DnsAplAfdlength = other.DnsAplAfdlength;
-      }
-      if (other.DnsAplAfdpartIpv4.Length != 0) {
-        DnsAplAfdpartIpv4 = other.DnsAplAfdpartIpv4;
-      }
-      if (other.DnsAplAfdpartIpv6.Length != 0) {
-        DnsAplAfdpartIpv6 = other.DnsAplAfdpartIpv6;
-      }
-      if (other.DnsAplAfdpartData.Length != 0) {
-        DnsAplAfdpartData = other.DnsAplAfdpartData;
-      }
-      if (other.DnsGposLongitudeLength != 0) {
-        DnsGposLongitudeLength = other.DnsGposLongitudeLength;
-      }
-      if (other.DnsGposLongitude.Length != 0) {
-        DnsGposLongitude = other.DnsGposLongitude;
-      }
-      if (other.DnsGposLatitudeLength != 0) {
-        DnsGposLatitudeLength = other.DnsGposLatitudeLength;
-      }
-      if (other.DnsGposLatitude.Length != 0) {
-        DnsGposLatitude = other.DnsGposLatitude;
-      }
-      if (other.DnsGposAltitudeLength != 0) {
-        DnsGposAltitudeLength = other.DnsGposAltitudeLength;
-      }
-      if (other.DnsGposAltitude.Length != 0) {
-        DnsGposAltitude = other.DnsGposAltitude;
-      }
-      if (other.DnsRpMailbox.Length != 0) {
-        DnsRpMailbox = other.DnsRpMailbox;
-      }
-      if (other.DnsRpTxtRr.Length != 0) {
-        DnsRpTxtRr = other.DnsRpTxtRr;
-      }
-      if (other.DnsAfsdbSubtype != 0) {
-        DnsAfsdbSubtype = other.DnsAfsdbSubtype;
-      }
-      if (other.DnsAfsdbHostname.Length != 0) {
-        DnsAfsdbHostname = other.DnsAfsdbHostname;
-      }
-      if (other.DnsX25Length != 0) {
-        DnsX25Length = other.DnsX25Length;
-      }
-      if (other.DnsX25PsdnAddress.Length != 0) {
-        DnsX25PsdnAddress = other.DnsX25PsdnAddress;
-      }
-      if (other.DnsIdsnLength != 0) {
-        DnsIdsnLength = other.DnsIdsnLength;
-      }
-      if (other.DnsIdsnAddress.Length != 0) {
-        DnsIdsnAddress = other.DnsIdsnAddress;
-      }
-      if (other.DnsIdsnSaLength != 0) {
-        DnsIdsnSaLength = other.DnsIdsnSaLength;
-      }
-      if (other.DnsIdsnSaAddress.Length != 0) {
-        DnsIdsnSaAddress = other.DnsIdsnSaAddress;
-      }
-      if (other.DnsRtSubtype != 0) {
-        DnsRtSubtype = other.DnsRtSubtype;
-      }
-      if (other.DnsRtIntermediateHost.Length != 0) {
-        DnsRtIntermediateHost = other.DnsRtIntermediateHost;
-      }
-      if (other.DnsNsapRdata.Length != 0) {
-        DnsNsapRdata = other.DnsNsapRdata;
-      }
-      if (other.DnsNsapPtrOwner.Length != 0) {
-        DnsNsapPtrOwner = other.DnsNsapPtrOwner;
-      }
-      if (other.DnsCaaFlags != 0) {
-        DnsCaaFlags = other.DnsCaaFlags;
-      }
-      if (other.DnsCaaFlagsIssuerCritical != false) {
-        DnsCaaFlagsIssuerCritical = other.DnsCaaFlagsIssuerCritical;
-      }
-      if (other.DnsCaaIssue.Length != 0) {
-        DnsCaaIssue = other.DnsCaaIssue;
-      }
-      if (other.DnsCaaIssuewild.Length != 0) {
-        DnsCaaIssuewild = other.DnsCaaIssuewild;
-      }
-      if (other.DnsCaaIodef.Length != 0) {
-        DnsCaaIodef = other.DnsCaaIodef;
-      }
-      if (other.DnsCaaUnknown.Length != 0) {
-        DnsCaaUnknown = other.DnsCaaUnknown;
-      }
-      if (other.DnsCaaTagLength != 0) {
-        DnsCaaTagLength = other.DnsCaaTagLength;
-      }
-      if (other.DnsCaaTag.Length != 0) {
-        DnsCaaTag = other.DnsCaaTag;
-      }
-      if (other.DnsCaaValue.Length != 0) {
-        DnsCaaValue = other.DnsCaaValue;
-      }
-      if (other.DnsWinsLocalFlag != false) {
-        DnsWinsLocalFlag = other.DnsWinsLocalFlag;
-      }
-      if (other.DnsWinsLookupTimeout != 0) {
-        DnsWinsLookupTimeout = other.DnsWinsLookupTimeout;
-      }
-      if (other.DnsWinsCacheTimeout != 0) {
-        DnsWinsCacheTimeout = other.DnsWinsCacheTimeout;
-      }
-      if (other.DnsWinsNbWinsServers != 0) {
-        DnsWinsNbWinsServers = other.DnsWinsNbWinsServers;
-      }
-      if (other.DnsWinsWinsServer.Length != 0) {
-        DnsWinsWinsServer = other.DnsWinsWinsServer;
-      }
-      if (other.DnsWinsrLocalFlag != false) {
-        DnsWinsrLocalFlag = other.DnsWinsrLocalFlag;
-      }
-      if (other.DnsWinsrLookupTimeout != 0) {
-        DnsWinsrLookupTimeout = other.DnsWinsrLookupTimeout;
-      }
-      if (other.DnsWinsrCacheTimeout != 0) {
-        DnsWinsrCacheTimeout = other.DnsWinsrCacheTimeout;
-      }
-      if (other.DnsWinsrNameResultDomain.Length != 0) {
-        DnsWinsrNameResultDomain = other.DnsWinsrNameResultDomain;
-      }
-      if (other.DnsData.Length != 0) {
-        DnsData = other.DnsData;
       }
     }
 
@@ -7258,8 +549,8 @@ namespace Ndx.Decoders.Core {
             DnsResponseTo = input.ReadInt64();
             break;
           }
-          case 40: {
-            DnsTime = input.ReadInt64();
+          case 45: {
+            DnsTime = input.ReadFloat();
             break;
           }
           case 48: {
@@ -7274,1004 +565,28 @@ namespace Ndx.Decoders.Core {
             dnsResp_.AddEntriesFrom(input, _repeated_dnsResp_codec);
             break;
           }
-          case 74: {
-            DnsSrvService = input.ReadString();
-            break;
-          }
-          case 82: {
-            DnsSrvProto = input.ReadString();
-            break;
-          }
-          case 90: {
-            DnsSrvName = input.ReadString();
-            break;
-          }
-          case 96: {
-            DnsSrvPriority = input.ReadUInt32();
-            break;
-          }
-          case 104: {
-            DnsSrvWeight = input.ReadUInt32();
-            break;
-          }
-          case 112: {
-            DnsSrvPort = input.ReadUInt32();
-            break;
-          }
-          case 122: {
-            DnsSrvTarget = input.ReadString();
-            break;
-          }
-          case 128: {
-            DnsNaptrOrder = input.ReadUInt32();
-            break;
-          }
-          case 136: {
-            DnsNaptrPreference = input.ReadUInt32();
-            break;
-          }
-          case 144: {
-            DnsNaptrFlagsLength = input.ReadUInt32();
-            break;
-          }
-          case 154: {
-            DnsNaptrFlags = input.ReadString();
-            break;
-          }
-          case 160: {
-            DnsNaptrServiceLength = input.ReadUInt32();
-            break;
-          }
-          case 170: {
-            DnsNaptrService = input.ReadString();
-            break;
-          }
-          case 176: {
-            DnsNaptrRegexLength = input.ReadUInt32();
-            break;
-          }
-          case 186: {
-            DnsNaptrRegex = input.ReadString();
-            break;
-          }
-          case 192: {
-            DnsNaptrReplacementLength = input.ReadUInt32();
-            break;
-          }
-          case 202: {
-            DnsNaptrReplacement = input.ReadString();
-            break;
-          }
-          case 210: {
-            DnsA = input.ReadBytes();
-            break;
-          }
-          case 218: {
-            DnsMd = input.ReadString();
-            break;
-          }
-          case 226: {
-            DnsMf = input.ReadString();
-            break;
-          }
-          case 234: {
-            DnsMb = input.ReadString();
-            break;
-          }
-          case 242: {
-            DnsMg = input.ReadString();
-            break;
-          }
-          case 250: {
-            DnsMr = input.ReadString();
-            break;
-          }
-          case 258: {
-            DnsNull = input.ReadBytes();
-            break;
-          }
-          case 266: {
-            DnsAaaa = input.ReadBytes();
-            break;
-          }
-          case 274: {
-            DnsCname = input.ReadString();
-            break;
-          }
-          case 280: {
-            DnsRrUdpPayloadSize = input.ReadUInt32();
-            break;
-          }
-          case 290: {
-            DnsSoaMname = input.ReadString();
-            break;
-          }
-          case 298: {
-            DnsSoaRname = input.ReadString();
-            break;
-          }
-          case 304: {
-            DnsSoaSerialNumber = input.ReadUInt32();
-            break;
-          }
-          case 312: {
-            DnsSoaRefreshInterval = input.ReadUInt32();
-            break;
-          }
-          case 320: {
-            DnsSoaRetryInterval = input.ReadUInt32();
-            break;
-          }
-          case 328: {
-            DnsSoaExpireLimit = input.ReadUInt32();
-            break;
-          }
-          case 336: {
-            DnsSoaMininumTtl = input.ReadUInt32();
-            break;
-          }
-          case 346: {
-            DnsPtrDomainName = input.ReadString();
-            break;
-          }
-          case 354: {
-            DnsWksAddress = input.ReadBytes();
-            break;
-          }
-          case 360: {
-            DnsWksProtocol = input.ReadUInt32();
-            break;
-          }
-          case 368: {
-            DnsWksBits = input.ReadUInt32();
-            break;
-          }
-          case 376: {
-            DnsHinfoCpuLength = input.ReadUInt32();
-            break;
-          }
-          case 386: {
-            DnsHinfoCpu = input.ReadString();
-            break;
-          }
-          case 392: {
-            DnsHinfoOsLength = input.ReadUInt32();
-            break;
-          }
-          case 402: {
-            DnsHinfoOs = input.ReadString();
-            break;
-          }
-          case 410: {
-            DnsMinfoR = input.ReadString();
-            break;
-          }
-          case 418: {
-            DnsMinfoE = input.ReadString();
-            break;
-          }
-          case 424: {
-            DnsMxPreference = input.ReadUInt32();
-            break;
-          }
-          case 434: {
-            DnsMxMailExchange = input.ReadString();
-            break;
-          }
-          case 440: {
-            DnsTxtLength = input.ReadUInt32();
-            break;
-          }
-          case 450: {
-            DnsTxt = input.ReadString();
-            break;
-          }
-          case 458: {
-            DnsOpenpgpkey = input.ReadString();
-            break;
-          }
-          case 464: {
-            DnsCsyncSoa = input.ReadUInt32();
-            break;
-          }
-          case 472: {
-            DnsCsyncFlags = input.ReadUInt32();
-            break;
-          }
-          case 480: {
-            DnsCsyncFlagsImmediate = input.ReadBool();
-            break;
-          }
-          case 488: {
-            DnsCsyncFlagsSoaminimum = input.ReadBool();
-            break;
-          }
-          case 498: {
-            DnsCsyncTypeBitmap = input.ReadBytes();
-            break;
-          }
-          case 504: {
-            DnsSpfLength = input.ReadUInt32();
-            break;
-          }
-          case 514: {
-            DnsSpf = input.ReadString();
-            break;
-          }
-          case 520: {
-            DnsIlnpNidPreference = input.ReadUInt32();
-            break;
-          }
-          case 530: {
-            DnsIlnpNid = input.ReadBytes();
-            break;
-          }
-          case 536: {
-            DnsIlnpL32Preference = input.ReadUInt32();
-            break;
-          }
-          case 546: {
-            DnsIlnpL32 = input.ReadBytes();
-            break;
-          }
-          case 552: {
-            DnsIlnpL64Preference = input.ReadUInt32();
-            break;
-          }
-          case 562: {
-            DnsIlnpL64 = input.ReadBytes();
-            break;
-          }
-          case 568: {
-            DnsIlnpLpPreference = input.ReadUInt32();
-            break;
-          }
-          case 578: {
-            DnsIlnpLp = input.ReadString();
-            break;
-          }
-          case 586: {
-            DnsEui48 = input.ReadBytes();
-            break;
-          }
-          case 594: {
-            DnsEui64 = input.ReadBytes();
-            break;
-          }
-          case 600: {
-            DnsRrsigTypeCovered = input.ReadUInt32();
-            break;
-          }
-          case 608: {
-            DnsRrsigAlgorithm = input.ReadUInt32();
-            break;
-          }
-          case 616: {
-            DnsRrsigLabels = input.ReadUInt32();
-            break;
-          }
-          case 624: {
-            DnsRrsigOriginalTtl = input.ReadUInt32();
-            break;
-          }
-          case 632: {
-            DnsRrsigSignatureExpiration = input.ReadInt64();
-            break;
-          }
-          case 640: {
-            DnsRrsigSignatureInception = input.ReadInt64();
-            break;
-          }
-          case 648: {
-            DnsRrsigKeyTag = input.ReadUInt32();
-            break;
-          }
-          case 658: {
-            DnsRrsigSignersName = input.ReadString();
-            break;
-          }
-          case 666: {
-            DnsRrsigSignature = input.ReadBytes();
-            break;
-          }
-          case 672: {
-            DnsDnskeyFlags = input.ReadUInt32();
-            break;
-          }
-          case 680: {
-            DnsDnskeyFlagsZoneKey = input.ReadBool();
-            break;
-          }
-          case 688: {
-            DnsDnskeyFlagsKeyRevoked = input.ReadBool();
-            break;
-          }
-          case 696: {
-            DnsDnskeyFlagsSecureEntryPoint = input.ReadBool();
-            break;
-          }
-          case 704: {
-            DnsDnskeyFlagsReserved = input.ReadUInt32();
-            break;
-          }
-          case 712: {
-            DnsDnskeyProtocol = input.ReadUInt32();
-            break;
-          }
-          case 720: {
-            DnsDnskeyAlgorithm = input.ReadUInt32();
-            break;
-          }
-          case 728: {
-            DnsDnskeyKeyId = input.ReadUInt32();
-            break;
-          }
-          case 738: {
-            DnsDnskeyPublicKey = input.ReadBytes();
-            break;
-          }
-          case 744: {
-            DnsKeyFlags = input.ReadUInt32();
-            break;
-          }
-          case 752: {
-            DnsKeyFlagsAuthentication = input.ReadBool();
-            break;
-          }
-          case 760: {
-            DnsKeyFlagsConfidentiality = input.ReadBool();
-            break;
-          }
-          case 768: {
-            DnsKeyFlagsRequired = input.ReadBool();
-            break;
-          }
-          case 776: {
-            DnsKeyFlagsAssociatedUser = input.ReadBool();
-            break;
-          }
-          case 784: {
-            DnsKeyFlagsAssociatedNamedEntity = input.ReadBool();
-            break;
-          }
-          case 792: {
-            DnsKeyFlagsIpsec = input.ReadBool();
-            break;
-          }
-          case 800: {
-            DnsKeyFlagsMime = input.ReadBool();
-            break;
-          }
-          case 808: {
-            DnsKeyFlagsSignatory = input.ReadUInt32();
-            break;
-          }
-          case 816: {
-            DnsKeyProtocol = input.ReadUInt32();
-            break;
-          }
-          case 824: {
-            DnsKeyAlgorithm = input.ReadUInt32();
-            break;
-          }
-          case 832: {
-            DnsKeyKeyId = input.ReadUInt32();
-            break;
-          }
-          case 842: {
-            DnsKeyPublicKey = input.ReadBytes();
-            break;
-          }
-          case 848: {
-            DnsPxPreference = input.ReadUInt32();
-            break;
-          }
-          case 858: {
-            DnsPxMap822 = input.ReadString();
-            break;
-          }
-          case 866: {
-            DnsPxMap400 = input.ReadString();
-            break;
-          }
-          case 874: {
-            DnsTkeyAlgoName = input.ReadString();
-            break;
-          }
-          case 880: {
-            DnsTkeySignatureExpiration = input.ReadInt64();
-            break;
-          }
-          case 888: {
-            DnsTkeySignatureInception = input.ReadInt64();
-            break;
-          }
-          case 896: {
-            DnsTkeyMode = input.ReadUInt32();
-            break;
-          }
-          case 904: {
-            DnsTkeyError = input.ReadUInt32();
-            break;
-          }
-          case 912: {
-            DnsTkeyKeySize = input.ReadUInt32();
-            break;
-          }
-          case 922: {
-            DnsTkeyKeyData = input.ReadBytes();
-            break;
-          }
-          case 928: {
-            DnsTkeyOtherSize = input.ReadUInt32();
-            break;
-          }
-          case 938: {
-            DnsTkeyOtherData = input.ReadBytes();
-            break;
-          }
-          case 944: {
-            DnsIpseckeyGatewayPrecedence = input.ReadUInt32();
-            break;
-          }
-          case 952: {
-            DnsIpseckeyGatewayAlgorithm = input.ReadUInt32();
-            break;
-          }
-          case 960: {
-            DnsIpseckeyGatewayType = input.ReadUInt32();
-            break;
-          }
-          case 970: {
-            DnsIpseckeyGatewayIpv4 = input.ReadBytes();
-            break;
-          }
-          case 978: {
-            DnsIpseckeyGatewayIpv6 = input.ReadBytes();
-            break;
-          }
-          case 986: {
-            DnsIpseckeyGatewayDns = input.ReadString();
-            break;
-          }
-          case 994: {
-            DnsIpseckeyPublicKey = input.ReadBytes();
-            break;
-          }
-          case 1000: {
-            DnsXpfIpVersion = input.ReadUInt32();
-            break;
-          }
-          case 1008: {
-            DnsXpfProtocol = input.ReadUInt32();
-            break;
-          }
-          case 1018: {
-            DnsXpfSourceIpv4 = input.ReadBytes();
-            break;
-          }
-          case 1026: {
-            DnsXpfDestinationIpv4 = input.ReadBytes();
-            break;
-          }
-          case 1034: {
-            DnsXpfSourceIpv6 = input.ReadBytes();
-            break;
-          }
-          case 1042: {
-            DnsXpfDestinationIpv6 = input.ReadBytes();
-            break;
-          }
-          case 1048: {
-            DnsXpfSport = input.ReadUInt32();
-            break;
-          }
-          case 1056: {
-            DnsXpfDport = input.ReadUInt32();
-            break;
-          }
-          case 1064: {
-            DnsA6PrefixLen = input.ReadUInt32();
-            break;
-          }
-          case 1074: {
-            DnsA6AddressSuffix = input.ReadBytes();
-            break;
-          }
-          case 1082: {
-            DnsA6PrefixName = input.ReadString();
-            break;
-          }
-          case 1090: {
-            DnsDname = input.ReadString();
-            break;
-          }
-          case 1096: {
-            DnsLocVersion = input.ReadUInt32();
-            break;
-          }
-          case 1104: {
-            DnsLocSize = input.ReadUInt32();
-            break;
-          }
-          case 1112: {
-            DnsLocHorizontalPrecision = input.ReadUInt32();
-            break;
-          }
-          case 1120: {
-            DnsLocVerticalPrecision = input.ReadUInt32();
-            break;
-          }
-          case 1128: {
-            DnsLocLatitude = input.ReadUInt32();
-            break;
-          }
-          case 1136: {
-            DnsLocLongitude = input.ReadUInt32();
-            break;
-          }
-          case 1144: {
-            DnsLocAltitude = input.ReadUInt32();
-            break;
-          }
-          case 1154: {
-            DnsLocUnknownData = input.ReadBytes();
-            break;
-          }
-          case 1162: {
-            DnsNxtNextDomainName = input.ReadString();
-            break;
-          }
-          case 1168: {
-            DnsKxPreference = input.ReadUInt32();
-            break;
-          }
-          case 1178: {
-            DnsKxKeyExchange = input.ReadString();
-            break;
-          }
-          case 1184: {
-            DnsCertType = input.ReadUInt32();
-            break;
-          }
-          case 1192: {
-            DnsCertKeyTag = input.ReadUInt32();
-            break;
-          }
-          case 1200: {
-            DnsCertAlgorithm = input.ReadUInt32();
-            break;
-          }
-          case 1210: {
-            DnsCertCertificate = input.ReadBytes();
-            break;
-          }
-          case 1218: {
-            DnsNsecNextDomainName = input.ReadString();
-            break;
-          }
-          case 1226: {
-            DnsNs = input.ReadString();
-            break;
-          }
-          case 1232: {
-            DnsOpt = input.ReadInt32();
-            break;
-          }
-          case 1240: {
-            DnsOptCode = input.ReadUInt32();
-            break;
-          }
-          case 1248: {
-            DnsOptLen = input.ReadUInt32();
-            break;
-          }
-          case 1258: {
-            DnsOptData = input.ReadBytes();
-            break;
-          }
-          case 1264: {
-            DnsOptDau = input.ReadUInt32();
-            break;
-          }
-          case 1272: {
-            DnsOptDhu = input.ReadUInt32();
-            break;
-          }
-          case 1280: {
-            DnsOptN3U = input.ReadUInt32();
-            break;
-          }
-          case 1288: {
-            DnsOptClientFamily = input.ReadUInt32();
-            break;
-          }
-          case 1296: {
-            DnsOptClientNetmask = input.ReadUInt32();
-            break;
-          }
-          case 1304: {
-            DnsOptClientScope = input.ReadUInt32();
-            break;
-          }
-          case 1314: {
-            DnsOptClientAddr = input.ReadBytes();
-            break;
-          }
-          case 1322: {
-            DnsOptClientAddr4 = input.ReadBytes();
-            break;
-          }
-          case 1330: {
-            DnsOptClientAddr6 = input.ReadBytes();
-            break;
-          }
-          case 1338: {
-            DnsOptCookieClient = input.ReadBytes();
-            break;
-          }
-          case 1346: {
-            DnsOptCookieServer = input.ReadBytes();
-            break;
-          }
-          case 1352: {
-            DnsOptEdnsTcpKeepaliveTimeout = input.ReadUInt32();
-            break;
-          }
-          case 1362: {
-            DnsOptPadding = input.ReadBytes();
-            break;
-          }
-          case 1370: {
-            DnsOptChainFqdn = input.ReadString();
-            break;
-          }
-          case 1376: {
+          case 72: {
             DnsCountQueries = input.ReadUInt32();
             break;
           }
-          case 1384: {
+          case 80: {
             DnsCountZones = input.ReadUInt32();
             break;
           }
-          case 1392: {
+          case 88: {
             DnsCountAnswers = input.ReadUInt32();
             break;
           }
-          case 1400: {
+          case 96: {
             DnsCountPrerequisites = input.ReadUInt32();
             break;
           }
-          case 1408: {
+          case 104: {
             DnsCountAuthRr = input.ReadUInt32();
             break;
           }
-          case 1416: {
+          case 112: {
             DnsCountUpdates = input.ReadUInt32();
-            break;
-          }
-          case 1424: {
-            DnsNsec3Algo = input.ReadUInt32();
-            break;
-          }
-          case 1432: {
-            DnsNsec3Flags = input.ReadUInt32();
-            break;
-          }
-          case 1440: {
-            DnsNsec3FlagsOptOut = input.ReadBool();
-            break;
-          }
-          case 1448: {
-            DnsNsec3Iterations = input.ReadUInt32();
-            break;
-          }
-          case 1456: {
-            DnsNsec3SaltLength = input.ReadUInt32();
-            break;
-          }
-          case 1466: {
-            DnsNsec3SaltValue = input.ReadBytes();
-            break;
-          }
-          case 1472: {
-            DnsNsec3HashLength = input.ReadUInt32();
-            break;
-          }
-          case 1482: {
-            DnsNsec3HashValue = input.ReadBytes();
-            break;
-          }
-          case 1488: {
-            DnsTlsaCertificateUsage = input.ReadUInt32();
-            break;
-          }
-          case 1496: {
-            DnsTlsaSelector = input.ReadUInt32();
-            break;
-          }
-          case 1504: {
-            DnsTlsaMatchingType = input.ReadUInt32();
-            break;
-          }
-          case 1514: {
-            DnsTlsaCertificateAssociationData = input.ReadBytes();
-            break;
-          }
-          case 1522: {
-            DnsTsigAlgorithmName = input.ReadString();
-            break;
-          }
-          case 1528: {
-            DnsTsigTimeSigned = input.ReadInt64();
-            break;
-          }
-          case 1536: {
-            DnsTsigOriginalId = input.ReadUInt32();
-            break;
-          }
-          case 1544: {
-            DnsTsigError = input.ReadUInt32();
-            break;
-          }
-          case 1552: {
-            DnsTsigFudge = input.ReadUInt32();
-            break;
-          }
-          case 1560: {
-            DnsTsigMacSize = input.ReadUInt32();
-            break;
-          }
-          case 1568: {
-            DnsTsigOtherLen = input.ReadUInt32();
-            break;
-          }
-          case 1576: {
-            DnsTsigMac = input.ReadInt32();
-            break;
-          }
-          case 1586: {
-            DnsTsigOtherData = input.ReadBytes();
-            break;
-          }
-          case 1592: {
-            DnsSshfpAlgorithm = input.ReadUInt32();
-            break;
-          }
-          case 1600: {
-            DnsSshfpFingerprintType = input.ReadUInt32();
-            break;
-          }
-          case 1610: {
-            DnsSshfpFingerprint = input.ReadBytes();
-            break;
-          }
-          case 1616: {
-            DnsHipHitLength = input.ReadUInt32();
-            break;
-          }
-          case 1624: {
-            DnsHipHitPkAlgo = input.ReadUInt32();
-            break;
-          }
-          case 1632: {
-            DnsHipPkLength = input.ReadUInt32();
-            break;
-          }
-          case 1642: {
-            DnsHipHit = input.ReadBytes();
-            break;
-          }
-          case 1650: {
-            DnsHipPk = input.ReadBytes();
-            break;
-          }
-          case 1658: {
-            DnsHipRendezvousServer = input.ReadString();
-            break;
-          }
-          case 1666: {
-            DnsDhcidRdata = input.ReadBytes();
-            break;
-          }
-          case 1672: {
-            DnsDsKeyId = input.ReadUInt32();
-            break;
-          }
-          case 1680: {
-            DnsDsAlgorithm = input.ReadUInt32();
-            break;
-          }
-          case 1688: {
-            DnsDsDigestType = input.ReadUInt32();
-            break;
-          }
-          case 1698: {
-            DnsDsDigest = input.ReadBytes();
-            break;
-          }
-          case 1704: {
-            DnsAplAddressFamily = input.ReadUInt32();
-            break;
-          }
-          case 1712: {
-            DnsAplCodedPrefix = input.ReadUInt32();
-            break;
-          }
-          case 1720: {
-            DnsAplNegation = input.ReadBool();
-            break;
-          }
-          case 1728: {
-            DnsAplAfdlength = input.ReadUInt32();
-            break;
-          }
-          case 1738: {
-            DnsAplAfdpartIpv4 = input.ReadBytes();
-            break;
-          }
-          case 1746: {
-            DnsAplAfdpartIpv6 = input.ReadBytes();
-            break;
-          }
-          case 1754: {
-            DnsAplAfdpartData = input.ReadBytes();
-            break;
-          }
-          case 1760: {
-            DnsGposLongitudeLength = input.ReadUInt32();
-            break;
-          }
-          case 1770: {
-            DnsGposLongitude = input.ReadString();
-            break;
-          }
-          case 1776: {
-            DnsGposLatitudeLength = input.ReadUInt32();
-            break;
-          }
-          case 1786: {
-            DnsGposLatitude = input.ReadString();
-            break;
-          }
-          case 1792: {
-            DnsGposAltitudeLength = input.ReadUInt32();
-            break;
-          }
-          case 1802: {
-            DnsGposAltitude = input.ReadString();
-            break;
-          }
-          case 1810: {
-            DnsRpMailbox = input.ReadString();
-            break;
-          }
-          case 1818: {
-            DnsRpTxtRr = input.ReadString();
-            break;
-          }
-          case 1824: {
-            DnsAfsdbSubtype = input.ReadUInt32();
-            break;
-          }
-          case 1834: {
-            DnsAfsdbHostname = input.ReadString();
-            break;
-          }
-          case 1840: {
-            DnsX25Length = input.ReadUInt32();
-            break;
-          }
-          case 1850: {
-            DnsX25PsdnAddress = input.ReadString();
-            break;
-          }
-          case 1856: {
-            DnsIdsnLength = input.ReadUInt32();
-            break;
-          }
-          case 1866: {
-            DnsIdsnAddress = input.ReadString();
-            break;
-          }
-          case 1872: {
-            DnsIdsnSaLength = input.ReadUInt32();
-            break;
-          }
-          case 1882: {
-            DnsIdsnSaAddress = input.ReadString();
-            break;
-          }
-          case 1888: {
-            DnsRtSubtype = input.ReadUInt32();
-            break;
-          }
-          case 1898: {
-            DnsRtIntermediateHost = input.ReadString();
-            break;
-          }
-          case 1906: {
-            DnsNsapRdata = input.ReadBytes();
-            break;
-          }
-          case 1914: {
-            DnsNsapPtrOwner = input.ReadString();
-            break;
-          }
-          case 1920: {
-            DnsCaaFlags = input.ReadUInt32();
-            break;
-          }
-          case 1928: {
-            DnsCaaFlagsIssuerCritical = input.ReadBool();
-            break;
-          }
-          case 1938: {
-            DnsCaaIssue = input.ReadString();
-            break;
-          }
-          case 1946: {
-            DnsCaaIssuewild = input.ReadString();
-            break;
-          }
-          case 1954: {
-            DnsCaaIodef = input.ReadString();
-            break;
-          }
-          case 1962: {
-            DnsCaaUnknown = input.ReadString();
-            break;
-          }
-          case 1968: {
-            DnsCaaTagLength = input.ReadUInt32();
-            break;
-          }
-          case 1978: {
-            DnsCaaTag = input.ReadString();
-            break;
-          }
-          case 1986: {
-            DnsCaaValue = input.ReadString();
-            break;
-          }
-          case 1992: {
-            DnsWinsLocalFlag = input.ReadBool();
-            break;
-          }
-          case 2000: {
-            DnsWinsLookupTimeout = input.ReadUInt32();
-            break;
-          }
-          case 2008: {
-            DnsWinsCacheTimeout = input.ReadUInt32();
-            break;
-          }
-          case 2016: {
-            DnsWinsNbWinsServers = input.ReadUInt32();
-            break;
-          }
-          case 2026: {
-            DnsWinsWinsServer = input.ReadBytes();
-            break;
-          }
-          case 2032: {
-            DnsWinsrLocalFlag = input.ReadBool();
-            break;
-          }
-          case 2040: {
-            DnsWinsrLookupTimeout = input.ReadUInt32();
-            break;
-          }
-          case 2048: {
-            DnsWinsrCacheTimeout = input.ReadUInt32();
-            break;
-          }
-          case 2058: {
-            DnsWinsrNameResultDomain = input.ReadString();
-            break;
-          }
-          case 2066: {
-            DnsData = input.ReadBytes();
             break;
           }
         }
@@ -9023,6 +1338,48 @@ namespace Ndx.Decoders.Core {
           dnsRespTtl_ = other.dnsRespTtl_;
           dnsRespLen_ = other.dnsRespLen_;
           dnsRespValue_ = other.dnsRespValue_;
+          dnsSrvService_ = other.dnsSrvService_;
+          dnsSrvProto_ = other.dnsSrvProto_;
+          dnsSrvName_ = other.dnsSrvName_;
+          dnsSrvPriority_ = other.dnsSrvPriority_;
+          dnsSrvWeight_ = other.dnsSrvWeight_;
+          dnsSrvPort_ = other.dnsSrvPort_;
+          dnsSrvTarget_ = other.dnsSrvTarget_;
+          dnsNaptrOrder_ = other.dnsNaptrOrder_;
+          dnsNaptrPreference_ = other.dnsNaptrPreference_;
+          dnsNaptrFlagsLength_ = other.dnsNaptrFlagsLength_;
+          dnsNaptrFlags_ = other.dnsNaptrFlags_;
+          dnsNaptrServiceLength_ = other.dnsNaptrServiceLength_;
+          dnsNaptrService_ = other.dnsNaptrService_;
+          dnsNaptrRegexLength_ = other.dnsNaptrRegexLength_;
+          dnsNaptrRegex_ = other.dnsNaptrRegex_;
+          dnsNaptrReplacementLength_ = other.dnsNaptrReplacementLength_;
+          dnsNaptrReplacement_ = other.dnsNaptrReplacement_;
+          dnsA_ = other.dnsA_;
+          dnsMd_ = other.dnsMd_;
+          dnsMf_ = other.dnsMf_;
+          dnsMb_ = other.dnsMb_;
+          dnsMg_ = other.dnsMg_;
+          dnsMr_ = other.dnsMr_;
+          dnsNull_ = other.dnsNull_;
+          dnsAaaa_ = other.dnsAaaa_;
+          dnsCname_ = other.dnsCname_;
+          dnsRrUdpPayloadSize_ = other.dnsRrUdpPayloadSize_;
+          dnsSoaMname_ = other.dnsSoaMname_;
+          dnsSoaRname_ = other.dnsSoaRname_;
+          dnsSoaSerialNumber_ = other.dnsSoaSerialNumber_;
+          dnsSoaRefreshInterval_ = other.dnsSoaRefreshInterval_;
+          dnsSoaRetryInterval_ = other.dnsSoaRetryInterval_;
+          dnsSoaExpireLimit_ = other.dnsSoaExpireLimit_;
+          dnsSoaMininumTtl_ = other.dnsSoaMininumTtl_;
+          dnsPtrDomainName_ = other.dnsPtrDomainName_;
+          dnsMinfoR_ = other.dnsMinfoR_;
+          dnsMinfoE_ = other.dnsMinfoE_;
+          dnsMxPreference_ = other.dnsMxPreference_;
+          dnsMxMailExchange_ = other.dnsMxMailExchange_;
+          dnsTxtLength_ = other.dnsTxtLength_;
+          dnsTxt_ = other.dnsTxt_;
+          dnsNs_ = other.dnsNs_;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9198,6 +1555,594 @@ namespace Ndx.Decoders.Core {
           }
         }
 
+        /// <summary>Field number for the "DnsSrvService" field.</summary>
+        public const int DnsSrvServiceFieldNumber = 13;
+        private string dnsSrvService_ = "";
+        /// <summary>
+        /// Service ('text_dns_srv_service')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsSrvService {
+          get { return dnsSrvService_; }
+          set {
+            dnsSrvService_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsSrvProto" field.</summary>
+        public const int DnsSrvProtoFieldNumber = 14;
+        private string dnsSrvProto_ = "";
+        /// <summary>
+        /// Protocol ('text_dns_srv_proto')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsSrvProto {
+          get { return dnsSrvProto_; }
+          set {
+            dnsSrvProto_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsSrvName" field.</summary>
+        public const int DnsSrvNameFieldNumber = 15;
+        private string dnsSrvName_ = "";
+        /// <summary>
+        /// Name ('text_dns_srv_name')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsSrvName {
+          get { return dnsSrvName_; }
+          set {
+            dnsSrvName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsSrvPriority" field.</summary>
+        public const int DnsSrvPriorityFieldNumber = 16;
+        private uint dnsSrvPriority_;
+        /// <summary>
+        /// Priority ('text_dns_srv_priority')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsSrvPriority {
+          get { return dnsSrvPriority_; }
+          set {
+            dnsSrvPriority_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsSrvWeight" field.</summary>
+        public const int DnsSrvWeightFieldNumber = 17;
+        private uint dnsSrvWeight_;
+        /// <summary>
+        /// Weight ('text_dns_srv_weight')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsSrvWeight {
+          get { return dnsSrvWeight_; }
+          set {
+            dnsSrvWeight_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsSrvPort" field.</summary>
+        public const int DnsSrvPortFieldNumber = 18;
+        private uint dnsSrvPort_;
+        /// <summary>
+        /// Port ('text_dns_srv_port')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsSrvPort {
+          get { return dnsSrvPort_; }
+          set {
+            dnsSrvPort_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsSrvTarget" field.</summary>
+        public const int DnsSrvTargetFieldNumber = 19;
+        private string dnsSrvTarget_ = "";
+        /// <summary>
+        /// Target ('text_dns_srv_target')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsSrvTarget {
+          get { return dnsSrvTarget_; }
+          set {
+            dnsSrvTarget_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsNaptrOrder" field.</summary>
+        public const int DnsNaptrOrderFieldNumber = 20;
+        private uint dnsNaptrOrder_;
+        /// <summary>
+        /// Order ('text_dns_naptr_order')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsNaptrOrder {
+          get { return dnsNaptrOrder_; }
+          set {
+            dnsNaptrOrder_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsNaptrPreference" field.</summary>
+        public const int DnsNaptrPreferenceFieldNumber = 21;
+        private uint dnsNaptrPreference_;
+        /// <summary>
+        /// Preference ('text_dns_naptr_preference')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsNaptrPreference {
+          get { return dnsNaptrPreference_; }
+          set {
+            dnsNaptrPreference_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsNaptrFlagsLength" field.</summary>
+        public const int DnsNaptrFlagsLengthFieldNumber = 22;
+        private uint dnsNaptrFlagsLength_;
+        /// <summary>
+        /// Flags Length ('text_dns_naptr_flags_length')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsNaptrFlagsLength {
+          get { return dnsNaptrFlagsLength_; }
+          set {
+            dnsNaptrFlagsLength_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsNaptrFlags" field.</summary>
+        public const int DnsNaptrFlagsFieldNumber = 23;
+        private string dnsNaptrFlags_ = "";
+        /// <summary>
+        /// Flags ('text_dns_naptr_flags')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsNaptrFlags {
+          get { return dnsNaptrFlags_; }
+          set {
+            dnsNaptrFlags_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsNaptrServiceLength" field.</summary>
+        public const int DnsNaptrServiceLengthFieldNumber = 24;
+        private uint dnsNaptrServiceLength_;
+        /// <summary>
+        /// Service Length ('text_dns_naptr_service_length')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsNaptrServiceLength {
+          get { return dnsNaptrServiceLength_; }
+          set {
+            dnsNaptrServiceLength_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsNaptrService" field.</summary>
+        public const int DnsNaptrServiceFieldNumber = 25;
+        private string dnsNaptrService_ = "";
+        /// <summary>
+        /// Service ('text_dns_naptr_service')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsNaptrService {
+          get { return dnsNaptrService_; }
+          set {
+            dnsNaptrService_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsNaptrRegexLength" field.</summary>
+        public const int DnsNaptrRegexLengthFieldNumber = 26;
+        private uint dnsNaptrRegexLength_;
+        /// <summary>
+        /// Regex Length ('text_dns_naptr_regex_length')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsNaptrRegexLength {
+          get { return dnsNaptrRegexLength_; }
+          set {
+            dnsNaptrRegexLength_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsNaptrRegex" field.</summary>
+        public const int DnsNaptrRegexFieldNumber = 27;
+        private string dnsNaptrRegex_ = "";
+        /// <summary>
+        /// Regex ('text_dns_naptr_regex')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsNaptrRegex {
+          get { return dnsNaptrRegex_; }
+          set {
+            dnsNaptrRegex_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsNaptrReplacementLength" field.</summary>
+        public const int DnsNaptrReplacementLengthFieldNumber = 28;
+        private uint dnsNaptrReplacementLength_;
+        /// <summary>
+        /// Replacement Length ('text_dns_naptr_replacement_length')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsNaptrReplacementLength {
+          get { return dnsNaptrReplacementLength_; }
+          set {
+            dnsNaptrReplacementLength_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsNaptrReplacement" field.</summary>
+        public const int DnsNaptrReplacementFieldNumber = 29;
+        private string dnsNaptrReplacement_ = "";
+        /// <summary>
+        /// Replacement ('dns_dns_naptr_replacement')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsNaptrReplacement {
+          get { return dnsNaptrReplacement_; }
+          set {
+            dnsNaptrReplacement_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsA" field.</summary>
+        public const int DnsAFieldNumber = 30;
+        private pb::ByteString dnsA_ = pb::ByteString.Empty;
+        /// <summary>
+        /// Address ('text_dns_a')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pb::ByteString DnsA {
+          get { return dnsA_; }
+          set {
+            dnsA_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsMd" field.</summary>
+        public const int DnsMdFieldNumber = 31;
+        private string dnsMd_ = "";
+        /// <summary>
+        /// Mail Destination ('text_dns_md')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsMd {
+          get { return dnsMd_; }
+          set {
+            dnsMd_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsMf" field.</summary>
+        public const int DnsMfFieldNumber = 32;
+        private string dnsMf_ = "";
+        /// <summary>
+        /// Mail Forwarder ('text_dns_mf')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsMf {
+          get { return dnsMf_; }
+          set {
+            dnsMf_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsMb" field.</summary>
+        public const int DnsMbFieldNumber = 33;
+        private string dnsMb_ = "";
+        /// <summary>
+        /// MailBox Domaine ('text_dns_mb')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsMb {
+          get { return dnsMb_; }
+          set {
+            dnsMb_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsMg" field.</summary>
+        public const int DnsMgFieldNumber = 34;
+        private string dnsMg_ = "";
+        /// <summary>
+        /// Mail Group member ('text_dns_mg')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsMg {
+          get { return dnsMg_; }
+          set {
+            dnsMg_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsMr" field.</summary>
+        public const int DnsMrFieldNumber = 35;
+        private string dnsMr_ = "";
+        /// <summary>
+        /// Mail Rename domaine ('text_dns_mr')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsMr {
+          get { return dnsMr_; }
+          set {
+            dnsMr_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsNull" field.</summary>
+        public const int DnsNullFieldNumber = 36;
+        private pb::ByteString dnsNull_ = pb::ByteString.Empty;
+        /// <summary>
+        /// Null (data) ('dns_dns_null')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pb::ByteString DnsNull {
+          get { return dnsNull_; }
+          set {
+            dnsNull_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsAaaa" field.</summary>
+        public const int DnsAaaaFieldNumber = 37;
+        private pb::ByteString dnsAaaa_ = pb::ByteString.Empty;
+        /// <summary>
+        /// AAAA Address ('text_dns_aaaa')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pb::ByteString DnsAaaa {
+          get { return dnsAaaa_; }
+          set {
+            dnsAaaa_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsCname" field.</summary>
+        public const int DnsCnameFieldNumber = 38;
+        private string dnsCname_ = "";
+        /// <summary>
+        /// CNAME ('text_dns_cname')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsCname {
+          get { return dnsCname_; }
+          set {
+            dnsCname_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsRrUdpPayloadSize" field.</summary>
+        public const int DnsRrUdpPayloadSizeFieldNumber = 39;
+        private uint dnsRrUdpPayloadSize_;
+        /// <summary>
+        /// UDP payload size ('text_dns_rr_udp_payload_size')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsRrUdpPayloadSize {
+          get { return dnsRrUdpPayloadSize_; }
+          set {
+            dnsRrUdpPayloadSize_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsSoaMname" field.</summary>
+        public const int DnsSoaMnameFieldNumber = 40;
+        private string dnsSoaMname_ = "";
+        /// <summary>
+        /// Primary name server ('dns_dns_soa_mname')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsSoaMname {
+          get { return dnsSoaMname_; }
+          set {
+            dnsSoaMname_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsSoaRname" field.</summary>
+        public const int DnsSoaRnameFieldNumber = 41;
+        private string dnsSoaRname_ = "";
+        /// <summary>
+        /// Responsible authority's mailbox ('text_dns_soa_rname')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsSoaRname {
+          get { return dnsSoaRname_; }
+          set {
+            dnsSoaRname_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsSoaSerialNumber" field.</summary>
+        public const int DnsSoaSerialNumberFieldNumber = 42;
+        private uint dnsSoaSerialNumber_;
+        /// <summary>
+        /// Serial Number ('text_dns_soa_serial_number')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsSoaSerialNumber {
+          get { return dnsSoaSerialNumber_; }
+          set {
+            dnsSoaSerialNumber_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsSoaRefreshInterval" field.</summary>
+        public const int DnsSoaRefreshIntervalFieldNumber = 43;
+        private uint dnsSoaRefreshInterval_;
+        /// <summary>
+        /// Refresh Interval ('text_dns_soa_refresh_interval')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsSoaRefreshInterval {
+          get { return dnsSoaRefreshInterval_; }
+          set {
+            dnsSoaRefreshInterval_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsSoaRetryInterval" field.</summary>
+        public const int DnsSoaRetryIntervalFieldNumber = 44;
+        private uint dnsSoaRetryInterval_;
+        /// <summary>
+        /// Retry Interval ('text_dns_soa_retry_interval')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsSoaRetryInterval {
+          get { return dnsSoaRetryInterval_; }
+          set {
+            dnsSoaRetryInterval_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsSoaExpireLimit" field.</summary>
+        public const int DnsSoaExpireLimitFieldNumber = 45;
+        private uint dnsSoaExpireLimit_;
+        /// <summary>
+        /// Expire limit ('text_dns_soa_expire_limit')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsSoaExpireLimit {
+          get { return dnsSoaExpireLimit_; }
+          set {
+            dnsSoaExpireLimit_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsSoaMininumTtl" field.</summary>
+        public const int DnsSoaMininumTtlFieldNumber = 46;
+        private uint dnsSoaMininumTtl_;
+        /// <summary>
+        /// Minimum TTL ('text_dns_soa_mininum_ttl')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsSoaMininumTtl {
+          get { return dnsSoaMininumTtl_; }
+          set {
+            dnsSoaMininumTtl_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsPtrDomainName" field.</summary>
+        public const int DnsPtrDomainNameFieldNumber = 47;
+        private string dnsPtrDomainName_ = "";
+        /// <summary>
+        /// Domain Name ('text_dns_ptr_domain_name')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsPtrDomainName {
+          get { return dnsPtrDomainName_; }
+          set {
+            dnsPtrDomainName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsMinfoR" field.</summary>
+        public const int DnsMinfoRFieldNumber = 48;
+        private string dnsMinfoR_ = "";
+        /// <summary>
+        /// Responsible Mailbox ('dns_dns_minfo_r')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsMinfoR {
+          get { return dnsMinfoR_; }
+          set {
+            dnsMinfoR_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsMinfoE" field.</summary>
+        public const int DnsMinfoEFieldNumber = 49;
+        private string dnsMinfoE_ = "";
+        /// <summary>
+        /// Error Mailbox ('dns_dns_minfo_e')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsMinfoE {
+          get { return dnsMinfoE_; }
+          set {
+            dnsMinfoE_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsMxPreference" field.</summary>
+        public const int DnsMxPreferenceFieldNumber = 50;
+        private uint dnsMxPreference_;
+        /// <summary>
+        /// Preference ('text_dns_mx_preference')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsMxPreference {
+          get { return dnsMxPreference_; }
+          set {
+            dnsMxPreference_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsMxMailExchange" field.</summary>
+        public const int DnsMxMailExchangeFieldNumber = 51;
+        private string dnsMxMailExchange_ = "";
+        /// <summary>
+        /// Mail Exchange ('text_dns_mx_mail_exchange')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsMxMailExchange {
+          get { return dnsMxMailExchange_; }
+          set {
+            dnsMxMailExchange_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsTxtLength" field.</summary>
+        public const int DnsTxtLengthFieldNumber = 52;
+        private uint dnsTxtLength_;
+        /// <summary>
+        /// TXT Length ('dns_txt_dns_txt_length')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint DnsTxtLength {
+          get { return dnsTxtLength_; }
+          set {
+            dnsTxtLength_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "DnsTxt" field.</summary>
+        public const int DnsTxtFieldNumber = 53;
+        private string dnsTxt_ = "";
+        /// <summary>
+        /// TXT ('dns_dns_txt')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsTxt {
+          get { return dnsTxt_; }
+          set {
+            dnsTxt_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "DnsNs" field.</summary>
+        public const int DnsNsFieldNumber = 54;
+        private string dnsNs_ = "";
+        /// <summary>
+        /// Name Server ('text_dns_ns')
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string DnsNs {
+          get { return dnsNs_; }
+          set {
+            dnsNs_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override bool Equals(object other) {
           return Equals(other as _DnsResp);
@@ -9223,6 +2168,48 @@ namespace Ndx.Decoders.Core {
           if (DnsRespTtl != other.DnsRespTtl) return false;
           if (DnsRespLen != other.DnsRespLen) return false;
           if (DnsRespValue != other.DnsRespValue) return false;
+          if (DnsSrvService != other.DnsSrvService) return false;
+          if (DnsSrvProto != other.DnsSrvProto) return false;
+          if (DnsSrvName != other.DnsSrvName) return false;
+          if (DnsSrvPriority != other.DnsSrvPriority) return false;
+          if (DnsSrvWeight != other.DnsSrvWeight) return false;
+          if (DnsSrvPort != other.DnsSrvPort) return false;
+          if (DnsSrvTarget != other.DnsSrvTarget) return false;
+          if (DnsNaptrOrder != other.DnsNaptrOrder) return false;
+          if (DnsNaptrPreference != other.DnsNaptrPreference) return false;
+          if (DnsNaptrFlagsLength != other.DnsNaptrFlagsLength) return false;
+          if (DnsNaptrFlags != other.DnsNaptrFlags) return false;
+          if (DnsNaptrServiceLength != other.DnsNaptrServiceLength) return false;
+          if (DnsNaptrService != other.DnsNaptrService) return false;
+          if (DnsNaptrRegexLength != other.DnsNaptrRegexLength) return false;
+          if (DnsNaptrRegex != other.DnsNaptrRegex) return false;
+          if (DnsNaptrReplacementLength != other.DnsNaptrReplacementLength) return false;
+          if (DnsNaptrReplacement != other.DnsNaptrReplacement) return false;
+          if (DnsA != other.DnsA) return false;
+          if (DnsMd != other.DnsMd) return false;
+          if (DnsMf != other.DnsMf) return false;
+          if (DnsMb != other.DnsMb) return false;
+          if (DnsMg != other.DnsMg) return false;
+          if (DnsMr != other.DnsMr) return false;
+          if (DnsNull != other.DnsNull) return false;
+          if (DnsAaaa != other.DnsAaaa) return false;
+          if (DnsCname != other.DnsCname) return false;
+          if (DnsRrUdpPayloadSize != other.DnsRrUdpPayloadSize) return false;
+          if (DnsSoaMname != other.DnsSoaMname) return false;
+          if (DnsSoaRname != other.DnsSoaRname) return false;
+          if (DnsSoaSerialNumber != other.DnsSoaSerialNumber) return false;
+          if (DnsSoaRefreshInterval != other.DnsSoaRefreshInterval) return false;
+          if (DnsSoaRetryInterval != other.DnsSoaRetryInterval) return false;
+          if (DnsSoaExpireLimit != other.DnsSoaExpireLimit) return false;
+          if (DnsSoaMininumTtl != other.DnsSoaMininumTtl) return false;
+          if (DnsPtrDomainName != other.DnsPtrDomainName) return false;
+          if (DnsMinfoR != other.DnsMinfoR) return false;
+          if (DnsMinfoE != other.DnsMinfoE) return false;
+          if (DnsMxPreference != other.DnsMxPreference) return false;
+          if (DnsMxMailExchange != other.DnsMxMailExchange) return false;
+          if (DnsTxtLength != other.DnsTxtLength) return false;
+          if (DnsTxt != other.DnsTxt) return false;
+          if (DnsNs != other.DnsNs) return false;
           return true;
         }
 
@@ -9241,6 +2228,48 @@ namespace Ndx.Decoders.Core {
           if (DnsRespTtl != 0) hash ^= DnsRespTtl.GetHashCode();
           if (DnsRespLen != 0) hash ^= DnsRespLen.GetHashCode();
           if (DnsRespValue.Length != 0) hash ^= DnsRespValue.GetHashCode();
+          if (DnsSrvService.Length != 0) hash ^= DnsSrvService.GetHashCode();
+          if (DnsSrvProto.Length != 0) hash ^= DnsSrvProto.GetHashCode();
+          if (DnsSrvName.Length != 0) hash ^= DnsSrvName.GetHashCode();
+          if (DnsSrvPriority != 0) hash ^= DnsSrvPriority.GetHashCode();
+          if (DnsSrvWeight != 0) hash ^= DnsSrvWeight.GetHashCode();
+          if (DnsSrvPort != 0) hash ^= DnsSrvPort.GetHashCode();
+          if (DnsSrvTarget.Length != 0) hash ^= DnsSrvTarget.GetHashCode();
+          if (DnsNaptrOrder != 0) hash ^= DnsNaptrOrder.GetHashCode();
+          if (DnsNaptrPreference != 0) hash ^= DnsNaptrPreference.GetHashCode();
+          if (DnsNaptrFlagsLength != 0) hash ^= DnsNaptrFlagsLength.GetHashCode();
+          if (DnsNaptrFlags.Length != 0) hash ^= DnsNaptrFlags.GetHashCode();
+          if (DnsNaptrServiceLength != 0) hash ^= DnsNaptrServiceLength.GetHashCode();
+          if (DnsNaptrService.Length != 0) hash ^= DnsNaptrService.GetHashCode();
+          if (DnsNaptrRegexLength != 0) hash ^= DnsNaptrRegexLength.GetHashCode();
+          if (DnsNaptrRegex.Length != 0) hash ^= DnsNaptrRegex.GetHashCode();
+          if (DnsNaptrReplacementLength != 0) hash ^= DnsNaptrReplacementLength.GetHashCode();
+          if (DnsNaptrReplacement.Length != 0) hash ^= DnsNaptrReplacement.GetHashCode();
+          if (DnsA.Length != 0) hash ^= DnsA.GetHashCode();
+          if (DnsMd.Length != 0) hash ^= DnsMd.GetHashCode();
+          if (DnsMf.Length != 0) hash ^= DnsMf.GetHashCode();
+          if (DnsMb.Length != 0) hash ^= DnsMb.GetHashCode();
+          if (DnsMg.Length != 0) hash ^= DnsMg.GetHashCode();
+          if (DnsMr.Length != 0) hash ^= DnsMr.GetHashCode();
+          if (DnsNull.Length != 0) hash ^= DnsNull.GetHashCode();
+          if (DnsAaaa.Length != 0) hash ^= DnsAaaa.GetHashCode();
+          if (DnsCname.Length != 0) hash ^= DnsCname.GetHashCode();
+          if (DnsRrUdpPayloadSize != 0) hash ^= DnsRrUdpPayloadSize.GetHashCode();
+          if (DnsSoaMname.Length != 0) hash ^= DnsSoaMname.GetHashCode();
+          if (DnsSoaRname.Length != 0) hash ^= DnsSoaRname.GetHashCode();
+          if (DnsSoaSerialNumber != 0) hash ^= DnsSoaSerialNumber.GetHashCode();
+          if (DnsSoaRefreshInterval != 0) hash ^= DnsSoaRefreshInterval.GetHashCode();
+          if (DnsSoaRetryInterval != 0) hash ^= DnsSoaRetryInterval.GetHashCode();
+          if (DnsSoaExpireLimit != 0) hash ^= DnsSoaExpireLimit.GetHashCode();
+          if (DnsSoaMininumTtl != 0) hash ^= DnsSoaMininumTtl.GetHashCode();
+          if (DnsPtrDomainName.Length != 0) hash ^= DnsPtrDomainName.GetHashCode();
+          if (DnsMinfoR.Length != 0) hash ^= DnsMinfoR.GetHashCode();
+          if (DnsMinfoE.Length != 0) hash ^= DnsMinfoE.GetHashCode();
+          if (DnsMxPreference != 0) hash ^= DnsMxPreference.GetHashCode();
+          if (DnsMxMailExchange.Length != 0) hash ^= DnsMxMailExchange.GetHashCode();
+          if (DnsTxtLength != 0) hash ^= DnsTxtLength.GetHashCode();
+          if (DnsTxt.Length != 0) hash ^= DnsTxt.GetHashCode();
+          if (DnsNs.Length != 0) hash ^= DnsNs.GetHashCode();
           return hash;
         }
 
@@ -9299,6 +2328,174 @@ namespace Ndx.Decoders.Core {
             output.WriteRawTag(98);
             output.WriteString(DnsRespValue);
           }
+          if (DnsSrvService.Length != 0) {
+            output.WriteRawTag(106);
+            output.WriteString(DnsSrvService);
+          }
+          if (DnsSrvProto.Length != 0) {
+            output.WriteRawTag(114);
+            output.WriteString(DnsSrvProto);
+          }
+          if (DnsSrvName.Length != 0) {
+            output.WriteRawTag(122);
+            output.WriteString(DnsSrvName);
+          }
+          if (DnsSrvPriority != 0) {
+            output.WriteRawTag(128, 1);
+            output.WriteUInt32(DnsSrvPriority);
+          }
+          if (DnsSrvWeight != 0) {
+            output.WriteRawTag(136, 1);
+            output.WriteUInt32(DnsSrvWeight);
+          }
+          if (DnsSrvPort != 0) {
+            output.WriteRawTag(144, 1);
+            output.WriteUInt32(DnsSrvPort);
+          }
+          if (DnsSrvTarget.Length != 0) {
+            output.WriteRawTag(154, 1);
+            output.WriteString(DnsSrvTarget);
+          }
+          if (DnsNaptrOrder != 0) {
+            output.WriteRawTag(160, 1);
+            output.WriteUInt32(DnsNaptrOrder);
+          }
+          if (DnsNaptrPreference != 0) {
+            output.WriteRawTag(168, 1);
+            output.WriteUInt32(DnsNaptrPreference);
+          }
+          if (DnsNaptrFlagsLength != 0) {
+            output.WriteRawTag(176, 1);
+            output.WriteUInt32(DnsNaptrFlagsLength);
+          }
+          if (DnsNaptrFlags.Length != 0) {
+            output.WriteRawTag(186, 1);
+            output.WriteString(DnsNaptrFlags);
+          }
+          if (DnsNaptrServiceLength != 0) {
+            output.WriteRawTag(192, 1);
+            output.WriteUInt32(DnsNaptrServiceLength);
+          }
+          if (DnsNaptrService.Length != 0) {
+            output.WriteRawTag(202, 1);
+            output.WriteString(DnsNaptrService);
+          }
+          if (DnsNaptrRegexLength != 0) {
+            output.WriteRawTag(208, 1);
+            output.WriteUInt32(DnsNaptrRegexLength);
+          }
+          if (DnsNaptrRegex.Length != 0) {
+            output.WriteRawTag(218, 1);
+            output.WriteString(DnsNaptrRegex);
+          }
+          if (DnsNaptrReplacementLength != 0) {
+            output.WriteRawTag(224, 1);
+            output.WriteUInt32(DnsNaptrReplacementLength);
+          }
+          if (DnsNaptrReplacement.Length != 0) {
+            output.WriteRawTag(234, 1);
+            output.WriteString(DnsNaptrReplacement);
+          }
+          if (DnsA.Length != 0) {
+            output.WriteRawTag(242, 1);
+            output.WriteBytes(DnsA);
+          }
+          if (DnsMd.Length != 0) {
+            output.WriteRawTag(250, 1);
+            output.WriteString(DnsMd);
+          }
+          if (DnsMf.Length != 0) {
+            output.WriteRawTag(130, 2);
+            output.WriteString(DnsMf);
+          }
+          if (DnsMb.Length != 0) {
+            output.WriteRawTag(138, 2);
+            output.WriteString(DnsMb);
+          }
+          if (DnsMg.Length != 0) {
+            output.WriteRawTag(146, 2);
+            output.WriteString(DnsMg);
+          }
+          if (DnsMr.Length != 0) {
+            output.WriteRawTag(154, 2);
+            output.WriteString(DnsMr);
+          }
+          if (DnsNull.Length != 0) {
+            output.WriteRawTag(162, 2);
+            output.WriteBytes(DnsNull);
+          }
+          if (DnsAaaa.Length != 0) {
+            output.WriteRawTag(170, 2);
+            output.WriteBytes(DnsAaaa);
+          }
+          if (DnsCname.Length != 0) {
+            output.WriteRawTag(178, 2);
+            output.WriteString(DnsCname);
+          }
+          if (DnsRrUdpPayloadSize != 0) {
+            output.WriteRawTag(184, 2);
+            output.WriteUInt32(DnsRrUdpPayloadSize);
+          }
+          if (DnsSoaMname.Length != 0) {
+            output.WriteRawTag(194, 2);
+            output.WriteString(DnsSoaMname);
+          }
+          if (DnsSoaRname.Length != 0) {
+            output.WriteRawTag(202, 2);
+            output.WriteString(DnsSoaRname);
+          }
+          if (DnsSoaSerialNumber != 0) {
+            output.WriteRawTag(208, 2);
+            output.WriteUInt32(DnsSoaSerialNumber);
+          }
+          if (DnsSoaRefreshInterval != 0) {
+            output.WriteRawTag(216, 2);
+            output.WriteUInt32(DnsSoaRefreshInterval);
+          }
+          if (DnsSoaRetryInterval != 0) {
+            output.WriteRawTag(224, 2);
+            output.WriteUInt32(DnsSoaRetryInterval);
+          }
+          if (DnsSoaExpireLimit != 0) {
+            output.WriteRawTag(232, 2);
+            output.WriteUInt32(DnsSoaExpireLimit);
+          }
+          if (DnsSoaMininumTtl != 0) {
+            output.WriteRawTag(240, 2);
+            output.WriteUInt32(DnsSoaMininumTtl);
+          }
+          if (DnsPtrDomainName.Length != 0) {
+            output.WriteRawTag(250, 2);
+            output.WriteString(DnsPtrDomainName);
+          }
+          if (DnsMinfoR.Length != 0) {
+            output.WriteRawTag(130, 3);
+            output.WriteString(DnsMinfoR);
+          }
+          if (DnsMinfoE.Length != 0) {
+            output.WriteRawTag(138, 3);
+            output.WriteString(DnsMinfoE);
+          }
+          if (DnsMxPreference != 0) {
+            output.WriteRawTag(144, 3);
+            output.WriteUInt32(DnsMxPreference);
+          }
+          if (DnsMxMailExchange.Length != 0) {
+            output.WriteRawTag(154, 3);
+            output.WriteString(DnsMxMailExchange);
+          }
+          if (DnsTxtLength != 0) {
+            output.WriteRawTag(160, 3);
+            output.WriteUInt32(DnsTxtLength);
+          }
+          if (DnsTxt.Length != 0) {
+            output.WriteRawTag(170, 3);
+            output.WriteString(DnsTxt);
+          }
+          if (DnsNs.Length != 0) {
+            output.WriteRawTag(178, 3);
+            output.WriteString(DnsNs);
+          }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9339,6 +2536,132 @@ namespace Ndx.Decoders.Core {
           }
           if (DnsRespValue.Length != 0) {
             size += 1 + pb::CodedOutputStream.ComputeStringSize(DnsRespValue);
+          }
+          if (DnsSrvService.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(DnsSrvService);
+          }
+          if (DnsSrvProto.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(DnsSrvProto);
+          }
+          if (DnsSrvName.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(DnsSrvName);
+          }
+          if (DnsSrvPriority != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSrvPriority);
+          }
+          if (DnsSrvWeight != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSrvWeight);
+          }
+          if (DnsSrvPort != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSrvPort);
+          }
+          if (DnsSrvTarget.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsSrvTarget);
+          }
+          if (DnsNaptrOrder != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNaptrOrder);
+          }
+          if (DnsNaptrPreference != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNaptrPreference);
+          }
+          if (DnsNaptrFlagsLength != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNaptrFlagsLength);
+          }
+          if (DnsNaptrFlags.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsNaptrFlags);
+          }
+          if (DnsNaptrServiceLength != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNaptrServiceLength);
+          }
+          if (DnsNaptrService.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsNaptrService);
+          }
+          if (DnsNaptrRegexLength != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNaptrRegexLength);
+          }
+          if (DnsNaptrRegex.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsNaptrRegex);
+          }
+          if (DnsNaptrReplacementLength != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsNaptrReplacementLength);
+          }
+          if (DnsNaptrReplacement.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsNaptrReplacement);
+          }
+          if (DnsA.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsA);
+          }
+          if (DnsMd.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMd);
+          }
+          if (DnsMf.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMf);
+          }
+          if (DnsMb.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMb);
+          }
+          if (DnsMg.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMg);
+          }
+          if (DnsMr.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMr);
+          }
+          if (DnsNull.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsNull);
+          }
+          if (DnsAaaa.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeBytesSize(DnsAaaa);
+          }
+          if (DnsCname.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsCname);
+          }
+          if (DnsRrUdpPayloadSize != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsRrUdpPayloadSize);
+          }
+          if (DnsSoaMname.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsSoaMname);
+          }
+          if (DnsSoaRname.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsSoaRname);
+          }
+          if (DnsSoaSerialNumber != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSoaSerialNumber);
+          }
+          if (DnsSoaRefreshInterval != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSoaRefreshInterval);
+          }
+          if (DnsSoaRetryInterval != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSoaRetryInterval);
+          }
+          if (DnsSoaExpireLimit != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSoaExpireLimit);
+          }
+          if (DnsSoaMininumTtl != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsSoaMininumTtl);
+          }
+          if (DnsPtrDomainName.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsPtrDomainName);
+          }
+          if (DnsMinfoR.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMinfoR);
+          }
+          if (DnsMinfoE.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMinfoE);
+          }
+          if (DnsMxPreference != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsMxPreference);
+          }
+          if (DnsMxMailExchange.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsMxMailExchange);
+          }
+          if (DnsTxtLength != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DnsTxtLength);
+          }
+          if (DnsTxt.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsTxt);
+          }
+          if (DnsNs.Length != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeStringSize(DnsNs);
           }
           return size;
         }
@@ -9383,6 +2706,132 @@ namespace Ndx.Decoders.Core {
           }
           if (other.DnsRespValue.Length != 0) {
             DnsRespValue = other.DnsRespValue;
+          }
+          if (other.DnsSrvService.Length != 0) {
+            DnsSrvService = other.DnsSrvService;
+          }
+          if (other.DnsSrvProto.Length != 0) {
+            DnsSrvProto = other.DnsSrvProto;
+          }
+          if (other.DnsSrvName.Length != 0) {
+            DnsSrvName = other.DnsSrvName;
+          }
+          if (other.DnsSrvPriority != 0) {
+            DnsSrvPriority = other.DnsSrvPriority;
+          }
+          if (other.DnsSrvWeight != 0) {
+            DnsSrvWeight = other.DnsSrvWeight;
+          }
+          if (other.DnsSrvPort != 0) {
+            DnsSrvPort = other.DnsSrvPort;
+          }
+          if (other.DnsSrvTarget.Length != 0) {
+            DnsSrvTarget = other.DnsSrvTarget;
+          }
+          if (other.DnsNaptrOrder != 0) {
+            DnsNaptrOrder = other.DnsNaptrOrder;
+          }
+          if (other.DnsNaptrPreference != 0) {
+            DnsNaptrPreference = other.DnsNaptrPreference;
+          }
+          if (other.DnsNaptrFlagsLength != 0) {
+            DnsNaptrFlagsLength = other.DnsNaptrFlagsLength;
+          }
+          if (other.DnsNaptrFlags.Length != 0) {
+            DnsNaptrFlags = other.DnsNaptrFlags;
+          }
+          if (other.DnsNaptrServiceLength != 0) {
+            DnsNaptrServiceLength = other.DnsNaptrServiceLength;
+          }
+          if (other.DnsNaptrService.Length != 0) {
+            DnsNaptrService = other.DnsNaptrService;
+          }
+          if (other.DnsNaptrRegexLength != 0) {
+            DnsNaptrRegexLength = other.DnsNaptrRegexLength;
+          }
+          if (other.DnsNaptrRegex.Length != 0) {
+            DnsNaptrRegex = other.DnsNaptrRegex;
+          }
+          if (other.DnsNaptrReplacementLength != 0) {
+            DnsNaptrReplacementLength = other.DnsNaptrReplacementLength;
+          }
+          if (other.DnsNaptrReplacement.Length != 0) {
+            DnsNaptrReplacement = other.DnsNaptrReplacement;
+          }
+          if (other.DnsA.Length != 0) {
+            DnsA = other.DnsA;
+          }
+          if (other.DnsMd.Length != 0) {
+            DnsMd = other.DnsMd;
+          }
+          if (other.DnsMf.Length != 0) {
+            DnsMf = other.DnsMf;
+          }
+          if (other.DnsMb.Length != 0) {
+            DnsMb = other.DnsMb;
+          }
+          if (other.DnsMg.Length != 0) {
+            DnsMg = other.DnsMg;
+          }
+          if (other.DnsMr.Length != 0) {
+            DnsMr = other.DnsMr;
+          }
+          if (other.DnsNull.Length != 0) {
+            DnsNull = other.DnsNull;
+          }
+          if (other.DnsAaaa.Length != 0) {
+            DnsAaaa = other.DnsAaaa;
+          }
+          if (other.DnsCname.Length != 0) {
+            DnsCname = other.DnsCname;
+          }
+          if (other.DnsRrUdpPayloadSize != 0) {
+            DnsRrUdpPayloadSize = other.DnsRrUdpPayloadSize;
+          }
+          if (other.DnsSoaMname.Length != 0) {
+            DnsSoaMname = other.DnsSoaMname;
+          }
+          if (other.DnsSoaRname.Length != 0) {
+            DnsSoaRname = other.DnsSoaRname;
+          }
+          if (other.DnsSoaSerialNumber != 0) {
+            DnsSoaSerialNumber = other.DnsSoaSerialNumber;
+          }
+          if (other.DnsSoaRefreshInterval != 0) {
+            DnsSoaRefreshInterval = other.DnsSoaRefreshInterval;
+          }
+          if (other.DnsSoaRetryInterval != 0) {
+            DnsSoaRetryInterval = other.DnsSoaRetryInterval;
+          }
+          if (other.DnsSoaExpireLimit != 0) {
+            DnsSoaExpireLimit = other.DnsSoaExpireLimit;
+          }
+          if (other.DnsSoaMininumTtl != 0) {
+            DnsSoaMininumTtl = other.DnsSoaMininumTtl;
+          }
+          if (other.DnsPtrDomainName.Length != 0) {
+            DnsPtrDomainName = other.DnsPtrDomainName;
+          }
+          if (other.DnsMinfoR.Length != 0) {
+            DnsMinfoR = other.DnsMinfoR;
+          }
+          if (other.DnsMinfoE.Length != 0) {
+            DnsMinfoE = other.DnsMinfoE;
+          }
+          if (other.DnsMxPreference != 0) {
+            DnsMxPreference = other.DnsMxPreference;
+          }
+          if (other.DnsMxMailExchange.Length != 0) {
+            DnsMxMailExchange = other.DnsMxMailExchange;
+          }
+          if (other.DnsTxtLength != 0) {
+            DnsTxtLength = other.DnsTxtLength;
+          }
+          if (other.DnsTxt.Length != 0) {
+            DnsTxt = other.DnsTxt;
+          }
+          if (other.DnsNs.Length != 0) {
+            DnsNs = other.DnsNs;
           }
         }
 
@@ -9440,6 +2889,174 @@ namespace Ndx.Decoders.Core {
               }
               case 98: {
                 DnsRespValue = input.ReadString();
+                break;
+              }
+              case 106: {
+                DnsSrvService = input.ReadString();
+                break;
+              }
+              case 114: {
+                DnsSrvProto = input.ReadString();
+                break;
+              }
+              case 122: {
+                DnsSrvName = input.ReadString();
+                break;
+              }
+              case 128: {
+                DnsSrvPriority = input.ReadUInt32();
+                break;
+              }
+              case 136: {
+                DnsSrvWeight = input.ReadUInt32();
+                break;
+              }
+              case 144: {
+                DnsSrvPort = input.ReadUInt32();
+                break;
+              }
+              case 154: {
+                DnsSrvTarget = input.ReadString();
+                break;
+              }
+              case 160: {
+                DnsNaptrOrder = input.ReadUInt32();
+                break;
+              }
+              case 168: {
+                DnsNaptrPreference = input.ReadUInt32();
+                break;
+              }
+              case 176: {
+                DnsNaptrFlagsLength = input.ReadUInt32();
+                break;
+              }
+              case 186: {
+                DnsNaptrFlags = input.ReadString();
+                break;
+              }
+              case 192: {
+                DnsNaptrServiceLength = input.ReadUInt32();
+                break;
+              }
+              case 202: {
+                DnsNaptrService = input.ReadString();
+                break;
+              }
+              case 208: {
+                DnsNaptrRegexLength = input.ReadUInt32();
+                break;
+              }
+              case 218: {
+                DnsNaptrRegex = input.ReadString();
+                break;
+              }
+              case 224: {
+                DnsNaptrReplacementLength = input.ReadUInt32();
+                break;
+              }
+              case 234: {
+                DnsNaptrReplacement = input.ReadString();
+                break;
+              }
+              case 242: {
+                DnsA = input.ReadBytes();
+                break;
+              }
+              case 250: {
+                DnsMd = input.ReadString();
+                break;
+              }
+              case 258: {
+                DnsMf = input.ReadString();
+                break;
+              }
+              case 266: {
+                DnsMb = input.ReadString();
+                break;
+              }
+              case 274: {
+                DnsMg = input.ReadString();
+                break;
+              }
+              case 282: {
+                DnsMr = input.ReadString();
+                break;
+              }
+              case 290: {
+                DnsNull = input.ReadBytes();
+                break;
+              }
+              case 298: {
+                DnsAaaa = input.ReadBytes();
+                break;
+              }
+              case 306: {
+                DnsCname = input.ReadString();
+                break;
+              }
+              case 312: {
+                DnsRrUdpPayloadSize = input.ReadUInt32();
+                break;
+              }
+              case 322: {
+                DnsSoaMname = input.ReadString();
+                break;
+              }
+              case 330: {
+                DnsSoaRname = input.ReadString();
+                break;
+              }
+              case 336: {
+                DnsSoaSerialNumber = input.ReadUInt32();
+                break;
+              }
+              case 344: {
+                DnsSoaRefreshInterval = input.ReadUInt32();
+                break;
+              }
+              case 352: {
+                DnsSoaRetryInterval = input.ReadUInt32();
+                break;
+              }
+              case 360: {
+                DnsSoaExpireLimit = input.ReadUInt32();
+                break;
+              }
+              case 368: {
+                DnsSoaMininumTtl = input.ReadUInt32();
+                break;
+              }
+              case 378: {
+                DnsPtrDomainName = input.ReadString();
+                break;
+              }
+              case 386: {
+                DnsMinfoR = input.ReadString();
+                break;
+              }
+              case 394: {
+                DnsMinfoE = input.ReadString();
+                break;
+              }
+              case 400: {
+                DnsMxPreference = input.ReadUInt32();
+                break;
+              }
+              case 410: {
+                DnsMxMailExchange = input.ReadString();
+                break;
+              }
+              case 416: {
+                DnsTxtLength = input.ReadUInt32();
+                break;
+              }
+              case 426: {
+                DnsTxt = input.ReadString();
+                break;
+              }
+              case 434: {
+                DnsNs = input.ReadString();
                 break;
               }
             }
