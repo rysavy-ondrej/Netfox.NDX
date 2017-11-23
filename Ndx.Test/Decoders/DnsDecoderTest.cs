@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,21 @@ namespace Ndx.Test.Decoders
         public void DnsFactoryDnsMultipleQueriesTest()
         {
             var dns = Dns.DecodeJson(dnsStr2);
+        }
+
+        [Test()]
+        public void DnsDecoderPerformanceTest()
+        {
+            int repeat = 100000;
+            Console.Write($"Running 'Dns.DecodeJson(dnsStr2)' {repeat} times...");
+            var sw = new Stopwatch();
+            sw.Start();
+            for(int i=0; i< repeat; i++)
+            {
+                var dns = Dns.DecodeJson(dnsStr2);
+            }
+            sw.Stop();
+            Console.WriteLine($"took {sw.Elapsed}. Rate {(float)repeat / (sw.ElapsedMilliseconds / 1000)}.");
         }
     }
 }
