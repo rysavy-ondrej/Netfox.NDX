@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Netdx
 {
-    internal class PrepareTrace
+    internal class DecodeTrace
     {
         public void Execute(Stream instream, Stream outstream)
         {
@@ -27,7 +27,7 @@ namespace Netdx
             }
         }
 
-        internal static string Name = "Prepare-Trace";
+        internal static string Name = "Decode-Trace";
 
         internal static Action<CommandLineApplication> Register()
         {
@@ -47,7 +47,7 @@ namespace Netdx
                         target.ShowHelp(Name);
                         return 0;
                     }
-                    var cmd = new PrepareTrace();
+                    var cmd = new DecodeTrace();
 
 
                     

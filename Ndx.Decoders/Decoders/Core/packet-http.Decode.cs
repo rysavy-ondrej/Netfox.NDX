@@ -38,44 +38,8 @@ namespace Ndx.Decoders.Core
         if (val != null) obj.HttpAuthbasic = val.Value<string>();
       }
       {
-        var val = token["http_http_authcitrix"];
-        if (val != null) obj.HttpAuthcitrix = Convert.ToInt32(val.Value<string>(), 10) != 0;
-      }
-      {
-        var val = token["http_authcitrix_http_authcitrix_user"];
-        if (val != null) obj.HttpAuthcitrixUser = val.Value<string>();
-      }
-      {
-        var val = token["http_authcitrix_http_authcitrix_domain"];
-        if (val != null) obj.HttpAuthcitrixDomain = val.Value<string>();
-      }
-      {
-        var val = token["http_authcitrix_http_authcitrix_password"];
-        if (val != null) obj.HttpAuthcitrixPassword = val.Value<string>();
-      }
-      {
-        var val = token["http_authcitrix_http_authcitrix_session"];
-        if (val != null) obj.HttpAuthcitrixSession = val.Value<string>();
-      }
-      {
         var val = token["text_http_request_method"];
         if (val != null) obj.HttpRequestMethod = val.Value<string>();
-      }
-      {
-        var val = token["text_http_request_uri"];
-        if (val != null) obj.HttpRequestUri = val.Value<string>();
-      }
-      {
-        var val = token["http_request_uri_http_request_uri_path"];
-        if (val != null) obj.HttpRequestUriPath = val.Value<string>();
-      }
-      {
-        var val = token["http_request_uri_http_request_uri_query"];
-        if (val != null) obj.HttpRequestUriQuery = val.Value<string>();
-      }
-      {
-        var val = token["http_request_uri_query_http_request_uri_query_parameter"];
-        if (val != null) obj.HttpRequestUriQueryParameter = val.Value<string>();
       }
       {
         var val = token["text_http_request_version"];
@@ -92,10 +56,6 @@ namespace Ndx.Decoders.Core
       {
         var val = token["text_http_response_code"];
         if (val != null) obj.HttpResponseCode = Convert.ToUInt32(val.Value<string>(), 10);
-      }
-      {
-        var val = token["text_http_response_code_desc"];
-        if (val != null) obj.HttpResponseCodeDesc = val.Value<string>();
       }
       {
         var val = token["text_http_response_phrase"];
@@ -202,26 +162,6 @@ namespace Ndx.Decoders.Core
         if (val != null) obj.HttpLocation = val.Value<string>();
       }
       {
-        var val = token["http_http_sec_websocket_accept"];
-        if (val != null) obj.HttpSecWebsocketAccept = val.Value<string>();
-      }
-      {
-        var val = token["http_http_sec_websocket_extensions"];
-        if (val != null) obj.HttpSecWebsocketExtensions = val.Value<string>();
-      }
-      {
-        var val = token["http_http_sec_websocket_key"];
-        if (val != null) obj.HttpSecWebsocketKey = val.Value<string>();
-      }
-      {
-        var val = token["http_http_sec_websocket_protocol"];
-        if (val != null) obj.HttpSecWebsocketProtocol = val.Value<string>();
-      }
-      {
-        var val = token["http_http_sec_websocket_version"];
-        if (val != null) obj.HttpSecWebsocketVersion = val.Value<string>();
-      }
-      {
         var val = token["http_http_set_cookie"];
         if (val != null) obj.HttpSetCookie = val.Value<string>();
       }
@@ -232,34 +172,6 @@ namespace Ndx.Decoders.Core
       {
         var val = token["http_http_x_forwarded_for"];
         if (val != null) obj.HttpXForwardedFor = val.Value<string>();
-      }
-      {
-        var val = token["http_http_request_in"];
-        if (val != null) obj.HttpRequestIn = default(Int64);
-      }
-      {
-        var val = token["http_http_response_in"];
-        if (val != null) obj.HttpResponseIn = default(Int64);
-      }
-      {
-        var val = token["http_http_next_request_in"];
-        if (val != null) obj.HttpNextRequestIn = default(Int64);
-      }
-      {
-        var val = token["http_http_next_response_in"];
-        if (val != null) obj.HttpNextResponseIn = default(Int64);
-      }
-      {
-        var val = token["http_http_prev_request_in"];
-        if (val != null) obj.HttpPrevRequestIn = default(Int64);
-      }
-      {
-        var val = token["http_http_prev_response_in"];
-        if (val != null) obj.HttpPrevResponseIn = default(Int64);
-      }
-      {
-        var val = token["http_http_time"];
-        if (val != null) obj.HttpTime = default(Int64);
       }
       {
         var val = token["http_http_chunked_trailer_part"];
@@ -278,8 +190,8 @@ namespace Ndx.Decoders.Core
         if (val != null) obj.HttpFileData = val.Value<string>();
       }
       {
-        var val = token["http_http_unknown_header"];
-        if (val != null) obj.HttpUnknownHeader = val.Value<string>();
+        var val = token["http_http_time"];
+        if (val != null) obj.HttpTime = Convert.ToSingle(val.Value<string>());
       }
       return obj;
     }

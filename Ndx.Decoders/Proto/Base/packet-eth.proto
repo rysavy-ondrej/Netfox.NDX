@@ -1,5 +1,5 @@
 syntax = "proto3";
-package Ndx.Decoders.Basic;
+package Ndx.Decoders.Base;
 message Eth {
    // Destination ('eth_eth_dst')
    bytes EthDst = 1;

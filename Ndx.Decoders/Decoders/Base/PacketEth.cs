@@ -7,7 +7,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Ndx.Decoders.Basic {
+namespace Ndx.Decoders.Base {
 
   /// <summary>Holder for reflection information generated from packet-eth.proto</summary>
   public static partial class PacketEthReflection {
@@ -22,14 +22,14 @@ namespace Ndx.Decoders.Basic {
     static PacketEthReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChBwYWNrZXQtZXRoLnByb3RvEhJOZHguRGVjb2RlcnMuQmFzaWMidgoDRXRo",
-            "Eg4KBkV0aERzdBgBIAEoDBIWCg5FdGhEc3RSZXNvbHZlZBgCIAEoCRIOCgZF",
-            "dGhTcmMYAyABKAwSFgoORXRoU3JjUmVzb2x2ZWQYBCABKAkSDgoGRXRoTGVu",
-            "GAUgASgNEg8KB0V0aFR5cGUYBiABKA1iBnByb3RvMw=="));
+            "ChBwYWNrZXQtZXRoLnByb3RvEhFOZHguRGVjb2RlcnMuQmFzZSJ2CgNFdGgS",
+            "DgoGRXRoRHN0GAEgASgMEhYKDkV0aERzdFJlc29sdmVkGAIgASgJEg4KBkV0",
+            "aFNyYxgDIAEoDBIWCg5FdGhTcmNSZXNvbHZlZBgEIAEoCRIOCgZFdGhMZW4Y",
+            "BSABKA0SDwoHRXRoVHlwZRgGIAEoDWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Basic.Eth), global::Ndx.Decoders.Basic.Eth.Parser, new[]{ "EthDst", "EthDstResolved", "EthSrc", "EthSrcResolved", "EthLen", "EthType" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Base.Eth), global::Ndx.Decoders.Base.Eth.Parser, new[]{ "EthDst", "EthDstResolved", "EthSrc", "EthSrcResolved", "EthLen", "EthType" }, null, null, null)
           }));
     }
     #endregion
@@ -43,7 +43,7 @@ namespace Ndx.Decoders.Basic {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Decoders.Basic.PacketEthReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Ndx.Decoders.Base.PacketEthReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

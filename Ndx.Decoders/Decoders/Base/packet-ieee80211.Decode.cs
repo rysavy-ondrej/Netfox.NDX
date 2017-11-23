@@ -1,7 +1,7 @@
 using Newtonsoft.Json.Linq;
 using Google.Protobuf;
 using System;
-namespace Ndx.Decoders.Basic
+namespace Ndx.Decoders.Base
 {
   public sealed partial class Ieee80211
   {

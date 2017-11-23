@@ -1,5 +1,5 @@
 syntax = "proto3";
-package Ndx.Decoders.Basic;
+package Ndx.Decoders.Base;
 message Udp {
    // Source Port ('udp_udp_srcport')
    uint32 UdpSrcport = 1;
@@ -7,52 +7,16 @@ message Udp {
    // Destination Port ('udp_udp_dstport')
    uint32 UdpDstport = 2;
 
-   // Source or Destination Port ('udp_udp_port')
-   uint32 UdpPort = 3;
-
    // Stream index ('udp_udp_stream')
-   uint32 UdpStream = 4;
+   uint32 UdpStream = 3;
 
    // Length ('udp_udp_length')
-   uint32 UdpLength = 5;
+   uint32 UdpLength = 4;
 
    // Checksum ('udp_udp_checksum')
-   uint32 UdpChecksum = 6;
-
-   // Calculated Checksum ('udp_udp_checksum_calculated')
-   uint32 UdpChecksumCalculated = 7;
+   uint32 UdpChecksum = 5;
 
    // Checksum Status ('udp_checksum_udp_checksum_status')
-   uint32 UdpChecksumStatus = 8;
-
-   // Source process user ID ('udp_udp_proc_srcuid')
-   uint32 UdpProcSrcuid = 9;
-
-   // Source process ID ('udp_udp_proc_srcpid')
-   uint32 UdpProcSrcpid = 10;
-
-   // Source process user name ('udp_udp_proc_srcuname')
-   string UdpProcSrcuname = 11;
-
-   // Source process name ('udp_udp_proc_srccmd')
-   string UdpProcSrccmd = 12;
-
-   // Destination process user ID ('udp_udp_proc_dstuid')
-   uint32 UdpProcDstuid = 13;
-
-   // Destination process ID ('udp_udp_proc_dstpid')
-   uint32 UdpProcDstpid = 14;
-
-   // Destination process user name ('udp_udp_proc_dstuname')
-   string UdpProcDstuname = 15;
-
-   // Destination process name ('udp_udp_proc_dstcmd')
-   string UdpProcDstcmd = 16;
-
-   // PDU Size ('udp_udp_pdu_size')
-   uint32 UdpPduSize = 17;
-
-   // Checksum coverage ('udp_udp_checksum_coverage')
-   uint32 UdpChecksumCoverage = 18;
+   uint32 UdpChecksumStatus = 6;
 
 }

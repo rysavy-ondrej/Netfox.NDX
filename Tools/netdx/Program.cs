@@ -10,7 +10,7 @@ namespace Netdx
 
             commandLineApplication.Command(GenerateProto.Name, GenerateProto.Register());
             commandLineApplication.Command(GenerateTypeInfo.Name, GenerateTypeInfo.Register());
-            commandLineApplication.Command(PrepareTrace.Name, PrepareTrace.Register());
+            commandLineApplication.Command(DecodeTrace.Name, DecodeTrace.Register());
             commandLineApplication.HelpOption("-? | -h | --help");
             commandLineApplication.Name = typeof(Program).Assembly.GetName().Name;
             commandLineApplication.FullName = $"NDX Command Line Tools ({typeof(Program).Assembly.GetName().Version})";

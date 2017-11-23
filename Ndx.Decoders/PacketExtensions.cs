@@ -17,8 +17,29 @@ namespace Ndx.Decoders
         /// <returns>object for protocol specified by type <typeparamref name="T"/> or null.</returns>
         public T Protocol<T>() where T: class
         {
-            var p = this.protocols_.FirstOrDefault(x => typeof(T).Name.Equals(x.ProtocolTypeCase.ToString(), StringComparison.InvariantCultureIgnoreCase));
-            return p?.GetAs<T>();
+            if (Enum.TryParse<Types.Protocol.ProtocolTypeOneofCase>(typeof(T).Name, out var pt))
+            {
+                var p = this.protocols_.FirstOrDefault(x => x.ProtocolTypeCase == pt);
+                return p?.GetAs<T>();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public bool HasProtocol(string protocol)
+        {
+            if (Enum.TryParse<Types.Protocol.ProtocolTypeOneofCase>(protocol, out var pt))
+            {
+                return HasProtocol(pt);
+            }
+            return false;
+        }
+
+        public bool HasProtocol(Types.Protocol.ProtocolTypeOneofCase protocol)
+        {
+            return this.protocols_.Any(x => x.ProtocolTypeCase == protocol);
         }
 
         public static partial class Types

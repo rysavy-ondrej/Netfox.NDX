@@ -54,7 +54,7 @@
     <Compile Include="Commands\Check-Trace.cs" />
     <Compile Include="Commands\Generate-Proto.cs" />
     <Compile Include="Commands\Generate-TypeInfo.cs" />
-    <Compile Include="Commands\Prepare-Trace.cs" />
+    <Compile Include="Commands\Decode-Trace.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -12,12 +12,6 @@ Fields:
     Display: BasePtUdp
     Info: Destination Port
     JsonName: udp_udp_dstport
-  udp.port:
-    Name: udp.port
-    Type: FtUint16
-    Display: BasePtUdp
-    Info: Source or Destination Port
-    JsonName: udp_udp_port
   udp.stream:
     Name: udp.stream
     Type: FtUint32
@@ -36,70 +30,8 @@ Fields:
     Display: BaseHex
     Info: Checksum
     JsonName: udp_udp_checksum
-  udp.checksum_calculated:
-    Name: udp.checksum_calculated
-    Type: FtUint16
-    Display: BaseHex
-    Info: Calculated Checksum
-    JsonName: udp_udp_checksum_calculated
   udp.checksum.status:
     Name: udp.checksum.status
     Type: FtUint8
     Info: Checksum Status
     JsonName: udp_checksum_udp_checksum_status
-  udp.proc.srcuid:
-    Name: udp.proc.srcuid
-    Type: FtUint32
-    Display: BaseDec
-    Info: Source process user ID
-    JsonName: udp_udp_proc_srcuid
-  udp.proc.srcpid:
-    Name: udp.proc.srcpid
-    Type: FtUint32
-    Display: BaseDec
-    Info: Source process ID
-    JsonName: udp_udp_proc_srcpid
-  udp.proc.srcuname:
-    Name: udp.proc.srcuname
-    Type: FtString
-    Info: Source process user name
-    JsonName: udp_udp_proc_srcuname
-  udp.proc.srccmd:
-    Name: udp.proc.srccmd
-    Type: FtString
-    Info: Source process name
-    JsonName: udp_udp_proc_srccmd
-  udp.proc.dstuid:
-    Name: udp.proc.dstuid
-    Type: FtUint32
-    Display: BaseDec
-    Info: Destination process user ID
-    JsonName: udp_udp_proc_dstuid
-  udp.proc.dstpid:
-    Name: udp.proc.dstpid
-    Type: FtUint32
-    Display: BaseDec
-    Info: Destination process ID
-    JsonName: udp_udp_proc_dstpid
-  udp.proc.dstuname:
-    Name: udp.proc.dstuname
-    Type: FtString
-    Info: Destination process user name
-    JsonName: udp_udp_proc_dstuname
-  udp.proc.dstcmd:
-    Name: udp.proc.dstcmd
-    Type: FtString
-    Info: Destination process name
-    JsonName: udp_udp_proc_dstcmd
-  udp.pdu.size:
-    Name: udp.pdu.size
-    Type: FtUint32
-    Display: BaseDec
-    Info: PDU Size
-    JsonName: udp_udp_pdu_size
-  udp.checksum_coverage:
-    Name: udp.checksum_coverage
-    Type: FtUint16
-    Display: BaseDec
-    Info: Checksum coverage
-    JsonName: udp_udp_checksum_coverage

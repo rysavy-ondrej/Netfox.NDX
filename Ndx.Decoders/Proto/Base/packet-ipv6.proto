@@ -1,5 +1,5 @@
 syntax = "proto3";
-package Ndx.Decoders.Basic;
+package Ndx.Decoders.Base;
 message Ipv6 {
    // Version ('ipv6_ipv6_version')
    uint32 Ipv6Version = 1;

@@ -9,6 +9,7 @@ using Ndx.Decoders.Basic;
 using System.IO;
 using Ndx.Captures;
 using Ndx.Decoders.Core;
+using Ndx.Decoders.Base;
 
 namespace Ndx.Decoders.Tests
 {

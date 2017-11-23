@@ -1,5 +1,5 @@
 syntax = "proto3";
-package Ndx.Decoders.Basic;
+package Ndx.Decoders.Base;
 message Ip {
    // Version ('ip_ip_version')
    uint32 IpVersion = 1;
@@ -55,298 +55,34 @@ message Ip {
    // Source or Destination Address ('ip_ip_addr')
    bytes IpAddr = 18;
 
-   // Source or Destination Host ('ip_ip_host')
-   string IpHost = 19;
-
-   // Source or Destination GeoIP Country ('ip_ip_geoip_country')
-   string IpGeoipCountry = 20;
-
-   // Source or Destination GeoIP City ('ip_ip_geoip_city')
-   string IpGeoipCity = 21;
-
-   // Source or Destination GeoIP Organization ('ip_ip_geoip_org')
-   string IpGeoipOrg = 22;
-
-   // Source or Destination GeoIP ISP ('ip_ip_geoip_isp')
-   string IpGeoipIsp = 23;
-
-   // Source or Destination GeoIP AS Number ('ip_ip_geoip_asnum')
-   string IpGeoipAsnum = 24;
-
-   // Source or Destination GeoIP Latitude ('ip_ip_geoip_lat')
-   double IpGeoipLat = 25;
-
-   // Source or Destination GeoIP Longitude ('ip_ip_geoip_lon')
-   double IpGeoipLon = 26;
-
-   // Source GeoIP Country ('ip_ip_geoip_src_country')
-   string IpGeoipSrcCountry = 27;
-
-   // Source GeoIP City ('ip_ip_geoip_src_city')
-   string IpGeoipSrcCity = 28;
-
-   // Source GeoIP Organization ('ip_ip_geoip_src_org')
-   string IpGeoipSrcOrg = 29;
-
-   // Source GeoIP ISP ('ip_ip_geoip_src_isp')
-   string IpGeoipSrcIsp = 30;
-
-   // Source GeoIP AS Number ('ip_ip_geoip_src_asnum')
-   string IpGeoipSrcAsnum = 31;
-
-   // Source GeoIP Latitude ('ip_ip_geoip_src_lat')
-   double IpGeoipSrcLat = 32;
-
-   // Source GeoIP Longitude ('ip_ip_geoip_src_lon')
-   double IpGeoipSrcLon = 33;
-
-   // Destination GeoIP Country ('ip_ip_geoip_dst_country')
-   string IpGeoipDstCountry = 34;
-
-   // Destination GeoIP City ('ip_ip_geoip_dst_city')
-   string IpGeoipDstCity = 35;
-
-   // Destination GeoIP Organization ('ip_ip_geoip_dst_org')
-   string IpGeoipDstOrg = 36;
-
-   // Destination GeoIP ISP ('ip_ip_geoip_dst_isp')
-   string IpGeoipDstIsp = 37;
-
-   // Destination GeoIP AS Number ('ip_ip_geoip_dst_asnum')
-   string IpGeoipDstAsnum = 38;
-
-   // Destination GeoIP Latitude ('ip_ip_geoip_dst_lat')
-   double IpGeoipDstLat = 39;
-
-   // Destination GeoIP Longitude ('ip_ip_geoip_dst_lon')
-   double IpGeoipDstLon = 40;
-
    // Flags ('ip_ip_flags')
-   uint32 IpFlags = 41;
+   uint32 IpFlags = 19;
 
    // Security flag ('ip_flags_ip_flags_sf')
-   bool IpFlagsSf = 42;
+   bool IpFlagsSf = 20;
 
    // Reserved bit ('ip_flags_ip_flags_rb')
-   bool IpFlagsRb = 43;
+   bool IpFlagsRb = 21;
 
    // Don't fragment ('ip_flags_ip_flags_df')
-   bool IpFlagsDf = 44;
+   bool IpFlagsDf = 22;
 
    // More fragments ('ip_flags_ip_flags_mf')
-   bool IpFlagsMf = 45;
+   bool IpFlagsMf = 23;
 
    // Fragment offset ('ip_ip_frag_offset')
-   uint32 IpFragOffset = 46;
+   uint32 IpFragOffset = 24;
 
    // Time to live ('ip_ip_ttl')
-   uint32 IpTtl = 47;
+   uint32 IpTtl = 25;
 
    // Protocol ('ip_ip_proto')
-   uint32 IpProto = 48;
+   uint32 IpProto = 26;
 
    // Header checksum ('ip_ip_checksum')
-   uint32 IpChecksum = 49;
-
-   // Calculated Checksum ('ip_ip_checksum_calculated')
-   uint32 IpChecksumCalculated = 50;
+   uint32 IpChecksum = 27;
 
    // Header checksum status ('ip_checksum_ip_checksum_status')
-   uint32 IpChecksumStatus = 51;
-
-   // Type ('ip_ip_opt_type')
-   uint32 IpOptType = 52;
-
-   // Copy on fragmentation ('ip_opt_type_ip_opt_type_copy')
-   bool IpOptTypeCopy = 53;
-
-   // Class ('ip_opt_type_ip_opt_type_class')
-   uint32 IpOptTypeClass = 54;
-
-   // Number ('ip_opt_type_ip_opt_type_number')
-   uint32 IpOptTypeNumber = 55;
-
-   // Length ('ip_ip_opt_len')
-   uint32 IpOptLen = 56;
-
-   // Pointer ('ip_ip_opt_ptr')
-   uint32 IpOptPtr = 57;
-
-   // Stream Identifier ('ip_ip_opt_sid')
-   uint32 IpOptSid = 58;
-
-   // MTU ('ip_ip_opt_mtu')
-   uint32 IpOptMtu = 59;
-
-   // ID Number ('ip_ip_opt_id_number')
-   uint32 IpOptIdNumber = 60;
-
-   // Outbound Hop Count ('ip_ip_opt_ohc')
-   uint32 IpOptOhc = 61;
-
-   // Return Hop Count ('ip_ip_opt_rhc')
-   uint32 IpOptRhc = 62;
-
-   // Originator IP Address ('ip_ip_opt_originator')
-   bytes IpOptOriginator = 63;
-
-   // Router Alert ('ip_ip_opt_ra')
-   uint32 IpOptRa = 64;
-
-   // IP Address ('ip_ip_opt_addr')
-   bytes IpOptAddr = 65;
-
-   // Padding ('ip_ip_opt_padding')
-   bytes IpOptPadding = 66;
-
-   // Function ('ip_ip_opt_qs_func')
-   uint32 IpOptQsFunc = 67;
-
-   // Rate ('ip_ip_opt_qs_rate')
-   uint32 IpOptQsRate = 68;
-
-   // QS TTL ('ip_ip_opt_qs_ttl')
-   uint32 IpOptQsTtl = 69;
-
-   // TTL Diff ('ip_ip_opt_qs_ttl_diff')
-   uint32 IpOptQsTtlDiff = 70;
-
-   // Not Used ('ip_ip_opt_qs_unused')
-   uint32 IpOptQsUnused = 71;
-
-   // QS Nonce ('ip_ip_opt_qs_nonce')
-   uint32 IpOptQsNonce = 72;
-
-   // Reserved ('ip_ip_opt_qs_reserved')
-   uint32 IpOptQsReserved = 73;
-
-   // Security ('ip_ip_opt_sec_rfc791_sec')
-   uint32 IpOptSecRfc791Sec = 74;
-
-   // Compartments ('ip_ip_opt_sec_rfc791_comp')
-   uint32 IpOptSecRfc791Comp = 75;
-
-   // Handling Restrictions ('ip_ip_opt_sec_rfc791_hr')
-   string IpOptSecRfc791Hr = 76;
-
-   // Transmission Control Code ('ip_ip_opt_sec_rfc791_tcc')
-   string IpOptSecRfc791Tcc = 77;
-
-   // Classification Level ('ip_ip_opt_sec_cl')
-   uint32 IpOptSecCl = 78;
-
-   // Protection Authority Flags ('ip_ip_opt_sec_prot_auth_flags')
-   uint32 IpOptSecProtAuthFlags = 79;
-
-   // GENSER ('ip_ip_opt_sec_prot_auth_genser')
-   bool IpOptSecProtAuthGenser = 80;
-
-   // SIOP-ESI ('ip_ip_opt_sec_prot_auth_siop_esi')
-   bool IpOptSecProtAuthSiopEsi = 81;
-
-   // SCI ('ip_ip_opt_sec_prot_auth_sci')
-   bool IpOptSecProtAuthSci = 82;
-
-   // NSA ('ip_ip_opt_sec_prot_auth_nsa')
-   bool IpOptSecProtAuthNsa = 83;
-
-   // DOE ('ip_ip_opt_sec_prot_auth_doe')
-   bool IpOptSecProtAuthDoe = 84;
-
-   // Unassigned ('ip_ip_opt_sec_prot_auth_unassigned')
-   uint32 IpOptSecProtAuthUnassigned = 85;
-
-   // Field Termination Indicator ('ip_ip_opt_sec_prot_auth_fti')
-   bool IpOptSecProtAuthFti = 86;
-
-   // Additional Security Info Format Code ('ip_ip_opt_ext_sec_add_sec_info_format_code')
-   uint32 IpOptExtSecAddSecInfoFormatCode = 87;
-
-   // Additional Security Info ('ip_ip_opt_ext_sec_add_sec_info')
-   bytes IpOptExtSecAddSecInfo = 88;
-
-   // Recorded Route ('ip_ip_rec_rt')
-   bytes IpRecRt = 89;
-
-   // Recorded Route Host ('ip_ip_rec_rt_host')
-   string IpRecRtHost = 90;
-
-   // Current Route ('ip_ip_cur_rt')
-   bytes IpCurRt = 91;
-
-   // Current Route Host ('ip_ip_cur_rt_host')
-   string IpCurRtHost = 92;
-
-   // Source Route ('ip_ip_src_rt')
-   bytes IpSrcRt = 93;
-
-   // Source Route Host ('ip_ip_src_rt_host')
-   string IpSrcRtHost = 94;
-
-   // Empty Route ('ip_ip_empty_rt')
-   bytes IpEmptyRt = 95;
-
-   // Empty Route Host ('ip_ip_empty_rt_host')
-   string IpEmptyRtHost = 96;
-
-   // Tag Type ('ip_ip_cipso_tag_type')
-   uint32 IpCipsoTagType = 97;
-
-   // Fragment overlap ('ip_fragment_ip_fragment_overlap')
-   bool IpFragmentOverlap = 98;
-
-   // Conflicting data in fragment overlap ('ip_fragment_overlap_ip_fragment_overlap_conflict')
-   bool IpFragmentOverlapConflict = 99;
-
-   // Multiple tail fragments found ('ip_fragment_ip_fragment_multipletails')
-   bool IpFragmentMultipletails = 100;
-
-   // Fragment too long ('ip_fragment_ip_fragment_toolongfragment')
-   bool IpFragmentToolongfragment = 101;
-
-   // Defragmentation error ('ip_fragment_ip_fragment_error')
-   int64 IpFragmentError = 102;
-
-   // Fragment count ('ip_fragment_ip_fragment_count')
-   uint32 IpFragmentCount = 103;
-
-   // IPv4 Fragment ('ip_ip_fragment')
-   int64 IpFragment = 104;
-
-   // IPv4 Fragments ('ip_ip_fragments')
-   bytes IpFragments = 105;
-
-   // Reassembled IPv4 in frame ('ip_ip_reassembled_in')
-   int64 IpReassembledIn = 106;
-
-   // Reassembled IPv4 length ('ip_ip_reassembled_length')
-   uint32 IpReassembledLength = 107;
-
-   // Reassembled IPv4 data ('ip_ip_reassembled_data')
-   bytes IpReassembledData = 108;
-
-   // DOI ('ip_ip_cipso_doi')
-   uint32 IpCipsoDoi = 109;
-
-   // Sensitivity Level ('ip_ip_cipso_sensitivity_level')
-   uint32 IpCipsoSensitivityLevel = 110;
-
-   // Categories ('ip_ip_cipso_categories')
-   string IpCipsoCategories = 111;
-
-   // Tag data ('ip_ip_cipso_tag_data')
-   bytes IpCipsoTagData = 112;
-
-   // Overflow ('ip_ip_opt_overflow')
-   uint32 IpOptOverflow = 113;
-
-   // Flag ('ip_ip_opt_flag')
-   uint32 IpOptFlag = 114;
-
-   // Time stamp ('ip_ip_opt_time_stamp')
-   uint32 IpOptTimeStamp = 115;
-
-   // Address ('ip_ip_opt_time_stamp_addr')
-   bytes IpOptTimeStampAddr = 116;
+   uint32 IpChecksumStatus = 28;
 
 }

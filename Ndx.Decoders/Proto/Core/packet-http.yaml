@@ -32,60 +32,11 @@ Fields:
     Type: FtString
     Info: Credentials
     JsonName: http_http_authbasic
-  http.authcitrix:
-    Name: http.authcitrix
-    Type: FtBoolean
-    Info: Citrix AG Auth
-    JsonName: http_http_authcitrix
-  http.authcitrix.user:
-    Name: http.authcitrix.user
-    Type: FtString
-    Info: Citrix AG Username
-    JsonName: http_authcitrix_http_authcitrix_user
-  http.authcitrix.domain:
-    Name: http.authcitrix.domain
-    Type: FtString
-    Info: Citrix AG Domain
-    JsonName: http_authcitrix_http_authcitrix_domain
-  http.authcitrix.password:
-    Name: http.authcitrix.password
-    Type: FtString
-    Info: Citrix AG Password
-    JsonName: http_authcitrix_http_authcitrix_password
-  http.authcitrix.session:
-    Name: http.authcitrix.session
-    Type: FtString
-    Info: Citrix AG Session ID
-    JsonName: http_authcitrix_http_authcitrix_session
   http.request.method:
     Name: http.request.method
     Type: FtString
     Info: Request Method
     JsonName: text_http_request_method
-  http.request.uri:
-    Name: http.request.uri
-    Type: FtString
-    Display: StrUnicode
-    Info: Request URI
-    JsonName: text_http_request_uri
-  http.request.uri.path:
-    Name: http.request.uri.path
-    Type: FtString
-    Display: StrUnicode
-    Info: Request URI Path
-    JsonName: http_request_uri_http_request_uri_path
-  http.request.uri.query:
-    Name: http.request.uri.query
-    Type: FtString
-    Display: StrUnicode
-    Info: Request URI Query
-    JsonName: http_request_uri_http_request_uri_query
-  http.request.uri.query.parameter:
-    Name: http.request.uri.query.parameter
-    Type: FtString
-    Display: StrUnicode
-    Info: Request URI Query Parameter
-    JsonName: http_request_uri_query_http_request_uri_query_parameter
   http.request.version:
     Name: http.request.version
     Type: FtString
@@ -107,11 +58,6 @@ Fields:
     Display: BaseDec
     Info: Status Code
     JsonName: text_http_response_code
-  http.response.code.desc:
-    Name: http.response.code.desc
-    Type: FtString
-    Info: Status Code Description
-    JsonName: text_http_response_code_desc
   http.response.phrase:
     Name: http.response.phrase
     Type: FtString
@@ -244,31 +190,6 @@ Fields:
     Type: FtString
     Info: Location
     JsonName: http_http_location
-  http.sec_websocket_accept:
-    Name: http.sec_websocket_accept
-    Type: FtString
-    Info: Sec-WebSocket-Accept
-    JsonName: http_http_sec_websocket_accept
-  http.sec_websocket_extensions:
-    Name: http.sec_websocket_extensions
-    Type: FtString
-    Info: Sec-WebSocket-Extensions
-    JsonName: http_http_sec_websocket_extensions
-  http.sec_websocket_key:
-    Name: http.sec_websocket_key
-    Type: FtString
-    Info: Sec-WebSocket-Key
-    JsonName: http_http_sec_websocket_key
-  http.sec_websocket_protocol:
-    Name: http.sec_websocket_protocol
-    Type: FtString
-    Info: Sec-WebSocket-Protocol
-    JsonName: http_http_sec_websocket_protocol
-  http.sec_websocket_version:
-    Name: http.sec_websocket_version
-    Type: FtString
-    Info: Sec-WebSocket-Version
-    JsonName: http_http_sec_websocket_version
   http.set_cookie:
     Name: http.set_cookie
     Type: FtString
@@ -284,41 +205,7 @@ Fields:
     Type: FtString
     Info: X-Forwarded-For
     JsonName: http_http_x_forwarded_for
-  http.request_in:
-    Name: http.request_in
-    Type: FtFramenum
-    Info: Request in frame
-    JsonName: http_http_request_in
-  http.response_in:
-    Name: http.response_in
-    Type: FtFramenum
-    Info: Response in frame
-    JsonName: http_http_response_in
-  http.next_request_in:
-    Name: http.next_request_in
-    Type: FtFramenum
-    Info: Next request in frame
-    JsonName: http_http_next_request_in
-  http.next_response_in:
-    Name: http.next_response_in
-    Type: FtFramenum
-    Info: Next response in frame
-    JsonName: http_http_next_response_in
-  http.prev_request_in:
-    Name: http.prev_request_in
-    Type: FtFramenum
-    Info: Prev request in frame
-    JsonName: http_http_prev_request_in
-  http.prev_response_in:
-    Name: http.prev_response_in
-    Type: FtFramenum
-    Info: Prev response in frame
-    JsonName: http_http_prev_response_in
-  http.time:
-    Name: http.time
-    Type: FtRelativeTime
-    Info: Time since request
-    JsonName: http_http_time
+ 
   http.chunked_trailer_part:
     Name: http.chunked_trailer_part
     Type: FtString
@@ -341,8 +228,9 @@ Fields:
     Display: StrUnicode
     Info: File Data
     JsonName: http_http_file_data
-  http.unknown_header:
-    Name: http.unknown_header
-    Type: FtString
-    Info: Unknown header
-    JsonName: http_http_unknown_header
+  http.time:
+    Name: http.time
+    Type: FtFloat
+    Display: BaseDec
+    Info: Time since request
+    JsonName: http_http_time

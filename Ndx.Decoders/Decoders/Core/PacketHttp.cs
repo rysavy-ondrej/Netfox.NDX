@@ -22,51 +22,37 @@ namespace Ndx.Decoders.Core {
     static PacketHttpReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFwYWNrZXQtaHR0cC5wcm90bxIRTmR4LkRlY29kZXJzLkNvcmUigw4KBEh0",
+            "ChFwYWNrZXQtaHR0cC5wcm90bxIRTmR4LkRlY29kZXJzLkNvcmUigQkKBEh0",
             "dHASGAoQSHR0cE5vdGlmaWNhdGlvbhgBIAEoCBIUCgxIdHRwUmVzcG9uc2UY",
             "AiABKAgSEwoLSHR0cFJlcXVlc3QYAyABKAgSGgoSSHR0cFJlc3BvbnNlTnVt",
             "YmVyGAQgASgNEhkKEUh0dHBSZXF1ZXN0TnVtYmVyGAUgASgNEhUKDUh0dHBB",
-            "dXRoYmFzaWMYBiABKAkSFgoOSHR0cEF1dGhjaXRyaXgYByABKAgSGgoSSHR0",
-            "cEF1dGhjaXRyaXhVc2VyGAggASgJEhwKFEh0dHBBdXRoY2l0cml4RG9tYWlu",
-            "GAkgASgJEh4KFkh0dHBBdXRoY2l0cml4UGFzc3dvcmQYCiABKAkSHQoVSHR0",
-            "cEF1dGhjaXRyaXhTZXNzaW9uGAsgASgJEhkKEUh0dHBSZXF1ZXN0TWV0aG9k",
-            "GAwgASgJEhYKDkh0dHBSZXF1ZXN0VXJpGA0gASgJEhoKEkh0dHBSZXF1ZXN0",
-            "VXJpUGF0aBgOIAEoCRIbChNIdHRwUmVxdWVzdFVyaVF1ZXJ5GA8gASgJEiQK",
-            "HEh0dHBSZXF1ZXN0VXJpUXVlcnlQYXJhbWV0ZXIYECABKAkSGgoSSHR0cFJl",
-            "cXVlc3RWZXJzaW9uGBEgASgJEhsKE0h0dHBSZXNwb25zZVZlcnNpb24YEiAB",
-            "KAkSGgoSSHR0cFJlcXVlc3RGdWxsVXJpGBMgASgJEhgKEEh0dHBSZXNwb25z",
-            "ZUNvZGUYFCABKA0SHAoUSHR0cFJlc3BvbnNlQ29kZURlc2MYFSABKAkSGgoS",
-            "SHR0cFJlc3BvbnNlUGhyYXNlGBYgASgJEhkKEUh0dHBBdXRob3JpemF0aW9u",
-            "GBcgASgJEh0KFUh0dHBQcm94eUF1dGhlbnRpY2F0ZRgYIAEoCRIeChZIdHRw",
-            "UHJveHlBdXRob3JpemF0aW9uGBkgASgJEhwKFEh0dHBQcm94eUNvbm5lY3RI",
-            "b3N0GBogASgJEhwKFEh0dHBQcm94eUNvbm5lY3RQb3J0GBsgASgNEhsKE0h0",
-            "dHBXd3dBdXRoZW50aWNhdGUYHCABKAkSFwoPSHR0cENvbnRlbnRUeXBlGB0g",
-            "ASgJEh8KF0h0dHBDb250ZW50TGVuZ3RoSGVhZGVyGB4gASgJEhkKEUh0dHBD",
-            "b250ZW50TGVuZ3RoGB8gASgEEhsKE0h0dHBDb250ZW50RW5jb2RpbmcYICAB",
-            "KAkSHAoUSHR0cFRyYW5zZmVyRW5jb2RpbmcYISABKAkSEwoLSHR0cFVwZ3Jh",
-            "ZGUYIiABKAkSFQoNSHR0cFVzZXJBZ2VudBgjIAEoCRIQCghIdHRwSG9zdBgk",
-            "IAEoCRIWCg5IdHRwQ29ubmVjdGlvbhglIAEoCRISCgpIdHRwQ29va2llGCYg",
-            "ASgJEhYKDkh0dHBDb29raWVQYWlyGCcgASgJEhIKCkh0dHBBY2NlcHQYKCAB",
-            "KAkSEwoLSHR0cFJlZmVyZXIYKSABKAkSGgoSSHR0cEFjY2VwdExhbmd1YWdl",
-            "GCogASgJEhoKEkh0dHBBY2NlcHRFbmNvZGluZxgrIAEoCRIQCghIdHRwRGF0",
-            "ZRgsIAEoCRIYChBIdHRwQ2FjaGVDb250cm9sGC0gASgJEhIKCkh0dHBTZXJ2",
-            "ZXIYLiABKAkSFAoMSHR0cExvY2F0aW9uGC8gASgJEh4KFkh0dHBTZWNXZWJz",
-            "b2NrZXRBY2NlcHQYMCABKAkSIgoaSHR0cFNlY1dlYnNvY2tldEV4dGVuc2lv",
-            "bnMYMSABKAkSGwoTSHR0cFNlY1dlYnNvY2tldEtleRgyIAEoCRIgChhIdHRw",
-            "U2VjV2Vic29ja2V0UHJvdG9jb2wYMyABKAkSHwoXSHR0cFNlY1dlYnNvY2tl",
-            "dFZlcnNpb24YNCABKAkSFQoNSHR0cFNldENvb2tpZRg1IAEoCRIYChBIdHRw",
-            "TGFzdE1vZGlmaWVkGDYgASgJEhkKEUh0dHBYRm9yd2FyZGVkRm9yGDcgASgJ",
-            "EhUKDUh0dHBSZXF1ZXN0SW4YOCABKAMSFgoOSHR0cFJlc3BvbnNlSW4YOSAB",
-            "KAMSGQoRSHR0cE5leHRSZXF1ZXN0SW4YOiABKAMSGgoSSHR0cE5leHRSZXNw",
-            "b25zZUluGDsgASgDEhkKEUh0dHBQcmV2UmVxdWVzdEluGDwgASgDEhoKEkh0",
-            "dHBQcmV2UmVzcG9uc2VJbhg9IAEoAxIQCghIdHRwVGltZRg+IAEoAxIeChZI",
-            "dHRwQ2h1bmtlZFRyYWlsZXJQYXJ0GD8gASgJEhkKEUh0dHBDaHVua0JvdW5k",
-            "YXJ5GEAgASgMEhUKDUh0dHBDaHVua1NpemUYQSABKA0SFAoMSHR0cEZpbGVE",
-            "YXRhGEIgASgJEhkKEUh0dHBVbmtub3duSGVhZGVyGEMgASgJYgZwcm90bzM="));
+            "dXRoYmFzaWMYBiABKAkSGQoRSHR0cFJlcXVlc3RNZXRob2QYByABKAkSGgoS",
+            "SHR0cFJlcXVlc3RWZXJzaW9uGAggASgJEhsKE0h0dHBSZXNwb25zZVZlcnNp",
+            "b24YCSABKAkSGgoSSHR0cFJlcXVlc3RGdWxsVXJpGAogASgJEhgKEEh0dHBS",
+            "ZXNwb25zZUNvZGUYCyABKA0SGgoSSHR0cFJlc3BvbnNlUGhyYXNlGAwgASgJ",
+            "EhkKEUh0dHBBdXRob3JpemF0aW9uGA0gASgJEh0KFUh0dHBQcm94eUF1dGhl",
+            "bnRpY2F0ZRgOIAEoCRIeChZIdHRwUHJveHlBdXRob3JpemF0aW9uGA8gASgJ",
+            "EhwKFEh0dHBQcm94eUNvbm5lY3RIb3N0GBAgASgJEhwKFEh0dHBQcm94eUNv",
+            "bm5lY3RQb3J0GBEgASgNEhsKE0h0dHBXd3dBdXRoZW50aWNhdGUYEiABKAkS",
+            "FwoPSHR0cENvbnRlbnRUeXBlGBMgASgJEh8KF0h0dHBDb250ZW50TGVuZ3Ro",
+            "SGVhZGVyGBQgASgJEhkKEUh0dHBDb250ZW50TGVuZ3RoGBUgASgEEhsKE0h0",
+            "dHBDb250ZW50RW5jb2RpbmcYFiABKAkSHAoUSHR0cFRyYW5zZmVyRW5jb2Rp",
+            "bmcYFyABKAkSEwoLSHR0cFVwZ3JhZGUYGCABKAkSFQoNSHR0cFVzZXJBZ2Vu",
+            "dBgZIAEoCRIQCghIdHRwSG9zdBgaIAEoCRIWCg5IdHRwQ29ubmVjdGlvbhgb",
+            "IAEoCRISCgpIdHRwQ29va2llGBwgASgJEhYKDkh0dHBDb29raWVQYWlyGB0g",
+            "ASgJEhIKCkh0dHBBY2NlcHQYHiABKAkSEwoLSHR0cFJlZmVyZXIYHyABKAkS",
+            "GgoSSHR0cEFjY2VwdExhbmd1YWdlGCAgASgJEhoKEkh0dHBBY2NlcHRFbmNv",
+            "ZGluZxghIAEoCRIQCghIdHRwRGF0ZRgiIAEoCRIYChBIdHRwQ2FjaGVDb250",
+            "cm9sGCMgASgJEhIKCkh0dHBTZXJ2ZXIYJCABKAkSFAoMSHR0cExvY2F0aW9u",
+            "GCUgASgJEhUKDUh0dHBTZXRDb29raWUYJiABKAkSGAoQSHR0cExhc3RNb2Rp",
+            "ZmllZBgnIAEoCRIZChFIdHRwWEZvcndhcmRlZEZvchgoIAEoCRIeChZIdHRw",
+            "Q2h1bmtlZFRyYWlsZXJQYXJ0GCkgASgJEhkKEUh0dHBDaHVua0JvdW5kYXJ5",
+            "GCogASgMEhUKDUh0dHBDaHVua1NpemUYKyABKA0SFAoMSHR0cEZpbGVEYXRh",
+            "GCwgASgJEhAKCEh0dHBUaW1lGC0gASgCYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Core.Http), global::Ndx.Decoders.Core.Http.Parser, new[]{ "HttpNotification", "HttpResponse", "HttpRequest", "HttpResponseNumber", "HttpRequestNumber", "HttpAuthbasic", "HttpAuthcitrix", "HttpAuthcitrixUser", "HttpAuthcitrixDomain", "HttpAuthcitrixPassword", "HttpAuthcitrixSession", "HttpRequestMethod", "HttpRequestUri", "HttpRequestUriPath", "HttpRequestUriQuery", "HttpRequestUriQueryParameter", "HttpRequestVersion", "HttpResponseVersion", "HttpRequestFullUri", "HttpResponseCode", "HttpResponseCodeDesc", "HttpResponsePhrase", "HttpAuthorization", "HttpProxyAuthenticate", "HttpProxyAuthorization", "HttpProxyConnectHost", "HttpProxyConnectPort", "HttpWwwAuthenticate", "HttpContentType", "HttpContentLengthHeader", "HttpContentLength", "HttpContentEncoding", "HttpTransferEncoding", "HttpUpgrade", "HttpUserAgent", "HttpHost", "HttpConnection", "HttpCookie", "HttpCookiePair", "HttpAccept", "HttpReferer", "HttpAcceptLanguage", "HttpAcceptEncoding", "HttpDate", "HttpCacheControl", "HttpServer", "HttpLocation", "HttpSecWebsocketAccept", "HttpSecWebsocketExtensions", "HttpSecWebsocketKey", "HttpSecWebsocketProtocol", "HttpSecWebsocketVersion", "HttpSetCookie", "HttpLastModified", "HttpXForwardedFor", "HttpRequestIn", "HttpResponseIn", "HttpNextRequestIn", "HttpNextResponseIn", "HttpPrevRequestIn", "HttpPrevResponseIn", "HttpTime", "HttpChunkedTrailerPart", "HttpChunkBoundary", "HttpChunkSize", "HttpFileData", "HttpUnknownHeader" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Core.Http), global::Ndx.Decoders.Core.Http.Parser, new[]{ "HttpNotification", "HttpResponse", "HttpRequest", "HttpResponseNumber", "HttpRequestNumber", "HttpAuthbasic", "HttpRequestMethod", "HttpRequestVersion", "HttpResponseVersion", "HttpRequestFullUri", "HttpResponseCode", "HttpResponsePhrase", "HttpAuthorization", "HttpProxyAuthenticate", "HttpProxyAuthorization", "HttpProxyConnectHost", "HttpProxyConnectPort", "HttpWwwAuthenticate", "HttpContentType", "HttpContentLengthHeader", "HttpContentLength", "HttpContentEncoding", "HttpTransferEncoding", "HttpUpgrade", "HttpUserAgent", "HttpHost", "HttpConnection", "HttpCookie", "HttpCookiePair", "HttpAccept", "HttpReferer", "HttpAcceptLanguage", "HttpAcceptEncoding", "HttpDate", "HttpCacheControl", "HttpServer", "HttpLocation", "HttpSetCookie", "HttpLastModified", "HttpXForwardedFor", "HttpChunkedTrailerPart", "HttpChunkBoundary", "HttpChunkSize", "HttpFileData", "HttpTime" }, null, null, null)
           }));
     }
     #endregion
@@ -103,21 +89,11 @@ namespace Ndx.Decoders.Core {
       httpResponseNumber_ = other.httpResponseNumber_;
       httpRequestNumber_ = other.httpRequestNumber_;
       httpAuthbasic_ = other.httpAuthbasic_;
-      httpAuthcitrix_ = other.httpAuthcitrix_;
-      httpAuthcitrixUser_ = other.httpAuthcitrixUser_;
-      httpAuthcitrixDomain_ = other.httpAuthcitrixDomain_;
-      httpAuthcitrixPassword_ = other.httpAuthcitrixPassword_;
-      httpAuthcitrixSession_ = other.httpAuthcitrixSession_;
       httpRequestMethod_ = other.httpRequestMethod_;
-      httpRequestUri_ = other.httpRequestUri_;
-      httpRequestUriPath_ = other.httpRequestUriPath_;
-      httpRequestUriQuery_ = other.httpRequestUriQuery_;
-      httpRequestUriQueryParameter_ = other.httpRequestUriQueryParameter_;
       httpRequestVersion_ = other.httpRequestVersion_;
       httpResponseVersion_ = other.httpResponseVersion_;
       httpRequestFullUri_ = other.httpRequestFullUri_;
       httpResponseCode_ = other.httpResponseCode_;
-      httpResponseCodeDesc_ = other.httpResponseCodeDesc_;
       httpResponsePhrase_ = other.httpResponsePhrase_;
       httpAuthorization_ = other.httpAuthorization_;
       httpProxyAuthenticate_ = other.httpProxyAuthenticate_;
@@ -144,26 +120,14 @@ namespace Ndx.Decoders.Core {
       httpCacheControl_ = other.httpCacheControl_;
       httpServer_ = other.httpServer_;
       httpLocation_ = other.httpLocation_;
-      httpSecWebsocketAccept_ = other.httpSecWebsocketAccept_;
-      httpSecWebsocketExtensions_ = other.httpSecWebsocketExtensions_;
-      httpSecWebsocketKey_ = other.httpSecWebsocketKey_;
-      httpSecWebsocketProtocol_ = other.httpSecWebsocketProtocol_;
-      httpSecWebsocketVersion_ = other.httpSecWebsocketVersion_;
       httpSetCookie_ = other.httpSetCookie_;
       httpLastModified_ = other.httpLastModified_;
       httpXForwardedFor_ = other.httpXForwardedFor_;
-      httpRequestIn_ = other.httpRequestIn_;
-      httpResponseIn_ = other.httpResponseIn_;
-      httpNextRequestIn_ = other.httpNextRequestIn_;
-      httpNextResponseIn_ = other.httpNextResponseIn_;
-      httpPrevRequestIn_ = other.httpPrevRequestIn_;
-      httpPrevResponseIn_ = other.httpPrevResponseIn_;
-      httpTime_ = other.httpTime_;
       httpChunkedTrailerPart_ = other.httpChunkedTrailerPart_;
       httpChunkBoundary_ = other.httpChunkBoundary_;
       httpChunkSize_ = other.httpChunkSize_;
       httpFileData_ = other.httpFileData_;
-      httpUnknownHeader_ = other.httpUnknownHeader_;
+      httpTime_ = other.httpTime_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -255,78 +219,8 @@ namespace Ndx.Decoders.Core {
       }
     }
 
-    /// <summary>Field number for the "HttpAuthcitrix" field.</summary>
-    public const int HttpAuthcitrixFieldNumber = 7;
-    private bool httpAuthcitrix_;
-    /// <summary>
-    /// Citrix AG Auth ('http_http_authcitrix')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool HttpAuthcitrix {
-      get { return httpAuthcitrix_; }
-      set {
-        httpAuthcitrix_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "HttpAuthcitrixUser" field.</summary>
-    public const int HttpAuthcitrixUserFieldNumber = 8;
-    private string httpAuthcitrixUser_ = "";
-    /// <summary>
-    /// Citrix AG Username ('http_authcitrix_http_authcitrix_user')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HttpAuthcitrixUser {
-      get { return httpAuthcitrixUser_; }
-      set {
-        httpAuthcitrixUser_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "HttpAuthcitrixDomain" field.</summary>
-    public const int HttpAuthcitrixDomainFieldNumber = 9;
-    private string httpAuthcitrixDomain_ = "";
-    /// <summary>
-    /// Citrix AG Domain ('http_authcitrix_http_authcitrix_domain')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HttpAuthcitrixDomain {
-      get { return httpAuthcitrixDomain_; }
-      set {
-        httpAuthcitrixDomain_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "HttpAuthcitrixPassword" field.</summary>
-    public const int HttpAuthcitrixPasswordFieldNumber = 10;
-    private string httpAuthcitrixPassword_ = "";
-    /// <summary>
-    /// Citrix AG Password ('http_authcitrix_http_authcitrix_password')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HttpAuthcitrixPassword {
-      get { return httpAuthcitrixPassword_; }
-      set {
-        httpAuthcitrixPassword_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "HttpAuthcitrixSession" field.</summary>
-    public const int HttpAuthcitrixSessionFieldNumber = 11;
-    private string httpAuthcitrixSession_ = "";
-    /// <summary>
-    /// Citrix AG Session ID ('http_authcitrix_http_authcitrix_session')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HttpAuthcitrixSession {
-      get { return httpAuthcitrixSession_; }
-      set {
-        httpAuthcitrixSession_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "HttpRequestMethod" field.</summary>
-    public const int HttpRequestMethodFieldNumber = 12;
+    public const int HttpRequestMethodFieldNumber = 7;
     private string httpRequestMethod_ = "";
     /// <summary>
     /// Request Method ('text_http_request_method')
@@ -339,64 +233,8 @@ namespace Ndx.Decoders.Core {
       }
     }
 
-    /// <summary>Field number for the "HttpRequestUri" field.</summary>
-    public const int HttpRequestUriFieldNumber = 13;
-    private string httpRequestUri_ = "";
-    /// <summary>
-    /// Request URI ('text_http_request_uri')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HttpRequestUri {
-      get { return httpRequestUri_; }
-      set {
-        httpRequestUri_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "HttpRequestUriPath" field.</summary>
-    public const int HttpRequestUriPathFieldNumber = 14;
-    private string httpRequestUriPath_ = "";
-    /// <summary>
-    /// Request URI Path ('http_request_uri_http_request_uri_path')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HttpRequestUriPath {
-      get { return httpRequestUriPath_; }
-      set {
-        httpRequestUriPath_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "HttpRequestUriQuery" field.</summary>
-    public const int HttpRequestUriQueryFieldNumber = 15;
-    private string httpRequestUriQuery_ = "";
-    /// <summary>
-    /// Request URI Query ('http_request_uri_http_request_uri_query')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HttpRequestUriQuery {
-      get { return httpRequestUriQuery_; }
-      set {
-        httpRequestUriQuery_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "HttpRequestUriQueryParameter" field.</summary>
-    public const int HttpRequestUriQueryParameterFieldNumber = 16;
-    private string httpRequestUriQueryParameter_ = "";
-    /// <summary>
-    /// Request URI Query Parameter ('http_request_uri_query_http_request_uri_query_parameter')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HttpRequestUriQueryParameter {
-      get { return httpRequestUriQueryParameter_; }
-      set {
-        httpRequestUriQueryParameter_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "HttpRequestVersion" field.</summary>
-    public const int HttpRequestVersionFieldNumber = 17;
+    public const int HttpRequestVersionFieldNumber = 8;
     private string httpRequestVersion_ = "";
     /// <summary>
     /// Request Version ('text_http_request_version')
@@ -410,7 +248,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpResponseVersion" field.</summary>
-    public const int HttpResponseVersionFieldNumber = 18;
+    public const int HttpResponseVersionFieldNumber = 9;
     private string httpResponseVersion_ = "";
     /// <summary>
     /// Response Version ('text_http_response_version')
@@ -424,7 +262,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpRequestFullUri" field.</summary>
-    public const int HttpRequestFullUriFieldNumber = 19;
+    public const int HttpRequestFullUriFieldNumber = 10;
     private string httpRequestFullUri_ = "";
     /// <summary>
     /// Full request URI ('http_http_request_full_uri')
@@ -438,7 +276,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpResponseCode" field.</summary>
-    public const int HttpResponseCodeFieldNumber = 20;
+    public const int HttpResponseCodeFieldNumber = 11;
     private uint httpResponseCode_;
     /// <summary>
     /// Status Code ('text_http_response_code')
@@ -451,22 +289,8 @@ namespace Ndx.Decoders.Core {
       }
     }
 
-    /// <summary>Field number for the "HttpResponseCodeDesc" field.</summary>
-    public const int HttpResponseCodeDescFieldNumber = 21;
-    private string httpResponseCodeDesc_ = "";
-    /// <summary>
-    /// Status Code Description ('text_http_response_code_desc')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HttpResponseCodeDesc {
-      get { return httpResponseCodeDesc_; }
-      set {
-        httpResponseCodeDesc_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "HttpResponsePhrase" field.</summary>
-    public const int HttpResponsePhraseFieldNumber = 22;
+    public const int HttpResponsePhraseFieldNumber = 12;
     private string httpResponsePhrase_ = "";
     /// <summary>
     /// Response Phrase ('text_http_response_phrase')
@@ -480,7 +304,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpAuthorization" field.</summary>
-    public const int HttpAuthorizationFieldNumber = 23;
+    public const int HttpAuthorizationFieldNumber = 13;
     private string httpAuthorization_ = "";
     /// <summary>
     /// Authorization ('http_http_authorization')
@@ -494,7 +318,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpProxyAuthenticate" field.</summary>
-    public const int HttpProxyAuthenticateFieldNumber = 24;
+    public const int HttpProxyAuthenticateFieldNumber = 14;
     private string httpProxyAuthenticate_ = "";
     /// <summary>
     /// Proxy-Authenticate ('http_http_proxy_authenticate')
@@ -508,7 +332,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpProxyAuthorization" field.</summary>
-    public const int HttpProxyAuthorizationFieldNumber = 25;
+    public const int HttpProxyAuthorizationFieldNumber = 15;
     private string httpProxyAuthorization_ = "";
     /// <summary>
     /// Proxy-Authorization ('http_http_proxy_authorization')
@@ -522,7 +346,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpProxyConnectHost" field.</summary>
-    public const int HttpProxyConnectHostFieldNumber = 26;
+    public const int HttpProxyConnectHostFieldNumber = 16;
     private string httpProxyConnectHost_ = "";
     /// <summary>
     /// Proxy-Connect-Hostname ('http_http_proxy_connect_host')
@@ -536,7 +360,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpProxyConnectPort" field.</summary>
-    public const int HttpProxyConnectPortFieldNumber = 27;
+    public const int HttpProxyConnectPortFieldNumber = 17;
     private uint httpProxyConnectPort_;
     /// <summary>
     /// Proxy-Connect-Port ('http_http_proxy_connect_port')
@@ -550,7 +374,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpWwwAuthenticate" field.</summary>
-    public const int HttpWwwAuthenticateFieldNumber = 28;
+    public const int HttpWwwAuthenticateFieldNumber = 18;
     private string httpWwwAuthenticate_ = "";
     /// <summary>
     /// WWW-Authenticate ('http_http_www_authenticate')
@@ -564,7 +388,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpContentType" field.</summary>
-    public const int HttpContentTypeFieldNumber = 29;
+    public const int HttpContentTypeFieldNumber = 19;
     private string httpContentType_ = "";
     /// <summary>
     /// Content-Type ('http_http_content_type')
@@ -578,7 +402,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpContentLengthHeader" field.</summary>
-    public const int HttpContentLengthHeaderFieldNumber = 30;
+    public const int HttpContentLengthHeaderFieldNumber = 20;
     private string httpContentLengthHeader_ = "";
     /// <summary>
     /// Content-Length ('http_http_content_length_header')
@@ -592,7 +416,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpContentLength" field.</summary>
-    public const int HttpContentLengthFieldNumber = 31;
+    public const int HttpContentLengthFieldNumber = 21;
     private ulong httpContentLength_;
     /// <summary>
     /// Content length ('http_http_content_length')
@@ -606,7 +430,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpContentEncoding" field.</summary>
-    public const int HttpContentEncodingFieldNumber = 32;
+    public const int HttpContentEncodingFieldNumber = 22;
     private string httpContentEncoding_ = "";
     /// <summary>
     /// Content-Encoding ('http_http_content_encoding')
@@ -620,7 +444,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpTransferEncoding" field.</summary>
-    public const int HttpTransferEncodingFieldNumber = 33;
+    public const int HttpTransferEncodingFieldNumber = 23;
     private string httpTransferEncoding_ = "";
     /// <summary>
     /// Transfer-Encoding ('http_http_transfer_encoding')
@@ -634,7 +458,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpUpgrade" field.</summary>
-    public const int HttpUpgradeFieldNumber = 34;
+    public const int HttpUpgradeFieldNumber = 24;
     private string httpUpgrade_ = "";
     /// <summary>
     /// Upgrade ('http_http_upgrade')
@@ -648,7 +472,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpUserAgent" field.</summary>
-    public const int HttpUserAgentFieldNumber = 35;
+    public const int HttpUserAgentFieldNumber = 25;
     private string httpUserAgent_ = "";
     /// <summary>
     /// User-Agent ('http_http_user_agent')
@@ -662,7 +486,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpHost" field.</summary>
-    public const int HttpHostFieldNumber = 36;
+    public const int HttpHostFieldNumber = 26;
     private string httpHost_ = "";
     /// <summary>
     /// Host ('http_http_host')
@@ -676,7 +500,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpConnection" field.</summary>
-    public const int HttpConnectionFieldNumber = 37;
+    public const int HttpConnectionFieldNumber = 27;
     private string httpConnection_ = "";
     /// <summary>
     /// Connection ('http_http_connection')
@@ -690,7 +514,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpCookie" field.</summary>
-    public const int HttpCookieFieldNumber = 38;
+    public const int HttpCookieFieldNumber = 28;
     private string httpCookie_ = "";
     /// <summary>
     /// Cookie ('http_http_cookie')
@@ -704,7 +528,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpCookiePair" field.</summary>
-    public const int HttpCookiePairFieldNumber = 39;
+    public const int HttpCookiePairFieldNumber = 29;
     private string httpCookiePair_ = "";
     /// <summary>
     /// Cookie pair ('http_http_cookie_pair')
@@ -718,7 +542,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpAccept" field.</summary>
-    public const int HttpAcceptFieldNumber = 40;
+    public const int HttpAcceptFieldNumber = 30;
     private string httpAccept_ = "";
     /// <summary>
     /// Accept ('http_http_accept')
@@ -732,7 +556,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpReferer" field.</summary>
-    public const int HttpRefererFieldNumber = 41;
+    public const int HttpRefererFieldNumber = 31;
     private string httpReferer_ = "";
     /// <summary>
     /// Referer ('http_http_referer')
@@ -746,7 +570,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpAcceptLanguage" field.</summary>
-    public const int HttpAcceptLanguageFieldNumber = 42;
+    public const int HttpAcceptLanguageFieldNumber = 32;
     private string httpAcceptLanguage_ = "";
     /// <summary>
     /// Accept-Language ('http_http_accept_language')
@@ -760,7 +584,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpAcceptEncoding" field.</summary>
-    public const int HttpAcceptEncodingFieldNumber = 43;
+    public const int HttpAcceptEncodingFieldNumber = 33;
     private string httpAcceptEncoding_ = "";
     /// <summary>
     /// Accept Encoding ('http_http_accept_encoding')
@@ -774,7 +598,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpDate" field.</summary>
-    public const int HttpDateFieldNumber = 44;
+    public const int HttpDateFieldNumber = 34;
     private string httpDate_ = "";
     /// <summary>
     /// Date ('http_http_date')
@@ -788,7 +612,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpCacheControl" field.</summary>
-    public const int HttpCacheControlFieldNumber = 45;
+    public const int HttpCacheControlFieldNumber = 35;
     private string httpCacheControl_ = "";
     /// <summary>
     /// Cache-Control ('http_http_cache_control')
@@ -802,7 +626,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpServer" field.</summary>
-    public const int HttpServerFieldNumber = 46;
+    public const int HttpServerFieldNumber = 36;
     private string httpServer_ = "";
     /// <summary>
     /// Server ('http_http_server')
@@ -816,7 +640,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpLocation" field.</summary>
-    public const int HttpLocationFieldNumber = 47;
+    public const int HttpLocationFieldNumber = 37;
     private string httpLocation_ = "";
     /// <summary>
     /// Location ('http_http_location')
@@ -829,78 +653,8 @@ namespace Ndx.Decoders.Core {
       }
     }
 
-    /// <summary>Field number for the "HttpSecWebsocketAccept" field.</summary>
-    public const int HttpSecWebsocketAcceptFieldNumber = 48;
-    private string httpSecWebsocketAccept_ = "";
-    /// <summary>
-    /// Sec-WebSocket-Accept ('http_http_sec_websocket_accept')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HttpSecWebsocketAccept {
-      get { return httpSecWebsocketAccept_; }
-      set {
-        httpSecWebsocketAccept_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "HttpSecWebsocketExtensions" field.</summary>
-    public const int HttpSecWebsocketExtensionsFieldNumber = 49;
-    private string httpSecWebsocketExtensions_ = "";
-    /// <summary>
-    /// Sec-WebSocket-Extensions ('http_http_sec_websocket_extensions')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HttpSecWebsocketExtensions {
-      get { return httpSecWebsocketExtensions_; }
-      set {
-        httpSecWebsocketExtensions_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "HttpSecWebsocketKey" field.</summary>
-    public const int HttpSecWebsocketKeyFieldNumber = 50;
-    private string httpSecWebsocketKey_ = "";
-    /// <summary>
-    /// Sec-WebSocket-Key ('http_http_sec_websocket_key')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HttpSecWebsocketKey {
-      get { return httpSecWebsocketKey_; }
-      set {
-        httpSecWebsocketKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "HttpSecWebsocketProtocol" field.</summary>
-    public const int HttpSecWebsocketProtocolFieldNumber = 51;
-    private string httpSecWebsocketProtocol_ = "";
-    /// <summary>
-    /// Sec-WebSocket-Protocol ('http_http_sec_websocket_protocol')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HttpSecWebsocketProtocol {
-      get { return httpSecWebsocketProtocol_; }
-      set {
-        httpSecWebsocketProtocol_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "HttpSecWebsocketVersion" field.</summary>
-    public const int HttpSecWebsocketVersionFieldNumber = 52;
-    private string httpSecWebsocketVersion_ = "";
-    /// <summary>
-    /// Sec-WebSocket-Version ('http_http_sec_websocket_version')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HttpSecWebsocketVersion {
-      get { return httpSecWebsocketVersion_; }
-      set {
-        httpSecWebsocketVersion_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "HttpSetCookie" field.</summary>
-    public const int HttpSetCookieFieldNumber = 53;
+    public const int HttpSetCookieFieldNumber = 38;
     private string httpSetCookie_ = "";
     /// <summary>
     /// Set-Cookie ('http_http_set_cookie')
@@ -914,7 +668,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpLastModified" field.</summary>
-    public const int HttpLastModifiedFieldNumber = 54;
+    public const int HttpLastModifiedFieldNumber = 39;
     private string httpLastModified_ = "";
     /// <summary>
     /// Last-Modified ('http_http_last_modified')
@@ -928,7 +682,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpXForwardedFor" field.</summary>
-    public const int HttpXForwardedForFieldNumber = 55;
+    public const int HttpXForwardedForFieldNumber = 40;
     private string httpXForwardedFor_ = "";
     /// <summary>
     /// X-Forwarded-For ('http_http_x_forwarded_for')
@@ -941,106 +695,8 @@ namespace Ndx.Decoders.Core {
       }
     }
 
-    /// <summary>Field number for the "HttpRequestIn" field.</summary>
-    public const int HttpRequestInFieldNumber = 56;
-    private long httpRequestIn_;
-    /// <summary>
-    /// Request in frame ('http_http_request_in')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long HttpRequestIn {
-      get { return httpRequestIn_; }
-      set {
-        httpRequestIn_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "HttpResponseIn" field.</summary>
-    public const int HttpResponseInFieldNumber = 57;
-    private long httpResponseIn_;
-    /// <summary>
-    /// Response in frame ('http_http_response_in')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long HttpResponseIn {
-      get { return httpResponseIn_; }
-      set {
-        httpResponseIn_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "HttpNextRequestIn" field.</summary>
-    public const int HttpNextRequestInFieldNumber = 58;
-    private long httpNextRequestIn_;
-    /// <summary>
-    /// Next request in frame ('http_http_next_request_in')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long HttpNextRequestIn {
-      get { return httpNextRequestIn_; }
-      set {
-        httpNextRequestIn_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "HttpNextResponseIn" field.</summary>
-    public const int HttpNextResponseInFieldNumber = 59;
-    private long httpNextResponseIn_;
-    /// <summary>
-    /// Next response in frame ('http_http_next_response_in')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long HttpNextResponseIn {
-      get { return httpNextResponseIn_; }
-      set {
-        httpNextResponseIn_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "HttpPrevRequestIn" field.</summary>
-    public const int HttpPrevRequestInFieldNumber = 60;
-    private long httpPrevRequestIn_;
-    /// <summary>
-    /// Prev request in frame ('http_http_prev_request_in')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long HttpPrevRequestIn {
-      get { return httpPrevRequestIn_; }
-      set {
-        httpPrevRequestIn_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "HttpPrevResponseIn" field.</summary>
-    public const int HttpPrevResponseInFieldNumber = 61;
-    private long httpPrevResponseIn_;
-    /// <summary>
-    /// Prev response in frame ('http_http_prev_response_in')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long HttpPrevResponseIn {
-      get { return httpPrevResponseIn_; }
-      set {
-        httpPrevResponseIn_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "HttpTime" field.</summary>
-    public const int HttpTimeFieldNumber = 62;
-    private long httpTime_;
-    /// <summary>
-    /// Time since request ('http_http_time')
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long HttpTime {
-      get { return httpTime_; }
-      set {
-        httpTime_ = value;
-      }
-    }
-
     /// <summary>Field number for the "HttpChunkedTrailerPart" field.</summary>
-    public const int HttpChunkedTrailerPartFieldNumber = 63;
+    public const int HttpChunkedTrailerPartFieldNumber = 41;
     private string httpChunkedTrailerPart_ = "";
     /// <summary>
     /// trailer-part ('http_http_chunked_trailer_part')
@@ -1054,7 +710,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpChunkBoundary" field.</summary>
-    public const int HttpChunkBoundaryFieldNumber = 64;
+    public const int HttpChunkBoundaryFieldNumber = 42;
     private pb::ByteString httpChunkBoundary_ = pb::ByteString.Empty;
     /// <summary>
     /// Chunk boundary ('http_http_chunk_boundary')
@@ -1068,7 +724,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpChunkSize" field.</summary>
-    public const int HttpChunkSizeFieldNumber = 65;
+    public const int HttpChunkSizeFieldNumber = 43;
     private uint httpChunkSize_;
     /// <summary>
     /// Chunk size ('http_http_chunk_size')
@@ -1082,7 +738,7 @@ namespace Ndx.Decoders.Core {
     }
 
     /// <summary>Field number for the "HttpFileData" field.</summary>
-    public const int HttpFileDataFieldNumber = 66;
+    public const int HttpFileDataFieldNumber = 44;
     private string httpFileData_ = "";
     /// <summary>
     /// File Data ('http_http_file_data')
@@ -1095,17 +751,17 @@ namespace Ndx.Decoders.Core {
       }
     }
 
-    /// <summary>Field number for the "HttpUnknownHeader" field.</summary>
-    public const int HttpUnknownHeaderFieldNumber = 67;
-    private string httpUnknownHeader_ = "";
+    /// <summary>Field number for the "HttpTime" field.</summary>
+    public const int HttpTimeFieldNumber = 45;
+    private float httpTime_;
     /// <summary>
-    /// Unknown header ('http_http_unknown_header')
+    /// Time since request ('http_http_time')
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string HttpUnknownHeader {
-      get { return httpUnknownHeader_; }
+    public float HttpTime {
+      get { return httpTime_; }
       set {
-        httpUnknownHeader_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        httpTime_ = value;
       }
     }
 
@@ -1128,21 +784,11 @@ namespace Ndx.Decoders.Core {
       if (HttpResponseNumber != other.HttpResponseNumber) return false;
       if (HttpRequestNumber != other.HttpRequestNumber) return false;
       if (HttpAuthbasic != other.HttpAuthbasic) return false;
-      if (HttpAuthcitrix != other.HttpAuthcitrix) return false;
-      if (HttpAuthcitrixUser != other.HttpAuthcitrixUser) return false;
-      if (HttpAuthcitrixDomain != other.HttpAuthcitrixDomain) return false;
-      if (HttpAuthcitrixPassword != other.HttpAuthcitrixPassword) return false;
-      if (HttpAuthcitrixSession != other.HttpAuthcitrixSession) return false;
       if (HttpRequestMethod != other.HttpRequestMethod) return false;
-      if (HttpRequestUri != other.HttpRequestUri) return false;
-      if (HttpRequestUriPath != other.HttpRequestUriPath) return false;
-      if (HttpRequestUriQuery != other.HttpRequestUriQuery) return false;
-      if (HttpRequestUriQueryParameter != other.HttpRequestUriQueryParameter) return false;
       if (HttpRequestVersion != other.HttpRequestVersion) return false;
       if (HttpResponseVersion != other.HttpResponseVersion) return false;
       if (HttpRequestFullUri != other.HttpRequestFullUri) return false;
       if (HttpResponseCode != other.HttpResponseCode) return false;
-      if (HttpResponseCodeDesc != other.HttpResponseCodeDesc) return false;
       if (HttpResponsePhrase != other.HttpResponsePhrase) return false;
       if (HttpAuthorization != other.HttpAuthorization) return false;
       if (HttpProxyAuthenticate != other.HttpProxyAuthenticate) return false;
@@ -1169,26 +815,14 @@ namespace Ndx.Decoders.Core {
       if (HttpCacheControl != other.HttpCacheControl) return false;
       if (HttpServer != other.HttpServer) return false;
       if (HttpLocation != other.HttpLocation) return false;
-      if (HttpSecWebsocketAccept != other.HttpSecWebsocketAccept) return false;
-      if (HttpSecWebsocketExtensions != other.HttpSecWebsocketExtensions) return false;
-      if (HttpSecWebsocketKey != other.HttpSecWebsocketKey) return false;
-      if (HttpSecWebsocketProtocol != other.HttpSecWebsocketProtocol) return false;
-      if (HttpSecWebsocketVersion != other.HttpSecWebsocketVersion) return false;
       if (HttpSetCookie != other.HttpSetCookie) return false;
       if (HttpLastModified != other.HttpLastModified) return false;
       if (HttpXForwardedFor != other.HttpXForwardedFor) return false;
-      if (HttpRequestIn != other.HttpRequestIn) return false;
-      if (HttpResponseIn != other.HttpResponseIn) return false;
-      if (HttpNextRequestIn != other.HttpNextRequestIn) return false;
-      if (HttpNextResponseIn != other.HttpNextResponseIn) return false;
-      if (HttpPrevRequestIn != other.HttpPrevRequestIn) return false;
-      if (HttpPrevResponseIn != other.HttpPrevResponseIn) return false;
-      if (HttpTime != other.HttpTime) return false;
       if (HttpChunkedTrailerPart != other.HttpChunkedTrailerPart) return false;
       if (HttpChunkBoundary != other.HttpChunkBoundary) return false;
       if (HttpChunkSize != other.HttpChunkSize) return false;
       if (HttpFileData != other.HttpFileData) return false;
-      if (HttpUnknownHeader != other.HttpUnknownHeader) return false;
+      if (HttpTime != other.HttpTime) return false;
       return true;
     }
 
@@ -1201,21 +835,11 @@ namespace Ndx.Decoders.Core {
       if (HttpResponseNumber != 0) hash ^= HttpResponseNumber.GetHashCode();
       if (HttpRequestNumber != 0) hash ^= HttpRequestNumber.GetHashCode();
       if (HttpAuthbasic.Length != 0) hash ^= HttpAuthbasic.GetHashCode();
-      if (HttpAuthcitrix != false) hash ^= HttpAuthcitrix.GetHashCode();
-      if (HttpAuthcitrixUser.Length != 0) hash ^= HttpAuthcitrixUser.GetHashCode();
-      if (HttpAuthcitrixDomain.Length != 0) hash ^= HttpAuthcitrixDomain.GetHashCode();
-      if (HttpAuthcitrixPassword.Length != 0) hash ^= HttpAuthcitrixPassword.GetHashCode();
-      if (HttpAuthcitrixSession.Length != 0) hash ^= HttpAuthcitrixSession.GetHashCode();
       if (HttpRequestMethod.Length != 0) hash ^= HttpRequestMethod.GetHashCode();
-      if (HttpRequestUri.Length != 0) hash ^= HttpRequestUri.GetHashCode();
-      if (HttpRequestUriPath.Length != 0) hash ^= HttpRequestUriPath.GetHashCode();
-      if (HttpRequestUriQuery.Length != 0) hash ^= HttpRequestUriQuery.GetHashCode();
-      if (HttpRequestUriQueryParameter.Length != 0) hash ^= HttpRequestUriQueryParameter.GetHashCode();
       if (HttpRequestVersion.Length != 0) hash ^= HttpRequestVersion.GetHashCode();
       if (HttpResponseVersion.Length != 0) hash ^= HttpResponseVersion.GetHashCode();
       if (HttpRequestFullUri.Length != 0) hash ^= HttpRequestFullUri.GetHashCode();
       if (HttpResponseCode != 0) hash ^= HttpResponseCode.GetHashCode();
-      if (HttpResponseCodeDesc.Length != 0) hash ^= HttpResponseCodeDesc.GetHashCode();
       if (HttpResponsePhrase.Length != 0) hash ^= HttpResponsePhrase.GetHashCode();
       if (HttpAuthorization.Length != 0) hash ^= HttpAuthorization.GetHashCode();
       if (HttpProxyAuthenticate.Length != 0) hash ^= HttpProxyAuthenticate.GetHashCode();
@@ -1242,26 +866,14 @@ namespace Ndx.Decoders.Core {
       if (HttpCacheControl.Length != 0) hash ^= HttpCacheControl.GetHashCode();
       if (HttpServer.Length != 0) hash ^= HttpServer.GetHashCode();
       if (HttpLocation.Length != 0) hash ^= HttpLocation.GetHashCode();
-      if (HttpSecWebsocketAccept.Length != 0) hash ^= HttpSecWebsocketAccept.GetHashCode();
-      if (HttpSecWebsocketExtensions.Length != 0) hash ^= HttpSecWebsocketExtensions.GetHashCode();
-      if (HttpSecWebsocketKey.Length != 0) hash ^= HttpSecWebsocketKey.GetHashCode();
-      if (HttpSecWebsocketProtocol.Length != 0) hash ^= HttpSecWebsocketProtocol.GetHashCode();
-      if (HttpSecWebsocketVersion.Length != 0) hash ^= HttpSecWebsocketVersion.GetHashCode();
       if (HttpSetCookie.Length != 0) hash ^= HttpSetCookie.GetHashCode();
       if (HttpLastModified.Length != 0) hash ^= HttpLastModified.GetHashCode();
       if (HttpXForwardedFor.Length != 0) hash ^= HttpXForwardedFor.GetHashCode();
-      if (HttpRequestIn != 0L) hash ^= HttpRequestIn.GetHashCode();
-      if (HttpResponseIn != 0L) hash ^= HttpResponseIn.GetHashCode();
-      if (HttpNextRequestIn != 0L) hash ^= HttpNextRequestIn.GetHashCode();
-      if (HttpNextResponseIn != 0L) hash ^= HttpNextResponseIn.GetHashCode();
-      if (HttpPrevRequestIn != 0L) hash ^= HttpPrevRequestIn.GetHashCode();
-      if (HttpPrevResponseIn != 0L) hash ^= HttpPrevResponseIn.GetHashCode();
-      if (HttpTime != 0L) hash ^= HttpTime.GetHashCode();
       if (HttpChunkedTrailerPart.Length != 0) hash ^= HttpChunkedTrailerPart.GetHashCode();
       if (HttpChunkBoundary.Length != 0) hash ^= HttpChunkBoundary.GetHashCode();
       if (HttpChunkSize != 0) hash ^= HttpChunkSize.GetHashCode();
       if (HttpFileData.Length != 0) hash ^= HttpFileData.GetHashCode();
-      if (HttpUnknownHeader.Length != 0) hash ^= HttpUnknownHeader.GetHashCode();
+      if (HttpTime != 0F) hash ^= HttpTime.GetHashCode();
       return hash;
     }
 
@@ -1296,249 +908,161 @@ namespace Ndx.Decoders.Core {
         output.WriteRawTag(50);
         output.WriteString(HttpAuthbasic);
       }
-      if (HttpAuthcitrix != false) {
-        output.WriteRawTag(56);
-        output.WriteBool(HttpAuthcitrix);
-      }
-      if (HttpAuthcitrixUser.Length != 0) {
-        output.WriteRawTag(66);
-        output.WriteString(HttpAuthcitrixUser);
-      }
-      if (HttpAuthcitrixDomain.Length != 0) {
-        output.WriteRawTag(74);
-        output.WriteString(HttpAuthcitrixDomain);
-      }
-      if (HttpAuthcitrixPassword.Length != 0) {
-        output.WriteRawTag(82);
-        output.WriteString(HttpAuthcitrixPassword);
-      }
-      if (HttpAuthcitrixSession.Length != 0) {
-        output.WriteRawTag(90);
-        output.WriteString(HttpAuthcitrixSession);
-      }
       if (HttpRequestMethod.Length != 0) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(58);
         output.WriteString(HttpRequestMethod);
       }
-      if (HttpRequestUri.Length != 0) {
-        output.WriteRawTag(106);
-        output.WriteString(HttpRequestUri);
-      }
-      if (HttpRequestUriPath.Length != 0) {
-        output.WriteRawTag(114);
-        output.WriteString(HttpRequestUriPath);
-      }
-      if (HttpRequestUriQuery.Length != 0) {
-        output.WriteRawTag(122);
-        output.WriteString(HttpRequestUriQuery);
-      }
-      if (HttpRequestUriQueryParameter.Length != 0) {
-        output.WriteRawTag(130, 1);
-        output.WriteString(HttpRequestUriQueryParameter);
-      }
       if (HttpRequestVersion.Length != 0) {
-        output.WriteRawTag(138, 1);
+        output.WriteRawTag(66);
         output.WriteString(HttpRequestVersion);
       }
       if (HttpResponseVersion.Length != 0) {
-        output.WriteRawTag(146, 1);
+        output.WriteRawTag(74);
         output.WriteString(HttpResponseVersion);
       }
       if (HttpRequestFullUri.Length != 0) {
-        output.WriteRawTag(154, 1);
+        output.WriteRawTag(82);
         output.WriteString(HttpRequestFullUri);
       }
       if (HttpResponseCode != 0) {
-        output.WriteRawTag(160, 1);
+        output.WriteRawTag(88);
         output.WriteUInt32(HttpResponseCode);
       }
-      if (HttpResponseCodeDesc.Length != 0) {
-        output.WriteRawTag(170, 1);
-        output.WriteString(HttpResponseCodeDesc);
-      }
       if (HttpResponsePhrase.Length != 0) {
-        output.WriteRawTag(178, 1);
+        output.WriteRawTag(98);
         output.WriteString(HttpResponsePhrase);
       }
       if (HttpAuthorization.Length != 0) {
-        output.WriteRawTag(186, 1);
+        output.WriteRawTag(106);
         output.WriteString(HttpAuthorization);
       }
       if (HttpProxyAuthenticate.Length != 0) {
-        output.WriteRawTag(194, 1);
+        output.WriteRawTag(114);
         output.WriteString(HttpProxyAuthenticate);
       }
       if (HttpProxyAuthorization.Length != 0) {
-        output.WriteRawTag(202, 1);
+        output.WriteRawTag(122);
         output.WriteString(HttpProxyAuthorization);
       }
       if (HttpProxyConnectHost.Length != 0) {
-        output.WriteRawTag(210, 1);
+        output.WriteRawTag(130, 1);
         output.WriteString(HttpProxyConnectHost);
       }
       if (HttpProxyConnectPort != 0) {
-        output.WriteRawTag(216, 1);
+        output.WriteRawTag(136, 1);
         output.WriteUInt32(HttpProxyConnectPort);
       }
       if (HttpWwwAuthenticate.Length != 0) {
-        output.WriteRawTag(226, 1);
+        output.WriteRawTag(146, 1);
         output.WriteString(HttpWwwAuthenticate);
       }
       if (HttpContentType.Length != 0) {
-        output.WriteRawTag(234, 1);
+        output.WriteRawTag(154, 1);
         output.WriteString(HttpContentType);
       }
       if (HttpContentLengthHeader.Length != 0) {
-        output.WriteRawTag(242, 1);
+        output.WriteRawTag(162, 1);
         output.WriteString(HttpContentLengthHeader);
       }
       if (HttpContentLength != 0UL) {
-        output.WriteRawTag(248, 1);
+        output.WriteRawTag(168, 1);
         output.WriteUInt64(HttpContentLength);
       }
       if (HttpContentEncoding.Length != 0) {
-        output.WriteRawTag(130, 2);
+        output.WriteRawTag(178, 1);
         output.WriteString(HttpContentEncoding);
       }
       if (HttpTransferEncoding.Length != 0) {
-        output.WriteRawTag(138, 2);
+        output.WriteRawTag(186, 1);
         output.WriteString(HttpTransferEncoding);
       }
       if (HttpUpgrade.Length != 0) {
-        output.WriteRawTag(146, 2);
+        output.WriteRawTag(194, 1);
         output.WriteString(HttpUpgrade);
       }
       if (HttpUserAgent.Length != 0) {
-        output.WriteRawTag(154, 2);
+        output.WriteRawTag(202, 1);
         output.WriteString(HttpUserAgent);
       }
       if (HttpHost.Length != 0) {
-        output.WriteRawTag(162, 2);
+        output.WriteRawTag(210, 1);
         output.WriteString(HttpHost);
       }
       if (HttpConnection.Length != 0) {
-        output.WriteRawTag(170, 2);
+        output.WriteRawTag(218, 1);
         output.WriteString(HttpConnection);
       }
       if (HttpCookie.Length != 0) {
-        output.WriteRawTag(178, 2);
+        output.WriteRawTag(226, 1);
         output.WriteString(HttpCookie);
       }
       if (HttpCookiePair.Length != 0) {
-        output.WriteRawTag(186, 2);
+        output.WriteRawTag(234, 1);
         output.WriteString(HttpCookiePair);
       }
       if (HttpAccept.Length != 0) {
-        output.WriteRawTag(194, 2);
+        output.WriteRawTag(242, 1);
         output.WriteString(HttpAccept);
       }
       if (HttpReferer.Length != 0) {
-        output.WriteRawTag(202, 2);
+        output.WriteRawTag(250, 1);
         output.WriteString(HttpReferer);
       }
       if (HttpAcceptLanguage.Length != 0) {
-        output.WriteRawTag(210, 2);
+        output.WriteRawTag(130, 2);
         output.WriteString(HttpAcceptLanguage);
       }
       if (HttpAcceptEncoding.Length != 0) {
-        output.WriteRawTag(218, 2);
+        output.WriteRawTag(138, 2);
         output.WriteString(HttpAcceptEncoding);
       }
       if (HttpDate.Length != 0) {
-        output.WriteRawTag(226, 2);
+        output.WriteRawTag(146, 2);
         output.WriteString(HttpDate);
       }
       if (HttpCacheControl.Length != 0) {
-        output.WriteRawTag(234, 2);
+        output.WriteRawTag(154, 2);
         output.WriteString(HttpCacheControl);
       }
       if (HttpServer.Length != 0) {
-        output.WriteRawTag(242, 2);
+        output.WriteRawTag(162, 2);
         output.WriteString(HttpServer);
       }
       if (HttpLocation.Length != 0) {
-        output.WriteRawTag(250, 2);
+        output.WriteRawTag(170, 2);
         output.WriteString(HttpLocation);
       }
-      if (HttpSecWebsocketAccept.Length != 0) {
-        output.WriteRawTag(130, 3);
-        output.WriteString(HttpSecWebsocketAccept);
-      }
-      if (HttpSecWebsocketExtensions.Length != 0) {
-        output.WriteRawTag(138, 3);
-        output.WriteString(HttpSecWebsocketExtensions);
-      }
-      if (HttpSecWebsocketKey.Length != 0) {
-        output.WriteRawTag(146, 3);
-        output.WriteString(HttpSecWebsocketKey);
-      }
-      if (HttpSecWebsocketProtocol.Length != 0) {
-        output.WriteRawTag(154, 3);
-        output.WriteString(HttpSecWebsocketProtocol);
-      }
-      if (HttpSecWebsocketVersion.Length != 0) {
-        output.WriteRawTag(162, 3);
-        output.WriteString(HttpSecWebsocketVersion);
-      }
       if (HttpSetCookie.Length != 0) {
-        output.WriteRawTag(170, 3);
+        output.WriteRawTag(178, 2);
         output.WriteString(HttpSetCookie);
       }
       if (HttpLastModified.Length != 0) {
-        output.WriteRawTag(178, 3);
+        output.WriteRawTag(186, 2);
         output.WriteString(HttpLastModified);
       }
       if (HttpXForwardedFor.Length != 0) {
-        output.WriteRawTag(186, 3);
+        output.WriteRawTag(194, 2);
         output.WriteString(HttpXForwardedFor);
       }
-      if (HttpRequestIn != 0L) {
-        output.WriteRawTag(192, 3);
-        output.WriteInt64(HttpRequestIn);
-      }
-      if (HttpResponseIn != 0L) {
-        output.WriteRawTag(200, 3);
-        output.WriteInt64(HttpResponseIn);
-      }
-      if (HttpNextRequestIn != 0L) {
-        output.WriteRawTag(208, 3);
-        output.WriteInt64(HttpNextRequestIn);
-      }
-      if (HttpNextResponseIn != 0L) {
-        output.WriteRawTag(216, 3);
-        output.WriteInt64(HttpNextResponseIn);
-      }
-      if (HttpPrevRequestIn != 0L) {
-        output.WriteRawTag(224, 3);
-        output.WriteInt64(HttpPrevRequestIn);
-      }
-      if (HttpPrevResponseIn != 0L) {
-        output.WriteRawTag(232, 3);
-        output.WriteInt64(HttpPrevResponseIn);
-      }
-      if (HttpTime != 0L) {
-        output.WriteRawTag(240, 3);
-        output.WriteInt64(HttpTime);
-      }
       if (HttpChunkedTrailerPart.Length != 0) {
-        output.WriteRawTag(250, 3);
+        output.WriteRawTag(202, 2);
         output.WriteString(HttpChunkedTrailerPart);
       }
       if (HttpChunkBoundary.Length != 0) {
-        output.WriteRawTag(130, 4);
+        output.WriteRawTag(210, 2);
         output.WriteBytes(HttpChunkBoundary);
       }
       if (HttpChunkSize != 0) {
-        output.WriteRawTag(136, 4);
+        output.WriteRawTag(216, 2);
         output.WriteUInt32(HttpChunkSize);
       }
       if (HttpFileData.Length != 0) {
-        output.WriteRawTag(146, 4);
+        output.WriteRawTag(226, 2);
         output.WriteString(HttpFileData);
       }
-      if (HttpUnknownHeader.Length != 0) {
-        output.WriteRawTag(154, 4);
-        output.WriteString(HttpUnknownHeader);
+      if (HttpTime != 0F) {
+        output.WriteRawTag(237, 2);
+        output.WriteFloat(HttpTime);
       }
     }
 
@@ -1563,62 +1087,32 @@ namespace Ndx.Decoders.Core {
       if (HttpAuthbasic.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpAuthbasic);
       }
-      if (HttpAuthcitrix != false) {
-        size += 1 + 1;
-      }
-      if (HttpAuthcitrixUser.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpAuthcitrixUser);
-      }
-      if (HttpAuthcitrixDomain.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpAuthcitrixDomain);
-      }
-      if (HttpAuthcitrixPassword.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpAuthcitrixPassword);
-      }
-      if (HttpAuthcitrixSession.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpAuthcitrixSession);
-      }
       if (HttpRequestMethod.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpRequestMethod);
       }
-      if (HttpRequestUri.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpRequestUri);
-      }
-      if (HttpRequestUriPath.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpRequestUriPath);
-      }
-      if (HttpRequestUriQuery.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpRequestUriQuery);
-      }
-      if (HttpRequestUriQueryParameter.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpRequestUriQueryParameter);
-      }
       if (HttpRequestVersion.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpRequestVersion);
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpRequestVersion);
       }
       if (HttpResponseVersion.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpResponseVersion);
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpResponseVersion);
       }
       if (HttpRequestFullUri.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpRequestFullUri);
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpRequestFullUri);
       }
       if (HttpResponseCode != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(HttpResponseCode);
-      }
-      if (HttpResponseCodeDesc.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpResponseCodeDesc);
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HttpResponseCode);
       }
       if (HttpResponsePhrase.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpResponsePhrase);
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpResponsePhrase);
       }
       if (HttpAuthorization.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpAuthorization);
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpAuthorization);
       }
       if (HttpProxyAuthenticate.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpProxyAuthenticate);
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpProxyAuthenticate);
       }
       if (HttpProxyAuthorization.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpProxyAuthorization);
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(HttpProxyAuthorization);
       }
       if (HttpProxyConnectHost.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpProxyConnectHost);
@@ -1686,21 +1180,6 @@ namespace Ndx.Decoders.Core {
       if (HttpLocation.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpLocation);
       }
-      if (HttpSecWebsocketAccept.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpSecWebsocketAccept);
-      }
-      if (HttpSecWebsocketExtensions.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpSecWebsocketExtensions);
-      }
-      if (HttpSecWebsocketKey.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpSecWebsocketKey);
-      }
-      if (HttpSecWebsocketProtocol.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpSecWebsocketProtocol);
-      }
-      if (HttpSecWebsocketVersion.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpSecWebsocketVersion);
-      }
       if (HttpSetCookie.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpSetCookie);
       }
@@ -1709,27 +1188,6 @@ namespace Ndx.Decoders.Core {
       }
       if (HttpXForwardedFor.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpXForwardedFor);
-      }
-      if (HttpRequestIn != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(HttpRequestIn);
-      }
-      if (HttpResponseIn != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(HttpResponseIn);
-      }
-      if (HttpNextRequestIn != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(HttpNextRequestIn);
-      }
-      if (HttpNextResponseIn != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(HttpNextResponseIn);
-      }
-      if (HttpPrevRequestIn != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(HttpPrevRequestIn);
-      }
-      if (HttpPrevResponseIn != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(HttpPrevResponseIn);
-      }
-      if (HttpTime != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(HttpTime);
       }
       if (HttpChunkedTrailerPart.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpChunkedTrailerPart);
@@ -1743,8 +1201,8 @@ namespace Ndx.Decoders.Core {
       if (HttpFileData.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpFileData);
       }
-      if (HttpUnknownHeader.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(HttpUnknownHeader);
+      if (HttpTime != 0F) {
+        size += 2 + 4;
       }
       return size;
     }
@@ -1772,35 +1230,8 @@ namespace Ndx.Decoders.Core {
       if (other.HttpAuthbasic.Length != 0) {
         HttpAuthbasic = other.HttpAuthbasic;
       }
-      if (other.HttpAuthcitrix != false) {
-        HttpAuthcitrix = other.HttpAuthcitrix;
-      }
-      if (other.HttpAuthcitrixUser.Length != 0) {
-        HttpAuthcitrixUser = other.HttpAuthcitrixUser;
-      }
-      if (other.HttpAuthcitrixDomain.Length != 0) {
-        HttpAuthcitrixDomain = other.HttpAuthcitrixDomain;
-      }
-      if (other.HttpAuthcitrixPassword.Length != 0) {
-        HttpAuthcitrixPassword = other.HttpAuthcitrixPassword;
-      }
-      if (other.HttpAuthcitrixSession.Length != 0) {
-        HttpAuthcitrixSession = other.HttpAuthcitrixSession;
-      }
       if (other.HttpRequestMethod.Length != 0) {
         HttpRequestMethod = other.HttpRequestMethod;
-      }
-      if (other.HttpRequestUri.Length != 0) {
-        HttpRequestUri = other.HttpRequestUri;
-      }
-      if (other.HttpRequestUriPath.Length != 0) {
-        HttpRequestUriPath = other.HttpRequestUriPath;
-      }
-      if (other.HttpRequestUriQuery.Length != 0) {
-        HttpRequestUriQuery = other.HttpRequestUriQuery;
-      }
-      if (other.HttpRequestUriQueryParameter.Length != 0) {
-        HttpRequestUriQueryParameter = other.HttpRequestUriQueryParameter;
       }
       if (other.HttpRequestVersion.Length != 0) {
         HttpRequestVersion = other.HttpRequestVersion;
@@ -1813,9 +1244,6 @@ namespace Ndx.Decoders.Core {
       }
       if (other.HttpResponseCode != 0) {
         HttpResponseCode = other.HttpResponseCode;
-      }
-      if (other.HttpResponseCodeDesc.Length != 0) {
-        HttpResponseCodeDesc = other.HttpResponseCodeDesc;
       }
       if (other.HttpResponsePhrase.Length != 0) {
         HttpResponsePhrase = other.HttpResponsePhrase;
@@ -1895,21 +1323,6 @@ namespace Ndx.Decoders.Core {
       if (other.HttpLocation.Length != 0) {
         HttpLocation = other.HttpLocation;
       }
-      if (other.HttpSecWebsocketAccept.Length != 0) {
-        HttpSecWebsocketAccept = other.HttpSecWebsocketAccept;
-      }
-      if (other.HttpSecWebsocketExtensions.Length != 0) {
-        HttpSecWebsocketExtensions = other.HttpSecWebsocketExtensions;
-      }
-      if (other.HttpSecWebsocketKey.Length != 0) {
-        HttpSecWebsocketKey = other.HttpSecWebsocketKey;
-      }
-      if (other.HttpSecWebsocketProtocol.Length != 0) {
-        HttpSecWebsocketProtocol = other.HttpSecWebsocketProtocol;
-      }
-      if (other.HttpSecWebsocketVersion.Length != 0) {
-        HttpSecWebsocketVersion = other.HttpSecWebsocketVersion;
-      }
       if (other.HttpSetCookie.Length != 0) {
         HttpSetCookie = other.HttpSetCookie;
       }
@@ -1918,27 +1331,6 @@ namespace Ndx.Decoders.Core {
       }
       if (other.HttpXForwardedFor.Length != 0) {
         HttpXForwardedFor = other.HttpXForwardedFor;
-      }
-      if (other.HttpRequestIn != 0L) {
-        HttpRequestIn = other.HttpRequestIn;
-      }
-      if (other.HttpResponseIn != 0L) {
-        HttpResponseIn = other.HttpResponseIn;
-      }
-      if (other.HttpNextRequestIn != 0L) {
-        HttpNextRequestIn = other.HttpNextRequestIn;
-      }
-      if (other.HttpNextResponseIn != 0L) {
-        HttpNextResponseIn = other.HttpNextResponseIn;
-      }
-      if (other.HttpPrevRequestIn != 0L) {
-        HttpPrevRequestIn = other.HttpPrevRequestIn;
-      }
-      if (other.HttpPrevResponseIn != 0L) {
-        HttpPrevResponseIn = other.HttpPrevResponseIn;
-      }
-      if (other.HttpTime != 0L) {
-        HttpTime = other.HttpTime;
       }
       if (other.HttpChunkedTrailerPart.Length != 0) {
         HttpChunkedTrailerPart = other.HttpChunkedTrailerPart;
@@ -1952,8 +1344,8 @@ namespace Ndx.Decoders.Core {
       if (other.HttpFileData.Length != 0) {
         HttpFileData = other.HttpFileData;
       }
-      if (other.HttpUnknownHeader.Length != 0) {
-        HttpUnknownHeader = other.HttpUnknownHeader;
+      if (other.HttpTime != 0F) {
+        HttpTime = other.HttpTime;
       }
     }
 
@@ -1989,248 +1381,160 @@ namespace Ndx.Decoders.Core {
             HttpAuthbasic = input.ReadString();
             break;
           }
-          case 56: {
-            HttpAuthcitrix = input.ReadBool();
-            break;
-          }
-          case 66: {
-            HttpAuthcitrixUser = input.ReadString();
-            break;
-          }
-          case 74: {
-            HttpAuthcitrixDomain = input.ReadString();
-            break;
-          }
-          case 82: {
-            HttpAuthcitrixPassword = input.ReadString();
-            break;
-          }
-          case 90: {
-            HttpAuthcitrixSession = input.ReadString();
-            break;
-          }
-          case 98: {
+          case 58: {
             HttpRequestMethod = input.ReadString();
             break;
           }
-          case 106: {
-            HttpRequestUri = input.ReadString();
-            break;
-          }
-          case 114: {
-            HttpRequestUriPath = input.ReadString();
-            break;
-          }
-          case 122: {
-            HttpRequestUriQuery = input.ReadString();
-            break;
-          }
-          case 130: {
-            HttpRequestUriQueryParameter = input.ReadString();
-            break;
-          }
-          case 138: {
+          case 66: {
             HttpRequestVersion = input.ReadString();
             break;
           }
-          case 146: {
+          case 74: {
             HttpResponseVersion = input.ReadString();
             break;
           }
-          case 154: {
+          case 82: {
             HttpRequestFullUri = input.ReadString();
             break;
           }
-          case 160: {
+          case 88: {
             HttpResponseCode = input.ReadUInt32();
             break;
           }
-          case 170: {
-            HttpResponseCodeDesc = input.ReadString();
-            break;
-          }
-          case 178: {
+          case 98: {
             HttpResponsePhrase = input.ReadString();
             break;
           }
-          case 186: {
+          case 106: {
             HttpAuthorization = input.ReadString();
             break;
           }
-          case 194: {
+          case 114: {
             HttpProxyAuthenticate = input.ReadString();
             break;
           }
-          case 202: {
+          case 122: {
             HttpProxyAuthorization = input.ReadString();
             break;
           }
-          case 210: {
+          case 130: {
             HttpProxyConnectHost = input.ReadString();
             break;
           }
-          case 216: {
+          case 136: {
             HttpProxyConnectPort = input.ReadUInt32();
             break;
           }
-          case 226: {
+          case 146: {
             HttpWwwAuthenticate = input.ReadString();
             break;
           }
-          case 234: {
+          case 154: {
             HttpContentType = input.ReadString();
             break;
           }
-          case 242: {
+          case 162: {
             HttpContentLengthHeader = input.ReadString();
             break;
           }
-          case 248: {
+          case 168: {
             HttpContentLength = input.ReadUInt64();
             break;
           }
-          case 258: {
+          case 178: {
             HttpContentEncoding = input.ReadString();
             break;
           }
-          case 266: {
+          case 186: {
             HttpTransferEncoding = input.ReadString();
             break;
           }
-          case 274: {
+          case 194: {
             HttpUpgrade = input.ReadString();
             break;
           }
-          case 282: {
+          case 202: {
             HttpUserAgent = input.ReadString();
             break;
           }
-          case 290: {
+          case 210: {
             HttpHost = input.ReadString();
             break;
           }
-          case 298: {
+          case 218: {
             HttpConnection = input.ReadString();
             break;
           }
-          case 306: {
+          case 226: {
             HttpCookie = input.ReadString();
             break;
           }
-          case 314: {
+          case 234: {
             HttpCookiePair = input.ReadString();
             break;
           }
-          case 322: {
+          case 242: {
             HttpAccept = input.ReadString();
             break;
           }
-          case 330: {
+          case 250: {
             HttpReferer = input.ReadString();
             break;
           }
-          case 338: {
+          case 258: {
             HttpAcceptLanguage = input.ReadString();
             break;
           }
-          case 346: {
+          case 266: {
             HttpAcceptEncoding = input.ReadString();
             break;
           }
-          case 354: {
+          case 274: {
             HttpDate = input.ReadString();
             break;
           }
-          case 362: {
+          case 282: {
             HttpCacheControl = input.ReadString();
             break;
           }
-          case 370: {
+          case 290: {
             HttpServer = input.ReadString();
             break;
           }
-          case 378: {
+          case 298: {
             HttpLocation = input.ReadString();
             break;
           }
-          case 386: {
-            HttpSecWebsocketAccept = input.ReadString();
-            break;
-          }
-          case 394: {
-            HttpSecWebsocketExtensions = input.ReadString();
-            break;
-          }
-          case 402: {
-            HttpSecWebsocketKey = input.ReadString();
-            break;
-          }
-          case 410: {
-            HttpSecWebsocketProtocol = input.ReadString();
-            break;
-          }
-          case 418: {
-            HttpSecWebsocketVersion = input.ReadString();
-            break;
-          }
-          case 426: {
+          case 306: {
             HttpSetCookie = input.ReadString();
             break;
           }
-          case 434: {
+          case 314: {
             HttpLastModified = input.ReadString();
             break;
           }
-          case 442: {
+          case 322: {
             HttpXForwardedFor = input.ReadString();
             break;
           }
-          case 448: {
-            HttpRequestIn = input.ReadInt64();
-            break;
-          }
-          case 456: {
-            HttpResponseIn = input.ReadInt64();
-            break;
-          }
-          case 464: {
-            HttpNextRequestIn = input.ReadInt64();
-            break;
-          }
-          case 472: {
-            HttpNextResponseIn = input.ReadInt64();
-            break;
-          }
-          case 480: {
-            HttpPrevRequestIn = input.ReadInt64();
-            break;
-          }
-          case 488: {
-            HttpPrevResponseIn = input.ReadInt64();
-            break;
-          }
-          case 496: {
-            HttpTime = input.ReadInt64();
-            break;
-          }
-          case 506: {
+          case 330: {
             HttpChunkedTrailerPart = input.ReadString();
             break;
           }
-          case 514: {
+          case 338: {
             HttpChunkBoundary = input.ReadBytes();
             break;
           }
-          case 520: {
+          case 344: {
             HttpChunkSize = input.ReadUInt32();
             break;
           }
-          case 530: {
+          case 354: {
             HttpFileData = input.ReadString();
             break;
           }
-          case 538: {
-            HttpUnknownHeader = input.ReadString();
+          case 365: {
+            HttpTime = input.ReadFloat();
             break;
           }
         }

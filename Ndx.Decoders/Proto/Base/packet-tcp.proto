@@ -1,5 +1,5 @@
 syntax = "proto3";
-package Ndx.Decoders.Basic;
+package Ndx.Decoders.Base;
 message Tcp {
    // Source Port ('tcp_tcp_srcport')
    uint32 TcpSrcport = 1;
@@ -7,499 +7,70 @@ message Tcp {
    // Destination Port ('tcp_tcp_dstport')
    uint32 TcpDstport = 2;
 
-   // Source or Destination Port ('tcp_tcp_port')
-   uint32 TcpPort = 3;
-
    // Stream index ('tcp_tcp_stream')
-   uint32 TcpStream = 4;
+   uint32 TcpStream = 3;
 
    // Sequence number ('tcp_tcp_seq')
-   uint32 TcpSeq = 5;
+   uint32 TcpSeq = 4;
 
    // Next sequence number ('tcp_tcp_nxtseq')
-   uint32 TcpNxtseq = 6;
+   uint32 TcpNxtseq = 5;
 
    // Acknowledgment number ('tcp_tcp_ack')
-   uint32 TcpAck = 7;
+   uint32 TcpAck = 6;
 
    // Header Length ('tcp_tcp_hdr_len')
-   uint32 TcpHdrLen = 8;
+   uint32 TcpHdrLen = 7;
 
    // Flags ('tcp_tcp_flags')
-   uint32 TcpFlags = 9;
+   uint32 TcpFlags = 8;
 
    // Reserved ('tcp_flags_tcp_flags_res')
-   bool TcpFlagsRes = 10;
+   bool TcpFlagsRes = 9;
 
    // Nonce ('tcp_flags_tcp_flags_ns')
-   bool TcpFlagsNs = 11;
+   bool TcpFlagsNs = 10;
 
    // Congestion Window Reduced (CWR) ('tcp_flags_tcp_flags_cwr')
-   bool TcpFlagsCwr = 12;
+   bool TcpFlagsCwr = 11;
 
    // ECN-Echo ('tcp_flags_tcp_flags_ecn')
-   bool TcpFlagsEcn = 13;
+   bool TcpFlagsEcn = 12;
 
    // Urgent ('tcp_flags_tcp_flags_urg')
-   bool TcpFlagsUrg = 14;
+   bool TcpFlagsUrg = 13;
 
    // Acknowledgment ('tcp_flags_tcp_flags_ack')
-   bool TcpFlagsAck = 15;
+   bool TcpFlagsAck = 14;
 
    // Push ('tcp_flags_tcp_flags_push')
-   bool TcpFlagsPush = 16;
+   bool TcpFlagsPush = 15;
 
    // Reset ('tcp_flags_tcp_flags_reset')
-   bool TcpFlagsReset = 17;
+   bool TcpFlagsReset = 16;
 
    // Syn ('tcp_flags_tcp_flags_syn')
-   bool TcpFlagsSyn = 18;
+   bool TcpFlagsSyn = 17;
 
    // Fin ('tcp_flags_tcp_flags_fin')
-   bool TcpFlagsFin = 19;
-
-   // TCP Flags ('tcp_flags_tcp_flags_str')
-   string TcpFlagsStr = 20;
-
-   // Window size value ('tcp_tcp_window_size_value')
-   uint32 TcpWindowSizeValue = 21;
+   bool TcpFlagsFin = 18;
 
    // Calculated window size ('tcp_tcp_window_size')
-   uint32 TcpWindowSize = 22;
-
-   // Window size scaling factor ('tcp_tcp_window_size_scalefactor')
-   int32 TcpWindowSizeScalefactor = 23;
+   uint32 TcpWindowSize = 19;
 
    // Checksum ('tcp_tcp_checksum')
-   uint32 TcpChecksum = 24;
+   uint32 TcpChecksum = 20;
 
    // Checksum Status ('tcp_checksum_tcp_checksum_status')
-   uint32 TcpChecksumStatus = 25;
-
-   // Calculated Checksum ('tcp_tcp_checksum_calculated')
-   uint32 TcpChecksumCalculated = 26;
-
-   // SEQ/ACK analysis ('tcp_tcp_analysis')
-   int32 TcpAnalysis = 27;
-
-   // TCP Analysis Flags ('tcp_analysis_tcp_analysis_flags')
-   int32 TcpAnalysisFlags = 28;
-
-   // Duplicate ACK ('tcp_analysis_tcp_analysis_duplicate_ack')
-   int32 TcpAnalysisDuplicateAck = 29;
-
-   // Duplicate ACK # ('tcp_analysis_tcp_analysis_duplicate_ack_num')
-   uint32 TcpAnalysisDuplicateAckNum = 30;
-
-   // Duplicate to the ACK in frame ('tcp_analysis_tcp_analysis_duplicate_ack_frame')
-   int64 TcpAnalysisDuplicateAckFrame = 31;
-
-   // This is a continuation to the PDU in frame ('tcp_tcp_continuation_to')
-   int64 TcpContinuationTo = 32;
+   uint32 TcpChecksumStatus = 21;
 
    // TCP Segment Len ('tcp_tcp_len')
-   uint32 TcpLen = 33;
-
-   // This is an ACK to the segment in frame ('tcp_analysis_tcp_analysis_acks_frame')
-   int64 TcpAnalysisAcksFrame = 34;
-
-   // Bytes in flight ('tcp_analysis_tcp_analysis_bytes_in_flight')
-   uint32 TcpAnalysisBytesInFlight = 35;
-
-   // Bytes sent since last PSH flag ('tcp_analysis_tcp_analysis_push_bytes_sent')
-   uint32 TcpAnalysisPushBytesSent = 36;
-
-   // The RTT to ACK the segment was ('tcp_analysis_tcp_analysis_ack_rtt')
-   int64 TcpAnalysisAckRtt = 37;
-
-   // iRTT ('tcp_analysis_tcp_analysis_initial_rtt')
-   int64 TcpAnalysisInitialRtt = 38;
-
-   // The RTO for this segment was ('tcp_analysis_tcp_analysis_rto')
-   int64 TcpAnalysisRto = 39;
-
-   // RTO based on delta from frame ('tcp_analysis_tcp_analysis_rto_frame')
-   int64 TcpAnalysisRtoFrame = 40;
+   uint32 TcpLen = 22;
 
    // Urgent pointer ('tcp_tcp_urgent_pointer')
-   uint32 TcpUrgentPointer = 41;
-
-   // Segment overlap ('tcp_segment_tcp_segment_overlap')
-   bool TcpSegmentOverlap = 42;
-
-   // Conflicting data in segment overlap ('tcp_segment_overlap_tcp_segment_overlap_conflict')
-   bool TcpSegmentOverlapConflict = 43;
-
-   // Multiple tail segments found ('tcp_segment_tcp_segment_multipletails')
-   bool TcpSegmentMultipletails = 44;
-
-   // Segment too long ('tcp_segment_tcp_segment_toolongfragment')
-   bool TcpSegmentToolongfragment = 45;
-
-   // Reassembling error ('tcp_segment_tcp_segment_error')
-   int64 TcpSegmentError = 46;
-
-   // Segment count ('tcp_segment_tcp_segment_count')
-   uint32 TcpSegmentCount = 47;
-
-   // TCP Segment ('tcp_tcp_segment')
-   int64 TcpSegment = 48;
-
-   // Reassembled TCP Segments ('tcp_tcp_segments')
-   int32 TcpSegments = 49;
-
-   // Reassembled PDU in frame ('tcp_tcp_reassembled_in')
-   int64 TcpReassembledIn = 50;
-
-   // Reassembled TCP length ('tcp_tcp_reassembled_length')
-   uint32 TcpReassembledLength = 51;
-
-   // Reassembled TCP Data ('tcp_tcp_reassembled_data')
-   bytes TcpReassembledData = 52;
-
-   // Kind ('tcp_tcp_option_kind')
-   uint32 TcpOptionKind = 53;
-
-   // Length ('tcp_tcp_option_len')
-   uint32 TcpOptionLen = 54;
-
-   // TCP Options ('tcp_tcp_options')
-   bytes TcpOptions = 55;
-
-   // MSS Value ('tcp_options_tcp_options_mss_val')
-   uint32 TcpOptionsMssVal = 56;
-
-   // Shift count ('tcp_tcp_options_wscale_shift')
-   uint32 TcpOptionsWscaleShift = 57;
-
-   // Multiplier ('tcp_tcp_options_wscale_multiplier')
-   uint32 TcpOptionsWscaleMultiplier = 58;
-
-   // Data ('tcp_tcp_options_experimental_data')
-   bytes TcpOptionsExperimentalData = 59;
-
-   // Magic Number ('tcp_tcp_options_experimental_magic_number')
-   uint32 TcpOptionsExperimentalMagicNumber = 60;
-
-   // TCP SACK Left Edge ('tcp_options_tcp_options_sack_le')
-   uint32 TcpOptionsSackLe = 61;
-
-   // TCP SACK Right Edge ('tcp_options_tcp_options_sack_re')
-   uint32 TcpOptionsSackRe = 62;
-
-   // TCP SACK Count ('tcp_tcp_options_sack_count')
-   uint32 TcpOptionsSackCount = 63;
-
-   // TCP Echo Option ('tcp_options_tcp_options_echo_value')
-   uint32 TcpOptionsEchoValue = 64;
-
-   // Timestamp value ('tcp_tcp_options_timestamp_tsval')
-   uint32 TcpOptionsTimestampTsval = 65;
-
-   // Timestamp echo reply ('tcp_tcp_options_timestamp_tsecr')
-   uint32 TcpOptionsTimestampTsecr = 66;
-
-   // Multipath TCP subtype ('tcp_tcp_options_mptcp_subtype')
-   uint32 TcpOptionsMptcpSubtype = 67;
-
-   // Multipath TCP version ('tcp_tcp_options_mptcp_version')
-   uint32 TcpOptionsMptcpVersion = 68;
-
-   // Reserved ('tcp_tcp_options_mptcp_reserved')
-   uint32 TcpOptionsMptcpReserved = 69;
-
-   // Multipath TCP flags ('tcp_tcp_options_mptcp_flags')
-   uint32 TcpOptionsMptcpFlags = 70;
-
-   // Backup flag ('tcp_tcp_options_mptcp_backup_flag')
-   uint32 TcpOptionsMptcpBackupFlag = 71;
-
-   // Checksum required ('tcp_tcp_options_mptcp_checksumreq_flags')
-   uint32 TcpOptionsMptcpChecksumreqFlags = 72;
-
-   // Extensibility ('tcp_tcp_options_mptcp_extensibility_flag')
-   uint32 TcpOptionsMptcpExtensibilityFlag = 73;
-
-   // Use HMAC-SHA1 ('tcp_tcp_options_mptcp_sha1_flag')
-   uint32 TcpOptionsMptcpSha1Flag = 74;
-
-   // DATA_FIN ('tcp_tcp_options_mptcp_datafin_flag')
-   uint32 TcpOptionsMptcpDatafinFlag = 75;
-
-   // Data Sequence Number is 8 octets ('tcp_tcp_options_mptcp_dseqn8_flag')
-   uint32 TcpOptionsMptcpDseqn8Flag = 76;
-
-   // Data Sequence Number, Subflow Sequence Number, Data-level Length, Checksum present ('tcp_tcp_options_mptcp_dseqnpresent_flag')
-   uint32 TcpOptionsMptcpDseqnpresentFlag = 77;
-
-   // Data ACK is 8 octets ('tcp_tcp_options_mptcp_dataack8_flag')
-   uint32 TcpOptionsMptcpDataack8Flag = 78;
-
-   // Data ACK is present ('tcp_tcp_options_mptcp_dataackpresent_flag')
-   uint32 TcpOptionsMptcpDataackpresentFlag = 79;
-
-   // Reserved ('tcp_options_mptcp_reserved_tcp_options_mptcp_reserved_flag')
-   uint32 TcpOptionsMptcpReservedFlag = 80;
-
-   // Address ID ('tcp_tcp_options_mptcp_addrid')
-   uint32 TcpOptionsMptcpAddrid = 81;
-
-   // Sender's Key ('tcp_tcp_options_mptcp_sendkey')
-   uint64 TcpOptionsMptcpSendkey = 82;
-
-   // Receiver's Key ('tcp_tcp_options_mptcp_recvkey')
-   uint64 TcpOptionsMptcpRecvkey = 83;
-
-   // Receiver's Token ('tcp_tcp_options_mptcp_recvtok')
-   uint32 TcpOptionsMptcpRecvtok = 84;
-
-   // Sender's Random Number ('tcp_tcp_options_mptcp_sendrand')
-   uint32 TcpOptionsMptcpSendrand = 85;
-
-   // Sender's Truncated HMAC ('tcp_tcp_options_mptcp_sendtrunchmac')
-   uint64 TcpOptionsMptcpSendtrunchmac = 86;
-
-   // Sender's HMAC ('tcp_tcp_options_mptcp_sendhmac')
-   bytes TcpOptionsMptcpSendhmac = 87;
-
-   // Truncated HMAC ('tcp_tcp_options_mptcp_addaddrtrunchmac')
-   uint64 TcpOptionsMptcpAddaddrtrunchmac = 88;
-
-   // Original MPTCP Data ACK ('tcp_tcp_options_mptcp_rawdataack')
-   uint64 TcpOptionsMptcpRawdataack = 89;
-
-   // Data Sequence Number ('tcp_tcp_options_mptcp_rawdataseqno')
-   uint64 TcpOptionsMptcpRawdataseqno = 90;
-
-   // Subflow Sequence Number ('tcp_tcp_options_mptcp_subflowseqno')
-   uint32 TcpOptionsMptcpSubflowseqno = 91;
-
-   // Data-level Length ('tcp_tcp_options_mptcp_datalvllen')
-   uint32 TcpOptionsMptcpDatalvllen = 92;
-
-   // Checksum ('tcp_tcp_options_mptcp_checksum')
-   uint32 TcpOptionsMptcpChecksum = 93;
-
-   // IP version ('tcp_tcp_options_mptcp_ipver')
-   uint32 TcpOptionsMptcpIpver = 94;
-
-   // Advertised IPv4 Address ('tcp_tcp_options_mptcp_ipv4')
-   bytes TcpOptionsMptcpIpv4 = 95;
-
-   // Advertised IPv6 Address ('tcp_tcp_options_mptcp_ipv6')
-   bytes TcpOptionsMptcpIpv6 = 96;
-
-   // Advertised port ('tcp_tcp_options_mptcp_port')
-   uint32 TcpOptionsMptcpPort = 97;
-
-   // TCP CC Option ('tcp_options_tcp_options_cc_value')
-   uint32 TcpOptionsCcValue = 98;
-
-   // MD5 digest ('tcp_tcp_options_md5_digest')
-   bytes TcpOptionsMd5Digest = 99;
-
-   // QS Rate ('tcp_tcp_options_qs_rate')
-   uint32 TcpOptionsQsRate = 100;
-
-   // QS Rate ('tcp_tcp_options_qs_ttl_diff')
-   uint32 TcpOptionsQsTtlDiff = 101;
-
-   // TCP SCPS Capabilities Vector ('tcp_tcp_options_scps_vector')
-   uint32 TcpOptionsScpsVector = 102;
-
-   // Binding Space (Community) ID ('tcp_options_scps_binding_tcp_options_scps_binding_id')
-   uint32 TcpOptionsScpsBindingId = 103;
-
-   // Extended Capability Length ('tcp_options_scps_binding_tcp_options_scps_binding_len')
-   uint32 TcpOptionsScpsBindingLen = 104;
-
-   // TCP SNACK Offset ('tcp_tcp_options_snack_offset')
-   uint32 TcpOptionsSnackOffset = 105;
-
-   // TCP SNACK Size ('tcp_tcp_options_snack_size')
-   uint32 TcpOptionsSnackSize = 106;
-
-   // TCP SNACK Left Edge ('tcp_tcp_options_snack_le')
-   uint32 TcpOptionsSnackLe = 107;
-
-   // TCP SNACK Right Edge ('tcp_tcp_options_snack_re')
-   uint32 TcpOptionsSnackRe = 108;
-
-   // Partial Reliability Capable (BETS) ('tcp_tcp_options_scpsflags_bets')
-   bool TcpOptionsScpsflagsBets = 109;
-
-   // Short Form SNACK Capable (SNACK1) ('tcp_tcp_options_scpsflags_snack1')
-   bool TcpOptionsScpsflagsSnack1 = 110;
-
-   // Long Form SNACK Capable (SNACK2) ('tcp_tcp_options_scpsflags_snack2')
-   bool TcpOptionsScpsflagsSnack2 = 111;
-
-   // Lossless Header Compression (COMP) ('tcp_tcp_options_scpsflags_compress')
-   bool TcpOptionsScpsflagsCompress = 112;
-
-   // Network Layer Timestamp (NLTS) ('tcp_tcp_options_scpsflags_nlts')
-   bool TcpOptionsScpsflagsNlts = 113;
-
-   // Reserved ('tcp_tcp_options_scpsflags_reserved')
-   uint32 TcpOptionsScpsflagsReserved = 114;
-
-   // Connection ID ('tcp_tcp_options_scps_binding')
-   uint32 TcpOptionsScpsBinding = 115;
-
-   // Granularity ('tcp_options_tcp_options_user_to_granularity')
-   bool TcpOptionsUserToGranularity = 116;
-
-   // User Timeout ('tcp_options_tcp_options_user_to_val')
-   uint32 TcpOptionsUserToVal = 117;
-
-   // Type ('tcp_tcp_options_rvbd_probe_type1')
-   uint32 TcpOptionsRvbdProbeType1 = 118;
-
-   // Type ('tcp_tcp_options_rvbd_probe_type2')
-   uint32 TcpOptionsRvbdProbeType2 = 119;
-
-   // Version ('tcp_tcp_options_rvbd_probe_version')
-   uint32 TcpOptionsRvbdProbeVersion = 120;
-
-   // Version ('tcp_tcp_options_rvbd_probe_version_raw')
-   uint32 TcpOptionsRvbdProbeVersionRaw = 121;
-
-   // Length ('tcp_tcp_options_rvbd_probe_len')
-   uint32 TcpOptionsRvbdProbeLen = 122;
-
-   // CSH IP ('tcp_tcp_options_rvbd_probe_prober')
-   bytes TcpOptionsRvbdProbeProber = 123;
-
-   // SSH IP ('tcp_tcp_options_rvbd_probe_proxy_ip')
-   bytes TcpOptionsRvbdProbeProxyIp = 124;
-
-   // SSH Port ('tcp_tcp_options_rvbd_probe_proxy_port')
-   uint32 TcpOptionsRvbdProbeProxyPort = 125;
-
-   // Application Version ('tcp_tcp_options_rvbd_probe_appli_ver')
-   uint32 TcpOptionsRvbdProbeAppliVer = 126;
-
-   // Client IP ('tcp_tcp_options_rvbd_probe_client_ip')
-   bytes TcpOptionsRvbdProbeClientIp = 127;
-
-   // CFE Store ID ('tcp_tcp_options_rvbd_probe_storeid')
-   uint32 TcpOptionsRvbdProbeStoreid = 128;
-
-   // Probe Flags ('tcp_tcp_options_rvbd_probe_flags')
-   uint32 TcpOptionsRvbdProbeFlags = 129;
-
-   // Not CFE ('tcp_options_rvbd_probe_flags_tcp_options_rvbd_probe_flags_notcfe')
-   bool TcpOptionsRvbdProbeFlagsNotcfe = 130;
-
-   // Last Notify ('tcp_options_rvbd_probe_flags_tcp_options_rvbd_probe_flags_last')
-   bool TcpOptionsRvbdProbeFlagsLast = 131;
-
-   // Disable Probe Cache on CSH ('tcp_options_rvbd_probe_flags_tcp_options_rvbd_probe_flags_probe')
-   bool TcpOptionsRvbdProbeFlagsProbe = 132;
-
-   // SSL Enabled ('tcp_options_rvbd_probe_flags_tcp_options_rvbd_probe_flags_ssl')
-   bool TcpOptionsRvbdProbeFlagsSsl = 133;
-
-   // SSH outer to server established ('tcp_options_rvbd_probe_flags_tcp_options_rvbd_probe_flags_server')
-   bool TcpOptionsRvbdProbeFlagsServer = 134;
-
-   // Transparency Options ('tcp_tcp_options_rvbd_trpy_flags')
-   uint32 TcpOptionsRvbdTrpyFlags = 135;
-
-   // Enable FW traversal feature ('tcp_options_rvbd_trpy_flags_tcp_options_rvbd_trpy_flags_fw_rst_probe')
-   bool TcpOptionsRvbdTrpyFlagsFwRstProbe = 136;
-
-   // Enable Inner FW feature on All FWs ('tcp_options_rvbd_trpy_flags_tcp_options_rvbd_trpy_flags_fw_rst_inner')
-   bool TcpOptionsRvbdTrpyFlagsFwRstInner = 137;
-
-   // Enable Transparency FW feature on All FWs ('tcp_options_rvbd_trpy_flags_tcp_options_rvbd_trpy_flags_fw_rst')
-   bool TcpOptionsRvbdTrpyFlagsFwRst = 138;
-
-   // Reserved ('tcp_options_rvbd_trpy_flags_tcp_options_rvbd_trpy_flags_chksum')
-   bool TcpOptionsRvbdTrpyFlagsChksum = 139;
-
-   // Out of band connection ('tcp_options_rvbd_trpy_flags_tcp_options_rvbd_trpy_flags_oob')
-   bool TcpOptionsRvbdTrpyFlagsOob = 140;
-
-   // Transparency Mode ('tcp_options_rvbd_trpy_flags_tcp_options_rvbd_trpy_flags_mode')
-   bool TcpOptionsRvbdTrpyFlagsMode = 141;
-
-   // Src SH IP Addr ('tcp_tcp_options_rvbd_trpy_src_ip')
-   bytes TcpOptionsRvbdTrpySrcIp = 142;
-
-   // Dst SH IP Addr ('tcp_tcp_options_rvbd_trpy_dst_ip')
-   bytes TcpOptionsRvbdTrpyDstIp = 143;
-
-   // Src SH Inner Port ('tcp_tcp_options_rvbd_trpy_src_port')
-   uint32 TcpOptionsRvbdTrpySrcPort = 144;
-
-   // Dst SH Inner Port ('tcp_tcp_options_rvbd_trpy_dst_port')
-   uint32 TcpOptionsRvbdTrpyDstPort = 145;
-
-   // Out of band connection Client Port ('tcp_tcp_options_rvbd_trpy_client_port')
-   uint32 TcpOptionsRvbdTrpyClientPort = 146;
-
-   // Fast Open Cookie Request ('tcp_tcp_options_tfo_request')
-   int32 TcpOptionsTfoRequest = 147;
-
-   // Fast Open Cookie ('tcp_tcp_options_tfo_cookie')
-   bytes TcpOptionsTfoCookie = 148;
-
-   // Time until the last segment of this PDU ('tcp_tcp_pdu_time')
-   int64 TcpPduTime = 149;
-
-   // PDU Size ('tcp_tcp_pdu_size')
-   uint32 TcpPduSize = 150;
-
-   // Last frame of this PDU ('tcp_tcp_pdu_last_frame')
-   int64 TcpPduLastFrame = 151;
-
-   // Time since first frame in this TCP stream ('tcp_tcp_time_relative')
-   int64 TcpTimeRelative = 152;
-
-   // Time since previous frame in this TCP stream ('tcp_tcp_time_delta')
-   int64 TcpTimeDelta = 153;
-
-   // Source process user ID ('tcp_tcp_proc_srcuid')
-   uint32 TcpProcSrcuid = 154;
-
-   // Source process ID ('tcp_tcp_proc_srcpid')
-   uint32 TcpProcSrcpid = 155;
-
-   // Source process user name ('tcp_tcp_proc_srcuname')
-   string TcpProcSrcuname = 156;
-
-   // Source process name ('tcp_tcp_proc_srccmd')
-   string TcpProcSrccmd = 157;
-
-   // Destination process user ID ('tcp_tcp_proc_dstuid')
-   uint32 TcpProcDstuid = 158;
-
-   // Destination process ID ('tcp_tcp_proc_dstpid')
-   uint32 TcpProcDstpid = 159;
-
-   // Destination process user name ('tcp_tcp_proc_dstuname')
-   string TcpProcDstuname = 160;
-
-   // Destination process name ('tcp_tcp_proc_dstcmd')
-   string TcpProcDstcmd = 161;
-
-   // TCP segment data ('tcp_tcp_segment_data')
-   bytes TcpSegmentData = 162;
+   uint32 TcpUrgentPointer = 23;
 
    // TCP payload ('tcp_tcp_payload')
-   bytes TcpPayload = 163;
-
-   // Binding Space Data ('tcp_options_scps_binding_tcp_options_scps_binding_data')
-   bytes TcpOptionsScpsBindingData = 164;
-
-   // Reserved ('tcp_tcp_options_rvbd_probe_reserved')
-   uint32 TcpOptionsRvbdProbeReserved = 165;
-
-   // Retransmission of FIN from frame ('tcp_tcp_fin_retransmission')
-   int64 TcpFinRetransmission = 166;
-
-   // Reset cause ('tcp_tcp_reset_cause')
-   string TcpResetCause = 167;
+   bytes TcpPayload = 24;
 
 }

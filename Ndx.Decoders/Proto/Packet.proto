@@ -33,17 +33,16 @@ import "packet-ppp.proto";
 
 message Packet {
 	int64 TimeStamp = 1;
-	int32 FrameNumber = 2;
-
 	message Protocol {
 		oneof ProtocolType {
 			// BASE:
-			Ndx.Decoders.Basic.Eth Eth = 1;
-			Ndx.Decoders.Basic.Ieee80211 Ieee80211 = 2;
-			Ndx.Decoders.Basic.Ip Ip = 3;
-			Ndx.Decoders.Basic.Ipv6 Ipv6 = 4;
-			Ndx.Decoders.Basic.Tcp Tcp = 5;
-			Ndx.Decoders.Basic.Udp Udp = 6;
+			Ndx.Decoders.Base.Frame Frame = 1;
+			Ndx.Decoders.Base.Eth Eth = 2;
+			Ndx.Decoders.Base.Ieee80211 Ieee80211 = 3;
+			Ndx.Decoders.Base.Ip Ip = 4;
+			Ndx.Decoders.Base.Ipv6 Ipv6 = 5;
+			Ndx.Decoders.Base.Tcp Tcp = 6;
+			Ndx.Decoders.Base.Udp Udp = 7;
 			// CORE:
 			Ndx.Decoders.Core.Arp Arp = 101;
 			Ndx.Decoders.Core.Atm Atm = 102;

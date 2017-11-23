@@ -7,7 +7,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Ndx.Decoders.Basic {
+namespace Ndx.Decoders.Base {
 
   /// <summary>Holder for reflection information generated from packet-ieee80211.proto</summary>
   public static partial class PacketIeee80211Reflection {
@@ -22,12 +22,12 @@ namespace Ndx.Decoders.Basic {
     static PacketIeee80211Reflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZwYWNrZXQtaWVlZTgwMjExLnByb3RvEhJOZHguRGVjb2RlcnMuQmFzaWMi",
-            "CwoJSWVlZTgwMjExYgZwcm90bzM="));
+            "ChZwYWNrZXQtaWVlZTgwMjExLnByb3RvEhFOZHguRGVjb2RlcnMuQmFzZSIL",
+            "CglJZWVlODAyMTFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Basic.Ieee80211), global::Ndx.Decoders.Basic.Ieee80211.Parser, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Base.Ieee80211), global::Ndx.Decoders.Base.Ieee80211.Parser, null, null, null, null)
           }));
     }
     #endregion
@@ -41,7 +41,7 @@ namespace Ndx.Decoders.Basic {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Decoders.Basic.PacketIeee80211Reflection.Descriptor.MessageTypes[0]; }
+      get { return global::Ndx.Decoders.Base.PacketIeee80211Reflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
