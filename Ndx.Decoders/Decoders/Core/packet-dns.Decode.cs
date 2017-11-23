@@ -14,116 +14,36 @@ namespace Ndx.Decoders.Core
     {
       var obj = new Dns();
       {
-        var val = token["dns_dns_length"];
-        if (val != null) obj.DnsLength = Convert.ToUInt32(val.Value<string>(), 10);
-      }
-      {
         var val = token["dns_dns_flags"];
-        if (val != null) obj.DnsFlags = Convert.ToUInt32(val.Value<string>(), 16);
-      }
-      {
-        var val = token["dns_flags_dns_flags_response"];
-        if (val != null) obj.DnsFlagsResponse = Convert.ToInt32(val.Value<string>(), 10) != 0;
-      }
-      {
-        var val = token["dns_flags_dns_flags_opcode"];
-        if (val != null) obj.DnsFlagsOpcode = Convert.ToUInt32(val.Value<string>(), 10);
-      }
-      {
-        var val = token["dns_flags_dns_flags_authoritative"];
-        if (val != null) obj.DnsFlagsAuthoritative = Convert.ToInt32(val.Value<string>(), 10) != 0;
-      }
-      {
-        var val = token["dns_flags_dns_flags_conflict"];
-        if (val != null) obj.DnsFlagsConflict = Convert.ToInt32(val.Value<string>(), 10) != 0;
-      }
-      {
-        var val = token["dns_flags_dns_flags_truncated"];
-        if (val != null) obj.DnsFlagsTruncated = Convert.ToInt32(val.Value<string>(), 10) != 0;
-      }
-      {
-        var val = token["dns_flags_dns_flags_recdesired"];
-        if (val != null) obj.DnsFlagsRecdesired = Convert.ToInt32(val.Value<string>(), 10) != 0;
-      }
-      {
-        var val = token["dns_flags_dns_flags_tentative"];
-        if (val != null) obj.DnsFlagsTentative = Convert.ToInt32(val.Value<string>(), 10) != 0;
-      }
-      {
-        var val = token["dns_flags_dns_flags_recavail"];
-        if (val != null) obj.DnsFlagsRecavail = Convert.ToInt32(val.Value<string>(), 10) != 0;
-      }
-      {
-        var val = token["dns_flags_dns_flags_z"];
-        if (val != null) obj.DnsFlagsZ = Convert.ToInt32(val.Value<string>(), 10) != 0;
-      }
-      {
-        var val = token["dns_flags_dns_flags_authenticated"];
-        if (val != null) obj.DnsFlagsAuthenticated = Convert.ToInt32(val.Value<string>(), 10) != 0;
-      }
-      {
-        var val = token["dns_flags_dns_flags_checkdisable"];
-        if (val != null) obj.DnsFlagsCheckdisable = Convert.ToInt32(val.Value<string>(), 10) != 0;
-      }
-      {
-        var val = token["dns_flags_dns_flags_rcode"];
-        if (val != null) obj.DnsFlagsRcode = Convert.ToUInt32(val.Value<string>(), 10);
+        if (val != null) obj.DnsFlags = default(ByteString);
       }
       {
         var val = token["dns_dns_id"];
         if (val != null) obj.DnsId = Convert.ToUInt32(val.Value<string>(), 16);
       }
       {
-        var val = token["text_dns_qry_type"];
-        if (val != null) obj.DnsQryType = Convert.ToUInt32(val.Value<string>(), 10);
+        var val = token["dns_dns_response_in"];
+        if (val != null) obj.DnsResponseIn = default(Int64);
       }
       {
-        var val = token["text_dns_qry_class"];
-        if (val != null) obj.DnsQryClass = Convert.ToUInt32(val.Value<string>(), 16);
+        var val = token["dns_dns_response_to"];
+        if (val != null) obj.DnsResponseTo = default(Int64);
       }
       {
-        var val = token["text_dns_qry_name"];
-        if (val != null) obj.DnsQryName = val.Value<string>();
+        var val = token["dns_dns_time"];
+        if (val != null) obj.DnsTime = default(Int64);
       }
       {
-        var val = token["text_dns_qry_name_len"];
-        if (val != null) obj.DnsQryNameLen = Convert.ToUInt32(val.Value<string>(), 10);
+        var val = token["dns_dns_count_add_rr"];
+        if (val != null) obj.DnsCountAddRr = Convert.ToUInt32(val.Value<string>(), 10);
       }
       {
-        var val = token["dns_dns_count_labels"];
-        if (val != null) obj.DnsCountLabels = Convert.ToUInt32(val.Value<string>(), 10);
+        var val = token[""];
+        if (val != null) obj.DnsQry = default(ByteString);
       }
       {
-        var val = token["text_dns_resp_type"];
-        if (val != null) obj.DnsRespType = Convert.ToUInt32(val.Value<string>(), 10);
-      }
-      {
-        var val = token["text_dns_resp_class"];
-        if (val != null) obj.DnsRespClass = Convert.ToUInt32(val.Value<string>(), 16);
-      }
-      {
-        var val = token["dns_dns_resp_cache_flush"];
-        if (val != null) obj.DnsRespCacheFlush = Convert.ToInt32(val.Value<string>(), 10) != 0;
-      }
-      {
-        var val = token["dns_dns_resp_ext_rcode"];
-        if (val != null) obj.DnsRespExtRcode = Convert.ToUInt32(val.Value<string>(), 16);
-      }
-      {
-        var val = token["dns_dns_resp_edns0_version"];
-        if (val != null) obj.DnsRespEdns0Version = Convert.ToUInt32(val.Value<string>(), 10);
-      }
-      {
-        var val = token["dns_dns_resp_z"];
-        if (val != null) obj.DnsRespZ = Convert.ToUInt32(val.Value<string>(), 16);
-      }
-      {
-        var val = token["dns_resp_z_dns_resp_z_do"];
-        if (val != null) obj.DnsRespZDo = Convert.ToInt32(val.Value<string>(), 10) != 0;
-      }
-      {
-        var val = token["dns_resp_z_dns_resp_z_reserved"];
-        if (val != null) obj.DnsRespZReserved = Convert.ToUInt32(val.Value<string>(), 16);
+        var val = token[""];
+        if (val != null) obj.DnsResp = default(ByteString);
       }
       {
         var val = token["text_dns_srv_service"];
@@ -192,18 +112,6 @@ namespace Ndx.Decoders.Core
       {
         var val = token["dns_dns_naptr_replacement"];
         if (val != null) obj.DnsNaptrReplacement = val.Value<string>();
-      }
-      {
-        var val = token["text_dns_resp_name"];
-        if (val != null) obj.DnsRespName = val.Value<string>();
-      }
-      {
-        var val = token["text_dns_resp_ttl"];
-        if (val != null) obj.DnsRespTtl = Convert.ToInt32(val.Value<string>(), 10);
-      }
-      {
-        var val = token["text_dns_resp_len"];
-        if (val != null) obj.DnsRespLen = Convert.ToUInt32(val.Value<string>(), 10);
       }
       {
         var val = token["text_dns_a"];
@@ -743,7 +651,7 @@ namespace Ndx.Decoders.Core
       }
       {
         var val = token["dns_opt_dns_opt_n3u"];
-        if (val != null) obj.DnsOptN3U = Convert.ToUInt32(val.Value<string>(), 10);
+        if (val != null) obj.DnsOptN3u = Convert.ToUInt32(val.Value<string>(), 10);
       }
       {
         var val = token["dns_dns_opt_client_family"];
@@ -896,22 +804,6 @@ namespace Ndx.Decoders.Core
       {
         var val = token["dns_dns_tsig_other_data"];
         if (val != null) obj.DnsTsigOtherData = StringToBytes(val.Value<string>());
-      }
-      {
-        var val = token["dns_dns_response_in"];
-        if (val != null) obj.DnsResponseIn = default(Int64);
-      }
-      {
-        var val = token["dns_dns_response_to"];
-        if (val != null) obj.DnsResponseTo = default(Int64);
-      }
-      {
-        var val = token["dns_dns_time"];
-        if (val != null) obj.DnsTime = default(Int64);
-      }
-      {
-        var val = token["dns_dns_count_add_rr"];
-        if (val != null) obj.DnsCountAddRr = Convert.ToUInt32(val.Value<string>(), 10);
       }
       {
         var val = token["dns_dns_sshfp_algorithm"];

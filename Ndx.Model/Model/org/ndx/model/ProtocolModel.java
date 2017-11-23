@@ -287,6 +287,10 @@ public final class ProtocolModel {
      * <code>FT_NUM_TYPES = 46;</code>
      */
     FT_NUM_TYPES(46),
+    /**
+     * <code>FT_GROUP = 47;</code>
+     */
+    FT_GROUP(47),
     UNRECOGNIZED(-1),
     ;
 
@@ -558,6 +562,10 @@ public final class ProtocolModel {
      * <code>FT_NUM_TYPES = 46;</code>
      */
     public static final int FT_NUM_TYPES_VALUE = 46;
+    /**
+     * <code>FT_GROUP = 47;</code>
+     */
+    public static final int FT_GROUP_VALUE = 47;
 
 
     public final int getNumber() {
@@ -625,6 +633,7 @@ public final class ProtocolModel {
         case 44: return FT_STRINGZPAD;
         case 45: return FT_FCWWN;
         case 46: return FT_NUM_TYPES;
+        case 47: return FT_GROUP;
         default: return null;
       }
     }
@@ -1072,6 +1081,104 @@ public final class ProtocolModel {
     // @@protoc_insertion_point(enum_scope:ndx.model.FieldDisplay)
   }
 
+  /**
+   * Protobuf enum {@code ndx.model.FieldMultiplicity}
+   */
+  public enum FieldMultiplicity
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>FM_ONE = 0;</code>
+     */
+    FM_ONE(0),
+    /**
+     * <code>FM_MANY = 1;</code>
+     */
+    FM_MANY(1),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>FM_ONE = 0;</code>
+     */
+    public static final int FM_ONE_VALUE = 0;
+    /**
+     * <code>FM_MANY = 1;</code>
+     */
+    public static final int FM_MANY_VALUE = 1;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static FieldMultiplicity valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static FieldMultiplicity forNumber(int value) {
+      switch (value) {
+        case 0: return FM_ONE;
+        case 1: return FM_MANY;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<FieldMultiplicity>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        FieldMultiplicity> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<FieldMultiplicity>() {
+            public FieldMultiplicity findValueByNumber(int number) {
+              return FieldMultiplicity.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return org.ndx.model.ProtocolModel.getDescriptor().getEnumTypes().get(2);
+    }
+
+    private static final FieldMultiplicity[] VALUES = values();
+
+    public static FieldMultiplicity valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private FieldMultiplicity(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:ndx.model.FieldMultiplicity)
+  }
+
   public interface ProtocolFieldOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ndx.model.ProtocolField)
       com.google.protobuf.MessageOrBuilder {
@@ -1179,6 +1286,77 @@ public final class ProtocolModel {
      */
     com.google.protobuf.ByteString
         getJsonNameBytes();
+
+    /**
+     * <pre>
+     *&#47; Defines multiplicity of the field.
+     * </pre>
+     *
+     * <code>.ndx.model.FieldMultiplicity Mult = 6;</code>
+     */
+    int getMultValue();
+    /**
+     * <pre>
+     *&#47; Defines multiplicity of the field.
+     * </pre>
+     *
+     * <code>.ndx.model.FieldMultiplicity Mult = 6;</code>
+     */
+    org.ndx.model.ProtocolModel.FieldMultiplicity getMult();
+
+    /**
+     * <pre>
+     *&#47; Defines the subfields for FtGroup field.
+     * </pre>
+     *
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+     */
+    int getFieldMapCount();
+    /**
+     * <pre>
+     *&#47; Defines the subfields for FtGroup field.
+     * </pre>
+     *
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+     */
+    boolean containsFieldMap(
+        java.lang.String key);
+    /**
+     * Use {@link #getFieldMapMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
+    getFieldMap();
+    /**
+     * <pre>
+     *&#47; Defines the subfields for FtGroup field.
+     * </pre>
+     *
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+     */
+    java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
+    getFieldMapMap();
+    /**
+     * <pre>
+     *&#47; Defines the subfields for FtGroup field.
+     * </pre>
+     *
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+     */
+
+    org.ndx.model.ProtocolModel.ProtocolField getFieldMapOrDefault(
+        java.lang.String key,
+        org.ndx.model.ProtocolModel.ProtocolField defaultValue);
+    /**
+     * <pre>
+     *&#47; Defines the subfields for FtGroup field.
+     * </pre>
+     *
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+     */
+
+    org.ndx.model.ProtocolModel.ProtocolField getFieldMapOrThrow(
+        java.lang.String key);
   }
   /**
    * <pre>
@@ -1203,6 +1381,7 @@ public final class ProtocolModel {
       display_ = 0;
       info_ = "";
       jsonName_ = "";
+      mult_ = 0;
     }
 
     @java.lang.Override
@@ -1260,6 +1439,25 @@ public final class ProtocolModel {
               jsonName_ = s;
               break;
             }
+            case 48: {
+              int rawValue = input.readEnum();
+
+              mult_ = rawValue;
+              break;
+            }
+            case 58: {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                fieldMap_ = com.google.protobuf.MapField.newMapField(
+                    FieldMapDefaultEntryHolder.defaultEntry);
+                mutable_bitField0_ |= 0x00000040;
+              }
+              com.google.protobuf.MapEntry<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
+              fieldMap__ = input.readMessage(
+                  FieldMapDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              fieldMap_.getMutableMap().put(
+                  fieldMap__.getKey(), fieldMap__.getValue());
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1276,6 +1474,17 @@ public final class ProtocolModel {
       return org.ndx.model.ProtocolModel.internal_static_ndx_model_ProtocolField_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 7:
+          return internalGetFieldMap();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.ndx.model.ProtocolModel.internal_static_ndx_model_ProtocolField_fieldAccessorTable
@@ -1283,6 +1492,7 @@ public final class ProtocolModel {
               org.ndx.model.ProtocolModel.ProtocolField.class, org.ndx.model.ProtocolModel.ProtocolField.Builder.class);
     }
 
+    private int bitField0_;
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
@@ -1473,6 +1683,122 @@ public final class ProtocolModel {
       }
     }
 
+    public static final int MULT_FIELD_NUMBER = 6;
+    private int mult_;
+    /**
+     * <pre>
+     *&#47; Defines multiplicity of the field.
+     * </pre>
+     *
+     * <code>.ndx.model.FieldMultiplicity Mult = 6;</code>
+     */
+    public int getMultValue() {
+      return mult_;
+    }
+    /**
+     * <pre>
+     *&#47; Defines multiplicity of the field.
+     * </pre>
+     *
+     * <code>.ndx.model.FieldMultiplicity Mult = 6;</code>
+     */
+    public org.ndx.model.ProtocolModel.FieldMultiplicity getMult() {
+      org.ndx.model.ProtocolModel.FieldMultiplicity result = org.ndx.model.ProtocolModel.FieldMultiplicity.valueOf(mult_);
+      return result == null ? org.ndx.model.ProtocolModel.FieldMultiplicity.UNRECOGNIZED : result;
+    }
+
+    public static final int FIELDMAP_FIELD_NUMBER = 7;
+    private static final class FieldMapDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>newDefaultInstance(
+                  org.ndx.model.ProtocolModel.internal_static_ndx_model_ProtocolField_FieldMapEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  org.ndx.model.ProtocolModel.ProtocolField.getDefaultInstance());
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> fieldMap_;
+    private com.google.protobuf.MapField<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
+    internalGetFieldMap() {
+      if (fieldMap_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            FieldMapDefaultEntryHolder.defaultEntry);
+      }
+      return fieldMap_;
+    }
+
+    public int getFieldMapCount() {
+      return internalGetFieldMap().getMap().size();
+    }
+    /**
+     * <pre>
+     *&#47; Defines the subfields for FtGroup field.
+     * </pre>
+     *
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+     */
+
+    public boolean containsFieldMap(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetFieldMap().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getFieldMapMap()} instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> getFieldMap() {
+      return getFieldMapMap();
+    }
+    /**
+     * <pre>
+     *&#47; Defines the subfields for FtGroup field.
+     * </pre>
+     *
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+     */
+
+    public java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> getFieldMapMap() {
+      return internalGetFieldMap().getMap();
+    }
+    /**
+     * <pre>
+     *&#47; Defines the subfields for FtGroup field.
+     * </pre>
+     *
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+     */
+
+    public org.ndx.model.ProtocolModel.ProtocolField getFieldMapOrDefault(
+        java.lang.String key,
+        org.ndx.model.ProtocolModel.ProtocolField defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> map =
+          internalGetFieldMap().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <pre>
+     *&#47; Defines the subfields for FtGroup field.
+     * </pre>
+     *
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+     */
+
+    public org.ndx.model.ProtocolModel.ProtocolField getFieldMapOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> map =
+          internalGetFieldMap().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1500,6 +1826,15 @@ public final class ProtocolModel {
       if (!getJsonNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, jsonName_);
       }
+      if (mult_ != org.ndx.model.ProtocolModel.FieldMultiplicity.FM_ONE.getNumber()) {
+        output.writeEnum(6, mult_);
+      }
+      com.google.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetFieldMap(),
+          FieldMapDefaultEntryHolder.defaultEntry,
+          7);
     }
 
     public int getSerializedSize() {
@@ -1523,6 +1858,20 @@ public final class ProtocolModel {
       }
       if (!getJsonNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, jsonName_);
+      }
+      if (mult_ != org.ndx.model.ProtocolModel.FieldMultiplicity.FM_ONE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(6, mult_);
+      }
+      for (java.util.Map.Entry<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> entry
+           : internalGetFieldMap().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
+        fieldMap__ = FieldMapDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(7, fieldMap__);
       }
       memoizedSize = size;
       return size;
@@ -1548,6 +1897,9 @@ public final class ProtocolModel {
           .equals(other.getInfo());
       result = result && getJsonName()
           .equals(other.getJsonName());
+      result = result && mult_ == other.mult_;
+      result = result && internalGetFieldMap().equals(
+          other.internalGetFieldMap());
       return result;
     }
 
@@ -1568,6 +1920,12 @@ public final class ProtocolModel {
       hash = (53 * hash) + getInfo().hashCode();
       hash = (37 * hash) + JSONNAME_FIELD_NUMBER;
       hash = (53 * hash) + getJsonName().hashCode();
+      hash = (37 * hash) + MULT_FIELD_NUMBER;
+      hash = (53 * hash) + mult_;
+      if (!internalGetFieldMap().getMap().isEmpty()) {
+        hash = (37 * hash) + FIELDMAP_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetFieldMap().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1679,6 +2037,28 @@ public final class ProtocolModel {
         return org.ndx.model.ProtocolModel.internal_static_ndx_model_ProtocolField_descriptor;
       }
 
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 7:
+            return internalGetFieldMap();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 7:
+            return internalGetMutableFieldMap();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.ndx.model.ProtocolModel.internal_static_ndx_model_ProtocolField_fieldAccessorTable
@@ -1713,6 +2093,9 @@ public final class ProtocolModel {
 
         jsonName_ = "";
 
+        mult_ = 0;
+
+        internalGetMutableFieldMap().clear();
         return this;
       }
 
@@ -1735,11 +2118,17 @@ public final class ProtocolModel {
 
       public org.ndx.model.ProtocolModel.ProtocolField buildPartial() {
         org.ndx.model.ProtocolModel.ProtocolField result = new org.ndx.model.ProtocolModel.ProtocolField(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         result.name_ = name_;
         result.type_ = type_;
         result.display_ = display_;
         result.info_ = info_;
         result.jsonName_ = jsonName_;
+        result.mult_ = mult_;
+        result.fieldMap_ = internalGetFieldMap();
+        result.fieldMap_.makeImmutable();
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -1799,6 +2188,11 @@ public final class ProtocolModel {
           jsonName_ = other.jsonName_;
           onChanged();
         }
+        if (other.mult_ != 0) {
+          setMultValue(other.getMultValue());
+        }
+        internalGetMutableFieldMap().mergeFrom(
+            other.internalGetFieldMap());
         onChanged();
         return this;
       }
@@ -1824,6 +2218,7 @@ public final class ProtocolModel {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object name_ = "";
       /**
@@ -2259,6 +2654,221 @@ public final class ProtocolModel {
         onChanged();
         return this;
       }
+
+      private int mult_ = 0;
+      /**
+       * <pre>
+       *&#47; Defines multiplicity of the field.
+       * </pre>
+       *
+       * <code>.ndx.model.FieldMultiplicity Mult = 6;</code>
+       */
+      public int getMultValue() {
+        return mult_;
+      }
+      /**
+       * <pre>
+       *&#47; Defines multiplicity of the field.
+       * </pre>
+       *
+       * <code>.ndx.model.FieldMultiplicity Mult = 6;</code>
+       */
+      public Builder setMultValue(int value) {
+        mult_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *&#47; Defines multiplicity of the field.
+       * </pre>
+       *
+       * <code>.ndx.model.FieldMultiplicity Mult = 6;</code>
+       */
+      public org.ndx.model.ProtocolModel.FieldMultiplicity getMult() {
+        org.ndx.model.ProtocolModel.FieldMultiplicity result = org.ndx.model.ProtocolModel.FieldMultiplicity.valueOf(mult_);
+        return result == null ? org.ndx.model.ProtocolModel.FieldMultiplicity.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       *&#47; Defines multiplicity of the field.
+       * </pre>
+       *
+       * <code>.ndx.model.FieldMultiplicity Mult = 6;</code>
+       */
+      public Builder setMult(org.ndx.model.ProtocolModel.FieldMultiplicity value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        mult_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *&#47; Defines multiplicity of the field.
+       * </pre>
+       *
+       * <code>.ndx.model.FieldMultiplicity Mult = 6;</code>
+       */
+      public Builder clearMult() {
+        
+        mult_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> fieldMap_;
+      private com.google.protobuf.MapField<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
+      internalGetFieldMap() {
+        if (fieldMap_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              FieldMapDefaultEntryHolder.defaultEntry);
+        }
+        return fieldMap_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
+      internalGetMutableFieldMap() {
+        onChanged();;
+        if (fieldMap_ == null) {
+          fieldMap_ = com.google.protobuf.MapField.newMapField(
+              FieldMapDefaultEntryHolder.defaultEntry);
+        }
+        if (!fieldMap_.isMutable()) {
+          fieldMap_ = fieldMap_.copy();
+        }
+        return fieldMap_;
+      }
+
+      public int getFieldMapCount() {
+        return internalGetFieldMap().getMap().size();
+      }
+      /**
+       * <pre>
+       *&#47; Defines the subfields for FtGroup field.
+       * </pre>
+       *
+       * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+       */
+
+      public boolean containsFieldMap(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetFieldMap().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getFieldMapMap()} instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> getFieldMap() {
+        return getFieldMapMap();
+      }
+      /**
+       * <pre>
+       *&#47; Defines the subfields for FtGroup field.
+       * </pre>
+       *
+       * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+       */
+
+      public java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> getFieldMapMap() {
+        return internalGetFieldMap().getMap();
+      }
+      /**
+       * <pre>
+       *&#47; Defines the subfields for FtGroup field.
+       * </pre>
+       *
+       * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+       */
+
+      public org.ndx.model.ProtocolModel.ProtocolField getFieldMapOrDefault(
+          java.lang.String key,
+          org.ndx.model.ProtocolModel.ProtocolField defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> map =
+            internalGetFieldMap().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <pre>
+       *&#47; Defines the subfields for FtGroup field.
+       * </pre>
+       *
+       * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+       */
+
+      public org.ndx.model.ProtocolModel.ProtocolField getFieldMapOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> map =
+            internalGetFieldMap().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+
+      public Builder clearFieldMap() {
+        internalGetMutableFieldMap().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <pre>
+       *&#47; Defines the subfields for FtGroup field.
+       * </pre>
+       *
+       * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+       */
+
+      public Builder removeFieldMap(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableFieldMap().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
+      getMutableFieldMap() {
+        return internalGetMutableFieldMap().getMutableMap();
+      }
+      /**
+       * <pre>
+       *&#47; Defines the subfields for FtGroup field.
+       * </pre>
+       *
+       * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+       */
+      public Builder putFieldMap(
+          java.lang.String key,
+          org.ndx.model.ProtocolModel.ProtocolField value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (value == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableFieldMap().getMutableMap()
+            .put(key, value);
+        return this;
+      }
+      /**
+       * <pre>
+       *&#47; Defines the subfields for FtGroup field.
+       * </pre>
+       *
+       * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 7;</code>
+       */
+
+      public Builder putAllFieldMap(
+          java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> values) {
+        internalGetMutableFieldMap().getMutableMap()
+            .putAll(values);
+        return this;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -2323,37 +2933,37 @@ public final class ProtocolModel {
         getNameBytes();
 
     /**
-     * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
      */
-    int getFieldsCount();
+    int getFieldMapCount();
     /**
-     * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
      */
-    boolean containsFields(
+    boolean containsFieldMap(
         java.lang.String key);
     /**
-     * Use {@link #getFieldsMap()} instead.
+     * Use {@link #getFieldMapMap()} instead.
      */
     @java.lang.Deprecated
     java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
-    getFields();
+    getFieldMap();
     /**
-     * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
      */
     java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
-    getFieldsMap();
+    getFieldMapMap();
     /**
-     * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
      */
 
-    org.ndx.model.ProtocolModel.ProtocolField getFieldsOrDefault(
+    org.ndx.model.ProtocolModel.ProtocolField getFieldMapOrDefault(
         java.lang.String key,
         org.ndx.model.ProtocolModel.ProtocolField defaultValue);
     /**
-     * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
      */
 
-    org.ndx.model.ProtocolModel.ProtocolField getFieldsOrThrow(
+    org.ndx.model.ProtocolModel.ProtocolField getFieldMapOrThrow(
         java.lang.String key);
   }
   /**
@@ -2408,15 +3018,15 @@ public final class ProtocolModel {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                fields_ = com.google.protobuf.MapField.newMapField(
-                    FieldsDefaultEntryHolder.defaultEntry);
+                fieldMap_ = com.google.protobuf.MapField.newMapField(
+                    FieldMapDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000002;
               }
               com.google.protobuf.MapEntry<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
-              fields__ = input.readMessage(
-                  FieldsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              fields_.getMutableMap().put(
-                  fields__.getKey(), fields__.getValue());
+              fieldMap__ = input.readMessage(
+                  FieldMapDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              fieldMap_.getMutableMap().put(
+                  fieldMap__.getKey(), fieldMap__.getValue());
               break;
             }
           }
@@ -2440,7 +3050,7 @@ public final class ProtocolModel {
         int number) {
       switch (number) {
         case 2:
-          return internalGetFields();
+          return internalGetFieldMap();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -2488,76 +3098,76 @@ public final class ProtocolModel {
       }
     }
 
-    public static final int FIELDS_FIELD_NUMBER = 2;
-    private static final class FieldsDefaultEntryHolder {
+    public static final int FIELDMAP_FIELD_NUMBER = 2;
+    private static final class FieldMapDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>newDefaultInstance(
-                  org.ndx.model.ProtocolModel.internal_static_ndx_model_Protocol_FieldsEntry_descriptor, 
+                  org.ndx.model.ProtocolModel.internal_static_ndx_model_Protocol_FieldMapEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.MESSAGE,
                   org.ndx.model.ProtocolModel.ProtocolField.getDefaultInstance());
     }
     private com.google.protobuf.MapField<
-        java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> fields_;
+        java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> fieldMap_;
     private com.google.protobuf.MapField<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
-    internalGetFields() {
-      if (fields_ == null) {
+    internalGetFieldMap() {
+      if (fieldMap_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
-            FieldsDefaultEntryHolder.defaultEntry);
+            FieldMapDefaultEntryHolder.defaultEntry);
       }
-      return fields_;
+      return fieldMap_;
     }
 
-    public int getFieldsCount() {
-      return internalGetFields().getMap().size();
+    public int getFieldMapCount() {
+      return internalGetFieldMap().getMap().size();
     }
     /**
-     * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
      */
 
-    public boolean containsFields(
+    public boolean containsFieldMap(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      return internalGetFields().getMap().containsKey(key);
+      return internalGetFieldMap().getMap().containsKey(key);
     }
     /**
-     * Use {@link #getFieldsMap()} instead.
+     * Use {@link #getFieldMapMap()} instead.
      */
     @java.lang.Deprecated
-    public java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> getFields() {
-      return getFieldsMap();
+    public java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> getFieldMap() {
+      return getFieldMapMap();
     }
     /**
-     * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
      */
 
-    public java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> getFieldsMap() {
-      return internalGetFields().getMap();
+    public java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> getFieldMapMap() {
+      return internalGetFieldMap().getMap();
     }
     /**
-     * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
      */
 
-    public org.ndx.model.ProtocolModel.ProtocolField getFieldsOrDefault(
+    public org.ndx.model.ProtocolModel.ProtocolField getFieldMapOrDefault(
         java.lang.String key,
         org.ndx.model.ProtocolModel.ProtocolField defaultValue) {
       if (key == null) { throw new java.lang.NullPointerException(); }
       java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> map =
-          internalGetFields().getMap();
+          internalGetFieldMap().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+     * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
      */
 
-    public org.ndx.model.ProtocolModel.ProtocolField getFieldsOrThrow(
+    public org.ndx.model.ProtocolModel.ProtocolField getFieldMapOrThrow(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
       java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> map =
-          internalGetFields().getMap();
+          internalGetFieldMap().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
       }
@@ -2582,8 +3192,8 @@ public final class ProtocolModel {
       com.google.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
-          internalGetFields(),
-          FieldsDefaultEntryHolder.defaultEntry,
+          internalGetFieldMap(),
+          FieldMapDefaultEntryHolder.defaultEntry,
           2);
     }
 
@@ -2596,14 +3206,14 @@ public final class ProtocolModel {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
       }
       for (java.util.Map.Entry<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> entry
-           : internalGetFields().getMap().entrySet()) {
+           : internalGetFieldMap().getMap().entrySet()) {
         com.google.protobuf.MapEntry<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
-        fields__ = FieldsDefaultEntryHolder.defaultEntry.newBuilderForType()
+        fieldMap__ = FieldMapDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(2, fields__);
+            .computeMessageSize(2, fieldMap__);
       }
       memoizedSize = size;
       return size;
@@ -2623,8 +3233,8 @@ public final class ProtocolModel {
       boolean result = true;
       result = result && getName()
           .equals(other.getName());
-      result = result && internalGetFields().equals(
-          other.internalGetFields());
+      result = result && internalGetFieldMap().equals(
+          other.internalGetFieldMap());
       return result;
     }
 
@@ -2637,9 +3247,9 @@ public final class ProtocolModel {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
-      if (!internalGetFields().getMap().isEmpty()) {
-        hash = (37 * hash) + FIELDS_FIELD_NUMBER;
-        hash = (53 * hash) + internalGetFields().hashCode();
+      if (!internalGetFieldMap().getMap().isEmpty()) {
+        hash = (37 * hash) + FIELDMAP_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetFieldMap().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2755,7 +3365,7 @@ public final class ProtocolModel {
           int number) {
         switch (number) {
           case 2:
-            return internalGetFields();
+            return internalGetFieldMap();
           default:
             throw new RuntimeException(
                 "Invalid map field number: " + number);
@@ -2766,7 +3376,7 @@ public final class ProtocolModel {
           int number) {
         switch (number) {
           case 2:
-            return internalGetMutableFields();
+            return internalGetMutableFieldMap();
           default:
             throw new RuntimeException(
                 "Invalid map field number: " + number);
@@ -2798,7 +3408,7 @@ public final class ProtocolModel {
         super.clear();
         name_ = "";
 
-        internalGetMutableFields().clear();
+        internalGetMutableFieldMap().clear();
         return this;
       }
 
@@ -2824,8 +3434,8 @@ public final class ProtocolModel {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.name_ = name_;
-        result.fields_ = internalGetFields();
-        result.fields_.makeImmutable();
+        result.fieldMap_ = internalGetFieldMap();
+        result.fieldMap_.makeImmutable();
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2872,8 +3482,8 @@ public final class ProtocolModel {
           name_ = other.name_;
           onChanged();
         }
-        internalGetMutableFields().mergeFrom(
-            other.internalGetFields());
+        internalGetMutableFieldMap().mergeFrom(
+            other.internalGetFieldMap());
         onChanged();
         return this;
       }
@@ -2971,94 +3581,94 @@ public final class ProtocolModel {
       }
 
       private com.google.protobuf.MapField<
-          java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> fields_;
+          java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> fieldMap_;
       private com.google.protobuf.MapField<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
-      internalGetFields() {
-        if (fields_ == null) {
+      internalGetFieldMap() {
+        if (fieldMap_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
-              FieldsDefaultEntryHolder.defaultEntry);
+              FieldMapDefaultEntryHolder.defaultEntry);
         }
-        return fields_;
+        return fieldMap_;
       }
       private com.google.protobuf.MapField<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
-      internalGetMutableFields() {
+      internalGetMutableFieldMap() {
         onChanged();;
-        if (fields_ == null) {
-          fields_ = com.google.protobuf.MapField.newMapField(
-              FieldsDefaultEntryHolder.defaultEntry);
+        if (fieldMap_ == null) {
+          fieldMap_ = com.google.protobuf.MapField.newMapField(
+              FieldMapDefaultEntryHolder.defaultEntry);
         }
-        if (!fields_.isMutable()) {
-          fields_ = fields_.copy();
+        if (!fieldMap_.isMutable()) {
+          fieldMap_ = fieldMap_.copy();
         }
-        return fields_;
+        return fieldMap_;
       }
 
-      public int getFieldsCount() {
-        return internalGetFields().getMap().size();
+      public int getFieldMapCount() {
+        return internalGetFieldMap().getMap().size();
       }
       /**
-       * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+       * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
        */
 
-      public boolean containsFields(
+      public boolean containsFieldMap(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        return internalGetFields().getMap().containsKey(key);
+        return internalGetFieldMap().getMap().containsKey(key);
       }
       /**
-       * Use {@link #getFieldsMap()} instead.
+       * Use {@link #getFieldMapMap()} instead.
        */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> getFields() {
-        return getFieldsMap();
+      public java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> getFieldMap() {
+        return getFieldMapMap();
       }
       /**
-       * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+       * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
        */
 
-      public java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> getFieldsMap() {
-        return internalGetFields().getMap();
+      public java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> getFieldMapMap() {
+        return internalGetFieldMap().getMap();
       }
       /**
-       * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+       * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
        */
 
-      public org.ndx.model.ProtocolModel.ProtocolField getFieldsOrDefault(
+      public org.ndx.model.ProtocolModel.ProtocolField getFieldMapOrDefault(
           java.lang.String key,
           org.ndx.model.ProtocolModel.ProtocolField defaultValue) {
         if (key == null) { throw new java.lang.NullPointerException(); }
         java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> map =
-            internalGetFields().getMap();
+            internalGetFieldMap().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+       * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
        */
 
-      public org.ndx.model.ProtocolModel.ProtocolField getFieldsOrThrow(
+      public org.ndx.model.ProtocolModel.ProtocolField getFieldMapOrThrow(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
         java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> map =
-            internalGetFields().getMap();
+            internalGetFieldMap().getMap();
         if (!map.containsKey(key)) {
           throw new java.lang.IllegalArgumentException();
         }
         return map.get(key);
       }
 
-      public Builder clearFields() {
-        internalGetMutableFields().getMutableMap()
+      public Builder clearFieldMap() {
+        internalGetMutableFieldMap().getMutableMap()
             .clear();
         return this;
       }
       /**
-       * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+       * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
        */
 
-      public Builder removeFields(
+      public Builder removeFieldMap(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        internalGetMutableFields().getMutableMap()
+        internalGetMutableFieldMap().getMutableMap()
             .remove(key);
         return this;
       }
@@ -3067,28 +3677,28 @@ public final class ProtocolModel {
        */
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField>
-      getMutableFields() {
-        return internalGetMutableFields().getMutableMap();
+      getMutableFieldMap() {
+        return internalGetMutableFieldMap().getMutableMap();
       }
       /**
-       * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+       * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
        */
-      public Builder putFields(
+      public Builder putFieldMap(
           java.lang.String key,
           org.ndx.model.ProtocolModel.ProtocolField value) {
         if (key == null) { throw new java.lang.NullPointerException(); }
         if (value == null) { throw new java.lang.NullPointerException(); }
-        internalGetMutableFields().getMutableMap()
+        internalGetMutableFieldMap().getMutableMap()
             .put(key, value);
         return this;
       }
       /**
-       * <code>map&lt;string, .ndx.model.ProtocolField&gt; Fields = 2;</code>
+       * <code>map&lt;string, .ndx.model.ProtocolField&gt; FieldMap = 2;</code>
        */
 
-      public Builder putAllFields(
+      public Builder putAllFieldMap(
           java.util.Map<java.lang.String, org.ndx.model.ProtocolModel.ProtocolField> values) {
-        internalGetMutableFields().getMutableMap()
+        internalGetMutableFieldMap().getMutableMap()
             .putAll(values);
         return this;
       }
@@ -3147,15 +3757,20 @@ public final class ProtocolModel {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ndx_model_ProtocolField_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ndx_model_ProtocolField_FieldMapEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ndx_model_ProtocolField_FieldMapEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ndx_model_Protocol_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ndx_model_Protocol_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ndx_model_Protocol_FieldsEntry_descriptor;
+    internal_static_ndx_model_Protocol_FieldMapEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ndx_model_Protocol_FieldsEntry_fieldAccessorTable;
+      internal_static_ndx_model_Protocol_FieldMapEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3166,41 +3781,48 @@ public final class ProtocolModel {
   static {
     java.lang.String[] descriptorData = {
       "\n\023ProtocolModel.proto\022\tndx.model\032\017Consta" +
-      "nts.proto\"\213\001\n\rProtocolField\022\014\n\004Name\030\001 \001(" +
+      "nts.proto\"\274\002\n\rProtocolField\022\014\n\004Name\030\001 \001(" +
       "\t\022\"\n\004Type\030\002 \001(\0162\024.ndx.model.FieldType\022(\n" +
       "\007Display\030\003 \001(\0162\027.ndx.model.FieldDisplay\022" +
-      "\014\n\004Info\030\004 \001(\t\022\020\n\010JsonName\030\005 \001(\t\"\222\001\n\010Prot" +
-      "ocol\022\014\n\004Name\030\001 \001(\t\022/\n\006Fields\030\002 \003(\0132\037.ndx" +
-      ".model.Protocol.FieldsEntry\032G\n\013FieldsEnt" +
-      "ry\022\013\n\003key\030\001 \001(\t\022\'\n\005value\030\002 \001(\0132\030.ndx.mod" +
-      "el.ProtocolField:\0028\001*\350\005\n\tFieldType\022\013\n\007FT" +
-      "_NONE\020\000\022\017\n\013FT_PROTOCOL\020\001\022\016\n\nFT_BOOLEAN\020\002",
-      "\022\013\n\007FT_CHAR\020\003\022\014\n\010FT_UINT8\020\004\022\r\n\tFT_UINT16" +
-      "\020\005\022\r\n\tFT_UINT24\020\006\022\r\n\tFT_UINT32\020\007\022\r\n\tFT_U" +
-      "INT40\020\010\022\r\n\tFT_UINT48\020\t\022\r\n\tFT_UINT56\020\n\022\r\n" +
-      "\tFT_UINT64\020\013\022\013\n\007FT_INT8\020\014\022\014\n\010FT_INT16\020\r\022" +
-      "\014\n\010FT_INT24\020\016\022\014\n\010FT_INT32\020\017\022\014\n\010FT_INT40\020" +
-      "\020\022\014\n\010FT_INT48\020\021\022\014\n\010FT_INT56\020\022\022\014\n\010FT_INT6" +
-      "4\020\023\022\030\n\024FT_IEEE_11073_SFLOAT\020\024\022\027\n\023FT_IEEE" +
-      "_11073_FLOAT\020\025\022\014\n\010FT_FLOAT\020\026\022\r\n\tFT_DOUBL" +
-      "E\020\027\022\024\n\020FT_ABSOLUTE_TIME\020\030\022\024\n\020FT_RELATIVE" +
-      "_TIME\020\031\022\r\n\tFT_STRING\020\032\022\016\n\nFT_STRINGZ\020\033\022\022",
-      "\n\016FT_UINT_STRING\020\034\022\014\n\010FT_ETHER\020\035\022\014\n\010FT_B" +
-      "YTES\020\036\022\021\n\rFT_UINT_BYTES\020\037\022\013\n\007FT_IPv4\020 \022\013" +
-      "\n\007FT_IPv6\020!\022\r\n\tFT_IPXNET\020\"\022\017\n\013FT_FRAMENU" +
-      "M\020#\022\013\n\007FT_PCRE\020$\022\013\n\007FT_GUID\020%\022\n\n\006FT_OID\020" +
-      "&\022\014\n\010FT_EUI64\020\'\022\013\n\007FT_AX25\020(\022\014\n\010FT_VINES" +
-      "\020)\022\016\n\nFT_REL_OID\020*\022\020\n\014FT_SYSTEM_ID\020+\022\021\n\r" +
-      "FT_STRINGZPAD\020,\022\014\n\010FT_FCWWN\020-\022\020\n\014FT_NUM_" +
-      "TYPES\020.*\305\002\n\014FieldDisplay\022\r\n\tBASE_NONE\020\000\022" +
-      "\014\n\010BASE_DEC\020\001\022\014\n\010BASE_HEX\020\002\022\014\n\010BASE_OCT\020" +
-      "\003\022\020\n\014BASE_DEC_HEX\020\004\022\020\n\014BASE_HEX_DEC\020\005\022\017\n",
-      "\013BASE_CUSTOM\020\006\022\017\n\013STR_UNICODE\020\007\022\013\n\007SEP_D" +
-      "OT\020\010\022\014\n\010SEP_DASH\020\t\022\r\n\tSEP_COLON\020\n\022\r\n\tSEP" +
-      "_SPACE\020\013\022\020\n\014BASE_NETMASK\020\014\022\017\n\013BASE_PT_UD" +
-      "P\020\r\022\017\n\013BASE_PT_TCP\020\016\022\020\n\014BASE_PT_DCCP\020\017\022\020" +
-      "\n\014BASE_PT_SCTP\020\020\022\014\n\010BASE_OUI\020\021\022\027\n\023ABSOLU" +
-      "TE_TIME_LOCAL\020\024B\017\n\rorg.ndx.modelb\006proto3"
+      "\014\n\004Info\030\004 \001(\t\022\020\n\010JsonName\030\005 \001(\t\022*\n\004Mult\030" +
+      "\006 \001(\0162\034.ndx.model.FieldMultiplicity\0228\n\010F" +
+      "ieldMap\030\007 \003(\0132&.ndx.model.ProtocolField." +
+      "FieldMapEntry\032I\n\rFieldMapEntry\022\013\n\003key\030\001 " +
+      "\001(\t\022\'\n\005value\030\002 \001(\0132\030.ndx.model.ProtocolF" +
+      "ield:\0028\001\"\230\001\n\010Protocol\022\014\n\004Name\030\001 \001(\t\0223\n\010F",
+      "ieldMap\030\002 \003(\0132!.ndx.model.Protocol.Field" +
+      "MapEntry\032I\n\rFieldMapEntry\022\013\n\003key\030\001 \001(\t\022\'" +
+      "\n\005value\030\002 \001(\0132\030.ndx.model.ProtocolField:" +
+      "\0028\001*\366\005\n\tFieldType\022\013\n\007FT_NONE\020\000\022\017\n\013FT_PRO" +
+      "TOCOL\020\001\022\016\n\nFT_BOOLEAN\020\002\022\013\n\007FT_CHAR\020\003\022\014\n\010" +
+      "FT_UINT8\020\004\022\r\n\tFT_UINT16\020\005\022\r\n\tFT_UINT24\020\006" +
+      "\022\r\n\tFT_UINT32\020\007\022\r\n\tFT_UINT40\020\010\022\r\n\tFT_UIN" +
+      "T48\020\t\022\r\n\tFT_UINT56\020\n\022\r\n\tFT_UINT64\020\013\022\013\n\007F" +
+      "T_INT8\020\014\022\014\n\010FT_INT16\020\r\022\014\n\010FT_INT24\020\016\022\014\n\010" +
+      "FT_INT32\020\017\022\014\n\010FT_INT40\020\020\022\014\n\010FT_INT48\020\021\022\014",
+      "\n\010FT_INT56\020\022\022\014\n\010FT_INT64\020\023\022\030\n\024FT_IEEE_11" +
+      "073_SFLOAT\020\024\022\027\n\023FT_IEEE_11073_FLOAT\020\025\022\014\n" +
+      "\010FT_FLOAT\020\026\022\r\n\tFT_DOUBLE\020\027\022\024\n\020FT_ABSOLUT" +
+      "E_TIME\020\030\022\024\n\020FT_RELATIVE_TIME\020\031\022\r\n\tFT_STR" +
+      "ING\020\032\022\016\n\nFT_STRINGZ\020\033\022\022\n\016FT_UINT_STRING\020" +
+      "\034\022\014\n\010FT_ETHER\020\035\022\014\n\010FT_BYTES\020\036\022\021\n\rFT_UINT" +
+      "_BYTES\020\037\022\013\n\007FT_IPv4\020 \022\013\n\007FT_IPv6\020!\022\r\n\tFT" +
+      "_IPXNET\020\"\022\017\n\013FT_FRAMENUM\020#\022\013\n\007FT_PCRE\020$\022" +
+      "\013\n\007FT_GUID\020%\022\n\n\006FT_OID\020&\022\014\n\010FT_EUI64\020\'\022\013" +
+      "\n\007FT_AX25\020(\022\014\n\010FT_VINES\020)\022\016\n\nFT_REL_OID\020",
+      "*\022\020\n\014FT_SYSTEM_ID\020+\022\021\n\rFT_STRINGZPAD\020,\022\014" +
+      "\n\010FT_FCWWN\020-\022\020\n\014FT_NUM_TYPES\020.\022\014\n\010FT_GRO" +
+      "UP\020/*\305\002\n\014FieldDisplay\022\r\n\tBASE_NONE\020\000\022\014\n\010" +
+      "BASE_DEC\020\001\022\014\n\010BASE_HEX\020\002\022\014\n\010BASE_OCT\020\003\022\020" +
+      "\n\014BASE_DEC_HEX\020\004\022\020\n\014BASE_HEX_DEC\020\005\022\017\n\013BA" +
+      "SE_CUSTOM\020\006\022\017\n\013STR_UNICODE\020\007\022\013\n\007SEP_DOT\020" +
+      "\010\022\014\n\010SEP_DASH\020\t\022\r\n\tSEP_COLON\020\n\022\r\n\tSEP_SP" +
+      "ACE\020\013\022\020\n\014BASE_NETMASK\020\014\022\017\n\013BASE_PT_UDP\020\r" +
+      "\022\017\n\013BASE_PT_TCP\020\016\022\020\n\014BASE_PT_DCCP\020\017\022\020\n\014B" +
+      "ASE_PT_SCTP\020\020\022\014\n\010BASE_OUI\020\021\022\027\n\023ABSOLUTE_",
+      "TIME_LOCAL\020\024*,\n\021FieldMultiplicity\022\n\n\006FM_" +
+      "ONE\020\000\022\013\n\007FM_MANY\020\001B\017\n\rorg.ndx.modelb\006pro" +
+      "to3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3220,18 +3842,24 @@ public final class ProtocolModel {
     internal_static_ndx_model_ProtocolField_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ndx_model_ProtocolField_descriptor,
-        new java.lang.String[] { "Name", "Type", "Display", "Info", "JsonName", });
+        new java.lang.String[] { "Name", "Type", "Display", "Info", "JsonName", "Mult", "FieldMap", });
+    internal_static_ndx_model_ProtocolField_FieldMapEntry_descriptor =
+      internal_static_ndx_model_ProtocolField_descriptor.getNestedTypes().get(0);
+    internal_static_ndx_model_ProtocolField_FieldMapEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ndx_model_ProtocolField_FieldMapEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_ndx_model_Protocol_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_ndx_model_Protocol_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ndx_model_Protocol_descriptor,
-        new java.lang.String[] { "Name", "Fields", });
-    internal_static_ndx_model_Protocol_FieldsEntry_descriptor =
+        new java.lang.String[] { "Name", "FieldMap", });
+    internal_static_ndx_model_Protocol_FieldMapEntry_descriptor =
       internal_static_ndx_model_Protocol_descriptor.getNestedTypes().get(0);
-    internal_static_ndx_model_Protocol_FieldsEntry_fieldAccessorTable = new
+    internal_static_ndx_model_Protocol_FieldMapEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ndx_model_Protocol_FieldsEntry_descriptor,
+        internal_static_ndx_model_Protocol_FieldMapEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     org.ndx.model.Constants.getDescriptor();
   }

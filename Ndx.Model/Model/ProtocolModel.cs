@@ -23,42 +23,48 @@ namespace Ndx.Model {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChNQcm90b2NvbE1vZGVsLnByb3RvEgluZHgubW9kZWwaD0NvbnN0YW50cy5w",
-            "cm90byKLAQoNUHJvdG9jb2xGaWVsZBIMCgROYW1lGAEgASgJEiIKBFR5cGUY",
+            "cm90byK8AgoNUHJvdG9jb2xGaWVsZBIMCgROYW1lGAEgASgJEiIKBFR5cGUY",
             "AiABKA4yFC5uZHgubW9kZWwuRmllbGRUeXBlEigKB0Rpc3BsYXkYAyABKA4y",
             "Fy5uZHgubW9kZWwuRmllbGREaXNwbGF5EgwKBEluZm8YBCABKAkSEAoISnNv",
-            "bk5hbWUYBSABKAkikgEKCFByb3RvY29sEgwKBE5hbWUYASABKAkSLwoGRmll",
-            "bGRzGAIgAygLMh8ubmR4Lm1vZGVsLlByb3RvY29sLkZpZWxkc0VudHJ5GkcK",
-            "C0ZpZWxkc0VudHJ5EgsKA2tleRgBIAEoCRInCgV2YWx1ZRgCIAEoCzIYLm5k",
-            "eC5tb2RlbC5Qcm90b2NvbEZpZWxkOgI4ASroBQoJRmllbGRUeXBlEgsKB0ZU",
-            "X05PTkUQABIPCgtGVF9QUk9UT0NPTBABEg4KCkZUX0JPT0xFQU4QAhILCgdG",
-            "VF9DSEFSEAMSDAoIRlRfVUlOVDgQBBINCglGVF9VSU5UMTYQBRINCglGVF9V",
-            "SU5UMjQQBhINCglGVF9VSU5UMzIQBxINCglGVF9VSU5UNDAQCBINCglGVF9V",
-            "SU5UNDgQCRINCglGVF9VSU5UNTYQChINCglGVF9VSU5UNjQQCxILCgdGVF9J",
-            "TlQ4EAwSDAoIRlRfSU5UMTYQDRIMCghGVF9JTlQyNBAOEgwKCEZUX0lOVDMy",
-            "EA8SDAoIRlRfSU5UNDAQEBIMCghGVF9JTlQ0OBAREgwKCEZUX0lOVDU2EBIS",
-            "DAoIRlRfSU5UNjQQExIYChRGVF9JRUVFXzExMDczX1NGTE9BVBAUEhcKE0ZU",
-            "X0lFRUVfMTEwNzNfRkxPQVQQFRIMCghGVF9GTE9BVBAWEg0KCUZUX0RPVUJM",
-            "RRAXEhQKEEZUX0FCU09MVVRFX1RJTUUQGBIUChBGVF9SRUxBVElWRV9USU1F",
-            "EBkSDQoJRlRfU1RSSU5HEBoSDgoKRlRfU1RSSU5HWhAbEhIKDkZUX1VJTlRf",
-            "U1RSSU5HEBwSDAoIRlRfRVRIRVIQHRIMCghGVF9CWVRFUxAeEhEKDUZUX1VJ",
-            "TlRfQllURVMQHxILCgdGVF9JUHY0ECASCwoHRlRfSVB2NhAhEg0KCUZUX0lQ",
-            "WE5FVBAiEg8KC0ZUX0ZSQU1FTlVNECMSCwoHRlRfUENSRRAkEgsKB0ZUX0dV",
-            "SUQQJRIKCgZGVF9PSUQQJhIMCghGVF9FVUk2NBAnEgsKB0ZUX0FYMjUQKBIM",
-            "CghGVF9WSU5FUxApEg4KCkZUX1JFTF9PSUQQKhIQCgxGVF9TWVNURU1fSUQQ",
-            "KxIRCg1GVF9TVFJJTkdaUEFEECwSDAoIRlRfRkNXV04QLRIQCgxGVF9OVU1f",
-            "VFlQRVMQLirFAgoMRmllbGREaXNwbGF5Eg0KCUJBU0VfTk9ORRAAEgwKCEJB",
-            "U0VfREVDEAESDAoIQkFTRV9IRVgQAhIMCghCQVNFX09DVBADEhAKDEJBU0Vf",
-            "REVDX0hFWBAEEhAKDEJBU0VfSEVYX0RFQxAFEg8KC0JBU0VfQ1VTVE9NEAYS",
-            "DwoLU1RSX1VOSUNPREUQBxILCgdTRVBfRE9UEAgSDAoIU0VQX0RBU0gQCRIN",
-            "CglTRVBfQ09MT04QChINCglTRVBfU1BBQ0UQCxIQCgxCQVNFX05FVE1BU0sQ",
-            "DBIPCgtCQVNFX1BUX1VEUBANEg8KC0JBU0VfUFRfVENQEA4SEAoMQkFTRV9Q",
-            "VF9EQ0NQEA8SEAoMQkFTRV9QVF9TQ1RQEBASDAoIQkFTRV9PVUkQERIXChNB",
-            "QlNPTFVURV9USU1FX0xPQ0FMEBRCDwoNb3JnLm5keC5tb2RlbGIGcHJvdG8z"));
+            "bk5hbWUYBSABKAkSKgoETXVsdBgGIAEoDjIcLm5keC5tb2RlbC5GaWVsZE11",
+            "bHRpcGxpY2l0eRI4CghGaWVsZE1hcBgHIAMoCzImLm5keC5tb2RlbC5Qcm90",
+            "b2NvbEZpZWxkLkZpZWxkTWFwRW50cnkaSQoNRmllbGRNYXBFbnRyeRILCgNr",
+            "ZXkYASABKAkSJwoFdmFsdWUYAiABKAsyGC5uZHgubW9kZWwuUHJvdG9jb2xG",
+            "aWVsZDoCOAEimAEKCFByb3RvY29sEgwKBE5hbWUYASABKAkSMwoIRmllbGRN",
+            "YXAYAiADKAsyIS5uZHgubW9kZWwuUHJvdG9jb2wuRmllbGRNYXBFbnRyeRpJ",
+            "Cg1GaWVsZE1hcEVudHJ5EgsKA2tleRgBIAEoCRInCgV2YWx1ZRgCIAEoCzIY",
+            "Lm5keC5tb2RlbC5Qcm90b2NvbEZpZWxkOgI4ASr2BQoJRmllbGRUeXBlEgsK",
+            "B0ZUX05PTkUQABIPCgtGVF9QUk9UT0NPTBABEg4KCkZUX0JPT0xFQU4QAhIL",
+            "CgdGVF9DSEFSEAMSDAoIRlRfVUlOVDgQBBINCglGVF9VSU5UMTYQBRINCglG",
+            "VF9VSU5UMjQQBhINCglGVF9VSU5UMzIQBxINCglGVF9VSU5UNDAQCBINCglG",
+            "VF9VSU5UNDgQCRINCglGVF9VSU5UNTYQChINCglGVF9VSU5UNjQQCxILCgdG",
+            "VF9JTlQ4EAwSDAoIRlRfSU5UMTYQDRIMCghGVF9JTlQyNBAOEgwKCEZUX0lO",
+            "VDMyEA8SDAoIRlRfSU5UNDAQEBIMCghGVF9JTlQ0OBAREgwKCEZUX0lOVDU2",
+            "EBISDAoIRlRfSU5UNjQQExIYChRGVF9JRUVFXzExMDczX1NGTE9BVBAUEhcK",
+            "E0ZUX0lFRUVfMTEwNzNfRkxPQVQQFRIMCghGVF9GTE9BVBAWEg0KCUZUX0RP",
+            "VUJMRRAXEhQKEEZUX0FCU09MVVRFX1RJTUUQGBIUChBGVF9SRUxBVElWRV9U",
+            "SU1FEBkSDQoJRlRfU1RSSU5HEBoSDgoKRlRfU1RSSU5HWhAbEhIKDkZUX1VJ",
+            "TlRfU1RSSU5HEBwSDAoIRlRfRVRIRVIQHRIMCghGVF9CWVRFUxAeEhEKDUZU",
+            "X1VJTlRfQllURVMQHxILCgdGVF9JUHY0ECASCwoHRlRfSVB2NhAhEg0KCUZU",
+            "X0lQWE5FVBAiEg8KC0ZUX0ZSQU1FTlVNECMSCwoHRlRfUENSRRAkEgsKB0ZU",
+            "X0dVSUQQJRIKCgZGVF9PSUQQJhIMCghGVF9FVUk2NBAnEgsKB0ZUX0FYMjUQ",
+            "KBIMCghGVF9WSU5FUxApEg4KCkZUX1JFTF9PSUQQKhIQCgxGVF9TWVNURU1f",
+            "SUQQKxIRCg1GVF9TVFJJTkdaUEFEECwSDAoIRlRfRkNXV04QLRIQCgxGVF9O",
+            "VU1fVFlQRVMQLhIMCghGVF9HUk9VUBAvKsUCCgxGaWVsZERpc3BsYXkSDQoJ",
+            "QkFTRV9OT05FEAASDAoIQkFTRV9ERUMQARIMCghCQVNFX0hFWBACEgwKCEJB",
+            "U0VfT0NUEAMSEAoMQkFTRV9ERUNfSEVYEAQSEAoMQkFTRV9IRVhfREVDEAUS",
+            "DwoLQkFTRV9DVVNUT00QBhIPCgtTVFJfVU5JQ09ERRAHEgsKB1NFUF9ET1QQ",
+            "CBIMCghTRVBfREFTSBAJEg0KCVNFUF9DT0xPThAKEg0KCVNFUF9TUEFDRRAL",
+            "EhAKDEJBU0VfTkVUTUFTSxAMEg8KC0JBU0VfUFRfVURQEA0SDwoLQkFTRV9Q",
+            "VF9UQ1AQDhIQCgxCQVNFX1BUX0RDQ1AQDxIQCgxCQVNFX1BUX1NDVFAQEBIM",
+            "CghCQVNFX09VSRAREhcKE0FCU09MVVRFX1RJTUVfTE9DQUwQFCosChFGaWVs",
+            "ZE11bHRpcGxpY2l0eRIKCgZGTV9PTkUQABILCgdGTV9NQU5ZEAFCDwoNb3Jn",
+            "Lm5keC5tb2RlbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Model.ConstantsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Ndx.Model.FieldType), typeof(global::Ndx.Model.FieldDisplay), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.ProtocolField), global::Ndx.Model.ProtocolField.Parser, new[]{ "Name", "Type", "Display", "Info", "JsonName" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Protocol), global::Ndx.Model.Protocol.Parser, new[]{ "Name", "Fields" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Ndx.Model.FieldType), typeof(global::Ndx.Model.FieldDisplay), typeof(global::Ndx.Model.FieldMultiplicity), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.ProtocolField), global::Ndx.Model.ProtocolField.Parser, new[]{ "Name", "Type", "Display", "Info", "JsonName", "Mult", "FieldMap" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Protocol), global::Ndx.Model.Protocol.Parser, new[]{ "Name", "FieldMap" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -173,6 +179,7 @@ namespace Ndx.Model {
     /// last item number plus one 
     /// </summary>
     [pbr::OriginalName("FT_NUM_TYPES")] FtNumTypes = 46,
+    [pbr::OriginalName("FT_GROUP")] FtGroup = 47,
   }
 
   public enum FieldDisplay {
@@ -251,6 +258,11 @@ namespace Ndx.Model {
     [pbr::OriginalName("ABSOLUTE_TIME_LOCAL")] AbsoluteTimeLocal = 20,
   }
 
+  public enum FieldMultiplicity {
+    [pbr::OriginalName("FM_ONE")] FmOne = 0,
+    [pbr::OriginalName("FM_MANY")] FmMany = 1,
+  }
+
   #endregion
 
   #region Messages
@@ -288,6 +300,8 @@ namespace Ndx.Model {
       display_ = other.display_;
       info_ = other.info_;
       jsonName_ = other.jsonName_;
+      mult_ = other.mult_;
+      fieldMap_ = other.fieldMap_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -373,6 +387,33 @@ namespace Ndx.Model {
       }
     }
 
+    /// <summary>Field number for the "Mult" field.</summary>
+    public const int MultFieldNumber = 6;
+    private global::Ndx.Model.FieldMultiplicity mult_ = 0;
+    /// <summary>
+    //// Defines multiplicity of the field.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Ndx.Model.FieldMultiplicity Mult {
+      get { return mult_; }
+      set {
+        mult_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "FieldMap" field.</summary>
+    public const int FieldMapFieldNumber = 7;
+    private static readonly pbc::MapField<string, global::Ndx.Model.ProtocolField>.Codec _map_fieldMap_codec
+        = new pbc::MapField<string, global::Ndx.Model.ProtocolField>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForMessage(18, global::Ndx.Model.ProtocolField.Parser), 58);
+    private readonly pbc::MapField<string, global::Ndx.Model.ProtocolField> fieldMap_ = new pbc::MapField<string, global::Ndx.Model.ProtocolField>();
+    /// <summary>
+    //// Defines the subfields for FtGroup field.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<string, global::Ndx.Model.ProtocolField> FieldMap {
+      get { return fieldMap_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as ProtocolField);
@@ -391,6 +432,8 @@ namespace Ndx.Model {
       if (Display != other.Display) return false;
       if (Info != other.Info) return false;
       if (JsonName != other.JsonName) return false;
+      if (Mult != other.Mult) return false;
+      if (!FieldMap.Equals(other.FieldMap)) return false;
       return true;
     }
 
@@ -402,6 +445,8 @@ namespace Ndx.Model {
       if (Display != 0) hash ^= Display.GetHashCode();
       if (Info.Length != 0) hash ^= Info.GetHashCode();
       if (JsonName.Length != 0) hash ^= JsonName.GetHashCode();
+      if (Mult != 0) hash ^= Mult.GetHashCode();
+      hash ^= FieldMap.GetHashCode();
       return hash;
     }
 
@@ -432,6 +477,11 @@ namespace Ndx.Model {
         output.WriteRawTag(42);
         output.WriteString(JsonName);
       }
+      if (Mult != 0) {
+        output.WriteRawTag(48);
+        output.WriteEnum((int) Mult);
+      }
+      fieldMap_.WriteTo(output, _map_fieldMap_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -452,6 +502,10 @@ namespace Ndx.Model {
       if (JsonName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(JsonName);
       }
+      if (Mult != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Mult);
+      }
+      size += fieldMap_.CalculateSize(_map_fieldMap_codec);
       return size;
     }
 
@@ -475,6 +529,10 @@ namespace Ndx.Model {
       if (other.JsonName.Length != 0) {
         JsonName = other.JsonName;
       }
+      if (other.Mult != 0) {
+        Mult = other.Mult;
+      }
+      fieldMap_.Add(other.fieldMap_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -503,6 +561,14 @@ namespace Ndx.Model {
           }
           case 42: {
             JsonName = input.ReadString();
+            break;
+          }
+          case 48: {
+            mult_ = (global::Ndx.Model.FieldMultiplicity) input.ReadEnum();
+            break;
+          }
+          case 58: {
+            fieldMap_.AddEntriesFrom(input, _map_fieldMap_codec);
             break;
           }
         }
@@ -539,7 +605,7 @@ namespace Ndx.Model {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Protocol(Protocol other) : this() {
       name_ = other.name_;
-      fields_ = other.fields_.Clone();
+      fieldMap_ = other.fieldMap_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -558,14 +624,14 @@ namespace Ndx.Model {
       }
     }
 
-    /// <summary>Field number for the "Fields" field.</summary>
-    public const int FieldsFieldNumber = 2;
-    private static readonly pbc::MapField<string, global::Ndx.Model.ProtocolField>.Codec _map_fields_codec
+    /// <summary>Field number for the "FieldMap" field.</summary>
+    public const int FieldMapFieldNumber = 2;
+    private static readonly pbc::MapField<string, global::Ndx.Model.ProtocolField>.Codec _map_fieldMap_codec
         = new pbc::MapField<string, global::Ndx.Model.ProtocolField>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForMessage(18, global::Ndx.Model.ProtocolField.Parser), 18);
-    private readonly pbc::MapField<string, global::Ndx.Model.ProtocolField> fields_ = new pbc::MapField<string, global::Ndx.Model.ProtocolField>();
+    private readonly pbc::MapField<string, global::Ndx.Model.ProtocolField> fieldMap_ = new pbc::MapField<string, global::Ndx.Model.ProtocolField>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::MapField<string, global::Ndx.Model.ProtocolField> Fields {
-      get { return fields_; }
+    public pbc::MapField<string, global::Ndx.Model.ProtocolField> FieldMap {
+      get { return fieldMap_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -582,7 +648,7 @@ namespace Ndx.Model {
         return true;
       }
       if (Name != other.Name) return false;
-      if (!Fields.Equals(other.Fields)) return false;
+      if (!FieldMap.Equals(other.FieldMap)) return false;
       return true;
     }
 
@@ -590,7 +656,7 @@ namespace Ndx.Model {
     public override int GetHashCode() {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
-      hash ^= Fields.GetHashCode();
+      hash ^= FieldMap.GetHashCode();
       return hash;
     }
 
@@ -605,7 +671,7 @@ namespace Ndx.Model {
         output.WriteRawTag(10);
         output.WriteString(Name);
       }
-      fields_.WriteTo(output, _map_fields_codec);
+      fieldMap_.WriteTo(output, _map_fieldMap_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -614,7 +680,7 @@ namespace Ndx.Model {
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      size += fields_.CalculateSize(_map_fields_codec);
+      size += fieldMap_.CalculateSize(_map_fieldMap_codec);
       return size;
     }
 
@@ -626,7 +692,7 @@ namespace Ndx.Model {
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      fields_.Add(other.fields_);
+      fieldMap_.Add(other.fieldMap_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -642,7 +708,7 @@ namespace Ndx.Model {
             break;
           }
           case 18: {
-            fields_.AddEntriesFrom(input, _map_fields_codec);
+            fieldMap_.AddEntriesFrom(input, _map_fieldMap_codec);
             break;
           }
         }

@@ -13,16 +13,27 @@ using YamlDotNet.Serialization;
 
 namespace Ndx.Model
 {
+    public sealed partial class ProtocolField
+    {
+        public IDictionary<string, ProtocolField> Fields
+        {
+            set
+            {
+                this.FieldMap.Add(value);
+            }
+            get => FieldMap;
+        }
+    }
+
     public sealed partial class Protocol
     {
-        /// <summary>
-        /// This class is a serialization hepler, because it is not possible to 
-        /// deserializes YAML directly to <see cref="Protocol"/> object.
-        /// </summary>
-        class _Protocol
+        public IDictionary<string, ProtocolField> Fields
         {
-            public string Name { get; set; }
-            public Dictionary<string, ProtocolField> Fields { get; set; }
+            set
+            {
+                this.FieldMap.Add(value);
+            }
+            get => FieldMap;
         }
 
         public static Protocol DeserializeFromYaml(Stream stream)
@@ -30,12 +41,7 @@ namespace Ndx.Model
             using (var input = new StreamReader(stream))
             { 
                 var deserializer = new Deserializer();
-                var doc = deserializer.Deserialize<_Protocol>(input);
-                var proto = new Protocol()
-                {
-                    Name = doc.Name
-                };
-                proto.Fields.Add(doc.Fields);
+                var proto = deserializer.Deserialize<Protocol>(input);
                 return proto;
             }            
         }

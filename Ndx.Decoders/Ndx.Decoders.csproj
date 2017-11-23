@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomJsonDeserializer.cs" />
     <Compile Include="PacketExtensions.cs" />
     <Compile Include="DecoderFactory.cs" />
     <Compile Include="Decoders\Base\packet-eth.Decode.cs" />
@@ -71,7 +72,7 @@
     <Compile Include="Decoders\Base\PacketUdp.cs" />
     <Compile Include="Decoders\Core\packet-arp.Decode.cs" />
     <Compile Include="Decoders\Core\packet-atm.Decode.cs" />
-    <Compile Include="Decoders\Core\packet-dns.Decode.cs" />
+    <Compile Include="Decoders\Core\packet-dns.CustomDecode.cs" />
     <Compile Include="Decoders\Core\packet-http.Decode.cs" />
     <Compile Include="Decoders\Core\packet-http2.Decode.cs" />
     <Compile Include="Decoders\Core\packet-icmp.Decode.cs" />

@@ -36,7 +36,7 @@ namespace Netdx
                           return 0;
                       }
                       var cmd = new GenerateProto();
-                      if (pckgNs.HasValue()) cmd.PackageNamespace = pckgNs.Value();
+                      if (pckgNs.HasValue()) cmd.m_packageNamespace = pckgNs.Value();
                       int count=0;
                       foreach (var infile in infiles.Values)
                       {
@@ -60,7 +60,7 @@ namespace Netdx
               };
         }
 
-        string PackageNamespace;
+        string m_packageNamespace;
         /// <summary>
         /// 
         /// </summary>
@@ -76,21 +76,9 @@ namespace Netdx
             using (var outfile = new StreamWriter(File.Open(outpath, FileMode.Create, FileAccess.Write)))
             {
                 outfile.WriteLine("syntax = \"proto3\";");
-                if (!String.IsNullOrEmpty(PackageNamespace)) outfile.WriteLine($"package {PackageNamespace};");
-                
-                outfile.WriteLine($"message {protocolName} {{");
-               
-                foreach (var field in protocol.Fields)
-                {
-                    fcount++;
-                    var fieldPbType = GetPbType(field.Value.Type);
-                    var fieldName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(field.Value.Name).Replace(".", "").Replace("_", "").Replace("-","");
-                    var tsharkFieldName = field.Value.JsonName;
-                    outfile.WriteLine($"   // {field.Value.Info} ('{tsharkFieldName}')");
-                    outfile.WriteLine($"   {fieldPbType.ToString().ToLowerInvariant()} {fieldName} = {fcount};");
-                    outfile.WriteLine();
-                }
-                outfile.WriteLine("}");
+                if (!String.IsNullOrEmpty(m_packageNamespace)) outfile.WriteLine($"package {m_packageNamespace};");
+
+                fcount += WriteMessage(protocol.FieldMap, protocolName, outfile, String.Empty);
                 outfile.Flush();
             }
             if (generateCSharp)
@@ -99,19 +87,19 @@ namespace Netdx
                     outfile.WriteLine("using Newtonsoft.Json.Linq;");
                     outfile.WriteLine("using Google.Protobuf;");
                     outfile.WriteLine("using System;");
-                    outfile.WriteLine($"namespace {PackageNamespace}");
+                    outfile.WriteLine($"namespace {m_packageNamespace}");
                     outfile.WriteLine("{");
                     outfile.WriteLine($"  public sealed partial class {protocolName}");
-                    outfile.WriteLine("  {");
+                    outfile.WriteLine( "  {");
                     outfile.WriteLine($"    public static {protocolName} DecodeJson(string jsonLine)");
-                    outfile.WriteLine("    {");
-                    outfile.WriteLine("      var jsonObject = JToken.Parse(jsonLine);");
-                    outfile.WriteLine("      return DecodeJson(jsonObject);");
-                    outfile.WriteLine("    }");
+                    outfile.WriteLine( "    {");
+                    outfile.WriteLine( "      var jsonObject = JToken.Parse(jsonLine);");
+                    outfile.WriteLine( "      return DecodeJson(jsonObject);");
+                    outfile.WriteLine( "    }");
                     outfile.WriteLine($"    public static {protocolName} DecodeJson(JToken token)");
-                    outfile.WriteLine("    {");
+                    outfile.WriteLine( "    {");
                     outfile.WriteLine($"      var obj = new {protocolName}();");
-                    foreach (var field in protocol.Fields)
+                    foreach (var field in protocol.FieldMap)
                     {
                         var fieldName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(field.Value.Name).Replace(".", "").Replace("_","").Replace("-", "");
                         var tsharkFieldName = field.Value.JsonName;
@@ -144,6 +132,36 @@ namespace Netdx
                     outfile.WriteLine("}");
                 }
             return fcount;
+        }
+
+        private int WriteMessage(IDictionary<string, ProtocolField> fieldMap, string protocolName, StreamWriter outfile, string indent)
+        {
+            var fcount = 1;
+            outfile.WriteLine($"{indent}message {protocolName} {{");
+
+            foreach (var field in fieldMap)
+            {
+                var fieldTypeString = GetPbType(field.Value.Type).ToString().ToLowerInvariant();
+                string fieldName = GetFieldName(field.Value);
+                if (field.Value.Type == FieldType.FtGroup)
+                {
+                    WriteMessage(field.Value.Fields, $"_{fieldName}", outfile, indent + "    ");
+                    fieldTypeString = $"_{fieldName}";
+                }
+                var tsharkFieldName = field.Value.JsonName;
+                var multStr = (field.Value.Mult == FieldMultiplicity.FmMany) ? "repeated" : "";
+                outfile.WriteLine($"{indent}    // {field.Value.Info} ('{tsharkFieldName}')");
+                outfile.WriteLine($"{indent}    {multStr} {fieldTypeString} {fieldName} = {fcount};");
+                outfile.WriteLine();
+                fcount++;
+            }
+            outfile.WriteLine($"{indent}}}");
+            return fcount;
+        }
+
+        private static string GetFieldName(ProtocolField field)
+        {
+            return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(field.Name).Replace(".", "").Replace("_", "").Replace("-", "");
         }
 
         public static ulong _t(FieldType type, FieldDisplay display)

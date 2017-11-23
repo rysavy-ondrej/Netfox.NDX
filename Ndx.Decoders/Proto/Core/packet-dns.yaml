@@ -1,172 +1,227 @@
 Name: dns
 Fields:
-  dns.length:
-    Name: dns.length
-    Type: FtUint16
-    Display: BaseDec
-    Info: Length
-    JsonName: dns_dns_length
   dns.flags:
     Name: dns.flags
-    Type: FtUint16
+    Type: FtGroup
     Display: BaseHex
     Info: Flags
     JsonName: dns_dns_flags
-  dns.flags.response:
-    Name: dns.flags.response
-    Type: FtBoolean
-    Display: BasePtSctp
-    Info: Response
-    JsonName: dns_flags_dns_flags_response
-  dns.flags.opcode:
-    Name: dns.flags.opcode
-    Type: FtUint16
-    Display: BaseDec
-    Info: Opcode
-    JsonName: dns_flags_dns_flags_opcode
-  dns.flags.authoritative:
-    Name: dns.flags.authoritative
-    Type: FtBoolean
-    Display: BasePtSctp
-    Info: Authoritative
-    JsonName: dns_flags_dns_flags_authoritative
-  dns.flags.conflict:
-    Name: dns.flags.conflict
-    Type: FtBoolean
-    Display: BasePtSctp
-    Info: Conflict
-    JsonName: dns_flags_dns_flags_conflict
-  dns.flags.truncated:
-    Name: dns.flags.truncated
-    Type: FtBoolean
-    Display: BasePtSctp
-    Info: Truncated
-    JsonName: dns_flags_dns_flags_truncated
-  dns.flags.recdesired:
-    Name: dns.flags.recdesired
-    Type: FtBoolean
-    Display: BasePtSctp
-    Info: Recursion desired
-    JsonName: dns_flags_dns_flags_recdesired
-  dns.flags.tentative:
-    Name: dns.flags.tentative
-    Type: FtBoolean
-    Display: BasePtSctp
-    Info: Tentative
-    JsonName: dns_flags_dns_flags_tentative
-  dns.flags.recavail:
-    Name: dns.flags.recavail
-    Type: FtBoolean
-    Display: BasePtSctp
-    Info: Recursion available
-    JsonName: dns_flags_dns_flags_recavail
-  dns.flags.z:
-    Name: dns.flags.z
-    Type: FtBoolean
-    Display: BasePtSctp
-    Info: Z
-    JsonName: dns_flags_dns_flags_z
-  dns.flags.authenticated:
-    Name: dns.flags.authenticated
-    Type: FtBoolean
-    Display: BasePtSctp
-    Info: Answer authenticated
-    JsonName: dns_flags_dns_flags_authenticated
-  dns.flags.checkdisable:
-    Name: dns.flags.checkdisable
-    Type: FtBoolean
-    Display: BasePtSctp
-    Info: Non-authenticated data
-    JsonName: dns_flags_dns_flags_checkdisable
-  dns.flags.rcode:
-    Name: dns.flags.rcode
-    Type: FtUint16
-    Display: BaseDec
-    Info: Reply code
-    JsonName: dns_flags_dns_flags_rcode
+    Fields:
+      dns.flags.response:
+        Name: dns.flags.response
+        Type: FtBoolean
+        Display: BasePtSctp
+        Info: Response
+        JsonName: dns_flags_dns_flags_response
+      dns.flags.opcode:
+        Name: dns.flags.opcode
+        Type: FtUint16
+        Display: BaseDec
+        Info: Opcode
+        JsonName: dns_flags_dns_flags_opcode
+      dns.flags.authoritative:
+        Name: dns.flags.authoritative
+        Type: FtBoolean
+        Display: BasePtSctp
+        Info: Authoritative
+        JsonName: dns_flags_dns_flags_authoritative
+      dns.flags.conflict:
+        Name: dns.flags.conflict
+        Type: FtBoolean
+        Display: BasePtSctp
+        Info: Conflict
+        JsonName: dns_flags_dns_flags_conflict
+      dns.flags.truncated:
+        Name: dns.flags.truncated
+        Type: FtBoolean
+        Display: BasePtSctp
+        Info: Truncated
+        JsonName: dns_flags_dns_flags_truncated
+      dns.flags.recdesired:
+        Name: dns.flags.recdesired
+        Type: FtBoolean
+        Display: BasePtSctp
+        Info: Recursion desired
+        JsonName: dns_flags_dns_flags_recdesired
+      dns.flags.tentative:
+        Name: dns.flags.tentative
+        Type: FtBoolean
+        Display: BasePtSctp
+        Info: Tentative
+        JsonName: dns_flags_dns_flags_tentative
+      dns.flags.recavail:
+        Name: dns.flags.recavail
+        Type: FtBoolean
+        Display: BasePtSctp
+        Info: Recursion available
+        JsonName: dns_flags_dns_flags_recavail
+      dns.flags.z:
+        Name: dns.flags.z
+        Type: FtBoolean
+        Display: BasePtSctp
+        Info: Z
+        JsonName: dns_flags_dns_flags_z
+      dns.flags.authenticated:
+        Name: dns.flags.authenticated
+        Type: FtBoolean
+        Display: BasePtSctp
+        Info: Answer authenticated
+        JsonName: dns_flags_dns_flags_authenticated
+      dns.flags.checkdisable:
+        Name: dns.flags.checkdisable
+        Type: FtBoolean
+        Display: BasePtSctp
+        Info: Non-authenticated data
+        JsonName: dns_flags_dns_flags_checkdisable
+      dns.flags.rcode:
+        Name: dns.flags.rcode
+        Type: FtUint16
+        Display: BaseDec
+        Info: Reply code
+        JsonName: dns_flags_dns_flags_rcode
   dns.id:
     Name: dns.id
     Type: FtUint16
     Display: BaseHex
     Info: Transaction ID
     JsonName: dns_dns_id
-  dns.qry.type:
-    Name: dns.qry.type
+  dns.response_in:
+    Name: dns.response_in
+    Type: FtFramenum
+    Info: Response In
+    JsonName: dns_dns_response_in
+  dns.response_to:
+    Name: dns.response_to
+    Type: FtFramenum
+    Info: Request In
+    JsonName: dns_dns_response_to
+  dns.time:
+    Name: dns.time
+    Type: FtRelativeTime
+    Info: Time
+    JsonName: dns_dns_time
+  dns.count.add_rr:
+    Name: dns.count.add_rr
     Type: FtUint16
     Display: BaseDec
-    Info: Type
-    JsonName: text_dns_qry_type
-  dns.qry.class:
-    Name: dns.qry.class
-    Type: FtUint16
-    Display: BaseHex
-    Info: Class
-    JsonName: text_dns_qry_class
-  dns.qry.name:
-    Name: dns.qry.name
-    Type: FtString
-    Info: Name
-    JsonName: text_dns_qry_name
-  dns.qry.name.len:
-    Name: dns.qry.name.len
-    Type: FtUint16
-    Display: BaseDec
-    Info: Name Length
-    JsonName: text_dns_qry_name_len
-  dns.count.labels:
-    Name: dns.count.labels
-    Type: FtUint16
-    Display: BaseDec
-    Info: Label Count
-    JsonName: dns_dns_count_labels
-  dns.resp.type:
-    Name: dns.resp.type
-    Type: FtUint16
-    Display: BaseDec
-    Info: Type
-    JsonName: text_dns_resp_type
-  dns.resp.class:
-    Name: dns.resp.class
-    Type: FtUint16
-    Display: BaseHex
-    Info: Class
-    JsonName: text_dns_resp_class
-  dns.resp.cache_flush:
-    Name: dns.resp.cache_flush
-    Type: FtBoolean
-    Display: BasePtSctp
-    Info: Cache flush
-    JsonName: dns_dns_resp_cache_flush
-  dns.resp.ext_rcode:
-    Name: dns.resp.ext_rcode
-    Type: FtUint8
-    Display: BaseHex
-    Info: Higher bits in extended RCODE
-    JsonName: dns_dns_resp_ext_rcode
-  dns.resp.edns0_version:
-    Name: dns.resp.edns0_version
-    Type: FtUint8
-    Display: BaseDec
-    Info: EDNS0 version
-    JsonName: dns_dns_resp_edns0_version
-  dns.resp.z:
-    Name: dns.resp.z
-    Type: FtUint16
-    Display: BaseHex
-    Info: Z
-    JsonName: dns_dns_resp_z
-  dns.resp.z.do:
-    Name: dns.resp.z.do
-    Type: FtBoolean
-    Display: BasePtSctp
-    Info: DO bit
-    JsonName: dns_resp_z_dns_resp_z_do
-  dns.resp.z.reserved:
-    Name: dns.resp.z.reserved
-    Type: FtUint16
-    Display: BaseHex
-    Info: Reserved
-    JsonName: dns_resp_z_dns_resp_z_reserved
+    Info: Additional RRs
+    JsonName: dns_dns_count_add_rr  
+
+# DNS QUERY:
+  dns.qry:
+    Name: dns.qry
+    Type: ftGroup
+    Info: Grouping information related to DNS QRY
+    Mult: FmMany
+    Fields:
+      dns.qry.type:
+        Name: dns.qry.type
+        Type: FtUint16
+        Display: BaseDec
+        Info: Type
+        JsonName: text_dns_qry_type
+      dns.qry.class:
+        Name: dns.qry.class
+        Type: FtUint16
+        Display: BaseHex
+        Info: Class
+        JsonName: text_dns_qry_class
+      dns.qry.name:
+        Name: dns.qry.name
+        Type: FtString
+        Info: Name
+        JsonName: text_dns_qry_name
+      dns.qry.name.len:
+        Name: dns.qry.name.len
+        Type: FtUint16
+        Display: BaseDec
+        Info: Name Length
+        JsonName: text_dns_qry_name_len
+      dns.count.labels:
+        Name: dns.count.labels
+        Display: BaseDec
+        Info: Label Count
+        JsonName: dns_dns_count_labels
+
+# DNS RESPONSE  
+  dns.resp:
+    Name: dns.resp
+    Type: FtGroup
+    Info: Grouping information related to DNS reponse
+    Mult: FmMany
+    Fields:
+      dns.resp.type:
+        Name: dns.resp.type
+        Type: FtUint16
+        Display: BaseDec
+        Info: Type
+        JsonName: text_dns_resp_type
+      dns.resp.class:
+        Name: dns.resp.class
+        Type: FtUint16
+        Display: BaseHex
+        Info: Class
+        JsonName: text_dns_resp_class
+      dns.resp.cache_flush:
+        Name: dns.resp.cache_flush
+        Type: FtBoolean
+        Display: BasePtSctp
+        Info: Cache flush
+        JsonName: dns_dns_resp_cache_flush
+      dns.resp.ext_rcode:
+        Name: dns.resp.ext_rcode
+        Type: FtUint8
+        Display: BaseHex
+        Info: Higher bits in extended RCODE
+        JsonName: dns_dns_resp_ext_rcode
+      dns.resp.edns0_version:
+        Name: dns.resp.edns0_version
+        Type: FtUint8
+        Display: BaseDec
+        Info: EDNS0 version
+        JsonName: dns_dns_resp_edns0_version
+      dns.resp.z:
+        Name: dns.resp.z
+        Type: FtUint16
+        Display: BaseHex
+        Info: Z
+        JsonName: dns_dns_resp_z
+      dns.resp.z.do:
+        Name: dns.resp.z.do
+        Type: FtBoolean
+        Display: BasePtSctp
+        Info: DO bit
+        JsonName: dns_resp_z_dns_resp_z_do
+      dns.resp.z.reserved:
+        Name: dns.resp.z.reserved
+        Type: FtUint16
+        Display: BaseHex
+        Info: Reserved
+        JsonName: dns_resp_z_dns_resp_z_reserved
+      dns.resp.name:
+        Name: dns.resp.name
+        Type: FtString
+        Info: Name
+        JsonName: text_dns_resp_name
+      dns.resp.ttl:
+        Name: dns.resp.ttl
+        Type: FtInt32
+        Display: BaseDec
+        Info: Time to live
+        JsonName: text_dns_resp_ttl
+      dns.resp.len:
+        Name: dns.resp.len
+        Type: FtUint32
+        Display: BaseDec
+        Info: Data length
+        JsonName: text_dns_resp_len
+      dns.resp.value:
+        Name: dns.resp.value
+        Type: FtString
+        Display: BaseDec
+        Info: Value of the response
+
+# DNS RECORD TYPES:
   dns.srv.service:
     Name: dns.srv.service
     Type: FtString
@@ -261,23 +316,6 @@ Fields:
     Type: FtString
     Info: Replacement
     JsonName: dns_dns_naptr_replacement
-  dns.resp.name:
-    Name: dns.resp.name
-    Type: FtString
-    Info: Name
-    JsonName: text_dns_resp_name
-  dns.resp.ttl:
-    Name: dns.resp.ttl
-    Type: FtInt32
-    Display: BaseDec
-    Info: Time to live
-    JsonName: text_dns_resp_ttl
-  dns.resp.len:
-    Name: dns.resp.len
-    Type: FtUint32
-    Display: BaseDec
-    Info: Data length
-    JsonName: text_dns_resp_len
   dns.a:
     Name: dns.a
     Type: FtIpv4
@@ -1245,27 +1283,7 @@ Fields:
     Type: FtBytes
     Info: Other Data
     JsonName: dns_dns_tsig_other_data
-  dns.response_in:
-    Name: dns.response_in
-    Type: FtFramenum
-    Info: Response In
-    JsonName: dns_dns_response_in
-  dns.response_to:
-    Name: dns.response_to
-    Type: FtFramenum
-    Info: Request In
-    JsonName: dns_dns_response_to
-  dns.time:
-    Name: dns.time
-    Type: FtRelativeTime
-    Info: Time
-    JsonName: dns_dns_time
-  dns.count.add_rr:
-    Name: dns.count.add_rr
-    Type: FtUint16
-    Display: BaseDec
-    Info: Additional RRs
-    JsonName: dns_dns_count_add_rr
+
   dns.sshfp.algorithm:
     Name: dns.sshfp.algorithm
     Type: FtUint8

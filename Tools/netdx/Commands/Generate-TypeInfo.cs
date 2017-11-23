@@ -91,16 +91,16 @@ namespace Netdx
                         Info = info,
                         Type = GetFieldType(type),
                     };
-                    if (!protocol.Fields.ContainsKey(name))
-                        protocol.Fields.Add(name, field);
+                    if (!protocol.FieldMap.ContainsKey(name))
+                        protocol.FieldMap.Add(name, field);
                 }
             }
 
             // second iteration: Supply JSON names:
-            foreach(var f in protocol.Fields)
+            foreach(var f in protocol.FieldMap)
             {
                 var prefix = GetPrefix(f.Key);
-                if (protocol.Fields.TryGetValue(prefix, out var value))
+                if (protocol.FieldMap.TryGetValue(prefix, out var value))
                 {
                     f.Value.JsonName = $"{value.Name}.{f.Value.Name}".Replace('.', '_');
                 }

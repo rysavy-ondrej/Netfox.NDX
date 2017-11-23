@@ -55,6 +55,7 @@ enum FieldType {
 	FT_STRINGZPAD = 44;		/* for use with proto_tree_add_item() */
 	FT_FCWWN = 45;
 	FT_NUM_TYPES = 46;		/* last item number plus one */
+	FT_GROUP = 47;
 }
 
 enum FieldDisplay {
@@ -84,6 +85,11 @@ enum FieldDisplay {
 	ABSOLUTE_TIME_LOCAL = 20;
 }
 
+enum FieldMultiplicity {
+	FM_ONE = 0;
+	FM_MANY = 1;
+}
+
 /// <summary> 
 ///	Information describing a header field.
 ///	</summary>
@@ -106,10 +112,14 @@ message ProtocolField {
 	string Info = 4;
 	/// Defines the name of the field as appeared in the JSON output.
 	string JsonName = 5;
+	/// Defines multiplicity of the field.
+	FieldMultiplicity Mult = 6;
+	/// Defines the subfields for FtGroup field.
+	map<string,ProtocolField> FieldMap = 7;
 } 
 
 /// Represents a protocol type specification. 
 message Protocol {
 	string Name = 1;
-	map<string,ProtocolField> Fields = 2;
+	map<string,ProtocolField> FieldMap = 2;
 }
