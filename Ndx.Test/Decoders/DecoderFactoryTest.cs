@@ -10,7 +10,7 @@ namespace Ndx.Test.Decoders
         public void DecoderFactoryCreateTest()
         {
             var factory = new DecoderFactory();
-            Assert.True(factory.Decoders.Count > 0, "DecoderFactory not properly initialized. No decoders found!");
+            Assert.True(factory.TokenDecoders.Count > 0, "DecoderFactory not properly initialized. No decoders found!");
         }
     }
 }

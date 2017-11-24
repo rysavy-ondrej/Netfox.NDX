@@ -1,11 +1,10 @@
 ﻿using Ndx.Captures;
+using Ndx.Decoders.Base;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Linq.Expressions;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ndx.Decoders
 {
@@ -19,6 +18,110 @@ namespace Ndx.Decoders
         public PacketDecoder()
         {
             if (m_setters == null) InitializeSetters();
+        }
+
+        bool ReadProperty(JsonTextReader reader, out string propName, out string propValue)
+        {
+            if (reader.TokenType == JsonToken.PropertyName)
+            {
+                propName = reader.Value as String;
+                propValue = reader.ReadAsString();
+                reader.Read();
+                return true;
+            }
+            propName = null;
+            propValue = null;
+            return true;
+        }
+
+        T ReadProtocol<T>(DecoderFactory factory, JsonTextReader reader)
+        {
+            if (reader.TokenType == JsonToken.StartObject)
+            {
+                return factory.DecodeProtocol<T>(reader);    
+            }
+            else
+            {
+                return default(T);
+            }
+        }
+        bool ConsumeStartObject(JsonTextReader reader)
+        { 
+            if (reader.TokenType == JsonToken.StartObject)
+            {
+                reader.Read();
+                return true;
+            }
+            return false;
+        }
+        bool ConsumeEndObject(JsonTextReader reader)
+        {
+            if (reader.TokenType == JsonToken.EndObject)
+            {
+                reader.Read();
+                return true;
+            }
+            return false;
+        }
+        bool ConsumePropertyName(JsonTextReader reader, string name)
+        {
+            if (reader.TokenType == JsonToken.PropertyName && (name.Equals((string)reader.Value)))
+            {
+                reader.Read();
+                return true;
+            }
+            return false;
+        }
+        string ConsumePropertyName(JsonTextReader reader)
+        {
+            if (reader.TokenType == JsonToken.PropertyName)
+            {
+                var propName = (string)reader.Value;
+                reader.Read();
+                return propName;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Decodes input JSON string  to <see cref="Packet"/> object.
+        /// </summary>
+        /// <param name="factory">The decoder factory object.</param>
+        /// <param name="input">The JSON input string.</param>
+        /// <returns><see cref="Packet"/> object for the given input JSON string.</returns>
+        public Packet Decode(DecoderFactory factory, string input)
+        {
+            var packet = new Packet();
+            using (var reader = new JsonTextReader(new StringReader(input)))
+            {
+                // None
+                reader.Read();
+                // {
+                ConsumeStartObject(reader); 
+                // "timestamp" : "1508164622563",
+                ReadProperty(reader, out var tsName, out var tsValue);
+                packet.TimeStamp = Convert.ToInt64(tsValue);
+                // layers:
+                ConsumePropertyName(reader, "layers");
+                // {
+                ConsumeStartObject(reader);
+                // frame
+                ConsumePropertyName(reader, "frame");
+                // { ... } 
+                var frame = Frame.DecodeJson(reader);
+                packet.Protocols.Add(new Packet.Types.Protocol() { Frame = frame });
+
+                while (reader.TokenType != JsonToken.EndObject)
+                {
+                    var protoName = ConsumePropertyName(reader);
+                    var protoObj = factory.DecodeProtocol(protoName, reader);
+                    if (protoObj != null) packet.Protocols.Add(CreateProtocol(protoObj));
+                }
+                ConsumeEndObject(reader);
+                ConsumeEndObject(reader);
+                System.Diagnostics.Debug.Assert(reader.TokenType == JsonToken.None, $"Unexpected TokenType {reader.TokenType}");
+            }
+            return packet;
         }
 
         /// <summary>
@@ -73,8 +176,9 @@ namespace Ndx.Decoders
         /// <typeparam name="T"></typeparam>
         /// <param name="input"></param>
         /// <returns></returns>
-        public Packet.Types.Protocol CreateProtocol<T>(T input)
-        {            
+        public Packet.Types.Protocol CreateProtocol<T>(T input) where T : class
+        {
+            if (input == null) return null;
             if (typeof(T) == typeof(object))
             {
                 if (m_setters.TryGetValue(input.GetType(), out var setter))

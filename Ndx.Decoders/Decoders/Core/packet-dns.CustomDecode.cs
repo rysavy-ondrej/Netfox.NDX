@@ -19,21 +19,35 @@ namespace Ndx.Decoders.Core
 
         }
 
+
         public static Dns DecodeJson(JsonTextReader reader)
         {
+            if (reader.TokenType != JsonToken.StartObject) return null;
             var obj = new Dns() { DnsFlags = new _DnsFlags() };
-            while (reader.TokenType != JsonToken.EndObject)
+            int openObjects = 0;
+            while (reader.TokenType != JsonToken.None)
             {
+                if (reader.TokenType == JsonToken.StartObject)
+                {
+                    openObjects++;
+                }
+                if (reader.TokenType == JsonToken.EndObject)
+                {
+                    openObjects--;
+                    if (openObjects == 0) break;
+                }
                 if (reader.TokenType == JsonToken.PropertyName)
                 {
                     string propName = (string)reader.Value;
                     reader.Read();
-                    if (reader.TokenType != JsonToken.String) { reader.Read(); continue; }
+                    if (reader.TokenType != JsonToken.String) { continue; }
                     string propValue = (string)reader.Value;
                     SetField(obj, propName, propValue);
                 }
+
                 reader.Read();
             }
+            reader.Read();
             return obj;
         }
 

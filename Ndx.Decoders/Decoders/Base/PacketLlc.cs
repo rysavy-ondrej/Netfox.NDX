@@ -7,7 +7,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Ndx.Decoders.Basic {
+namespace Ndx.Decoders.Base {
 
   /// <summary>Holder for reflection information generated from packet-llc.proto</summary>
   public static partial class PacketLlcReflection {
@@ -22,20 +22,20 @@ namespace Ndx.Decoders.Basic {
     static PacketLlcReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChBwYWNrZXQtbGxjLnByb3RvEhJOZHguRGVjb2RlcnMuQmFzaWMihAMKA0xs",
-            "YxIPCgdMbGNEc2FwGAEgASgNEhIKCkxsY0RzYXBTYXAYAiABKA0SEQoJTGxj",
-            "RHNhcElnGAMgASgIEg8KB0xsY1NzYXAYBCABKA0SEgoKTGxjU3NhcFNhcBgF",
-            "IAEoDRIRCglMbGNTc2FwQ3IYBiABKAgSEgoKTGxjQ29udHJvbBgHIAEoDRIU",
-            "CgxMbGNDb250cm9sTlIYCCABKA0SFAoMTGxjQ29udHJvbE5TGAkgASgNEhMK",
-            "C0xsY0NvbnRyb2xQGAogASgIEhMKC0xsY0NvbnRyb2xGGAsgASgIEhgKEExs",
-            "Y0NvbnRyb2xTRnR5cGUYDCABKA0SHgoWTGxjQ29udHJvbFVNb2RpZmllckNt",
-            "ZBgNIAEoDRIfChdMbGNDb250cm9sVU1vZGlmaWVyUmVzcBgOIAEoDRIXCg9M",
-            "bGNDb250cm9sRnR5cGUYDyABKA0SDwoHTGxjVHlwZRgQIAEoDRIOCgZMbGNP",
-            "dWkYESABKA0SDgoGTGxjUGlkGBIgASgNYgZwcm90bzM="));
+            "ChBwYWNrZXQtbGxjLnByb3RvEhFOZHguRGVjb2RlcnMuQmFzZSKEAwoDTGxj",
+            "Eg8KB0xsY0RzYXAYASABKA0SEgoKTGxjRHNhcFNhcBgCIAEoDRIRCglMbGNE",
+            "c2FwSWcYAyABKAgSDwoHTGxjU3NhcBgEIAEoDRISCgpMbGNTc2FwU2FwGAUg",
+            "ASgNEhEKCUxsY1NzYXBDchgGIAEoCBISCgpMbGNDb250cm9sGAcgASgNEhQK",
+            "DExsY0NvbnRyb2xOUhgIIAEoDRIUCgxMbGNDb250cm9sTlMYCSABKA0SEwoL",
+            "TGxjQ29udHJvbFAYCiABKAgSEwoLTGxjQ29udHJvbEYYCyABKAgSGAoQTGxj",
+            "Q29udHJvbFNGdHlwZRgMIAEoDRIeChZMbGNDb250cm9sVU1vZGlmaWVyQ21k",
+            "GA0gASgNEh8KF0xsY0NvbnRyb2xVTW9kaWZpZXJSZXNwGA4gASgNEhcKD0xs",
+            "Y0NvbnRyb2xGdHlwZRgPIAEoDRIPCgdMbGNUeXBlGBAgASgNEg4KBkxsY091",
+            "aRgRIAEoDRIOCgZMbGNQaWQYEiABKA1iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Basic.Llc), global::Ndx.Decoders.Basic.Llc.Parser, new[]{ "LlcDsap", "LlcDsapSap", "LlcDsapIg", "LlcSsap", "LlcSsapSap", "LlcSsapCr", "LlcControl", "LlcControlNR", "LlcControlNS", "LlcControlP", "LlcControlF", "LlcControlSFtype", "LlcControlUModifierCmd", "LlcControlUModifierResp", "LlcControlFtype", "LlcType", "LlcOui", "LlcPid" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Base.Llc), global::Ndx.Decoders.Base.Llc.Parser, new[]{ "LlcDsap", "LlcDsapSap", "LlcDsapIg", "LlcSsap", "LlcSsapSap", "LlcSsapCr", "LlcControl", "LlcControlNR", "LlcControlNS", "LlcControlP", "LlcControlF", "LlcControlSFtype", "LlcControlUModifierCmd", "LlcControlUModifierResp", "LlcControlFtype", "LlcType", "LlcOui", "LlcPid" }, null, null, null)
           }));
     }
     #endregion
@@ -49,7 +49,7 @@ namespace Ndx.Decoders.Basic {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ndx.Decoders.Basic.PacketLlcReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Ndx.Decoders.Base.PacketLlcReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

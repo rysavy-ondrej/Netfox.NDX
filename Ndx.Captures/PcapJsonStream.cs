@@ -48,6 +48,15 @@ namespace Ndx.Captures
         }
 
         /// <summary>
+        /// Reads next available packet and provides it as a single line string.
+        /// </summary>
+        /// <returns></returns>
+        public string ReadPacketLine()
+        {
+            return ReadInternal<string>(x => x);
+        }
+
+        /// <summary>
         /// Reads next available packet from JSON source and provides it as <see cref="JsonPacket"/> object.
         /// </summary>
         /// <returns>New <see cref="JsonPacket"/> object or null if no more packets are available. </returns>

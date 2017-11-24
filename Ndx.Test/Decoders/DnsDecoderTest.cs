@@ -1,5 +1,4 @@
 ﻿using Ndx.Decoders;
-using Ndx.Decoders.Basic;
 using Ndx.Decoders.Core;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;

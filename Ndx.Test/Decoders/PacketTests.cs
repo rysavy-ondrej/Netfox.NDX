@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ndx.Decoders.Basic;
 using System.IO;
 using Ndx.Captures;
 using Ndx.Decoders.Core;
@@ -72,6 +71,25 @@ namespace Ndx.Decoders.Tests
             foreach (var http in https)
             {
                 Console.WriteLine(http);
+            }
+        }
+
+        [Test()]
+        public void DecodePcapTest()
+        {
+
+            var input = Path.Combine(TestContext.CurrentContext.TestDirectory, @"..\..\..\TestData\http.json");
+            using (var reader = new StreamReader(File.OpenRead(input)))
+            {
+                var factory = new DecoderFactory();
+                var decoder = new PacketDecoder();
+                var stream = new PcapJsonStream(reader);
+                string packetLine;
+                while ((packetLine = stream.ReadPacketLine()) != null)
+                {
+                    var decodedPacket = decoder.Decode(factory, packetLine);
+                    Console.WriteLine(decodedPacket);
+                }
             }
         }
     }

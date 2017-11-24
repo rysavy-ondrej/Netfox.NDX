@@ -1,13 +1,9 @@
-﻿using Ndx.Decoders.Basic;
-using Ndx.Decoders.Core;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ndx.Decoders
 {
@@ -16,21 +12,31 @@ namespace Ndx.Decoders
     /// </summary>
     public class DecoderFactory
     {
-        private static Dictionary<string, Func<JToken, object>> m_decoders;
+        private static Dictionary<string, Func<JToken, object>> m_tokenDecoders;
+        private static Dictionary<string, Func<JsonTextReader, object>> m_readerDecoders;
 
-        public Dictionary<string, Func<JToken, object>> Decoders => m_decoders;
-
+        public Dictionary<string, Func<JToken, object>> TokenDecoders => m_tokenDecoders;
+        public Dictionary<string, Func<JsonTextReader, object>> ReaderDecoders => m_readerDecoders;
         static void RegisterDecoders()
         {
             var allTypes = Assembly.GetExecutingAssembly().GetTypes();
-            m_decoders = new Dictionary<string, Func<JToken, object>>();
+            m_tokenDecoders = new Dictionary<string, Func<JToken, object>>();
+            m_readerDecoders = new Dictionary<string, Func<JsonTextReader, object>>();
             foreach (var typ in allTypes)
             {
-                var method = typ.GetMethod(nameof(Arp.DecodeJson), new Type[] { typeof(JToken) });
+                var method = typ.GetMethod("DecodeJson", new Type[] { typeof(JToken) });
                 if (method == null) continue;
                 var input = Expression.Parameter(typeof(JToken));
                 var lambda = Expression.Lambda<Func<JToken, object>>(Expression.Call(method, input), input).Compile();
-                m_decoders.Add(typ.Name.ToLowerInvariant(), lambda);               
+                m_tokenDecoders.Add(typ.Name.ToLowerInvariant(), lambda);
+            }
+            foreach (var typ in allTypes)
+            {
+                var method = typ.GetMethod("DecodeJson", new Type[] { typeof(JsonTextReader) });
+                if (method == null) continue;
+                var input = Expression.Parameter(typeof(JsonTextReader));
+                var lambda = Expression.Lambda<Func<JsonTextReader, object>>(Expression.Call(method, input), input).Compile();
+                m_readerDecoders.Add(typ.Name.ToLowerInvariant(), lambda);
             }
         }
         /// <summary>
@@ -38,7 +44,7 @@ namespace Ndx.Decoders
         /// </summary>
         public DecoderFactory()
         {
-            if (m_decoders == null) RegisterDecoders();
+            if (m_readerDecoders == null) RegisterDecoders();
         }
 
         /// <summary>
@@ -55,9 +61,48 @@ namespace Ndx.Decoders
             if (String.IsNullOrEmpty(protocol)) return null;
             if (token == null) return null;
 
-            if (m_decoders.TryGetValue(protocol.ToLowerInvariant(), out var decoder))
+            if (m_tokenDecoders.TryGetValue(protocol.ToLowerInvariant(), out var decoder))
             {
                 return decoder(token);
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Decodes the required protocol from the input JSON. The input should start with StartObject.
+        /// </summary>
+        /// <param name="protocolName">Protocol name.</param>
+        /// <param name="token">Root token of the input JSON.</param>
+        /// <returns>An object that can be type casted to the required protocol.
+        /// If either <paramref name="protocolName"/> or <paramref name="token"/> is null
+        /// then the result is null.
+        /// </returns>
+        public object DecodeProtocol(String protocolName, JsonTextReader reader, bool consumeObjectForUndefinedProtocol = true)
+        {
+            if (reader == null) throw new ArgumentNullException(nameof(reader));
+            if (protocolName == null) throw new ArgumentNullException(nameof(protocolName));
+
+            if (m_readerDecoders.TryGetValue(protocolName.ToLowerInvariant(), out var decoder))
+            {                                                           
+                return decoder(reader);
+            }
+            else if (consumeObjectForUndefinedProtocol)
+            {
+                int openObjects = 0;
+                while (reader.TokenType != JsonToken.None)
+                {
+                    if (reader.TokenType == JsonToken.StartObject)
+                    {
+                        openObjects++;
+                    }
+                    if (reader.TokenType == JsonToken.EndObject)
+                    {
+                        openObjects--;
+                        if (openObjects == 0) break;
+                    }
+                    reader.Read();
+                }
+                reader.Read();
             }
             return null;
         }
@@ -71,6 +116,10 @@ namespace Ndx.Decoders
         public T DecodeProtocol<T>(JToken token)
         {
             return (T)DecodeProtocol(typeof(T).Name, token);
+        }
+        public T DecodeProtocol<T>(JsonTextReader reader)
+        {
+            return (T)DecodeProtocol(typeof(T).Name, reader);
         }
     }
 }
