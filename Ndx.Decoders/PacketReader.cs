@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Ndx.Model;
 using Newtonsoft.Json.Linq;
+using System.Reactive.Linq;
+using System.Reactive.Disposables;
 
 namespace Ndx.Decoders
 {
@@ -40,5 +42,33 @@ namespace Ndx.Decoders
         {
             ((IDisposable)m_stream).Dispose();
         }
+
+        public static IEnumerable<Packet> ReadAllPackets(string path)
+        {
+            return ReadPackets(path).ToEnumerable();
+        }
+
+        public static IObservable<Packet> ReadPackets(string path)
+        {
+            return Observable.Using(() => File.OpenRead(path), stream =>
+            {
+                var reader = new PacketReader(stream);
+                var observable = Observable.Create<Packet>(obs =>
+                {
+
+                    var frame = reader.ReadPacket();
+                    while (frame != null)
+                    {
+                        obs.OnNext(frame);
+                        frame = reader.ReadPacket();
+                    }
+                    obs.OnCompleted();
+                    return Disposable.Create(() => { });
+                });
+                return observable;
+            });
+        }
+
+
     }
 }
