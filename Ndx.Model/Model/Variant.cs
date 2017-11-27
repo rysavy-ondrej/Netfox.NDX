@@ -78,7 +78,7 @@ namespace Ndx.Model
 
         public Variant(IPAddress value)
         {
-            this.IpAddressValue = value.ToString();
+            this.IpAddressValue = ByteString.CopyFrom(value.GetAddressBytes()); 
         }
 
         public Variant(double value)
@@ -115,7 +115,7 @@ namespace Ndx.Model
                 case UInt16 value:      UInt32Value = value; break;
                 case UInt32 value:      UInt64Value = value; break;
                 case UInt64 value:      UInt64Value = value;  break;
-                case IPAddress value:   IpAddressValue = value.ToString(); break; 
+                case IPAddress value:   IpAddressValue = ByteString.CopyFrom(value.GetAddressBytes()); break; 
                 case byte[] value:      BytesValue = ByteString.CopyFrom(value); break;
                 default: break;                
             }

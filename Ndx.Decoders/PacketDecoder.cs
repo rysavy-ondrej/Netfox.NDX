@@ -15,6 +15,9 @@ namespace Ndx.Decoders
     {
         static Dictionary<Type, Action<Packet.Types.Protocol, object>> m_setters;
 
+        /// <summary>
+        /// Creates a new <see cref="PacketDecoder"/> object.
+        /// </summary>
         public PacketDecoder()
         {
             if (m_setters == null) InitializeSetters();
@@ -150,7 +153,10 @@ namespace Ndx.Decoders
             return packet;
         }
 
-        public static void InitializeSetters()
+        /// <summary>
+        /// Initializes Setter dictionary by using reflection on the current assembly.
+        /// </summary>
+        static void InitializeSetters()
         {
             m_setters = new Dictionary<Type, Action<Packet.Types.Protocol, object>>();
             var t = typeof(Packet.Types.Protocol);
@@ -173,9 +179,9 @@ namespace Ndx.Decoders
         /// <summary>
         /// Creates a new protocol for the given input.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="input"></param>
-        /// <returns></returns>
+        /// <typeparam name="T">The protocol type.</typeparam>
+        /// <param name="input">An input object.</param>
+        /// <returns>Packet wrapped in <see cref="Packet.Types.Protocol"/> object that cen be used for discrimination.</returns>
         public Packet.Types.Protocol CreateProtocol<T>(T input) where T : class
         {
             if (input == null) return null;

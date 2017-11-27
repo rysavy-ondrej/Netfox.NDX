@@ -8,7 +8,7 @@ namespace Ndx.Captures
     /// <summary>
     ///  This class represents a PayloadHeader frame. Network Monitor prepends the metadata to reassembled frames.
     /// </summary>
-    class PayloadHeader
+    internal class PayloadHeader
     {
         /// <summary>
         /// Must be 0x0200.
@@ -52,24 +52,38 @@ namespace Ndx.Captures
         /// The size, in bytes, of the protocol data following this header.
         /// </summary>
         uint payloadLength;
+
+        public ushort Version { get => version; set => version = value; }
+        public ushort HeaderLength { get => headerLength; set => headerLength = value; }
+        public byte Payload { get => payload; set => payload = value; }
+        public string ReassembledProtocolName { get => reassembledProtocolName; set => reassembledProtocolName = value; }
+        public uint ReassemblyStatus { get => reassemblyStatus; set => reassemblyStatus = value; }
+        public byte LowerProtocolCount { get => lowerProtocolCount; set => lowerProtocolCount = value; }
+        public ReassembledProtocolInfo[] ReassembledProtocolInfoBlock { get => reassembledProtocolInfoBlock; set => reassembledProtocolInfoBlock = value; }
+        public ushort FrameCount { get => frameCount; set => frameCount = value; }
+        public uint PayloadLength { get => payloadLength; set => payloadLength = value; }
     }
 
     /// <summary>
     /// Conversation key information for a reassembled protocol.
     /// </summary>
-    public class ReassembledProtocolInfo
+    internal class ReassembledProtocolInfo
     {
         /// <summary>
         /// The length of the conversation key for the protocol.
         /// </summary>
-        uint conversationKeyLength;
+        uint m_conversationKeyLength;
         /// <summary>
         /// The conversation key for this protocol. This is a byte array.
         /// </summary>
-        byte[] conversationKey;
+        byte[] m_conversationKey;
         /// <summary>
         /// The length of the property block array specified in NPL and constructed by the reassembly plug-in.
         /// </summary>
-        ushort propertyBlockLength;
+        ushort m_propertyBlockLength;
+
+        public uint ConversationKeyLength { get => m_conversationKeyLength; set => m_conversationKeyLength = value; }
+        public byte[] ConversationKey { get => m_conversationKey; set => m_conversationKey = value; }
+        public ushort PropertyBlockLength { get => m_propertyBlockLength; set => m_propertyBlockLength = value; }
     }
 }

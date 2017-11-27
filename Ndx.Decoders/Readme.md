@@ -74,18 +74,18 @@ implemented decoders.
 
 ```csharp
 var input = // path to JSON file
-using (var reader = new StreamReader(File.OpenRead(input)))
+
+var instream = File.OpenRead(input);
+var factory = new DecoderFactory();
+var decoder = new PacketDecoder();
+var packets = new List<Packet>();
+using (var pcapstream = new PcapJsonStream(new StreamReader(instream)))
 {
-    var factory = new DecoderFactory();
-    var decoder = new PacketDecoder();
-    using(var stream = new PcapJsonStream(reader))
+	string jsonLine;
+	while ((jsonLine = pcapstream.ReadPacketLine()) != null)
 	{
-		JsonPacket packet;
-		while((packet = stream.ReadPacket()) != null)
-		{
-			var decodedPacket = decoder.Decode(factory, packet);
-			Console.WriteLine(decodedPacket);
-		}
+		var packet = decoder.Decode(factory, jsonLine);
+		packets.Add(packet);
 	}
 }  
 ```

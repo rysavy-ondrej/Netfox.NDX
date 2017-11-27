@@ -1398,14 +1398,9 @@ public final class PacketModel {
     com.google.protobuf.ByteString getBytesValue();
 
     /**
-     * <code>string IpAddressValue = 10;</code>
+     * <code>bytes IpAddressValue = 10;</code>
      */
-    java.lang.String getIpAddressValue();
-    /**
-     * <code>string IpAddressValue = 10;</code>
-     */
-    com.google.protobuf.ByteString
-        getIpAddressValueBytes();
+    com.google.protobuf.ByteString getIpAddressValue();
 
     /**
      * <code>int64 DateTimeValue = 11;</code>
@@ -1500,9 +1495,8 @@ public final class PacketModel {
               break;
             }
             case 82: {
-              java.lang.String s = input.readStringRequireUtf8();
               valueCase_ = 10;
-              value_ = s;
+              value_ = input.readBytes();
               break;
             }
             case 88: {
@@ -1722,45 +1716,13 @@ public final class PacketModel {
 
     public static final int IPADDRESSVALUE_FIELD_NUMBER = 10;
     /**
-     * <code>string IpAddressValue = 10;</code>
+     * <code>bytes IpAddressValue = 10;</code>
      */
-    public java.lang.String getIpAddressValue() {
-      java.lang.Object ref = "";
+    public com.google.protobuf.ByteString getIpAddressValue() {
       if (valueCase_ == 10) {
-        ref = value_;
+        return (com.google.protobuf.ByteString) value_;
       }
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (valueCase_ == 10) {
-          value_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>string IpAddressValue = 10;</code>
-     */
-    public com.google.protobuf.ByteString
-        getIpAddressValueBytes() {
-      java.lang.Object ref = "";
-      if (valueCase_ == 10) {
-        ref = value_;
-      }
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        if (valueCase_ == 10) {
-          value_ = b;
-        }
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+      return com.google.protobuf.ByteString.EMPTY;
     }
 
     public static final int DATETIMEVALUE_FIELD_NUMBER = 11;
@@ -1822,7 +1784,8 @@ public final class PacketModel {
             9, (com.google.protobuf.ByteString) value_);
       }
       if (valueCase_ == 10) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, value_);
+        output.writeBytes(
+            10, (com.google.protobuf.ByteString) value_);
       }
       if (valueCase_ == 11) {
         output.writeInt64(
@@ -1879,7 +1842,9 @@ public final class PacketModel {
               9, (com.google.protobuf.ByteString) value_);
       }
       if (valueCase_ == 10) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, value_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(
+              10, (com.google.protobuf.ByteString) value_);
       }
       if (valueCase_ == 11) {
         size += com.google.protobuf.CodedOutputStream
@@ -2289,9 +2254,7 @@ public final class PacketModel {
             break;
           }
           case IPADDRESSVALUE: {
-            valueCase_ = 10;
-            value_ = other.value_;
-            onChanged();
+            setIpAddressValue(other.getIpAddressValue());
             break;
           }
           case DATETIMEVALUE: {
@@ -2667,51 +2630,18 @@ public final class PacketModel {
       }
 
       /**
-       * <code>string IpAddressValue = 10;</code>
+       * <code>bytes IpAddressValue = 10;</code>
        */
-      public java.lang.String getIpAddressValue() {
-        java.lang.Object ref = "";
+      public com.google.protobuf.ByteString getIpAddressValue() {
         if (valueCase_ == 10) {
-          ref = value_;
+          return (com.google.protobuf.ByteString) value_;
         }
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (valueCase_ == 10) {
-            value_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+        return com.google.protobuf.ByteString.EMPTY;
       }
       /**
-       * <code>string IpAddressValue = 10;</code>
+       * <code>bytes IpAddressValue = 10;</code>
        */
-      public com.google.protobuf.ByteString
-          getIpAddressValueBytes() {
-        java.lang.Object ref = "";
-        if (valueCase_ == 10) {
-          ref = value_;
-        }
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (valueCase_ == 10) {
-            value_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string IpAddressValue = 10;</code>
-       */
-      public Builder setIpAddressValue(
-          java.lang.String value) {
+      public Builder setIpAddressValue(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2721,7 +2651,7 @@ public final class PacketModel {
         return this;
       }
       /**
-       * <code>string IpAddressValue = 10;</code>
+       * <code>bytes IpAddressValue = 10;</code>
        */
       public Builder clearIpAddressValue() {
         if (valueCase_ == 10) {
@@ -2729,20 +2659,6 @@ public final class PacketModel {
           value_ = null;
           onChanged();
         }
-        return this;
-      }
-      /**
-       * <code>string IpAddressValue = 10;</code>
-       */
-      public Builder setIpAddressValueBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        valueCase_ = 10;
-        value_ = value;
-        onChanged();
         return this;
       }
 
@@ -3818,7 +3734,7 @@ public final class PacketModel {
       "\022\025\n\013UInt64Value\030\005 \001(\004H\000\022\024\n\nFloatValue\030\006 ",
       "\001(\002H\000\022\025\n\013DoubleValue\030\007 \001(\001H\000\022\025\n\013StringVa" +
       "lue\030\010 \001(\tH\000\022\024\n\nBytesValue\030\t \001(\014H\000\022\030\n\016IpA" +
-      "ddressValue\030\n \001(\tH\000\022\027\n\rDateTimeValue\030\013 \001" +
+      "ddressValue\030\n \001(\014H\000\022\027\n\rDateTimeValue\030\013 \001" +
       "(\003H\000B\007\n\005Value\"\306\001\n\014DecodedFrame\022\023\n\013FrameN" +
       "umber\030\001 \001(\003\022\026\n\016FrameProtocols\030\002 \001(\t\022\021\n\tT" +
       "imestamp\030\003 \001(\003\0223\n\006Fields\030\n \003(\0132#.ndx.mod" +

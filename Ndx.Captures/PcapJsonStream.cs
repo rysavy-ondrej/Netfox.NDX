@@ -50,7 +50,7 @@ namespace Ndx.Captures
         /// <summary>
         /// Reads next available packet and provides it as a single line string.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>String representation of packet.</returns>
         public string ReadPacketLine()
         {
             return ReadInternal<string>(x => x);
@@ -65,6 +65,12 @@ namespace Ndx.Captures
             return ReadInternal(line => new JsonPacket(JToken.Parse(line)));
         }
 
+        /// <summary>
+        /// Reads the next packet from the source stream and applies provided decoder function.
+        /// </summary>
+        /// <typeparam name="T">The result type.</typeparam>
+        /// <param name="decoder">Decoder function.</param>
+        /// <returns>An object of type <typeparamref name="T"/>.</returns>
         protected T ReadInternal<T>(Func<string,T> decoder)
         {
             while (true)
@@ -76,85 +82,6 @@ namespace Ndx.Captures
                     return decoder(line);
                 }
             }
-        }
-
-        /// <summary>
-        /// Reads the single packet from the source stream.
-        /// </summary>
-        /// <returns>Next <see cref="DecodedFrame"/> object or null if the end of source stream was reached.</returns>
-        public DecodedFrame Read(Func<String, String, String,Tuple<String,Variant>> customDecoder = null)
-        {
-            return ReadInternal<DecodedFrame>(line => DecodeJsonLine(line, customDecoder));
-        }
-
-        /// <summary>
-        /// Decodes JSON line produced by TSHARK to <see cref="DecodedFrame"/> object.
-        /// </summary>
-        /// <param name="line">An input line to decode.</param>
-        /// <param name="customDecoder">Function that is called for each field. This function is used to filter and format the fields.</param>
-        /// <returns>A single <see cref="DecodedFrame"/> consisting of fields that passes <paramref name="customDecoder"/> function.</returns>
-        public static DecodedFrame DecodeJsonLine(string line, Func<String,String,String,Tuple<String,Variant>> customDecoder = null)
-        {
-            var jsonObject = JToken.Parse(line);
-            var layers = jsonObject["layers"];
-            var frame = layers["frame"];
-
-            var timestamp = ((long)jsonObject["timestamp"]);
-            var framenumber = (int)frame["frame_frame_number"];
-            var frameprotocols = (string)frame["frame_frame_protocols"];
-            var frameLength = (int)frame["frame_frame_len"];
-            var result = new DecodedFrame()
-            {
-                Timestamp = DateTimeOffset.FromUnixTimeMilliseconds(timestamp).Ticks,
-                FrameNumber = framenumber,
-                FrameProtocols = frameprotocols
-            };
-
-            result.Fields["timestamp"] = new Variant(timestamp);
-            result.Fields["frame_number"] = new Variant(framenumber);
-            result.Fields["frame_len"] = new Variant(frameLength);
-            var protocols = result.FrameProtocols.Split(':');
-            foreach (var proto in protocols)
-            {
-                var fields = layers[proto];
-                if (fields != null)
-                {
-                    foreach (var _field in fields)
-                    {
-                        var field = (JProperty)_field;
-                        if (field?.Value.Type == JTokenType.String)
-                        {
-
-                            if (customDecoder != null)
-                            {
-                                var nameValueTuple = customDecoder(proto, field.Name, (string)field.Value);
-                                if (nameValueTuple != null)
-                                {
-                                    result.Fields[nameValueTuple.Item1.Replace('.','_')] = nameValueTuple.Item2;
-                                }
-                            }
-                            else
-                            {
-
-                                // field name has a prefix, for instance:
-                                // dns_dns_count_answers 
-                                // dns_flags_dns_flags_opcode
-                                // the following tries to remove this prefix:
-                                var fieldNameParts = field.Name.Split('_');
-                                var fieldNameCore = fieldNameParts.Skip(1).SkipWhile(s => !s.Equals(proto)).ToArray();
-                                if (fieldNameCore.Count() > 0)
-                                {
-                                    var fieldName = String.Join("_", fieldNameCore);
-
-                                    result.Fields[fieldName] = new Variant((string)field.Value);
-
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            return result;
         }
 
         public void Dispose()

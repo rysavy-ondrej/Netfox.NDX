@@ -57,7 +57,7 @@ message Variant {
 		double DoubleValue = 7;
 		string StringValue = 8;
 		bytes BytesValue = 9;
-		string IpAddressValue = 10;
+		bytes IpAddressValue = 10;
 		int64 DateTimeValue = 11;
 	}
 }

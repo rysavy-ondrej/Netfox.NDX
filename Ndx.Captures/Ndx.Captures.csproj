@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CaptureStream.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="PayloadHeader.cs" />
     <Compile Include="LibPcapStream.cs" />
     <Compile Include="PcapFile.cs" />

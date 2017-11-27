@@ -33,7 +33,7 @@ namespace Ndx.Model {
             "EhUKC1VJbnQ2NFZhbHVlGAUgASgESAASFAoKRmxvYXRWYWx1ZRgGIAEoAkgA",
             "EhUKC0RvdWJsZVZhbHVlGAcgASgBSAASFQoLU3RyaW5nVmFsdWUYCCABKAlI",
             "ABIUCgpCeXRlc1ZhbHVlGAkgASgMSAASGAoOSXBBZGRyZXNzVmFsdWUYCiAB",
-            "KAlIABIXCg1EYXRlVGltZVZhbHVlGAsgASgDSABCBwoFVmFsdWUixgEKDERl",
+            "KAxIABIXCg1EYXRlVGltZVZhbHVlGAsgASgDSABCBwoFVmFsdWUixgEKDERl",
             "Y29kZWRGcmFtZRITCgtGcmFtZU51bWJlchgBIAEoAxIWCg5GcmFtZVByb3Rv",
             "Y29scxgCIAEoCRIRCglUaW1lc3RhbXAYAyABKAMSMwoGRmllbGRzGAogAygL",
             "MiMubmR4Lm1vZGVsLkRlY29kZWRGcmFtZS5GaWVsZHNFbnRyeRpBCgtGaWVs",
@@ -606,8 +606,8 @@ namespace Ndx.Model {
     /// <summary>Field number for the "IpAddressValue" field.</summary>
     public const int IpAddressValueFieldNumber = 10;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string IpAddressValue {
-      get { return valueCase_ == ValueOneofCase.IpAddressValue ? (string) value_ : ""; }
+    public pb::ByteString IpAddressValue {
+      get { return valueCase_ == ValueOneofCase.IpAddressValue ? (pb::ByteString) value_ : pb::ByteString.Empty; }
       set {
         value_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
         valueCase_ = ValueOneofCase.IpAddressValue;
@@ -744,7 +744,7 @@ namespace Ndx.Model {
       }
       if (valueCase_ == ValueOneofCase.IpAddressValue) {
         output.WriteRawTag(82);
-        output.WriteString(IpAddressValue);
+        output.WriteBytes(IpAddressValue);
       }
       if (valueCase_ == ValueOneofCase.DateTimeValue) {
         output.WriteRawTag(88);
@@ -783,7 +783,7 @@ namespace Ndx.Model {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(BytesValue);
       }
       if (valueCase_ == ValueOneofCase.IpAddressValue) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(IpAddressValue);
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(IpAddressValue);
       }
       if (valueCase_ == ValueOneofCase.DateTimeValue) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(DateTimeValue);
@@ -879,7 +879,7 @@ namespace Ndx.Model {
             break;
           }
           case 82: {
-            IpAddressValue = input.ReadString();
+            IpAddressValue = input.ReadBytes();
             break;
           }
           case 88: {

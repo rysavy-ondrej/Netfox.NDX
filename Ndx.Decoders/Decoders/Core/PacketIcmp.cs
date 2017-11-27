@@ -52,7 +52,7 @@ namespace Ndx.Decoders.Core {
             "cE1wbHNUdGwYNiABKA0SFAoMSWNtcE1wbHNEYXRhGDcgASgMEhIKCkljbXBS",
             "ZXNwSW4YOCABKAMSEgoKSWNtcE5vUmVzcBg5IAEoBRISCgpJY21wUmVzcFRv",
             "GDogASgDEhQKDEljbXBSZXNwdGltZRg7IAEoARIUCgxJY21wRGF0YVRpbWUY",
-            "PCABKAMSHAoUSWNtcERhdGFUaW1lUmVsYXRpdmUYPSABKAMSEgoKSWNtcExl",
+            "PCABKAMSHAoUSWNtcERhdGFUaW1lUmVsYXRpdmUYPSABKAISEgoKSWNtcExl",
             "bmd0aBg+IAEoDRIiChpJY21wTGVuZ3RoT3JpZ2luYWxEYXRhZ3JhbRg/IAEo",
             "DRIXCg9JY21wSW50SW5mb1JvbGUYQCABKA0SGwoTSWNtcEludEluZm9SZXNl",
             "cnZlZBhBIAEoDRIaChJJY21wSW50SW5mb0lmaW5kZXgYQiABKAgSGQoRSWNt",
@@ -1021,12 +1021,12 @@ namespace Ndx.Decoders.Core {
 
     /// <summary>Field number for the "IcmpDataTimeRelative" field.</summary>
     public const int IcmpDataTimeRelativeFieldNumber = 61;
-    private long icmpDataTimeRelative_;
+    private float icmpDataTimeRelative_;
     /// <summary>
     /// Timestamp from icmp data (relative) ('icmp_icmp_data_time_relative')
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long IcmpDataTimeRelative {
+    public float IcmpDataTimeRelative {
       get { return icmpDataTimeRelative_; }
       set {
         icmpDataTimeRelative_ = value;
@@ -1398,7 +1398,7 @@ namespace Ndx.Decoders.Core {
       if (IcmpRespTo != 0L) hash ^= IcmpRespTo.GetHashCode();
       if (IcmpResptime != 0D) hash ^= IcmpResptime.GetHashCode();
       if (IcmpDataTime != 0L) hash ^= IcmpDataTime.GetHashCode();
-      if (IcmpDataTimeRelative != 0L) hash ^= IcmpDataTimeRelative.GetHashCode();
+      if (IcmpDataTimeRelative != 0F) hash ^= IcmpDataTimeRelative.GetHashCode();
       if (IcmpLength != 0) hash ^= IcmpLength.GetHashCode();
       if (IcmpLengthOriginalDatagram != 0) hash ^= IcmpLengthOriginalDatagram.GetHashCode();
       if (IcmpIntInfoRole != 0) hash ^= IcmpIntInfoRole.GetHashCode();
@@ -1664,9 +1664,9 @@ namespace Ndx.Decoders.Core {
         output.WriteRawTag(224, 3);
         output.WriteInt64(IcmpDataTime);
       }
-      if (IcmpDataTimeRelative != 0L) {
-        output.WriteRawTag(232, 3);
-        output.WriteInt64(IcmpDataTimeRelative);
+      if (IcmpDataTimeRelative != 0F) {
+        output.WriteRawTag(237, 3);
+        output.WriteFloat(IcmpDataTimeRelative);
       }
       if (IcmpLength != 0) {
         output.WriteRawTag(240, 3);
@@ -1913,8 +1913,8 @@ namespace Ndx.Decoders.Core {
       if (IcmpDataTime != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(IcmpDataTime);
       }
-      if (IcmpDataTimeRelative != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(IcmpDataTimeRelative);
+      if (IcmpDataTimeRelative != 0F) {
+        size += 2 + 4;
       }
       if (IcmpLength != 0) {
         size += 2 + pb::CodedOutputStream.ComputeUInt32Size(IcmpLength);
@@ -2149,7 +2149,7 @@ namespace Ndx.Decoders.Core {
       if (other.IcmpDataTime != 0L) {
         IcmpDataTime = other.IcmpDataTime;
       }
-      if (other.IcmpDataTimeRelative != 0L) {
+      if (other.IcmpDataTimeRelative != 0F) {
         IcmpDataTimeRelative = other.IcmpDataTimeRelative;
       }
       if (other.IcmpLength != 0) {
@@ -2447,8 +2447,8 @@ namespace Ndx.Decoders.Core {
             IcmpDataTime = input.ReadInt64();
             break;
           }
-          case 488: {
-            IcmpDataTimeRelative = input.ReadInt64();
+          case 493: {
+            IcmpDataTimeRelative = input.ReadFloat();
             break;
           }
           case 496: {

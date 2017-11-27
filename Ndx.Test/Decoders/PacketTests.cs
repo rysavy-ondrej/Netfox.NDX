@@ -16,12 +16,6 @@ namespace Ndx.Decoders.Tests
     public class PacketTests
     {
         [Test()]
-        public void InitializeSettersTest()
-        {
-            PacketDecoder.InitializeSetters();
-        }
-
-        [Test()]
         public void PacketSettersTest()
         {
             var packetDecoder = new PacketDecoder();

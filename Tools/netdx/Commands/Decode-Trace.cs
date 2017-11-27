@@ -17,11 +17,11 @@ namespace Netdx
             var decoder = new PacketDecoder();
             using (var pcapstream = new PcapJsonStream(new StreamReader(instream)))
             {
-                JsonPacket packet;
-                while((packet = pcapstream.ReadPacket()) != null)
+                string jsonLine;
+                while((jsonLine = pcapstream.ReadPacketLine()) != null)
                 {
-                    var pckt = decoder.Decode(factory, packet);
-                    pckt.WriteDelimitedTo(outstream);
+                    var packet = decoder.Decode(factory, jsonLine);
+                    packet.WriteDelimitedTo(outstream);
                 }
                 outstream.Flush();
             }

@@ -49,28 +49,6 @@ namespace Ndx.Captures
             }
         }
 
-
-        public static IObservable<DecodedFrame> ReadJson(string path, Func<String, String, String, Tuple<String, Variant>> customDecoder = null)
-        {
-            return Observable.Using(() => File.OpenText(path), stream =>
-            {
-                var source = new PcapJsonStream(stream);
-                var observable = Observable.Create<DecodedFrame>(obs =>
-                {
-
-                    var frame = source.Read();
-                    while (frame != null)
-                    {
-                        obs.OnNext(frame);
-                        frame = source.Read(customDecoder);
-                    }
-                    obs.OnCompleted();
-                    return Disposable.Create(() => { });
-                });
-                return observable;
-            });
-        }
-
         public static IObservable<Frame> ReadLibpcap(string path)
         {
             return Observable.Using(() => File.OpenRead(path), stream =>

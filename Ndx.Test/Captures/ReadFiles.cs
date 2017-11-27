@@ -64,13 +64,5 @@ namespace Ndx.Test
             await LibPcapStream.WriteAllFramesAsync(output, DataLinkType.Ethernet, frames);
         }
 
-
-        [Test]
-        public async Task ReadPcapJson()
-        {
-            var input = Path.Combine(testContext.TestDirectory, @"..\..\..\TestData\http.json");
-            var items = PcapFile.ReadJson(input);
-            await items.ForEachAsync(Console.WriteLine);            
-        }
     }
 }
