@@ -114,11 +114,18 @@ namespace Ndx.Decoders
                 var frame = Frame.DecodeJson(reader);
                 packet.Protocols.Add(new Packet.Types.Protocol() { Frame = frame });
 
-                while (reader.TokenType != JsonToken.EndObject)
+                while (reader.TokenType != JsonToken.EndObject && reader.TokenType != JsonToken.None )
                 {
                     var protoName = ConsumePropertyName(reader);
-                    var protoObj = factory.DecodeProtocol(protoName, reader);
-                    if (protoObj != null) packet.Protocols.Add(CreateProtocol(protoObj));
+                    if (reader.TokenType == JsonToken.StartObject)
+                    {
+                        var protoObj = factory.DecodeProtocol(protoName, reader);
+                        if (protoObj != null) packet.Protocols.Add(CreateProtocol(protoObj));
+                    }
+                    else
+                    {
+                        reader.Read();
+                    }
                 }
                 ConsumeEndObject(reader);
                 ConsumeEndObject(reader);

@@ -14,7 +14,7 @@ namespace Ndx.Test.Diag
 {
     [TestFixture]
     class NoWebAccess1
-    {
+    {     /*
         static TestContext m_testContext = TestContext.CurrentContext;
         string m_source = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\PPA\nowebaccess1.json");
         [Test]
@@ -184,5 +184,6 @@ namespace Ndx.Test.Diag
                 .Where(@t => @t.@t.x == @t.@t.y && @t.@t.y == @t.z)
                 .Select(@t => new {left = @t.@t.x, middle = @t.@t.y, right = @t.z});
         }
+        */
     }
 }

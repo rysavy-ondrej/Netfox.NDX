@@ -22,6 +22,7 @@ namespace Netdx
                 {
                     var packet = decoder.Decode(factory, jsonLine);
                     packet.WriteDelimitedTo(outstream);
+
                 }
                 outstream.Flush();
             }

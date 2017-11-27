@@ -26,7 +26,7 @@ namespace Ndx.Test.Filters
             var rule = Rule.Load(m_theRule);
         }
 
-
+        /*
         [Test]
         public void Rule_LoadAndEvaluate()
         {
@@ -46,7 +46,7 @@ namespace Ndx.Test.Filters
                 Console.WriteLine($"{item[1].FrameNumber} <- {item[1]["dns_id"]}  -> {item[2].FrameNumber}, RTT = {(Convert.ToInt64(item[2]["timestamp"]) - Convert.ToInt64(item[1]["timestamp"]))} ms");
             }
         }
-
+        */
 
         private Tuple<string,Variant> decoder(string protocol, string field, string value)
         {
