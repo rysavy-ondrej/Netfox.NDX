@@ -52,7 +52,7 @@ namespace Ndx.Decoders
         {
             return Observable.Using(() => File.OpenRead(path), stream =>
             {
-                var reader = new PacketReader(stream);
+                var reader = new PacketReader(stream);                         
                 var observable = Observable.Create<Packet>(obs =>
                 {
 
