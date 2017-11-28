@@ -5,7 +5,6 @@
 syntax = "proto3";
 package ndx.model;
 option java_package = "org.ndx.model";
-import "Constants.proto";
 
 enum FieldType {
 	FT_NONE = 0;			/* used for text labels with no value */

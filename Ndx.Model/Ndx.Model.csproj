@@ -60,6 +60,7 @@
     <Compile Include="Model\Constants.cs" />
     <Compile Include="Model\Conversation.cs" />
     <Compile Include="Model\ConversationModel.cs" />
+    <Compile Include="Model\EventModel.cs" />
     <Compile Include="Model\FlowAttributes.cs" />
     <Compile Include="Model\FlowKey.cs" />
     <Compile Include="Model\FlowModel.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Model\ProtocolModel.cs" />
     <Compile Include="Model\Variant.cs" />
     <Compile Include="Model\VariantArithmetic.cs" />
+    <Compile Include="Model\VariantModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,9 +79,11 @@
     <None Include="Proto\compile.cmd" />
     <None Include="Proto\Constants.proto" />
     <None Include="Proto\ConversationModel.proto" />
+    <None Include="Proto\EventModel.proto" />
     <None Include="Proto\FlowModel.proto" />
     <None Include="Proto\PacketModel.proto" />
     <None Include="Proto\ProtocolModel.proto" />
+    <None Include="Proto\VariantModel.proto" />
     <None Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
@@ -89,4 +93,13 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>$(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools\windows_x86\protoc --proto_path $(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools --proto_path $(ProjectDir)Proto --csharp_out=$(ProjectDir)Model $(ProjectDir)Proto\Constants.proto
+$(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools\windows_x86\protoc --proto_path $(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools --proto_path $(ProjectDir)Proto --csharp_out=$(ProjectDir)Model $(ProjectDir)Proto\VariantModel.proto
+$(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools\windows_x86\protoc --proto_path $(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools --proto_path $(ProjectDir)Proto --csharp_out=$(ProjectDir)Model $(ProjectDir)Proto\EventModel.proto
+$(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools\windows_x86\protoc --proto_path $(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools --proto_path $(ProjectDir)Proto --csharp_out=$(ProjectDir)Model $(ProjectDir)Proto\FlowModel.proto
+$(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools\windows_x86\protoc --proto_path $(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools --proto_path $(ProjectDir)Proto --csharp_out=$(ProjectDir)Model $(ProjectDir)Proto\PacketModel.proto
+$(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools\windows_x86\protoc --proto_path $(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools --proto_path $(ProjectDir)Proto --csharp_out=$(ProjectDir)Model $(ProjectDir)Proto\ProtocolModel.proto
+$(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools\windows_x86\protoc --proto_path $(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools --proto_path $(ProjectDir)Proto --csharp_out=$(ProjectDir)Model $(ProjectDir)Proto\ConversationModel.proto</PreBuildEvent>
+  </PropertyGroup>
 </Project>

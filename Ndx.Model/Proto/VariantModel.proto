@@ -1,0 +1,25 @@
+﻿//  
+// Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
+// Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
+//
+syntax = "proto3";
+package ndx.model;
+option java_package = "org.ndx.model";
+import "google/protobuf/any.proto";
+
+message Variant {
+	oneof Value {
+		bool BoolValue = 1;
+	    sint32 Int32Value = 2;
+		sint64 Int64Value = 3;
+	    uint32 UInt32Value = 4;
+		uint64 UInt64Value = 5;
+		float FloatValue = 6;
+		double DoubleValue = 7;
+		string StringValue = 8;
+		bytes BytesValue = 9;
+		bytes IpAddressValue = 10;
+		int64 DateTimeValue = 11;
+        google.protobuf.Any Other = 12;        
+	}
+}

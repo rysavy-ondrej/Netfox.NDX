@@ -6,6 +6,7 @@ syntax = "proto3";
 package ndx.model;
 option java_package = "org.ndx.model";
 import "Constants.proto";
+import "VariantModel.proto";
 
 /// <summary>
 /// Represents a single captured packet and its metadata
@@ -44,22 +45,6 @@ message Frame {
 	///	Gets or sets the conversation ID of this frame.
 	///	</summary>
 	int32 ConversationId = 11;
-}
-
-message Variant {
-	oneof Value {
-		bool BoolValue = 1;
-	    sint32 Int32Value = 2;
-		sint64 Int64Value = 3;
-	    uint32 UInt32Value = 4;
-		uint64 UInt64Value = 5;
-		float FloatValue = 6;
-		double DoubleValue = 7;
-		string StringValue = 8;
-		bytes BytesValue = 9;
-		bytes IpAddressValue = 10;
-		int64 DateTimeValue = 11;
-	}
 }
 
 message DecodedFrame {

@@ -29,20 +29,22 @@ import "packet-nbipx.proto";
 import "packet-nbt.proto";
 import "packet-netbios.proto";
 import "packet-ppp.proto";
-
+import "google/protobuf/any.proto";
 
 message Packet {
-	int64 TimeStamp = 1;
+    int64 TimeStamp = 1;
+    int64 FrameNumber = 2;
 	message Protocol {
 		oneof ProtocolType {
-			// BASE:
-			Ndx.Decoders.Base.Frame Frame = 1;
-			Ndx.Decoders.Base.Eth Eth = 2;
-			Ndx.Decoders.Base.Ieee80211 Ieee80211 = 3;
-			Ndx.Decoders.Base.Ip Ip = 4;
-			Ndx.Decoders.Base.Ipv6 Ipv6 = 5;
-			Ndx.Decoders.Base.Tcp Tcp = 6;
-			Ndx.Decoders.Base.Udp Udp = 7;
+			google.protobuf.Any Other = 1;
+            // BASE:
+			Ndx.Decoders.Base.Frame Frame = 2;
+			Ndx.Decoders.Base.Eth Eth = 3;
+			Ndx.Decoders.Base.Ieee80211 Ieee80211 = 4;
+			Ndx.Decoders.Base.Ip Ip = 5;
+			Ndx.Decoders.Base.Ipv6 Ipv6 = 6;
+			Ndx.Decoders.Base.Tcp Tcp = 7;
+			Ndx.Decoders.Base.Udp Udp = 8;
 			// CORE:
 			Ndx.Decoders.Core.Arp Arp = 101;
 			Ndx.Decoders.Core.Atm Atm = 102;
@@ -59,6 +61,8 @@ message Packet {
 			Ndx.Decoders.Core.Netbios Netbios = 113;
 			Ndx.Decoders.Core.Ppp Ppp = 114;
 			// COMMON:
+
+            // OTHER            
 		}
 	}
 	repeated Protocol Protocols = 10;

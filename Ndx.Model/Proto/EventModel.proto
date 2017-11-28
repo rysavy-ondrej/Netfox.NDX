@@ -1,0 +1,14 @@
+﻿//  
+// Copyright (c) BRNO UNIVERSITY OF TECHNOLOGY. All rights reserved.  
+// Licensed under the MIT License. See LICENSE file in the solution root for full license information.  
+//
+syntax = "proto3";
+package ndx.model;
+option java_package = "org.ndx.model";
+import "VariantModel.proto";
+
+/// Represents an event type specification. 
+message Event {
+	string Name = 1;
+	map<string,Variant> FieldMap = 2;
+}

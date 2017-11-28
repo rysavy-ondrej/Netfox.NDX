@@ -211,6 +211,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>$(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools\windows_x86\protoc  --proto_path $(ProjectDir)Proto --proto_path $(ProjectDir)Proto\Base --proto_path $(ProjectDir)Proto\Core --proto_path $(ProjectDir)Proto\Common --csharp_out=$(ProjectDir)Decoders $(ProjectDir)Proto\Packet.proto</PreBuildEvent>
+    <PreBuildEvent>$(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools\windows_x86\protoc --proto_path $(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools --proto_path $(ProjectDir)Proto --proto_path $(ProjectDir)Proto\Base --proto_path $(ProjectDir)Proto\Core --proto_path $(ProjectDir)Proto\Common --csharp_out=$(ProjectDir)Decoders $(ProjectDir)Proto\Packet.proto</PreBuildEvent>
   </PropertyGroup>
 </Project>
