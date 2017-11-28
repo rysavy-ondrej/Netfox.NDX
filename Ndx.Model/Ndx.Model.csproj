@@ -76,7 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Proto\compile.cmd" />
     <None Include="Proto\Constants.proto" />
     <None Include="Proto\ConversationModel.proto" />
     <None Include="Proto\EventModel.proto" />

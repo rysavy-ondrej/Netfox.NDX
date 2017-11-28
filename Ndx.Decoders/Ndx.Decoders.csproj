@@ -60,7 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Decoders\Core\packet-dns.Extensions.cs" />
+    <Compile Include="Decoders\Core\Packet.Dns.Extensions.cs" />
+    <Compile Include="Decoders\Core\PacketArp.Extensions.cs" />
     <Compile Include="PacketExtensions.cs" />
     <Compile Include="DecoderFactory.cs" />
     <Compile Include="Decoders\Base\packet-eth.Decode.cs" />
