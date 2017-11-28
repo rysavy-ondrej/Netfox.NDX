@@ -12,7 +12,8 @@ using System.Reactive.Disposables;
 namespace Ndx.Decoders
 {
     /// <summary>
-    /// This class represents pcap file produced by TSHARK -T ek command. This is New-line delimited JSON file. 
+    /// This class implements a reader for pcap file produced by TSHARK -T ek command. This file has format of a new-line delimited JSON. 
+    /// The reader provides collection of <see cref="Packet"/> objects.
     /// </summary>
     public class PacketReader : IDisposable
     {
