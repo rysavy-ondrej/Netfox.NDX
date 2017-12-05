@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace Ndx.Decoders.Core
 {
+    public enum ArpOpcode : uint { ARP_REQUEST = 1, ARP_REPLY = 2 }
+
     public partial class Arp
     {
         public IPAddress ArpSrcProtoIpv4Address => new IPAddress(this.ArpSrcProtoIpv4.ToByteArray());

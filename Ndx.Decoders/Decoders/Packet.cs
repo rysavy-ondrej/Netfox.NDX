@@ -32,35 +32,34 @@ namespace Ndx.Decoders {
             "cGFja2V0LWlnbXAucHJvdG8aEnBhY2tldC1pcHNlYy5wcm90bxoQcGFja2V0",
             "LWlweC5wcm90bxoScGFja2V0LW5iaXB4LnByb3RvGhBwYWNrZXQtbmJ0LnBy",
             "b3RvGhRwYWNrZXQtbmV0Ymlvcy5wcm90bxoQcGFja2V0LXBwcC5wcm90bxoZ",
-            "Z29vZ2xlL3Byb3RvYnVmL2FueS5wcm90byKJCAoGUGFja2V0EhEKCVRpbWVT",
-            "dGFtcBgBIAEoAxITCgtGcmFtZU51bWJlchgCIAEoAxIwCglQcm90b2NvbHMY",
-            "CiADKAsyHS5uZHguZGVjb2RlcnMuUGFja2V0LlByb3RvY29sGqQHCghQcm90",
-            "b2NvbBIlCgVPdGhlchgBIAEoCzIULmdvb2dsZS5wcm90b2J1Zi5BbnlIABIp",
-            "CgVGcmFtZRgCIAEoCzIYLk5keC5EZWNvZGVycy5CYXNlLkZyYW1lSAASJQoD",
-            "RXRoGAMgASgLMhYuTmR4LkRlY29kZXJzLkJhc2UuRXRoSAASMQoJSWVlZTgw",
-            "MjExGAQgASgLMhwuTmR4LkRlY29kZXJzLkJhc2UuSWVlZTgwMjExSAASIwoC",
-            "SXAYBSABKAsyFS5OZHguRGVjb2RlcnMuQmFzZS5JcEgAEicKBElwdjYYBiAB",
-            "KAsyFy5OZHguRGVjb2RlcnMuQmFzZS5JcHY2SAASJQoDVGNwGAcgASgLMhYu",
-            "TmR4LkRlY29kZXJzLkJhc2UuVGNwSAASJQoDVWRwGAggASgLMhYuTmR4LkRl",
-            "Y29kZXJzLkJhc2UuVWRwSAASJQoDQXJwGGUgASgLMhYuTmR4LkRlY29kZXJz",
-            "LkNvcmUuQXJwSAASJQoDQXRtGGYgASgLMhYuTmR4LkRlY29kZXJzLkNvcmUu",
-            "QXRtSAASJQoDRG5zGGcgASgLMhYuTmR4LkRlY29kZXJzLkNvcmUuRG5zSAAS",
-            "JwoESHR0cBhoIAEoCzIXLk5keC5EZWNvZGVycy5Db3JlLkh0dHBIABIpCgVI",
-            "dHRwMhhpIAEoCzIYLk5keC5EZWNvZGVycy5Db3JlLkh0dHAySAASJwoESWNt",
-            "cBhqIAEoCzIXLk5keC5EZWNvZGVycy5Db3JlLkljbXBIABIrCgZJY21wdjYY",
-            "ayABKAsyGS5OZHguRGVjb2RlcnMuQ29yZS5JY21wdjZIABInCgRJZ21wGGwg",
-            "ASgLMhcuTmR4LkRlY29kZXJzLkNvcmUuSWdtcEgAEikKBUlwc2VjGG0gASgL",
-            "MhguTmR4LkRlY29kZXJzLkNvcmUuSXBzZWNIABIlCgNJcHgYbiABKAsyFi5O",
-            "ZHguRGVjb2RlcnMuQ29yZS5JcHhIABIpCgVOYmlweBhvIAEoCzIYLk5keC5E",
-            "ZWNvZGVycy5Db3JlLk5iaXB4SAASJQoDTmJ0GHAgASgLMhYuTmR4LkRlY29k",
-            "ZXJzLkNvcmUuTmJ0SAASLQoHTmV0YmlvcxhxIAEoCzIaLk5keC5EZWNvZGVy",
-            "cy5Db3JlLk5ldGJpb3NIABIlCgNQcHAYciABKAsyFi5OZHguRGVjb2RlcnMu",
-            "Q29yZS5QcHBIAEIOCgxQcm90b2NvbFR5cGVCEgoQb3JnLm5keC5kZWNvZGVy",
-            "c2IGcHJvdG8z"));
+            "Z29vZ2xlL3Byb3RvYnVmL2FueS5wcm90byL0BwoGUGFja2V0EhEKCVRpbWVT",
+            "dGFtcBgBIAEoAxIwCglQcm90b2NvbHMYCiADKAsyHS5uZHguZGVjb2RlcnMu",
+            "UGFja2V0LlByb3RvY29sGqQHCghQcm90b2NvbBIlCgVPdGhlchgBIAEoCzIU",
+            "Lmdvb2dsZS5wcm90b2J1Zi5BbnlIABIpCgVGcmFtZRgCIAEoCzIYLk5keC5E",
+            "ZWNvZGVycy5CYXNlLkZyYW1lSAASJQoDRXRoGAMgASgLMhYuTmR4LkRlY29k",
+            "ZXJzLkJhc2UuRXRoSAASMQoJSWVlZTgwMjExGAQgASgLMhwuTmR4LkRlY29k",
+            "ZXJzLkJhc2UuSWVlZTgwMjExSAASIwoCSXAYBSABKAsyFS5OZHguRGVjb2Rl",
+            "cnMuQmFzZS5JcEgAEicKBElwdjYYBiABKAsyFy5OZHguRGVjb2RlcnMuQmFz",
+            "ZS5JcHY2SAASJQoDVGNwGAcgASgLMhYuTmR4LkRlY29kZXJzLkJhc2UuVGNw",
+            "SAASJQoDVWRwGAggASgLMhYuTmR4LkRlY29kZXJzLkJhc2UuVWRwSAASJQoD",
+            "QXJwGGUgASgLMhYuTmR4LkRlY29kZXJzLkNvcmUuQXJwSAASJQoDQXRtGGYg",
+            "ASgLMhYuTmR4LkRlY29kZXJzLkNvcmUuQXRtSAASJQoDRG5zGGcgASgLMhYu",
+            "TmR4LkRlY29kZXJzLkNvcmUuRG5zSAASJwoESHR0cBhoIAEoCzIXLk5keC5E",
+            "ZWNvZGVycy5Db3JlLkh0dHBIABIpCgVIdHRwMhhpIAEoCzIYLk5keC5EZWNv",
+            "ZGVycy5Db3JlLkh0dHAySAASJwoESWNtcBhqIAEoCzIXLk5keC5EZWNvZGVy",
+            "cy5Db3JlLkljbXBIABIrCgZJY21wdjYYayABKAsyGS5OZHguRGVjb2RlcnMu",
+            "Q29yZS5JY21wdjZIABInCgRJZ21wGGwgASgLMhcuTmR4LkRlY29kZXJzLkNv",
+            "cmUuSWdtcEgAEikKBUlwc2VjGG0gASgLMhguTmR4LkRlY29kZXJzLkNvcmUu",
+            "SXBzZWNIABIlCgNJcHgYbiABKAsyFi5OZHguRGVjb2RlcnMuQ29yZS5JcHhI",
+            "ABIpCgVOYmlweBhvIAEoCzIYLk5keC5EZWNvZGVycy5Db3JlLk5iaXB4SAAS",
+            "JQoDTmJ0GHAgASgLMhYuTmR4LkRlY29kZXJzLkNvcmUuTmJ0SAASLQoHTmV0",
+            "YmlvcxhxIAEoCzIaLk5keC5EZWNvZGVycy5Db3JlLk5ldGJpb3NIABIlCgNQ",
+            "cHAYciABKAsyFi5OZHguRGVjb2RlcnMuQ29yZS5QcHBIAEIOCgxQcm90b2Nv",
+            "bFR5cGVCEgoQb3JnLm5keC5kZWNvZGVyc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Decoders.Base.PacketEthReflection.Descriptor, global::Ndx.Decoders.Base.PacketFrameReflection.Descriptor, global::Ndx.Decoders.Base.PacketIeee80211Reflection.Descriptor, global::Ndx.Decoders.Base.PacketIpReflection.Descriptor, global::Ndx.Decoders.Base.PacketIpv6Reflection.Descriptor, global::Ndx.Decoders.Base.PacketLlcReflection.Descriptor, global::Ndx.Decoders.Base.PacketTcpReflection.Descriptor, global::Ndx.Decoders.Base.PacketUdpReflection.Descriptor, global::Ndx.Decoders.Core.PacketArpReflection.Descriptor, global::Ndx.Decoders.Core.PacketAtmReflection.Descriptor, global::Ndx.Decoders.Core.PacketDnsReflection.Descriptor, global::Ndx.Decoders.Core.PacketHttpReflection.Descriptor, global::Ndx.Decoders.Core.PacketHttp2Reflection.Descriptor, global::Ndx.Decoders.Core.PacketIcmpReflection.Descriptor, global::Ndx.Decoders.Core.PacketIcmpv6Reflection.Descriptor, global::Ndx.Decoders.Core.PacketIgmpReflection.Descriptor, global::Ndx.Decoders.Core.PacketIpsecReflection.Descriptor, global::Ndx.Decoders.Core.PacketIpxReflection.Descriptor, global::Ndx.Decoders.Core.PacketNbipxReflection.Descriptor, global::Ndx.Decoders.Core.PacketNbtReflection.Descriptor, global::Ndx.Decoders.Core.PacketNetbiosReflection.Descriptor, global::Ndx.Decoders.Core.PacketPppReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Packet), global::Ndx.Decoders.Packet.Parser, new[]{ "TimeStamp", "FrameNumber", "Protocols" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Packet.Types.Protocol), global::Ndx.Decoders.Packet.Types.Protocol.Parser, new[]{ "Other", "Frame", "Eth", "Ieee80211", "Ip", "Ipv6", "Tcp", "Udp", "Arp", "Atm", "Dns", "Http", "Http2", "Icmp", "Icmpv6", "Igmp", "Ipsec", "Ipx", "Nbipx", "Nbt", "Netbios", "Ppp" }, new[]{ "ProtocolType" }, null, null)})
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Packet), global::Ndx.Decoders.Packet.Parser, new[]{ "TimeStamp", "Protocols" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Decoders.Packet.Types.Protocol), global::Ndx.Decoders.Packet.Types.Protocol.Parser, new[]{ "Other", "Frame", "Eth", "Ieee80211", "Ip", "Ipv6", "Tcp", "Udp", "Arp", "Atm", "Dns", "Http", "Http2", "Icmp", "Icmpv6", "Igmp", "Ipsec", "Ipx", "Nbipx", "Nbt", "Netbios", "Ppp" }, new[]{ "ProtocolType" }, null, null)})
           }));
     }
     #endregion
@@ -92,7 +91,6 @@ namespace Ndx.Decoders {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Packet(Packet other) : this() {
       timeStamp_ = other.timeStamp_;
-      frameNumber_ = other.frameNumber_;
       protocols_ = other.protocols_.Clone();
     }
 
@@ -109,17 +107,6 @@ namespace Ndx.Decoders {
       get { return timeStamp_; }
       set {
         timeStamp_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "FrameNumber" field.</summary>
-    public const int FrameNumberFieldNumber = 2;
-    private long frameNumber_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long FrameNumber {
-      get { return frameNumber_; }
-      set {
-        frameNumber_ = value;
       }
     }
 
@@ -147,7 +134,6 @@ namespace Ndx.Decoders {
         return true;
       }
       if (TimeStamp != other.TimeStamp) return false;
-      if (FrameNumber != other.FrameNumber) return false;
       if(!protocols_.Equals(other.protocols_)) return false;
       return true;
     }
@@ -156,7 +142,6 @@ namespace Ndx.Decoders {
     public override int GetHashCode() {
       int hash = 1;
       if (TimeStamp != 0L) hash ^= TimeStamp.GetHashCode();
-      if (FrameNumber != 0L) hash ^= FrameNumber.GetHashCode();
       hash ^= protocols_.GetHashCode();
       return hash;
     }
@@ -172,10 +157,6 @@ namespace Ndx.Decoders {
         output.WriteRawTag(8);
         output.WriteInt64(TimeStamp);
       }
-      if (FrameNumber != 0L) {
-        output.WriteRawTag(16);
-        output.WriteInt64(FrameNumber);
-      }
       protocols_.WriteTo(output, _repeated_protocols_codec);
     }
 
@@ -184,9 +165,6 @@ namespace Ndx.Decoders {
       int size = 0;
       if (TimeStamp != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(TimeStamp);
-      }
-      if (FrameNumber != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(FrameNumber);
       }
       size += protocols_.CalculateSize(_repeated_protocols_codec);
       return size;
@@ -199,9 +177,6 @@ namespace Ndx.Decoders {
       }
       if (other.TimeStamp != 0L) {
         TimeStamp = other.TimeStamp;
-      }
-      if (other.FrameNumber != 0L) {
-        FrameNumber = other.FrameNumber;
       }
       protocols_.Add(other.protocols_);
     }
@@ -216,10 +191,6 @@ namespace Ndx.Decoders {
             break;
           case 8: {
             TimeStamp = input.ReadInt64();
-            break;
-          }
-          case 16: {
-            FrameNumber = input.ReadInt64();
             break;
           }
           case 82: {
