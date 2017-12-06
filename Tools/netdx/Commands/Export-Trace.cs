@@ -15,8 +15,7 @@ namespace Netdx
 {
     internal class ExportTrace
     {
-        
-        public void Execute(FileInfo inputFile, Stream outstream)
+        public async Task ExecuteAsync(FileInfo inputFile, Stream outstream)
         {
             if (!inputFile.Exists)
             {
@@ -38,23 +37,19 @@ namespace Netdx
             var factory = new DecoderFactory();
             var decoder = new PacketDecoder();
             var randomPipeName = $"netdx-export-trace-{random.Next()}";
+            
             // set up processing pipeline
             var tsharkProcess = new TSharkPacketDecoderProcess(randomPipeName, factory, decoder);            
             var tsharkBlock = new TSharkBlock<Packet>(tsharkProcess);
             var consumer = new ActionBlock<Packet>(WritePacket);
             tsharkBlock.LinkTo(consumer, new DataflowLinkOptions() { PropagateCompletion = true });
 
-            
-            
-            async Task ReadAllPacketsAsync()
-            {
-                // read packets 
-                var frames = PcapFile.ReadFile(inputFile.FullName);
-                await tsharkBlock.ConsumeAsync(frames);
-            }
-            ReadAllPacketsAsync().Wait();
-            consumer.Completion.Wait();
-            m_progressBar.Report(100);
+            // read packets 
+            var frames = PcapFile.ReadFile(inputFile.FullName);
+            await tsharkBlock.ConsumeAsync(frames);
+
+            await consumer.Completion;
+            m_progressBar.Report(1);
             outstream.Flush();
         }
 
@@ -76,8 +71,13 @@ namespace Netdx
                 var outfile = target.Option("-" +"w|--writeTo", "The output filename were to put decoded packets. If multiple files are used, the output is concatenated in this single file.", CommandOptionType.SingleValue);
                 target.Description = "Prepares data for further processing by NDX tools.";
                 target.HelpOption("-?|-h|--help");
+                
+
                 target.OnExecute(() =>
                 {
+                    var debug = true;
+
+
                     if (infiles.Values.Count == 0)
                     {
                         target.Error.WriteLine("No input specified!");
@@ -85,8 +85,8 @@ namespace Netdx
                         return 0;
                     }
                     var cmd = new ExportTrace(pb);
-
-
+                    
+                    
                     
                     Stream GetOutstream(string infile, out string outpath)
                     {
@@ -114,17 +114,33 @@ namespace Netdx
                                 var inputFile = new FileInfo(infile);
                                 Console.Write($"[{Format.ByteSize(inputFile.Length)}] {inputFile.FullName} -> {filename}: ");
 
-                                var sw = new Stopwatch();
-                                sw.Start();
-                                cmd.Execute(inputFile, outstream);
-                                sw.Stop();
-                                Console.WriteLine($"  Completed in {sw.Elapsed}.");
+                                pb.Start();
+                                var task = cmd.ExecuteAsync(inputFile, outstream);
+                                // Do we have something useful to do here?
+                                task.Wait();
+                                pb.Stop();
+                                Console.WriteLine();
                             }
                             catch (Exception e)
                             {
                                 target.Error.WriteLine();
-                                target.Error.WriteLine($"ERROR: {e.Message}");
-                                target.Error.WriteLine("Use switch -d to see details about this error.");
+                                if (!debug)
+                                {
+                                    target.Error.WriteLine($"ERROR: {e.Message}");
+                                    target.Error.WriteLine("Use switch -d to see details about this error.");
+                                }
+                                else
+                                {
+                                    
+                                    while(e.InnerException!=null)
+                                    {
+                                        target.Error.WriteLine($"ERROR: {e.Message}");
+                                        target.Error.WriteLine($"SOURC: {e.Source}");
+                                        target.Error.WriteLine($"STACK: {e.StackTrace}");
+                                        target.Error.WriteLine("-------");
+                                        e = e.InnerException;
+                                    }                                    
+                                }
                             }
                         }
                     }

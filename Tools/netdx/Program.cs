@@ -15,6 +15,7 @@ namespace Netdx
                 commandLineApplication.Command(GenerateTypeInfo.Name, GenerateTypeInfo.Register(progress));
                 commandLineApplication.Command(DecodeTrace.Name, DecodeTrace.Register(progress));
                 commandLineApplication.Command(ExportTrace.Name, ExportTrace.Register(progress));
+                var debug = commandLineApplication.Option("-d", "Enable debug mode.", CommandOptionType.NoValue);
                 commandLineApplication.HelpOption("-? | -h | --help");
                 commandLineApplication.Name = typeof(Program).Assembly.GetName().Name;
                 commandLineApplication.FullName = $"NDX Command Line Tools ({typeof(Program).Assembly.GetName().Version})";

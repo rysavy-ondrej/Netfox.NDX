@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Text;
 using System.Threading;
 
@@ -10,10 +11,10 @@ namespace Netdx
     /// </summary>
     public class ProgressBar : IDisposable, IProgress<double>
     {
-        private const int blockCount = 10;
+        private const int blockCount = 20;
         private readonly TimeSpan animationInterval = TimeSpan.FromSeconds(1.0 / 8);
-        private const string animation = @"|/-\";
-
+        private const string animation = @"░▒▓█▓▒"; //@"|/-\";
+        private Stopwatch stopwatch = new Stopwatch(); 
         private readonly Timer timer;
 
         private double currentProgress = 0;
@@ -34,11 +35,23 @@ namespace Netdx
             }
         }
 
+        public void Start()
+        {
+            stopwatch.Start();
+        }
+
+        public void Stop()
+        {
+            stopwatch.Stop();
+        }
+
         public void Report(double value)
         {
             // Make sure value is in [0..1] range
             value = Math.Max(0, Math.Min(1, value));
             Interlocked.Exchange(ref currentProgress, value);
+            if (value == 1)
+                CreateAndUpdateText();
         }
 
         private void TimerHandler(object state)
@@ -47,16 +60,28 @@ namespace Netdx
             {
                 if (disposed) return;
 
-                int progressBlockCount = (int)(currentProgress * blockCount);
-                int percent = (int)(currentProgress * 100);
-                string text = string.Format("[{0}{1}] {2,3}% {3}",
-                    new string('#', progressBlockCount), new string('-', blockCount - progressBlockCount),
-                    percent,
-                    animation[animationIndex++ % animation.Length]);
-                UpdateText(text);
+                CreateAndUpdateText();
 
                 ResetTimer();
             }
+        }
+
+        private void CreateAndUpdateText()
+        {
+            int progressBlockCount = (int)(currentProgress * blockCount);
+            int percent = (int)(currentProgress * 100);
+            var elapsed = stopwatch.Elapsed;
+            var estimated = currentProgress > 0 ? TimeSpan.FromMilliseconds(stopwatch.Elapsed.TotalMilliseconds / currentProgress) : TimeSpan.FromMilliseconds(0);
+            var remaining = estimated - elapsed;
+            var animatedChar = currentProgress < 1 ? animation[animationIndex++ % animation.Length] : '▓';
+            string text = string.Format("[{0}{1}{2}] {3,3}% ■ Elapsed: {4} ■ Remaining: {5}",
+                new string('▓', progressBlockCount), 
+                new string(animatedChar, 1), 
+                new string('░', blockCount - progressBlockCount),
+                percent,
+                elapsed.ToString(@"hh\:mm\:ss"), remaining.ToString(@"hh\:mm\:ss")
+                );
+            UpdateText(text);
         }
 
         private void UpdateText(string text)
