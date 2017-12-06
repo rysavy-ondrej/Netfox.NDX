@@ -2,40 +2,76 @@
 using Microsoft.Extensions.CommandLineUtils;
 using Ndx.Captures;
 using Ndx.Decoders;
-using Ndx.Model;
+using Ndx.Decoders.Base;
+using Ndx.TShark;
+using Ndx.Utils;
 using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 
 namespace Netdx
 {
-    internal class DecodeTrace
+    internal class ExportTrace
     {
-        public void Execute(Stream instream, Stream outstream)
+        
+        public void Execute(FileInfo inputFile, Stream outstream)
         {
+            if (!inputFile.Exists)
+            {
+                throw new FileNotFoundException("Input file does not exist.", inputFile.FullName);
+            }
+
+            var sumPacketSize = 0;
+            var fileSize = inputFile.Length;
+            Task WritePacket(Packet packet)
+            {                
+                packet.WriteDelimitedTo(outstream);
+                sumPacketSize += (int)(packet.Protocol<Frame>()?.FrameLen ?? 0);
+                m_progressBar.Report((double)sumPacketSize / (double)fileSize);
+                return Task.CompletedTask;
+            }
+
+            var random = new Random(Process.GetCurrentProcess().Id);      
+            // initialize decoders
             var factory = new DecoderFactory();
             var decoder = new PacketDecoder();
-            using (var pcapstream = new PcapJsonStream(new StreamReader(instream)))
-            {
-                string jsonLine;
-                while((jsonLine = pcapstream.ReadPacketLine()) != null)
-                {
-                    var packet = decoder.Decode(factory, jsonLine);
-                    packet.WriteDelimitedTo(outstream);
+            var randomPipeName = $"netdx-export-trace-{random.Next()}";
+            // set up processing pipeline
+            var tsharkProcess = new TSharkPacketDecoderProcess(randomPipeName, factory, decoder);            
+            var tsharkBlock = new TSharkBlock<Packet>(tsharkProcess);
+            var consumer = new ActionBlock<Packet>(WritePacket);
+            tsharkBlock.LinkTo(consumer, new DataflowLinkOptions() { PropagateCompletion = true });
 
-                }
-                outstream.Flush();
+            
+            
+            async Task ReadAllPacketsAsync()
+            {
+                // read packets 
+                var frames = PcapFile.ReadFile(inputFile.FullName);
+                await tsharkBlock.ConsumeAsync(frames);
             }
+            ReadAllPacketsAsync().Wait();
+            consumer.Completion.Wait();
+            m_progressBar.Report(100);
+            outstream.Flush();
         }
 
-        internal static string Name = "Decode-Trace";
+        internal static string Name = "Export-Trace";
+        private ProgressBar m_progressBar;
+
+        public ExportTrace(ProgressBar pb)
+        {
+            this.m_progressBar = pb;
+        }
 
         internal static Action<CommandLineApplication> Register(ProgressBar pb = null)
         {
             return 
             (CommandLineApplication target) =>
             {
-                var infiles = target.Argument("input", "Input trace in JSON format produces with 'TShark -T ek' command. Use - for reading from stdin.", true);
+                var infiles = target.Argument("input", "Input trace in PCAP format. Use STDIN for reading from stdin.", true);
                 var outdir = target.Option("-o|--outdir", "The output directory were to put files with decoded packets.", CommandOptionType.SingleValue);
                 var outfile = target.Option("-" +"w|--writeTo", "The output filename were to put decoded packets. If multiple files are used, the output is concatenated in this single file.", CommandOptionType.SingleValue);
                 target.Description = "Prepares data for further processing by NDX tools.";
@@ -48,7 +84,7 @@ namespace Netdx
                         target.ShowHelp(Name);
                         return 0;
                     }
-                    var cmd = new DecodeTrace();
+                    var cmd = new ExportTrace(pb);
 
 
                     
@@ -68,15 +104,21 @@ namespace Netdx
                     }
 
                     foreach (var infile in infiles.Values)
-                    {
-                        using (var instream = infile.Equals("STDIN") ? Console.OpenStandardInput() : File.OpenRead(infile))
+                    {                        
                         using (var outstream = GetOutstream(infile, out var filename))
                         {
-                            Console.WriteLine($"{infile}->{filename}");
+                           
 
                             try
                             {
-                                cmd.Execute(instream, outstream);
+                                var inputFile = new FileInfo(infile);
+                                Console.Write($"[{Format.ByteSize(inputFile.Length)}] {inputFile.FullName} -> {filename}: ");
+
+                                var sw = new Stopwatch();
+                                sw.Start();
+                                cmd.Execute(inputFile, outstream);
+                                sw.Stop();
+                                Console.WriteLine($"  Completed in {sw.Elapsed}.");
                             }
                             catch (Exception e)
                             {

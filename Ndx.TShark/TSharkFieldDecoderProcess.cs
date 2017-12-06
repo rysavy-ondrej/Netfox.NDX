@@ -11,7 +11,7 @@ namespace Ndx.TShark
     /// <summary>
     /// This class represents TSHARK decoder that accepts a collection of fields to extract.
     /// </summary>
-    public class TSharkFieldDecoderProcess : TSharkProcess
+    public class TSharkFieldDecoderProcess : TSharkProcess<DecodedFrame>
     {
         private List<string> m_fields;
         /// <summary>

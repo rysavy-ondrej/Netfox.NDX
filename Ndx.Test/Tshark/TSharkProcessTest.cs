@@ -68,9 +68,9 @@ namespace Ndx.Test
             await DecodeCaptureAsync(path, process, ".fields");
         }
 
-        async Task DecodeCaptureAsync(string path, TSharkProcess tsharkProcess, string prefix)
+        async Task DecodeCaptureAsync(string path, TSharkProcess<DecodedFrame> tsharkProcess, string prefix)
         {
-            var tsharkBlock = new TSharkBlock(tsharkProcess);
+            var tsharkBlock = new TSharkBlock<DecodedFrame>(tsharkProcess);
 
             var outObjsFolder = Path.ChangeExtension(path, $"{prefix}.out");
             var outTxtFilename = Path.ChangeExtension(path, $"{prefix}.txt");

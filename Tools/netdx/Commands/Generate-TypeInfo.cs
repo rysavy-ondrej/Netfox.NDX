@@ -13,7 +13,7 @@ namespace Netdx
     {
         public static string Name => "Generate-TypeInfo";
 
-        internal static Action<CommandLineApplication> Register()
+        internal static Action<CommandLineApplication> Register(ProgressBar pb = null)
         {
             return
               (CommandLineApplication target) =>

@@ -15,7 +15,7 @@ namespace Netdx
     {
         public static string Name => "Generate-Proto";
 
-        internal static Action<CommandLineApplication> Register()
+        internal static Action<CommandLineApplication> Register(ProgressBar pb = null)
         {
             return
               (CommandLineApplication target) =>
@@ -176,7 +176,8 @@ namespace Netdx
                     // Some helpers...
                     outfile.WriteLine(
                    "    public static Google.Protobuf.ByteString StringToBytes(string str)        \n" +
-                   "    {                                                                         \n" +
+                   "    {   \n " +
+                   "      if (String.IsNullOrEmpty(str)) return ByteString.Empty;                 \n" +
                    "      var bstrArr = str.Split(':');                                           \n" +
                    "      var byteArray = new byte[bstrArr.Length];                               \n" +
                    "      for (int i = 0; i < bstrArr.Length; i++)                                \n" +
@@ -185,8 +186,6 @@ namespace Netdx
                    "      }                                                                       \n" +
                    "      return Google.Protobuf.ByteString.CopyFrom( byteArray );                \n" +
                    "    }                                                                         \n");
-
-
                     outfile.WriteLine("  }");
                     outfile.WriteLine("}");
                 }

@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Ndx.TShark
 {
-    public class TSharkProtocolDecoderProcess : TSharkProcess
+    public class TSharkProtocolDecoderProcess : TSharkProcess<DecodedFrame>
     {
         private List<string> m_protocols;
         /// <summary>

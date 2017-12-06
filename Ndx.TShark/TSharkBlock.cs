@@ -9,14 +9,14 @@ using Ndx.Model;
 
 namespace Ndx.TShark
 {
-    public class TSharkBlock : IPropagatorBlock<Frame, DecodedFrame>
+    public class TSharkBlock<TDecodedFrame> : IPropagatorBlock<Frame, TDecodedFrame>
     {
         private ActionBlock<Frame> m_inputBlock;
-        private BufferBlock<DecodedFrame> m_outputBlock;
+        private BufferBlock<TDecodedFrame> m_outputBlock;
         private TSharkSender m_wsender;
-        private TSharkProcess m_tshark;
+        private TSharkProcess<TDecodedFrame> m_tshark;
 
-        public TSharkBlock(TSharkProcess tsharkProcess, DataLinkType datalinkType = DataLinkType.Ethernet)
+        public TSharkBlock(TSharkProcess<TDecodedFrame> tsharkProcess, DataLinkType datalinkType = DataLinkType.Ethernet)
         {
             var m_pipename = $"ndx.tshark_{new Random().Next(Int32.MaxValue)}";
 
@@ -25,7 +25,7 @@ namespace Ndx.TShark
             m_inputBlock = new ActionBlock<Frame>(SendFrame);
             m_inputBlock.Completion.ContinueWith((t) => m_wsender.Close());
 
-            m_outputBlock = new BufferBlock<DecodedFrame>();
+            m_outputBlock = new BufferBlock<TDecodedFrame>();
 
             // create and initialize TSHARK:
             m_tshark = tsharkProcess;
@@ -42,7 +42,7 @@ namespace Ndx.TShark
             await m_wsender.SendAsync(rawFrame);
         }
 
-        private void PacketDecoded(object sender, DecodedFrame e)
+        private void PacketDecoded(object sender, TDecodedFrame e)
         {
             m_outputBlock.Post(e);
         }
@@ -54,9 +54,9 @@ namespace Ndx.TShark
             m_inputBlock.Complete();
         }
 
-        public DecodedFrame ConsumeMessage(DataflowMessageHeader messageHeader, ITargetBlock<DecodedFrame> target, out bool messageConsumed)
+        public TDecodedFrame ConsumeMessage(DataflowMessageHeader messageHeader, ITargetBlock<TDecodedFrame> target, out bool messageConsumed)
         {
-            return ((ISourceBlock<DecodedFrame>)m_outputBlock).ConsumeMessage(messageHeader, target, out messageConsumed);
+            return ((ISourceBlock<TDecodedFrame>)m_outputBlock).ConsumeMessage(messageHeader, target, out messageConsumed);
         }
 
         public void Fault(Exception exception)
@@ -66,9 +66,9 @@ namespace Ndx.TShark
             m_outputBlock.Complete();
         }
 
-        public IDisposable LinkTo(ITargetBlock<DecodedFrame> target, DataflowLinkOptions linkOptions)
+        public IDisposable LinkTo(ITargetBlock<TDecodedFrame> target, DataflowLinkOptions linkOptions)
         {
-            return ((ISourceBlock<DecodedFrame>)m_outputBlock).LinkTo(target, linkOptions);
+            return ((ISourceBlock<TDecodedFrame>)m_outputBlock).LinkTo(target, linkOptions);
         }
 
         public DataflowMessageStatus OfferMessage(DataflowMessageHeader messageHeader, Frame messageValue, ISourceBlock<Frame> source, bool consumeToAccept)
@@ -111,14 +111,14 @@ namespace Ndx.TShark
             m_inputBlock.Complete();
         }
 
-        public void ReleaseReservation(DataflowMessageHeader messageHeader, ITargetBlock<DecodedFrame> target)
+        public void ReleaseReservation(DataflowMessageHeader messageHeader, ITargetBlock<TDecodedFrame> target)
         {
-            ((ISourceBlock<DecodedFrame>)m_outputBlock).ReleaseReservation(messageHeader, target);
+            ((ISourceBlock<TDecodedFrame>)m_outputBlock).ReleaseReservation(messageHeader, target);
         }
 
-        public bool ReserveMessage(DataflowMessageHeader messageHeader, ITargetBlock<DecodedFrame> target)
+        public bool ReserveMessage(DataflowMessageHeader messageHeader, ITargetBlock<TDecodedFrame> target)
         {
-            return ((ISourceBlock<DecodedFrame>)m_outputBlock).ReserveMessage(messageHeader, target);
+            return ((ISourceBlock<TDecodedFrame>)m_outputBlock).ReserveMessage(messageHeader, target);
         }
     }
 }

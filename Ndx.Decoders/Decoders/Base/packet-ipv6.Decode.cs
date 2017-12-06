@@ -909,16 +909,17 @@ int openObjects = 0;
       case "ipv6_ipv6_fraghdr_ident": obj.Ipv6FraghdrIdent = Convert.ToUInt32(propValue, 16); break;
       }
     }
-    public static Google.Protobuf.ByteString StringToBytes(string str)        
-    {                                                                         
-      var bstrArr = str.Split(':');                                           
-      var byteArray = new byte[bstrArr.Length];                               
-      for (int i = 0; i < bstrArr.Length; i++)                                
-      {                                                                       
-        byteArray[i] = Convert.ToByte(bstrArr[i], 16);                        
-      }                                                                       
-      return Google.Protobuf.ByteString.CopyFrom( byteArray );                
-    }                                                                         
-
-  }
+        public static Google.Protobuf.ByteString StringToBytes(string str)
+        {
+            if (String.IsNullOrEmpty(str))
+                return ByteString.Empty;
+            var bstrArr = str.Split(':');
+            var byteArray = new byte[bstrArr.Length];
+            for (int i = 0; i < bstrArr.Length; i++)
+            {
+                byteArray[i] = Convert.ToByte(bstrArr[i], 16);
+            }
+            return Google.Protobuf.ByteString.CopyFrom(byteArray);
+        }
+    }
 }

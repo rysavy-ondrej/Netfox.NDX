@@ -59,7 +59,7 @@ namespace nfview
     {
         static void Main(string[] args)
         {
-            var inputfile = args.Length == 1 ? args[0] : @"C:\Users\rysavy\Documents\Network Monitor 3\Captures\arp.dcap";
+            var inputfile = args.Length == 1 ? args[0] : @"C:\Users\rysavy\Documents\Network Monitor 3\Captures\1.dcap";
             var checker = new ProtocolChecker();
             checker.LoadTrace(inputfile);
             checker.Timeline();
@@ -117,7 +117,6 @@ namespace nfview
         }
 
         ICache<long, Tuple<long, long>> TimelineData;
-
         ICache<long, Tuple<PacketBinarizable>> ArpRequestNoReply;
         ICache<long, Tuple<PacketBinarizable, PacketBinarizable>> ArpRequestReplyOk;
 

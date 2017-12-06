@@ -64,11 +64,20 @@
     <Compile Include="TSharkDecoder.cs" />
     <Compile Include="TSharkFieldDecoderProcess.cs" />
     <Compile Include="TSharkProcess.cs" />
+    <Compile Include="TSharkPacketDecoderProcess.cs" />
     <Compile Include="TSharkProtocolDecoderProcess.cs" />
     <Compile Include="TSharkSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ndx.Captures\Ndx.Captures.csproj">
+      <Project>{F7893DF7-5638-43BC-91E5-E612E4D0AD53}</Project>
+      <Name>Ndx.Captures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ndx.Decoders\Ndx.Decoders.csproj">
+      <Project>{80f0f0e1-b4bd-4af5-8e92-3f9d2ec4e78a}</Project>
+      <Name>Ndx.Decoders</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ndx.Model\Ndx.Model.csproj">
       <Project>{6c85ca82-04e3-4600-80ab-12b53f6ae4b3}</Project>
       <Name>Ndx.Model</Name>
