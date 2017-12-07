@@ -5,10 +5,10 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Google.Protobuf;
 using Ndx.Captures;
-using Ndx.Ingest;
+using Ndx.Ipflow;
 using Ndx.Model;
 using NUnit.Framework;
-using Ndx.Ingest.Tracker;
+using System.Reactive.Threading.Tasks;
 
 namespace Ndx.Test
 {
@@ -17,50 +17,33 @@ namespace Ndx.Test
     /// https://github.com/aumcode/nfx/tree/master/Source/NFX/ApplicationModel/Pile
     /// </summary>
     [TestFixture]
-    public class ConversationsTest
+    public class ConversationsTests
     {
         static TestContext m_testContext = TestContext.CurrentContext;
         string captureFile = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap");
-        string converFile = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.conv");
        
         [Test]
-        public async Task Conversations_TrackConversations_Linq()
+        public async Task ConversationsTests_TrackConversations()
         {
             var frameAnalyzer = new FrameFlowHelper();
-            var frames = PcapFile.ReadFile(captureFile);
+            var frames = PcapFile.ReadFile(captureFile).AsObservable();            
             var tracker = new ConversationTracker<Frame>(frameAnalyzer);
-            var observer = new Ndx.Utils.Observer<Conversation>(Console.WriteLine);
-            using (tracker.Conversations.Subscribe(observer))
-            {
-                await frames.Select(x => { var c = tracker.ProcessRecord(x); x.ConversationId = c.ConversationId; return x; }).Where(x => x != null).ForEachAsync(Console.WriteLine);
-                tracker.Complete();
+
+            var conversationCount = 0;
+            var framesCount = 0;
+
+            var observer1 = new Ndx.Utils.Observer<Conversation>((_) => conversationCount++);
+            var observer2 = new Ndx.Utils.Observer<(int,Frame)>((_) => framesCount++);
+            using (tracker.Conversations.Subscribe(observer1))
+            using (tracker.Packets.Subscribe(observer2))
+            using (frames.Subscribe(tracker))
+            {           
             }
-            
-        }
 
-        [Test]
-        public async Task Conversations_TrackConversations_WriteTo()
-        {
-            var conversationsFilename = Path.ChangeExtension(captureFile, "conversations");
-            var framesFilename = Path.ChangeExtension(captureFile, "frames");
-
-            using (var conversationStream = File.Create(conversationsFilename))
-            using (var frameStream = File.Create(framesFilename))
-            {
-                var frameAnalyzer = new FrameFlowHelper();
-                var tracker = new ConversationTracker<Frame>(frameAnalyzer);
-                tracker.Conversations.Subscribe(conversation => conversation.WriteDelimitedTo(conversationStream));
-
-                var frames = PcapFile.ReadFile(captureFile);
-                Frame ProcessFrame(Frame f)
-                {
-                    var c = tracker.ProcessRecord(f);
-                    f.ConversationId = c.ConversationId;
-                    return f;
-                }
-                await frames.Select(ProcessFrame).Where(x => x != null).ForEachAsync(frame => frame.WriteDelimitedTo(frameStream));
-                tracker.Complete();
-            }
-        }
+            Assert.AreEqual(conversationCount, 3);
+            Assert.AreEqual(framesCount, 43);
+            // wait for completion            
+            Console.WriteLine($"Done, conversations = {conversationCount}, frames = {framesCount}");
+        }       
     }
 }

@@ -1,16 +1,8 @@
-﻿using Ndx.Metacap;
-using NUnit.Framework;
-using PacketDotNet;
-using System.Net;
-using System.Net.Sockets;
+﻿using NUnit.Framework;
 using Ndx.Model;
-using System.Net.NetworkInformation;
 using Ndx.TShark;
 using System.IO;
-using System;
 using System.Threading.Tasks;
-using System.Net.Mime;
-using System.Linq;
 using Google.Protobuf;
 using System.Threading.Tasks.Dataflow;
 

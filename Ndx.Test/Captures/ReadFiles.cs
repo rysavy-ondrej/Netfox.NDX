@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
-using Ndx.Ingest;
+using Ndx.Ipflow;
 using NUnit.Framework;
 using Ndx.Captures;
 using System.Linq;

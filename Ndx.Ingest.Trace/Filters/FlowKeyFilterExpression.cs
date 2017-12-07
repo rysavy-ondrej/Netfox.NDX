@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Sprache;
 using Ndx.Model;
-namespace Ndx.Metacap
+namespace Ndx.Ipflow
 {
     /// <summary>
     /// This class represents filter expression. 

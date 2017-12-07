@@ -81,7 +81,6 @@
     <Compile Include="Diagnostics\NoWebAccess1.cs" />
     <Compile Include="Filters\FlowKeyFilterTest.cs" />
     <Compile Include="Ingest\FlowKeyTest.cs" />
-    <Compile Include="Ingest\LoadFromTest.cs" />
     <Compile Include="Model\VariantTest.cs" />
     <Compile Include="Model\LoadSaveTest.cs" />
     <Compile Include="Decoders\PacketTests.cs" />

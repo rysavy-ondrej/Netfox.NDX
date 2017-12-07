@@ -1,9 +1,7 @@
-﻿using Ndx.Metacap;
-using NUnit.Framework;
-using PacketDotNet;
-using System.Net;
-using System.Net.Sockets;
+﻿using Ndx.Ipflow;
 using Ndx.Model;
+using NUnit.Framework;
+using System.Net;
 
 namespace Ndx.Test.Filters
 {

@@ -89,3 +89,10 @@ using (var pcapstream = new PcapJsonStream(new StreamReader(instream)))
 	}
 }  
 ```
+
+
+## Reading packet from DCAP file
+```csharp
+
+
+```

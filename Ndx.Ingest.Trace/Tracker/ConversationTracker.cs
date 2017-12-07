@@ -1,12 +1,11 @@
 ﻿using Ndx.Model;
 using NLog;
-using PacketDotNet;
 using System;
 using System.Collections.Generic;
 using System.Reactive.Subjects;
 using System.Threading;
 
-namespace Ndx.Ingest
+namespace Ndx.Ipflow
 {
     /// <summary>
     /// This class tracks the conversation at the transport layer. Communication that has not transport layer (UDP or TCP) is simply ignored. 
@@ -51,7 +50,7 @@ namespace Ndx.Ingest
     /// * https://www.cisco.com/c/en/us/td/docs/ios/fnetflow/command/reference/fnf_book/fnf_01.html 
     /// * https://research.utwente.nl/files/6519120/tutorial.pdf
     /// </remarks>
-    public class ConversationTracker<TSource> 
+    public class ConversationTracker<TSource> : IObserver<TSource>
     {
         private static Logger m_logger = LogManager.GetCurrentClassLogger();
 
@@ -83,13 +82,14 @@ namespace Ndx.Ingest
         /// Used for synchronization.
         /// </summary>
         private object m_lockObject = new object();
-
-
         /// <summary>
         /// Object that is observer as well as observation object.
         /// </summary>
         Subject<Conversation> m_conversationSubject;
-
+        /// <summary>
+        /// Object that is observer as well as observation object.
+        /// </summary>
+        Subject<(int,TSource)> m_packetSubject;
         /// <summary>
         /// Stores conversation at network level. The key is represented as
         /// (IpProtocolType, IpAddress, Selector, IpAddress, Selector)
@@ -111,18 +111,28 @@ namespace Ndx.Ingest
         /// </summary>
         public TimeSpan TimeOutInactive { get; set; }
 
+        private ConversationTracker()
+        {
+            m_conversationSubject = new Subject<Conversation>();
+            m_packetSubject = new Subject<(int, TSource)>();
+            m_activeConversations = new Dictionary<FlowKey, Conversation>(m_initialConversationDictionaryCapacity);
+
+        }
+
         /// <summary>
         /// Creates a new instance of conversation tracker. 
         /// </summary>
-        public ConversationTracker(Func<TSource, (FlowKey,FlowFlags)> getKey, Func<TSource, FlowAttributes, long> updateFlow)
+        public ConversationTracker(Func<TSource, (FlowKey,FlowFlags)> getKey, Func<TSource, FlowAttributes, long> updateFlow) : this()
         {
             m_getKeyFunc = getKey;
             m_updateFlowFunc = updateFlow;
-            m_activeConversations = new Dictionary<FlowKey, Conversation>(m_initialConversationDictionaryCapacity);
-            m_conversationSubject = new Subject<Conversation>();
         }
 
-        public ConversationTracker(IFlowHelper<TSource> helper)
+        /// <summary>
+        /// Creates a new instance of conversation tracker using provided flow helper. 
+        /// </summary>
+        /// <param name="helper">The flow helper instance.</param>
+        public ConversationTracker(IFlowHelper<TSource> helper) : this()
         {
             m_getKeyFunc = helper.GetFlowKey;
             m_updateFlowFunc = helper.UpdateConversation;
@@ -133,7 +143,7 @@ namespace Ndx.Ingest
         /// </summary>
         /// <param name="frame">Frame to be processed.</param>
         /// <returns>Conversation object that owns the input frame.</returns>
-        public Conversation ProcessRecord(TSource record)
+        Conversation ProcessRecord(TSource record)
         {
             if (record == null) return null;
             try
@@ -151,6 +161,7 @@ namespace Ndx.Ingest
                 {
                     var conversation = GetNetworkConversation(flowkey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
                     flowPackets.Add(m_updateFlowFunc(record, flowAttributes));
+                   
                     return conversation;
                 }
             }
@@ -177,7 +188,8 @@ namespace Ndx.Ingest
         }
 
         /// <summary>
-        /// Forces the <see cref="ConversationTracker"/> to flush flow cache. 
+        /// Forces the <see cref="ConversationTracker"/> to flush flow cache. It is similar to <see cref="ConversationTracker{TSource}.Complete"/> 
+        /// but it does not finish processing of the input.
         /// </summary>
         public void Flush()
         {
@@ -282,22 +294,51 @@ namespace Ndx.Ingest
             return Interlocked.Increment(ref m_lastConversationId);
         }
 
-
         private void SendConversation(Conversation conversation)
         {
-                m_conversationSubject.OnNext(conversation);
-
+            m_conversationSubject.OnNext(conversation);
         }
 
         private void SendCompleted()
         {
-                m_conversationSubject.OnCompleted();
+            m_conversationSubject.OnCompleted();
         }
 
+        public void OnNext(TSource value)
+        {
+            if (value != null)
+            {
+                var conversation = ProcessRecord(value);
+                m_packetSubject.OnNext((conversation?.ConversationId ?? -1, value));
+            }
+        }
 
+        public void OnError(Exception error)
+        {
+            m_logger.Error(error, "ConversationTracker.OnError");
+        }
+
+        public void OnCompleted()
+        {
+            Complete();
+        }
+
+        /// <summary>
+        /// Gets observable collection of <see cref="Conversation"/> objects.
+        /// </summary>
         public IObservable<Conversation> Conversations => m_conversationSubject;
 
+        public IObservable<(int, TSource)> Packets => m_packetSubject;
+
+
+        /// <summary>
+        /// Gets the total number of processed conversations.
+        /// </summary>
         public int TotalConversations => m_totalConversationCounter;
+
+        /// <summary>
+        /// Gets the number of active conversations.
+        /// </summary>
         public int ActiveConversations => m_activeConversations.Count;
     }
 }

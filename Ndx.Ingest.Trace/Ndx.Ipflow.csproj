@@ -7,8 +7,8 @@
     <ProjectGuid>{94D924A3-8AC1-4DB2-BDDC-862D8A978E31}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ndx.Ingest</RootNamespace>
-    <AssemblyName>Ndx.Ingest.Trace</AssemblyName>
+    <RootNamespace>Ndx.Ipflow</RootNamespace>
+    <AssemblyName>Ndx.Ipflow</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>

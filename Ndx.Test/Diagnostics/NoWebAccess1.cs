@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using Ndx.Captures;
 using NUnit.Framework;
-using Ndx.Ingest;
+using Ndx.Ipflow;
 using Ndx.Diagnostics;
 using System.Dynamic;
 using System.Collections.Generic;

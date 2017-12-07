@@ -1,11 +1,7 @@
-﻿using Ndx.Metacap;
-using NUnit.Framework;
-using PacketDotNet;
+﻿using NUnit.Framework;
 using System.Net;
-using System.Net.Sockets;
 using Ndx.Model;
 using System.Net.NetworkInformation;
-using System.IO;
 
 namespace Ndx.Test
 {
