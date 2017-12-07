@@ -8,6 +8,7 @@ using Ndx.Captures;
 using Ndx.Ingest;
 using Ndx.Model;
 using NUnit.Framework;
+using Ndx.Ingest.Tracker;
 
 namespace Ndx.Test
 {
@@ -23,14 +24,15 @@ namespace Ndx.Test
         string converFile = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.conv");
        
         [Test]
-        public void Conversations_TrackConversations_Linq()
+        public async Task Conversations_TrackConversations_Linq()
         {
+            var frameAnalyzer = new FrameFlowHelper();
             var frames = PcapFile.ReadFile(captureFile);
-            var tracker = new ConversationTracker<Frame>(f => { var k = f.GetFlowKey(out bool snc); return (k, snc); }, ConversationTracker<Frame>.UpdateConversation);
+            var tracker = new ConversationTracker<Frame>(frameAnalyzer);
             var observer = new Ndx.Utils.Observer<Conversation>(Console.WriteLine);
             using (tracker.Conversations.Subscribe(observer))
             {
-                frames.Select(x => { var c = tracker.ProcessRecord(x); x.ConversationId = c.ConversationId; return x; }).Where(x => x != null).ForEach(Console.WriteLine);
+                await frames.Select(x => { var c = tracker.ProcessRecord(x); x.ConversationId = c.ConversationId; return x; }).Where(x => x != null).ForEachAsync(Console.WriteLine);
                 tracker.Complete();
             }
             
@@ -45,7 +47,8 @@ namespace Ndx.Test
             using (var conversationStream = File.Create(conversationsFilename))
             using (var frameStream = File.Create(framesFilename))
             {
-                var tracker = new ConversationTracker<Frame>(f => { var k = f.GetFlowKey(out bool snc); return (k, snc); }, ConversationTracker<Frame>.UpdateConversation);
+                var frameAnalyzer = new FrameFlowHelper();
+                var tracker = new ConversationTracker<Frame>(frameAnalyzer);
                 tracker.Conversations.Subscribe(conversation => conversation.WriteDelimitedTo(conversationStream));
 
                 var frames = PcapFile.ReadFile(captureFile);

@@ -49,6 +49,9 @@
     <Reference Include="System.Reactive.Linq, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Reactive.Linq.3.1.1\lib\net46\System.Reactive.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decoders\Base\PacketIpv6.Extensions.cs" />
+    <Compile Include="Decoders\Base\PacketIp.Extensions.cs" />
+    <Compile Include="PacketFlowHelper.cs" />
     <Compile Include="Decoders\Core\Packet.Dns.Extensions.cs" />
     <Compile Include="Decoders\Core\PacketArp.Extensions.cs" />
     <Compile Include="PacketExtensions.cs" />
@@ -212,6 +218,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>$(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools\windows_x86\protoc --proto_path $(SolutionDir)packages\Google.Protobuf.Tools.3.3.0\tools --proto_path $(ProjectDir)Proto --proto_path $(ProjectDir)Proto\Base --proto_path $(ProjectDir)Proto\Core --proto_path $(ProjectDir)Proto\Common --csharp_out=$(ProjectDir)Decoders $(ProjectDir)Proto\Packet.proto</PreBuildEvent>
+    <PreBuildEvent>$(SolutionDir)packages\Google.Protobuf.Tools.3.4.0\tools\windows_x86\protoc --proto_path $(SolutionDir)packages\Google.Protobuf.Tools.3.4.0\tools --proto_path $(ProjectDir)Proto --proto_path $(ProjectDir)Proto\Base --proto_path $(ProjectDir)Proto\Core --proto_path $(ProjectDir)Proto\Common --csharp_out=$(ProjectDir)Decoders $(ProjectDir)Proto\Packet.proto</PreBuildEvent>
   </PropertyGroup>
 </Project>

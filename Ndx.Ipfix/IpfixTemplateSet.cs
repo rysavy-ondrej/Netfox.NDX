@@ -248,7 +248,7 @@ namespace Ndx.Ipfix
         }
 
         /// <summary>
-        /// Compiled template provides a fast access to data fields. Use <seealso cref="CompiledTemplate.GetFieldBytes"/>
+        /// Compiled template provides a fast access to data fields. Use <see also cref="CompiledTemplate.GetFieldBytes"/>
         /// to read access to data fields.
         /// </summary>
         public class CompiledTemplate

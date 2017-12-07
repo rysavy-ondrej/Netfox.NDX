@@ -125,6 +125,9 @@
       <HintPath>..\packages\System.Threading.Tasks.Dataflow.4.7.0\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -165,9 +168,9 @@
       <Project>{f7893df7-5638-43bc-91e5-e612e4d0ad53}</Project>
       <Name>Ndx.Captures</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ndx.Ingest.Trace\Ndx.Ingest.Trace.csproj">
+    <ProjectReference Include="..\Ndx.Ingest.Trace\Ndx.Ipflow.csproj">
       <Project>{94d924a3-8ac1-4db2-bddc-862d8a978e31}</Project>
-      <Name>Ndx.Ingest.Trace</Name>
+      <Name>Ndx.Ipflow</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ndx.Model\Ndx.Model.csproj">
       <Project>{6c85ca82-04e3-4600-80ab-12b53f6ae4b3}</Project>

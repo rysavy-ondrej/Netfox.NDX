@@ -21,28 +21,28 @@ namespace Ndx.Test
     {
         static TestContext m_testContext = TestContext.CurrentContext;
         [Test]
-        public void ProcessHttpCaptureByTShark()
+        public async Task ProcessHttpCaptureByTShark()
         {
             //ProcessCapture(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap"));
-            DecodeFields(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap"));
-            DecodeProtocol(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap"));
+            await DecodeFieldsAsync(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap"));
+            await DecodeProtocol(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap"));
         }
         [Test]
-        public void ProcessHttpGzipCaptureByTShark()
+        public async Task ProcessHttpGzipCaptureByTShark()
         {
-            DecodeFields(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http_gzip.cap"));
+            await DecodeFieldsAsync(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http_gzip.cap"));
         }
 
         [Test]
-        public void ProcessHttpWithJpegsCaptureByTShark()
+        public async Task ProcessHttpWithJpegsCaptureByTShark()
         {
-            DecodeFields(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http_with_jpegs.cap"));
+            await DecodeFieldsAsync(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http_with_jpegs.cap"));
         }
         [Test]
-        public void ProcessHttpChunkedGzipCaptureByTShark()
+        public async Task ProcessHttpChunkedGzipCaptureByTShark()
         {
             // This causes the problem with dumpcap!
-            DecodeFields(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http_chunked_gzip.cap"));
+            await DecodeFieldsAsync(Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http_chunked_gzip.cap"));
         }
 
 
@@ -52,7 +52,7 @@ namespace Ndx.Test
             await DecodeCaptureAsync(path, process, ".proto");
         }
 
-        async Task DecodeFields(string path)
+        async Task DecodeFieldsAsync(string path)
         {
             var fields = new[] {
                 "http.request.method", "http.request.uri", "http.request.version", "http.host",

@@ -5,6 +5,7 @@ using Ndx.Decoders;
 using Ndx.Decoders.Base;
 using Ndx.TShark;
 using Ndx.Utils;
+using NLog;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -13,8 +14,10 @@ using System.Threading.Tasks.Dataflow;
 
 namespace Netdx
 {
-    internal class ExportTrace
+    public class ExportTrace
     {
+        private static Logger m_logger = LogManager.GetCurrentClassLogger();
+
         public async Task ExecuteAsync(FileInfo inputFile, Stream outstream)
         {
             if (!inputFile.Exists)

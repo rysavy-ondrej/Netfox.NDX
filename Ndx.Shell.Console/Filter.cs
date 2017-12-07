@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Ndx.Ingest;
 using Ndx.Model;
 using PacketDotNet;
+using Ndx.Ingest.Tracker;
 
 namespace Ndx.Shell.Console
 {
@@ -67,18 +68,20 @@ namespace Ndx.Shell.Console
 
         public static Func<Frame,bool> GetFrameFilter(this Func<FlowKey,bool> filter)
         {
+            var PacketAnalyzer = new FrameFlowHelper();
             return new Func<Frame,bool>((Frame frame) =>
             {
-                var flowKey = PacketAnalyzer.GetFlowKey(frame);
+                var (flowKey,_) = PacketAnalyzer.GetFlowKey(frame);
                 return (flowKey != null && filter(flowKey));
             });
         }
 
         public static Func<Packet, bool> GetPacketFilter(this Func<FlowKey, bool> filter)
         {
+            var PacketAnalyzer = new FrameFlowHelper();
             return new Func<Packet, bool>((Packet packet) =>
             {
-                var flowKey = PacketAnalyzer.GetFlowKey(packet);
+                var (flowKey,_) = PacketAnalyzer.GetFlowKey(packet);
                 return (flowKey != null && filter(flowKey));
             });
         }
