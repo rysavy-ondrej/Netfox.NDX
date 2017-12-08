@@ -25,20 +25,22 @@ namespace Ndx.Test
         [Test]
         public async Task ConversationsTests_TrackConversations()
         {
-            var frameAnalyzer = new FrameFlowHelper();
-            var frames = PcapFile.ReadFile(captureFile).AsObservable();
-            var tracker = new ConversationTracker<Frame>(frameAnalyzer);
+            
+            var frames = PcapFile.ReadFile(captureFile);
+            var tracker = new ConversationTracker<Frame>(new FrameFlowHelper());
 
-            var framesCountTask = tracker.Sum(x => 1).SingleAsync().ToTask();
-            var conversationCountTask = tracker.ClosedConversations.Sum(x => 1).SingleAsync().ToTask();
+            var framesCountTask = tracker.Sum(x => 1).ToTask();
+            var conversationCountTask = tracker.ClosedConversations.Sum(x => 1).ToTask();
+
             using (frames.Subscribe(tracker))
             {
-                Task.WaitAll(framesCountTask, conversationCountTask);
+                var framesCount = await framesCountTask;
+                var conversationCount = await conversationCountTask;
+                
+                Assert.AreEqual(3, conversationCount);
+                Assert.AreEqual(43, framesCount);
+                Console.WriteLine($"Done, conversations = {conversationCount}, frames = {framesCount}");
             }
-            Assert.AreEqual(3, conversationCountTask.Result);
-            Assert.AreEqual(43, framesCountTask.Result);
-            // wait for completion            
-            Console.WriteLine($"Done, conversations = {conversationCountTask.Result}, frames = {framesCountTask.Result}");
         }
     }
 }

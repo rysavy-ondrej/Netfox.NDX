@@ -16,25 +16,22 @@ and prints this information to the standard output.
 
 ```csharp
 // frames observable is COLD because it is activated during subscription.
-var frames = PcapFile.ReadFile(captureFile).AsObservable();
+var frames = PcapFile.ReadFile(captureFile);
 
 // on the other hand the tracker is in principle HOT
 var tracker = new ConversationTracker<Frame>(new FrameFlowHelper());
 
 // thus it is necessary to subscribe the observers before we start the processing of the input data
-var framesCountTask = tracker.Sum(x => 1).SingleAsync().ToTask();
-var conversationCountTask = tracker.ClosedConversations.Sum(x => 1).SingleAsync().ToTask();
+var framesCountTask = tracker.Sum(x => 1).ToTask();
+var conversationCountTask = tracker.ClosedConversations.Sum(x => 1).ToTask();
 
 // now the tracker can subscribe to frames observable  
 using (frames.Subscribe(tracker))
 {
-    // we need to wait till the all events are processed:
-    Task.WaitAll(framesCountTask, conversationCountTask);
+    // we need to wait for the results:
+    var framesCount = await framesCountTask;
+    var conversationCount = await conversationCountTask;
+                
+    Console.WriteLine($"Done, conversations = {conversationCount}, frames = {framesCount}");
 }
-// here we can get the results:
-Assert.AreEqual(3, conversationCountTask.Result);
-Assert.AreEqual(43, framesCountTask.Result);
-// wait for completion            
-Console.WriteLine($"Done, conversations = {conversationCountTask.Result}, frames = {framesCountTask.Result}");
-
 ```
