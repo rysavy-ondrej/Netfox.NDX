@@ -15,23 +15,26 @@ snippet demonstrates the pattern of conversation tracker use. The program count 
 and prints this information to the standard output.
 
 ```csharp
-// frames observable is COLD because it is activated during subscription.
-var frames = PcapFile.ReadFile(captureFile);
-
-// on the other hand the tracker is in principle HOT
+// first we prepare tracker:
 var tracker = new ConversationTracker<Frame>(new FrameFlowHelper());
 
-// thus it is necessary to subscribe the observers before we start the processing of the input data
-var framesCountTask = tracker.Sum(x => 1).ToTask();
-var conversationCountTask = tracker.ClosedConversations.Sum(x => 1).ToTask();
+// we simply count number of records produces by the tracker:
+var frameTask = tracker.Count().ForEachAsync(x => { Assert.AreEqual(43, x); Console.WriteLine($" f={x}"); });
+var convTask = tracker.ClosedConversations.Count().ForEachAsync(x => { Assert.AreEqual(3, x); Console.WriteLine($" c={x}"); });
 
-// now the tracker can subscribe to frames observable  
+// frames is a COLD observable, so it waits for subscription
+var frames = PcapFile.ReadFile(captureFile);
 using (frames.Subscribe(tracker))
-{
-    // we need to wait for the results:
-    var framesCount = await framesCountTask;
-    var conversationCount = await conversationCountTask;
-                
-    Console.WriteLine($"Done, conversations = {conversationCount}, frames = {framesCount}");
+{   // at this moment both task should be completed, because work is scheduled on the current thread
+    Console.WriteLine("!");
+    await frameTask;
+    await convTask;
+    Console.WriteLine("@");
 }
+// Output will be:
+// f=43
+// c=3
+// !
+// @
 ```
+More examples can be found at Ndx.Test\Ipflow\ConversationsTest.cs.
