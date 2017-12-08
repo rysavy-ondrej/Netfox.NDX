@@ -21,29 +21,24 @@ namespace Ndx.Test
     {
         static TestContext m_testContext = TestContext.CurrentContext;
         string captureFile = Path.Combine(m_testContext.TestDirectory, @"..\..\..\TestData\http.cap");
-       
+
         [Test]
         public async Task ConversationsTests_TrackConversations()
         {
             var frameAnalyzer = new FrameFlowHelper();
-            var frames = PcapFile.ReadFile(captureFile).AsObservable();            
+            var frames = PcapFile.ReadFile(captureFile).AsObservable();
             var tracker = new ConversationTracker<Frame>(frameAnalyzer);
 
-            var conversationCount = 0;
-            var framesCount = 0;
-
-            var observer1 = new Ndx.Utils.Observer<Conversation>((_) => conversationCount++);
-            var observer2 = new Ndx.Utils.Observer<(int,Frame)>((_) => framesCount++);
-            using (tracker.Conversations.Subscribe(observer1))
-            using (tracker.Packets.Subscribe(observer2))
+            var framesCountTask = tracker.Sum(x => 1).SingleAsync().ToTask();
+            var conversationCountTask = tracker.ClosedConversations.Sum(x => 1).SingleAsync().ToTask();
             using (frames.Subscribe(tracker))
-            {           
+            {
+                Task.WaitAll(framesCountTask, conversationCountTask);
             }
-
-            Assert.AreEqual(conversationCount, 3);
-            Assert.AreEqual(framesCount, 43);
+            Assert.AreEqual(3, conversationCountTask.Result);
+            Assert.AreEqual(43, framesCountTask.Result);
             // wait for completion            
-            Console.WriteLine($"Done, conversations = {conversationCount}, frames = {framesCount}");
-        }       
+            Console.WriteLine($"Done, conversations = {conversationCountTask.Result}, frames = {framesCountTask.Result}");
+        }
     }
 }

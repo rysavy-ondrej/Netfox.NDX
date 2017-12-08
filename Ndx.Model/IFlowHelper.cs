@@ -3,7 +3,7 @@
 namespace Ndx.Model
 {
     [Flags]
-    public enum FlowFlags { None = 0, StartNewConversation = 1}
+    public enum FlowFlags { None = 0, StartNewConversation = 1, TcpFin = 2, TcpSyn = 4}
 
     /// <summary>
     /// Defines an interface necessary for providing flow related information.

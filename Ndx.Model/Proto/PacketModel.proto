@@ -47,10 +47,20 @@ message Frame {
 	int32 ConversationId = 11;
 }
 
+/// Represents a decoded frame. Decoded frame is a collection of fields and their values. Value are represented as Variant.
 message DecodedFrame {
 
 	int64 FrameNumber = 1;
 	string FrameProtocols = 2;
 	int64 Timestamp = 3;
 	map<string, Variant> Fields = 10;
+}
+
+
+/// Frame table contains information that helps to access data in the referenced PCAP file. It consists of fixed 
+/// fields for easy access to individual records.
+message FrameTable {
+    fixed32 FrameNumber = 1;
+    fixed64 FrameOffset = 2;
+    fixed32 ConversationNumber = 3;
 }

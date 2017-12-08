@@ -9,24 +9,32 @@ In particular, this library provides the following features:
 * Infrastruture for implementing various methods of protocol identification
 * Simple filter language based on flow key 
 
-## Usage
+## Usage for source file
 The basic usage of conversation tracker is to label frames with the identified conversation id. The following
 snippet demonstrates the pattern of conversation tracker use. The program count number of frames and conversations to 
 and prints this information to the standard output.
 
 ```csharp
-var frameAnalyzer = new FrameFlowHelper();
-var frames = PcapFile.ReadFile(captureFile).AsObservable();            
-var tracker = new ConversationTracker<Frame>(frameAnalyzer);
+// frames observable is COLD because it is activated during subscription.
+var frames = PcapFile.ReadFile(captureFile).AsObservable();
 
-var conversationCount = 0;
-var framesCount = 0;
+// on the other hand the tracker is in principle HOT
+var tracker = new ConversationTracker<Frame>(new FrameFlowHelper());
 
-var observer1 = new Ndx.Utils.Observer<Conversation>((_) => conversationCount++);
-var observer2 = new Ndx.Utils.Observer<(int,Frame)>((_) => framesCount++);
-using (tracker.Conversations.Subscribe(observer1))
-using (tracker.Packets.Subscribe(observer2))
+// thus it is necessary to subscribe the observers before we start the processing of the input data
+var framesCountTask = tracker.Sum(x => 1).SingleAsync().ToTask();
+var conversationCountTask = tracker.ClosedConversations.Sum(x => 1).SingleAsync().ToTask();
+
+// now the tracker can subscribe to frames observable  
 using (frames.Subscribe(tracker))
-{ }
-Console.WriteLine($"Done, conversations = {conversationCount}, frames = {framesCount}");
+{
+    // we need to wait till the all events are processed:
+    Task.WaitAll(framesCountTask, conversationCountTask);
+}
+// here we can get the results:
+Assert.AreEqual(3, conversationCountTask.Result);
+Assert.AreEqual(43, framesCountTask.Result);
+// wait for completion            
+Console.WriteLine($"Done, conversations = {conversationCountTask.Result}, frames = {framesCountTask.Result}");
+
 ```

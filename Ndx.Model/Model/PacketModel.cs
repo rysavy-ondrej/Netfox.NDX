@@ -32,13 +32,16 @@ namespace Ndx.Model {
             "ASgDEhYKDkZyYW1lUHJvdG9jb2xzGAIgASgJEhEKCVRpbWVzdGFtcBgDIAEo",
             "AxIzCgZGaWVsZHMYCiADKAsyIy5uZHgubW9kZWwuRGVjb2RlZEZyYW1lLkZp",
             "ZWxkc0VudHJ5GkEKC0ZpZWxkc0VudHJ5EgsKA2tleRgBIAEoCRIhCgV2YWx1",
-            "ZRgCIAEoCzISLm5keC5tb2RlbC5WYXJpYW50OgI4AUIPCg1vcmcubmR4Lm1v",
-            "ZGVsYgZwcm90bzM="));
+            "ZRgCIAEoCzISLm5keC5tb2RlbC5WYXJpYW50OgI4ASJSCgpGcmFtZVRhYmxl",
+            "EhMKC0ZyYW1lTnVtYmVyGAEgASgHEhMKC0ZyYW1lT2Zmc2V0GAIgASgGEhoK",
+            "EkNvbnZlcnNhdGlvbk51bWJlchgDIAEoB0IPCg1vcmcubmR4Lm1vZGVsYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Ndx.Model.ConstantsReflection.Descriptor, global::Ndx.Model.VariantModelReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.Frame), global::Ndx.Model.Frame.Parser, new[]{ "LinkType", "FrameNumber", "FrameLength", "FrameOffset", "TimeStamp", "ProcessId", "ProcessName", "Data", "ConversationId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.DecodedFrame), global::Ndx.Model.DecodedFrame.Parser, new[]{ "FrameNumber", "FrameProtocols", "Timestamp", "Fields" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.DecodedFrame), global::Ndx.Model.DecodedFrame.Parser, new[]{ "FrameNumber", "FrameProtocols", "Timestamp", "Fields" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ndx.Model.FrameTable), global::Ndx.Model.FrameTable.Parser, new[]{ "FrameNumber", "FrameOffset", "ConversationNumber" }, null, null, null)
           }));
     }
     #endregion
@@ -431,6 +434,9 @@ namespace Ndx.Model {
 
   }
 
+  /// <summary>
+  //// Represents a decoded frame. Decoded frame is a collection of fields and their values. Value are represented as Variant.
+  /// </summary>
   public sealed partial class DecodedFrame : pb::IMessage<DecodedFrame> {
     private static readonly pb::MessageParser<DecodedFrame> _parser = new pb::MessageParser<DecodedFrame>(() => new DecodedFrame());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -616,6 +622,183 @@ namespace Ndx.Model {
           }
           case 82: {
             fields_.AddEntriesFrom(input, _map_fields_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  //// Frame table contains information that helps to access data in the referenced PCAP file. It consists of fixed 
+  //// fields for easy access to individual records.
+  /// </summary>
+  public sealed partial class FrameTable : pb::IMessage<FrameTable> {
+    private static readonly pb::MessageParser<FrameTable> _parser = new pb::MessageParser<FrameTable>(() => new FrameTable());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<FrameTable> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Ndx.Model.PacketModelReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public FrameTable() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public FrameTable(FrameTable other) : this() {
+      frameNumber_ = other.frameNumber_;
+      frameOffset_ = other.frameOffset_;
+      conversationNumber_ = other.conversationNumber_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public FrameTable Clone() {
+      return new FrameTable(this);
+    }
+
+    /// <summary>Field number for the "FrameNumber" field.</summary>
+    public const int FrameNumberFieldNumber = 1;
+    private uint frameNumber_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint FrameNumber {
+      get { return frameNumber_; }
+      set {
+        frameNumber_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "FrameOffset" field.</summary>
+    public const int FrameOffsetFieldNumber = 2;
+    private ulong frameOffset_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ulong FrameOffset {
+      get { return frameOffset_; }
+      set {
+        frameOffset_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ConversationNumber" field.</summary>
+    public const int ConversationNumberFieldNumber = 3;
+    private uint conversationNumber_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint ConversationNumber {
+      get { return conversationNumber_; }
+      set {
+        conversationNumber_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as FrameTable);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(FrameTable other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (FrameNumber != other.FrameNumber) return false;
+      if (FrameOffset != other.FrameOffset) return false;
+      if (ConversationNumber != other.ConversationNumber) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (FrameNumber != 0) hash ^= FrameNumber.GetHashCode();
+      if (FrameOffset != 0UL) hash ^= FrameOffset.GetHashCode();
+      if (ConversationNumber != 0) hash ^= ConversationNumber.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (FrameNumber != 0) {
+        output.WriteRawTag(13);
+        output.WriteFixed32(FrameNumber);
+      }
+      if (FrameOffset != 0UL) {
+        output.WriteRawTag(17);
+        output.WriteFixed64(FrameOffset);
+      }
+      if (ConversationNumber != 0) {
+        output.WriteRawTag(29);
+        output.WriteFixed32(ConversationNumber);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (FrameNumber != 0) {
+        size += 1 + 4;
+      }
+      if (FrameOffset != 0UL) {
+        size += 1 + 8;
+      }
+      if (ConversationNumber != 0) {
+        size += 1 + 4;
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(FrameTable other) {
+      if (other == null) {
+        return;
+      }
+      if (other.FrameNumber != 0) {
+        FrameNumber = other.FrameNumber;
+      }
+      if (other.FrameOffset != 0UL) {
+        FrameOffset = other.FrameOffset;
+      }
+      if (other.ConversationNumber != 0) {
+        ConversationNumber = other.ConversationNumber;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 13: {
+            FrameNumber = input.ReadFixed32();
+            break;
+          }
+          case 17: {
+            FrameOffset = input.ReadFixed64();
+            break;
+          }
+          case 29: {
+            ConversationNumber = input.ReadFixed32();
             break;
           }
         }

@@ -532,6 +532,9 @@ namespace Ndx.Model {
 
   }
 
+  /// <summary>
+  //// Attributes gathered for each flow.
+  /// </summary>
   public sealed partial class FlowAttributes : pb::IMessage<FlowAttributes> {
     private static readonly pb::MessageParser<FlowAttributes> _parser = new pb::MessageParser<FlowAttributes>(() => new FlowAttributes());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

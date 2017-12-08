@@ -2,11 +2,16 @@
 using NLog;
 using System;
 using System.Collections.Generic;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Ndx.Ipflow
 {
+    [Flags]
+    public enum ConversationCloseFlags { None = 0, TcpFin = 1, Timeout = 2, Forced = 4 }
     /// <summary>
     /// This class tracks the conversation at the transport layer. Communication that has not transport layer (UDP or TCP) is simply ignored. 
     /// </summary>
@@ -50,7 +55,7 @@ namespace Ndx.Ipflow
     /// * https://www.cisco.com/c/en/us/td/docs/ios/fnetflow/command/reference/fnf_book/fnf_01.html 
     /// * https://research.utwente.nl/files/6519120/tutorial.pdf
     /// </remarks>
-    public class ConversationTracker<TSource> : IObserver<TSource>
+    public class ConversationTracker<TSource> : ISubject<TSource, Tuple<Conversation,TSource>>
     {
         private static Logger m_logger = LogManager.GetCurrentClassLogger();
 
@@ -83,14 +88,6 @@ namespace Ndx.Ipflow
         /// </summary>
         private object m_lockObject = new object();
         /// <summary>
-        /// Object that is observer as well as observation object.
-        /// </summary>
-        Subject<Conversation> m_conversationSubject;
-        /// <summary>
-        /// Object that is observer as well as observation object.
-        /// </summary>
-        Subject<(int,TSource)> m_packetSubject;
-        /// <summary>
         /// Stores conversation at network level. The key is represented as
         /// (IpProtocolType, IpAddress, Selector, IpAddress, Selector)
         /// </summary>
@@ -99,8 +96,17 @@ namespace Ndx.Ipflow
         /// depends on the protocol encapsulated in IP packet, for instance, port numbers, 
         /// ICMP type and code, etc.
         /// </remarks>
-        Dictionary<FlowKey, Conversation> m_activeConversations;
+        private Dictionary<FlowKey, Conversation> m_openConversations;
 
+        /// <summary>
+        /// Subject that provides observable of closed conversations.
+        /// </summary>
+        private ISubject<Tuple<Conversation, ConversationCloseFlags>> m_closedConversations;
+        /// <summary>
+        /// Gets the observable collection of closed conversations.
+        /// </summary>
+        public IObservable<Tuple<Conversation, ConversationCloseFlags>> ClosedConversations => m_closedConversations;
+       
         /// <summary>
         /// Specifies the active flow timeout. Default is 1800s.
         /// </summary>
@@ -111,12 +117,26 @@ namespace Ndx.Ipflow
         /// </summary>
         public TimeSpan TimeOutInactive { get; set; }
 
+
+        /// <summary>
+        /// Gets the total number of processed conversations.
+        /// </summary>
+        public int TotalConversations => m_totalConversationCounter;
+
+        /// <summary>
+        /// Gets the number of active conversations.
+        /// </summary>
+        public int ActiveConversations => m_openConversations.Count;
+
+
+
+        /// <summary>
+        /// Initializes private memebrs of the newly created instance.
+        /// </summary>
         private ConversationTracker()
         {
-            m_conversationSubject = new Subject<Conversation>();
-            m_packetSubject = new Subject<(int, TSource)>();
-            m_activeConversations = new Dictionary<FlowKey, Conversation>(m_initialConversationDictionaryCapacity);
-
+            m_openConversations = new Dictionary<FlowKey, Conversation>(m_initialConversationDictionaryCapacity);
+            m_closedConversations = new Subject<Tuple<Conversation, ConversationCloseFlags>>();
         }
 
         /// <summary>
@@ -143,7 +163,7 @@ namespace Ndx.Ipflow
         /// </summary>
         /// <param name="frame">Frame to be processed.</param>
         /// <returns>Conversation object that owns the input frame.</returns>
-        Conversation ProcessRecord(TSource record)
+        Tuple<Conversation,TSource> ProcessRecord(TSource record)
         {
             if (record == null) return null;
             try
@@ -155,49 +175,19 @@ namespace Ndx.Ipflow
                     
                     var conversation = CreateNetworkConversation(flowkey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
                     flowPackets.Add(m_updateFlowFunc(record, flowAttributes));                    
-                    return conversation;
+                    return Tuple.Create(conversation,record);
                 }
                 else
                 {
                     var conversation = GetNetworkConversation(flowkey, 0, out var flowAttributes, out var flowPackets, out var flowDirection);
                     flowPackets.Add(m_updateFlowFunc(record, flowAttributes));
-                   
-                    return conversation;
+                    return Tuple.Create(conversation,record);
                 }
             }
             catch (Exception e)
             {
                 m_logger.Error($"AcceptMessage: Error when processing record {record}: {e}. Frame is ignored.");
                 return null;
-            }
-        }
-
-
-        /// <summary>
-        /// This method causes that all active conversations will be completed.
-        /// </summary>
-        public void Complete()
-        {
-            var conversations = m_activeConversations;
-            m_activeConversations = null;
-            foreach(var conversation in conversations)
-            {
-                SendConversation(conversation.Value);
-            }
-            SendCompleted();
-        }
-
-        /// <summary>
-        /// Forces the <see cref="ConversationTracker"/> to flush flow cache. It is similar to <see cref="ConversationTracker{TSource}.Complete"/> 
-        /// but it does not finish processing of the input.
-        /// </summary>
-        public void Flush()
-        {
-            var conversations = m_activeConversations;
-            m_activeConversations = new Dictionary<FlowKey, Conversation>(m_initialConversationDictionaryCapacity);
-            foreach (var conversation in conversations)
-            {
-                SendConversation(conversation.Value);
             }
         }
 
@@ -212,7 +202,7 @@ namespace Ndx.Ipflow
         /// <returns>Converdation instance that corresponds to the specified <see cref="FlowKey"/>.</returns>
         internal Conversation GetNetworkConversation(FlowKey flowKey, int parentConversationId, out FlowAttributes flowAttributes, out IList<long> flowPackets, out FlowOrientation flowOrientation)
         {
-            return GetConversation(m_activeConversations, flowKey, parentConversationId, out flowAttributes, out flowPackets, out flowOrientation);
+            return GetConversation(m_openConversations, flowKey, parentConversationId, out flowAttributes, out flowPackets, out flowOrientation);
         }
 
         /// <summary>
@@ -226,28 +216,29 @@ namespace Ndx.Ipflow
         /// <returns></returns>
         internal Conversation CreateNetworkConversation(FlowKey flowKey, int parentConversationId, out FlowAttributes flowAttributes, out IList<long> flowPackets, out FlowOrientation flowOrientation)
         {
-            RemoveConversations(m_activeConversations, flowKey, parentConversationId);
+            var conversation = RemoveConversation(m_openConversations, flowKey, parentConversationId);
+            if (conversation != null) ConversationClose(conversation, ConversationCloseFlags.Forced);
             return GetNetworkConversation(flowKey, parentConversationId, out flowAttributes, out flowPackets, out flowOrientation);
         }
 
-        private void RemoveConversations(Dictionary<FlowKey, Conversation> dictionary, FlowKey flowKey, int parentConversationId)
+        private Conversation RemoveConversation(Dictionary<FlowKey, Conversation> dictionary, FlowKey flowKey, int parentConversationId)
         {
             lock (m_lockObject)
             {
                 if (dictionary.TryGetValue(flowKey, out var conversation))
                 {
                     dictionary.Remove(flowKey);
-                    SendConversation(conversation);
+                    return conversation;
                 }
                 else
                 if (dictionary.TryGetValue(flowKey.Swap(), out conversation))
                 {
                     dictionary.Remove(flowKey.Swap());
-                    SendConversation(conversation); 
+                    return conversation;
                 }
+                return null;
             }
         }
-
 
         private Conversation GetConversation(Dictionary<FlowKey, Conversation> dictionary, FlowKey flowKey, int parentConversationId, out FlowAttributes flowAttributes, out IList<long> flowPackets, out FlowOrientation flowOrientation)
         {
@@ -294,51 +285,207 @@ namespace Ndx.Ipflow
             return Interlocked.Increment(ref m_lastConversationId);
         }
 
-        private void SendConversation(Conversation conversation)
+        #region Private Helper Methods
+        /// <summary>
+        /// This method causes that all active conversations will be completed.
+        /// </summary>
+        private void CloseAllConversations()
         {
-            m_conversationSubject.OnNext(conversation);
-        }
-
-        private void SendCompleted()
-        {
-            m_conversationSubject.OnCompleted();
-        }
-
-        public void OnNext(TSource value)
-        {
-            if (value != null)
+            var conversations = m_openConversations;
+            m_openConversations = null;
+            foreach (var conversation in conversations)
             {
-                var conversation = ProcessRecord(value);
-                m_packetSubject.OnNext((conversation?.ConversationId ?? -1, value));
+                m_closedConversations.OnNext(Tuple.Create(conversation.Value, ConversationCloseFlags.Forced));
             }
         }
+        /// <summary>
+        /// Informs observers that the conversation was closed.
+        /// </summary>
+        /// <param name="conversation">The closed conversation.</param>
+        /// <param name="flag">The reason for closing.</param>
+        private void ConversationClose(Conversation conversation, ConversationCloseFlags flag)
+        {
+            m_closedConversations.OnNext(Tuple.Create(conversation, ConversationCloseFlags.Forced));
+        }
+        #endregion
+
+        #region Implementation of ISubject<> interface
+        private List<IObserver<Tuple<Conversation,TSource>>> m_observerList = new List<IObserver<Tuple<Conversation, TSource>>>();
+        private bool m_isDisposed;
+        private bool m_isStopped;
+        object m_gate = new object();
+        Exception m_exception;
+
 
         public void OnError(Exception error)
         {
+            if (error == null)
+                throw new ArgumentException("Exception error should not be null.");
+            lock (m_gate)
+            {
+                CheckDisposed();
+
+                if (!m_isStopped)
+                {
+                    m_exception = error;
+
+                    foreach (var observer in m_observerList)
+                    {
+                        observer.OnError(error);
+                    }
+
+                    m_observerList.Clear();
+                    m_isStopped = true;
+                }
+            }
+
             m_logger.Error(error, "ConversationTracker.OnError");
         }
 
         public void OnCompleted()
         {
-            Complete();
+            lock (m_gate)
+            {
+                CheckDisposed();
+
+                if (!m_isStopped)
+                {
+                    CloseAllConversations();
+                    m_closedConversations.OnCompleted();
+                    var observerList = m_observerList.ToArray();
+                    foreach (var observer in observerList)
+                    {
+                        observer.OnCompleted();
+                    }
+
+                    m_observerList.Clear();
+                    m_isStopped = true;
+                }
+            }
+           
         }
 
-        /// <summary>
-        /// Gets observable collection of <see cref="Conversation"/> objects.
-        /// </summary>
-        public IObservable<Conversation> Conversations => m_conversationSubject;
 
-        public IObservable<(int, TSource)> Packets => m_packetSubject;
+        public void OnNext(TSource value)
+        {
+            //****************************************************************************************//
+            //*** Make sure the OnNext operation is not preempted by another operation which       ***//
+            //*** would break the expected behavior.  For example, don't allow unsubscribe, errors ***//
+            //*** or an OnCompleted operation to preempt OnNext from another thread. This would    ***//
+            //*** have the result of items in a sequence following completion, errors, or          ***//
+            //*** unsubscribe.  That would be an incorrect behavior.                               ***//
+            //****************************************************************************************//
 
+            lock (m_gate)
+            {
+                CheckDisposed();
 
-        /// <summary>
-        /// Gets the total number of processed conversations.
-        /// </summary>
-        public int TotalConversations => m_totalConversationCounter;
+                if (!m_isStopped)
+                {
 
-        /// <summary>
-        /// Gets the number of active conversations.
-        /// </summary>
-        public int ActiveConversations => m_activeConversations.Count;
+                    var result = ProcessRecord(value);
+                    if (result != null)
+                    {
+                        foreach (var observer in m_observerList)
+                        {
+                            observer.OnNext(result);
+                        }
+                    }
+                }
+            }
+        }
+
+        public IDisposable Subscribe(IObserver<Tuple<Conversation, TSource>> observer)
+        {
+            if (observer == null)
+                throw new ArgumentException("observer should not BehaviorSubject null.");
+
+            //****************************************************************************************//
+            //*** Make sure Subscribe occurs in sync with the other operations so we keep the      ***//
+            //*** correct behavior depending on whether an error has occurred or the observable    ***//
+            //*** sequence has completed.                                                          ***//
+            //****************************************************************************************//
+
+            lock (m_gate)
+            {
+                CheckDisposed();
+
+                if (!m_isStopped)
+                {
+                    m_observerList.Add(observer);
+                    return new Subscription(observer, this);
+                }
+                else if (m_exception != null)
+                {
+                    observer.OnError(m_exception);
+                    return Disposable.Empty;
+                }
+                else
+                {
+                    observer.OnCompleted();
+                    return Disposable.Empty;
+                }
+            }
+        }
+
+        private void Unsubscribe(IObserver<Tuple<Conversation, TSource>> observer)
+        {
+            //****************************************************************************************//
+            //*** Make sure Unsubscribe occurs in sync with the other operations so we keep the    ***//
+            //*** correct behavior.                                                                ***//
+            //****************************************************************************************//
+
+            lock (m_gate)
+            {
+                m_observerList.Remove(observer);
+            }
+        }
+
+        public void Dispose()
+        {
+            //****************************************************************************************//
+            //*** Make sure Dispose occurs in sync with the other operations so we keep the        ***//
+            //*** correct behavior. For example, Dispose shouldn't preempt the other operations    ***//
+            //*** changing state variables after they have been checked.                           ***//
+            //****************************************************************************************//
+
+            lock (m_gate)
+            {
+                m_observerList.Clear();
+                m_isStopped = true;
+                m_isDisposed = true;
+            }
+        }
+
+        private void CheckDisposed()
+        {
+            if (m_isDisposed)
+                throw new ObjectDisposedException("Subject has been disposed.");
+        }
+
+        //************************************************************************************//
+        //***                                                                              ***//
+        //*** The Subscription class wraps each observer that creates a subscription. This ***//
+        //*** is needed to expose an IDisposable interface through which a observer can    ***//
+        //*** cancel the subscription.                                                     ***//
+        //***                                                                              ***//
+        //************************************************************************************//
+        class Subscription : IDisposable
+        {
+            private ConversationTracker<TSource> m_subject;
+            private IObserver<Tuple<Conversation, TSource>> m_observer;
+
+            public Subscription(IObserver<Tuple<Conversation, TSource>> observer, ConversationTracker<TSource> subject)
+            {
+                m_subject = subject;
+                m_observer = observer;
+            }
+
+            public void Dispose()
+            {
+                m_subject.Unsubscribe(m_observer);
+            }
+        }
+        #endregion
     }
 }

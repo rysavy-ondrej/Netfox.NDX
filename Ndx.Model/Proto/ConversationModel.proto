@@ -25,6 +25,7 @@ message ApplicationConversation {
 	}	
 }
 
+/// Attributes gathered for each flow.
 message FlowAttributes {
 	int64 FirstSeen = 1;
 	int64 LastSeen = 2;

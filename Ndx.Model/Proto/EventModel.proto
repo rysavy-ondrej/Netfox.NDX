@@ -9,6 +9,10 @@ import "VariantModel.proto";
 
 /// Represents an event type specification. 
 message Event {
+    /// The name of the event. 
 	string Name = 1;
-	map<string,Variant> FieldMap = 2;
+    /// The timestamp of the event. 
+    long Timestamp = 2;
+    /// Properties of the event.
+	map<string,Variant> FieldMap = 10;
 }
