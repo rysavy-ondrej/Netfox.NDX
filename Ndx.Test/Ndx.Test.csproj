@@ -72,7 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Captures\ReadFiles.cs" />
-    <Compile Include="Console\ConversationsTest.cs" />
+    <Compile Include="Ipflow\ConversationsTest.cs" />
     <Compile Include="Decoders\DecoderFactoryTest.cs" />
     <Compile Include="Decoders\DecodersTest.cs" />
     <Compile Include="Decoders\DnsDecoderTest.cs" />

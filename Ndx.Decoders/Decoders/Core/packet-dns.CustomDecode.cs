@@ -5,6 +5,7 @@ using static Ndx.Decoders.Core.Dns.Types;
 using System.Linq;
 using Newtonsoft.Json;
 using System.IO;
+using Google.Protobuf.Collections;
 
 namespace Ndx.Decoders.Core
 {
@@ -127,103 +128,103 @@ namespace Ndx.Decoders.Core
                     break;
 
                 case "text_dns_resp_type":
-                    obj.DnsResp.Last().DnsRespType = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsRespType = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_resp_class":
-                    obj.DnsResp.Last().DnsRespClass = Convert.ToUInt32(propValue, 16);
+                    SetRepeated(obj.DnsResp, x => x.DnsRespClass = Convert.ToUInt32(propValue, 16));
                     break;
 
                 case "dns_dns_resp_cache_flush":
-                    obj.DnsResp.Last().DnsRespCacheFlush = Convert.ToInt32(propValue, 10) != 0;;
+                    SetRepeated(obj.DnsResp, x => x.DnsRespCacheFlush = Convert.ToInt32(propValue, 10) != 0);
                     break;
 
                 case "dns_dns_resp_ext_rcode":
-                    obj.DnsResp.Last().DnsRespClass = Convert.ToUInt32(propValue, 16);
+                    SetRepeated(obj.DnsResp, x => x.DnsRespClass = Convert.ToUInt32(propValue, 16));
                     break;
 
                 case "dns_dns_resp_edns0_version":
-                    obj.DnsResp.Last().DnsRespEdns0Version = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsRespEdns0Version = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "dns_dns_resp_z":
-                    obj.DnsResp.Last().DnsRespZ = Convert.ToUInt32(propValue, 16);
+                    SetRepeated(obj.DnsResp, x => x.DnsRespZ = Convert.ToUInt32(propValue, 16));
                     break;
 
                 case "dns_resp_z_dns_resp_z_do":
-                    obj.DnsResp.Last().DnsRespZDo = Convert.ToInt32(propValue, 10) != 0; ;
+                    SetRepeated(obj.DnsResp, x => x.DnsRespZDo = Convert.ToInt32(propValue, 10) != 0);
                     break;
 
                 case "dns_resp_z_dns_resp_z_reserved":
-                    obj.DnsResp.Last().DnsRespZReserved = Convert.ToUInt32(propValue, 16);
+                    SetRepeated(obj.DnsResp, x => x.DnsRespZReserved = Convert.ToUInt32(propValue, 16));
                     break;
 
                 case "text_dns_srv_service":
-                    obj.DnsResp.Last().DnsSrvService = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsSrvService = propValue);
                     break;
 
                 case "text_dns_srv_proto":
-                    obj.DnsResp.Last().DnsSrvProto = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsSrvProto = propValue);
                     break;
 
                 case "text_dns_srv_name":
-                    obj.DnsResp.Last().DnsSrvName = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsSrvName = propValue);
                     break;
 
                 case "text_dns_srv_priority":
-                    obj.DnsResp.Last().DnsSrvPriority = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsSrvPriority = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_srv_weight":
-                    obj.DnsResp.Last().DnsSrvWeight = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsSrvWeight = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_srv_port":
-                    obj.DnsResp.Last().DnsSrvPort = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsSrvPort = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_srv_target":
-                    obj.DnsResp.Last().DnsSrvTarget = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsSrvTarget = propValue);
                     break;
 
                 case "text_dns_naptr_order":
-                    obj.DnsResp.Last().DnsNaptrOrder = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsNaptrOrder = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_naptr_preference":
-                    obj.DnsResp.Last().DnsNaptrPreference = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsNaptrPreference = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_naptr_flags_length":
-                    obj.DnsResp.Last().DnsNaptrFlagsLength = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsNaptrFlagsLength = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_naptr_flags":
-                    obj.DnsResp.Last().DnsNaptrFlags = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsNaptrFlags = propValue);
                     break;
 
                 case "text_dns_naptr_service_length":
-                    obj.DnsResp.Last().DnsNaptrServiceLength = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsNaptrServiceLength = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_naptr_service":
-                    obj.DnsResp.Last().DnsNaptrService = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsNaptrService = propValue);
                     break;
 
                 case "text_dns_naptr_regex_length":
-                    obj.DnsResp.Last().DnsNaptrRegexLength = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsNaptrRegexLength = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_naptr_regex":
-                    obj.DnsResp.Last().DnsNaptrRegex = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsNaptrRegex = propValue);
                     break;
 
                 case "text_dns_naptr_replacement_length":
-                    obj.DnsResp.Last().DnsNaptrReplacementLength = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsNaptrReplacementLength = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "dns_dns_naptr_replacement":
-                    obj.DnsResp.Last().DnsNaptrReplacement = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsNaptrReplacement = propValue);
                     break;
 
                 case "text_dns_resp_name":
@@ -231,112 +232,105 @@ namespace Ndx.Decoders.Core
                     break;
 
                 case "text_dns_resp_ttl":
-                    obj.DnsResp.Last().DnsRespTtl = Convert.ToInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsRespTtl = Convert.ToInt32(propValue, 10));                    
                     break;
 
                 case "text_dns_resp_len":
-                    obj.DnsResp.Last().DnsRespLen = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsRespLen = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_a":
-                    obj.DnsResp.Last().DnsA = Google.Protobuf.ByteString.CopyFrom(System.Net.IPAddress.Parse(propValue).GetAddressBytes());
+                    SetRepeated(obj.DnsResp, x => x.DnsA = Google.Protobuf.ByteString.CopyFrom(System.Net.IPAddress.Parse(propValue).GetAddressBytes()));
                     break;
 
                 case "text_dns_md":
-                    obj.DnsResp.Last().DnsMd = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsMd = propValue);
                     break;
 
                 case "text_dns_mf":
-                    obj.DnsResp.Last().DnsMf = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsMf = propValue);
                     break;
 
                 case "text_dns_mb":
-                    obj.DnsResp.Last().DnsMb = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsMb = propValue);
                     break;
 
                 case "text_dns_mg":
-                    obj.DnsResp.Last().DnsMg = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsMg = propValue);
                     break;
 
                 case "text_dns_mr":
-                    obj.DnsResp.Last().DnsMr = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsMr = propValue);
                     break;
 
                 case "dns_dns_null":
-                    obj.DnsResp.Last().DnsNull = StringToBytes(propValue);
+                    SetRepeated(obj.DnsResp, x => x.DnsNull = StringToBytes(propValue));
                     break;
 
                 case "text_dns_aaaa":
-                    obj.DnsResp.Last().DnsAaaa = Google.Protobuf.ByteString.CopyFrom(System.Net.IPAddress.Parse(propValue).GetAddressBytes());
+                    SetRepeated(obj.DnsResp, x => x.DnsAaaa = Google.Protobuf.ByteString.CopyFrom(System.Net.IPAddress.Parse(propValue).GetAddressBytes()));
                     break;
 
                 case "text_dns_cname":
-                    obj.DnsResp.Last().DnsCname = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsCname = propValue);
                     break;
 
                 case "text_dns_rr_udp_payload_size":
-                    obj.DnsResp.Last().DnsRrUdpPayloadSize = Convert.ToUInt32(propValue, 16);
+                    SetRepeated(obj.DnsResp, x => x.DnsRrUdpPayloadSize = Convert.ToUInt32(propValue, 16));
                     break;
 
                 case "dns_dns_soa_mname":
-                    obj.DnsResp.Last().DnsSoaMname = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsSoaMname = propValue);
                     break;
 
                 case "text_dns_soa_rname":
-                    obj.DnsResp.Last().DnsSoaRname = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsSoaRname = propValue);
                     break;
 
                 case "text_dns_soa_serial_number":
-                    obj.DnsResp.Last().DnsSoaSerialNumber = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsSoaSerialNumber = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_soa_refresh_interval":
-                    obj.DnsResp.Last().DnsSoaRefreshInterval = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsSoaRefreshInterval = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_soa_retry_interval":
-                    obj.DnsResp.Last().DnsSoaRetryInterval = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsSoaRetryInterval = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_soa_expire_limit":
-                    obj.DnsResp.Last().DnsSoaExpireLimit = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsSoaExpireLimit = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_soa_mininum_ttl":
-                    obj.DnsResp.Last().DnsSoaMininumTtl = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsSoaMininumTtl = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_ptr_domain_name":
-                    obj.DnsResp.Last().DnsPtrDomainName = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsPtrDomainName = propValue);
                     break;
 
                
 
                 case "text_dns_mx_preference":
-                    obj.DnsResp.Last().DnsMxPreference = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsMxPreference = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "text_dns_mx_mail_exchange":
-                    obj.DnsResp.Last().DnsMxMailExchange = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsMxMailExchange = propValue);
                     break;
 
                 case "dns_txt_dns_txt_length":
-                    obj.DnsResp.Last().DnsTxtLength = Convert.ToUInt32(propValue, 10);
+                    SetRepeated(obj.DnsResp, x => x.DnsTxtLength = Convert.ToUInt32(propValue, 10));
                     break;
 
                 case "dns_dns_txt":
-                    obj.DnsResp.Last().DnsTxt = propValue;
+                    SetRepeated(obj.DnsResp, x => x.DnsTxt = propValue);
                     break;
-
-              
-               
-              
                 case "text_dns_ns":
-                    obj.DnsResp.Last().DnsNs = propValue;
-                    break;
-
-               
-
+                    SetRepeated(obj.DnsResp, x => x.DnsNs = propValue);
+                    break;             
                 case "dns_dns_count_queries":
                     obj.DnsCountQueries = Convert.ToUInt32(propValue, 10);
                     break;
@@ -379,7 +373,22 @@ namespace Ndx.Decoders.Core
                     break;
             }
         }
-    
+
+        private static void SetRepeated<T>(RepeatedField<T> rf, Action<T> set) where T : new()
+        {
+            var x = rf.LastOrDefault();
+            if (x != null)
+            {
+                set(x);
+            }
+            else
+            {
+                x = new T();
+                set(x);
+                rf.Add(x);
+            }
+        }
+
         public static Google.Protobuf.ByteString StringToBytes(string str)
         {
             var bstrArr = str.Split(':');

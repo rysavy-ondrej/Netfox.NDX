@@ -33,6 +33,7 @@ import "google/protobuf/any.proto";
 
 message Packet {
     int64 TimeStamp = 1;
+    bytes Rawbytes = 2;
 	message Protocol {
 		oneof ProtocolType {
 			google.protobuf.Any Other = 1;
