@@ -52,7 +52,7 @@ types:
         type: tls_length
 
       - id: body
-        size: (_parent.length-4) < body_length.value ? (_parent.length-4) : body_length.value 
+        size: _parent.length-4
         type:
           switch-on: handshake_type
           cases:
@@ -76,7 +76,7 @@ types:
         type: u2
     instances:
       value: 
-        value: (llen + 65535 * hlen)
+        value: (llen + hlen << 16)
     
   tls_empty:
     seq:
@@ -195,7 +195,7 @@ types:
       - id: gmt_unix_time
         type: u4
 
-      - id: random
+      - id: random_bytes
         size: 28
 
   session_id:
@@ -211,7 +211,7 @@ types:
       - id: len
         type: u2
 
-      - id: cipher_suites
+      - id: cipher_suite_list
         type: u2
         repeat: expr
         repeat-expr: len/2
@@ -221,7 +221,7 @@ types:
       - id: len
         type: u1
 
-      - id: compression_methods
+      - id: bytes
         size: len
 
   extensions:
@@ -229,7 +229,7 @@ types:
       - id: len
         type: u2
 
-      - id: extensions
+      - id: extension_list
         type: extension
         repeat: eos
 

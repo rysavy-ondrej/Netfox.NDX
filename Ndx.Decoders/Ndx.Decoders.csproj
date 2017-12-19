@@ -117,9 +117,15 @@
     <Compile Include="Decoders\Packet.cs" />
     <Compile Include="PacketDecoder.cs" />
     <Compile Include="PacketReader.cs" />
+    <Compile Include="Parsers\Binary\Snmp.cs" />
+    <Compile Include="Parsers\Binary\TlsRecordLayer.cs" />
+    <Compile Include="Parsers\KaitaiStream.cs" />
+    <Compile Include="Parsers\KaitaiStruct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Kaitai\snmp.ksy" />
+    <None Include="Kaitai\tls.ksy" />
     <None Include="packages.config" />
     <None Include="Parsers\Binary\BinaryProtocols.md" />
     <None Include="Parsers\Text\TextProtocols.md" />
@@ -218,6 +224,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>$(SolutionDir)packages\Google.Protobuf.Tools.3.4.0\tools\windows_x86\protoc --proto_path $(SolutionDir)packages\Google.Protobuf.Tools.3.4.0\tools --proto_path $(ProjectDir)Proto --proto_path $(ProjectDir)Proto\Base --proto_path $(ProjectDir)Proto\Core --proto_path $(ProjectDir)Proto\Common --csharp_out=$(ProjectDir)Decoders $(ProjectDir)Proto\Packet.proto</PreBuildEvent>
+    <PreBuildEvent>$(SolutionDir)packages\Google.Protobuf.Tools.3.4.0\tools\windows_x86\protoc --proto_path $(SolutionDir)packages\Google.Protobuf.Tools.3.4.0\tools --proto_path $(ProjectDir)Proto --proto_path $(ProjectDir)Proto\Base --proto_path $(ProjectDir)Proto\Core --proto_path $(ProjectDir)Proto\Common --csharp_out=$(ProjectDir)Decoders $(ProjectDir)Proto\Packet.proto
+
+echo $(SolutionDir)packages\kaitai-struct-compiler\bin\kaitai-struct-compiler -t csharp -d $(ProjectDir)Parsers\Binary -I $(ProjectDir)Kaitai  --dotnet-namespace Ndx.Decoders.Parsers.Binary $(ProjectDir)Kaitai\snmp.ksy $(ProjectDir)Kaitai\tls.ksy</PreBuildEvent>
   </PropertyGroup>
 </Project>
