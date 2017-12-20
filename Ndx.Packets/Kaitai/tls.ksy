@@ -1,5 +1,5 @@
-﻿meta:
-  id: tls_record_layer
+meta:
+  id: tls_record
   endian: be
   license: MIT
 seq:

@@ -1,59 +1,59 @@
-﻿meta:
+meta:
   id: snmp
   file-extension: pcap
   endian: be
 seq:
   - id: hdr
-    type: asn1_hdr  
+    type: asn_hdr  
   - id: version
-    type: asn1_obj  
+    type: asn_obj  
   - id: community
-    type: asn1_obj
+    type: asn_obj
   - id: pdu_type
-    type: asn1_hdr
+    type: asn_hdr
   - id: data
     type:
         switch-on: 'pdu_type.tag'
         cases:
-          'type_tag::snmp_pdu_get': get_request
-          'type_tag::snmp_pdu_getnext': get_next_request
-          'type_tag::snmp_pdu_response': response
-          'type_tag::snmp_pdu_set': set_request
-          'type_tag::snmp_pdu_trapv1': trap1
-          'type_tag::snmp_pdu_trapv2': trap2
-
+          'asn_type_tag::snmp_pdu_get': get_request
+          'asn_type_tag::snmp_pdu_getnext': get_next_request
+          'asn_type_tag::snmp_pdu_response': response
+          'asn_type_tag::snmp_pdu_set': set_request
+          'asn_type_tag::snmp_pdu_trapv1': trap1
+          'asn_type_tag::snmp_pdu_trapv2': trap2
+    
 types:
-  asn1_obj:
+  asn_obj:
     seq:
     - id: hdr
-      type: asn1_hdr
+      type: asn_hdr
     - id: body
-      size: hdr.len.result
+      size: hdr.len.value
       type:
         switch-on: hdr.tag
         cases:
-          'type_tag::sequence_10': body_sequence
-          'type_tag::sequence_30': body_sequence
-          'type_tag::set': body_sequence
-          'type_tag::utf8string': body_utf8string
-          'type_tag::printable_string': body_printable_string
-          'type_tag::integer': body_integer
-          'type_tag::octet_string' : body_printable_string
+          'asn_type_tag::sequence_10': body_sequence
+          'asn_type_tag::sequence_30': body_sequence
+          'asn_type_tag::set': body_sequence
+          'asn_type_tag::utf8string': body_utf8string
+          'asn_type_tag::printable_string': body_printable_string
+          'asn_type_tag::integer': body_integer
+          'asn_type_tag::octet_string' : body_printable_string
 
-  asn1_hdr:
+  asn_hdr:
     seq:
       - id: tag
-        type: u1
-        enum: type_tag
+        type: u1 
+        enum: asn_type_tag
       - id: len
         type: len_encoded
         
   error_status:
     seq:
       - id: hdr
-        type: asn1_hdr
+        type: asn_hdr
       - id: val
-        size: hdr.len.result
+        size: hdr.len.value
         type: body_integer
     instances:
       code:
@@ -89,17 +89,17 @@ types:
   trap1:
     seq:
       - id: items
-        type: asn1_obj
+        type: asn_obj
         repeat: eos
  
   pdu:
     seq:
       - id: request_id
-        type: asn1_obj
+        type: asn_obj
       - id: error_status
         type: error_status
       - id: error_index
-        type: asn1_obj
+        type: asn_obj
       - id: variable_bindings
         type: variable_bindings
         
@@ -124,26 +124,25 @@ types:
         type: len_encoded
         
       - id: name
-        type: asn1_obj
+        type: asn_obj
         
       - id: value
-        type: asn1_obj
+        type: asn_obj
         
   len_encoded:
     seq:
       - id: b1
         type: u1
-      - id: int2
-        type: u2be
-        if: b1 == 0x82
+      - id: b2
+        size: '(b1 < 128) ? 0 : b1 & 0x7f'
+        type: body_integer
     instances:
-      result:
-        value: '(b1 & 0x80 == 0) ? b1 : int2'
-  
+      value:
+        value: '(b1 < 128) ? b1 : b2.value'
   body_sequence:
     seq:
       - id: entries
-        type: asn1_obj
+        type: asn_obj
         repeat: eos
   body_utf8string:
     seq:
@@ -176,7 +175,7 @@ types:
         doc: Resulting value as normal integer
         
 enums:
-  type_tag:
+  asn_type_tag:
     0: end_of_content
     0x1: boolean
     0x2: integer
@@ -203,6 +202,7 @@ enums:
     0xa4: snmp_pdu_trapv1
     0xa7: snmp_pdu_trapv2
   snmp_pdu_type:
+    # SNMP PDU types:
     0: snmp_pdu_get
     1: snmp_pdu_getnext
     2: snmp_pdu_response

@@ -117,18 +117,10 @@
     <Compile Include="Decoders\Packet.cs" />
     <Compile Include="PacketDecoder.cs" />
     <Compile Include="PacketReader.cs" />
-    <Compile Include="Parsers\Binary\Snmp.cs" />
-    <Compile Include="Parsers\Binary\TlsRecordLayer.cs" />
-    <Compile Include="Parsers\KaitaiStream.cs" />
-    <Compile Include="Parsers\KaitaiStruct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Kaitai\snmp.ksy" />
-    <None Include="Kaitai\tls.ksy" />
     <None Include="packages.config" />
-    <None Include="Parsers\Binary\BinaryProtocols.md" />
-    <None Include="Parsers\Text\TextProtocols.md" />
     <None Include="Proto\Base\packet-eth.proto" />
     <None Include="Proto\Base\packet-eth.yaml" />
     <None Include="Proto\Base\packet-frame.proto" />

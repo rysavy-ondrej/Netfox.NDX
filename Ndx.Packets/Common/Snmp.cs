@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using Kaitai;
 
-namespace Ndx.Decoders.Binary
+namespace Ndx.Packets.Common
 {
     public partial class Snmp : KaitaiStruct
     {
@@ -13,7 +13,7 @@ namespace Ndx.Decoders.Binary
             return new Snmp(new KaitaiStream(fileName));
         }
 
-        public enum TypeTag
+        public enum AsnTypeTag
         {
             EndOfContent = 0,
             Boolean = 1,
@@ -71,33 +71,33 @@ namespace Ndx.Decoders.Binary
 
         private void _parse()
         {
-            _hdr = new Asn1Hdr(m_io, this, m_root);
-            _version = new Asn1Obj(m_io, this, m_root);
-            _community = new Asn1Obj(m_io, this, m_root);
-            _pduType = new Asn1Hdr(m_io, this, m_root);
+            _hdr = new AsnHdr(m_io, this, m_root);
+            _version = new AsnObj(m_io, this, m_root);
+            _community = new AsnObj(m_io, this, m_root);
+            _pduType = new AsnHdr(m_io, this, m_root);
             switch (PduType.Tag) {
-            case TypeTag.SnmpPduTrapv2: {
+            case AsnTypeTag.SnmpPduTrapv1: {
+                _data = new Trap1(m_io, this, m_root);
+                break;
+            }
+            case AsnTypeTag.SnmpPduTrapv2: {
                 _data = new Trap2(m_io, this, m_root);
                 break;
             }
-            case TypeTag.SnmpPduSet: {
+            case AsnTypeTag.SnmpPduSet: {
                 _data = new SetRequest(m_io, this, m_root);
                 break;
             }
-            case TypeTag.SnmpPduGet: {
-                _data = new GetRequest(m_io, this, m_root);
-                break;
-            }
-            case TypeTag.SnmpPduResponse: {
+            case AsnTypeTag.SnmpPduResponse: {
                 _data = new Response(m_io, this, m_root);
                 break;
             }
-            case TypeTag.SnmpPduGetnext: {
-                _data = new GetNextRequest(m_io, this, m_root);
+            case AsnTypeTag.SnmpPduGet: {
+                _data = new GetRequest(m_io, this, m_root);
                 break;
             }
-            case TypeTag.SnmpPduTrapv1: {
-                _data = new Trap1(m_io, this, m_root);
+            case AsnTypeTag.SnmpPduGetnext: {
+                _data = new GetNextRequest(m_io, this, m_root);
                 break;
             }
             }
@@ -119,8 +119,8 @@ namespace Ndx.Decoders.Binary
             private void _parse()
             {
                 f_code = false;
-                _hdr = new Asn1Hdr(m_io, this, m_root);
-                __raw_val = m_io.ReadBytes(Hdr.Len.Result);
+                _hdr = new AsnHdr(m_io, this, m_root);
+                __raw_val = m_io.ReadBytes(Hdr.Len.Value);
                 var io___raw_val = new KaitaiStream(__raw_val);
                 _val = new BodyInteger(io___raw_val, this, m_root);
             }
@@ -137,16 +137,93 @@ namespace Ndx.Decoders.Binary
                     return _code;
                 }
             }
-            private Asn1Hdr _hdr;
+            private AsnHdr _hdr;
             private BodyInteger _val;
             private Snmp m_root;
             private Snmp.Pdu m_parent;
             private byte[] __raw_val;
-            public Asn1Hdr Hdr { get { return _hdr; } }
+            public AsnHdr Hdr { get { return _hdr; } }
             public BodyInteger Val { get { return _val; } }
             public Snmp M_Root { get { return m_root; } }
             public Snmp.Pdu M_Parent { get { return m_parent; } }
             public byte[] M_RawVal { get { return __raw_val; } }
+        }
+        public partial class AsnObj : KaitaiStruct
+        {
+            public static AsnObj FromFile(string fileName)
+            {
+                return new AsnObj(new KaitaiStream(fileName));
+            }
+
+            public AsnObj(KaitaiStream io, KaitaiStruct parent = null, Snmp root = null) : base(io)
+            {
+                m_parent = parent;
+                m_root = root;
+                _parse();
+            }
+
+            private void _parse()
+            {
+                _hdr = new AsnHdr(m_io, this, m_root);
+                switch (Hdr.Tag) {
+                case Snmp.AsnTypeTag.Set: {
+                    __raw_body = m_io.ReadBytes(Hdr.Len.Value);
+                    var io___raw_body = new KaitaiStream(__raw_body);
+                    _body = new BodySequence(io___raw_body, this, m_root);
+                    break;
+                }
+                case Snmp.AsnTypeTag.OctetString: {
+                    __raw_body = m_io.ReadBytes(Hdr.Len.Value);
+                    var io___raw_body = new KaitaiStream(__raw_body);
+                    _body = new BodyPrintableString(io___raw_body, this, m_root);
+                    break;
+                }
+                case Snmp.AsnTypeTag.Utf8string: {
+                    __raw_body = m_io.ReadBytes(Hdr.Len.Value);
+                    var io___raw_body = new KaitaiStream(__raw_body);
+                    _body = new BodyUtf8string(io___raw_body, this, m_root);
+                    break;
+                }
+                case Snmp.AsnTypeTag.Sequence30: {
+                    __raw_body = m_io.ReadBytes(Hdr.Len.Value);
+                    var io___raw_body = new KaitaiStream(__raw_body);
+                    _body = new BodySequence(io___raw_body, this, m_root);
+                    break;
+                }
+                case Snmp.AsnTypeTag.Integer: {
+                    __raw_body = m_io.ReadBytes(Hdr.Len.Value);
+                    var io___raw_body = new KaitaiStream(__raw_body);
+                    _body = new BodyInteger(io___raw_body, this, m_root);
+                    break;
+                }
+                case Snmp.AsnTypeTag.Sequence10: {
+                    __raw_body = m_io.ReadBytes(Hdr.Len.Value);
+                    var io___raw_body = new KaitaiStream(__raw_body);
+                    _body = new BodySequence(io___raw_body, this, m_root);
+                    break;
+                }
+                case Snmp.AsnTypeTag.PrintableString: {
+                    __raw_body = m_io.ReadBytes(Hdr.Len.Value);
+                    var io___raw_body = new KaitaiStream(__raw_body);
+                    _body = new BodyPrintableString(io___raw_body, this, m_root);
+                    break;
+                }
+                default: {
+                    _body = m_io.ReadBytes(Hdr.Len.Value);
+                    break;
+                }
+                }
+            }
+            private AsnHdr _hdr;
+            private object _body;
+            private Snmp m_root;
+            private KaitaiStruct m_parent;
+            private byte[] __raw_body;
+            public AsnHdr Hdr { get { return _hdr; } }
+            public object Body { get { return _body; } }
+            public Snmp M_Root { get { return m_root; } }
+            public KaitaiStruct M_Parent { get { return m_parent; } }
+            public byte[] M_RawBody { get { return __raw_body; } }
         }
         public partial class VariableBindings : KaitaiStruct
         {
@@ -189,7 +266,7 @@ namespace Ndx.Decoders.Binary
                 return new BodySequence(new KaitaiStream(fileName));
             }
 
-            public BodySequence(KaitaiStream io, Asn1Obj parent = null, Snmp root = null) : base(io)
+            public BodySequence(KaitaiStream io, AsnObj parent = null, Snmp root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -198,17 +275,17 @@ namespace Ndx.Decoders.Binary
 
             private void _parse()
             {
-                _entries = new List<Asn1Obj>();
+                _entries = new List<AsnObj>();
                 while (!m_io.IsEof) {
-                    _entries.Add(new Asn1Obj(m_io, this, m_root));
+                    _entries.Add(new AsnObj(m_io, this, m_root));
                 }
             }
-            private List<Asn1Obj> _entries;
+            private List<AsnObj> _entries;
             private Snmp m_root;
-            private Snmp.Asn1Obj m_parent;
-            public List<Asn1Obj> Entries { get { return _entries; } }
+            private Snmp.AsnObj m_parent;
+            public List<AsnObj> Entries { get { return _entries; } }
             public Snmp M_Root { get { return m_root; } }
-            public Snmp.Asn1Obj M_Parent { get { return m_parent; } }
+            public Snmp.AsnObj M_Parent { get { return m_parent; } }
         }
         public partial class Trap1 : KaitaiStruct
         {
@@ -226,17 +303,45 @@ namespace Ndx.Decoders.Binary
 
             private void _parse()
             {
-                _items = new List<Asn1Obj>();
+                _items = new List<AsnObj>();
                 while (!m_io.IsEof) {
-                    _items.Add(new Asn1Obj(m_io, this, m_root));
+                    _items.Add(new AsnObj(m_io, this, m_root));
                 }
             }
-            private List<Asn1Obj> _items;
+            private List<AsnObj> _items;
             private Snmp m_root;
             private Snmp m_parent;
-            public List<Asn1Obj> Items { get { return _items; } }
+            public List<AsnObj> Items { get { return _items; } }
             public Snmp M_Root { get { return m_root; } }
             public Snmp M_Parent { get { return m_parent; } }
+        }
+        public partial class AsnHdr : KaitaiStruct
+        {
+            public static AsnHdr FromFile(string fileName)
+            {
+                return new AsnHdr(new KaitaiStream(fileName));
+            }
+
+            public AsnHdr(KaitaiStream io, KaitaiStruct parent = null, Snmp root = null) : base(io)
+            {
+                m_parent = parent;
+                m_root = root;
+                _parse();
+            }
+
+            private void _parse()
+            {
+                _tag = ((Snmp.AsnTypeTag) m_io.ReadU1());
+                _len = new LenEncoded(m_io, this, m_root);
+            }
+            private AsnTypeTag _tag;
+            private LenEncoded _len;
+            private Snmp m_root;
+            private KaitaiStruct m_parent;
+            public AsnTypeTag Tag { get { return _tag; } }
+            public LenEncoded Len { get { return _len; } }
+            public Snmp M_Root { get { return m_root; } }
+            public KaitaiStruct M_Parent { get { return m_parent; } }
         }
         public partial class BodyUtf8string : KaitaiStruct
         {
@@ -245,7 +350,7 @@ namespace Ndx.Decoders.Binary
                 return new BodyUtf8string(new KaitaiStream(fileName));
             }
 
-            public BodyUtf8string(KaitaiStream io, Asn1Obj parent = null, Snmp root = null) : base(io)
+            public BodyUtf8string(KaitaiStream io, AsnObj parent = null, Snmp root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -258,10 +363,10 @@ namespace Ndx.Decoders.Binary
             }
             private string _value;
             private Snmp m_root;
-            private Snmp.Asn1Obj m_parent;
+            private Snmp.AsnObj m_parent;
             public string Value { get { return _value; } }
             public Snmp M_Root { get { return m_root; } }
-            public Snmp.Asn1Obj M_Parent { get { return m_parent; } }
+            public Snmp.AsnObj M_Parent { get { return m_parent; } }
         }
         public partial class GetRequest : KaitaiStruct
         {
@@ -313,34 +418,6 @@ namespace Ndx.Decoders.Binary
             public Snmp M_Root { get { return m_root; } }
             public Snmp M_Parent { get { return m_parent; } }
         }
-        public partial class Asn1Hdr : KaitaiStruct
-        {
-            public static Asn1Hdr FromFile(string fileName)
-            {
-                return new Asn1Hdr(new KaitaiStream(fileName));
-            }
-
-            public Asn1Hdr(KaitaiStream io, KaitaiStruct parent = null, Snmp root = null) : base(io)
-            {
-                m_parent = parent;
-                m_root = root;
-                _parse();
-            }
-
-            private void _parse()
-            {
-                _tag = ((Snmp.TypeTag) m_io.ReadU1());
-                _len = new LenEncoded(m_io, this, m_root);
-            }
-            private TypeTag _tag;
-            private LenEncoded _len;
-            private Snmp m_root;
-            private KaitaiStruct m_parent;
-            public TypeTag Tag { get { return _tag; } }
-            public LenEncoded Len { get { return _len; } }
-            public Snmp M_Root { get { return m_root; } }
-            public KaitaiStruct M_Parent { get { return m_parent; } }
-        }
         public partial class VariableBinding : KaitaiStruct
         {
             public static VariableBinding FromFile(string fileName)
@@ -359,19 +436,19 @@ namespace Ndx.Decoders.Binary
             {
                 _seqTypeTag = m_io.EnsureFixedContents(new byte[] { 48 });
                 _len = new LenEncoded(m_io, this, m_root);
-                _name = new Asn1Obj(m_io, this, m_root);
-                _value = new Asn1Obj(m_io, this, m_root);
+                _name = new AsnObj(m_io, this, m_root);
+                _value = new AsnObj(m_io, this, m_root);
             }
             private byte[] _seqTypeTag;
             private LenEncoded _len;
-            private Asn1Obj _name;
-            private Asn1Obj _value;
+            private AsnObj _name;
+            private AsnObj _value;
             private Snmp m_root;
             private Snmp.VariableBindings m_parent;
             public byte[] SeqTypeTag { get { return _seqTypeTag; } }
             public LenEncoded Len { get { return _len; } }
-            public Asn1Obj Name { get { return _name; } }
-            public Asn1Obj Value { get { return _value; } }
+            public AsnObj Name { get { return _name; } }
+            public AsnObj Value { get { return _value; } }
             public Snmp M_Root { get { return m_root; } }
             public Snmp.VariableBindings M_Parent { get { return m_parent; } }
         }
@@ -462,20 +539,20 @@ namespace Ndx.Decoders.Binary
 
             private void _parse()
             {
-                _requestId = new Asn1Obj(m_io, this, m_root);
+                _requestId = new AsnObj(m_io, this, m_root);
                 _errorStatus = new ErrorStatus(m_io, this, m_root);
-                _errorIndex = new Asn1Obj(m_io, this, m_root);
+                _errorIndex = new AsnObj(m_io, this, m_root);
                 _variableBindings = new VariableBindings(m_io, this, m_root);
             }
-            private Asn1Obj _requestId;
+            private AsnObj _requestId;
             private ErrorStatus _errorStatus;
-            private Asn1Obj _errorIndex;
+            private AsnObj _errorIndex;
             private VariableBindings _variableBindings;
             private Snmp m_root;
             private KaitaiStruct m_parent;
-            public Asn1Obj RequestId { get { return _requestId; } }
+            public AsnObj RequestId { get { return _requestId; } }
             public ErrorStatus ErrorStatus { get { return _errorStatus; } }
-            public Asn1Obj ErrorIndex { get { return _errorIndex; } }
+            public AsnObj ErrorIndex { get { return _errorIndex; } }
             public VariableBindings VariableBindings { get { return _variableBindings; } }
             public Snmp M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
@@ -546,110 +623,35 @@ namespace Ndx.Decoders.Binary
 
             private void _parse()
             {
-                f_result = false;
+                f_value = false;
                 _b1 = m_io.ReadU1();
-                if (B1 == 130) {
-                    _int2 = m_io.ReadU2be();
-                }
+                __raw_b2 = m_io.ReadBytes((B1 < 128 ? 0 : (B1 & 127)));
+                var io___raw_b2 = new KaitaiStream(__raw_b2);
+                _b2 = new BodyInteger(io___raw_b2, this, m_root);
             }
-            private bool f_result;
-            private ushort _result;
-            public ushort Result
+            private bool f_value;
+            private int _value;
+            public int Value
             {
                 get
                 {
-                    if (f_result)
-                        return _result;
-                    _result = (ushort) (((B1 & 128) == 0 ? B1 : Int2));
-                    f_result = true;
-                    return _result;
+                    if (f_value)
+                        return _value;
+                    _value = (int) ((B1 < 128 ? B1 : B2.Value));
+                    f_value = true;
+                    return _value;
                 }
             }
             private byte _b1;
-            private ushort _int2;
+            private BodyInteger _b2;
             private Snmp m_root;
             private KaitaiStruct m_parent;
+            private byte[] __raw_b2;
             public byte B1 { get { return _b1; } }
-            public ushort Int2 { get { return _int2; } }
+            public BodyInteger B2 { get { return _b2; } }
             public Snmp M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
-        }
-        public partial class Asn1Obj : KaitaiStruct
-        {
-            public static Asn1Obj FromFile(string fileName)
-            {
-                return new Asn1Obj(new KaitaiStream(fileName));
-            }
-
-            public Asn1Obj(KaitaiStream io, KaitaiStruct parent = null, Snmp root = null) : base(io)
-            {
-                m_parent = parent;
-                m_root = root;
-                _parse();
-            }
-
-            private void _parse()
-            {
-                _hdr = new Asn1Hdr(m_io, this, m_root);
-                switch (Hdr.Tag) {
-                case Snmp.TypeTag.Sequence30: {
-                    __raw_body = m_io.ReadBytes(Hdr.Len.Result);
-                    var io___raw_body = new KaitaiStream(__raw_body);
-                    _body = new BodySequence(io___raw_body, this, m_root);
-                    break;
-                }
-                case Snmp.TypeTag.Sequence10: {
-                    __raw_body = m_io.ReadBytes(Hdr.Len.Result);
-                    var io___raw_body = new KaitaiStream(__raw_body);
-                    _body = new BodySequence(io___raw_body, this, m_root);
-                    break;
-                }
-                case Snmp.TypeTag.Utf8string: {
-                    __raw_body = m_io.ReadBytes(Hdr.Len.Result);
-                    var io___raw_body = new KaitaiStream(__raw_body);
-                    _body = new BodyUtf8string(io___raw_body, this, m_root);
-                    break;
-                }
-                case Snmp.TypeTag.PrintableString: {
-                    __raw_body = m_io.ReadBytes(Hdr.Len.Result);
-                    var io___raw_body = new KaitaiStream(__raw_body);
-                    _body = new BodyPrintableString(io___raw_body, this, m_root);
-                    break;
-                }
-                case Snmp.TypeTag.Integer: {
-                    __raw_body = m_io.ReadBytes(Hdr.Len.Result);
-                    var io___raw_body = new KaitaiStream(__raw_body);
-                    _body = new BodyInteger(io___raw_body, this, m_root);
-                    break;
-                }
-                case Snmp.TypeTag.Set: {
-                    __raw_body = m_io.ReadBytes(Hdr.Len.Result);
-                    var io___raw_body = new KaitaiStream(__raw_body);
-                    _body = new BodySequence(io___raw_body, this, m_root);
-                    break;
-                }
-                case Snmp.TypeTag.OctetString: {
-                    __raw_body = m_io.ReadBytes(Hdr.Len.Result);
-                    var io___raw_body = new KaitaiStream(__raw_body);
-                    _body = new BodyPrintableString(io___raw_body, this, m_root);
-                    break;
-                }
-                default: {
-                    _body = m_io.ReadBytes(Hdr.Len.Result);
-                    break;
-                }
-                }
-            }
-            private Asn1Hdr _hdr;
-            private object _body;
-            private Snmp m_root;
-            private KaitaiStruct m_parent;
-            private byte[] __raw_body;
-            public Asn1Hdr Hdr { get { return _hdr; } }
-            public object Body { get { return _body; } }
-            public Snmp M_Root { get { return m_root; } }
-            public KaitaiStruct M_Parent { get { return m_parent; } }
-            public byte[] M_RawBody { get { return __raw_body; } }
+            public byte[] M_RawB2 { get { return __raw_b2; } }
         }
         public partial class BodyPrintableString : KaitaiStruct
         {
@@ -658,7 +660,7 @@ namespace Ndx.Decoders.Binary
                 return new BodyPrintableString(new KaitaiStream(fileName));
             }
 
-            public BodyPrintableString(KaitaiStream io, Asn1Obj parent = null, Snmp root = null) : base(io)
+            public BodyPrintableString(KaitaiStream io, AsnObj parent = null, Snmp root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -671,22 +673,22 @@ namespace Ndx.Decoders.Binary
             }
             private string _value;
             private Snmp m_root;
-            private Snmp.Asn1Obj m_parent;
+            private Snmp.AsnObj m_parent;
             public string Value { get { return _value; } }
             public Snmp M_Root { get { return m_root; } }
-            public Snmp.Asn1Obj M_Parent { get { return m_parent; } }
+            public Snmp.AsnObj M_Parent { get { return m_parent; } }
         }
-        private Asn1Hdr _hdr;
-        private Asn1Obj _version;
-        private Asn1Obj _community;
-        private Asn1Hdr _pduType;
+        private AsnHdr _hdr;
+        private AsnObj _version;
+        private AsnObj _community;
+        private AsnHdr _pduType;
         private KaitaiStruct _data;
         private Snmp m_root;
         private KaitaiStruct m_parent;
-        public Asn1Hdr Hdr { get { return _hdr; } }
-        public Asn1Obj Version { get { return _version; } }
-        public Asn1Obj Community { get { return _community; } }
-        public Asn1Hdr PduType { get { return _pduType; } }
+        public AsnHdr Hdr { get { return _hdr; } }
+        public AsnObj Version { get { return _version; } }
+        public AsnObj Community { get { return _community; } }
+        public AsnHdr PduType { get { return _pduType; } }
         public KaitaiStruct Data { get { return _data; } }
         public Snmp M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }

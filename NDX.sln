@@ -59,6 +59,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{F482C047-0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nfview", "Apps\nfview\nfview.csproj", "{F19583A8-9A64-4A03-9A33-2DEC20BF5069}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ndx.Packets", "Ndx.Packets\Ndx.Packets.csproj", "{00176D34-8FA9-48BF-A629-14C70C11508C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -225,6 +227,18 @@ Global
 		{F19583A8-9A64-4A03-9A33-2DEC20BF5069}.Release|x64.Build.0 = Release|Any CPU
 		{F19583A8-9A64-4A03-9A33-2DEC20BF5069}.Release|x86.ActiveCfg = Release|Any CPU
 		{F19583A8-9A64-4A03-9A33-2DEC20BF5069}.Release|x86.Build.0 = Release|Any CPU
+		{00176D34-8FA9-48BF-A629-14C70C11508C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00176D34-8FA9-48BF-A629-14C70C11508C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00176D34-8FA9-48BF-A629-14C70C11508C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{00176D34-8FA9-48BF-A629-14C70C11508C}.Debug|x64.Build.0 = Debug|Any CPU
+		{00176D34-8FA9-48BF-A629-14C70C11508C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{00176D34-8FA9-48BF-A629-14C70C11508C}.Debug|x86.Build.0 = Debug|Any CPU
+		{00176D34-8FA9-48BF-A629-14C70C11508C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00176D34-8FA9-48BF-A629-14C70C11508C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00176D34-8FA9-48BF-A629-14C70C11508C}.Release|x64.ActiveCfg = Release|Any CPU
+		{00176D34-8FA9-48BF-A629-14C70C11508C}.Release|x64.Build.0 = Release|Any CPU
+		{00176D34-8FA9-48BF-A629-14C70C11508C}.Release|x86.ActiveCfg = Release|Any CPU
+		{00176D34-8FA9-48BF-A629-14C70C11508C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,13 +4,13 @@ using System;
 using System.Collections.Generic;
 using Kaitai;
 
-namespace Ndx.Decoders.Binary
+namespace Ndx.Packets.Common
 {
-    public partial class TlsRecordLayer : KaitaiStruct
+    public partial class TlsRecord : KaitaiStruct
     {
-        public static TlsRecordLayer FromFile(string fileName)
+        public static TlsRecord FromFile(string fileName)
         {
-            return new TlsRecordLayer(new KaitaiStream(fileName));
+            return new TlsRecord(new KaitaiStream(fileName));
         }
 
         public enum TlsContentType
@@ -36,7 +36,7 @@ namespace Ndx.Decoders.Binary
             Finished = 20,
         }
 
-        public TlsRecordLayer(KaitaiStream io, KaitaiStruct parent = null, TlsRecordLayer root = null) : base(io)
+        public TlsRecord(KaitaiStream io, KaitaiStruct parent = null, TlsRecord root = null) : base(io)
         {
             m_parent = parent;
             m_root = root ?? this;
@@ -88,7 +88,7 @@ namespace Ndx.Decoders.Binary
                 return new ServerName(new KaitaiStream(fileName));
             }
 
-            public ServerName(KaitaiStream io, Sni parent = null, TlsRecordLayer root = null) : base(io)
+            public ServerName(KaitaiStream io, Sni parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -104,13 +104,13 @@ namespace Ndx.Decoders.Binary
             private byte _nameType;
             private ushort _length;
             private byte[] _hostName;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.Sni m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.Sni m_parent;
             public byte NameType { get { return _nameType; } }
             public ushort Length { get { return _length; } }
             public byte[] HostName { get { return _hostName; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.Sni M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.Sni M_Parent { get { return m_parent; } }
         }
         public partial class Random : KaitaiStruct
         {
@@ -119,7 +119,7 @@ namespace Ndx.Decoders.Binary
                 return new Random(new KaitaiStream(fileName));
             }
 
-            public Random(KaitaiStream io, KaitaiStruct parent = null, TlsRecordLayer root = null) : base(io)
+            public Random(KaitaiStream io, KaitaiStruct parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -133,11 +133,11 @@ namespace Ndx.Decoders.Binary
             }
             private uint _gmtUnixTime;
             private byte[] _randomBytes;
-            private TlsRecordLayer m_root;
+            private TlsRecord m_root;
             private KaitaiStruct m_parent;
             public uint GmtUnixTime { get { return _gmtUnixTime; } }
             public byte[] RandomBytes { get { return _randomBytes; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
+            public TlsRecord M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
         }
         public partial class TlsCertificateRequest : KaitaiStruct
@@ -147,7 +147,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsCertificateRequest(new KaitaiStream(fileName));
             }
 
-            public TlsCertificateRequest(KaitaiStream io, TlsHandshake parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsCertificateRequest(KaitaiStream io, TlsHandshake parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -159,11 +159,11 @@ namespace Ndx.Decoders.Binary
                 _empty = m_io.ReadBytes(0);
             }
             private byte[] _empty;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.TlsHandshake m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.TlsHandshake m_parent;
             public byte[] Empty { get { return _empty; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.TlsHandshake M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.TlsHandshake M_Parent { get { return m_parent; } }
         }
         public partial class TlsCertificate : KaitaiStruct
         {
@@ -172,7 +172,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsCertificate(new KaitaiStream(fileName));
             }
 
-            public TlsCertificate(KaitaiStream io, TlsHandshake parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsCertificate(KaitaiStream io, TlsHandshake parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -192,13 +192,13 @@ namespace Ndx.Decoders.Binary
             }
             private TlsLength _certLength;
             private List<Certificate> _certificates;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.TlsHandshake m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.TlsHandshake m_parent;
             private List<byte[]> __raw_certificates;
             public TlsLength CertLength { get { return _certLength; } }
             public List<Certificate> Certificates { get { return _certificates; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.TlsHandshake M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.TlsHandshake M_Parent { get { return m_parent; } }
             public List<byte[]> M_RawCertificates { get { return __raw_certificates; } }
         }
         public partial class Certificate : KaitaiStruct
@@ -208,7 +208,7 @@ namespace Ndx.Decoders.Binary
                 return new Certificate(new KaitaiStream(fileName));
             }
 
-            public Certificate(KaitaiStream io, TlsCertificate parent = null, TlsRecordLayer root = null) : base(io)
+            public Certificate(KaitaiStream io, TlsCertificate parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -222,12 +222,12 @@ namespace Ndx.Decoders.Binary
             }
             private TlsLength _certLength;
             private byte[] _body;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.TlsCertificate m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.TlsCertificate m_parent;
             public TlsLength CertLength { get { return _certLength; } }
             public byte[] Body { get { return _body; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.TlsCertificate M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.TlsCertificate M_Parent { get { return m_parent; } }
         }
         public partial class SessionId : KaitaiStruct
         {
@@ -236,7 +236,7 @@ namespace Ndx.Decoders.Binary
                 return new SessionId(new KaitaiStream(fileName));
             }
 
-            public SessionId(KaitaiStream io, KaitaiStruct parent = null, TlsRecordLayer root = null) : base(io)
+            public SessionId(KaitaiStream io, KaitaiStruct parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -250,11 +250,11 @@ namespace Ndx.Decoders.Binary
             }
             private byte _len;
             private byte[] _sid;
-            private TlsRecordLayer m_root;
+            private TlsRecord m_root;
             private KaitaiStruct m_parent;
             public byte Len { get { return _len; } }
             public byte[] Sid { get { return _sid; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
+            public TlsRecord M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
         }
         public partial class Sni : KaitaiStruct
@@ -264,7 +264,7 @@ namespace Ndx.Decoders.Binary
                 return new Sni(new KaitaiStream(fileName));
             }
 
-            public Sni(KaitaiStream io, Extension parent = null, TlsRecordLayer root = null) : base(io)
+            public Sni(KaitaiStream io, Extension parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -281,12 +281,12 @@ namespace Ndx.Decoders.Binary
             }
             private ushort _listLength;
             private List<ServerName> _serverNames;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.Extension m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.Extension m_parent;
             public ushort ListLength { get { return _listLength; } }
             public List<ServerName> ServerNames { get { return _serverNames; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.Extension M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.Extension M_Parent { get { return m_parent; } }
         }
         public partial class TlsServerHello : KaitaiStruct
         {
@@ -295,7 +295,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsServerHello(new KaitaiStream(fileName));
             }
 
-            public TlsServerHello(KaitaiStream io, TlsHandshake parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsServerHello(KaitaiStream io, TlsHandshake parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -319,16 +319,16 @@ namespace Ndx.Decoders.Binary
             private CipherSuites _cipherSuites;
             private CompressionMethods _compressionMethods;
             private Extensions _extensions;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.TlsHandshake m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.TlsHandshake m_parent;
             public TlsVersion Version { get { return _version; } }
             public Random Random { get { return _random; } }
             public SessionId SessionId { get { return _sessionId; } }
             public CipherSuites CipherSuites { get { return _cipherSuites; } }
             public CompressionMethods CompressionMethods { get { return _compressionMethods; } }
             public Extensions Extensions { get { return _extensions; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.TlsHandshake M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.TlsHandshake M_Parent { get { return m_parent; } }
         }
         public partial class CipherSuites : KaitaiStruct
         {
@@ -337,7 +337,7 @@ namespace Ndx.Decoders.Binary
                 return new CipherSuites(new KaitaiStream(fileName));
             }
 
-            public CipherSuites(KaitaiStream io, KaitaiStruct parent = null, TlsRecordLayer root = null) : base(io)
+            public CipherSuites(KaitaiStream io, KaitaiStruct parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -354,11 +354,11 @@ namespace Ndx.Decoders.Binary
             }
             private ushort _len;
             private List<ushort> _cipherSuiteList;
-            private TlsRecordLayer m_root;
+            private TlsRecord m_root;
             private KaitaiStruct m_parent;
             public ushort Len { get { return _len; } }
             public List<ushort> CipherSuiteList { get { return _cipherSuiteList; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
+            public TlsRecord M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
         }
         public partial class TlsClientKeyExchange : KaitaiStruct
@@ -368,7 +368,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsClientKeyExchange(new KaitaiStream(fileName));
             }
 
-            public TlsClientKeyExchange(KaitaiStream io, TlsHandshake parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsClientKeyExchange(KaitaiStream io, TlsHandshake parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -380,11 +380,11 @@ namespace Ndx.Decoders.Binary
                 _tlsPremasterSecret = new TlsPreMasterSecret(m_io, this, m_root);
             }
             private TlsPreMasterSecret _tlsPremasterSecret;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.TlsHandshake m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.TlsHandshake m_parent;
             public TlsPreMasterSecret TlsPremasterSecret { get { return _tlsPremasterSecret; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.TlsHandshake M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.TlsHandshake M_Parent { get { return m_parent; } }
         }
         public partial class TlsChangeCipherSpec : KaitaiStruct
         {
@@ -393,7 +393,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsChangeCipherSpec(new KaitaiStream(fileName));
             }
 
-            public TlsChangeCipherSpec(KaitaiStream io, TlsRecordLayer parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsChangeCipherSpec(KaitaiStream io, TlsRecord parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -405,11 +405,11 @@ namespace Ndx.Decoders.Binary
                 _changeMessage = m_io.ReadBytesFull();
             }
             private byte[] _changeMessage;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer m_parent;
+            private TlsRecord m_root;
+            private TlsRecord m_parent;
             public byte[] ChangeMessage { get { return _changeMessage; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord M_Parent { get { return m_parent; } }
         }
         public partial class CompressionMethods : KaitaiStruct
         {
@@ -418,7 +418,7 @@ namespace Ndx.Decoders.Binary
                 return new CompressionMethods(new KaitaiStream(fileName));
             }
 
-            public CompressionMethods(KaitaiStream io, KaitaiStruct parent = null, TlsRecordLayer root = null) : base(io)
+            public CompressionMethods(KaitaiStream io, KaitaiStruct parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -432,11 +432,11 @@ namespace Ndx.Decoders.Binary
             }
             private byte _len;
             private byte[] _bytes;
-            private TlsRecordLayer m_root;
+            private TlsRecord m_root;
             private KaitaiStruct m_parent;
             public byte Len { get { return _len; } }
             public byte[] Bytes { get { return _bytes; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
+            public TlsRecord M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
         }
         public partial class TlsCertificateVerify : KaitaiStruct
@@ -446,7 +446,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsCertificateVerify(new KaitaiStream(fileName));
             }
 
-            public TlsCertificateVerify(KaitaiStream io, TlsHandshake parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsCertificateVerify(KaitaiStream io, TlsHandshake parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -458,11 +458,11 @@ namespace Ndx.Decoders.Binary
                 _empty = m_io.ReadBytes(0);
             }
             private byte[] _empty;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.TlsHandshake m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.TlsHandshake m_parent;
             public byte[] Empty { get { return _empty; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.TlsHandshake M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.TlsHandshake M_Parent { get { return m_parent; } }
         }
         public partial class Alpn : KaitaiStruct
         {
@@ -471,7 +471,7 @@ namespace Ndx.Decoders.Binary
                 return new Alpn(new KaitaiStream(fileName));
             }
 
-            public Alpn(KaitaiStream io, Extension parent = null, TlsRecordLayer root = null) : base(io)
+            public Alpn(KaitaiStream io, Extension parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -488,12 +488,12 @@ namespace Ndx.Decoders.Binary
             }
             private ushort _extLen;
             private List<Protocol> _alpnProtocols;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.Extension m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.Extension m_parent;
             public ushort ExtLen { get { return _extLen; } }
             public List<Protocol> AlpnProtocols { get { return _alpnProtocols; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.Extension M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.Extension M_Parent { get { return m_parent; } }
         }
         public partial class Extensions : KaitaiStruct
         {
@@ -502,7 +502,7 @@ namespace Ndx.Decoders.Binary
                 return new Extensions(new KaitaiStream(fileName));
             }
 
-            public Extensions(KaitaiStream io, KaitaiStruct parent = null, TlsRecordLayer root = null) : base(io)
+            public Extensions(KaitaiStream io, KaitaiStruct parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -519,11 +519,11 @@ namespace Ndx.Decoders.Binary
             }
             private ushort _len;
             private List<Extension> _extensionList;
-            private TlsRecordLayer m_root;
+            private TlsRecord m_root;
             private KaitaiStruct m_parent;
             public ushort Len { get { return _len; } }
             public List<Extension> ExtensionList { get { return _extensionList; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
+            public TlsRecord M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
         }
         public partial class TlsPreMasterSecret : KaitaiStruct
@@ -533,7 +533,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsPreMasterSecret(new KaitaiStream(fileName));
             }
 
-            public TlsPreMasterSecret(KaitaiStream io, TlsClientKeyExchange parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsPreMasterSecret(KaitaiStream io, TlsClientKeyExchange parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -547,12 +547,12 @@ namespace Ndx.Decoders.Binary
             }
             private ushort _secretLength;
             private byte[] _secret;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.TlsClientKeyExchange m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.TlsClientKeyExchange m_parent;
             public ushort SecretLength { get { return _secretLength; } }
             public byte[] Secret { get { return _secret; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.TlsClientKeyExchange M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.TlsClientKeyExchange M_Parent { get { return m_parent; } }
         }
         public partial class TlsServerKeyExchange : KaitaiStruct
         {
@@ -561,7 +561,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsServerKeyExchange(new KaitaiStream(fileName));
             }
 
-            public TlsServerKeyExchange(KaitaiStream io, TlsHandshake parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsServerKeyExchange(KaitaiStream io, TlsHandshake parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -573,11 +573,11 @@ namespace Ndx.Decoders.Binary
                 _empty = m_io.ReadBytes(0);
             }
             private byte[] _empty;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.TlsHandshake m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.TlsHandshake m_parent;
             public byte[] Empty { get { return _empty; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.TlsHandshake M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.TlsHandshake M_Parent { get { return m_parent; } }
         }
         public partial class TlsApplicationData : KaitaiStruct
         {
@@ -586,7 +586,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsApplicationData(new KaitaiStream(fileName));
             }
 
-            public TlsApplicationData(KaitaiStream io, TlsRecordLayer parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsApplicationData(KaitaiStream io, TlsRecord parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -598,11 +598,11 @@ namespace Ndx.Decoders.Binary
                 _body = m_io.ReadBytesFull();
             }
             private byte[] _body;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer m_parent;
+            private TlsRecord m_root;
+            private TlsRecord m_parent;
             public byte[] Body { get { return _body; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord M_Parent { get { return m_parent; } }
         }
         public partial class TlsClientHello : KaitaiStruct
         {
@@ -611,7 +611,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsClientHello(new KaitaiStream(fileName));
             }
 
-            public TlsClientHello(KaitaiStream io, TlsHandshake parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsClientHello(KaitaiStream io, TlsHandshake parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -635,16 +635,16 @@ namespace Ndx.Decoders.Binary
             private CipherSuites _cipherSuites;
             private CompressionMethods _compressionMethods;
             private Extensions _extensions;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.TlsHandshake m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.TlsHandshake m_parent;
             public TlsVersion Version { get { return _version; } }
             public Random Random { get { return _random; } }
             public SessionId SessionId { get { return _sessionId; } }
             public CipherSuites CipherSuites { get { return _cipherSuites; } }
             public CompressionMethods CompressionMethods { get { return _compressionMethods; } }
             public Extensions Extensions { get { return _extensions; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.TlsHandshake M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.TlsHandshake M_Parent { get { return m_parent; } }
         }
         public partial class TlsServerHelloDone : KaitaiStruct
         {
@@ -653,7 +653,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsServerHelloDone(new KaitaiStream(fileName));
             }
 
-            public TlsServerHelloDone(KaitaiStream io, TlsHandshake parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsServerHelloDone(KaitaiStream io, TlsHandshake parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -665,11 +665,11 @@ namespace Ndx.Decoders.Binary
                 _empty = m_io.ReadBytes(0);
             }
             private byte[] _empty;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.TlsHandshake m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.TlsHandshake m_parent;
             public byte[] Empty { get { return _empty; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.TlsHandshake M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.TlsHandshake M_Parent { get { return m_parent; } }
         }
         public partial class TlsEncryptedMessage : KaitaiStruct
         {
@@ -678,7 +678,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsEncryptedMessage(new KaitaiStream(fileName));
             }
 
-            public TlsEncryptedMessage(KaitaiStream io, KaitaiStruct parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsEncryptedMessage(KaitaiStream io, KaitaiStruct parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -690,10 +690,10 @@ namespace Ndx.Decoders.Binary
                 _encryptedMessage = m_io.ReadBytesFull();
             }
             private byte[] _encryptedMessage;
-            private TlsRecordLayer m_root;
+            private TlsRecord m_root;
             private KaitaiStruct m_parent;
             public byte[] EncryptedMessage { get { return _encryptedMessage; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
+            public TlsRecord M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
         }
         public partial class TlsEmpty : KaitaiStruct
@@ -703,7 +703,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsEmpty(new KaitaiStream(fileName));
             }
 
-            public TlsEmpty(KaitaiStream io, TlsHandshake parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsEmpty(KaitaiStream io, TlsHandshake parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -715,11 +715,11 @@ namespace Ndx.Decoders.Binary
                 _empty = m_io.ReadBytes(0);
             }
             private byte[] _empty;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.TlsHandshake m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.TlsHandshake m_parent;
             public byte[] Empty { get { return _empty; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.TlsHandshake M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.TlsHandshake M_Parent { get { return m_parent; } }
         }
         public partial class TlsHandshake : KaitaiStruct
         {
@@ -728,7 +728,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsHandshake(new KaitaiStream(fileName));
             }
 
-            public TlsHandshake(KaitaiStream io, TlsRecordLayer parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsHandshake(KaitaiStream io, TlsRecord parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -737,64 +737,64 @@ namespace Ndx.Decoders.Binary
 
             private void _parse()
             {
-                _handshakeType = ((TlsRecordLayer.TlsHandshakeType) m_io.ReadU1());
+                _handshakeType = ((TlsRecord.TlsHandshakeType) m_io.ReadU1());
                 _bodyLength = new TlsLength(m_io, this, m_root);
                 switch (HandshakeType) {
-                case TlsRecordLayer.TlsHandshakeType.HelloRequest: {
+                case TlsRecord.TlsHandshakeType.HelloRequest: {
                     __raw_body = m_io.ReadBytes((M_Parent.Length - 4));
                     var io___raw_body = new KaitaiStream(__raw_body);
                     _body = new TlsEmpty(io___raw_body, this, m_root);
                     break;
                 }
-                case TlsRecordLayer.TlsHandshakeType.Certificate: {
+                case TlsRecord.TlsHandshakeType.Certificate: {
                     __raw_body = m_io.ReadBytes((M_Parent.Length - 4));
                     var io___raw_body = new KaitaiStream(__raw_body);
                     _body = new TlsCertificate(io___raw_body, this, m_root);
                     break;
                 }
-                case TlsRecordLayer.TlsHandshakeType.CertificateVerify: {
+                case TlsRecord.TlsHandshakeType.CertificateVerify: {
                     __raw_body = m_io.ReadBytes((M_Parent.Length - 4));
                     var io___raw_body = new KaitaiStream(__raw_body);
                     _body = new TlsCertificateVerify(io___raw_body, this, m_root);
                     break;
                 }
-                case TlsRecordLayer.TlsHandshakeType.ServerKeyExchange: {
+                case TlsRecord.TlsHandshakeType.ServerKeyExchange: {
                     __raw_body = m_io.ReadBytes((M_Parent.Length - 4));
                     var io___raw_body = new KaitaiStream(__raw_body);
                     _body = new TlsServerKeyExchange(io___raw_body, this, m_root);
                     break;
                 }
-                case TlsRecordLayer.TlsHandshakeType.ClientHello: {
+                case TlsRecord.TlsHandshakeType.ClientHello: {
                     __raw_body = m_io.ReadBytes((M_Parent.Length - 4));
                     var io___raw_body = new KaitaiStream(__raw_body);
                     _body = new TlsClientHello(io___raw_body, this, m_root);
                     break;
                 }
-                case TlsRecordLayer.TlsHandshakeType.Finished: {
+                case TlsRecord.TlsHandshakeType.Finished: {
                     __raw_body = m_io.ReadBytes((M_Parent.Length - 4));
                     var io___raw_body = new KaitaiStream(__raw_body);
                     _body = new TlsFinished(io___raw_body, this, m_root);
                     break;
                 }
-                case TlsRecordLayer.TlsHandshakeType.ClientKeyExchange: {
+                case TlsRecord.TlsHandshakeType.ClientKeyExchange: {
                     __raw_body = m_io.ReadBytes((M_Parent.Length - 4));
                     var io___raw_body = new KaitaiStream(__raw_body);
                     _body = new TlsClientKeyExchange(io___raw_body, this, m_root);
                     break;
                 }
-                case TlsRecordLayer.TlsHandshakeType.ServerHello: {
+                case TlsRecord.TlsHandshakeType.ServerHello: {
                     __raw_body = m_io.ReadBytes((M_Parent.Length - 4));
                     var io___raw_body = new KaitaiStream(__raw_body);
                     _body = new TlsServerHello(io___raw_body, this, m_root);
                     break;
                 }
-                case TlsRecordLayer.TlsHandshakeType.CertificateRequest: {
+                case TlsRecord.TlsHandshakeType.CertificateRequest: {
                     __raw_body = m_io.ReadBytes((M_Parent.Length - 4));
                     var io___raw_body = new KaitaiStream(__raw_body);
                     _body = new TlsCertificateRequest(io___raw_body, this, m_root);
                     break;
                 }
-                case TlsRecordLayer.TlsHandshakeType.ServerHelloDone: {
+                case TlsRecord.TlsHandshakeType.ServerHelloDone: {
                     __raw_body = m_io.ReadBytes((M_Parent.Length - 4));
                     var io___raw_body = new KaitaiStream(__raw_body);
                     _body = new TlsServerHelloDone(io___raw_body, this, m_root);
@@ -811,14 +811,14 @@ namespace Ndx.Decoders.Binary
             private TlsHandshakeType _handshakeType;
             private TlsLength _bodyLength;
             private KaitaiStruct _body;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer m_parent;
+            private TlsRecord m_root;
+            private TlsRecord m_parent;
             private byte[] __raw_body;
             public TlsHandshakeType HandshakeType { get { return _handshakeType; } }
             public TlsLength BodyLength { get { return _bodyLength; } }
             public KaitaiStruct Body { get { return _body; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord M_Parent { get { return m_parent; } }
             public byte[] M_RawBody { get { return __raw_body; } }
         }
         public partial class Protocol : KaitaiStruct
@@ -828,7 +828,7 @@ namespace Ndx.Decoders.Binary
                 return new Protocol(new KaitaiStream(fileName));
             }
 
-            public Protocol(KaitaiStream io, Alpn parent = null, TlsRecordLayer root = null) : base(io)
+            public Protocol(KaitaiStream io, Alpn parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -842,12 +842,12 @@ namespace Ndx.Decoders.Binary
             }
             private byte _strlen;
             private byte[] _name;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.Alpn m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.Alpn m_parent;
             public byte Strlen { get { return _strlen; } }
             public byte[] Name { get { return _name; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.Alpn M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.Alpn M_Parent { get { return m_parent; } }
         }
         public partial class TlsLength : KaitaiStruct
         {
@@ -856,7 +856,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsLength(new KaitaiStream(fileName));
             }
 
-            public TlsLength(KaitaiStream io, KaitaiStruct parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsLength(KaitaiStream io, KaitaiStruct parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -884,11 +884,11 @@ namespace Ndx.Decoders.Binary
             }
             private byte _hlen;
             private ushort _llen;
-            private TlsRecordLayer m_root;
+            private TlsRecord m_root;
             private KaitaiStruct m_parent;
             public byte Hlen { get { return _hlen; } }
             public ushort Llen { get { return _llen; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
+            public TlsRecord M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
         }
         public partial class TlsVersion : KaitaiStruct
@@ -898,7 +898,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsVersion(new KaitaiStream(fileName));
             }
 
-            public TlsVersion(KaitaiStream io, KaitaiStruct parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsVersion(KaitaiStream io, KaitaiStruct parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -912,11 +912,11 @@ namespace Ndx.Decoders.Binary
             }
             private byte _major;
             private byte _minor;
-            private TlsRecordLayer m_root;
+            private TlsRecord m_root;
             private KaitaiStruct m_parent;
             public byte Major { get { return _major; } }
             public byte Minor { get { return _minor; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
+            public TlsRecord M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
         }
         public partial class TlsFinished : KaitaiStruct
@@ -926,7 +926,7 @@ namespace Ndx.Decoders.Binary
                 return new TlsFinished(new KaitaiStream(fileName));
             }
 
-            public TlsFinished(KaitaiStream io, TlsHandshake parent = null, TlsRecordLayer root = null) : base(io)
+            public TlsFinished(KaitaiStream io, TlsHandshake parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -938,11 +938,11 @@ namespace Ndx.Decoders.Binary
                 _verifyData = m_io.ReadBytesFull();
             }
             private byte[] _verifyData;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.TlsHandshake m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.TlsHandshake m_parent;
             public byte[] VerifyData { get { return _verifyData; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.TlsHandshake M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.TlsHandshake M_Parent { get { return m_parent; } }
         }
         public partial class Extension : KaitaiStruct
         {
@@ -951,7 +951,7 @@ namespace Ndx.Decoders.Binary
                 return new Extension(new KaitaiStream(fileName));
             }
 
-            public Extension(KaitaiStream io, Extensions parent = null, TlsRecordLayer root = null) : base(io)
+            public Extension(KaitaiStream io, Extensions parent = null, TlsRecord root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -984,28 +984,28 @@ namespace Ndx.Decoders.Binary
             private ushort _type;
             private ushort _len;
             private object _body;
-            private TlsRecordLayer m_root;
-            private TlsRecordLayer.Extensions m_parent;
+            private TlsRecord m_root;
+            private TlsRecord.Extensions m_parent;
             private byte[] __raw_body;
             public ushort Type { get { return _type; } }
             public ushort Len { get { return _len; } }
             public object Body { get { return _body; } }
-            public TlsRecordLayer M_Root { get { return m_root; } }
-            public TlsRecordLayer.Extensions M_Parent { get { return m_parent; } }
+            public TlsRecord M_Root { get { return m_root; } }
+            public TlsRecord.Extensions M_Parent { get { return m_parent; } }
             public byte[] M_RawBody { get { return __raw_body; } }
         }
         private TlsContentType _contentType;
         private TlsVersion _version;
         private ushort _length;
         private KaitaiStruct _body;
-        private TlsRecordLayer m_root;
+        private TlsRecord m_root;
         private KaitaiStruct m_parent;
         private byte[] __raw_body;
         public TlsContentType ContentType { get { return _contentType; } }
         public TlsVersion Version { get { return _version; } }
         public ushort Length { get { return _length; } }
         public KaitaiStruct Body { get { return _body; } }
-        public TlsRecordLayer M_Root { get { return m_root; } }
+        public TlsRecord M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawBody { get { return __raw_body; } }
     }
