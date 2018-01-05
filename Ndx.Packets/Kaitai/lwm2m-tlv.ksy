@@ -18,7 +18,7 @@ seq:
     type: tlv_type
   - id: identifier
     doc: "The Object Instance, Resource, or Resource Instance ID as indicated by the Type field."
-    size: 2 
+    type: tlv_identifier 
   - id: length
     doc: "The Length of the following field in bytes."
     type: tlv_length 
@@ -27,23 +27,36 @@ seq:
     size: length.value
 
 types:
+  tlv_identifier:
+    seq:
+      - id: tlv_id_1
+        type: u1
+        if: _parent.type.identifier_wide_length == false
+      - id: tlv_id_2
+        type: u2
+        if: _parent.type.identifier_wide_length == true
+    instances:
+      value:
+        value: > 
+          tlv_id_1 | tlv_id_2  
+          
   tlv_length:
     seq: 
       - id: tlv_len_1
         type: u1
-        if: _parent.type.length_type >= 1
+        if: _parent.type.length_type == 1
           
       - id: tlv_len_2
-        type: u1
-        if:  _parent.type.length_type >= 2
+        type: b16
+        if:  _parent.type.length_type == 2
   
       - id: tlv_len_3
-        type: u1
+        type: b24
         if:  _parent.type.length_type == 3
     instances:
       value:
         value: > 
-          _parent.type.value_length | tlv_len_1 | tlv_len_2 << 8 | tlv_len_3 << 16
+          _parent.type.value_length | tlv_len_1 | tlv_len_2 | tlv_len_3 
   
   tlv_type:
     seq:
@@ -56,7 +69,7 @@ types:
             11= Resource with Value
         type: b2
         enum: lwm2m_tlv_identifier_type
-      - id: identifier_length
+      - id: identifier_wide_length
         doc: >
           Bit 5: Indicates the Length of the Identifier. 
             0=The Identifier field of this TLV is 8 bits long
